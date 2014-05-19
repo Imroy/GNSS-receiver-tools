@@ -23,6 +23,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <memory>
 
 namespace NMEA0183 {
 
@@ -46,30 +47,121 @@ namespace NMEA0183 {
   class Sentence {
   private:
     const char _talker_id[2], _type[3];
-    const std::string _data;
-    const std::vector<std::string> _fields;
     const unsigned char _checksum;
 
-    unsigned char _generate_checksum(void);
-    std::vector<std::string> _split_fields(void);
+    static unsigned char _generate_checksum(std::string tid, std::string type, std::string data);
+    static std::vector<std::string> _split_fields(std::string data);
 
   public:
     // Constructor
-    Sentence(std::string line);
+    Sentence(std::string tid, std::string type, unsigned char checksum);
 
-    // Constructor
-    Sentence(std::string tid, std::string type, std::string data);
-    Sentence(std::string tid, std::string type, std::string data, unsigned char checksum);
+    inline virtual ~Sentence() {}
+
+    typedef std::shared_ptr<Sentence> ptr;
 
     inline const std::string talker_id(void) const { return std::string(_talker_id, 2); }
     inline const std::string type(void) const { return std::string(_type, 3); }
-    inline const std::string data(void) const { return _data; }
-    inline const size_t num_fields(void) const { return _fields.size(); }
-    inline const std::string field(size_t i) const { return _fields[i]; }
-    inline const std::vector<std::string> fields(void) const { return _fields; }
     inline const unsigned char checksum(void) const { return _checksum; }
 
+    template <typename T>
+    inline bool isa(void) const { return typeid(*this) == typeid(T); }
+
+    template <typename T>
+    inline T* cast_as(void) { return dynamic_cast<T*>(this); }
+
+    friend Sentence::ptr parse_sentence(std::string line);
   }; // class Sentence
+
+  Sentence::ptr parse_sentence(std::string line);
+
+
+  enum class GPSquality {
+    Unavailable,
+      SPSmode,
+      DGPSmode,
+  }; // class GPSquality
+
+
+  class GGA : public Sentence {
+  private:
+    double _utc_time;
+    double _lattitude, _longitude; // north and east are positive, respectively
+    GPSquality _gps_quality;
+    int _num_sats_used;
+    double _hdop;
+    double _altitude; // Above mean sea level
+    double _geoid_sep;
+    int _dgps_station_id;
+
+  public:
+    GGA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
+
+    inline double UTC_time(void) const { return _utc_time; }
+    inline double lattitude(void) const { return _lattitude; }
+    inline double longitude(void) const { return _longitude; }
+    inline GPSquality GPS_quality(void) const { return _gps_quality; }
+    inline int num_sats_used(void) const { return _num_sats_used; }
+    inline double HDOP(void) const { return _hdop; }
+    inline double altitude(void) const { return _altitude; }
+    inline double GEOID_separation(void) const { return _geoid_sep; }
+    inline int DGPS_station_id(void) const { return _dgps_station_id; }
+
+  }; // class GGA
+
+
+  class GLL : public Sentence {
+  private:
+
+  public:
+    GLL(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
+
+  }; // class GLL
+
+
+  class GSA : public Sentence {
+  private:
+
+  public:
+    GSA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
+
+  }; // class GSA
+
+
+  class GSV : public Sentence {
+  private:
+
+  public:
+    GSV(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
+
+  }; // class GSV
+
+
+  class RMC : public Sentence {
+  private:
+
+  public:
+    RMC(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
+
+  }; // class RMC
+
+
+  class VTG : public Sentence {
+  private:
+
+  public:
+    VTG(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
+
+  }; // class VTG
+
+
+  class ZDA : public Sentence {
+  private:
+
+  public:
+    ZDA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
+
+  }; // class ZDA
 
 }; // namespace NMEA0183
 
