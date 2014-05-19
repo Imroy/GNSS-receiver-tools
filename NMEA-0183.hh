@@ -27,6 +27,17 @@
 
 namespace NMEA0183 {
 
+  class InvalidSentence : public std::exception {
+  private:
+
+  public:
+    InvalidSentence() {}
+
+    const char* what() const throw() {
+      return "Invalid sentence";
+    }
+  }; // class InvalidSentence
+
   class ChecksumMismatch : public std::exception {
   private:
     unsigned char _computed_cs, _stream_cs;

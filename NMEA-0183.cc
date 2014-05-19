@@ -60,6 +60,9 @@ namespace NMEA0183 {
   {}
 
   Sentence::ptr parse_sentence(std::string line) {
+    if (line[0] != '$')
+      throw InvalidSentence();
+
     std::string tid = line.substr(1, 2);
     std::string type = line.substr(3, 3);
     std::string data = line.substr(6, line.length() - 9);
