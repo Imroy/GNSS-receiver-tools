@@ -111,11 +111,20 @@ namespace NMEA0183 {
   }; // class GGA
 
 
+  //! Geographic position - latitude/longitude
   class GLL : public Sentence {
   private:
+    double _lattitude, _longitude; // north and east are positive, respectively
+    double _utc_time;
+    bool _status;
 
   public:
     GLL(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
+
+    inline double lattitude(void) const { return _lattitude; }
+    inline double longitude(void) const { return _longitude; }
+    inline double UTC_time(void) const { return _utc_time; }
+    inline bool status(void) const { return _status; }
 
   }; // class GLL
 

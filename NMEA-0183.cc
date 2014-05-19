@@ -72,9 +72,12 @@ namespace NMEA0183 {
     auto fields = Sentence::_split_fields(data);
 
     if ((type == "GGA") &&
-	((tid == "GP") || (tid == "GN"))) {
+	((tid == "GP") || (tid == "GN")))
       return std::make_shared<GGA>(tid, type, fields, checksum);
-    }
+
+    if ((type == "GLL") &&
+	((tid == "GP") || (tid == "GN")))
+      return std::make_shared<GLL>(tid, type, fields, checksum);
 
     return std::make_shared<Sentence>(tid, type, checksum);
   }
@@ -131,6 +134,16 @@ namespace NMEA0183 {
     _geoid_sep(std::stod(fields[10])),
     _dgps_station_id(std::stoi(fields[13]))
   {}
+
+
+  GLL::GLL(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
+    Sentence(tid, type, checksum),
+    _lattitude(dm_to_degrees(fields[0], 2, fields[1], "S")),
+    _longitude(dm_to_degrees(fields[2], 3, fields[3], "W")),
+    _utc_time(hhmmss_to_seconds(fields[4])),
+    _status(fields[5] == "A")
+  {}
+
 
 
 }; // namespace NMEA0183
