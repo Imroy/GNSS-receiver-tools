@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
       std::cout << "Talker id=\"" << s->talker_id() << "\", type=\"" << s->type() << "\"" << std::endl;
       if (s->isa<NMEA0183::GGA>()) {
 	NMEA0183::GGA *gga = s->cast_as<NMEA0183::GGA>();
-	if (s != NULL) {
+	if (gga != NULL) {
 	  std::cout << "\tTime " << gga->UTC_time()
 		    << ", longitude " << gga->longitude() << ", lattitude " << gga->lattitude()
 		    << ", \"" << gga->GPS_quality() << "\""
@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
 	}
       } else if (s->isa<NMEA0183::GLL>()) {
 	NMEA0183::GLL *gll = s->cast_as<NMEA0183::GLL>();
-	if (s != NULL) {
+	if (gll != NULL) {
 	  std::cout << "\tLongitude " << gll->longitude() << ", lattitude " << gll->lattitude()
 		    << ", time " << gll->UTC_time()
 		    << ", " << (gll->status() ? "valid" : "not valid")
@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
 	}
       } else if (s->isa<NMEA0183::GSA>()) {
 	NMEA0183::GSA *gsa = s->cast_as<NMEA0183::GSA>();
-	if (s != NULL) {
+	if (gsa != NULL) {
 	  std::cout << "\t" << gsa->mode()
 		    << ", fix: " << gsa->fix_type()
 		    << ", PDOP " << gsa->PDOP() << ", HDOP " << gsa->HDOP() << ", VDOP " << gsa->VDOP()
