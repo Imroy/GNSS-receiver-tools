@@ -140,11 +140,40 @@ namespace NMEA0183 {
   }; // class GLL
 
 
+  enum class OpMode {
+    Manual,
+      Automatic,
+  }; // class OpMode
+
+  std::ostream& operator<< (std::ostream& out, OpMode mode);
+
+
+  enum class FixType {
+    NotAvailable,
+      TwoDimensional,
+      ThreeDimensional,
+  }; // class FixType
+
+  std::ostream& operator<< (std::ostream& out, FixType type);
+
+
+  //! GNSS DOP and active satellites
   class GSA : public Sentence {
   private:
+    OpMode _mode;
+    FixType _fixtype;
+    std::vector<int> _sat_ids;
+    double _pdop, _hdop, _vdop;
 
   public:
     GSA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
+
+    inline const OpMode mode(void) const { return _mode; }
+    inline const FixType fix_type(void) const { return _fixtype; }
+    inline const std::vector<int> satellite_ids(void) const { return _sat_ids; }
+    inline double PDOP(void) const { return _pdop; }
+    inline double HDOP(void) const { return _hdop; }
+    inline double VDOP(void) const { return _vdop; }
 
   }; // class GSA
 

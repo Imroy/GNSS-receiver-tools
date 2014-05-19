@@ -82,6 +82,10 @@ namespace NMEA0183 {
 	((tid == "GP") || (tid == "GN")))
       return std::make_shared<GLL>(tid, type, fields, checksum);
 
+    if ((type == "GSA") &&
+	((tid == "GP") || (tid == "GN") || (tid == "BD") || (tid == "GL")))
+      return std::make_shared<GSA>(tid, type, fields, checksum);
+
     return std::make_shared<Sentence>(tid, type, checksum);
   }
 
@@ -147,6 +151,44 @@ namespace NMEA0183 {
     _status(fields[5] == "A")
   {}
 
+  std::ostream& operator<< (std::ostream& out, OpMode mode) {
+    switch (mode) {
+    case OpMode::Manual:
+      out << "manual";
+      break;
+    case OpMode::Automatic:
+      out << "automatic";
+      break;
+    }
+    return out;
+  }
 
+  std::ostream& operator<< (std::ostream& out, FixType type) {
+    switch (type) {
+    case FixType::NotAvailable:
+      out << "not available";
+      break;
+    case FixType::TwoDimensional:
+      out << "2D";
+      break;
+    case FixType::ThreeDimensional:
+      out << "3D";
+      break;
+    }
+    return out;
+  }
+
+  GSA::GSA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
+    Sentence(tid, type, checksum),
+    _mode(fields[0] == "A" ? OpMode::Automatic : OpMode::Manual),
+    _fixtype((FixType)std::stoi(fields[1])),
+    _pdop(std::stod(fields[fields.size() - 3])),
+    _hdop(std::stod(fields[fields.size() - 2])),
+    _vdop(std::stod(fields[fields.size() - 1]))
+  {
+    for (unsigned int i = 2; i < fields.size() - 3; i++)
+      if (fields[i].length() > 0)
+	_sat_ids.push_back(std::stoi(fields[i]));
+  }
 
 }; // namespace NMEA0183
