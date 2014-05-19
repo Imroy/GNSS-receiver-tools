@@ -37,7 +37,7 @@ namespace NMEA0183 {
     const char* what() const throw() {
       std::ostringstream oss;
       oss.width(2);
-      oss << "Checksum mismatch in NMEA-0183 stream - computed 0x" << std::hex << _computed_cs << ", found 0x" << _stream_cs;
+      oss << "Checksum mismatch in NMEA-0183 stream - computed 0x" << std::hex << (int)_computed_cs << ", found 0x" << (int)_stream_cs;
       return oss.str().c_str();
     }    
   }; // class ChecksumMismatch
