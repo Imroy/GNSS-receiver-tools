@@ -102,6 +102,22 @@ namespace NMEA0183 {
     return (degrees + (minutes / 60.0)) * (indicator == neg ? -1 : 1);
   }
 
+  std::ostream& operator<< (std::ostream& out, GPSquality quality) {
+    switch (quality) {
+    case GPSquality::Unavailable:
+      out << "position fix unavailable";
+      break;
+    case GPSquality::SPSmode:
+      out << "valid position fix, SPS mode";
+      break;
+    case GPSquality::DGPSmode:
+      out << "valid position fix, DGPS mode";
+      break;
+    }
+
+    return out;
+  }
+
 
   GGA::GGA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
     Sentence(tid, type, checksum),

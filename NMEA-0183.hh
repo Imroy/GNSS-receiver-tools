@@ -82,6 +82,7 @@ namespace NMEA0183 {
       DGPSmode,
   }; // class GPSquality
 
+  std::ostream& operator<< (std::ostream& out, GPSquality quality);
 
   class GGA : public Sentence {
   private:
