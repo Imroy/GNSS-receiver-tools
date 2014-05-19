@@ -36,8 +36,8 @@ namespace NMEA0183 {
   }
 
   Sentence::Sentence(std::string line) :
-    _talker_id{ line[0], line[1] }, _type{ line[2], line[3], line[4] },
-    _data(line.substr(5, line.length() - 3)),
+    _talker_id{ line[1], line[2] }, _type{ line[3], line[4], line[5] },
+    _data(line.substr(6, line.length() - 9)),
     _checksum(std::stoi(line.substr(line.length() - 2, 2), NULL, 16))
   {
     unsigned char computed_cs = this->_generate_checksum();
