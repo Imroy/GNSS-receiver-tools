@@ -35,9 +35,27 @@ namespace NMEA0183 {
     return cs;
   }
 
+  std::vector<std::string> Sentence::_split_fields(void) {
+    std::vector<std::string> fields;
+    size_t field_start = _data.find_first_of(',') + 1;
+    size_t next_comma;
+
+    while (field_start != std::string::npos) {
+      next_comma = _data.find_first_of(',', field_start);
+      fields.push_back(_data.substr(field_start, next_comma - field_start));
+
+      if (next_comma == std::string::npos)
+	break;
+      field_start = next_comma + 1;
+    }
+
+    return fields;
+  }
+
   Sentence::Sentence(std::string line) :
     _talker_id{ line[1], line[2] }, _type{ line[3], line[4], line[5] },
     _data(line.substr(6, line.length() - 9)),
+    _fields(this->_split_fields()),
     _checksum(std::stoi(line.substr(line.length() - 2, 2), NULL, 16))
   {
     unsigned char computed_cs = this->_generate_checksum();
@@ -48,12 +66,14 @@ namespace NMEA0183 {
   Sentence::Sentence(std::string tid, std::string type, std::string data) :
     _talker_id{ tid[0], tid[1] }, _type{ type[0], type[1], type[2]},
     _data(data),
+    _fields(this->_split_fields()),
     _checksum(this->_generate_checksum())
   {}
 
   Sentence::Sentence(std::string tid, std::string type, std::string data, unsigned char checksum) :
     _talker_id{ tid[0], tid[1] }, _type{ type[0], type[1], type[2]},
     _data(data),
+    _fields(this->_split_fields()),
     _checksum(checksum)
   {}
 

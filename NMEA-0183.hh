@@ -22,6 +22,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <vector>
 
 namespace NMEA0183 {
 
@@ -46,9 +47,11 @@ namespace NMEA0183 {
   private:
     const char _talker_id[2], _type[3];
     const std::string _data;
+    const std::vector<std::string> _fields;
     const unsigned char _checksum;
 
     unsigned char _generate_checksum(void);
+    std::vector<std::string> _split_fields(void);
 
   public:
     // Constructor
@@ -61,6 +64,9 @@ namespace NMEA0183 {
     inline const std::string talker_id(void) const { return std::string(_talker_id, 2); }
     inline const std::string type(void) const { return std::string(_type, 3); }
     inline const std::string data(void) const { return _data; }
+    inline const size_t num_fields(void) const { return _fields.size(); }
+    inline const std::string field(size_t i) const { return _fields[i]; }
+    inline const std::vector<std::string> fields(void) const { return _fields; }
     inline const unsigned char checksum(void) const { return _checksum; }
 
   }; // class Sentence
