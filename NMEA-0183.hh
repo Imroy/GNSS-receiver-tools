@@ -109,15 +109,15 @@ namespace NMEA0183 {
   public:
     GGA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
 
-    inline double UTC_time(void) const { return _utc_time; }
-    inline double lattitude(void) const { return _lattitude; }
-    inline double longitude(void) const { return _longitude; }
-    inline GPSquality GPS_quality(void) const { return _gps_quality; }
-    inline int num_sats_used(void) const { return _num_sats_used; }
-    inline double HDOP(void) const { return _hdop; }
-    inline double altitude(void) const { return _altitude; }
-    inline double GEOID_separation(void) const { return _geoid_sep; }
-    inline int DGPS_station_id(void) const { return _dgps_station_id; }
+    inline const double UTC_time(void) const { return _utc_time; }
+    inline const double lattitude(void) const { return _lattitude; }
+    inline const double longitude(void) const { return _longitude; }
+    inline const GPSquality GPS_quality(void) const { return _gps_quality; }
+    inline const int num_sats_used(void) const { return _num_sats_used; }
+    inline const double HDOP(void) const { return _hdop; }
+    inline const double altitude(void) const { return _altitude; }
+    inline const double GEOID_separation(void) const { return _geoid_sep; }
+    inline const int DGPS_station_id(void) const { return _dgps_station_id; }
 
   }; // class GGA
 
@@ -132,10 +132,10 @@ namespace NMEA0183 {
   public:
     GLL(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
 
-    inline double lattitude(void) const { return _lattitude; }
-    inline double longitude(void) const { return _longitude; }
-    inline double UTC_time(void) const { return _utc_time; }
-    inline bool status(void) const { return _status; }
+    inline const double lattitude(void) const { return _lattitude; }
+    inline const double longitude(void) const { return _longitude; }
+    inline const double UTC_time(void) const { return _utc_time; }
+    inline const bool status(void) const { return _status; }
 
   }; // class GLL
 
@@ -171,9 +171,9 @@ namespace NMEA0183 {
     inline const OpMode mode(void) const { return _mode; }
     inline const FixType fix_type(void) const { return _fixtype; }
     inline const std::vector<int> satellite_ids(void) const { return _sat_ids; }
-    inline double PDOP(void) const { return _pdop; }
-    inline double HDOP(void) const { return _hdop; }
-    inline double VDOP(void) const { return _vdop; }
+    inline const double PDOP(void) const { return _pdop; }
+    inline const double HDOP(void) const { return _hdop; }
+    inline const double VDOP(void) const { return _vdop; }
 
   }; // class GSA
 
