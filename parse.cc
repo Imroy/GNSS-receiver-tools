@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
 	NMEA0183::GGA *gga = s->cast_as<NMEA0183::GGA>();
 	if (gga != NULL) {
 	  std::cout << "\tTime " << gga->UTC_time()
-		    << ", longitude " << gga->longitude() << ", lattitude " << gga->lattitude()
+		    << ", longitude " << gga->longitude() << "°, lattitude " << gga->lattitude() << "°"
 		    << ", \"" << gga->GPS_quality() << "\""
 		    << ", " << gga->num_sats_used() << " satellites used"
 		    << ", HDOP " << gga->HDOP()
@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
       } else if (s->isa<NMEA0183::GLL>()) {
 	NMEA0183::GLL *gll = s->cast_as<NMEA0183::GLL>();
 	if (gll != NULL) {
-	  std::cout << "\tLongitude " << gll->longitude() << ", lattitude " << gll->lattitude()
+	  std::cout << "\tLongitude " << gll->longitude() << "°, lattitude " << gll->lattitude() << "°"
 		    << ", time " << gll->UTC_time()
 		    << ", " << (gll->status() ? "valid" : "not valid")
 		    << std::endl;
