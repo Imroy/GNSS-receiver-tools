@@ -79,6 +79,7 @@ namespace NMEA0183 {
     return std::make_shared<Sentence>(tid, type, checksum);
   }
 
+  //! Convert the "hhmmss.ss" string to a number of seconds
   double hhmmss_to_seconds(std::string hhmmss) {
     int hours = std::stoi(hhmmss.substr(0, 2));
     int minutes = std::stoi(hhmmss.substr(2, 2));
@@ -87,12 +88,26 @@ namespace NMEA0183 {
     return seconds + (minutes * 60.0) + (hours * 3600.0);
   }
 
+  //! Convert the "ddmm.mm" or "dddmm.mm" string to a number of degrees
+  /*!
+    \param dm The string to parse
+    \param dlen The length of the degrees part, either 2 (lattitude) or 3 (longitude)
+    \param indicator The north/south or east/west indicator string
+    \param neg The indicator string that makes it negative e.g "S" or "W"
+   */
+  double dm_to_degrees(std::string dm, int dlen, std::string indicator, std::string neg) {
+    int degrees = std::stoi(dm.substr(0, dlen));
+    double minutes = std::stod(dm.substr(dlen));
+
+    return (degrees + (minutes / 60.0)) * (indicator == neg ? -1 : 1);
+  }
+
 
   GGA::GGA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
     Sentence(tid, type, checksum),
     _utc_time(hhmmss_to_seconds(fields[0])),
-    _lattitude(std::stod(fields[1]) * (fields[2] == "S" ? -1 : 1)),
-    _longitude(std::stod(fields[3]) * (fields[4] == "W" ? -1 : 1)),
+    _lattitude(dm_to_degrees(fields[1], 2, fields[2], "S")),
+    _longitude(dm_to_degrees(fields[3], 3, fields[4], "W")),
     _gps_quality((GPSquality)std::stoi(fields[5])),
     _num_sats_used(std::stoi(fields[6])),
     _hdop(std::stod(fields[7])),
