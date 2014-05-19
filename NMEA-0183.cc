@@ -86,6 +86,10 @@ namespace NMEA0183 {
 	((tid == "GP") || (tid == "GN") || (tid == "BD") || (tid == "GL")))
       return std::make_shared<GSA>(tid, type, fields, checksum);
 
+    if ((type == "GSV") &&
+	((tid == "GP") || (tid == "BD") || (tid == "GL")))
+      return std::make_shared<GSV>(tid, type, fields, checksum);
+
     return std::make_shared<Sentence>(tid, type, checksum);
   }
 
@@ -190,5 +194,28 @@ namespace NMEA0183 {
       if (fields[i].length() > 0)
 	_sat_ids.push_back(std::stoi(fields[i]));
   }
+
+
+  GSV::GSV(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
+    Sentence(tid, type, checksum),
+    _num_messages(std::stoi(fields[0])),
+    _msg_seq(std::stoi(fields[1])),
+    _sats_in_view(std::stoi(fields[2]))
+  {
+    for (unsigned int i = 3; i < fields.size(); i += 4) {
+      int snr = -1;
+      bool tracking = false;
+      if (fields[i + 3].size() > 0) {
+	snr = std::stoi(fields[i + 3]);
+	tracking = true;
+      }
+      _sat_data.push_back(std::make_shared<SatelliteData>(std::stoi(fields[i]),
+							  std::stoi(fields[i + 1]),
+							  std::stoi(fields[i + 2]),
+							  snr,
+							  tracking));
+    }
+  }
+
 
 }; // namespace NMEA0183

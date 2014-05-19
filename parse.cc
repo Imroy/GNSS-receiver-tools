@@ -66,6 +66,13 @@ int main(int argc, char* argv[]) {
 	    std::cout << " " << sat;
 	  std::cout << std::endl;
 	}
+      } else if (s->isa<NMEA0183::GSV>()) {
+	NMEA0183::GSV *gsv = s->cast_as<NMEA0183::GSV>();
+	if (gsv != NULL) {
+	  std::cout << "\t" << gsv->message_seq() << "/" << gsv->num_messages() << " messages"
+		    << ", " << gsv->satellites_in_view() << " satellites in view"
+		    << std::endl;
+	}
       }
 
       std::cout << std::endl;

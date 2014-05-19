@@ -178,11 +178,34 @@ namespace NMEA0183 {
   }; // class GSA
 
 
+  //! The satellite data from GSV sentences
+  struct SatelliteData {
+    int id;
+    int elevation, azimuth;
+    int snr;
+    bool tracking;	// when not tracking, snr should be ignored
+
+    inline SatelliteData(int i, int e, int a, int s, bool t) :
+      id(i), elevation(e), azimuth(a), snr(s), tracking(t)
+    {}
+
+    typedef std::shared_ptr<SatelliteData> ptr;
+  }; // struct SatelliteData
+
+
+  //! GNSS satellites in view
   class GSV : public Sentence {
   private:
+    int _num_messages, _msg_seq, _sats_in_view;
+    std::vector<SatelliteData::ptr> _sat_data;
 
   public:
     GSV(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
+
+    inline const int num_messages(void) const { return _num_messages; }
+    inline const int message_seq(void) const { return _msg_seq; }
+    inline const int satellites_in_view(void) const { return _sats_in_view; }
+    inline const std::vector<SatelliteData::ptr> satellite_data(void) const { return _sat_data; }
 
   }; // class GSV
 
