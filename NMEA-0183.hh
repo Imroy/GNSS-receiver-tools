@@ -58,8 +58,8 @@ namespace NMEA0183 {
     Sentence(std::string tid, std::string type, std::string data);
     Sentence(std::string tid, std::string type, std::string data, unsigned char checksum);
 
-    inline const std::string talker_id(void) const { return _talker_id; }
-    inline const std::string type(void) const { return _type; }
+    inline const std::string talker_id(void) const { return std::string(_talker_id, 2); }
+    inline const std::string type(void) const { return std::string(_type, 3); }
     inline const std::string data(void) const { return _data; }
     inline const unsigned char checksum(void) const { return _checksum; }
 
