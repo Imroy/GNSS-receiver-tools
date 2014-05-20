@@ -6,7 +6,7 @@ PKGS = sdl2
 
 COMMON_FLAGS = -g -O0 -Wall -I. -fopenmp -finput-charset=UTF-8 `pkg-config --cflags $(PKGS)`
 LIBS = -lm -lstdc++ -lgomp `pkg-config --libs $(PKGS)`
-OBJS = $(patsubst %.cc,%.o, $(wildcard *.cc))
+OBJS = $(patsubst %.cc,%.o, $(wildcard [A-Z]*.cc))
 
 CFLAGS += $(COMMON_FLAGS)
 CXXFLAGS += -std=c++11 $(COMMON_FLAGS)
