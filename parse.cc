@@ -46,6 +46,7 @@ int main(int argc, char* argv[]) {
 		    << ", altitude " << gga->altitude() << " m"
 		    << std::endl;
 	}
+
       } else if (s->isa<NMEA0183::GLL>()) {
 	NMEA0183::GLL *gll = s->cast_as<NMEA0183::GLL>();
 	if (gll != NULL) {
@@ -54,6 +55,7 @@ int main(int argc, char* argv[]) {
 		    << ", " << (gll->status() ? "valid" : "not valid")
 		    << std::endl;
 	}
+
       } else if (s->isa<NMEA0183::GSA>()) {
 	NMEA0183::GSA *gsa = s->cast_as<NMEA0183::GSA>();
 	if (gsa != NULL) {
@@ -66,13 +68,23 @@ int main(int argc, char* argv[]) {
 	    std::cout << " " << sat;
 	  std::cout << std::endl;
 	}
+
       } else if (s->isa<NMEA0183::GSV>()) {
 	NMEA0183::GSV *gsv = s->cast_as<NMEA0183::GSV>();
 	if (gsv != NULL) {
 	  std::cout << "\t" << gsv->message_seq() << "/" << gsv->num_messages() << " messages"
 		    << ", " << gsv->satellites_in_view() << " satellites in view"
 		    << std::endl;
+	  std::cout << "\t";
+	  for (auto sat : gsv->satellite_data()) {
+	    std::cout << sat->id << "{el " << sat->elevation << "°, az " << sat->azimuth << "°";
+	    if (sat->tracking)
+	      std::cout << ", " << sat->snr << " dB";
+	    std::cout << "} ";
+	  }
+	  std::cout << std::endl;
 	}
+
       } else if (s->isa<NMEA0183::RMC>()) {
 	NMEA0183::RMC *rmc = s->cast_as<NMEA0183::RMC>();
 	if (rmc != NULL) {
@@ -84,6 +96,7 @@ int main(int argc, char* argv[]) {
 		    << ", " << rmc->receiver_mode()
 		    << std::endl;
 	}
+
       } else if (s->isa<NMEA0183::VTG>()) {
 	NMEA0183::VTG *vtg = s->cast_as<NMEA0183::VTG>();
 	if (vtg != NULL) {
@@ -92,6 +105,7 @@ int main(int argc, char* argv[]) {
 		    << ", " << vtg->receiver_mode()
 		    << std::endl;
 	}
+
       } else if (s->isa<NMEA0183::ZDA>()) {
 	NMEA0183::ZDA *zda = s->cast_as<NMEA0183::ZDA>();
 	if (zda != NULL) {
