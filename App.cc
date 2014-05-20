@@ -42,7 +42,7 @@ namespace GPSstatus {
 
       Loop();
       SDL_LockMutex(_redraw_lock);
-      SDL_CondWaitTimeout(_redraw_cond, _redraw_lock, 16);
+      SDL_CondWaitTimeout(_redraw_cond, _redraw_lock, 999);
       SDL_UnlockMutex(_redraw_lock);
     }
     _parser.stop_running();
