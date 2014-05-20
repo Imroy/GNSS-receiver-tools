@@ -133,14 +133,14 @@ namespace GPSstatus {
     SDL_RenderClear(_renderer);
 
     SDL_SetRenderDrawColor(_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE); // white
-    draw_circle(_renderer, 512, 384, 383);
-    draw_circle(_renderer, 512, 384, 255);
-    draw_circle(_renderer, 512, 384, 127);
-    SDL_RenderDrawLine(_renderer, 512, 1, 512, 767);
-    SDL_RenderDrawLine(_renderer, 128, 384, 896, 384);
+    draw_circle(_renderer, 512, 384, 383.5);
+    draw_circle(_renderer, 512, 384, 255.5);
+    draw_circle(_renderer, 512, 384, 127.5);
+    SDL_RenderDrawLine(_renderer, 512, 0, 512, 768);
+    SDL_RenderDrawLine(_renderer, 128, 384, 895, 384);
 
     for (auto sat : _parser.satellite_data()) {
-      double radius = (90 - sat->elevation) * 383.0 / 90;
+      double radius = (90 - sat->elevation) * 383.5 / 90;
       int x = floor(512 + 0.5 + sin(sat->azimuth) * radius);
       int y = floor(384 + 0.5 - cos(sat->azimuth) * radius);
 
