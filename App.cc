@@ -120,12 +120,27 @@ namespace GPSstatus {
   }
 
   void App::Render() {
+    SDL_SetRenderDrawColor(_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // black
     SDL_RenderClear(_renderer);
+
+    SDL_SetRenderDrawColor(_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE); // white
     draw_circle(_renderer, 512, 384, 383, 100);
     draw_circle(_renderer, 512, 384, 255, 67);
     draw_circle(_renderer, 512, 384, 127, 33);
     SDL_RenderDrawLine(_renderer, 512, 1, 512, 767);
     SDL_RenderDrawLine(_renderer, 128, 384, 896, 384);
+
+    for (auto sat : _parser.satellite_data()) {
+      double radius = cos((90 - sat->elevation) * M_PI / 180) * 383.0;
+      int x = floor(512 + 0.5 + sin(sat->azimuth) * radius);
+      int y = floor(384 + 0.5 - cos(sat->azimuth) * radius);
+      if (sat->tracking)
+	SDL_SetRenderDrawColor(_renderer, 0, 255, 0, SDL_ALPHA_OPAQUE);	// green
+      else
+	SDL_SetRenderDrawColor(_renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);	// red
+      SDL_RenderDrawPoint(_renderer, x, y);
+    }
+
     SDL_RenderPresent(_renderer);
   }
 
