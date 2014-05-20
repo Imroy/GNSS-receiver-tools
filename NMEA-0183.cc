@@ -90,6 +90,10 @@ namespace NMEA0183 {
 	((tid == "GP") || (tid == "BD") || (tid == "GL")))
       return std::make_shared<GSV>(tid, type, fields, checksum);
 
+    if ((type == "RMC") &&
+	((tid == "GP") || (tid == "GN")))
+      return std::make_shared<RMC>(tid, type, fields, checksum);
+
     return std::make_shared<Sentence>(tid, type, checksum);
   }
 
@@ -215,6 +219,45 @@ namespace NMEA0183 {
 							  snr,
 							  tracking));
     }
+  }
+
+  std::ostream& operator<< (std::ostream& out, ReceiverMode mode) {
+    switch (mode) {
+    case ReceiverMode::NotValid:
+      out << "data not valid";
+      break;
+    case ReceiverMode::Autonomous:
+      out << "autonomous mode";
+      break;
+    case ReceiverMode::Differential:
+      out << "differential mode";
+      break;
+    case ReceiverMode::Estimated:
+      out << "estimated mode";
+      break;
+    }
+    return out;
+  }
+
+  RMC::RMC(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
+    Sentence(tid, type, checksum),
+    _utc_time(hhmmss_to_seconds(fields[0])),
+    _status(fields[1] == "A"),
+    _lattitude(dm_to_degrees(fields[2], 2, fields[3], "S")),
+    _longitude(dm_to_degrees(fields[4], 3, fields[5], "W")),
+    _speed(std::stod(fields[6])),
+    _course(std::stod(fields[7])),
+    _day(std::stoi(fields[8].substr(0, 2))),
+    _month(std::stoi(fields[8].substr(2, 2))),
+    _year(std::stoi(fields[8].substr(4, 2))),
+    _mode(ReceiverMode::NotValid)
+  {
+    if (fields[11] == "A")
+      _mode = ReceiverMode::Autonomous;
+    else if (fields[11] == "D")
+      _mode = ReceiverMode::Differential;
+    else if (fields[11] == "E")
+      _mode = ReceiverMode::Estimated;
   }
 
 

@@ -73,6 +73,17 @@ int main(int argc, char* argv[]) {
 		    << ", " << gsv->satellites_in_view() << " satellites in view"
 		    << std::endl;
 	}
+      } else if (s->isa<NMEA0183::RMC>()) {
+	NMEA0183::RMC *rmc = s->cast_as<NMEA0183::RMC>();
+	if (rmc != NULL) {
+	  std::cout << "\tTime " << rmc->UTC_time()
+		    << ", " << (rmc->status() ? "data valid" : "warning")
+		    << ", longitude " << rmc->longitude() << "°, lattitude " << rmc->lattitude() << "°"
+		    << ", speed " << rmc->speed() << ", course " << rmc->course()
+		    << ", date " << rmc->UTC_day() << "/" << rmc->UTC_month() << "/" << rmc->UTC_year()
+		    << ", " << rmc->receiver_mode()
+		    << std::endl;
+	}
       }
 
       std::cout << std::endl;
