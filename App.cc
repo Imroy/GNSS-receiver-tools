@@ -24,6 +24,8 @@ namespace GPSstatus {
 
   App::App() :
     _running(true),
+    _redraw_lock(SDL_CreateMutex()),
+    _redraw_cond(SDL_CreateCond()),
     _parser("/dev/ttyUSB0"),
     _window(NULL),
     _renderer(NULL)
@@ -55,9 +57,6 @@ namespace GPSstatus {
   }
 
   void App::Init() {
-    _redraw_lock = SDL_CreateMutex();
-    _redraw_cond = SDL_CreateCond();
-
     _parser.init(_redraw_lock, _redraw_cond);
 
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -178,6 +177,8 @@ namespace GPSstatus {
       SDL_DestroyRenderer(_renderer);
     if (_window)
       SDL_DestroyWindow(_window);
+    SDL_DestroyCond(_redraw_cond);
+    SDL_DestroyMutex(_redraw_lock);
 
     _parser.cleanup();
 
