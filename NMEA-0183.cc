@@ -94,6 +94,10 @@ namespace NMEA0183 {
 	((tid == "GP") || (tid == "GN")))
       return std::make_shared<RMC>(tid, type, fields, checksum);
 
+    if ((type == "VTG") &&
+	((tid == "GP") || (tid == "GN")))
+      return std::make_shared<VTG>(tid, type, fields, checksum);
+
     return std::make_shared<Sentence>(tid, type, checksum);
   }
 
@@ -259,6 +263,23 @@ namespace NMEA0183 {
     else if (fields[11] == "E")
       _mode = ReceiverMode::Estimated;
   }
+
+  VTG::VTG(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
+    Sentence(tid, type, checksum),
+    _course_true(std::stod(fields[0])),
+    _course_magnetic(fields[2].length() > 0 ? std::stod(fields[2]) : -1.0),
+    _speed_knots(std::stod(fields[4])),
+    _speed(std::stod(fields[6])),
+    _mode(ReceiverMode::NotValid)
+  {
+    if (fields[8] == "A")
+      _mode = ReceiverMode::Autonomous;
+    else if (fields[8] == "D")
+      _mode = ReceiverMode::Differential;
+    else if (fields[8] == "E")
+      _mode = ReceiverMode::Estimated;
+  }
+
 
 
 }; // namespace NMEA0183

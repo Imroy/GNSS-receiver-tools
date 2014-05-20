@@ -245,11 +245,21 @@ namespace NMEA0183 {
   }; // class RMC
 
 
+  //! Course over ground and ground speed
   class VTG : public Sentence {
   private:
+    double _course_true, _course_magnetic;
+    double _speed_knots, _speed;
+    ReceiverMode _mode;
 
   public:
     VTG(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
+
+    inline const double true_course(void) const { return _course_true; }
+    inline const double magnetic_course(void) const { return _course_magnetic; }
+    inline const double speed_knots(void) const { return _speed_knots; }
+    inline const double speed(void) const { return _speed; }
+    inline const ReceiverMode receiver_mode(void) const { return _mode; }
 
   }; // class VTG
 

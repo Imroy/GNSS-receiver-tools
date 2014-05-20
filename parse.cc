@@ -84,6 +84,14 @@ int main(int argc, char* argv[]) {
 		    << ", " << rmc->receiver_mode()
 		    << std::endl;
 	}
+      } else if (s->isa<NMEA0183::VTG>()) {
+	NMEA0183::VTG *vtg = s->cast_as<NMEA0183::VTG>();
+	if (vtg != NULL) {
+	  std::cout << "\tCourse " << vtg->true_course() << "°"
+		    << ", speed " << vtg->speed() << " km/h"
+		    << ", " << vtg->receiver_mode()
+		    << std::endl;
+	}
       }
 
       std::cout << std::endl;
