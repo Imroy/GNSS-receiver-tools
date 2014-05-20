@@ -33,13 +33,17 @@ namespace GPSstatus {
     Init();
 
     while (_running) {
+      Render();
+
       SDL_Event Event;
       while (SDL_PollEvent(&Event)) {
 	OnEvent(&Event);
       }
 
       Loop();
-      Render();
+      SDL_LockMutex(_redraw_lock);
+      SDL_CondWaitTimeout(_redraw_cond, _redraw_lock, 16);
+      SDL_UnlockMutex(_redraw_lock);
     }
     _parser.stop_running();
 
@@ -101,11 +105,6 @@ namespace GPSstatus {
   }
 
   void App::Render() {
-    SDL_LockMutex(_redraw_lock);
-    int rc = SDL_CondWaitTimeout(_redraw_cond, _redraw_lock, 16);
-    SDL_UnlockMutex(_redraw_lock);
-    if (rc == SDL_MUTEX_TIMEDOUT)
-      return;
 
     SDL_RenderClear(_renderer);
     SDL_RenderPresent(_renderer);
