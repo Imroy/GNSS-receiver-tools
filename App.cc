@@ -27,16 +27,16 @@ namespace GPSstatus {
     _redraw_lock(SDL_CreateMutex()),
     _redraw_cond(SDL_CreateCond()),
     _parser("/dev/ttyUSB0"),
+    _new_data(false),
     _window(NULL),
     _renderer(NULL)
   {}
 
   int App::Execute() {
     Init();
+    Render();
 
     while (_running) {
-      Render();
-
       SDL_Event Event;
       while (SDL_PollEvent(&Event)) {
 	OnEvent(&Event);
@@ -44,8 +44,10 @@ namespace GPSstatus {
 
       Loop();
       SDL_LockMutex(_redraw_lock);
-      SDL_CondWaitTimeout(_redraw_cond, _redraw_lock, 999);
+      SDL_CondWaitTimeout(_redraw_cond, _redraw_lock, 99);
       SDL_UnlockMutex(_redraw_lock);
+      if (_new_data)
+	Render();
     }
     _parser.stop_running();
 
@@ -171,11 +173,13 @@ namespace GPSstatus {
     }
 
     SDL_RenderPresent(_renderer);
+    _new_data = false;
   }
 
   void App::new_sat_data(std::vector<NMEA0183::SatelliteData::ptr>& sat_data) {
     std::cerr << sat_data.size() << " satellites in list for display." << std::endl;
     swap(_sat_data, sat_data);
+    _new_data = true;
   }
 
   void App::signal_redraw(void) {

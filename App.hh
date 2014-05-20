@@ -39,6 +39,8 @@ namespace GPSstatus {
     SDL_Thread *_parser_thread;
 
     std::vector<NMEA0183::SatelliteData::ptr> _sat_data;
+    bool _new_data;
+
     SDL_Window *_window;
     SDL_Renderer *_renderer;
 
