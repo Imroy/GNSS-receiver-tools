@@ -104,9 +104,28 @@ namespace GPSstatus {
   void App::Loop() {
   }
 
-  void App::Render() {
+  void draw_circle(SDL_Renderer *renderer, double cx, double cy, double radius, int num_points) {
+    std::vector<std::pair<int, int> > points(num_points);
 
+    for (int i = 0; i < num_points; i++) {
+      double angle = i * 2 * M_PI / num_points;
+      int x = floor(cx + 0.5 + sin(angle) * radius);
+      int y = floor(cy + 0.5 - cos(angle) * radius);
+      points[i] = std::make_pair(x, y);
+    }
+
+    for (int i = 0; i < num_points - 1; i++)
+      SDL_RenderDrawLine(renderer, points[i].first, points[i].second, points[i+1].first, points[i+1].second);
+    SDL_RenderDrawLine(renderer, points[num_points - 1].first, points[num_points - 1].second, points[0].first, points[0].second);
+  }
+
+  void App::Render() {
     SDL_RenderClear(_renderer);
+    draw_circle(_renderer, 512, 384, 383, 100);
+    draw_circle(_renderer, 512, 384, 255, 67);
+    draw_circle(_renderer, 512, 384, 127, 33);
+    SDL_RenderDrawLine(_renderer, 512, 1, 512, 767);
+    SDL_RenderDrawLine(_renderer, 128, 384, 896, 384);
     SDL_RenderPresent(_renderer);
   }
 
