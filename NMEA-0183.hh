@@ -55,6 +55,7 @@ namespace NMEA0183 {
     }    
   }; // class ChecksumMismatch
 
+  //! Base class for holding NMEA-0183 sentence data
   class Sentence {
   private:
     const char _talker_id[2], _type[3];
@@ -64,9 +65,10 @@ namespace NMEA0183 {
     static std::vector<std::string> _split_fields(std::string data);
 
   public:
-    // Constructor
+    //! Constructor
     Sentence(std::string tid, std::string type, unsigned char checksum);
 
+    //! Virtual destructor to force polymorphism
     inline virtual ~Sentence() {}
 
     typedef std::shared_ptr<Sentence> ptr;
@@ -75,15 +77,18 @@ namespace NMEA0183 {
     inline const std::string type(void) const { return std::string(_type, 3); }
     inline const unsigned char checksum(void) const { return _checksum; }
 
+    //! Check the type of an object
     template <typename T>
     inline bool isa(void) const { return typeid(*this) == typeid(T); }
 
+    //! Recast this object to another type
     template <typename T>
     inline T* cast_as(void) { return dynamic_cast<T*>(this); }
 
     friend Sentence::ptr parse_sentence(std::string line);
   }; // class Sentence
 
+  //! Sentence parser
   Sentence::ptr parse_sentence(std::string line);
 
 
@@ -95,6 +100,8 @@ namespace NMEA0183 {
 
   std::ostream& operator<< (std::ostream& out, GPSquality quality);
 
+
+  //! Global Positioning System fix data
   class GGA : public Sentence {
   private:
     double _utc_time;
@@ -219,6 +226,7 @@ namespace NMEA0183 {
 
   std::ostream& operator<< (std::ostream& out, ReceiverMode mode);
 
+  //! Recommended minimum specific GNSS data
   class RMC : public Sentence {
   private:
     double _utc_time;
@@ -264,6 +272,7 @@ namespace NMEA0183 {
   }; // class VTG
 
 
+  //! Time and date
   class ZDA : public Sentence {
   private:
     double _utc_time;
