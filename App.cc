@@ -104,19 +104,28 @@ namespace GPSstatus {
   void App::Loop() {
   }
 
-  void draw_circle(SDL_Renderer *renderer, double cx, double cy, double radius, int num_points) {
-    std::vector<std::pair<int, int> > points(num_points);
+  void draw_circle(SDL_Renderer *renderer, double cx, double cy, double radius) {
+    double i = 0, j = radius;
+    double e = 1 - radius;
+    while (j >= i) {
+      SDL_RenderDrawPoint(renderer, floor(cx + i), floor(cy - j));
+      SDL_RenderDrawPoint(renderer, floor(cx - i), floor(cy - j));
+      SDL_RenderDrawPoint(renderer, floor(cx + i), floor(cy + j));
+      SDL_RenderDrawPoint(renderer, floor(cx - i), floor(cy + j));
 
-    for (int i = 0; i < num_points; i++) {
-      double angle = i * 2 * M_PI / num_points;
-      int x = floor(cx + 0.5 + sin(angle) * radius);
-      int y = floor(cy + 0.5 - cos(angle) * radius);
-      points[i] = std::make_pair(x, y);
+      SDL_RenderDrawPoint(renderer, floor(cx + j), floor(cy - i));
+      SDL_RenderDrawPoint(renderer, floor(cx - j), floor(cy - i));
+      SDL_RenderDrawPoint(renderer, floor(cx + j), floor(cy + i));
+      SDL_RenderDrawPoint(renderer, floor(cx - j), floor(cy + i));
+
+      i++;
+      if (e < 0) {
+	e += 2 * i + 1;
+      } else {
+	j--;
+	e += 2 * (i - j + 1);
+      }
     }
-
-    for (int i = 0; i < num_points - 1; i++)
-      SDL_RenderDrawLine(renderer, points[i].first, points[i].second, points[i+1].first, points[i+1].second);
-    SDL_RenderDrawLine(renderer, points[num_points - 1].first, points[num_points - 1].second, points[0].first, points[0].second);
   }
 
   void App::Render() {
@@ -124,9 +133,9 @@ namespace GPSstatus {
     SDL_RenderClear(_renderer);
 
     SDL_SetRenderDrawColor(_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE); // white
-    draw_circle(_renderer, 512, 384, 383, 100);
-    draw_circle(_renderer, 512, 384, 255, 67);
-    draw_circle(_renderer, 512, 384, 127, 33);
+    draw_circle(_renderer, 512, 384, 383);
+    draw_circle(_renderer, 512, 384, 255);
+    draw_circle(_renderer, 512, 384, 127);
     SDL_RenderDrawLine(_renderer, 512, 1, 512, 767);
     SDL_RenderDrawLine(_renderer, 128, 384, 896, 384);
 
