@@ -92,6 +92,14 @@ int main(int argc, char* argv[]) {
 		    << ", " << vtg->receiver_mode()
 		    << std::endl;
 	}
+      } else if (s->isa<NMEA0183::ZDA>()) {
+	NMEA0183::ZDA *zda = s->cast_as<NMEA0183::ZDA>();
+	if (zda != NULL) {
+	  std::cout << "\tTime " << zda->UTC_time()
+		    << ", date " << zda->UTC_day() << "/" << zda->UTC_month() << "/" << zda->UTC_year()
+		    << ", TZ " << zda->TZ_hours() << ":" << zda->TZ_minutes()
+		    << std::endl;
+	}
       }
 
       std::cout << std::endl;

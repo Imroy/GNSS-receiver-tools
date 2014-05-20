@@ -98,6 +98,10 @@ namespace NMEA0183 {
 	((tid == "GP") || (tid == "GN")))
       return std::make_shared<VTG>(tid, type, fields, checksum);
 
+    if ((type == "ZDA") &&
+	((tid == "GP") || (tid == "GN")))
+      return std::make_shared<ZDA>(tid, type, fields, checksum);
+
     return std::make_shared<Sentence>(tid, type, checksum);
   }
 
@@ -280,6 +284,15 @@ namespace NMEA0183 {
       _mode = ReceiverMode::Estimated;
   }
 
+  ZDA::ZDA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
+    Sentence(tid, type, checksum),
+    _utc_time(hhmmss_to_seconds(fields[0])),
+    _day(std::stoi(fields[1])),
+    _month(std::stoi(fields[2])),
+    _year(std::stoi(fields[3])),
+    _tzhr(std::stoi(fields[4])),
+    _tzmin(std::stoi(fields[5]))
+  {}
 
 
 }; // namespace NMEA0183

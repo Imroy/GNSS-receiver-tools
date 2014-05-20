@@ -266,9 +266,19 @@ namespace NMEA0183 {
 
   class ZDA : public Sentence {
   private:
+    double _utc_time;
+    int _day, _month, _year;
+    int _tzhr, _tzmin;
 
   public:
     ZDA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
+
+    inline const double UTC_time(void) const { return _utc_time; }
+    inline const int UTC_day(void) const { return _day; }
+    inline const int UTC_month(void) const { return _month; }
+    inline const int UTC_year(void) const { return _year; }
+    inline const int TZ_hours(void) const { return _tzhr; }
+    inline const int TZ_minutes(void) const { return _tzmin; }
 
   }; // class ZDA
 
