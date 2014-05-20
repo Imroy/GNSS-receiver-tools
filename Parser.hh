@@ -45,6 +45,8 @@ namespace GPSstatus {
     inline void start_running(void) { _running = true; }
     inline void stop_running(void) { _running = false; }
 
+    inline const std::vector<NMEA0183::SatelliteData::ptr> satellite_data(void) const { return _sat_data; }
+
     void init(SDL_mutex* rm, SDL_cond* rc);
 
     void get_input(void);
