@@ -31,7 +31,8 @@ namespace GPSstatus {
 
   Parser::Parser(std::string filename) :
     _source(open_filebuf(filename)),
-    _running(false)
+    _running(false),
+    _app(NULL)
   {}
 
   Parser::~Parser() {
@@ -40,10 +41,8 @@ namespace GPSstatus {
     delete fb;
   }
 
-  void Parser::init(SDL_mutex* rm, SDL_cond* rc) {
-    _redraw_lock = rm;
-    _redraw_cond = rc;
-
+  void Parser::init(App* app) {
+    _app = app;
   }
 
   void Parser::get_input(void) {
@@ -61,23 +60,20 @@ namespace GPSstatus {
       if (s->isa<NMEA0183::GSV>()) {
 	// Assume that sentences are grouped together by type for each fix,
 	// so if the previous sentence wasn't a GSV, this must be the first for the fix
-	if (_prev_type != "GSV") {
-	  swap(_sat_data, _wip_sat_data);
-
-	  std::cerr << _sat_data.size() << " satellites in list for display." << std::endl;
-	  SDL_LockMutex(_redraw_lock);
-	  SDL_CondSignal(_redraw_cond);
-	  SDL_UnlockMutex(_redraw_lock);
-
-	  _wip_sat_data.clear();
-	}
 
 	NMEA0183::GSV *gsv = s->cast_as<NMEA0183::GSV>();
 	if (gsv != NULL) {
 	  for (auto sat : gsv->satellite_data())
-	    _wip_sat_data.push_back(sat);
+	    _sat_data.push_back(sat);
 	}
-      }
+      } else
+	if (_prev_type == "GSV") {
+	  _app->new_sat_data(_sat_data);
+	  _app->signal_redraw();
+
+	  _sat_data.clear();
+	}
+
 
       _prev_type = s->type();
     } catch (std::exception &e) {

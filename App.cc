@@ -57,7 +57,6 @@ namespace GPSstatus {
   }
 
   void App::Init() {
-    _parser.init(_redraw_lock, _redraw_cond);
 
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
       std::cerr << "Could not initialise SDL." << std::endl;
@@ -75,6 +74,8 @@ namespace GPSstatus {
     }
     SDL_RenderClear(_renderer);
     SDL_RenderPresent(_renderer);
+
+    _parser.init(this);
 
     _parser_thread = SDL_CreateThread(Parser_runner, "Parser", (void*)&_parser);
     if (_parser_thread == NULL) {
@@ -152,7 +153,7 @@ namespace GPSstatus {
     SDL_RenderDrawLine(_renderer, 512, 0, 512, 768);
     SDL_RenderDrawLine(_renderer, 128, 384, 895, 384);
 
-    for (auto sat : _parser.satellite_data()) {
+    for (auto sat : _sat_data) {
       double radius = (90 - sat->elevation) * 383.5 / 90;
       int x = floor(512 + 0.5 + sin(sat->azimuth) * radius);
       int y = floor(384 + 0.5 - cos(sat->azimuth) * radius);
@@ -170,6 +171,17 @@ namespace GPSstatus {
     }
 
     SDL_RenderPresent(_renderer);
+  }
+
+  void App::new_sat_data(std::vector<NMEA0183::SatelliteData::ptr>& sat_data) {
+    std::cerr << sat_data.size() << " satellites in list for display." << std::endl;
+    swap(_sat_data, sat_data);
+  }
+
+  void App::signal_redraw(void) {
+    SDL_LockMutex(_redraw_lock);
+    SDL_CondSignal(_redraw_cond);
+    SDL_UnlockMutex(_redraw_lock);
   }
 
   void App::Cleanup() {

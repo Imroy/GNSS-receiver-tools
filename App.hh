@@ -24,6 +24,7 @@
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_thread.h>
 #include "Parser.hh"
+#include "NMEA-0183.hh"
 
 namespace GPSstatus {
 
@@ -37,6 +38,7 @@ namespace GPSstatus {
     Parser _parser;
     SDL_Thread *_parser_thread;
 
+    std::vector<NMEA0183::SatelliteData::ptr> _sat_data;
     SDL_Window *_window;
     SDL_Renderer *_renderer;
 
@@ -52,6 +54,9 @@ namespace GPSstatus {
 
   public:
     App();
+
+    void new_sat_data(std::vector<NMEA0183::SatelliteData::ptr>& sat_data);
+    void signal_redraw(void);
 
     int Execute();
   };

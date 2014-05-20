@@ -26,16 +26,17 @@
 
 namespace GPSstatus {
 
+  class App;
+
   class Parser {
   private:
     std::istream _source;
     bool _running;
 
-    SDL_mutex *_redraw_lock;
-    SDL_cond *_redraw_cond;
+    App *_app;
 
     std::string _prev_type;
-    std::vector<NMEA0183::SatelliteData::ptr> _sat_data, _wip_sat_data;
+    std::vector<NMEA0183::SatelliteData::ptr> _sat_data;
 
   public:
     Parser(std::string filename);
@@ -45,9 +46,7 @@ namespace GPSstatus {
     inline void start_running(void) { _running = true; }
     inline void stop_running(void) { _running = false; }
 
-    inline const std::vector<NMEA0183::SatelliteData::ptr> satellite_data(void) const { return _sat_data; }
-
-    void init(SDL_mutex* rm, SDL_cond* rc);
+    void init(App* app);
 
     void get_input(void);
 
