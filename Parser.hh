@@ -34,6 +34,9 @@ namespace GPSstatus {
     SDL_mutex *_redraw_lock;
     SDL_cond *_redraw_cond;
 
+    std::string _prev_type;
+    std::vector<NMEA0183::SatelliteData::ptr> _sat_data, _wip_sat_data;
+
   public:
     Parser(std::string filename);
     ~Parser();

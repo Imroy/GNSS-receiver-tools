@@ -56,8 +56,30 @@ namespace GPSstatus {
       line.resize(line.length() - 1);
 
     try {
-      std::cerr << line << std::endl;
       auto s = NMEA0183::parse_sentence(line);
+
+      if (s->isa<NMEA0183::GSV>()) {
+	// Assume that sentences are grouped together by type for each fix,
+	// so if the previous sentence wasn't a GSV, this must be the first for the fix
+	if (_prev_type != "GSV") {
+	  swap(_sat_data, _wip_sat_data);
+
+	  std::cerr << _sat_data.size() << " satellites in list for display." << std::endl;
+	  SDL_LockMutex(_redraw_lock);
+	  SDL_CondSignal(_redraw_cond);
+	  SDL_UnlockMutex(_redraw_lock);
+
+	  _wip_sat_data.clear();
+	}
+
+	NMEA0183::GSV *gsv = s->cast_as<NMEA0183::GSV>();
+	if (gsv != NULL) {
+	  for (auto sat : gsv->satellite_data())
+	    _wip_sat_data.push_back(sat);
+	}
+      }
+
+      _prev_type = s->type();
     } catch (std::exception &e) {
       std::cerr << e.what() << std::endl;
     }
