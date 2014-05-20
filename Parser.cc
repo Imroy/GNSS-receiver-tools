@@ -46,10 +46,13 @@ namespace GPSstatus {
   }
 
   void Parser::get_input(void) {
+    if (_source.eof()) {
+      stop_running();
+      return;
+    }
+
     std::string line;
     getline(_source, line);
-    if (_source.eof())
-      return;
 
     if ((line.length() > 0) && (line[line.length() - 1] == '\x0d'))
       line.resize(line.length() - 1);

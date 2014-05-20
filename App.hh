@@ -55,7 +55,7 @@ namespace GPSstatus {
     void Cleanup();
 
   public:
-    App();
+    App(std::string srcname);
 
     void new_sat_data(std::vector<NMEA0183::SatelliteData::ptr>& sat_data);
     void signal_redraw(void);

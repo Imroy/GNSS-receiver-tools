@@ -22,11 +22,11 @@
 
 namespace GPSstatus {
 
-  App::App() :
+  App::App(std::string srcname) :
     _running(true),
     _redraw_lock(SDL_CreateMutex()),
     _redraw_cond(SDL_CreateCond()),
-    _parser("/dev/ttyUSB0"),
+    _parser(srcname),
     _new_data(false),
     _window(NULL),
     _renderer(NULL)
@@ -123,16 +123,54 @@ namespace GPSstatus {
   void draw_circle(SDL_Renderer *renderer, double cx, double cy, double radius) {
     double i = 0, j = radius;
     double e = 1 - radius;
-    while (j >= i) {
-      SDL_RenderDrawPoint(renderer, floor(cx + i), floor(cy - j));
-      SDL_RenderDrawPoint(renderer, floor(cx - i), floor(cy - j));
-      SDL_RenderDrawPoint(renderer, floor(cx + i), floor(cy + j));
-      SDL_RenderDrawPoint(renderer, floor(cx - i), floor(cy + j));
+    while (j > i) {
+      int x1 = floor(cx - i);
+      int x2 = floor(cx + i);
+      int y1 = floor(cy - j);
+      int y2 = floor(cy + j);
 
-      SDL_RenderDrawPoint(renderer, floor(cx + j), floor(cy - i));
-      SDL_RenderDrawPoint(renderer, floor(cx - j), floor(cy - i));
-      SDL_RenderDrawPoint(renderer, floor(cx + j), floor(cy + i));
-      SDL_RenderDrawPoint(renderer, floor(cx - j), floor(cy + i));
+      SDL_RenderDrawPoint(renderer, x1, y1);
+      SDL_RenderDrawPoint(renderer, x2, y1);
+      SDL_RenderDrawPoint(renderer, x1, y2);
+      SDL_RenderDrawPoint(renderer, x2, y2);
+
+      int x3 = floor(cx - j);
+      int x4 = floor(cx + j);
+      int y3 = floor(cy - i);
+      int y4 = floor(cy + i);
+
+      SDL_RenderDrawPoint(renderer, x3, y3);
+      SDL_RenderDrawPoint(renderer, x4, y3);
+      SDL_RenderDrawPoint(renderer, x3, y4);
+      SDL_RenderDrawPoint(renderer, x4, y4);
+
+      i++;
+      if (e < 0) {
+	e += 2 * i + 1;
+      } else {
+	j--;
+	e += 2 * (i - j + 1);
+      }
+    }
+  }
+
+  void draw_filled_circle(SDL_Renderer *renderer, double cx, double cy, double radius) {
+    double i = 0, j = radius;
+    double e = 1 - radius;
+    while (j > i) {
+      int x1 = floor(cx - i);
+      int x2 = floor(cx + i);
+      int y1 = floor(cy - j);
+      int y2 = floor(cy + j);
+      SDL_RenderDrawLine(renderer, x1, y1, x2, y1);
+      SDL_RenderDrawLine(renderer, x1, y2, x2, y2);
+
+      int x3 = floor(cx - j);
+      int x4 = floor(cx + j);
+      int y3 = floor(cy - i);
+      int y4 = floor(cy + i);
+      SDL_RenderDrawLine(renderer, x3, y3, x4, y3);
+      SDL_RenderDrawLine(renderer, x3, y4, x4, y4);
 
       i++;
       if (e < 0) {
@@ -156,20 +194,15 @@ namespace GPSstatus {
     SDL_RenderDrawLine(_renderer, 128, 384, 895, 384);
 
     for (auto sat : _sat_data) {
-      double radius = (90 - sat->elevation) * 383.5 / 90;
-      int x = floor(512 + 0.5 + sin(sat->azimuth) * radius);
-      int y = floor(384 + 0.5 - cos(sat->azimuth) * radius);
-
       if (sat->tracking)
 	SDL_SetRenderDrawColor(_renderer, 0, 255, 0, SDL_ALPHA_OPAQUE);	// green
       else
 	SDL_SetRenderDrawColor(_renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);	// red
 
-      SDL_Rect box;
-      box.x = x - 5;
-      box.y = y - 5;
-      box.w = box.h = 10;
-      SDL_RenderFillRect(_renderer, &box);
+      double radius = (90 - sat->elevation) * 383.5 / 90;
+      double x = 512 + sin(sat->azimuth) * radius;
+      double y = 384 - cos(sat->azimuth) * radius;
+      draw_filled_circle(_renderer, x, y, 5);
     }
 
     SDL_RenderPresent(_renderer);
@@ -205,6 +238,10 @@ namespace GPSstatus {
 
 int main(int argc, char* argv[]) {
   GPSstatus::App app;
+  std::string inname = "/dev/ttyUSB0"; // default source of NMEA-0183 sentences
+  if (argc > 1)
+    inname = argv[1];
 
+  GPSstatus::App app(inname);
   return app.Execute();
 }
