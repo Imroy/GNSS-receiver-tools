@@ -1,0 +1,8 @@
+*~
+*#
+*.o
+*.s
+.depend
+.depend.bak
+parse
+gps_status
