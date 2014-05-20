@@ -26,7 +26,7 @@ namespace GPSstatus {
     _running(true),
     _parser("/dev/ttyUSB0"),
     _window(NULL),
-    _glcontext(NULL)
+    _renderer(NULL)
   {}
 
   int App::Execute() {
@@ -66,10 +66,12 @@ namespace GPSstatus {
       exit(1);
     }
 
-    if ((_glcontext = SDL_GL_CreateContext(_window)) == NULL) {
-      std::cerr << "Could not create GL context." << std::endl;
+    if ((_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED)) == NULL) {
+      std::cerr << "Could not create SDL renderer." << std::endl;
       exit(1);
     }
+    SDL_RenderClear(_renderer);
+    SDL_RenderPresent(_renderer);
 
     _parser_thread = SDL_CreateThread(Parser_runner, "Parser", (void*)&_parser);
     if (_parser_thread == NULL) {
@@ -104,11 +106,14 @@ namespace GPSstatus {
     SDL_UnlockMutex(_redraw_lock);
     if (rc == SDL_MUTEX_TIMEDOUT)
       return;
+
+    SDL_RenderClear(_renderer);
+    SDL_RenderPresent(_renderer);
   }
 
   void App::Cleanup() {
-    if (_glcontext)
-      SDL_GL_DeleteContext(_glcontext);
+    if (_renderer)
+      SDL_DestroyRenderer(_renderer);
     if (_window)
       SDL_DestroyWindow(_window);
 

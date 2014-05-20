@@ -21,6 +21,7 @@
 
 #include <map>
 #include <SDL2/SDL_events.h>
+#include <SDL2/SDL_render.h>
 #include <SDL2/SDL_thread.h>
 #include "Parser.hh"
 
@@ -37,7 +38,7 @@ namespace GPSstatus {
     SDL_Thread *_parser_thread;
 
     SDL_Window *_window;
-    SDL_GLContext _glcontext;
+    SDL_Renderer *_renderer;
 
     void Init();
 
