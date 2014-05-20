@@ -96,6 +96,20 @@ namespace GPSstatus {
 	_running = false;
       break;
 
+    case SDL_WINDOWEVENT:
+      switch (Event->window.event) {
+      case SDL_WINDOWEVENT_CLOSE:
+	_running = false;
+	break;
+
+      case SDL_WINDOWEVENT_SHOWN:
+      case SDL_WINDOWEVENT_EXPOSED:
+      case SDL_WINDOWEVENT_RESTORED:
+	SDL_RenderPresent(_renderer);
+	break;
+      }
+
+
     default:
       break;
     }
