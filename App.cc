@@ -18,6 +18,7 @@
 */
 #include <iostream>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include "App.hh"
 
 namespace GPSstatus {
@@ -29,7 +30,8 @@ namespace GPSstatus {
     _parser(srcname),
     _new_data(false),
     _window(NULL),
-    _renderer(NULL)
+    _renderer(NULL),
+    _font(NULL)
   {}
 
   int App::Execute() {
@@ -59,6 +61,16 @@ namespace GPSstatus {
   }
 
   void App::Init() {
+    if (TTF_Init() == -1) {
+      std::cerr << "Could not initialise SDL_ttf: " << TTF_GetError() << std::endl;
+      exit(1);
+    }
+
+    _font = TTF_OpenFont("/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf", 10);
+    if (!_font) {
+      std::cerr << "Could not load font." << std::endl;
+      exit(1);
+    }
 
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
       std::cerr << "Could not initialise SDL." << std::endl;
@@ -200,9 +212,23 @@ namespace GPSstatus {
 	SDL_SetRenderDrawColor(_renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);	// red
 
       double radius = (90 - sat->elevation) * 383.5 / 90;
-      double x = 512 + sin(sat->azimuth) * radius;
-      double y = 384 - cos(sat->azimuth) * radius;
-      draw_filled_circle(_renderer, x, y, 5);
+      double cx = 512 + sin(sat->azimuth) * radius;
+      double cy = 384 - cos(sat->azimuth) * radius;
+      draw_filled_circle(_renderer, cx, cy, 5);
+
+      SDL_Colour colour = { 255, 255, 255 };
+      if (sat->tracking)
+	colour.r = colour.g = 0;
+      SDL_Surface *text_surface = TTF_RenderUTF8_Blended(_font, std::to_string(sat->id).c_str(), colour);
+      if (text_surface) {
+	SDL_Texture *text_texture = SDL_CreateTextureFromSurface(_renderer, text_surface);
+	SDL_FreeSurface(text_surface);
+	if (text_texture) {
+	  SDL_Rect destrect = { (int)floor(cx - (text_surface->w * 0.5)), (int)floor(cy - (text_surface->h * 0.5)), text_surface->w, text_surface->h };
+	  SDL_RenderCopy(_renderer, text_texture, NULL, &destrect);
+	  SDL_DestroyTexture(text_texture);
+	}
+      }
     }
 
     SDL_RenderPresent(_renderer);
@@ -226,6 +252,9 @@ namespace GPSstatus {
       SDL_DestroyRenderer(_renderer);
     if (_window)
       SDL_DestroyWindow(_window);
+    if (_font)
+      TTF_CloseFont(_font);
+
     SDL_DestroyCond(_redraw_cond);
     SDL_DestroyMutex(_redraw_lock);
 

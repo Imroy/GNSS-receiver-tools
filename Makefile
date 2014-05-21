@@ -2,7 +2,7 @@ PREFIX = /usr/local
 BINDIR = $(PREFIX)/bin
 
 # Libraries with pkg-config data
-PKGS = sdl2
+PKGS = sdl2 SDL2_ttf
 
 COMMON_FLAGS = -g -O0 -Wall -I. -fopenmp -finput-charset=UTF-8 `pkg-config --cflags $(PKGS)`
 LIBS = -lm -lstdc++ -lgomp `pkg-config --libs $(PKGS)`

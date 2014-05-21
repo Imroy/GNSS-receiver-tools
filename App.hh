@@ -44,6 +44,8 @@ namespace GPSstatus {
     SDL_Window *_window;
     SDL_Renderer *_renderer;
 
+    TTF_Font *_font;
+
     void Init();
 
     void OnEvent(SDL_Event* Event);
