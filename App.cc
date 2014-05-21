@@ -112,7 +112,7 @@ namespace GPSstatus {
       exit(1);
     }
 
-    if ((_fix_surface = SDL_CreateRGBSurface(0, 256, 128, 32, rmask, gmask, bmask, amask)) == NULL) {
+    if ((_fix_surface = SDL_CreateRGBSurface(0, 384, 128, 32, rmask, gmask, bmask, amask)) == NULL) {
       std::cerr << "Could not create SDL surface for fix info." << std::endl;
       exit(1);
     }
@@ -188,17 +188,13 @@ namespace GPSstatus {
 
     for (auto sat : _sat_data) {
       SDL_Colour colour = { 255, 255, 255, SDL_ALPHA_OPAQUE };	// white
-      if (sat->snr >= 0)
-	colour.r = colour.g = 0;	// blue
-
       SDL_Surface *text_surface = TTF_RenderUTF8_Blended(_font, std::to_string(sat->id).c_str(), colour);
       if (text_surface) {
 	double radius = (90 - sat->elevation) * 383.5 / 90;
 	double cx = 384 + sin(sat->azimuth) * radius;
 	double cy = 384 - cos(sat->azimuth) * radius;
 
-	std::cerr << "cx=" << cx << ", cy=" << cy << ", w=" << text_surface->w << ", h=" << text_surface->h << std::endl;
-	SDL_Rect destrect = { (int)floor(cx - (text_surface->w * 0.5)), (int)floor(cy - (text_surface->h * 0.5)), text_surface->w, text_surface->h };
+	SDL_Rect destrect = { (int)floor(cx - (text_surface->w * 0.5)), (int)floor(cy + 7), text_surface->w, text_surface->h };
 
 	SDL_BlitSurface(text_surface, NULL, _sat_surface, &destrect);
 	SDL_FreeSurface(text_surface);
@@ -208,16 +204,31 @@ namespace GPSstatus {
     _need_redraw = true;
   }
 
+  std::string degrees_to_dms(double degrees) {
+    int d = degrees;
+    int m = (degrees - d) * 60;
+    double s = (degrees - d - (m / 60.0)) * 3600.0;
+    return std::to_string(d) + "° "
+      + std::to_string(m) + "′ "
+      + std::to_string(s) + "″";
+  }
+
   void App::render_fix() {
     SDL_FillRect(_fix_surface, NULL, SDL_MapRGBA(_fix_surface->format, 0, 0, 0, 0));
 
+    std::string line = degrees_to_dms(fabs(_lattitude));
+    if (_lattitude < 0)
+      line += "S ";
+    else
+      line += "N ";
+    line += degrees_to_dms(fabs(_longitude));
+    if (_longitude < 0)
+      line += "W ";
+    else
+      line += "E ";
+
     SDL_Colour white = { 255, 255, 255, SDL_ALPHA_OPAQUE };
-    SDL_Surface *text_surface = TTF_RenderUTF8_Blended(_font, (std::to_string(_lattitude) + "° " + std::to_string(_longitude) + "°").c_str(), white);
-    if (text_surface) {
-      SDL_Rect destrect = { 0, 0, text_surface->w, text_surface->h };
-      SDL_BlitSurface(text_surface, NULL, _fix_surface, &destrect);
-      SDL_FreeSurface(text_surface);
-    }
+    draw_text(_fix_surface, _font, line, 0, 14, white);
 
     _need_redraw = true;
   }

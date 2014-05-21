@@ -92,4 +92,14 @@ namespace GPSstatus {
     }
   }
 
+  void draw_text(SDL_Surface *surface, TTF_Font *font, std::string text, int x, int y, SDL_Colour colour) {
+    SDL_Surface *text_surface = TTF_RenderUTF8_Blended(font, text.c_str(), colour);
+    if (text_surface) {
+      SDL_Rect destrect = { x, y, text_surface->w, text_surface->h };
+      SDL_BlitSurface(text_surface, NULL, surface, &destrect);
+      SDL_FreeSurface(text_surface);
+    }
+  }
+
+
 }; // namespace GPSstatus

@@ -19,8 +19,10 @@
 #ifndef __SURFACE_DRAW_HH__
 #define __SURFACE_DRAW_HH__
 
+#include <string>
 #include <SDL2/SDL_pixels.h>
 #include <SDL2/SDL_surface.h>
+#include <SDL2/SDL_ttf.h>
 
 namespace GPSstatus {
 
@@ -58,6 +60,8 @@ namespace GPSstatus {
   void draw_circle(SDL_Surface *surface, double cx, double cy, double radius, SDL_Colour colour);
 
   void draw_filled_circle(SDL_Surface *surface, double cx, double cy, double radius, SDL_Colour colour);
+
+  void draw_text(SDL_Surface *surface, TTF_Font *font, std::string text, int x, int y, SDL_Colour colour);
 
 }; // namespace GPSstatus
 
