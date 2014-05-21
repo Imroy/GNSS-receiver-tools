@@ -60,6 +60,14 @@ namespace GPSstatus {
     try {
       auto s = NMEA0183::parse_sentence(line);
 
+      if (s->isa<NMEA0183::GGA>()) {
+	NMEA0183::GGA *gga = s->cast_as<NMEA0183::GGA>();
+	if (gga != NULL) {
+	  _app->new_fix_data(gga->lattitude(), gga->longitude());
+	  _app->signal_redraw();
+	}
+      }
+
       if (s->isa<NMEA0183::GSV>()) {
 	// Assume that sentences are grouped together by type for each fix,
 	// so if the previous sentence wasn't a GSV, this must be the first for the fix

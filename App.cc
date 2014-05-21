@@ -27,10 +27,10 @@ namespace GPSstatus {
     _redraw_lock(SDL_CreateMutex()),
     _redraw_cond(SDL_CreateCond()),
     _parser(srcname),
-    _new_sat_data(false),
+    _new_sat_data(false), _new_fix_data(false),
     _window(NULL),
     _renderer(NULL),
-    _sat_surface(NULL),
+    _sat_surface(NULL), _fix_surface(NULL),
     _need_redraw(false),
     _font(NULL)
   {}
@@ -108,6 +108,11 @@ namespace GPSstatus {
 #endif
     if ((_sat_surface = SDL_CreateRGBSurface(0, 768, 768, 32, rmask, gmask, bmask, amask)) == NULL) {
       std::cerr << "Could not create SDL surface for satellites." << std::endl;
+      exit(1);
+    }
+
+    if ((_fix_surface = SDL_CreateRGBSurface(0, 256, 128, 32, rmask, gmask, bmask, amask)) == NULL) {
+      std::cerr << "Could not create SDL surface for fix info." << std::endl;
       exit(1);
     }
 
@@ -257,6 +262,8 @@ namespace GPSstatus {
   }
 
   void App::render_satellites(void) {
+    SDL_FillRect(_sat_surface, NULL, SDL_MapRGBA(_sat_surface->format, 0, 0, 0, 0));
+
     SDL_LockSurface(_sat_surface);
 
     SDL_Colour white = { 255, 255, 255, SDL_ALPHA_OPAQUE };
@@ -302,6 +309,20 @@ namespace GPSstatus {
     _need_redraw = true;
   }
 
+  void App::render_fix() {
+    SDL_FillRect(_fix_surface, NULL, SDL_MapRGBA(_fix_surface->format, 0, 0, 0, 0));
+
+    SDL_Colour white = { 255, 255, 255, SDL_ALPHA_OPAQUE };
+    SDL_Surface *text_surface = TTF_RenderUTF8_Blended(_font, (std::to_string(_lattitude) + "° " + std::to_string(_longitude) + "°").c_str(), white);
+    if (text_surface) {
+      SDL_Rect destrect = { 0, 0, text_surface->w, text_surface->h };
+      SDL_BlitSurface(text_surface, NULL, _fix_surface, &destrect);
+      SDL_FreeSurface(text_surface);
+    }
+
+    _need_redraw = true;
+  }
+
   void App::Render(void) {
     SDL_SetRenderDrawColor(_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // black
     SDL_RenderClear(_renderer);
@@ -313,6 +334,13 @@ namespace GPSstatus {
       SDL_DestroyTexture(sat_texture);
     }
 
+    SDL_Texture *fix_texture = SDL_CreateTextureFromSurface(_renderer, _fix_surface);
+    if (fix_texture) {
+      SDL_Rect destrect = { 0, 0, _fix_surface->w, _fix_surface->h };
+      SDL_RenderCopy(_renderer, fix_texture, NULL, &destrect);
+      SDL_DestroyTexture(fix_texture);
+    }
+
     SDL_RenderPresent(_renderer);
   }
 
@@ -320,6 +348,12 @@ namespace GPSstatus {
     std::cerr << sat_data.size() << " satellites in list for display." << std::endl;
     swap(_sat_data, sat_data);
     _new_sat_data = true;
+  }
+
+  void App::new_fix_data(double la, double lo) {
+    _lattitude = la;
+    _longitude = lo;
+    _new_fix_data = true;
   }
 
   void App::signal_redraw(void) {
