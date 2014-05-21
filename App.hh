@@ -23,6 +23,7 @@
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_thread.h>
+#include <SDL2/SDL_ttf.h>
 #include "Parser.hh"
 #include "NMEA-0183.hh"
 
@@ -39,10 +40,13 @@ namespace GPSstatus {
     SDL_Thread *_parser_thread;
 
     std::vector<NMEA0183::SatelliteData::ptr> _sat_data;
-    bool _new_data;
+    bool _new_sat_data;
 
     SDL_Window *_window;
     SDL_Renderer *_renderer;
+
+    SDL_Surface *_sat_surface;
+    bool _need_redraw;
 
     TTF_Font *_font;
 
@@ -52,6 +56,7 @@ namespace GPSstatus {
 
     void Loop();
 
+    void render_satellites();
     void Render();
 
     void Cleanup();

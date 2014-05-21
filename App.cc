@@ -18,7 +18,6 @@
 */
 #include <iostream>
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
 #include "App.hh"
 
 namespace GPSstatus {
@@ -28,9 +27,11 @@ namespace GPSstatus {
     _redraw_lock(SDL_CreateMutex()),
     _redraw_cond(SDL_CreateCond()),
     _parser(srcname),
-    _new_data(false),
+    _new_sat_data(false),
     _window(NULL),
     _renderer(NULL),
+    _sat_surface(NULL),
+    _need_redraw(false),
     _font(NULL)
   {}
 
@@ -48,7 +49,11 @@ namespace GPSstatus {
       SDL_LockMutex(_redraw_lock);
       SDL_CondWaitTimeout(_redraw_cond, _redraw_lock, 99);
       SDL_UnlockMutex(_redraw_lock);
-      if (_new_data)
+      if (_new_sat_data)
+	render_satellites();
+      if (_new_fix_data)
+	render_fix();
+      if (_need_redraw)
 	Render();
     }
     _parser.stop_running();
@@ -88,6 +93,11 @@ namespace GPSstatus {
     }
     SDL_RenderClear(_renderer);
     SDL_RenderPresent(_renderer);
+
+    if ((_sat_surface = SDL_CreateRGBSurface(0, 768, 768, 32, 0, 0, 0, 0)) == NULL) {
+      std::cerr << "Could not create SDL surface for satellites." << std::endl;
+      exit(1);
+    }
 
     _parser.init(this);
 
@@ -130,31 +140,66 @@ namespace GPSstatus {
   }
 
   void App::Loop() {
+
+  inline void draw_pixel(SDL_Surface *surface, int x, int y, unsigned colour) {
+    unsigned char *pixels = (unsigned char*)surface->pixels + (y * surface->pitch) + (x * surface->format->BytesPerPixel);
+    SDL_memset4(pixels, colour, 1);
   }
 
-  void draw_circle(SDL_Renderer *renderer, double cx, double cy, double radius) {
+  inline void draw_pixel(SDL_Surface *surface, int x, int y, SDL_Colour colour) {
+    unsigned int col = SDL_MapRGBA(surface->format, colour.r, colour.g, colour.b, colour.a);
+    draw_pixel(surface, x, y, col);
+  }
+
+  inline void draw_hline(SDL_Surface *surface, int x1, int x2, int y, unsigned int colour) {
+    unsigned char *pixels = (unsigned char*)surface->pixels + (y * surface->pitch) + (x1 * surface->format->BytesPerPixel);
+    SDL_memset4(pixels, colour, x2 - x1);
+  }
+
+  inline void draw_hline(SDL_Surface *surface, int x1, int x2, int y, SDL_Colour colour) {
+    unsigned int col = SDL_MapRGBA(surface->format, colour.r, colour.g, colour.b, colour.a);
+    draw_hline(surface, x1, x2, y, col);
+  }
+
+  inline void draw_vline(SDL_Surface *surface, int x, int y1, int y2, unsigned int colour) {
+    unsigned char *pixels = (unsigned char*)surface->pixels + (y1 * surface->pitch) + (x * surface->format->BytesPerPixel);
+    for (int y = y1; y < y2; y++, pixels += surface->pitch)
+      SDL_memset4(pixels, colour, 1);
+  }
+
+  inline void draw_vline(SDL_Surface *surface, int x, int y1, int y2, SDL_Colour colour) {
+    unsigned int col = SDL_MapRGBA(surface->format, colour.r, colour.g, colour.b, colour.a);
+    draw_vline(surface, x, y1, y2, col);
+  }
+
+  void draw_circle(SDL_Surface *surface, double cx, double cy, double radius, SDL_Colour colour) {
     double i = 0, j = radius;
     double e = 1 - radius;
-    while (j > i) {
+    unsigned int col = SDL_MapRGBA(surface->format, colour.r, colour.g, colour.b, colour.a);
+    while (1) {
       int x1 = floor(cx - i);
       int x2 = floor(cx + i);
       int y1 = floor(cy - j);
       int y2 = floor(cy + j);
 
-      SDL_RenderDrawPoint(renderer, x1, y1);
-      SDL_RenderDrawPoint(renderer, x2, y1);
-      SDL_RenderDrawPoint(renderer, x1, y2);
-      SDL_RenderDrawPoint(renderer, x2, y2);
+      draw_pixel(surface, x1, y1, col);
+      draw_pixel(surface, x2, y1, col);
+      draw_pixel(surface, x1, y2, col);
+      draw_pixel(surface, x2, y2, col);
 
+      int y3 = floor(cy - i);
+      if (y1 == y3)
+	break;
+      int y4 = floor(cy + i);
+      if (y2 == y4)
+	break;
       int x3 = floor(cx - j);
       int x4 = floor(cx + j);
-      int y3 = floor(cy - i);
-      int y4 = floor(cy + i);
 
-      SDL_RenderDrawPoint(renderer, x3, y3);
-      SDL_RenderDrawPoint(renderer, x4, y3);
-      SDL_RenderDrawPoint(renderer, x3, y4);
-      SDL_RenderDrawPoint(renderer, x4, y4);
+      draw_pixel(surface, x3, y3, col);
+      draw_pixel(surface, x4, y3, col);
+      draw_pixel(surface, x3, y4, col);
+      draw_pixel(surface, x4, y4, col);
 
       i++;
       if (e < 0) {
@@ -166,23 +211,28 @@ namespace GPSstatus {
     }
   }
 
-  void draw_filled_circle(SDL_Renderer *renderer, double cx, double cy, double radius) {
+  void draw_filled_circle(SDL_Surface *surface, double cx, double cy, double radius, SDL_Colour colour) {
     double i = 0, j = radius;
     double e = 1 - radius;
-    while (j > i) {
+    unsigned int col = SDL_MapRGBA(surface->format, colour.r, colour.g, colour.b, colour.a);
+    while (1) {
       int x1 = floor(cx - i);
       int x2 = floor(cx + i);
       int y1 = floor(cy - j);
       int y2 = floor(cy + j);
-      SDL_RenderDrawLine(renderer, x1, y1, x2, y1);
-      SDL_RenderDrawLine(renderer, x1, y2, x2, y2);
+      draw_hline(surface, x1, x2, y1, col);
+      draw_hline(surface, x1, x2, y2, col);
 
+      int y3 = floor(cy - i);
+      if (y1 == y3)
+	break;
+      int y4 = floor(cy + i);
+      if (y2 == y4)
+	break;
       int x3 = floor(cx - j);
       int x4 = floor(cx + j);
-      int y3 = floor(cy - i);
-      int y4 = floor(cy + i);
-      SDL_RenderDrawLine(renderer, x3, y3, x4, y3);
-      SDL_RenderDrawLine(renderer, x3, y4, x4, y4);
+      draw_hline(surface, x3, x4, y3, col);
+      draw_hline(surface, x3, x4, y4, col);
 
       i++;
       if (e < 0) {
@@ -194,51 +244,70 @@ namespace GPSstatus {
     }
   }
 
-  void App::Render() {
+  void App::render_satellites(void) {
+    SDL_LockSurface(_sat_surface);
+
+    SDL_Colour white = { 255, 255, 255, SDL_ALPHA_OPAQUE };
+    draw_circle(_sat_surface, 384, 384, 383.5, white);
+    draw_circle(_sat_surface, 384, 384, 255.5, white);
+    draw_circle(_sat_surface, 384, 384, 127.5, white);
+    draw_vline(_sat_surface, 384, 0, 768, white);
+    draw_hline(_sat_surface, 0, 767, 384, white);
+
+    for (auto sat : _sat_data) {
+      SDL_Colour colour;
+      if (sat->tracking)
+	colour = { 0, 255, 0, SDL_ALPHA_OPAQUE };	// green
+      else
+	colour = { 255, 0, 0, SDL_ALPHA_OPAQUE };	// red
+
+      double radius = (90 - sat->elevation) * 383.5 / 90;
+      double cx = 384 + sin(sat->azimuth) * radius;
+      double cy = 384 - cos(sat->azimuth) * radius;
+      draw_filled_circle(_sat_surface, cx, cy, 7, colour);
+    }
+    SDL_UnlockSurface(_sat_surface);
+
+    for (auto sat : _sat_data) {
+      SDL_Colour colour = { 255, 255, 255, SDL_ALPHA_OPAQUE };	// white
+      if (sat->tracking)
+	colour.r = colour.g = 0;	// blue
+
+      SDL_Surface *text_surface = TTF_RenderUTF8_Blended(_font, std::to_string(sat->id).c_str(), colour);
+      if (text_surface) {
+	double radius = (90 - sat->elevation) * 383.5 / 90;
+	double cx = 384 + sin(sat->azimuth) * radius;
+	double cy = 384 - cos(sat->azimuth) * radius;
+
+	std::cerr << "cx=" << cx << ", cy=" << cy << ", w=" << text_surface->w << ", h=" << text_surface->h << std::endl;
+	SDL_Rect destrect = { (int)floor(cx - (text_surface->w * 0.5)), (int)floor(cy - (text_surface->h * 0.5)), text_surface->w, text_surface->h };
+
+	SDL_BlitSurface(text_surface, NULL, _sat_surface, &destrect);
+	SDL_FreeSurface(text_surface);
+      }
+    }
+
+    _need_redraw = true;
+  }
+
+  void App::Render(void) {
     SDL_SetRenderDrawColor(_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // black
     SDL_RenderClear(_renderer);
 
-    SDL_SetRenderDrawColor(_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE); // white
-    draw_circle(_renderer, 512, 384, 383.5);
-    draw_circle(_renderer, 512, 384, 255.5);
-    draw_circle(_renderer, 512, 384, 127.5);
-    SDL_RenderDrawLine(_renderer, 512, 0, 512, 768);
-    SDL_RenderDrawLine(_renderer, 128, 384, 895, 384);
-
-    for (auto sat : _sat_data) {
-      if (sat->tracking)
-	SDL_SetRenderDrawColor(_renderer, 0, 255, 0, SDL_ALPHA_OPAQUE);	// green
-      else
-	SDL_SetRenderDrawColor(_renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);	// red
-
-      double radius = (90 - sat->elevation) * 383.5 / 90;
-      double cx = 512 + sin(sat->azimuth) * radius;
-      double cy = 384 - cos(sat->azimuth) * radius;
-      draw_filled_circle(_renderer, cx, cy, 5);
-
-      SDL_Colour colour = { 255, 255, 255 };
-      if (sat->tracking)
-	colour.r = colour.g = 0;
-      SDL_Surface *text_surface = TTF_RenderUTF8_Blended(_font, std::to_string(sat->id).c_str(), colour);
-      if (text_surface) {
-	SDL_Texture *text_texture = SDL_CreateTextureFromSurface(_renderer, text_surface);
-	SDL_FreeSurface(text_surface);
-	if (text_texture) {
-	  SDL_Rect destrect = { (int)floor(cx - (text_surface->w * 0.5)), (int)floor(cy - (text_surface->h * 0.5)), text_surface->w, text_surface->h };
-	  SDL_RenderCopy(_renderer, text_texture, NULL, &destrect);
-	  SDL_DestroyTexture(text_texture);
-	}
-      }
+    SDL_Texture *sat_texture = SDL_CreateTextureFromSurface(_renderer, _sat_surface);
+    if (sat_texture) {
+      SDL_Rect destrect = { (1024 - _sat_surface->w) / 2, (768 - _sat_surface->h) / 2, _sat_surface->w, _sat_surface->h };
+      SDL_RenderCopy(_renderer, sat_texture, NULL, &destrect);
+      SDL_DestroyTexture(sat_texture);
     }
 
     SDL_RenderPresent(_renderer);
-    _new_data = false;
   }
 
   void App::new_sat_data(std::vector<NMEA0183::SatelliteData::ptr>& sat_data) {
     std::cerr << sat_data.size() << " satellites in list for display." << std::endl;
     swap(_sat_data, sat_data);
-    _new_data = true;
+    _new_sat_data = true;
   }
 
   void App::signal_redraw(void) {
@@ -248,6 +317,10 @@ namespace GPSstatus {
   }
 
   void App::Cleanup() {
+    if (_sat_surface)
+      SDL_FreeSurface(_sat_surface);
+    if (_fix_surface)
+      SDL_FreeSurface(_fix_surface);
     if (_renderer)
       SDL_DestroyRenderer(_renderer);
     if (_window)
