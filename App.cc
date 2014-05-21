@@ -174,7 +174,7 @@ namespace GPSstatus {
 
     for (auto sat : _sat_data) {
       SDL_Colour colour;
-      if (sat->tracking)
+      if (sat->snr >= 0)
 	colour = { 0, 255, 0, SDL_ALPHA_OPAQUE };	// green
       else
 	colour = { 255, 0, 0, SDL_ALPHA_OPAQUE };	// red
@@ -188,7 +188,7 @@ namespace GPSstatus {
 
     for (auto sat : _sat_data) {
       SDL_Colour colour = { 255, 255, 255, SDL_ALPHA_OPAQUE };	// white
-      if (sat->tracking)
+      if (sat->snr >= 0)
 	colour.r = colour.g = 0;	// blue
 
       SDL_Surface *text_surface = TTF_RenderUTF8_Blended(_font, std::to_string(sat->id).c_str(), colour);

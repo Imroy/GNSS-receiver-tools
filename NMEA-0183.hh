@@ -189,11 +189,10 @@ namespace NMEA0183 {
   struct SatelliteData {
     int id;
     int elevation, azimuth;
-    int snr;
-    bool tracking;	// when not tracking, snr should be ignored
+    int snr;		// use -1 when no SNR value was given
 
-    inline SatelliteData(int i, int e, int a, int s, bool t) :
-      id(i), elevation(e), azimuth(a), snr(s), tracking(t)
+    inline SatelliteData(int i, int e, int a, int s) :
+      id(i), elevation(e), azimuth(a), snr(s)
     {}
 
     typedef std::shared_ptr<SatelliteData> ptr;

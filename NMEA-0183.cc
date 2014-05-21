@@ -216,16 +216,12 @@ namespace NMEA0183 {
   {
     for (unsigned int i = 3; i < fields.size(); i += 4) {
       int snr = -1;
-      bool tracking = false;
-      if (fields[i + 3].size() > 0) {
+      if (fields[i + 3].size() > 0)
 	snr = std::stoi(fields[i + 3]);
-	tracking = true;
-      }
       _sat_data.push_back(std::make_shared<SatelliteData>(std::stoi(fields[i]),
 							  std::stoi(fields[i + 1]),
 							  std::stoi(fields[i + 2]),
-							  snr,
-							  tracking));
+							  snr));
     }
   }
 

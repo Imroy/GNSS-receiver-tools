@@ -78,7 +78,7 @@ int main(int argc, char* argv[]) {
 	  std::cout << "\t";
 	  for (auto sat : gsv->satellite_data()) {
 	    std::cout << sat->id << "{el " << sat->elevation << "°, az " << sat->azimuth << "°";
-	    if (sat->tracking)
+	    if (sat->snr >= 0)
 	      std::cout << ", " << sat->snr << " dB";
 	    std::cout << "} ";
 	  }
