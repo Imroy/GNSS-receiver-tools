@@ -179,6 +179,7 @@ namespace NMEA0183 {
     _hdop(std::stod(fields[7])),
     _altitude(std::stod(fields[8])),
     _geoid_sep(std::stod(fields[10])),
+    _dgps_update_age(fields[12].length() > 0 ? std::stoi(fields[12]) : -1),
     _dgps_station_id(fields[13].length() > 0 ? std::stoi(fields[13]) : -1)
   {}
 

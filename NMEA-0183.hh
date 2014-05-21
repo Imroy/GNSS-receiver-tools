@@ -116,7 +116,8 @@ namespace NMEA0183 {
     int _num_sats_used;
     double _hdop;
     double _altitude;		// Metres above mean sea level
-    double _geoid_sep;
+    double _geoid_sep;		// Height of geoid (mean sea level) above WGS84 ellipsoid
+    int _dgps_update_age;	// Seconds since last DGPS update
     int _dgps_station_id;	// use -1 when no value was given
 
   public:
@@ -130,6 +131,7 @@ namespace NMEA0183 {
     inline const double HDOP(void) const { return _hdop; }
     inline const double altitude(void) const { return _altitude; }
     inline const double GEOID_separation(void) const { return _geoid_sep; }
+    inline const int DGPS_update_age(void) const { return _dgps_update_age; }
     inline const int DGPS_station_id(void) const { return _dgps_station_id; }
 
   }; // class GGA
