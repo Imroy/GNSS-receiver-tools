@@ -92,7 +92,7 @@ namespace NMEA0183 {
   Sentence::ptr parse_sentence(std::string line);
 
 
-  enum class GPSquality {
+  enum class FixQuality {
     Unavailable,
       SPSmode,
       DGPSmode,
@@ -102,9 +102,9 @@ namespace NMEA0183 {
       DeadReckoningMode,
       ManualMode,
       SimulationMode,
-  }; // class GPSquality
+  }; // class FixQuality
 
-  std::ostream& operator<< (std::ostream& out, GPSquality quality);
+  std::ostream& operator<< (std::ostream& out, FixQuality quality);
 
 
   //! Global Positioning System fix data
@@ -112,7 +112,7 @@ namespace NMEA0183 {
   private:
     double _utc_time;
     double _lattitude, _longitude; // north and east are positive, respectively
-    GPSquality _gps_quality;
+    FixQuality _fix_quality;
     int _num_sats_used;
     double _hdop;
     double _altitude;		// Metres above mean sea level
@@ -126,7 +126,7 @@ namespace NMEA0183 {
     inline const double UTC_time(void) const { return _utc_time; }
     inline const double lattitude(void) const { return _lattitude; }
     inline const double longitude(void) const { return _longitude; }
-    inline const GPSquality GPS_quality(void) const { return _gps_quality; }
+    inline const FixQuality fix_quality(void) const { return _fix_quality; }
     inline const int num_sats_used(void) const { return _num_sats_used; }
     inline const double HDOP(void) const { return _hdop; }
     inline const double altitude(void) const { return _altitude; }

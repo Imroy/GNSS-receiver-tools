@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
 	if (gga != NULL) {
 	  std::cout << "\tTime " << gga->UTC_time()
 		    << ", longitude " << gga->longitude() << "°, lattitude " << gga->lattitude() << "°"
-		    << ", \"" << gga->GPS_quality() << "\""
+		    << ", \"" << gga->fix_quality() << "\""
 		    << ", " << gga->num_sats_used() << " satellites used"
 		    << ", HDOP " << gga->HDOP()
 		    << ", altitude " << gga->altitude() << " m"

@@ -134,33 +134,33 @@ namespace NMEA0183 {
     return (degrees + (minutes / 60.0)) * (indicator == neg ? -1 : 1);
   }
 
-  std::ostream& operator<< (std::ostream& out, GPSquality quality) {
+  std::ostream& operator<< (std::ostream& out, FixQuality quality) {
     switch (quality) {
-    case GPSquality::Unavailable:
+    case FixQuality::Unavailable:
       out << "position fix unavailable";
       break;
-    case GPSquality::SPSmode:
+    case FixQuality::SPSmode:
       out << "valid position fix, SPS mode";
       break;
-    case GPSquality::DGPSmode:
+    case FixQuality::DGPSmode:
       out << "valid position fix, DGPS mode";
       break;
-    case GPSquality::PPSmode:
+    case FixQuality::PPSmode:
       out << "valid position fix, PPS mode";
       break;
-    case GPSquality::RTKmode:
+    case FixQuality::RTKmode:
       out << "valid position fix, RTK mode";
       break;
-    case GPSquality::FloatRTKmode:
+    case FixQuality::FloatRTKmode:
       out << "valid position fix, float RTK mode";
       break;
-    case GPSquality::DeadReckoningMode:
+    case FixQuality::DeadReckoningMode:
       out << "valid position fix, dead reckoning mode";
       break;
-    case GPSquality::ManualMode:
+    case FixQuality::ManualMode:
       out << "valid position fix, manual input mode";
       break;
-    case GPSquality::SimulationMode:
+    case FixQuality::SimulationMode:
       out << "valid position fix, simulation mode";
       break;
     }
@@ -174,7 +174,7 @@ namespace NMEA0183 {
     _utc_time(hhmmss_to_seconds(fields[0])),
     _lattitude(dm_to_degrees(fields[1], 2, fields[2], "S")),
     _longitude(dm_to_degrees(fields[3], 3, fields[4], "W")),
-    _gps_quality((GPSquality)std::stoi(fields[5])),
+    _fix_quality((FixQuality)std::stoi(fields[5])),
     _num_sats_used(std::stoi(fields[6])),
     _hdop(std::stod(fields[7])),
     _altitude(std::stod(fields[8])),
