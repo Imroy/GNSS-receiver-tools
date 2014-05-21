@@ -19,6 +19,12 @@
 #include "NMEA-0183.hh"
 #include <string.h>
 
+/*
+  Sources:
+  https://store-lgdi92x.mybigcommerce.com/content/NMEA_Format_v0.1.pdf (Skytraq/NavSpark)
+  http://www.gpsinformation.org/dale/nmea.htm
+ */
+
 namespace NMEA0183 {
 
   unsigned char Sentence::_generate_checksum(std::string tid, std::string type, std::string data) {
@@ -159,12 +165,30 @@ namespace NMEA0183 {
   {}
 
 
+  ReceiverMode read_receivermode(std::string field) {
+    ReceiverMode mode = ReceiverMode::unknown;
+
+    if (field.length() > 0) {
+      if (field == "A")
+	mode = ReceiverMode::Autonomous;
+      else if (field == "D")
+	mode = ReceiverMode::Differential;
+      else if (field == "E")
+	mode = ReceiverMode::Estimated;
+      else if (field == "S")
+	mode = ReceiverMode::Simulated;
+    }
+
+    return mode;
+  }
+
+
   GLL::GLL(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
     Sentence(tid, type, checksum),
     _lattitude(dm_to_degrees(fields[0], 2, fields[1], "S")),
     _longitude(dm_to_degrees(fields[2], 3, fields[3], "W")),
     _utc_time(hhmmss_to_seconds(fields[4])),
-    _status(fields[5] == "A")
+    _mode(read_receivermode(fields[5]))
   {}
 
   std::ostream& operator<< (std::ostream& out, OpMode mode) {
@@ -227,6 +251,8 @@ namespace NMEA0183 {
 
   std::ostream& operator<< (std::ostream& out, ReceiverMode mode) {
     switch (mode) {
+    case ReceiverMode::unknown:
+      break;
     case ReceiverMode::NotValid:
       out << "data not valid";
       break;
@@ -238,6 +264,9 @@ namespace NMEA0183 {
       break;
     case ReceiverMode::Estimated:
       out << "estimated mode";
+      break;
+    case ReceiverMode::Simulated:
+      out << "simulated mode";
       break;
     }
     return out;
@@ -254,15 +283,8 @@ namespace NMEA0183 {
     _day(std::stoi(fields[8].substr(0, 2))),
     _month(std::stoi(fields[8].substr(2, 2))),
     _year(std::stoi(fields[8].substr(4, 2))),
-    _mode(ReceiverMode::NotValid)
-  {
-    if (fields[11] == "A")
-      _mode = ReceiverMode::Autonomous;
-    else if (fields[11] == "D")
-      _mode = ReceiverMode::Differential;
-    else if (fields[11] == "E")
-      _mode = ReceiverMode::Estimated;
-  }
+    _mode(read_receivermode(fields[11]))
+  {}
 
   VTG::VTG(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
     Sentence(tid, type, checksum),
@@ -270,15 +292,8 @@ namespace NMEA0183 {
     _course_magnetic(fields[2].length() > 0 ? std::stod(fields[2]) : -1.0),
     _speed_knots(std::stod(fields[4])),
     _speed(std::stod(fields[6])),
-    _mode(ReceiverMode::NotValid)
-  {
-    if (fields[8] == "A")
-      _mode = ReceiverMode::Autonomous;
-    else if (fields[8] == "D")
-      _mode = ReceiverMode::Differential;
-    else if (fields[8] == "E")
-      _mode = ReceiverMode::Estimated;
-  }
+    _mode(read_receivermode(fields[8]))
+  {}
 
   ZDA::ZDA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
     Sentence(tid, type, checksum),

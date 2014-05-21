@@ -129,12 +129,24 @@ namespace NMEA0183 {
   }; // class GGA
 
 
+  enum class ReceiverMode {
+    unknown,
+      NotValid,
+      Autonomous,
+      Differential,
+      Estimated,
+      Simulated,
+  }; // class ReceiverMode
+
+  std::ostream& operator<< (std::ostream& out, ReceiverMode mode);
+
+
   //! Geographic position - latitude/longitude
   class GLL : public Sentence {
   private:
     double _lattitude, _longitude; // north and east are positive, respectively
     double _utc_time;
-    bool _status;
+    ReceiverMode _mode;
 
   public:
     GLL(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
@@ -142,7 +154,7 @@ namespace NMEA0183 {
     inline const double lattitude(void) const { return _lattitude; }
     inline const double longitude(void) const { return _longitude; }
     inline const double UTC_time(void) const { return _utc_time; }
-    inline const bool status(void) const { return _status; }
+    inline const ReceiverMode receiver_mode(void) const { return _mode; }
 
   }; // class GLL
 
@@ -215,15 +227,6 @@ namespace NMEA0183 {
 
   }; // class GSV
 
-
-  enum class ReceiverMode {
-    NotValid,
-      Autonomous,
-      Differential,
-      Estimated,
-  }; // class ReceiverMode
-
-  std::ostream& operator<< (std::ostream& out, ReceiverMode mode);
 
   //! Recommended minimum specific GNSS data
   class RMC : public Sentence {
