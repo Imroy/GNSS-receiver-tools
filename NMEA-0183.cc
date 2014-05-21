@@ -145,6 +145,24 @@ namespace NMEA0183 {
     case GPSquality::DGPSmode:
       out << "valid position fix, DGPS mode";
       break;
+    case GPSquality::PPSmode:
+      out << "valid position fix, PPS mode";
+      break;
+    case GPSquality::RTKmode:
+      out << "valid position fix, RTK mode";
+      break;
+    case GPSquality::FloatRTKmode:
+      out << "valid position fix, float RTK mode";
+      break;
+    case GPSquality::DeadReckoningMode:
+      out << "valid position fix, dead reckoning mode";
+      break;
+    case GPSquality::ManualMode:
+      out << "valid position fix, manual input mode";
+      break;
+    case GPSquality::SimulationMode:
+      out << "valid position fix, simulation mode";
+      break;
     }
 
     return out;

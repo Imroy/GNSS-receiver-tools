@@ -96,6 +96,12 @@ namespace NMEA0183 {
     Unavailable,
       SPSmode,
       DGPSmode,
+      PPSmode,
+      RTKmode,
+      FloatRTKmode,
+      DeadReckoningMode,
+      ManualMode,
+      SimulationMode,
   }; // class GPSquality
 
   std::ostream& operator<< (std::ostream& out, GPSquality quality);
