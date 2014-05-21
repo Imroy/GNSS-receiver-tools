@@ -109,9 +109,9 @@ namespace NMEA0183 {
     GPSquality _gps_quality;
     int _num_sats_used;
     double _hdop;
-    double _altitude; // Above mean sea level
+    double _altitude;		// Metres above mean sea level
     double _geoid_sep;
-    int _dgps_station_id;
+    int _dgps_station_id;	// use -1 when no value was given
 
   public:
     GGA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
