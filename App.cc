@@ -28,7 +28,7 @@ namespace GPSstatus {
     _redraw_lock(SDL_CreateMutex()),
     _redraw_cond(SDL_CreateCond()),
     _parser(srcname),
-    _new_sat_data(false), _new_fix_data(false),
+    _new_sat_data(true), _new_fix_data(false),
     _window(NULL),
     _renderer(NULL),
     _sat_surface(NULL), _fix_surface(NULL),
