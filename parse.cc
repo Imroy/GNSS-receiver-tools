@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
 	if (gll != NULL) {
 	  std::cout << "\tLongitude " << gll->longitude() << "°, lattitude " << gll->lattitude() << "°"
 		    << ", time " << gll->UTC_time()
-		    << ", " << (gll->status() ? "valid" : "not valid")
+		    << ", " << gll->receiver_mode()
 		    << std::endl;
 	}
 
