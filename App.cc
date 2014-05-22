@@ -216,7 +216,8 @@ namespace GPSstatus {
     int line_num = 0;
 #define PRINT(x) draw_text(_fix_surface, _font, x, 0, line_num++ * font_size, white)
     PRINT(_fix_quality);
-    PRINT("Fix: " +_fix_type);
+    PRINT("Fix: " + _fix_type);
+    PRINT(std::to_string(_num_sats_used) + " used / " + std::to_string(_sat_data.size()) + " satellites");
     PRINT(degrees_to_dms(fabs(_lattitude)) + (_lattitude < 0 ? " S" : " N"));
     PRINT(degrees_to_dms(fabs(_longitude)) + (_longitude < 0 ? " W" : " E"));
     PRINT(boost::str(boost::format("%0.3f") % _altitude) + " m above MSL");
@@ -257,10 +258,11 @@ namespace GPSstatus {
     _new_sat_data = true;
   }
 
-  void App::new_gga_data(std::string q, double la, double lo, double al) {
-    _fix_quality = q;
+  void App::new_gga_data(double la, double lo, std::string q, int ns, double al) {
     _lattitude = la;
     _longitude = lo;
+    _fix_quality = q;
+    _num_sats_used = ns;
     _altitude = al;
     _new_fix_data = true;
   }
