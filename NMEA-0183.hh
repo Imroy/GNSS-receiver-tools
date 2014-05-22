@@ -305,6 +305,7 @@ namespace NMEA0183 {
 
 namespace std {
   std::string to_string(NMEA0183::FixQuality quality);
+  std::string to_string(NMEA0183::FixType type);
 }; // namespace std
 
 #endif // __NMEA_0183_HH__

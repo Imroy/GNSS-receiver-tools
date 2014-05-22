@@ -194,17 +194,7 @@ namespace NMEA0183 {
   }
 
   std::ostream& operator<< (std::ostream& out, FixType type) {
-    switch (type) {
-    case FixType::NotAvailable:
-      out << "not available";
-      break;
-    case FixType::TwoDimensional:
-      out << "2D";
-      break;
-    case FixType::ThreeDimensional:
-      out << "3D";
-      break;
-    }
+    out << std::to_string(type);
     return out;
   }
 
@@ -324,5 +314,16 @@ namespace std {
     return "";
   }
 
+  std::string to_string(NMEA0183::FixType type) {
+    switch (type) {
+    case NMEA0183::FixType::NotAvailable:
+      return "not available";
+    case NMEA0183::FixType::TwoDimensional:
+      return "2D";
+    case NMEA0183::FixType::ThreeDimensional:
+      return "3D";
+    }
+    return "";
+  }
 
 }; // namespace std
