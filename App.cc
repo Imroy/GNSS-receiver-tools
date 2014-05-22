@@ -261,7 +261,7 @@ namespace GPSstatus {
   }
 
   void App::new_gsa_data(std::string t, double p, double h, double v) {
-    _fixtype = t;
+    _fix_type = t;
     _pdop = p;
     _hdop = h;
     _vdop = v;

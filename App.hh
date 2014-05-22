@@ -44,7 +44,7 @@ namespace GPSstatus {
 
     std::string _fix_quality;
     double _lattitude, _longitude, _altitude;
-    std::string _fixtype;
+    std::string _fix_type;
     double _pdop, _hdop, _vdop;
     bool _new_fix_data;
 
