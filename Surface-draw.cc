@@ -92,6 +92,21 @@ namespace GPSstatus {
     }
   }
 
+  void draw_box(SDL_Surface *surface, int x1, int y1, int x2, int y2, SDL_Colour colour) {
+    unsigned int col = SDL_MapRGBA(surface->format, colour.r, colour.g, colour.b, colour.a);
+    draw_hline(surface, x1, x2, y1, col);
+    draw_vline(surface, x1, y1, y2, col);
+    draw_vline(surface, x2, y1, y2, col);
+    draw_hline(surface, x1, x2, y2, col);
+  }
+
+  void draw_filled_box(SDL_Surface *surface, int x1, int y1, int x2, int y2, SDL_Colour colour) {
+    unsigned int col = SDL_MapRGBA(surface->format, colour.r, colour.g, colour.b, colour.a);
+    unsigned char *pixels = (unsigned char*)surface->pixels + (y1 * surface->pitch) + (x1 * surface->format->BytesPerPixel);
+    for (int y = y1; y <= y2; y++, pixels += surface->pitch)
+      SDL_memset4(pixels, col, x2 - x1 + 1);
+  }
+
   void draw_text(SDL_Surface *surface, TTF_Font *font, std::string text, int x, int y, SDL_Colour colour, double ox, double oy) {
     SDL_Surface *text_surface = TTF_RenderUTF8_Blended(font, text.c_str(), colour);
     if (text_surface) {

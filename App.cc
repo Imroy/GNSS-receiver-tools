@@ -34,7 +34,7 @@ namespace GPSstatus {
     _new_sat_data(true), _new_fix_data(false), _new_time_data(false),
     _window(NULL),
     _renderer(NULL),
-    _sat_surface(NULL), _fix_surface(NULL), _time_surface(NULL),
+    _hemisphere_surface(NULL), _snr_surface(NULL), _fix_surface(NULL), _time_surface(NULL),
     _need_redraw(false),
     _font(NULL)
   {}
@@ -88,7 +88,7 @@ namespace GPSstatus {
       exit(1);
     }
 
-    if ((_window = SDL_CreateWindow("GPSstatus", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1024, 768, SDL_WINDOW_OPENGL)) == NULL) {
+    if ((_window = SDL_CreateWindow("GPSstatus", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1024, 896, SDL_WINDOW_OPENGL)) == NULL) {
       std::cerr << "Could not create SDL window." << std::endl;
       exit(1);
     }
@@ -112,8 +112,13 @@ namespace GPSstatus {
     bmask = 0x00ff0000;
     amask = 0xff000000;
 #endif
-    if ((_sat_surface = SDL_CreateRGBSurface(0, 768, 768, 32, rmask, gmask, bmask, amask)) == NULL) {
-      std::cerr << "Could not create SDL surface for satellites." << std::endl;
+    if ((_hemisphere_surface = SDL_CreateRGBSurface(0, 782, 768, 32, rmask, gmask, bmask, amask)) == NULL) {
+      std::cerr << "Could not create SDL surface for hemisphere." << std::endl;
+      exit(1);
+    }
+
+    if ((_snr_surface = SDL_CreateRGBSurface(0, 1024, 128, 32, rmask, gmask, bmask, amask)) == NULL) {
+      std::cerr << "Could not create SDL surface for signal strengths." << std::endl;
       exit(1);
     }
 
@@ -171,16 +176,16 @@ namespace GPSstatus {
   }
 
   void App::render_satellites(void) {
-    SDL_FillRect(_sat_surface, NULL, SDL_MapRGBA(_sat_surface->format, 0, 0, 0, 0));
+    SDL_FillRect(_hemisphere_surface, NULL, SDL_MapRGBA(_hemisphere_surface->format, 0, 0, 0, 0));
 
-    SDL_LockSurface(_sat_surface);
+    SDL_LockSurface(_hemisphere_surface);
 
     SDL_Colour white = { 255, 255, 255, SDL_ALPHA_OPAQUE };
-    draw_circle(_sat_surface, 384, 384, 383.5, white);
-    draw_circle(_sat_surface, 384, 384, 255.5, white);
-    draw_circle(_sat_surface, 384, 384, 127.5, white);
-    draw_vline(_sat_surface, 384, 0, 768, white);
-    draw_hline(_sat_surface, 0, 767, 384, white);
+    draw_circle(_hemisphere_surface, 391, 383.5, 383.5, white);
+    draw_circle(_hemisphere_surface, 391, 383.5, 255.5, white);
+    draw_circle(_hemisphere_surface, 391, 383.5, 127.5, white);
+    draw_vline(_hemisphere_surface, 391, 0, 768, white);
+    draw_hline(_hemisphere_surface, 8, 774, 384, white);
 
     for (auto sat : _sat_data) {
       SDL_Colour colour;
@@ -190,17 +195,53 @@ namespace GPSstatus {
 	colour = { 255, 0, 0, SDL_ALPHA_OPAQUE };	// red
 
       double radius = (90 - sat->elevation) * 383.5 / 90;
-      double cx = 384 + sin(sat->azimuth) * radius;
+      double cx = 391 + sin(sat->azimuth) * radius;
       double cy = 384 - cos(sat->azimuth) * radius;
-      draw_filled_circle(_sat_surface, cx, cy, 7, colour);
+      draw_filled_circle(_hemisphere_surface, cx, cy, 7, colour);
     }
-    SDL_UnlockSurface(_sat_surface);
+    SDL_UnlockSurface(_hemisphere_surface);
 
     for (auto sat : _sat_data) {
       double radius = (90 - sat->elevation) * 383.5 / 90;
-      int cx = floor(384 + sin(sat->azimuth) * radius);
+      int cx = floor(391 + sin(sat->azimuth) * radius);
       int cy = floor(384 - cos(sat->azimuth) * radius);
-      draw_text(_sat_surface, _font, std::to_string(sat->id), cx, cy + 7, white, -0.5, 0);
+      draw_text(_hemisphere_surface, _font, std::to_string(sat->id), cx, cy + 7, white, -0.5, 0);
+    }
+
+    SDL_FillRect(_snr_surface, NULL, SDL_MapRGBA(_snr_surface->format, 0, 0, 0, 0));
+    SDL_LockSurface(_snr_surface);
+
+    double col_width = 1024.0 / _sat_data.size();
+    int i = 0;
+    for (auto sat : _sat_data) {
+      int x1 = floor(i * col_width);
+      int x2 = floor((i + 1) * col_width);
+      draw_box(_snr_surface, x1, 26, x2, 127, white);
+
+      if (sat->snr < 0) {
+	i++;
+	continue;
+      }
+
+      SDL_Colour colour = { 0, 0, 0, SDL_ALPHA_OPAQUE };
+      if (sat->snr < 50) {
+	colour.r = 255;
+	colour.g = sat->snr * 255 / 50;
+      } else {
+	colour.r = 255 - ((sat->snr - 50) * 255 / 50);
+	colour.g = 255;
+      }
+      draw_filled_box(_snr_surface, x1 + 1, 127 - sat->snr, x2 - 1, 126, colour);
+      i++;
+    }
+    SDL_UnlockSurface(_snr_surface);
+
+    i = 0;
+    for (auto sat : _sat_data) {
+      int x1 = floor(i * col_width);
+      int x2 = floor((i + 1) * col_width);
+      draw_text(_snr_surface, _font, std::to_string(sat->id), (x1 + x2) * 0.5, 127, white, -0.5, -1);
+      i++;
     }
 
     _new_sat_data = false;
@@ -258,11 +299,18 @@ namespace GPSstatus {
     SDL_SetRenderDrawColor(_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // black
     SDL_RenderClear(_renderer);
 
-    SDL_Texture *sat_texture = SDL_CreateTextureFromSurface(_renderer, _sat_surface);
-    if (sat_texture) {
-      SDL_Rect destrect = { (1024 - _sat_surface->w) / 2, (768 - _sat_surface->h) / 2, _sat_surface->w, _sat_surface->h };
-      SDL_RenderCopy(_renderer, sat_texture, NULL, &destrect);
-      SDL_DestroyTexture(sat_texture);
+    SDL_Texture *hemisphere_texture = SDL_CreateTextureFromSurface(_renderer, _hemisphere_surface);
+    if (hemisphere_texture) {
+      SDL_Rect destrect = { (1024 - _hemisphere_surface->w) / 2, 0, _hemisphere_surface->w, _hemisphere_surface->h };
+      SDL_RenderCopy(_renderer, hemisphere_texture, NULL, &destrect);
+      SDL_DestroyTexture(hemisphere_texture);
+    }
+
+    SDL_Texture *snr_texture = SDL_CreateTextureFromSurface(_renderer, _snr_surface);
+    if (snr_texture) {
+      SDL_Rect destrect = { (1024 - _snr_surface->w) / 2, 896 - _snr_surface->h, _snr_surface->w, _snr_surface->h };
+      SDL_RenderCopy(_renderer, snr_texture, NULL, &destrect);
+      SDL_DestroyTexture(snr_texture);
     }
 
     SDL_Texture *fix_texture = SDL_CreateTextureFromSurface(_renderer, _fix_surface);
@@ -321,8 +369,10 @@ namespace GPSstatus {
   }
 
   void App::Cleanup() {
-    if (_sat_surface)
-      SDL_FreeSurface(_sat_surface);
+    if (_hemisphere_surface)
+      SDL_FreeSurface(_hemisphere_surface);
+    if (_snr_surface)
+      SDL_FreeSurface(_snr_surface);
     if (_fix_surface)
       SDL_FreeSurface(_fix_surface);
     if (_renderer)

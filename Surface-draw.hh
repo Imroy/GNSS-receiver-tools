@@ -32,18 +32,16 @@ namespace GPSstatus {
   }
 
   inline void draw_pixel(SDL_Surface *surface, int x, int y, SDL_Colour colour) {
-    unsigned int col = SDL_MapRGBA(surface->format, colour.r, colour.g, colour.b, colour.a);
-    draw_pixel(surface, x, y, col);
+    draw_pixel(surface, x, y, SDL_MapRGBA(surface->format, colour.r, colour.g, colour.b, colour.a));
   }
 
   inline void draw_hline(SDL_Surface *surface, int x1, int x2, int y, unsigned int colour) {
     unsigned char *pixels = (unsigned char*)surface->pixels + (y * surface->pitch) + (x1 * surface->format->BytesPerPixel);
-    SDL_memset4(pixels, colour, x2 - x1);
+    SDL_memset4(pixels, colour, x2 - x1 + 1);
   }
 
   inline void draw_hline(SDL_Surface *surface, int x1, int x2, int y, SDL_Colour colour) {
-    unsigned int col = SDL_MapRGBA(surface->format, colour.r, colour.g, colour.b, colour.a);
-    draw_hline(surface, x1, x2, y, col);
+    draw_hline(surface, x1, x2, y, SDL_MapRGBA(surface->format, colour.r, colour.g, colour.b, colour.a));
   }
 
   inline void draw_vline(SDL_Surface *surface, int x, int y1, int y2, unsigned int colour) {
@@ -53,8 +51,7 @@ namespace GPSstatus {
   }
 
   inline void draw_vline(SDL_Surface *surface, int x, int y1, int y2, SDL_Colour colour) {
-    unsigned int col = SDL_MapRGBA(surface->format, colour.r, colour.g, colour.b, colour.a);
-    draw_vline(surface, x, y1, y2, col);
+    draw_vline(surface, x, y1, y2, SDL_MapRGBA(surface->format, colour.r, colour.g, colour.b, colour.a));
   }
 
   void draw_circle(SDL_Surface *surface, double cx, double cy, double radius, SDL_Colour colour);

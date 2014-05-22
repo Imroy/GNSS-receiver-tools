@@ -59,7 +59,7 @@ namespace GPSstatus {
     SDL_Window *_window;
     SDL_Renderer *_renderer;
 
-    SDL_Surface *_sat_surface, *_fix_surface, *_time_surface;
+    SDL_Surface *_hemisphere_surface, *_snr_surface, *_fix_surface, *_time_surface;
     bool _need_redraw;
 
     TTF_Font *_font;
