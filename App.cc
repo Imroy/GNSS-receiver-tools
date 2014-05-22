@@ -23,6 +23,8 @@
 
 namespace GPSstatus {
 
+  int font_size = 14;
+
   App::App(std::string srcname) :
     _running(true),
     _redraw_lock(SDL_CreateMutex()),
@@ -72,7 +74,7 @@ namespace GPSstatus {
       exit(1);
     }
 
-    _font = TTF_OpenFont("/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf", 14);
+    _font = TTF_OpenFont("/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf", font_size);
     if (!_font) {
       std::cerr << "Could not load font." << std::endl;
       exit(1);
@@ -209,9 +211,9 @@ namespace GPSstatus {
     SDL_FillRect(_fix_surface, NULL, SDL_MapRGBA(_fix_surface->format, 0, 0, 0, 0));
 
     SDL_Colour white = { 255, 255, 255, SDL_ALPHA_OPAQUE };
-    draw_text(_fix_surface, _font, _fix_quality, 0, 0, white);
-    draw_text(_fix_surface, _font, degrees_to_dms(fabs(_lattitude)) + (_lattitude < 0 ? "S" : "N"), 0, 14, white);
-    draw_text(_fix_surface, _font, degrees_to_dms(fabs(_longitude)) + (_longitude < 0 ? "W" : "E"), 0, 28, white);
+    draw_text(_fix_surface, _font, _fix_quality, 0, 0 * font_size, white);
+    draw_text(_fix_surface, _font, degrees_to_dms(fabs(_lattitude)) + (_lattitude < 0 ? " S" : " N"), 0, 1 * font_size, white);
+    draw_text(_fix_surface, _font, degrees_to_dms(fabs(_longitude)) + (_longitude < 0 ? " W" : " E"), 0, 2 * font_size, white);
 
     _need_redraw = true;
   }
