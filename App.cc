@@ -214,6 +214,9 @@ namespace GPSstatus {
     draw_text(_fix_surface, _font, _fix_quality, 0, 0 * font_size, white);
     draw_text(_fix_surface, _font, degrees_to_dms(fabs(_lattitude)) + (_lattitude < 0 ? " S" : " N"), 0, 1 * font_size, white);
     draw_text(_fix_surface, _font, degrees_to_dms(fabs(_longitude)) + (_longitude < 0 ? " W" : " E"), 0, 2 * font_size, white);
+    draw_text(_fix_surface, _font, "PDOP: " + std::to_string(_pdop), 0, 3 * font_size, white);
+    draw_text(_fix_surface, _font, "HDOP: " + std::to_string(_hdop), 0, 4 * font_size, white);
+    draw_text(_fix_surface, _font, "VDOP: " + std::to_string(_vdop), 0, 5 * font_size, white);
 
     _need_redraw = true;
   }
@@ -250,6 +253,14 @@ namespace GPSstatus {
     _lattitude = la;
     _longitude = lo;
     _altitude = al;
+    _new_fix_data = true;
+  }
+
+  void App::new_gsa_data(std::string t, double p, double h, double v) {
+    _fixtype = t;
+    _pdop = p;
+    _hdop = h;
+    _vdop = v;
     _new_fix_data = true;
   }
 

@@ -68,22 +68,30 @@ namespace GPSstatus {
 	}
       }
 
-      if (s->isa<NMEA0183::GSV>()) {
-	// Assume that sentences are grouped together by type for each fix,
-	// so if the previous sentence wasn't a GSV, this must be the first for the fix
+      if (s->isa<NMEA0183::GSA>()) {
+	NMEA0183::GSA *gsa = s->cast_as<NMEA0183::GSA>();
+	if (gsa != NULL) {
+	  _app->new_gsa_data(std::to_string(gsa->fix_type()), gsa->PDOP(), gsa->HDOP(), gsa->VDOP());
+	  _app->signal_redraw();
+	}
+      }
 
+      if (s->isa<NMEA0183::GSV>()) {
 	NMEA0183::GSV *gsv = s->cast_as<NMEA0183::GSV>();
 	if (gsv != NULL) {
 	  for (auto sat : gsv->satellite_data())
 	    _sat_data.push_back(sat);
 	}
       } else
+	// Assume that sentences are grouped together by type for each fix,
+	// so if the previous sentence wasn't a GSV, this must be the first for the fix
 	if (_prev_type == "GSV") {
 	  _app->new_sat_data(_sat_data);
 	  _app->signal_redraw();
 
 	  _sat_data.clear();
 	}
+
 
 
       _prev_type = s->type();
