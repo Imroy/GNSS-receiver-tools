@@ -31,10 +31,10 @@ namespace GPSstatus {
     _redraw_lock(SDL_CreateMutex()),
     _redraw_cond(SDL_CreateCond()),
     _parser(srcname),
-    _new_sat_data(true), _new_fix_data(false),
+    _new_sat_data(true), _new_fix_data(false), _new_time_data(false),
     _window(NULL),
     _renderer(NULL),
-    _sat_surface(NULL), _fix_surface(NULL),
+    _sat_surface(NULL), _fix_surface(NULL), _time_surface(NULL),
     _need_redraw(false),
     _font(NULL)
   {}
@@ -57,6 +57,8 @@ namespace GPSstatus {
 	render_satellites();
       if (_new_fix_data)
 	render_fix();
+      if (_new_time_data)
+	render_time();
       if (_need_redraw)
 	Render();
     }
@@ -117,6 +119,11 @@ namespace GPSstatus {
 
     if ((_fix_surface = SDL_CreateRGBSurface(0, 384, 128, 32, rmask, gmask, bmask, amask)) == NULL) {
       std::cerr << "Could not create SDL surface for fix info." << std::endl;
+      exit(1);
+    }
+
+    if ((_time_surface = SDL_CreateRGBSurface(0, 384, 128, 32, rmask, gmask, bmask, amask)) == NULL) {
+      std::cerr << "Could not create SDL surface for time info." << std::endl;
       exit(1);
     }
 
@@ -230,6 +237,23 @@ namespace GPSstatus {
     _need_redraw = true;
   }
 
+  void App::render_time() {
+    SDL_FillRect(_time_surface, NULL, SDL_MapRGBA(_time_surface->format, 0, 0, 0, 0));
+
+    SDL_Colour white = { 255, 255, 255, SDL_ALPHA_OPAQUE };
+    int line_num = 0;
+#define PRINT(x) draw_text(_time_surface, _font, x, 384, line_num++ * font_size, white, -1, 0)
+    int h = floor(_utc_time / 3600);
+    int m = floor((_utc_time - h * 3600) / 60);
+    double s = _utc_time - h * 3600 - m * 60;
+    PRINT(boost::str(boost::format("Time: %02d:%02d:%02.2f UTC") % h % m % s));
+    PRINT(boost::str(boost::format("Date: %04d-%02d-%02d  UTC") % _year % _month % _day));
+#undef PRINT
+
+    _new_time_data = false;
+    _need_redraw = true;
+  }
+
   void App::Render(void) {
     SDL_SetRenderDrawColor(_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // black
     SDL_RenderClear(_renderer);
@@ -246,6 +270,13 @@ namespace GPSstatus {
       SDL_Rect destrect = { 0, 0, _fix_surface->w, _fix_surface->h };
       SDL_RenderCopy(_renderer, fix_texture, NULL, &destrect);
       SDL_DestroyTexture(fix_texture);
+    }
+
+    SDL_Texture *time_texture = SDL_CreateTextureFromSurface(_renderer, _time_surface);
+    if (time_texture) {
+      SDL_Rect destrect = { 1023 - _time_surface->w, 0, _time_surface->w, _time_surface->h };
+      SDL_RenderCopy(_renderer, time_texture, NULL, &destrect);
+      SDL_DestroyTexture(time_texture);
     }
 
     SDL_RenderPresent(_renderer);
@@ -273,6 +304,14 @@ namespace GPSstatus {
     _hdop = h;
     _vdop = v;
     _new_fix_data = true;
+  }
+
+  void App::new_zda_data(double t, int d, int m, int y) {
+    _utc_time = t;
+    _day = d;
+    _month = m;
+    _year = y;
+    _new_time_data = true;
   }
 
   void App::signal_redraw(void) {

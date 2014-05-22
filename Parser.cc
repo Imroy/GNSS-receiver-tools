@@ -92,7 +92,13 @@ namespace GPSstatus {
 	  _sat_data.clear();
 	}
 
-
+      if (s->isa<NMEA0183::ZDA>()) {
+	NMEA0183::ZDA *zda = s->cast_as<NMEA0183::ZDA>();
+	if (zda != NULL) {
+	  _app->new_zda_data(zda->UTC_time(), zda->UTC_day(), zda->UTC_month(), zda->UTC_year());
+	  _app->signal_redraw();
+	}
+      }
 
       _prev_type = s->type();
     } catch (std::exception &e) {

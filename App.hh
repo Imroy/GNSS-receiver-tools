@@ -39,9 +39,11 @@ namespace GPSstatus {
     Parser _parser;
     SDL_Thread *_parser_thread;
 
+    // GGA data
     std::vector<NMEA0183::SatelliteData::ptr> _sat_data;
     bool _new_sat_data;
 
+    // GSA data
     double _lattitude, _longitude, _altitude;
     std::string _fix_quality;
     int _num_sats_used;
@@ -49,10 +51,15 @@ namespace GPSstatus {
     double _pdop, _hdop, _vdop;
     bool _new_fix_data;
 
+    // ZDA data
+    double _utc_time;
+    int _day, _month, _year;
+    bool _new_time_data;
+
     SDL_Window *_window;
     SDL_Renderer *_renderer;
 
-    SDL_Surface *_sat_surface, *_fix_surface;
+    SDL_Surface *_sat_surface, *_fix_surface, *_time_surface;
     bool _need_redraw;
 
     TTF_Font *_font;
@@ -65,6 +72,7 @@ namespace GPSstatus {
 
     void render_satellites();
     void render_fix();
+    void render_time();
     void Render();
 
     void Cleanup();
@@ -75,6 +83,7 @@ namespace GPSstatus {
     void new_sat_data(std::vector<NMEA0183::SatelliteData::ptr>& sat_data);
     void new_gga_data(double la, double lo, std::string q, int ns, double al);
     void new_gsa_data(std::string t, double p, double h, double v);
+    void new_zda_data(double t, int d, int m, int y);
     void signal_redraw(void);
 
     int Execute();
