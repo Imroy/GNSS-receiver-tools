@@ -196,6 +196,7 @@ namespace GPSstatus {
       draw_text(_sat_surface, _font, std::to_string(sat->id), cx, cy + 7, white, -0.5, 0);
     }
 
+    _new_sat_data = false;
     _need_redraw = true;
   }
 
@@ -219,6 +220,7 @@ namespace GPSstatus {
     draw_text(_fix_surface, _font, "HDOP: " + boost::str(boost::format("%0.2f") % _hdop), 0, 4 * font_size, white);
     draw_text(_fix_surface, _font, "VDOP: " + boost::str(boost::format("%0.2f") % _vdop), 0, 5 * font_size, white);
 
+    _new_fix_data = false;
     _need_redraw = true;
   }
 
@@ -241,6 +243,7 @@ namespace GPSstatus {
     }
 
     SDL_RenderPresent(_renderer);
+    _need_redraw = false;
   }
 
   void App::new_sat_data(std::vector<NMEA0183::SatelliteData::ptr>& sat_data) {
