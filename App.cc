@@ -17,6 +17,7 @@
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <iostream>
+#include <boost/format.hpp>
 #include <SDL2/SDL.h>
 #include "App.hh"
 #include "Surface-draw.hh"
@@ -204,7 +205,7 @@ namespace GPSstatus {
     double s = (degrees - d - (m / 60.0)) * 3600.0;
     return std::to_string(d) + "° "
       + std::to_string(m) + "′ "
-      + std::to_string(s) + "″";
+      + boost::str(boost::format("%0.3f") % s) + "″";
   }
 
   void App::render_fix() {
@@ -214,9 +215,9 @@ namespace GPSstatus {
     draw_text(_fix_surface, _font, _fix_quality, 0, 0 * font_size, white);
     draw_text(_fix_surface, _font, degrees_to_dms(fabs(_lattitude)) + (_lattitude < 0 ? " S" : " N"), 0, 1 * font_size, white);
     draw_text(_fix_surface, _font, degrees_to_dms(fabs(_longitude)) + (_longitude < 0 ? " W" : " E"), 0, 2 * font_size, white);
-    draw_text(_fix_surface, _font, "PDOP: " + std::to_string(_pdop), 0, 3 * font_size, white);
-    draw_text(_fix_surface, _font, "HDOP: " + std::to_string(_hdop), 0, 4 * font_size, white);
-    draw_text(_fix_surface, _font, "VDOP: " + std::to_string(_vdop), 0, 5 * font_size, white);
+    draw_text(_fix_surface, _font, "PDOP: " + boost::str(boost::format("%0.2f") % _pdop), 0, 3 * font_size, white);
+    draw_text(_fix_surface, _font, "HDOP: " + boost::str(boost::format("%0.2f") % _hdop), 0, 4 * font_size, white);
+    draw_text(_fix_surface, _font, "VDOP: " + boost::str(boost::format("%0.2f") % _vdop), 0, 5 * font_size, white);
 
     _need_redraw = true;
   }
