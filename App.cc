@@ -227,7 +227,7 @@ namespace GPSstatus {
     PRINT(std::to_string(_num_sats_used) + " used / " + std::to_string(_sat_data.size()) + " satellites");
     PRINT(degrees_to_dms(fabs(_lattitude)) + (_lattitude < 0 ? " S" : " N"));
     PRINT(degrees_to_dms(fabs(_longitude)) + (_longitude < 0 ? " W" : " E"));
-    PRINT(boost::str(boost::format("%0.3f") % _altitude) + " m above MSL");
+    PRINT(boost::str(boost::format("%0.3f") % fabs(_altitude)) + " m " + (_altitude < 0 ? "below" : "above") + " MSL");
     PRINT("PDOP: " + boost::str(boost::format("%0.2f") % _pdop));
     PRINT("HDOP: " + boost::str(boost::format("%0.2f") % _hdop));
     PRINT("VDOP: " + boost::str(boost::format("%0.2f") % _vdop));
