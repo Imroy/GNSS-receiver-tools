@@ -135,36 +135,7 @@ namespace NMEA0183 {
   }
 
   std::ostream& operator<< (std::ostream& out, FixQuality quality) {
-    switch (quality) {
-    case FixQuality::Unavailable:
-      out << "position fix unavailable";
-      break;
-    case FixQuality::SPSmode:
-      out << "valid position fix, SPS mode";
-      break;
-    case FixQuality::DGPSmode:
-      out << "valid position fix, DGPS mode";
-      break;
-    case FixQuality::PPSmode:
-      out << "valid position fix, PPS mode";
-      break;
-    case FixQuality::RTKmode:
-      out << "valid position fix, RTK mode";
-      break;
-    case FixQuality::FloatRTKmode:
-      out << "valid position fix, float RTK mode";
-      break;
-    case FixQuality::DeadReckoningMode:
-      out << "valid position fix, dead reckoning mode";
-      break;
-    case FixQuality::ManualMode:
-      out << "valid position fix, manual input mode";
-      break;
-    case FixQuality::SimulationMode:
-      out << "valid position fix, simulation mode";
-      break;
-    }
-
+    out << std::to_string(quality);
     return out;
   }
 
@@ -326,3 +297,32 @@ namespace NMEA0183 {
 
 
 }; // namespace NMEA0183
+
+namespace std {
+
+  std::string to_string(NMEA0183::FixQuality quality) {
+    switch (quality) {
+    case NMEA0183::FixQuality::Unavailable:
+      return "position fix unavailable";
+    case NMEA0183::FixQuality::SPSmode:
+      return "valid position fix, SPS mode";
+    case NMEA0183::FixQuality::DGPSmode:
+      return "valid position fix, DGPS mode";
+    case NMEA0183::FixQuality::PPSmode:
+      return "valid position fix, PPS mode";
+    case NMEA0183::FixQuality::RTKmode:
+      return "valid position fix, RTK mode";
+    case NMEA0183::FixQuality::FloatRTKmode:
+      return "valid position fix, float RTK mode";
+    case NMEA0183::FixQuality::DeadReckoningMode:
+      return "valid position fix, dead reckoning mode";
+    case NMEA0183::FixQuality::ManualMode:
+      return "valid position fix, manual input mode";
+    case NMEA0183::FixQuality::SimulationMode:
+      return "valid position fix, simulation mode";
+    }
+    return "";
+  }
+
+
+}; // namespace std

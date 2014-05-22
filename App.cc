@@ -72,7 +72,7 @@ namespace GPSstatus {
       exit(1);
     }
 
-    _font = TTF_OpenFont("/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf", 10);
+    _font = TTF_OpenFont("/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf", 14);
     if (!_font) {
       std::cerr << "Could not load font." << std::endl;
       exit(1);
@@ -187,18 +187,10 @@ namespace GPSstatus {
     SDL_UnlockSurface(_sat_surface);
 
     for (auto sat : _sat_data) {
-      SDL_Colour colour = { 255, 255, 255, SDL_ALPHA_OPAQUE };	// white
-      SDL_Surface *text_surface = TTF_RenderUTF8_Blended(_font, std::to_string(sat->id).c_str(), colour);
-      if (text_surface) {
-	double radius = (90 - sat->elevation) * 383.5 / 90;
-	double cx = 384 + sin(sat->azimuth) * radius;
-	double cy = 384 - cos(sat->azimuth) * radius;
-
-	SDL_Rect destrect = { (int)floor(cx - (text_surface->w * 0.5)), (int)floor(cy + 7), text_surface->w, text_surface->h };
-
-	SDL_BlitSurface(text_surface, NULL, _sat_surface, &destrect);
-	SDL_FreeSurface(text_surface);
-      }
+      double radius = (90 - sat->elevation) * 383.5 / 90;
+      int cx = floor(384 + sin(sat->azimuth) * radius);
+      int cy = floor(384 - cos(sat->azimuth) * radius);
+      draw_text(_sat_surface, _font, std::to_string(sat->id).c_str(), cx, cy + 7, white, -0.5, 0);
     }
 
     _need_redraw = true;
@@ -216,19 +208,10 @@ namespace GPSstatus {
   void App::render_fix() {
     SDL_FillRect(_fix_surface, NULL, SDL_MapRGBA(_fix_surface->format, 0, 0, 0, 0));
 
-    std::string line = degrees_to_dms(fabs(_lattitude));
-    if (_lattitude < 0)
-      line += "S ";
-    else
-      line += "N ";
-    line += degrees_to_dms(fabs(_longitude));
-    if (_longitude < 0)
-      line += "W ";
-    else
-      line += "E ";
-
     SDL_Colour white = { 255, 255, 255, SDL_ALPHA_OPAQUE };
-    draw_text(_fix_surface, _font, line, 0, 14, white);
+    draw_text(_fix_surface, _font, _fix_quality, 0, 0, white);
+    draw_text(_fix_surface, _font, degrees_to_dms(fabs(_lattitude)) + (_lattitude < 0 ? "S" : "N"), 0, 14, white);
+    draw_text(_fix_surface, _font, degrees_to_dms(fabs(_longitude)) + (_longitude < 0 ? "W" : "E"), 0, 28, white);
 
     _need_redraw = true;
   }
@@ -260,9 +243,11 @@ namespace GPSstatus {
     _new_sat_data = true;
   }
 
-  void App::new_fix_data(double la, double lo) {
+  void App::new_gga_data(std::string q, double la, double lo, double al) {
+    _fix_quality = q;
     _lattitude = la;
     _longitude = lo;
+    _altitude = al;
     _new_fix_data = true;
   }
 

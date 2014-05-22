@@ -63,7 +63,7 @@ namespace GPSstatus {
       if (s->isa<NMEA0183::GGA>()) {
 	NMEA0183::GGA *gga = s->cast_as<NMEA0183::GGA>();
 	if (gga != NULL) {
-	  _app->new_fix_data(gga->lattitude(), gga->longitude());
+	  _app->new_gga_data(std::to_string(gga->fix_quality()), gga->lattitude(), gga->longitude(), gga->altitude());
 	  _app->signal_redraw();
 	}
       }

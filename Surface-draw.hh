@@ -61,7 +61,7 @@ namespace GPSstatus {
 
   void draw_filled_circle(SDL_Surface *surface, double cx, double cy, double radius, SDL_Colour colour);
 
-  void draw_text(SDL_Surface *surface, TTF_Font *font, std::string text, int x, int y, SDL_Colour colour);
+  void draw_text(SDL_Surface *surface, TTF_Font *font, std::string text, int x, int y, SDL_Colour colour, double ox=0.0, double oy=0.0);
 
 }; // namespace GPSstatus
 

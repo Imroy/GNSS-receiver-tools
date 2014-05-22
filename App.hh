@@ -42,7 +42,8 @@ namespace GPSstatus {
     std::vector<NMEA0183::SatelliteData::ptr> _sat_data;
     bool _new_sat_data;
 
-    double _lattitude, _longitude;
+    std::string _fix_quality;
+    double _lattitude, _longitude, _altitude;
     bool _new_fix_data;
 
     SDL_Window *_window;
@@ -69,7 +70,7 @@ namespace GPSstatus {
     App(std::string srcname);
 
     void new_sat_data(std::vector<NMEA0183::SatelliteData::ptr>& sat_data);
-    void new_fix_data(double la, double lo);
+    void new_gga_data(std::string q, double la, double lo, double al);
     void signal_redraw(void);
 
     int Execute();
