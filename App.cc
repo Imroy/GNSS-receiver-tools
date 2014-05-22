@@ -213,12 +213,17 @@ namespace GPSstatus {
     SDL_FillRect(_fix_surface, NULL, SDL_MapRGBA(_fix_surface->format, 0, 0, 0, 0));
 
     SDL_Colour white = { 255, 255, 255, SDL_ALPHA_OPAQUE };
-    draw_text(_fix_surface, _font, _fix_quality, 0, 0 * font_size, white);
-    draw_text(_fix_surface, _font, degrees_to_dms(fabs(_lattitude)) + (_lattitude < 0 ? " S" : " N"), 0, 1 * font_size, white);
-    draw_text(_fix_surface, _font, degrees_to_dms(fabs(_longitude)) + (_longitude < 0 ? " W" : " E"), 0, 2 * font_size, white);
-    draw_text(_fix_surface, _font, "PDOP: " + boost::str(boost::format("%0.2f") % _pdop), 0, 3 * font_size, white);
-    draw_text(_fix_surface, _font, "HDOP: " + boost::str(boost::format("%0.2f") % _hdop), 0, 4 * font_size, white);
-    draw_text(_fix_surface, _font, "VDOP: " + boost::str(boost::format("%0.2f") % _vdop), 0, 5 * font_size, white);
+    int line_num = 0;
+#define PRINT(x) draw_text(_fix_surface, _font, x, 0, line_num++ * font_size, white)
+    PRINT(_fix_quality);
+    PRINT("Fix: " +_fix_type);
+    PRINT(degrees_to_dms(fabs(_lattitude)) + (_lattitude < 0 ? " S" : " N"));
+    PRINT(degrees_to_dms(fabs(_longitude)) + (_longitude < 0 ? " W" : " E"));
+    PRINT(boost::str(boost::format("%0.3f") % _altitude) + " m above MSL");
+    PRINT("PDOP: " + boost::str(boost::format("%0.2f") % _pdop));
+    PRINT("HDOP: " + boost::str(boost::format("%0.2f") % _hdop));
+    PRINT("VDOP: " + boost::str(boost::format("%0.2f") % _vdop));
+#undef PRINT
 
     _new_fix_data = false;
     _need_redraw = true;
