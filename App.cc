@@ -192,7 +192,7 @@ namespace GPSstatus {
       double radius = (90 - sat->elevation) * 383.5 / 90;
       int cx = floor(384 + sin(sat->azimuth) * radius);
       int cy = floor(384 - cos(sat->azimuth) * radius);
-      draw_text(_sat_surface, _font, std::to_string(sat->id).c_str(), cx, cy + 7, white, -0.5, 0);
+      draw_text(_sat_surface, _font, std::to_string(sat->id), cx, cy + 7, white, -0.5, 0);
     }
 
     _need_redraw = true;
