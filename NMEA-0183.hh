@@ -301,11 +301,38 @@ namespace NMEA0183 {
 
   }; // class ZDA
 
+
+  enum class PPSmode {
+    PVT,
+      Survey,
+      Static,
+  }; // class PPSmode
+
+  std::ostream& operator<< (std::ostream& out, PPSmode mode);
+
+  //! 1 PPS timing report
+  class STI : public Sentence {
+  private:
+    int _proprietary;
+    PPSmode _ppsmode;
+    double _survey_length, _quant_error;
+
+  public:
+    STI(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
+
+    inline const int proprietary(void) const { return _proprietary; }
+    inline const PPSmode PPS_mode(void) const { return _ppsmode; }
+    inline const double survey_length(void) const { return _survey_length; }
+    inline const double quant_error(void) const { return _quant_error; }
+
+  }; // class STI
+
 }; // namespace NMEA0183
 
 namespace std {
   std::string to_string(NMEA0183::FixQuality quality);
   std::string to_string(NMEA0183::FixType type);
+  std::string to_string(NMEA0183::PPSmode mode);
 }; // namespace std
 
 #endif // __NMEA_0183_HH__

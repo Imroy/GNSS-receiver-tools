@@ -114,6 +114,14 @@ int main(int argc, char* argv[]) {
 		    << ", TZ " << zda->TZ_hours() << ":" << zda->TZ_minutes()
 		    << std::endl;
 	}
+
+      } else if (s->isa<NMEA0183::STI>()) {
+	NMEA0183::STI *sti = s->cast_as<NMEA0183::STI>();
+	if (sti != NULL) {
+	  std::cout << "\tProprietary " << sti->proprietary()
+		    << ", PPS mode \"" << sti->PPS_mode() << "\""
+		    << std::endl;
+	}
       }
 
       std::cout << std::endl;

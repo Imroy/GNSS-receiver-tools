@@ -69,11 +69,12 @@ namespace NMEA0183 {
     if (line[0] != '$')
       throw InvalidSentence();
 
-    std::string tid = line.substr(1, 2);
-    std::string type = line.substr(3, 3);
-    std::string data = line.substr(6, line.length() - 9);
-    unsigned char checksum = std::stoi(line.substr(line.length() - 2, 2), NULL, 16);
+    size_t first_comma = line.find_first_of(',');
+    std::string tid = line.substr(1, first_comma - 4);
+    std::string type = line.substr(first_comma - 3, 3);
+    std::string data = line.substr(first_comma, line.length() - first_comma - 3);
 
+    unsigned char checksum = std::stoi(line.substr(line.length() - 2, 2), NULL, 16);
     unsigned char computed_cs = Sentence::_generate_checksum(tid, type, data);
     if (computed_cs != checksum)
       throw ChecksumMismatch(computed_cs, checksum);
@@ -107,6 +108,10 @@ namespace NMEA0183 {
     if ((type == "ZDA") &&
 	((tid == "GP") || (tid == "GN")))
       return std::make_shared<ZDA>(tid, type, fields, checksum);
+
+    if ((type == "STI") &&
+	(tid == "P"))
+      return std::make_shared<STI>(tid, type, fields, checksum);
 
     return std::make_shared<Sentence>(tid, type, checksum);
   }
@@ -286,6 +291,21 @@ namespace NMEA0183 {
   {}
 
 
+  std::ostream& operator<< (std::ostream& out, PPSmode mode) {
+    out << std::to_string(mode);
+    return out;
+  }
+
+
+  STI::STI(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
+    Sentence(tid, type, checksum),
+    _proprietary(std::stoi(fields[0])),
+    _ppsmode((PPSmode)std::stoi(fields[1])),
+    _survey_length((fields.size() > 2 && fields[2].length() > 0) ? std::stod(fields[2]) : 0),
+    _quant_error((fields.size() > 3 && fields[3].length() > 0) ? std::stod(fields[3]) : -1e+9)
+  {}
+
+
 }; // namespace NMEA0183
 
 namespace std {
@@ -322,6 +342,18 @@ namespace std {
       return "2D";
     case NMEA0183::FixType::ThreeDimensional:
       return "3D";
+    }
+    return "";
+  }
+
+  std::string to_string(NMEA0183::PPSmode mode) {
+    switch (mode) {
+    case NMEA0183::PPSmode::PVT:
+      return "PVT";
+    case NMEA0183::PPSmode::Survey:
+      return "survey";
+    case NMEA0183::PPSmode::Static:
+      return "static";
     }
     return "";
   }
