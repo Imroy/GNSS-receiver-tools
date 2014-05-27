@@ -20,7 +20,6 @@
 #define __SKYTRAQBIN_HH__
 
 #include <memory>
-#include <iostream>
 
 namespace SkyTraqBin {
 
@@ -64,7 +63,7 @@ namespace SkyTraqBin {
     virtual Payload_length body_length(void) const = 0;
 
     //! Write body fields into a pre-allocated buffer
-    virtual void body_to_buf(unsigned char* start) const = 0;
+    virtual void body_to_buf(unsigned char* buffer) const = 0;
 
   public:
     //! Constructor

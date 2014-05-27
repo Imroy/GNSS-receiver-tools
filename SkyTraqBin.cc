@@ -57,7 +57,7 @@ namespace SkyTraqBin {
     return cs;
   }
 
-  void Input_message::to_buf(unsigned char *buffer) const {
+  void Input_message::to_buf(unsigned char* buffer) const {
     add_to_buf<unsigned char>(buffer, 0xa0);
     add_to_buf<unsigned char>(buffer, 0xa1);
 
