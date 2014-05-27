@@ -20,6 +20,7 @@
 #define __SKYTRAQBIN_HH__
 
 #include <memory>
+#include <math.h>
 
 namespace SkyTraqBin {
 
@@ -94,6 +95,85 @@ namespace SkyTraqBin {
       software => sw
       system => sys
    */
+
+  enum class StartMode {
+    HotStart = 1,
+      WarmStart,
+      ColdStart,
+  }; // class StartMode
+
+  //! SYSTEM RESTART - Force System to restart
+  class Restart_sys : public Input_message {
+  private:
+    StartMode _start_mode;
+    uint16_t _utc_year;
+    uint8_t _utc_month, _utc_day, _utc_hour, _utc_minute, _utc_second;
+    int16_t _lattitude, _longitude, _altitude;
+
+    inline Payload_length body_length(void) const { return 14; }
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    //! Constructor
+    inline Restart_sys(StartMode mode,
+		       uint16_t y, uint8_t m, uint8_t d,
+		       uint8_t hr, uint8_t min, uint8_t sec,
+		       int16_t lat, int16_t lon, int16_t alt) :
+      Input_message(0x01),
+      _start_mode(mode),
+      _utc_year(y), _utc_month(m), _utc_day(d),
+      _utc_hour(hr), _utc_minute(min), _utc_second(sec),
+      _lattitude(lat), _longitude(lon), _altitude(alt)
+    {}
+
+    //! Constructor with floating point lat/long/alt
+    inline Restart_sys(StartMode mode,
+		       uint16_t y, uint8_t m, uint8_t d,
+		       uint8_t hr, uint8_t min, uint8_t sec,
+		       double lat, double lon, double alt) :
+      Input_message(0x01),
+      _start_mode(mode),
+      _utc_year(y), _utc_month(m), _utc_day(d),
+      _utc_hour(hr), _utc_minute(min), _utc_second(sec),
+      _lattitude(floor(0.5 + lat * 100)), _longitude(floor(0.5 + lon * 100)), _altitude(floor(0.5 + alt))
+    {}
+
+    inline StartMode start_mode(void) const { return _start_mode; }
+    inline void set_start_mode(StartMode mode) { _start_mode = mode; }
+
+    inline uint16_t UTC_year(void) const { return _utc_year; }
+    inline void set_UTC_year(uint16_t y) { _utc_year = y; }
+
+    inline uint8_t UTC_month(void) const { return _utc_month; }
+    inline void set_UTC_month(uint8_t m) { _utc_month = m; }
+
+    inline uint8_t UTC_day(void) const { return _utc_day; }
+    inline void set_UTC_day(uint8_t d) { _utc_day = d; }
+
+    inline uint8_t UTC_hour(void) const { return _utc_hour; }
+    inline void set_UTC_hour(uint8_t hr) { _utc_hour = hr; }
+
+    inline uint8_t UTC_minute(void) const { return _utc_minute; }
+    inline void set_UTC_minute(uint8_t min) { _utc_minute = min; }
+
+    inline uint8_t UTC_second(void) const { return _utc_second; }
+    inline void set_UTC_second(uint8_t sec) { _utc_second = sec; }
+
+    inline int16_t lattitude_raw(void) const { return _lattitude; }
+    inline void set_lattitude_raw(int16_t lat) { _lattitude = lat; }
+
+    inline double lattitude(void) const { return _lattitude * 0.01; }
+    inline void set_lattitude(double lat) { _lattitude = floor(0.5 + lat * 100); }
+
+    inline int16_t longitude_raw(void) const { return _longitude; }
+    inline void set_longitude_raw(int16_t lon) { _longitude = lon; }
+
+    inline double longitude(void) const { return _longitude * 0.01; }
+    inline void set_longitude(double lon) { _longitude = floor(0.5 + lon * 100); }
+
+    inline int16_t altitude(void) const { return _altitude; }
+    inline void set_altitude(int16_t alt) { _altitude = alt; }
+  };
 
 
 }; // SkyTraqBin

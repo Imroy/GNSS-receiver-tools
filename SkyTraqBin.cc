@@ -74,6 +74,21 @@ namespace SkyTraqBin {
   }
 
 
+  void Restart_sys::body_to_buf(unsigned char* buffer) const {
+    add_to_buf(buffer, (unsigned char)_start_mode);
+    add_to_buf(buffer, _utc_year);
+    add_to_buf(buffer, _utc_month);
+    add_to_buf(buffer, _utc_day);
+    add_to_buf(buffer, _utc_hour);
+    add_to_buf(buffer, _utc_minute);
+    add_to_buf(buffer, _utc_second);
+    add_to_buf(buffer, _lattitude);
+    add_to_buf(buffer, _longitude);
+    add_to_buf(buffer, _altitude);
+  }
+
+
+
   typedef Output_message::ptr (*output_message_factory)(unsigned char* payload, Payload_length payload_len);
 #define OUTPUT(CLASS) [](unsigned char* payload, Payload_length len) -> Output_message::ptr { return std::make_shared<CLASS>(payload, payload_len); }
   output_message_factory output_message_factories[] = {
