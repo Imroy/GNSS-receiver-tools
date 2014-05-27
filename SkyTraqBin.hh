@@ -32,8 +32,10 @@ namespace SkyTraqBin {
     unsigned char _msg_id;
 
   public:
-    //! Constructor from a binary buffer
-    Message(unsigned char* payload, Payload_length payload_len);
+    //! Constructor
+    Message(unsigned char id) :
+      _msg_id(id)
+    {}
 
     inline unsigned char message_id(void) const { return _msg_id; }
 
@@ -46,6 +48,10 @@ namespace SkyTraqBin {
   protected:
 
   public:
+    //! Constructor from a binary buffer
+    inline Output_message(unsigned char* payload, Payload_length payload_len) :
+      Message(payload_len > 0 ? payload[0] : 0)
+    {}
 
     typedef std::shared_ptr<Output_message> ptr;
   }; // class Output_message
@@ -61,6 +67,11 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* start) const = 0;
 
   public:
+    //! Constructor
+    Input_message(unsigned char id) :
+      Message(id)
+    {}
+
     //! The total length of the message
     inline Payload_length message_length(void) const { return 2 + 2 + 1 + body_length() + 1 + 2; }
 

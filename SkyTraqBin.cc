@@ -21,11 +21,6 @@
 
 namespace SkyTraqBin {
 
-  Message::Message(unsigned char* payload, Payload_length payload_len) :
-    _msg_id(payload_len > 0 ? payload[0] : 0)
-  {}
-
-
   template <typename T>
   void add_to_buf(unsigned char* &buffer, T val);
 
