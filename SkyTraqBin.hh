@@ -24,6 +24,8 @@
 
 namespace SkyTraqBin {
 
+  typedef unsigned short int Payload_length;
+
   //! Base class for a binary message
   class Message {
   protected:
@@ -31,7 +33,7 @@ namespace SkyTraqBin {
 
   public:
     //! Constructor from a binary buffer
-    Message(unsigned char* payload, std::streamsize payload_len);
+    Message(unsigned char* payload, Payload_length payload_len);
 
     inline unsigned char message_id(void) const { return _msg_id; }
 
@@ -53,14 +55,14 @@ namespace SkyTraqBin {
   class Input_message : public Message {
   protected:
     //! The length of the body (not including message id)
-    virtual unsigned short int body_length(void) const = 0;
+    virtual Payload_length body_length(void) const = 0;
 
     //! Write body fields into a pre-allocated buffer
     virtual void body_to_buf(unsigned char* start) const = 0;
 
   public:
     //! The total length of the message
-    inline unsigned short int message_length(void) const { return 2 + 2 + 1 + body_length() + 1 + 2; }
+    inline Payload_length message_length(void) const { return 2 + 2 + 1 + body_length() + 1 + 2; }
 
     //! Write the message into a buffer
     /*!
