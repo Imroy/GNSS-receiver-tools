@@ -25,20 +25,42 @@ namespace SkyTraqBin {
   void add_to_buf(unsigned char* &buffer, T val);
 
   template <>
-  void add_to_buf<unsigned char>(unsigned char* &buffer, unsigned char val) {
+  void add_to_buf<int8_t>(unsigned char* &buffer, int8_t val) {
     buffer[0] = val;
     buffer++;
   }
 
   template <>
-  void add_to_buf<unsigned short int>(unsigned char* &buffer, unsigned short int val) {
+  void add_to_buf<uint8_t>(unsigned char* &buffer, uint8_t val) {
+    buffer[0] = val;
+    buffer++;
+  }
+
+  template <>
+  void add_to_buf<int16_t>(unsigned char* &buffer, int16_t val) {
     buffer[0] = val >> 8;
     buffer[1] = val & 0xff;
     buffer += 2;
   }
 
   template <>
-  void add_to_buf<unsigned int>(unsigned char* &buffer, unsigned int val) {
+  void add_to_buf<uint16_t>(unsigned char* &buffer, uint16_t val) {
+    buffer[0] = val >> 8;
+    buffer[1] = val & 0xff;
+    buffer += 2;
+  }
+
+  template <>
+  void add_to_buf<int32_t>(unsigned char* &buffer, int32_t val) {
+    buffer[0] = val >> 24;
+    buffer[1] = (val >> 16) & 0xff;
+    buffer[2] = (val >> 8) & 0xff;
+    buffer[2] = val & 0xff;
+    buffer += 4;
+  }
+
+  template <>
+  void add_to_buf<uint32_t>(unsigned char* &buffer, uint32_t val) {
     buffer[0] = val >> 24;
     buffer[1] = (val >> 16) & 0xff;
     buffer[2] = (val >> 8) & 0xff;
@@ -75,7 +97,7 @@ namespace SkyTraqBin {
 
 
   void Restart_sys::body_to_buf(unsigned char* buffer) const {
-    add_to_buf(buffer, (unsigned char)_start_mode);
+    add_to_buf(buffer, (uint8_t)_start_mode);
     add_to_buf(buffer, _utc_year);
     add_to_buf(buffer, _utc_month);
     add_to_buf(buffer, _utc_day);
