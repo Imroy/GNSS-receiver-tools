@@ -287,47 +287,59 @@ namespace SkyTraqBin {
       }
 
     if (start > -1) {
-      Payload_length payload_len = read_be<uint16_t>(parse_buffer, start + 2);
+      do {
+	Payload_length payload_len = read_be<uint16_t>(parse_buffer, start + 2);
 
-      std::streamsize end = start + 2 + 2 + payload_len + 1 + 2;
-      if (parse_length <= end) {
-	if ((parse_buffer[end - 2] != 0x0d)
-	    || (parse_buffer[end - 1] != 0x0a))
-	  throw InvalidMessage();
+	std::streamsize end = start + 2 + 2 + payload_len + 1 + 2;
+	if (parse_length >= end) {
+	  if ((parse_buffer[end - 2] != 0x0d)
+	      || (parse_buffer[end - 1] != 0x0a)) {
+	    memmove(parse_buffer, parse_buffer + 2, parse_length - 2);
+	    parse_length -= 2;
+	    start = 0;
+	    parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length);
 
-	uint8_t cs = parse_buffer[end - 3];
-	unsigned char *payload = parse_buffer + start + 2 + 2;
-	{
-	  uint8_t ccs = checksum(payload, payload_len);
-	  if (cs != ccs)
-	    throw ChecksumMismatch(ccs, cs);
-	}
+	    throw InvalidMessage();
+	  }
 
-	uint8_t id = payload[0];
+	  uint8_t cs = parse_buffer[end - 3];
+	  unsigned char *payload = parse_buffer + start + 2 + 2;
+	  {
+	    uint8_t ccs = checksum(payload, payload_len);
+	    if (cs != ccs)
+	      throw ChecksumMismatch(ccs, cs);
+	  }
 
-	if (output_message_factories.count(id) > 0)
-	  messages.push_back((*output_message_factories[id])(payload, payload_len));
-	else
-	  std::cerr << "Unknown message id 0x" << std::hex << id << std::dec << std::endl;
+	  uint8_t id = payload[0];
 
-	// Remove this packet from the parse buffer
-	if (parse_length == end) {
-	  free(parse_buffer);
-	  parse_buffer = NULL;
-	  parse_length = 0;
+	  if (output_message_factories.count(id) > 0)
+	    messages.push_back((*output_message_factories[id])(payload, payload_len));
+	  else
+	    std::cerr << "Unknown message id 0x" << std::hex << std::setw(2) << std::setfill('0') << (int)id << std::dec << std::endl;
+
+	  // Remove this packet from the parse buffer
+	  if (parse_length == end) {
+	    std::cerr << "Freeing parse buffer..." << std::endl;
+	    free(parse_buffer);
+	    parse_buffer = NULL;
+	    parse_length = 0;
+	  } else {
+	    memmove(parse_buffer, parse_buffer + end, parse_length - end);
+	    parse_length -= end;
+	    start = 0;
+	    parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length);
+	  }
 	} else {
-	  memmove(parse_buffer, parse_buffer + start, parse_length - end);
-	  parse_length -= end;
-	  parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length);
+	  if (start > 0) {
+	    // parse buffer is not yet large enough for whole message, remove preceding bytes
+	    memmove(parse_buffer, parse_buffer + start, parse_length - start);
+	    parse_length -= start;
+	    start = 0;
+	    parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length);
+	  }
+	  break;
 	}
-      } else {
-	if (start > 0) {
-	  // parse buffer is not yet large enough for whole message, remove preceding bytes
-	  memmove(parse_buffer, parse_buffer + start, parse_length - start);
-	  parse_length -= start;
-	  parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length);
-	}
-      }
+      } while ((parse_buffer != nullptr) && (parse_length > 7) && (parse_buffer[start] == 0xa0) && (parse_buffer[start + 1] == 0xa1));
     } else {
       // No start sequence found
       free(parse_buffer);
