@@ -27,6 +27,15 @@ int main(int argc, char* argv[]) {
     std::cin.read((char*)buffer, 16);
     try {
       std::vector<SkyTraqBin::Output_message::ptr> messages = SkyTraqBin::parse_messages(buffer, std::cin.gcount());
+
+      for (auto msg : messages) {
+	if (msg->isa<SkyTraqBin::Measurement_time>()) {
+	  SkyTraqBin::Measurement_time *mt = msg->cast_as<SkyTraqBin::Measurement_time>();
+	  if (mt != NULL) {
+	    std::cout << "\tIssue of data: " << mt->issue_of_data() << std::endl;
+	  }
+	}
+      }
     } catch (std::exception &e) {
       std::cerr << e.what() << std::endl;
     }
