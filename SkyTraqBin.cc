@@ -16,8 +16,11 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include <iostream>
 #include <map>
 #include <endian.h>
+#include <stdlib.h>
+#include <string.h>
 #include "SkyTraqBin.hh"
 
 namespace SkyTraqBin {
@@ -264,6 +267,76 @@ namespace SkyTraqBin {
     OUTPUT(0x86, Pos_update_rate),
     OUTPUT(0x93, NMEA_talker_id),
   };
+
+
+  unsigned char *parse_buffer = NULL;
+  std::streamsize parse_length = 0;
+  std::vector<Output_message::ptr> parse_messages(unsigned char* buffer, std::streamsize len) {
+    parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length + len);
+    memcpy(parse_buffer + parse_length, buffer, len);
+    parse_length += len;
+
+    std::vector<Output_message::ptr> messages;
+
+    std::streamsize start = -1;
+    for (std::streamsize i = 0; i < parse_length - 1; i++)
+      if ((parse_buffer[i] == 0xa0)
+	  && (parse_buffer[i + 1] == 0xa1)) {
+	start = i;
+	break;
+      }
+
+    if (start > -1) {
+      Payload_length payload_len = read_be<uint16_t>(parse_buffer, start + 2);
+
+      std::streamsize end = start + 2 + 2 + payload_len + 1 + 2;
+      if (parse_length <= end) {
+	if ((parse_buffer[end - 2] != 0x0d)
+	    || (parse_buffer[end - 1] != 0x0a))
+	  throw InvalidMessage();
+
+	uint8_t cs = parse_buffer[end - 3];
+	unsigned char *payload = parse_buffer + start + 2 + 2;
+	{
+	  uint8_t ccs = checksum(payload, payload_len);
+	  if (cs != ccs)
+	    throw ChecksumMismatch(ccs, cs);
+	}
+
+	uint8_t id = payload[0];
+
+	if (output_message_factories.count(id) > 0)
+	  messages.push_back((*output_message_factories[id])(payload, payload_len));
+	else
+	  std::cerr << "Unknown message id 0x" << std::hex << id << std::dec << std::endl;
+
+	// Remove this packet from the parse buffer
+	if (parse_length == end) {
+	  free(parse_buffer);
+	  parse_buffer = NULL;
+	  parse_length = 0;
+	} else {
+	  memmove(parse_buffer, parse_buffer + start, parse_length - end);
+	  parse_length -= end;
+	  parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length);
+	}
+      } else {
+	if (start > 0) {
+	  // parse buffer is not yet large enough for whole message, remove preceding bytes
+	  memmove(parse_buffer, parse_buffer + start, parse_length - start);
+	  parse_length -= start;
+	  parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length);
+	}
+      }
+    } else {
+      // No start sequence found
+      free(parse_buffer);
+      parse_buffer = NULL;
+      parse_length = 0;
+    }
+
+    return messages;
+  }
 
 
   Sw_ver::Sw_ver(unsigned char* payload, Payload_length payload_len) :

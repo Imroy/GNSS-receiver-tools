@@ -20,11 +20,44 @@
 #define __SKYTRAQBIN_HH__
 
 #include <memory>
+#include <sstream>
+#include <vector>
 #include <math.h>
 
 namespace SkyTraqBin {
 
   typedef unsigned short int Payload_length;
+
+  class InvalidMessage : public std::exception {
+  private:
+
+  public:
+    InvalidMessage() {}
+
+    const char* what() const throw() {
+      return "Invalid message";
+    }
+  }; // class InvalidMessage
+
+
+  //! Exception class for when checksums don't match
+  class ChecksumMismatch : public std::exception {
+  private:
+    unsigned char _computed_cs, _stream_cs;
+
+  public:
+    ChecksumMismatch(unsigned char ccs, unsigned char scs) :
+      _computed_cs(ccs), _stream_cs(scs)
+    {}
+
+    const char* what() const throw() {
+      std::ostringstream oss;
+      oss.width(2);
+      oss << "Checksum mismatch in SkyTraq binary stream - computed 0x" << std::hex << (int)_computed_cs << ", found 0x" << (int)_stream_cs;
+      return oss.str().c_str();
+    }
+  }; // class ChecksumMismatch
+
 
   //! Base class for a binary message
   class Message {
@@ -55,6 +88,10 @@ namespace SkyTraqBin {
 
     typedef std::shared_ptr<Output_message> ptr;
   }; // class Output_message
+
+
+  //! Parser
+  std::vector<Output_message::ptr> parse_messages(unsigned char* buffer, std::streamsize len);
 
 
   //! Base class for messages that go to the GPS receiver
