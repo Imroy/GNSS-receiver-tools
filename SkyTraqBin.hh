@@ -298,6 +298,42 @@ namespace SkyTraqBin {
   }; // class Sw_CRC
 
 
+  //! ACK - Acknowledgement to a Request Message
+  class Ack : public Output_message {
+  private:
+    uint8_t _ack_id;
+    bool _has_subid;
+    uint8_t _ack_subid;
+
+  public:
+    //! Constructor from a binary buffer
+    Ack(unsigned char* payload, Payload_length payload_len);
+
+    inline uint8_t ack_id(void) const { return _ack_id; }
+    inline bool has_subid(void) const { return _has_subid; }
+    inline uint8_t ack_subid(void) const { return _ack_subid; }
+
+  }; // class Ack
+
+
+  //! NACK - Response to an unsuccessful request message
+  class Nack : public Output_message {
+  private:
+    uint8_t _ack_id;
+    bool _has_subid;
+    uint8_t _ack_subid;
+
+  public:
+    //! Constructor from a binary buffer
+    Nack(unsigned char* payload, Payload_length payload_len);
+
+    inline uint8_t ack_id(void) const { return _ack_id; }
+    inline bool has_subid(void) const { return _has_subid; }
+    inline uint8_t ack_subid(void) const { return _ack_subid; }
+
+  }; // class Ack
+
+
 }; // SkyTraqBin
 
 #endif // __SKYTRAQBIN_HH__

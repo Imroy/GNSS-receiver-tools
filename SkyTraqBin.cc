@@ -259,6 +259,8 @@ namespace SkyTraqBin {
   std::map<uint8_t, output_message_factory> output_message_factories = {
     OUTPUT(0x80, Sw_ver),
     OUTPUT(0x81, Sw_CRC),
+    OUTPUT(0x83, Ack),
+    OUTPUT(0x84, Nack),
   };
 
 
@@ -275,6 +277,22 @@ namespace SkyTraqBin {
     Output_message(payload, payload_len),
     _sw_type((SwType)payload[1]),
     _crc(read_be<uint16_t>(payload, 2))
+  {}
+
+
+  Ack::Ack(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _ack_id(payload[1]),
+    _has_subid(payload_len > 2),
+    _ack_subid(payload_len > 2 ? payload[2] : 0)
+  {}
+
+
+  Nack::Nack(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _ack_id(payload[1]),
+    _has_subid(payload_len > 2),
+    _ack_subid(payload_len > 2 ? payload[2] : 0)
   {}
 
 
