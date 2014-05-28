@@ -176,6 +176,91 @@ namespace SkyTraqBin {
     OUTPUT(0x80, Sw_ver),
   };
 
+
+  template <typename T>
+  T read_be(unsigned char* buffer, Payload_length offset);
+
+  template <>
+  int8_t read_be<int8_t>(unsigned char* buffer, Payload_length offset) {
+    return (int8_t)buffer[offset];
+  }
+
+  template <>
+  uint8_t read_be<uint8_t>(unsigned char* buffer, Payload_length offset) {
+    return buffer[offset];
+  }
+
+  template <>
+  int16_t read_be<int16_t>(unsigned char* buffer, Payload_length offset) {
+    return ((int16_t)buffer[offset] << 8) | buffer[offset + 1];
+  }
+
+  template <>
+  uint16_t read_be<uint16_t>(unsigned char* buffer, Payload_length offset) {
+    return ((uint16_t)buffer[offset] << 8) | buffer[offset + 1];
+  }
+
+  template <>
+  int32_t read_be<int32_t>(unsigned char* buffer, Payload_length offset) {
+    return ((int32_t)(buffer[offset] << 24)
+	    | ((int32_t)buffer[offset + 1] << 16)
+	    | ((int32_t)buffer[offset + 2] << 8)
+	    | (int32_t)buffer[offset + 3]);
+  }
+
+  template <>
+  uint32_t read_be<uint32_t>(unsigned char* buffer, Payload_length offset) {
+    return ((uint32_t)buffer[offset] << 24)
+      | ((uint32_t)buffer[offset + 1] << 16)
+      | ((uint32_t)buffer[offset + 2] << 8)
+      | (uint32_t)buffer[offset + 3];
+  }
+
+  template <>
+  float read_be<float>(unsigned char* buffer, Payload_length offset) {
+    float val;
+    unsigned char *mem = (unsigned char*)&val;
+#if __BYTE_ORDER == __LITTLE_ENDIAN
+    mem[3] = buffer[offset];
+    mem[2] = buffer[offset + 1];
+    mem[1] = buffer[offset + 2];
+    mem[0] = buffer[offset + 3];
+#elif __BYTE_ORDER == __BIG_ENDIAN
+    mem[0] = buffer[offset];
+    mem[1] = buffer[offset + 1];
+    mem[2] = buffer[offset + 2];
+    mem[3] = buffer[offset + 3];
+#endif
+    return val;
+  }
+
+  template <>
+  double read_be<double>(unsigned char* buffer, Payload_length offset) {
+    double val;
+    unsigned char *mem = (unsigned char*)&val;
+#if __BYTE_ORDER == __LITTLE_ENDIAN
+    mem[7] = buffer[offset];
+    mem[6] = buffer[offset + 1];
+    mem[5] = buffer[offset + 2];
+    mem[4] = buffer[offset + 3];
+    mem[3] = buffer[offset + 4];
+    mem[2] = buffer[offset + 5];
+    mem[1] = buffer[offset + 6];
+    mem[0] = buffer[offset + 7];
+#elif __BYTE_ORDER == __BIG_ENDIAN
+    mem[0] = buffer[offset];
+    mem[1] = buffer[offset + 1];
+    mem[2] = buffer[offset + 2];
+    mem[3] = buffer[offset + 3];
+    mem[4] = buffer[offset + 4];
+    mem[5] = buffer[offset + 5];
+    mem[6] = buffer[offset + 6];
+    mem[7] = buffer[offset + 7];
+#endif
+    return val;
+  }
+
+
   Sw_ver::Sw_ver(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _sw_type((SwType)payload[1]),
