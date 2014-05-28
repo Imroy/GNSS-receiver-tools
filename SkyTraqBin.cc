@@ -169,14 +169,6 @@ namespace SkyTraqBin {
 
 
 
-  typedef Output_message::ptr (*output_message_factory)(unsigned char* payload, Payload_length payload_len);
-#define OUTPUT(ID, CLASS) std::make_pair<uint8_t, output_message_factory>(ID, [](unsigned char* payload, Payload_length len) -> Output_message::ptr { return std::make_shared<CLASS>(payload, len); })
-
-  std::map<uint8_t, output_message_factory> output_message_factories = {
-    OUTPUT(0x80, Sw_ver),
-  };
-
-
   template <typename T>
   T read_be(unsigned char* buffer, Payload_length offset);
 
@@ -259,6 +251,14 @@ namespace SkyTraqBin {
 #endif
     return val;
   }
+
+
+  typedef Output_message::ptr (*output_message_factory)(unsigned char* payload, Payload_length payload_len);
+#define OUTPUT(ID, CLASS) std::make_pair<uint8_t, output_message_factory>(ID, [](unsigned char* payload, Payload_length len) -> Output_message::ptr { return std::make_shared<CLASS>(payload, len); })
+
+  std::map<uint8_t, output_message_factory> output_message_factories = {
+    OUTPUT(0x80, Sw_ver),
+  };
 
 
   Sw_ver::Sw_ver(unsigned char* payload, Payload_length payload_len) :
