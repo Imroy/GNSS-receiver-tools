@@ -266,6 +266,7 @@ namespace SkyTraqBin {
     OUTPUT(0x84, Nack),
     OUTPUT(0x86, Pos_update_rate),
     OUTPUT(0x93, NMEA_talker_id),
+    OUTPUT(0xdc, Measurement_time),
   };
 
 
@@ -392,6 +393,16 @@ namespace SkyTraqBin {
   NMEA_talker_id::NMEA_talker_id(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _talker_id((TalkerID)payload[1])
+  {}
+
+
+
+  Measurement_time::Measurement_time(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _issue(payload[1]),
+    _weeknumber(read_be<uint16_t>(payload, 2)),
+    _time_in_week(read_be<uint32_t>(payload, 4)),
+    _period(read_be<uint16_t>(payload, 8))
   {}
 
 

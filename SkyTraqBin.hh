@@ -416,6 +416,26 @@ namespace SkyTraqBin {
   }; //class NMEA_talker_id
 
 
+  //! MEAS_TIME - Measurement time information (0xDC) (Periodic)
+  class Measurement_time : public Output_message {
+  private:
+    uint8_t _issue;
+    uint16_t _weeknumber;
+    uint32_t _time_in_week;
+    uint16_t _period;
+
+  public:
+    //! Constructor from a binary buffer
+    Measurement_time(unsigned char* payload, Payload_length payload_len);
+
+    inline uint8_t issue_of_data(void) const { return _issue; }
+    inline uint16_t week_number(void) const { return _weeknumber; }
+    inline uint32_t time_in_week(void) const { return _time_in_week; }
+    inline uint16_t period(void) const { return _period; }
+
+  }; // class Measurement_time
+
+
 }; // SkyTraqBin
 
 #endif // __SKYTRAQBIN_HH__
