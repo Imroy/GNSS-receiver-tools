@@ -16,6 +16,7 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include <map>
 #include <endian.h>
 #include "SkyTraqBin.hh"
 
@@ -169,8 +170,10 @@ namespace SkyTraqBin {
 
 
   typedef Output_message::ptr (*output_message_factory)(unsigned char* payload, Payload_length payload_len);
-#define OUTPUT(CLASS) [](unsigned char* payload, Payload_length len) -> Output_message::ptr { return std::make_shared<CLASS>(payload, payload_len); }
-  output_message_factory output_message_factories[] = {
+#define OUTPUT(ID, CLASS) std::make_pair<uint8_t, output_message_factory>(ID, [](unsigned char* payload, Payload_length len) -> Output_message::ptr { return std::make_shared<CLASS>(payload, len); })
+
+  std::map<uint8_t, output_message_factory> output_message_factories = {
+    OUTPUT(0x80, Sw_ver),
   };
 
   Sw_ver::Sw_ver(unsigned char* payload, Payload_length payload_len) :
