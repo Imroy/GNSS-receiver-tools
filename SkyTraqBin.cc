@@ -110,6 +110,16 @@ namespace SkyTraqBin {
   }
 
 
+  void Q_sw_ver::body_to_buf(unsigned char* buffer) const {
+    add_to_buf(buffer, (uint8_t)_sw_type);
+  }
+
+
+  void Q_sw_CRC::body_to_buf(unsigned char* buffer) const {
+    add_to_buf(buffer, (uint8_t)_sw_type);
+  }
+
+
 
   typedef Output_message::ptr (*output_message_factory)(unsigned char* payload, Payload_length payload_len);
 #define OUTPUT(CLASS) [](unsigned char* payload, Payload_length len) -> Output_message::ptr { return std::make_shared<CLASS>(payload, payload_len); }

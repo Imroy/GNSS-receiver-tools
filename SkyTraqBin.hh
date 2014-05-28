@@ -94,6 +94,7 @@ namespace SkyTraqBin {
       query => q
       software => sw
       system => sys
+      version => ver
    */
 
   enum class StartMode {
@@ -173,7 +174,54 @@ namespace SkyTraqBin {
 
     inline int16_t altitude(void) const { return _altitude; }
     inline void set_altitude(int16_t alt) { _altitude = alt; }
+
   };
+
+
+  enum class SwType {
+    SystemCode = 1,
+  }; // class SwType
+
+  //! QUERY SOFTWARE VERSION - Query revision information of loaded software
+  class Q_sw_ver : public Input_message {
+  private:
+    SwType _sw_type;
+
+    inline Payload_length body_length(void) const { return 1; }
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    //! Constructor
+    inline Q_sw_ver(SwType type = SwType::SystemCode) :
+      Input_message(0x02),
+      _sw_type(type)
+    {}
+
+    inline SwType software_type(void) const { return _sw_type; }
+    inline void set_software_type(SwType type) { _sw_type = type; }
+
+  }; // class Q_sw_ver
+
+
+  //! QUERY SOFTWARE CRC - Query CRC information of loaded software
+  class Q_sw_CRC : public Input_message {
+  private:
+    SwType _sw_type;
+
+    inline Payload_length body_length(void) const { return 1; }
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    //! Constructor
+    inline Q_sw_CRC(SwType type = SwType::SystemCode) :
+      Input_message(0x03),
+      _sw_type(type)
+    {}
+
+    inline SwType software_type(void) const { return _sw_type; }
+    inline void set_software_type(SwType type) { _sw_type = type; }
+
+  }; // class Q_sw_CRC
 
 
 }; // SkyTraqBin
