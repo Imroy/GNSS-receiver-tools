@@ -162,6 +162,11 @@ namespace SkyTraqBin {
   }
 
 
+  void Set_factory_defaults::body_to_buf(unsigned char* buffer) const {
+    add_to_buf(buffer, (uint8_t)_reset);
+  }
+
+
 
   typedef Output_message::ptr (*output_message_factory)(unsigned char* payload, Payload_length payload_len);
 #define OUTPUT(CLASS) [](unsigned char* payload, Payload_length len) -> Output_message::ptr { return std::make_shared<CLASS>(payload, payload_len); }

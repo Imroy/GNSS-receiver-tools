@@ -224,6 +224,26 @@ namespace SkyTraqBin {
   }; // class Q_sw_CRC
 
 
+  //! SET FACTORY DEFAULTS - Set the system to factory default values
+  class Set_factory_defaults : public Input_message {
+  private:
+    bool _reset;
+
+    inline Payload_length body_length(void) const { return 1; }
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    inline Set_factory_defaults(bool r = true) :
+      Input_message(0x04),
+      _reset(r)
+    {}
+
+    inline bool reset(void) const { return _reset; }
+    inline void set_reset(bool r) { _reset = r; }
+
+  }; // class Set_factory_defaults
+
+
 }; // SkyTraqBin
 
 #endif // __SKYTRAQBIN_HH__
