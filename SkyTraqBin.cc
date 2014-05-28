@@ -16,7 +16,7 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <string.h>
+#include <endian.h>
 #include "SkyTraqBin.hh"
 
 namespace SkyTraqBin {
@@ -66,6 +66,48 @@ namespace SkyTraqBin {
     buffer[2] = (val >> 8) & 0xff;
     buffer[2] = val & 0xff;
     buffer += 4;
+  }
+
+  template <>
+  void add_to_buf<float>(unsigned char* &buffer, float val) {
+    unsigned char *mem = (unsigned char*)&val;
+#if __BYTE_ORDER == __LITTLE_ENDIAN
+    buffer[0] = mem[3];
+    buffer[1] = mem[2];
+    buffer[2] = mem[1];
+    buffer[3] = mem[0];
+#elif __BYTE_ORDER == __BIG_ENDIAN
+    buffer[0] = mem[0];
+    buffer[1] = mem[1];
+    buffer[2] = mem[2];
+    buffer[3] = mem[3];
+#endif
+    buffer += 4;
+  }
+
+  template <>
+  void add_to_buf<double>(unsigned char* &buffer, double val) {
+    unsigned char *mem = (unsigned char*)&val;
+#if __BYTE_ORDER == __LITTLE_ENDIAN
+    buffer[0] = mem[7];
+    buffer[1] = mem[6];
+    buffer[2] = mem[5];
+    buffer[3] = mem[4];
+    buffer[4] = mem[3];
+    buffer[5] = mem[2];
+    buffer[6] = mem[1];
+    buffer[7] = mem[0];
+#elif __BYTE_ORDER == __BIG_ENDIAN
+    buffer[0] = mem[0];
+    buffer[1] = mem[1];
+    buffer[2] = mem[2];
+    buffer[3] = mem[3];
+    buffer[4] = mem[4];
+    buffer[5] = mem[5];
+    buffer[6] = mem[6];
+    buffer[7] = mem[7];
+#endif
+    buffer += 8;
   }
 
   unsigned char checksum(unsigned char* buffer, Payload_length len) {
