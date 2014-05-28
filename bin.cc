@@ -34,6 +34,13 @@ int main(int argc, char* argv[]) {
 	  if (mt != NULL) {
 	    std::cout << "\tIssue of data: " << mt->issue_of_data() << std::endl;
 	  }
+
+	} else if (msg->isa<SkyTraqBin::Raw_measurements>()) {
+	  SkyTraqBin::Raw_measurements *rm = msg->cast_as<SkyTraqBin::Raw_measurements>();
+	  if (rm != NULL) {
+	    std::cout << "\t" << (int)rm->num_measurements() << " raw measurements." << std::endl;
+	  }
+
 	}
       }
     } catch (std::exception &e) {

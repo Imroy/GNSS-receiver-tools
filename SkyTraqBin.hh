@@ -436,6 +436,37 @@ namespace SkyTraqBin {
   }; // class Measurement_time
 
 
+  struct RawMeasurement {
+    uint8_t PRN, CN0;
+    double pseudorange;
+    double carrier_phase;
+    float doppler_freq;
+    uint8_t channel_indicator;
+
+    RawMeasurement(uint8_t p, uint8_t c, double pr, double cph, float df, uint8_t ci) :
+      PRN(p), CN0(c), pseudorange(pr), carrier_phase(cph), doppler_freq(df), channel_indicator(ci)
+    {}
+  }; // struct RawMeasurement
+
+
+  //! RAW_MEAS - Raw measurements from each channel (0xDD) (Periodic)
+  class Raw_measurements : public Output_message {
+  private:
+    uint8_t _issue;
+    uint8_t _num_meas;
+    std::vector<RawMeasurement> _measurements;
+
+  public:
+    //! Constructor from a binary buffer
+    Raw_measurements(unsigned char* payload, Payload_length payload_len);
+
+    inline const uint8_t issue_of_data(void) const { return _issue; }
+    inline const uint8_t num_measurements(void) const { return _num_meas; }
+    inline const std::vector<RawMeasurement> measurements(void) const { return _measurements; }
+
+  }; // class Raw_measurements
+
+
 }; // SkyTraqBin
 
 #endif // __SKYTRAQBIN_HH__

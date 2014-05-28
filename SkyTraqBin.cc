@@ -267,6 +267,7 @@ namespace SkyTraqBin {
     OUTPUT(0x86, Pos_update_rate),
     OUTPUT(0x93, NMEA_talker_id),
     OUTPUT(0xdc, Measurement_time),
+    OUTPUT(0xdd, Raw_measurements),
   };
 
 
@@ -404,6 +405,22 @@ namespace SkyTraqBin {
     _time_in_week(read_be<uint32_t>(payload, 4)),
     _period(read_be<uint16_t>(payload, 8))
   {}
+
+
+
+  Raw_measurements::Raw_measurements(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _issue(payload[1]),
+    _num_meas(payload[2])
+  {
+    for (int i = 3; i < payload_len - 23; i += 23)
+      _measurements.push_back(RawMeasurement(payload[i],
+					     payload[i+1],
+					     read_be<double>(payload, i + 2),
+					     read_be<double>(payload, i + 10),
+					     read_be<float>(payload, i + 18),
+					     payload[i + 22]));
+  }
 
 
 
