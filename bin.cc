@@ -41,6 +41,13 @@ int main(int argc, char* argv[]) {
 	    std::cout << "\t" << (int)rm->num_measurements() << " raw measurements." << std::endl;
 	  }
 
+	} else if (msg->isa<SkyTraqBin::SV_channel_status>()) {
+	  SkyTraqBin::SV_channel_status *sv = msg->cast_as<SkyTraqBin::SV_channel_status>();
+	  if (sv != NULL) {
+	    std::cout << "\t" << (int)sv->num_svs() << " SV statuses." << std::endl;
+	  }
+
+
 	}
       }
     } catch (std::exception &e) {

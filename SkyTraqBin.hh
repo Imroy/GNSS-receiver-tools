@@ -467,6 +467,36 @@ namespace SkyTraqBin {
   }; // class Raw_measurements
 
 
+  struct SvStatus {
+    uint8_t channel_id, PRN, SV_status, URA;
+    int8_t CN0;
+    int16_t elevation, azimuth;
+    uint8_t channel_status;
+
+    SvStatus(uint8_t cid, uint8_t p, uint8_t svs, uint8_t u, int8_t c, int16_t el, int16_t az, uint8_t cs) :
+      channel_id(cid), PRN(p), SV_status(svs), URA(u), CN0(c), elevation(el), azimuth(az), channel_status(cs)
+    {}
+  }; // struct SvStatus
+
+
+  //! SV_CH_STATUS - SV and channel status (0xDE) (Periodic)
+  class SV_channel_status : public Output_message {
+  private:
+    uint8_t _issue;
+    uint8_t _num_sv;
+    std::vector<SvStatus> _statuses;
+
+  public:
+    //! Constructor from a binary buffer
+    SV_channel_status(unsigned char* payload, Payload_length payload_len);
+
+    inline const uint8_t issue_of_data(void) const { return _issue; }
+    inline const uint8_t num_svs(void) const { return _num_sv; }
+    inline const std::vector<SvStatus> statuses(void) const { return _statuses; }
+
+  };
+
+
 }; // SkyTraqBin
 
 #endif // __SKYTRAQBIN_HH__

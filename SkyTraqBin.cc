@@ -423,6 +423,24 @@ namespace SkyTraqBin {
   }
 
 
+  SV_channel_status::SV_channel_status(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _issue(payload[1]),
+    _num_sv(payload[2])
+  {
+    for (int i = 3; i < payload_len - 10; i += 10)
+      _statuses.push_back(SvStatus(payload[i],
+				   payload[i+1],
+				   payload[i+2],
+				   payload[i+3],
+				   payload[i+4],
+				   read_be<int16_t>(payload, 5),
+				   read_be<int16_t>(payload, 7),
+				   payload[i+9]));
+  }
+
+
+
 
 
 }; // namespace SkyTraqBin
