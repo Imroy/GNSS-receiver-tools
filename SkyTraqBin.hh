@@ -334,6 +334,40 @@ namespace SkyTraqBin {
   }; // class Ack
 
 
+  //! POSITON UPDATE RATE - Position Update rate of the GNSS system
+  class Pos_update_rate : public Output_message {
+  private:
+    uint8_t _update_rate;
+
+  public:
+    //! Constructor from a binary buffer
+    Pos_update_rate(unsigned char* payload, Payload_length payload_len);
+
+    inline uint8_t update_rate(void) const { return _update_rate; }
+
+  }; // class Pos_update_rate
+
+
+  enum class TalkerID {
+    GPmode,
+      GNmode,
+  }; // class TalkerID
+
+
+  //! GNSS NMEA TALKER ID - NMEA talker ID of GNSS receiver
+  class NMEA_talker_id : public Output_message {
+  private:
+    TalkerID _talker_id;
+
+  public:
+    //! Constructor from a binary buffer
+    NMEA_talker_id(unsigned char* payload, Payload_length payload_len);
+
+    inline TalkerID talker_id(void) const { return _talker_id; }
+
+  }; //class NMEA_talker_id
+
+
 }; // SkyTraqBin
 
 #endif // __SKYTRAQBIN_HH__

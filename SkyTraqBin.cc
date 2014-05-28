@@ -261,6 +261,8 @@ namespace SkyTraqBin {
     OUTPUT(0x81, Sw_CRC),
     OUTPUT(0x83, Ack),
     OUTPUT(0x84, Nack),
+    OUTPUT(0x86, Pos_update_rate),
+    OUTPUT(0x93, NMEA_talker_id),
   };
 
 
@@ -294,6 +296,20 @@ namespace SkyTraqBin {
     _has_subid(payload_len > 2),
     _ack_subid(payload_len > 2 ? payload[2] : 0)
   {}
+
+
+  Pos_update_rate::Pos_update_rate(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _update_rate(payload[1])
+  {}
+
+
+  NMEA_talker_id::NMEA_talker_id(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _talker_id((TalkerID)payload[1])
+  {}
+
+
 
 
 }; // namespace SkyTraqBin
