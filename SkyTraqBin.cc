@@ -258,6 +258,7 @@ namespace SkyTraqBin {
 
   std::map<uint8_t, output_message_factory> output_message_factories = {
     OUTPUT(0x80, Sw_ver),
+    OUTPUT(0x81, Sw_CRC),
   };
 
 
@@ -267,6 +268,13 @@ namespace SkyTraqBin {
     _kernel_ver(payload[3], payload[4], payload[5]),
     _odm_ver(payload[7], payload[8], payload[9]),
     _revision(payload[11], payload[12], payload[13])
+  {}
+
+
+  Sw_CRC::Sw_CRC(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _sw_type((SwType)payload[1]),
+    _crc(read_be<uint16_t>(payload, 2))
   {}
 
 

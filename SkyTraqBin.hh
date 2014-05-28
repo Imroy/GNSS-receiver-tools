@@ -182,6 +182,7 @@ namespace SkyTraqBin {
     SystemCode = 1,
   }; // class SwType
 
+
   //! QUERY SOFTWARE VERSION - Query revision information of loaded software
   class Q_sw_ver : public Input_message {
   private:
@@ -279,6 +280,22 @@ namespace SkyTraqBin {
     inline PackedDate revision(void) const { return _revision; }
 
   }; // class Sw_ver
+
+
+  //! SOFTWARE CRC -Software CRC of the GNSS receiver
+  class Sw_CRC : public Output_message {
+  private:
+    SwType _sw_type;
+    uint16_t _crc;
+
+  public:
+    //! Constructor from a binary buffer
+    Sw_CRC(unsigned char* payload, Payload_length payload_len);
+
+    inline SwType software_type(void) const { return _sw_type; }
+    inline uint16_t CRC(void) const { return _crc; }
+
+  }; // class Sw_CRC
 
 
 }; // SkyTraqBin
