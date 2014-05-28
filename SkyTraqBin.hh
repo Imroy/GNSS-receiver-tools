@@ -244,6 +244,43 @@ namespace SkyTraqBin {
   }; // class Set_factory_defaults
 
 
+  struct PackedVersion {
+    uint8_t X, Y, Z;
+
+    inline PackedVersion(uint8_t x, uint8_t y, uint8_t z) :
+      X(x), Y(y), Z(z)
+    {}
+  }; // struct PackedVersion
+
+
+  struct PackedDate {
+    uint8_t year, month, day;
+
+    inline PackedDate(uint8_t y, uint8_t m, uint8_t d) :
+      year(y), month(m), day(d)
+    {}
+  }; // struct PackedDate
+
+
+  //! SOFTWARE VERSION - Software version of the GNSS receiver
+  class Sw_ver : public Output_message {
+  private:
+    SwType _sw_type;
+    PackedVersion _kernel_ver, _odm_ver;
+    PackedDate _revision;
+
+  public:
+    //! Constructor from a binary buffer
+    Sw_ver(unsigned char* payload, Payload_length payload_len);
+
+    inline SwType software_type(void) const { return _sw_type; }
+    inline PackedVersion kernel_version(void) const { return _kernel_ver; }
+    inline PackedVersion ODM_version(void) const { return _odm_ver; }
+    inline PackedDate revision(void) const { return _revision; }
+
+  }; // class Sw_ver
+
+
 }; // SkyTraqBin
 
 #endif // __SKYTRAQBIN_HH__

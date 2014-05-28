@@ -173,4 +173,13 @@ namespace SkyTraqBin {
   output_message_factory output_message_factories[] = {
   };
 
+  Sw_ver::Sw_ver(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _sw_type((SwType)payload[1]),
+    _kernel_ver(payload[3], payload[4], payload[5]),
+    _odm_ver(payload[7], payload[8], payload[9]),
+    _revision(payload[11], payload[12], payload[13])
+  {}
+
+
 }; // namespace SkyTraqBin
