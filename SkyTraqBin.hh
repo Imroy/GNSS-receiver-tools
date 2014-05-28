@@ -73,7 +73,7 @@ namespace SkyTraqBin {
     //! Virtual destructor to force polymorphism
     inline virtual ~Message() {}
 
-    inline unsigned char message_id(void) const { return _msg_id; }
+    inline const unsigned char message_id(void) const { return _msg_id; }
 
     //! Check the type of an object
     template <typename T>
@@ -109,7 +109,7 @@ namespace SkyTraqBin {
   class Input_message : public Message {
   protected:
     //! The length of the body (not including message id)
-    virtual Payload_length body_length(void) const = 0;
+    virtual const Payload_length body_length(void) const = 0;
 
     //! Write body fields into a pre-allocated buffer
     virtual void body_to_buf(unsigned char* buffer) const = 0;
@@ -121,7 +121,7 @@ namespace SkyTraqBin {
     {}
 
     //! The total length of the message
-    inline Payload_length message_length(void) const { return 2 + 2 + 1 + body_length() + 1 + 2; }
+    inline const Payload_length message_length(void) const { return 2 + 2 + 1 + body_length() + 1 + 2; }
 
     //! Write the message into a buffer
     /*!
@@ -159,7 +159,7 @@ namespace SkyTraqBin {
     uint8_t _utc_month, _utc_day, _utc_hour, _utc_minute, _utc_second;
     int16_t _lattitude, _longitude, _altitude;
 
-    inline Payload_length body_length(void) const { return 14; }
+    inline const Payload_length body_length(void) const { return 14; }
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -187,40 +187,40 @@ namespace SkyTraqBin {
       _lattitude(floor(0.5 + lat * 100)), _longitude(floor(0.5 + lon * 100)), _altitude(floor(0.5 + alt))
     {}
 
-    inline StartMode start_mode(void) const { return _start_mode; }
+    inline const StartMode start_mode(void) const { return _start_mode; }
     inline void set_start_mode(StartMode mode) { _start_mode = mode; }
 
-    inline uint16_t UTC_year(void) const { return _utc_year; }
+    inline const uint16_t UTC_year(void) const { return _utc_year; }
     inline void set_UTC_year(uint16_t y) { _utc_year = y; }
 
-    inline uint8_t UTC_month(void) const { return _utc_month; }
+    inline const uint8_t UTC_month(void) const { return _utc_month; }
     inline void set_UTC_month(uint8_t m) { _utc_month = m; }
 
-    inline uint8_t UTC_day(void) const { return _utc_day; }
+    inline const uint8_t UTC_day(void) const { return _utc_day; }
     inline void set_UTC_day(uint8_t d) { _utc_day = d; }
 
-    inline uint8_t UTC_hour(void) const { return _utc_hour; }
+    inline const uint8_t UTC_hour(void) const { return _utc_hour; }
     inline void set_UTC_hour(uint8_t hr) { _utc_hour = hr; }
 
-    inline uint8_t UTC_minute(void) const { return _utc_minute; }
+    inline const uint8_t UTC_minute(void) const { return _utc_minute; }
     inline void set_UTC_minute(uint8_t min) { _utc_minute = min; }
 
-    inline uint8_t UTC_second(void) const { return _utc_second; }
+    inline const uint8_t UTC_second(void) const { return _utc_second; }
     inline void set_UTC_second(uint8_t sec) { _utc_second = sec; }
 
-    inline int16_t lattitude_raw(void) const { return _lattitude; }
+    inline const int16_t lattitude_raw(void) const { return _lattitude; }
     inline void set_lattitude_raw(int16_t lat) { _lattitude = lat; }
 
-    inline double lattitude(void) const { return _lattitude * 0.01; }
+    inline const double lattitude(void) const { return _lattitude * 0.01; }
     inline void set_lattitude(double lat) { _lattitude = floor(0.5 + lat * 100); }
 
-    inline int16_t longitude_raw(void) const { return _longitude; }
+    inline const int16_t longitude_raw(void) const { return _longitude; }
     inline void set_longitude_raw(int16_t lon) { _longitude = lon; }
 
-    inline double longitude(void) const { return _longitude * 0.01; }
+    inline const double longitude(void) const { return _longitude * 0.01; }
     inline void set_longitude(double lon) { _longitude = floor(0.5 + lon * 100); }
 
-    inline int16_t altitude(void) const { return _altitude; }
+    inline const int16_t altitude(void) const { return _altitude; }
     inline void set_altitude(int16_t alt) { _altitude = alt; }
 
   };
@@ -236,7 +236,7 @@ namespace SkyTraqBin {
   private:
     SwType _sw_type;
 
-    inline Payload_length body_length(void) const { return 1; }
+    inline const Payload_length body_length(void) const { return 1; }
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -246,7 +246,7 @@ namespace SkyTraqBin {
       _sw_type(type)
     {}
 
-    inline SwType software_type(void) const { return _sw_type; }
+    inline const SwType software_type(void) const { return _sw_type; }
     inline void set_software_type(SwType type) { _sw_type = type; }
 
   }; // class Q_sw_ver
@@ -257,7 +257,7 @@ namespace SkyTraqBin {
   private:
     SwType _sw_type;
 
-    inline Payload_length body_length(void) const { return 1; }
+    inline const Payload_length body_length(void) const { return 1; }
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -267,7 +267,7 @@ namespace SkyTraqBin {
       _sw_type(type)
     {}
 
-    inline SwType software_type(void) const { return _sw_type; }
+    inline const SwType software_type(void) const { return _sw_type; }
     inline void set_software_type(SwType type) { _sw_type = type; }
 
   }; // class Q_sw_CRC
@@ -278,7 +278,7 @@ namespace SkyTraqBin {
   private:
     bool _reset;
 
-    inline Payload_length body_length(void) const { return 1; }
+    inline const Payload_length body_length(void) const { return 1; }
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -287,7 +287,7 @@ namespace SkyTraqBin {
       _reset(r)
     {}
 
-    inline bool reset(void) const { return _reset; }
+    inline const bool reset(void) const { return _reset; }
     inline void set_reset(bool r) { _reset = r; }
 
   }; // class Set_factory_defaults
@@ -322,9 +322,9 @@ namespace SkyTraqBin {
     //! Constructor from a binary buffer
     Sw_ver(unsigned char* payload, Payload_length payload_len);
 
-    inline SwType software_type(void) const { return _sw_type; }
+    inline const SwType software_type(void) const { return _sw_type; }
     inline PackedVersion kernel_version(void) const { return _kernel_ver; }
-    inline PackedVersion ODM_version(void) const { return _odm_ver; }
+    inline const PackedVersion ODM_version(void) const { return _odm_ver; }
     inline PackedDate revision(void) const { return _revision; }
 
   }; // class Sw_ver
@@ -340,7 +340,7 @@ namespace SkyTraqBin {
     //! Constructor from a binary buffer
     Sw_CRC(unsigned char* payload, Payload_length payload_len);
 
-    inline SwType software_type(void) const { return _sw_type; }
+    inline const SwType software_type(void) const { return _sw_type; }
     inline uint16_t CRC(void) const { return _crc; }
 
   }; // class Sw_CRC
@@ -357,9 +357,9 @@ namespace SkyTraqBin {
     //! Constructor from a binary buffer
     Ack(unsigned char* payload, Payload_length payload_len);
 
-    inline uint8_t ack_id(void) const { return _ack_id; }
-    inline bool has_subid(void) const { return _has_subid; }
-    inline uint8_t ack_subid(void) const { return _ack_subid; }
+    inline const uint8_t ack_id(void) const { return _ack_id; }
+    inline const bool has_subid(void) const { return _has_subid; }
+    inline const uint8_t ack_subid(void) const { return _ack_subid; }
 
   }; // class Ack
 
@@ -375,9 +375,9 @@ namespace SkyTraqBin {
     //! Constructor from a binary buffer
     Nack(unsigned char* payload, Payload_length payload_len);
 
-    inline uint8_t ack_id(void) const { return _ack_id; }
-    inline bool has_subid(void) const { return _has_subid; }
-    inline uint8_t ack_subid(void) const { return _ack_subid; }
+    inline const uint8_t ack_id(void) const { return _ack_id; }
+    inline const bool has_subid(void) const { return _has_subid; }
+    inline const uint8_t ack_subid(void) const { return _ack_subid; }
 
   }; // class Ack
 
@@ -391,7 +391,7 @@ namespace SkyTraqBin {
     //! Constructor from a binary buffer
     Pos_update_rate(unsigned char* payload, Payload_length payload_len);
 
-    inline uint8_t update_rate(void) const { return _update_rate; }
+    inline const uint8_t update_rate(void) const { return _update_rate; }
 
   }; // class Pos_update_rate
 
@@ -411,7 +411,7 @@ namespace SkyTraqBin {
     //! Constructor from a binary buffer
     NMEA_talker_id(unsigned char* payload, Payload_length payload_len);
 
-    inline TalkerID talker_id(void) const { return _talker_id; }
+    inline const TalkerID talker_id(void) const { return _talker_id; }
 
   }; //class NMEA_talker_id
 
@@ -428,10 +428,10 @@ namespace SkyTraqBin {
     //! Constructor from a binary buffer
     Measurement_time(unsigned char* payload, Payload_length payload_len);
 
-    inline uint8_t issue_of_data(void) const { return _issue; }
-    inline uint16_t week_number(void) const { return _weeknumber; }
-    inline uint32_t time_in_week(void) const { return _time_in_week; }
-    inline uint16_t period(void) const { return _period; }
+    inline const uint8_t issue_of_data(void) const { return _issue; }
+    inline const uint16_t week_number(void) const { return _weeknumber; }
+    inline const uint32_t time_in_week(void) const { return _time_in_week; }
+    inline const uint16_t period(void) const { return _period; }
 
   }; // class Measurement_time
 
