@@ -32,19 +32,29 @@ int main(int argc, char* argv[]) {
 	if (msg->isa<SkyTraqBin::Measurement_time>()) {
 	  SkyTraqBin::Measurement_time *mt = msg->cast_as<SkyTraqBin::Measurement_time>();
 	  if (mt != NULL) {
-	    std::cout << "\tIssue of data: " << mt->issue_of_data() << std::endl;
+	    std::cout << "\tMeasurement time, issue of data: " << (int)mt->issue_of_data()
+		      << ", week " << mt->week_number()
+		      << ", " << mt->time_in_week() << " ms in week"
+		      << ", measurement period " << mt->period() << " ms" << std::endl;
 	  }
 
 	} else if (msg->isa<SkyTraqBin::Raw_measurements>()) {
 	  SkyTraqBin::Raw_measurements *rm = msg->cast_as<SkyTraqBin::Raw_measurements>();
 	  if (rm != NULL) {
-	    std::cout << "\t" << (int)rm->num_measurements() << " raw measurements." << std::endl;
+	    std::cout << "\tRaw measurements, issue of data: " << (int)rm->issue_of_data() << ", " << (int)rm->num_measurements() << " raw measurements." << std::endl;
+	    for (auto m : rm->measurements())
+	      std::cout << "\t\tPRN " << (int)m.PRN
+			<< ", CN0 " << (int)m.CN0 << " dBHz"
+			<< ", pseudo-range " << m.pseudorange << " m"
+			<< ", carrier phase " << m.carrier_phase << " cycles"
+			<< ", doppler " << m.doppler_freq << " Hz"
+			<< std::endl;
 	  }
 
 	} else if (msg->isa<SkyTraqBin::SV_channel_status>()) {
 	  SkyTraqBin::SV_channel_status *sv = msg->cast_as<SkyTraqBin::SV_channel_status>();
 	  if (sv != NULL) {
-	    std::cout << "\t" << (int)sv->num_svs() << " SV statuses." << std::endl;
+	    std::cout << "\tSV channel status, issue of data: " << (int)sv->issue_of_data() << ", " << (int)sv->num_svs() << " SV statuses." << std::endl;
 	  }
 
 
