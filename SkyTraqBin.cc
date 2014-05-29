@@ -268,6 +268,7 @@ namespace SkyTraqBin {
     OUTPUT(0x93, NMEA_talker_id),
     OUTPUT(0xdc, Measurement_time),
     OUTPUT(0xdd, Raw_measurements),
+    OUTPUT(0xde, SV_channel_status),
   };
 
 
