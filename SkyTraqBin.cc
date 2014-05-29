@@ -436,8 +436,8 @@ namespace SkyTraqBin {
 				   payload[i+2],
 				   payload[i+3],
 				   payload[i+4],
-				   read_be<int16_t>(payload, 5),
-				   read_be<int16_t>(payload, 7),
+				   read_be<int16_t>(payload, i + 5),
+				   read_be<int16_t>(payload, i + 7),
 				   payload[i+9]));
   }
 
