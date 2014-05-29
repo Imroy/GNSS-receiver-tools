@@ -42,6 +42,7 @@ namespace NMEA0183 {
     return cs;
   }
 
+
   std::vector<std::string> Sentence::_split_fields(std::string data) {
     std::vector<std::string> fields;
     size_t field_start = data.find_first_of(',') + 1;
@@ -60,10 +61,12 @@ namespace NMEA0183 {
     return fields;
   }
 
+
   Sentence::Sentence(std::string tid, std::string type, unsigned char checksum) :
     _talker_id{ tid[0], tid[1] }, _type{ type[0], type[1], type[2]},
     _checksum(checksum)
   {}
+
 
   Sentence::ptr parse_sentence(std::string line) {
     if (line[0] != '$')
@@ -116,6 +119,7 @@ namespace NMEA0183 {
     return std::make_shared<Sentence>(tid, type, checksum);
   }
 
+
   //! Convert the "hhmmss.ss" string to a number of seconds
   double hhmmss_to_seconds(std::string hhmmss) {
     int hours = std::stoi(hhmmss.substr(0, 2));
@@ -138,6 +142,7 @@ namespace NMEA0183 {
 
     return (degrees + (minutes / 60.0)) * (indicator == neg ? -1 : 1);
   }
+
 
   std::ostream& operator<< (std::ostream& out, FixQuality quality) {
     out << std::to_string(quality);
@@ -186,6 +191,7 @@ namespace NMEA0183 {
     _mode(read_receivermode(fields[5]))
   {}
 
+
   std::ostream& operator<< (std::ostream& out, OpMode mode) {
     switch (mode) {
     case OpMode::Manual:
@@ -198,10 +204,12 @@ namespace NMEA0183 {
     return out;
   }
 
+
   std::ostream& operator<< (std::ostream& out, FixType type) {
     out << std::to_string(type);
     return out;
   }
+
 
   GSA::GSA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
     Sentence(tid, type, checksum),
@@ -234,6 +242,7 @@ namespace NMEA0183 {
     }
   }
 
+
   std::ostream& operator<< (std::ostream& out, ReceiverMode mode) {
     switch (mode) {
     case ReceiverMode::unknown:
@@ -257,6 +266,7 @@ namespace NMEA0183 {
     return out;
   }
 
+
   RMC::RMC(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
     Sentence(tid, type, checksum),
     _utc_time(hhmmss_to_seconds(fields[0])),
@@ -271,6 +281,7 @@ namespace NMEA0183 {
     _mode(read_receivermode(fields[11]))
   {}
 
+
   VTG::VTG(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
     Sentence(tid, type, checksum),
     _course_true(std::stod(fields[0])),
@@ -279,6 +290,7 @@ namespace NMEA0183 {
     _speed(std::stod(fields[6])),
     _mode(read_receivermode(fields[8]))
   {}
+
 
   ZDA::ZDA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
     Sentence(tid, type, checksum),

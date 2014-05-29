@@ -47,6 +47,9 @@ namespace GPSstatus {
     auto ins = std::make_shared<Intersections>(miny, maxy);
 
     double rsq = radius * radius;
+
+    // x = cx +- sqrt(r^2 - (y - cy)^2)
+    // y = cy +- sqrt(r^2 - (x - cx)^2)
     for (int y = miny; y <= maxy; y++) {
       double d = rsq - sqr(y - cy);
       if (d >= 0.0) {
@@ -56,6 +59,11 @@ namespace GPSstatus {
     }
 
     return ins;
+  }
+
+  // Only an approximation
+  inline double circle_area(double x1, double x2, double cx, double radius) {
+    return radius * (x2 - x1) * (sqrt(1 - sqr(x1 / radius)) + sqrt(1 - sqr(x2 / radius)));
   }
 
   void draw_circle(SDL_Surface *surface, double cx, double cy, double radius, SDL_Colour colour) {

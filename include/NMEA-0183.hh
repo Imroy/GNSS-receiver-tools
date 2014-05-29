@@ -3,18 +3,18 @@
 
         This file is part of NavSpark tools.
 
-        Photo Finish is free software: you can redistribute it and/or modify
+        NavSpark tools is free software: you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation, either version 3 of the License, or
         (at your option) any later version.
 
-        Photo Finish is distributed in the hope that it will be useful,
+        NavSpark tools is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
 
         You should have received a copy of the GNU General Public License
-        along with Photo Finish.  If not, see <http://www.gnu.org/licenses/>.
+        along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
 #ifndef __NMEA_0183_HH__
 #define __NMEA_0183_HH__
@@ -52,7 +52,7 @@ namespace NMEA0183 {
       oss.width(2);
       oss << "Checksum mismatch in NMEA-0183 stream - computed 0x" << std::hex << (int)_computed_cs << ", found 0x" << (int)_stream_cs;
       return oss.str().c_str();
-    }    
+    }
   }; // class ChecksumMismatch
 
   //! Base class for holding NMEA-0183 sentence data

@@ -173,6 +173,7 @@ namespace GPSstatus {
   }
 
   void App::Loop() {
+    SDL_Delay(100);
   }
 
   void App::render_satellites(void) {
@@ -181,41 +182,45 @@ namespace GPSstatus {
     SDL_LockSurface(_hemisphere_surface);
 
     SDL_Colour white = { 255, 255, 255, SDL_ALPHA_OPAQUE };
-    draw_circle(_hemisphere_surface, 391, 383.5, 383.5, white);
-    draw_circle(_hemisphere_surface, 391, 383.5, 255.5, white);
-    draw_circle(_hemisphere_surface, 391, 383.5, 127.5, white);
+    draw_circle(_hemisphere_surface, 391, 383, 383, white);
+    draw_circle(_hemisphere_surface, 391, 383, 255, white);
+    draw_circle(_hemisphere_surface, 391, 383, 127, white);
     draw_vline(_hemisphere_surface, 391, 0, 768, white);
     draw_hline(_hemisphere_surface, 8, 774, 384, white);
 
+    std::vector<std::pair<double, double> > circles;
     for (auto sat : _sat_data) {
       SDL_Colour colour;
-      if (sat->snr >= 0)
+      if (sat->snr > 0)
 	colour = { 0, 255, 0, SDL_ALPHA_OPAQUE };	// green
       else
 	colour = { 255, 0, 0, SDL_ALPHA_OPAQUE };	// red
 
-      double radius = (90 - sat->elevation) * 383.5 / 90;
+      double radius = (90 - sat->elevation) * 383.0 / 90;
       double cx = 391 + sin(sat->azimuth) * radius;
-      double cy = 384 - cos(sat->azimuth) * radius;
+      double cy = 383 - cos(sat->azimuth) * radius;
+      circles.push_back(std::make_pair(cx, cy));
       draw_filled_circle(_hemisphere_surface, cx, cy, 7, colour);
     }
     SDL_UnlockSurface(_hemisphere_surface);
 
+    int i = 0;
     for (auto sat : _sat_data) {
-      double radius = (90 - sat->elevation) * 383.5 / 90;
-      int cx = floor(391 + sin(sat->azimuth) * radius);
-      int cy = floor(384 - cos(sat->azimuth) * radius);
+      double cx = circles[i].first, cy = circles[i].second;
       draw_text(_hemisphere_surface, _font, std::to_string(sat->id), cx, cy + 7, white, -0.5, 0);
+      i++;
     }
 
     SDL_FillRect(_snr_surface, NULL, SDL_MapRGBA(_snr_surface->format, 0, 0, 0, 0));
     SDL_LockSurface(_snr_surface);
 
     double col_width = 1024.0 / _sat_data.size();
-    int i = 0;
+    std::vector<std::pair<int, int> > columns;
+    i = 0;
     for (auto sat : _sat_data) {
       int x1 = floor(i * col_width);
       int x2 = floor((i + 1) * col_width);
+      columns.push_back(std::make_pair(x1, x2));
       draw_box(_snr_surface, x1, 26, x2, 127, white);
 
       if (sat->snr < 0) {
@@ -238,8 +243,7 @@ namespace GPSstatus {
 
     i = 0;
     for (auto sat : _sat_data) {
-      int x1 = floor(i * col_width);
-      int x2 = floor((i + 1) * col_width);
+      int x1 = columns[i].first, x2 = columns[i].second;
       draw_text(_snr_surface, _font, std::to_string(sat->id), (x1 + x2) * 0.5, 127, white, -0.5, -1);
       i++;
     }

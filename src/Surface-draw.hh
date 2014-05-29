@@ -26,7 +26,7 @@
 
 namespace GPSstatus {
 
-  inline void draw_pixel(SDL_Surface *surface, int x, int y, unsigned colour) {
+  inline void draw_pixel(SDL_Surface *surface, int x, int y, unsigned int colour) {
     unsigned char *pixels = (unsigned char*)surface->pixels + (y * surface->pitch) + (x * surface->format->BytesPerPixel);
     SDL_memset4(pixels, colour, 1);
   }

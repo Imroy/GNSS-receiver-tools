@@ -4,16 +4,18 @@ BINDIR = $(PREFIX)/bin
 # Libraries with pkg-config data
 PKGS = sdl2 SDL2_ttf
 
-COMMON_FLAGS = -g -O0 -Wall -I. -fopenmp -finput-charset=UTF-8 `pkg-config --cflags $(PKGS)`
+COMMON_FLAGS = -Wall -I. -Iinclude -fopenmp -finput-charset=UTF-8 `pkg-config --cflags $(PKGS)`
 LIBS = -lm -lstdc++ -lgomp `pkg-config --libs $(PKGS)`
-OBJS = $(patsubst %.cc,%.o, $(wildcard [A-Z]*.cc))
+LIB_OBJS = $(patsubst %.cc,%.o, $(wildcard lib/*.cc))
+APP_OBJS = $(patsubst %.cc,%.o, $(wildcard src/*.cc))
 
-CFLAGS += $(COMMON_FLAGS)
-CXXFLAGS += -std=c++11 $(COMMON_FLAGS)
+CFLAGS += -flto $(COMMON_FLAGS)
+CXXFLAGS += -std=c++11 -flto $(COMMON_FLAGS)
+LDFLAGS += -flto
 
-PROGRAMS = gps_status
+PROGRAMS = $(patsubst %.cc,%, $(wildcard *.cc))
 
-all: $(PROGRAMS) parse bin
+all: $(PROGRAMS)
 
 clean:
 	@rm -fv .depend *.o $(PROGRAMS)
@@ -21,17 +23,25 @@ clean:
 install: $(PROGRAMS)
 	install -t $(BINDIR) $(PROGRAMS)
 
-$(PROGRAMS): %: $(OBJS)
+# Ordinary programs that just need the libs
+parse: parse.o $(LIB_OBJS)
 	$(CXX) $(LDFLAGS) $^ $(LIBS) -o $@
 
-parse: parse.o NMEA-0183.o
+bin: bin.o $(LIB_OBJS)
 	$(CXX) $(LDFLAGS) $^ $(LIBS) -o $@
 
-bin: bin.o SkyTraqBin.o
-	$(CXX) $(LDFLAGS) $^ $(LIBS) -o $@
-
-%.o: %.cc
+$(LIB_OBJS): %.o: %.cc
 	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# SDL app that also needs stuff in src/
+gps_status: gps_status.o $(LIB_OBJS) $(APP_OBJS)
+	$(CXX) $(LDFLAGS) $^ $(LIBS) -o $@
+
+gps_status.o: gps_status.cc
+	$(CXX) -Isrc $(CXXFLAGS) -c $< -o $@
+
+$(APP_OBJS): %.o: %.cc
+	$(CXX) -Isrc $(CXXFLAGS) -c $< -o $@
 
 depend:
 	touch .depend
