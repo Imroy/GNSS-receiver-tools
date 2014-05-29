@@ -417,7 +417,7 @@ namespace SkyTraqBin {
   {
     for (int i = 3; i <= payload_len - 23; i += 23)
       _measurements.push_back(RawMeasurement(payload[i],
-					     payload[i+1],
+					     payload[i + 1],
 					     read_be<double>(payload, i + 2),
 					     read_be<double>(payload, i + 10),
 					     read_be<float>(payload, i + 18),
@@ -432,13 +432,13 @@ namespace SkyTraqBin {
   {
     for (int i = 3; i <= payload_len - 10; i += 10)
       _statuses.push_back(SvStatus(payload[i],
-				   payload[i+1],
-				   payload[i+2],
-				   payload[i+3],
-				   payload[i+4],
+				   payload[i + 1],
+				   payload[i + 2],
+				   payload[i + 3],
+				   payload[i + 4],
 				   read_be<int16_t>(payload, i + 5),
 				   read_be<int16_t>(payload, i + 7),
-				   payload[i+9]));
+				   payload[i + 9]));
   }
 
 
