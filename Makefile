@@ -13,7 +13,7 @@ CXXFLAGS += -std=c++11 $(COMMON_FLAGS)
 
 PROGRAMS = gps_status
 
-all: $(PROGRAMS)
+all: $(PROGRAMS) parse bin
 
 clean:
 	@rm -fv .depend *.o $(PROGRAMS)
@@ -25,6 +25,9 @@ $(PROGRAMS): %: $(OBJS)
 	$(CXX) $(LDFLAGS) $^ $(LIBS) -o $@
 
 parse: parse.o NMEA-0183.o
+	$(CXX) $(LDFLAGS) $^ $(LIBS) -o $@
+
+bin: bin.o SkyTraqBin.o
 	$(CXX) $(LDFLAGS) $^ $(LIBS) -o $@
 
 %.o: %.cc
