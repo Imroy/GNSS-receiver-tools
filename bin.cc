@@ -55,6 +55,15 @@ int main(int argc, char* argv[]) {
 	  SkyTraqBin::SV_channel_status *sv = msg->cast_as<SkyTraqBin::SV_channel_status>();
 	  if (sv != NULL) {
 	    std::cout << "\tSV channel status, issue of data: " << (int)sv->issue_of_data() << ", " << (int)sv->num_svs() << " SV statuses." << std::endl;
+	    for (auto s : sv->statuses())
+	      std::cout << "\t\tChannel " << (int)s.channel_id
+			<< ", PRN " << (int)s.PRN
+			<< ", URA " << (int)s.URA
+			<< ", CN0 " << (int)s.CN0 << " dBHz"
+			<< ", elevation " << s.elevation << "°"
+			<< ", azimuth " << s.azimuth << "°"
+			<< std::endl;
+
 	  }
 
 
