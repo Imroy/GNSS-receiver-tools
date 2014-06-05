@@ -21,6 +21,13 @@
 
 namespace SkyTraqBin {
 
+  GNSS_boot_status::GNSS_boot_status(unsigned char* payload, Payload_length payload_len) :
+    Output_message_with_subid(payload, payload_len),
+    _status(payload[2]),
+    _flash_type(payload[3])
+  {}
+
+
   Sw_ver::Sw_ver(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _sw_type((SwType)payload[1]),

@@ -21,6 +21,20 @@
 
 namespace SkyTraqBin {
 
+  //! GNSS BOOT STATUS - Boot status of GNSS receiver
+  class GNSS_boot_status : public Output_message_with_subid {
+  private:
+    uint8_t _status, _flash_type;
+
+  public:
+    GNSS_boot_status(unsigned char* payload, Payload_length payload_len);
+
+    inline const uint8_t status(void) const { return _status; }
+    inline const uint8_t flash_type(void) const { return _flash_type; }
+
+  }; // class GNSS_boot_status
+
+
   struct PackedVersion {
     uint8_t X, Y, Z;
 
