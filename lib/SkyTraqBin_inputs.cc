@@ -75,4 +75,12 @@ namespace SkyTraqBin {
   }
 
 
+  void Sw_img_download::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, static_cast<uint8_t>(_baud_rate));
+    append_be(buffer, static_cast<uint8_t>(_flash_type));
+    append_be(buffer, _flash_id);
+    append_be(buffer, static_cast<uint8_t>(_buffer_used));
+  }
+
+
 }; // namespace SkyTraqBin

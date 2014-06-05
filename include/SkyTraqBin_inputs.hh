@@ -25,6 +25,7 @@ namespace SkyTraqBin {
      Common words shortened:
       configure => config
       download => dl
+      image => img
       message => msg
       navigation => nav
       position => pos
@@ -304,6 +305,62 @@ namespace SkyTraqBin {
     inline void set_update_type(UpdateType ut) { _update_type = ut; }
 
   }; // class Config_msg_type
+
+
+  enum class FlashType : uint8_t {
+    Auto = 0,
+      QSPI_Winbond,
+      QSPI_EON,
+      Parallel_Numonyx,
+      Parallel_EON,
+  }; // class FlashType
+
+
+  enum class BufferUsed : uint8_t {
+    Size8K = 0,
+      Size16K,
+      Size24K,
+      Size32K,
+  }; // class BufferUsed
+
+
+  //! SOFTWARE IMAGE DOWNLOAD - Download software image to system flash
+  class Sw_img_download : public Input_message {
+  private:
+    BaudRate _baud_rate;
+    FlashType _flash_type;
+    uint16_t _flash_id;
+    BufferUsed _buffer_used;
+
+    inline const Payload_length body_length(void) const { return 5; }
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    //! Constructor using 'automatic' flash type and flash ID of 0
+    inline Sw_img_download(BaudRate br, BufferUsed bu) :
+      Input_message(0x0b),
+      _baud_rate(br),
+      _flash_type(FlashType::Auto), _flash_id(0),
+      _buffer_used(bu)
+    {}
+
+    inline Sw_img_download(BaudRate br, FlashType ft, uint16_t fid, BufferUsed bu) :
+      Input_message(0x0b),
+      _baud_rate(br),
+      _flash_type(ft), _flash_id(fid),
+      _buffer_used(bu)
+    {}
+
+    inline const BaudRate baud_rate(void) const { return _baud_rate; }
+    inline void set_baud_rate(BaudRate br) { _baud_rate = br; }
+
+    inline const FlashType flash_type(void) const { return _flash_type; }
+    inline void set_flash_type(FlashType ft) { _flash_type = ft; }
+
+    inline const BufferUsed buffer_used(void) const { return _buffer_used; }
+    inline void set_buffer_used(BufferUsed bu) { _buffer_used = bu; }
+
+  }; // class Sw_img_download
 
 
 }; // namespace SkyTraqBin
