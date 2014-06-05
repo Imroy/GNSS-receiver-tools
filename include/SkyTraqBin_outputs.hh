@@ -21,6 +21,24 @@
 
 namespace SkyTraqBin {
 
+  struct PackedVersion {
+    uint8_t X, Y, Z;
+
+    inline PackedVersion(uint8_t x, uint8_t y, uint8_t z) :
+      X(x), Y(y), Z(z)
+    {}
+  }; // struct PackedVersion
+
+
+  struct PackedDate {
+    uint8_t year, month, day;
+
+    inline PackedDate(uint8_t y, uint8_t m, uint8_t d) :
+      year(y), month(m), day(d)
+    {}
+  }; // struct PackedDate
+
+
   //! SOFTWARE VERSION - Software version of the GNSS receiver
   class Sw_ver : public Output_message {
   private:

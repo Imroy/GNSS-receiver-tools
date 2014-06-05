@@ -274,24 +274,6 @@ namespace SkyTraqBin {
   }; // class Config_NMEA_msg
 
 
-  struct PackedVersion {
-    uint8_t X, Y, Z;
-
-    inline PackedVersion(uint8_t x, uint8_t y, uint8_t z) :
-      X(x), Y(y), Z(z)
-    {}
-  }; // struct PackedVersion
-
-
-  struct PackedDate {
-    uint8_t year, month, day;
-
-    inline PackedDate(uint8_t y, uint8_t m, uint8_t d) :
-      year(y), month(m), day(d)
-    {}
-  }; // struct PackedDate
-
-
   enum class MessageType : uint8_t {
     NoOutput = 0,
       NMEA0183,
