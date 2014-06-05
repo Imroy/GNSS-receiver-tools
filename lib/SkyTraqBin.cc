@@ -38,6 +38,7 @@ namespace SkyTraqBin {
     return cs;
   }
 
+
   void Input_message::to_buf(unsigned char* buffer) const {
     append_be<uint8_t>(buffer, 0xa0);
     append_be<uint8_t>(buffer, 0xa1);
@@ -55,20 +56,41 @@ namespace SkyTraqBin {
   }
 
 
-  typedef Output_message::ptr (*output_message_factory)(uint8_t* payload, Payload_length payload_len);
-#define OUTPUT(ID, CLASS) std::make_pair<uint8_t, output_message_factory>(ID, [](uint8_t* payload, Payload_length len) -> Output_message::ptr { return std::make_shared<CLASS>(payload, len); })
+  void Input_message_with_subid::to_buf(unsigned char* buffer) const {
+    append_be<uint8_t>(buffer, 0xa0);
+    append_be<uint8_t>(buffer, 0xa1);
 
-  std::map<uint8_t, output_message_factory> output_message_factories = {
-    OUTPUT(0x80, Sw_ver),
-    OUTPUT(0x81, Sw_CRC),
-    OUTPUT(0x83, Ack),
-    OUTPUT(0x84, Nack),
-    OUTPUT(0x86, Pos_update_rate),
-    OUTPUT(0x93, NMEA_talker_id),
-    OUTPUT(0xdc, Measurement_time),
-    OUTPUT(0xdd, Raw_measurements),
-    OUTPUT(0xde, SV_channel_status),
+    Payload_length payload_len = body_length() + 1 + 1; // include message ID and sub-ID
+    append_be(buffer, payload_len);
+
+    unsigned char *payload = buffer;
+    append_be(buffer, _msg_id);
+    append_be(buffer, _msg_subid);
+    body_to_buf(buffer);
+
+    append_be(buffer, checksum(payload, payload_len));
+    append_be<uint8_t>(buffer, 0x0d);
+    append_be<uint8_t>(buffer, 0x0a);
+  }
+
+
+  typedef Output_message::ptr (*output_message_factory)(uint8_t* payload, Payload_length payload_len);
+#define OUTPUT1(ID, CLASS) std::make_pair<uint16_t, output_message_factory>((ID), [](uint8_t* payload, Payload_length len) -> Output_message::ptr { return std::make_shared<CLASS>(payload, len); })
+#define OUTPUT2(ID, SUBID, CLASS) std::make_pair<uint16_t, output_message_factory>(((ID) << 8) | (SUBID), [](uint8_t* payload, Payload_length len) -> Output_message::ptr { return std::make_shared<CLASS>(payload, len); })
+
+  std::map<uint16_t, output_message_factory> output_message_factories = {
+    OUTPUT1(0x80, Sw_ver),
+    OUTPUT1(0x81, Sw_CRC),
+    OUTPUT1(0x83, Ack),
+    OUTPUT1(0x84, Nack),
+    OUTPUT1(0x86, Pos_update_rate),
+    OUTPUT1(0x93, NMEA_talker_id),
+    OUTPUT1(0xdc, Measurement_time),
+    OUTPUT1(0xdd, Raw_measurements),
+    OUTPUT1(0xde, SV_channel_status),
   };
+#undef OUTPUT1
+#undef OUTPUT2
 
 
   unsigned char *parse_buffer = NULL;
@@ -114,7 +136,9 @@ namespace SkyTraqBin {
 	      throw ChecksumMismatch(ccs, cs);
 	  }
 
-	  uint8_t id = payload[0];
+	  uint16_t id = payload[0];
+	  if ((id >= 0x62) && (id <= 0x65))	// construct a composite id if the message has a sub-ID
+	    id = (payload[0] << 8) | payload[1];
 
 	  if (output_message_factories.count(id) > 0)
 	    messages.push_back((*output_message_factories[id])(payload, payload_len));

@@ -141,6 +141,74 @@ namespace SkyTraqBin {
   }; // class Input_message
 
 
+  //! Role base class for adding a message sub-ID to message classes
+  class subid_role {
+  protected:
+    uint8_t _msg_subid;
+
+  public:
+    //! Constructor
+    subid_role(uint8_t subid) :
+      _msg_subid(subid)
+    {}
+
+    inline const uint8_t message_subid(void) const { return _msg_subid; }
+  }; // class subid_role
+
+
+  //! Base class for messages that come from the GPS receiver with a sub-ID
+  class Output_message_with_subid : public Output_message, public subid_role {
+  protected:
+
+  public:
+    //! Constructor from a binary buffer
+    inline Output_message_with_subid(unsigned char* payload, Payload_length payload_len) :
+      Output_message(payload, payload_len),
+      subid_role(payload_len > 1 ? payload[1] : 0)
+    {}
+
+    typedef std::shared_ptr<Output_message_with_subid> ptr;
+  }; // class Output_message_with_subid
+
+
+  //! Base class for messages that go to the GPS receiver with a sub-ID
+  class Input_message_with_subid : public Input_message, public subid_role {
+  protected:
+    //! The length of the body (not including message id or sub-id)
+    virtual const Payload_length body_length(void) const = 0;
+
+    //! Write body fields into a pre-allocated buffer
+    virtual void body_to_buf(unsigned char* buffer) const = 0;
+
+  public:
+    //! Constructor
+    Input_message_with_subid(uint8_t id, uint8_t subid) :
+      Input_message(id),
+      subid_role(subid)
+    {}
+
+    //! The total length of the message
+    /*! This includes:
+      - start sequence (2)
+      - payload length (2)
+      - message ID (1)
+      - message sub-ID (1)
+      - body length
+      - checksum (1)
+      - end sequence (2)
+    */
+    inline const Payload_length message_length(void) const { return 2 + 2 + 1 + 1 + body_length() + 1 + 2; }
+
+    //! Write the message into a buffer
+    /*!
+      Use message_length() to know how big the buffer needs to be.
+     */
+    virtual void to_buf(unsigned char *buffer) const;
+
+    typedef std::shared_ptr<Input_message_with_subid> ptr;
+  }; // class Input_message_with_subid
+
+
 }; // SkyTraqBin
 
 #include "SkyTraqBin_inputs.hh"
