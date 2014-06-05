@@ -51,4 +51,11 @@ namespace SkyTraqBin {
   }
 
 
+  void Config_serial_port::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _com_port);
+    append_be(buffer, static_cast<uint8_t>(_baud_rate));
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
 }; // namespace SkyTraqBin

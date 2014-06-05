@@ -182,6 +182,54 @@ namespace SkyTraqBin {
   }; // class Set_factory_defaults
 
 
+  enum class BaudRate : uint8_t {
+    Baud4800 = 0,
+    Baud9600,
+    Baud19200,
+    Baud38400,
+    Baud57600,
+    Baud115200,
+    Baud230400,
+    Baud460800,
+    Baud921600,
+  }; // class BaudRate
+
+
+  enum class UpdateType : uint8_t {
+    SRAM = 0,
+      SRAM_and_flash,
+      Temporary,
+  }; // class UpdateType
+
+
+  //! CONFIGURE SERIAL PORT - Set up serial port property
+  class Config_serial_port : public Input_message {
+  private:
+    uint8_t _com_port;
+    BaudRate _baud_rate;
+    UpdateType _update_type;
+
+    inline const Payload_length body_length(void) const { return 4; }
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    inline Config_serial_port(uint8_t cp, BaudRate br, UpdateType ut) :
+      Input_message(0x05),
+      _com_port(cp), _baud_rate(br), _update_type(ut)
+    {}
+
+    inline const uint8_t com_port(void) const { return _com_port; }
+    inline void set_com_port(uint8_t cp) { _com_port = cp; }
+
+    inline const BaudRate baud_rate(void) const { return _baud_rate; }
+    inline void set_baud_rate(BaudRate br) { _baud_rate = br; }
+
+    inline const UpdateType update_type(void) const { return _update_type; }
+    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+
+  }; // class Config_serial_port
+
+
   struct PackedVersion {
     uint8_t X, Y, Z;
 
