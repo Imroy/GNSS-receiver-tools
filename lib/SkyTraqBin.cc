@@ -42,7 +42,7 @@ namespace SkyTraqBin {
     append_be<uint8_t>(buffer, 0xa0);
     append_be<uint8_t>(buffer, 0xa1);
 
-    Payload_length payload_len = body_length() + 1;
+    Payload_length payload_len = body_length() + 1; // include message ID
     append_be(buffer, payload_len);
 
     unsigned char *payload = buffer;

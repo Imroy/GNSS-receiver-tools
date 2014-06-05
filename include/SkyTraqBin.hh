@@ -121,6 +121,14 @@ namespace SkyTraqBin {
     {}
 
     //! The total length of the message
+    /*! This includes:
+      - start sequence (2)
+      - payload length (2)
+      - message ID (1)
+      - body length
+      - checksum (1)
+      - end sequence (2)
+    */
     inline const Payload_length message_length(void) const { return 2 + 2 + 1 + body_length() + 1 + 2; }
 
     //! Write the message into a buffer
