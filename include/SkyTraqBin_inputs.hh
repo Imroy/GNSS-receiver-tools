@@ -275,7 +275,7 @@ namespace SkyTraqBin {
 
 
   enum class MessageType : uint8_t {
-    NoOutput = 0,
+    None = 0,
       NMEA0183,
       Binary,
   }; // class MessageType
@@ -285,11 +285,25 @@ namespace SkyTraqBin {
   class Config_msg_type : public Input_message {
   private:
     MessageType _msg_type;
-    
+    UpdateType _update_type;
+
+    inline const Payload_length body_length(void) const { return 3; }
+    virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    inline Config_msg_type(MessageType mt, UpdateType ut) :
+      Input_message(0x09),
+      _msg_type(mt),
+      _update_type(ut)
+    {}
 
-  }; //class Config_msg_typ
+    inline const MessageType message_type(void) const { return _msg_type; }
+    inline void set_message_type(MessageType mt) { _msg_type = mt; }
+
+    inline const UpdateType update_type(void) const { return _update_type; }
+    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+
+  }; // class Config_msg_type
 
 
 }; // namespace SkyTraqBin
