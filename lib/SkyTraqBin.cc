@@ -27,8 +27,8 @@
 
 namespace SkyTraqBin {
 
-  unsigned char checksum(unsigned char* buffer, Payload_length len) {
-    unsigned char cs = 0;
+  uint8_t checksum(unsigned char* buffer, Payload_length len) {
+    uint8_t cs = 0;
     while (len) {
       cs ^= *buffer;
       buffer++;
@@ -39,8 +39,8 @@ namespace SkyTraqBin {
   }
 
   void Input_message::to_buf(unsigned char* buffer) const {
-    append_be<unsigned char>(buffer, 0xa0);
-    append_be<unsigned char>(buffer, 0xa1);
+    append_be<uint8_t>(buffer, 0xa0);
+    append_be<uint8_t>(buffer, 0xa1);
 
     Payload_length payload_len = body_length() + 1;
     append_be(buffer, payload_len);
@@ -50,13 +50,13 @@ namespace SkyTraqBin {
     body_to_buf(buffer);
 
     append_be(buffer, checksum(payload, payload_len));
-    append_be<unsigned char>(buffer, 0x0d);
-    append_be<unsigned char>(buffer, 0x0a);
+    append_be<uint8_t>(buffer, 0x0d);
+    append_be<uint8_t>(buffer, 0x0a);
   }
 
 
-  typedef Output_message::ptr (*output_message_factory)(unsigned char* payload, Payload_length payload_len);
-#define OUTPUT(ID, CLASS) std::make_pair<uint8_t, output_message_factory>(ID, [](unsigned char* payload, Payload_length len) -> Output_message::ptr { return std::make_shared<CLASS>(payload, len); })
+  typedef Output_message::ptr (*output_message_factory)(uint8_t* payload, Payload_length payload_len);
+#define OUTPUT(ID, CLASS) std::make_pair<uint8_t, output_message_factory>(ID, [](uint8_t* payload, Payload_length len) -> Output_message::ptr { return std::make_shared<CLASS>(payload, len); })
 
   std::map<uint8_t, output_message_factory> output_message_factories = {
     OUTPUT(0x80, Sw_ver),

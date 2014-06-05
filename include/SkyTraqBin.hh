@@ -26,7 +26,7 @@
 
 namespace SkyTraqBin {
 
-  typedef unsigned short int Payload_length;
+  typedef uint16_t Payload_length;
 
   class InvalidMessage : public std::exception {
   private:
@@ -43,10 +43,10 @@ namespace SkyTraqBin {
   //! Exception class for when checksums don't match
   class ChecksumMismatch : public std::exception {
   private:
-    unsigned char _computed_cs, _stream_cs;
+    uint8_t _computed_cs, _stream_cs;
 
   public:
-    ChecksumMismatch(unsigned char ccs, unsigned char scs) :
+    ChecksumMismatch(uint8_t ccs, uint8_t scs) :
       _computed_cs(ccs), _stream_cs(scs)
     {}
 
@@ -62,18 +62,18 @@ namespace SkyTraqBin {
   //! Base class for a binary message
   class Message {
   protected:
-    unsigned char _msg_id;
+    uint8_t _msg_id;
 
   public:
     //! Constructor
-    Message(unsigned char id) :
+    Message(uint8_t id) :
       _msg_id(id)
     {}
 
     //! Virtual destructor to force polymorphism
     inline virtual ~Message() {}
 
-    inline const unsigned char message_id(void) const { return _msg_id; }
+    inline const uint8_t message_id(void) const { return _msg_id; }
 
     //! Check the type of an object
     template <typename T>
@@ -116,7 +116,7 @@ namespace SkyTraqBin {
 
   public:
     //! Constructor
-    Input_message(unsigned char id) :
+    Input_message(uint8_t id) :
       Message(id)
     {}
 
