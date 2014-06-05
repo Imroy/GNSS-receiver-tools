@@ -209,7 +209,7 @@ namespace SkyTraqBin {
     BaudRate _baud_rate;
     UpdateType _update_type;
 
-    inline const Payload_length body_length(void) const { return 4; }
+    inline const Payload_length body_length(void) const { return 3; }
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -236,7 +236,7 @@ namespace SkyTraqBin {
     uint8_t _gga_int, _gsa_int, _gsv_int, _gll_int, _rmc_int, _vtg_int, _zda_int;
     UpdateType _update_type;
 
-    inline const Payload_length body_length(void) const { return 9; }
+    inline const Payload_length body_length(void) const { return 8; }
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -287,7 +287,7 @@ namespace SkyTraqBin {
     MessageType _msg_type;
     UpdateType _update_type;
 
-    inline const Payload_length body_length(void) const { return 3; }
+    inline const Payload_length body_length(void) const { return 2; }
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
