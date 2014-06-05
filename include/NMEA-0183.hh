@@ -92,8 +92,8 @@ namespace NMEA0183 {
   Sentence::ptr parse_sentence(std::string line);
 
 
-  enum class FixQuality {
-    Unavailable,
+  enum class FixQuality : uint8_t {
+    Unavailable = 0,
       SPSmode,
       DGPSmode,
       PPSmode,
@@ -137,8 +137,8 @@ namespace NMEA0183 {
   }; // class GGA
 
 
-  enum class ReceiverMode {
-    unknown,
+  enum class ReceiverMode : uint8_t {
+    unknown = 0,
       NotValid,
       Autonomous,
       Differential,
@@ -167,16 +167,16 @@ namespace NMEA0183 {
   }; // class GLL
 
 
-  enum class OpMode {
-    Manual,
+  enum class OpMode : uint8_t {
+    Manual = 0,
       Automatic,
   }; // class OpMode
 
   std::ostream& operator<< (std::ostream& out, OpMode mode);
 
 
-  enum class FixType {
-    NotAvailable,
+  enum class FixType : uint8_t {
+    NotAvailable = 0,
       TwoDimensional,
       ThreeDimensional,
   }; // class FixType
@@ -302,8 +302,8 @@ namespace NMEA0183 {
   }; // class ZDA
 
 
-  enum class PPSmode {
-    PVT,
+  enum class PPSmode : uint8_t {
+    PVT = 0,
       Survey,
       Static,
   }; // class PPSmode

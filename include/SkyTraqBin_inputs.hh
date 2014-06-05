@@ -34,7 +34,7 @@ namespace SkyTraqBin {
       version => ver
    */
 
-  enum class StartMode {
+  enum class StartMode : uint8_t {
     HotStart = 1,
       WarmStart,
       ColdStart,
@@ -115,7 +115,7 @@ namespace SkyTraqBin {
   };
 
 
-  enum class SwType {
+  enum class SwType : uint8_t {
     SystemCode = 1,
   }; // class SwType
 
@@ -200,7 +200,7 @@ namespace SkyTraqBin {
   }; // struct PackedDate
 
 
-  enum class MessageType {
+  enum class MessageType : uint8_t {
     NoOutput = 0,
       NMEA0183,
       Binary,

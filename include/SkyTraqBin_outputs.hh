@@ -106,8 +106,8 @@ namespace SkyTraqBin {
   }; // class Pos_update_rate
 
 
-  enum class TalkerID {
-    GPmode,
+  enum class TalkerID : uint8_t {
+    GPmode = 0,
       GNmode,
   }; // class TalkerID
 
