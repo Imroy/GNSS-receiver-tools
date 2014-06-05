@@ -363,6 +363,20 @@ namespace SkyTraqBin {
   }; // class Sw_img_download
 
 
+  //! QUERY GNSS BOOT STATUS - Query boot status of GNSS receiver
+  class Q_GNSS_boot_status : public Input_message_with_subid {
+  private:
+    inline const Payload_length body_length(void) const { return 0; }
+    virtual inline void body_to_buf(unsigned char* buffer) const { }
+
+  public:
+    Q_GNSS_boot_status(void) :
+      Input_message_with_subid(0x64, 0x01)
+    {}
+
+  }; // class Q_GNSS_boot_status
+
+
 }; // namespace SkyTraqBin
 
 #endif // __SKYTRAQBIN_INPUTS_HH__
