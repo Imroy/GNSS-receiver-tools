@@ -230,6 +230,50 @@ namespace SkyTraqBin {
   }; // class Config_serial_port
 
 
+  //! CONFIGURE NMEA MESSAGE - Configure NMEA message interval
+  class Config_NMEA_msg : public Input_message {
+  private:
+    uint8_t _gga_int, _gsa_int, _gsv_int, _gll_int, _rmc_int, _vtg_int, _zda_int;
+    UpdateType _update_type;
+
+    inline const Payload_length body_length(void) const { return 9; }
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    inline Config_NMEA_msg(uint8_t gga, uint8_t gsa, uint8_t gsv, uint8_t gll,
+			   uint8_t rmc, uint8_t vtg, uint8_t zda, UpdateType ut) :
+      Input_message(0x08),
+      _gga_int(gga), _gsa_int(gsa), _gsv_int(gsv), _gll_int(gll),
+      _rmc_int(rmc), _vtg_int(vtg), _zda_int(zda), _update_type(ut)
+    {}
+
+    inline const uint8_t GGA_interval(void) const { return _gga_int; }
+    inline void set_GGA_interval(uint8_t i) { _gga_int = i; }
+
+    inline const uint8_t GSA_interval(void) const { return _gsa_int; }
+    inline void set_GSA_interval(uint8_t i) { _gsa_int = i; }
+
+    inline const uint8_t GSV_interval(void) const { return _gsv_int; }
+    inline void set_GSV_interval(uint8_t i) { _gsv_int = i; }
+
+    inline const uint8_t GLL_interval(void) const { return _gll_int; }
+    inline void set_GLL_interval(uint8_t i) { _gll_int = i; }
+
+    inline const uint8_t RMC_interval(void) const { return _rmc_int; }
+    inline void set_RMC_interval(uint8_t i) { _rmc_int = i; }
+
+    inline const uint8_t VTG_interval(void) const { return _vtg_int; }
+    inline void set_VTG_interval(uint8_t i) { _vtg_int = i; }
+
+    inline const uint8_t ZDA_interval(void) const { return _zda_int; }
+    inline void set_ZDA_interval(uint8_t i) { _zda_int = i; }
+
+    inline const UpdateType update_type(void) const { return _update_type; }
+    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+
+  }; // class Config_NMEA_msg
+
+
   struct PackedVersion {
     uint8_t X, Y, Z;
 

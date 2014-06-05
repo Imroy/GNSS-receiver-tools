@@ -58,4 +58,16 @@ namespace SkyTraqBin {
   }
 
 
+  void Config_NMEA_msg::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _gga_int);
+    append_be(buffer, _gsa_int);
+    append_be(buffer, _gsv_int);
+    append_be(buffer, _gll_int);
+    append_be(buffer, _rmc_int);
+    append_be(buffer, _vtg_int);
+    append_be(buffer, _zda_int);
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
 }; // namespace SkyTraqBin
