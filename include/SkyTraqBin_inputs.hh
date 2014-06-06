@@ -394,6 +394,31 @@ namespace SkyTraqBin {
   }; // class Config_sys_power_mode
 
 
+  //! CONFIGURE SYSTEM POSITION RATE - Configure the position update rate of GNSS system
+  class Config_sys_pos_rate : public Input_message {
+  private:
+    uint8_t _rate;
+    UpdateType _update_type;
+
+    inline const Payload_length body_length(void) const { return 2; }
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_sys_pos_rate(uint8_t r, UpdateType ut) :
+      Input_message(0x0e),
+      _rate(r),
+      _update_type(ut)
+    {}
+
+    inline const uint8_t rate(void) const { return _rate; }
+    inline void set_rate(uint8_t r) { _rate = r; }
+
+    inline const UpdateType update_type(void) const { return _update_type; }
+    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+
+  }; // class Config_sys_pos_rate
+
+
   //! QUERY GNSS BOOT STATUS - Query boot status of GNSS receiver
   class Q_GNSS_boot_status : public Input_message_with_subid {
   private:
