@@ -433,6 +433,45 @@ namespace SkyTraqBin {
   }; // class Q_pos_update_rate
 
 
+  //! CONFIGURE NMEA TALKER ID - Configure NMEA talker ID of GNSS receive
+  class Config_NMEA_talker_ID : public Input_message {
+  private:
+    TalkerID _talker_id;
+    UpdateType _update_type;
+
+    inline const Payload_length body_length(void) const { return 2; }
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_NMEA_talker_ID(TalkerID id, UpdateType ut) :
+      Input_message(0x4b),
+      _talker_id(id),
+      _update_type(ut)
+    {}
+
+    inline const TalkerID talker_id(void) const { return _talker_id; }
+    inline void set_talker_id(TalkerID id) { _talker_id = id; }
+
+    inline const UpdateType update_type(void) const { return _update_type; }
+    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+
+  }; // class Config_NMEA_talker_ID
+
+
+  //! QUERY NMEA TALKER ID - Query NMEA talker ID of GNSS receiver
+  class Q_NMEA_talker_ID : public Input_message {
+  private:
+    inline const Payload_length body_length(void) const { return 0; }
+    virtual inline void body_to_buf(unsigned char* buffer) const { }
+
+  public:
+    Q_NMEA_talker_ID(void) :
+      Input_message(0x4f)
+    {}
+
+  }; // class Q_NMEA_talker_ID
+
+
   //! QUERY GNSS BOOT STATUS - Query boot status of GNSS receiver
   class Q_GNSS_boot_status : public Input_message_with_subid {
   private:

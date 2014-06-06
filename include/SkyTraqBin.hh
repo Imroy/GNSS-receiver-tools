@@ -209,6 +209,12 @@ namespace SkyTraqBin {
   }; // class Input_message_with_subid
 
 
+  enum class TalkerID : uint8_t {
+    GP = 0,
+      GN,
+  }; // class TalkerID
+
+
 }; // SkyTraqBin
 
 #include "SkyTraqBin_inputs.hh"

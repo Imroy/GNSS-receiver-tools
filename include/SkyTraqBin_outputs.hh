@@ -138,12 +138,6 @@ namespace SkyTraqBin {
   }; // class Pos_update_rate
 
 
-  enum class TalkerID : uint8_t {
-    GPmode = 0,
-      GNmode,
-  }; // class TalkerID
-
-
   //! GNSS NMEA TALKER ID - NMEA talker ID of GNSS receiver
   class NMEA_talker_ID : public Output_message {
   private:
