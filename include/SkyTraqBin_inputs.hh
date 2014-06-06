@@ -21,6 +21,57 @@
 
 namespace SkyTraqBin {
 
+  enum class StartMode : uint8_t {
+    HotStart = 1,
+      WarmStart,
+      ColdStart,
+  }; // class StartMode
+
+
+  enum class BaudRate : uint8_t {
+    Baud4800 = 0,
+    Baud9600,
+    Baud19200,
+    Baud38400,
+    Baud57600,
+    Baud115200,
+    Baud230400,
+    Baud460800,
+    Baud921600,
+  }; // class BaudRate
+
+
+  enum class UpdateType : uint8_t {
+    SRAM = 0,
+      SRAM_and_flash,
+      Temporary,
+  }; // class UpdateType
+
+
+  enum class MessageType : uint8_t {
+    None = 0,
+      NMEA0183,
+      Binary,
+  }; // class MessageType
+
+
+  enum class FlashType : uint8_t {
+    Auto = 0,
+      QSPI_Winbond,
+      QSPI_EON,
+      Parallel_Numonyx,
+      Parallel_EON,
+  }; // class FlashType
+
+
+  enum class BufferUsed : uint8_t {
+    Size8K = 0,
+      Size16K,
+      Size24K,
+      Size32K,
+  }; // class BufferUsed
+
+
   /* All input message class names shall start with a verb
      Common words shortened:
       configure => config
@@ -34,12 +85,6 @@ namespace SkyTraqBin {
       system => sys
       version => ver
    */
-
-  enum class StartMode : uint8_t {
-    HotStart = 1,
-      WarmStart,
-      ColdStart,
-  }; // class StartMode
 
   //! SYSTEM RESTART - Force System to restart
   class Restart_sys : public Input_message {
@@ -116,11 +161,6 @@ namespace SkyTraqBin {
   };
 
 
-  enum class SwType : uint8_t {
-    SystemCode = 1,
-  }; // class SwType
-
-
   //! QUERY SOFTWARE VERSION - Query revision information of loaded software
   class Q_sw_ver : public Input_message {
   private:
@@ -181,26 +221,6 @@ namespace SkyTraqBin {
     inline void set_reset(bool r) { _reset = r; }
 
   }; // class Set_factory_defaults
-
-
-  enum class BaudRate : uint8_t {
-    Baud4800 = 0,
-    Baud9600,
-    Baud19200,
-    Baud38400,
-    Baud57600,
-    Baud115200,
-    Baud230400,
-    Baud460800,
-    Baud921600,
-  }; // class BaudRate
-
-
-  enum class UpdateType : uint8_t {
-    SRAM = 0,
-      SRAM_and_flash,
-      Temporary,
-  }; // class UpdateType
 
 
   //! CONFIGURE SERIAL PORT - Set up serial port property
@@ -275,13 +295,6 @@ namespace SkyTraqBin {
   }; // class Config_NMEA_msg
 
 
-  enum class MessageType : uint8_t {
-    None = 0,
-      NMEA0183,
-      Binary,
-  }; // class MessageType
-
-
   //! CONFIGURE MESSAGE TYPE - Configure and select output message type
   class Config_msg_type : public Input_message {
   private:
@@ -305,23 +318,6 @@ namespace SkyTraqBin {
     inline void set_update_type(UpdateType ut) { _update_type = ut; }
 
   }; // class Config_msg_type
-
-
-  enum class FlashType : uint8_t {
-    Auto = 0,
-      QSPI_Winbond,
-      QSPI_EON,
-      Parallel_Numonyx,
-      Parallel_EON,
-  }; // class FlashType
-
-
-  enum class BufferUsed : uint8_t {
-    Size8K = 0,
-      Size16K,
-      Size24K,
-      Size32K,
-  }; // class BufferUsed
 
 
   //! SOFTWARE IMAGE DOWNLOAD - Download software image to system flash

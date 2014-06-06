@@ -209,6 +209,11 @@ namespace SkyTraqBin {
   }; // class Input_message_with_subid
 
 
+  enum class SwType : uint8_t {
+    SystemCode = 1,
+  }; // class SwType
+
+
   enum class TalkerID : uint8_t {
     GP = 0,
       GN,
