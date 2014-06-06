@@ -215,6 +215,12 @@ namespace SkyTraqBin {
   }; // class TalkerID
 
 
+  enum class PowerMode : uint8_t {
+    Normal = 0,
+      PowerSave,
+  }; // class PowerMode
+
+
 }; // SkyTraqBin
 
 #include "SkyTraqBin_inputs.hh"

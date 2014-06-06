@@ -72,6 +72,11 @@ namespace SkyTraqBin {
   {}
 
 
+  GNSS_power_mode_status::GNSS_power_mode_status(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _power_mode((PowerMode)payload[1])
+  {}
+
 
   Measurement_time::Measurement_time(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
@@ -80,7 +85,6 @@ namespace SkyTraqBin {
     _time_in_week(extract_be<uint32_t>(payload, 4)),
     _period(extract_be<uint16_t>(payload, 8))
   {}
-
 
 
   Raw_measurements::Raw_measurements(unsigned char* payload, Payload_length payload_len) :

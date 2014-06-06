@@ -152,6 +152,19 @@ namespace SkyTraqBin {
   }; //class NMEA_talker_ID
 
 
+  //! GNSS POWER MODE STATUS - Power mode status of the GNSS receiver
+  class GNSS_power_mode_status : public Output_message {
+  private:
+    PowerMode _power_mode;
+
+  public:
+    GNSS_power_mode_status(unsigned char* payload, Payload_length payload_len);
+
+    inline const PowerMode power_mode(void) const { return _power_mode; }
+
+  }; // class GNSS_power_mode_status
+
+
   //! MEAS_TIME - Measurement time information (0xDC) (Periodic)
   class Measurement_time : public Output_message {
   private:

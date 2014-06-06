@@ -363,12 +363,6 @@ namespace SkyTraqBin {
   }; // class Sw_img_download
 
 
-  enum class PowerMode : uint8_t {
-    Normal = 0,
-      PowerSave,
-  }; // class PowerMode
-
-
   //! CONFIGURE SYSTEM POWER MODE - Set the power mode of GNSS system
   class Config_sys_power_mode : public Input_message {
   private:
@@ -456,6 +450,20 @@ namespace SkyTraqBin {
     inline void set_update_type(UpdateType ut) { _update_type = ut; }
 
   }; // class Config_nav_data_msg_interval
+
+
+  //! QUERY POWER MODE - Query status of power mode of GNSS receiver
+  class Q_power_mode : public Input_message {
+  private:
+    inline const Payload_length body_length(void) const { return 0; }
+    virtual inline void body_to_buf(unsigned char* buffer) const { }
+
+  public:
+    Q_power_mode(void) :
+      Input_message(0x15)
+    {}
+
+  }; // class Q_power_mode
 
 
   //! CONFIGURE NMEA TALKER ID - Configure NMEA talker ID of GNSS receive
