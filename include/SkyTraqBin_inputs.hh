@@ -433,6 +433,31 @@ namespace SkyTraqBin {
   }; // class Q_pos_update_rate
 
 
+  //! CONFIGURE NAVIGATION DATA MESSAGE INTERVAL - Configure binary navigation data message interval
+  class Config_nav_data_msg_interval : public Input_message {
+  private:
+    uint8_t _interval;	// 0: disable
+    UpdateType _update_type;
+
+    inline const Payload_length body_length(void) const { return 2; }
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_nav_data_msg_interval(uint8_t i, UpdateType ut) :
+      Input_message(0x11),
+      _interval(i),
+      _update_type(ut)
+    {}
+
+    inline const uint8_t interval(void) const { return _interval; }
+    inline void set_interval(uint8_t i) { _interval = i; }
+
+    inline const UpdateType update_type(void) const { return _update_type; }
+    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+
+  }; // class Config_nav_data_msg_interval
+
+
   //! CONFIGURE NMEA TALKER ID - Configure NMEA talker ID of GNSS receive
   class Config_NMEA_talker_ID : public Input_message {
   private:
