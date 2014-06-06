@@ -125,10 +125,8 @@ namespace SkyTraqBin {
 	if (parse_length >= end) {
 	  if ((parse_buffer[end - 2] != 0x0d)
 	      || (parse_buffer[end - 1] != 0x0a)) {
-	    std::cerr << "Last two bytes: 0x" << std::hex << std::setw(2) << std::setfill('0') << (int)parse_buffer[end - 2] << ", 0x" << (int)parse_buffer[end - 1] << std::dec << std::endl;
-	    std::cerr << "Removing " << 2 << " bytes from start of parse buffer, now " << (parse_length - 2) << " bytes." << std::endl;;
-	    memmove(parse_buffer, parse_buffer + 2, parse_length - 2);
-	    parse_length -= 2;
+	    memmove(parse_buffer, parse_buffer + start + 2, parse_length - start - 2);
+	    parse_length -= start + 2;
 	    start = 0;
 	    parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length);
 
