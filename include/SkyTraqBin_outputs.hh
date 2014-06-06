@@ -274,7 +274,7 @@ namespace SkyTraqBin {
   public:
     GNSS_elevation_CNR_mask(unsigned char* payload, Payload_length payload_len);
 
-    inline void set_mode_select(ElevationCNRmode ms) { _mode_select = ms; }
+    inline const ElevationCNRmode mode_select(void) { return _mode_select; }
 
     inline const uint8_t elevation_mask(void) const { return _el_mask; }
 
