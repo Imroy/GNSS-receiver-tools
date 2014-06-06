@@ -69,8 +69,15 @@ namespace SkyTraqBin {
     append_be(buffer, static_cast<uint8_t>(_update_type));
   }
 
+
   void Config_msg_type::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, static_cast<uint8_t>(_msg_type));
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
+  void Config_sys_power_mode::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, static_cast<uint8_t>(_power_mode));
     append_be(buffer, static_cast<uint8_t>(_update_type));
   }
 

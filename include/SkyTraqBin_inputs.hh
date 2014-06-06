@@ -363,6 +363,37 @@ namespace SkyTraqBin {
   }; // class Sw_img_download
 
 
+  enum class PowerMode : uint8_t {
+    Normal = 0,
+      PowerSave,
+  }; // class PowerMode
+
+
+  //! CONFIGURE SYSTEM POWER MODE - Set the power mode of GNSS system
+  class Config_sys_power_mode : public Input_message {
+  private:
+    PowerMode _power_mode;
+    UpdateType _update_type;
+
+    inline const Payload_length body_length(void) const { return 2; }
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_sys_power_mode(PowerMode pm, UpdateType ut) :
+      Input_message(0x0c),
+      _power_mode(pm),
+      _update_type(ut)
+    {}
+
+    inline const PowerMode power_mode(void) const { return _power_mode; }
+    inline void set_power_mode(PowerMode pm) { _power_mode = pm; }
+
+    inline const UpdateType update_type(void) const { return _update_type; }
+    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+
+  }; // class Config_sys_power_mode
+
+
   //! QUERY GNSS BOOT STATUS - Query boot status of GNSS receiver
   class Q_GNSS_boot_status : public Input_message_with_subid {
   private:
