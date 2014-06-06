@@ -112,6 +112,15 @@ namespace SkyTraqBin {
   }
 
 
+  void Config_DOP_mask::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, static_cast<uint8_t>(_dop_mode));
+    append_be(buffer, _pdop);
+    append_be(buffer, _hdop);
+    append_be(buffer, _gdop);
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
   void Sw_img_download::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, static_cast<uint8_t>(_baud_rate));
     append_be(buffer, static_cast<uint8_t>(_flash_type));

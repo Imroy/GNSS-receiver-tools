@@ -226,6 +226,15 @@ namespace SkyTraqBin {
   }; // class PowerMode
 
 
+  enum class DOPmode : uint8_t {
+    Disable = 0,
+      Auto,
+      PDOP_only,
+      HDOP_only,
+      GDOP_only,
+  }; // class DOPmode
+
+
 }; // SkyTraqBin
 
 #include "SkyTraqBin_inputs.hh"

@@ -88,6 +88,7 @@ namespace SkyTraqBin {
     OUTPUT1(0x93, NMEA_talker_ID),
     OUTPUT1(0xA8, Nav_data_msg),
     OUTPUT1(0xAE, GNSS_datum),
+    OUTPUT1(0xAF, GNSS_DOP_mask),
     OUTPUT1(0xB9, GNSS_power_mode_status),
     OUTPUT1(0xDC, Measurement_time),
     OUTPUT1(0xDD, Raw_measurements),

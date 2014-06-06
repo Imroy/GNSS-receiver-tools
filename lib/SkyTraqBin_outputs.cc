@@ -94,6 +94,15 @@ namespace SkyTraqBin {
   {}
 
 
+  GNSS_DOP_mask::GNSS_DOP_mask(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _dop_mode((DOPmode)payload[1]),
+    _pdop(extract_be<int16_t>(payload, 2)),
+    _hdop(extract_be<int16_t>(payload, 4)),
+    _gdop(extract_be<int16_t>(payload, 6))
+  {}
+
+
   GNSS_power_mode_status::GNSS_power_mode_status(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _power_mode((PowerMode)payload[1])

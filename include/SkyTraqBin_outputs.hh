@@ -242,6 +242,29 @@ namespace SkyTraqBin {
   }; // class GNSS_datum
 
 
+  //! GNSS DOP MASK - DOP Mask used by the GNSS receiver
+  class GNSS_DOP_mask : public Output_message {
+  private:
+    DOPmode _dop_mode;
+    uint16_t _pdop, _hdop, _gdop; // * 0.1
+
+  public:
+    GNSS_DOP_mask(unsigned char* payload, Payload_length payload_len);
+
+    inline const DOPmode DOP_mode(void) const { return _dop_mode; }
+
+    inline const double PDOP(void) const { return _pdop * 0.1; }
+    inline const uint16_t PDOP_raw(void) const { return _pdop; }
+
+    inline const double HDOP(void) const { return _hdop * 0.1; }
+    inline const uint16_t HDOP_raw(void) const { return _hdop; }
+
+    inline const double GDOP(void) const { return _gdop * 0.1; }
+    inline const uint16_t GDOP_raw(void) const { return _gdop; }
+
+  }; // class GNSS_DOP_mask
+
+
   //! GNSS POWER MODE STATUS - Power mode status of the GNSS receiver
   class GNSS_power_mode_status : public Output_message {
   private:

@@ -512,6 +512,55 @@ namespace SkyTraqBin {
   }; // class Config_datum
 
 
+  //! CONFIGURE DOP MASK - Configure values of DOP mask
+  class Config_DOP_mask : public Input_message {
+  private:
+    DOPmode _dop_mode;
+    uint16_t _pdop, _hdop, _gdop; // * 0.1
+    UpdateType _update_type;
+
+    inline const Payload_length body_length(void) const { return 8; }
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_DOP_mask(DOPmode m, double p, double h, double g, UpdateType ut) :
+      Input_message(0x2A),
+      _dop_mode(m),
+      _pdop(p * 10), _hdop(h * 10), _gdop(g * 10),
+      _update_type(ut)
+    {}
+
+    Config_DOP_mask(DOPmode m, uint16_t p, uint16_t h, uint16_t g, UpdateType ut) :
+      Input_message(0x2A),
+      _dop_mode(m),
+      _pdop(p), _hdop(h), _gdop(g),
+      _update_type(ut)
+    {}
+
+    inline const DOPmode DOP_mode(void) const { return _dop_mode; }
+    inline void set_DOP_mode(DOPmode m) { _dop_mode = m; }
+
+    inline const double PDOP(void) const { return _pdop * 0.1; }
+    inline const uint16_t PDOP_raw(void) const { return _pdop; }
+    inline void set_PDOP(double p) { _pdop = p * 10; }
+    inline void set_PDOP(uint16_t p) { _pdop = p; }
+
+    inline const double HDOP(void) const { return _hdop * 0.1; }
+    inline const uint16_t HDOP_raw(void) const { return _hdop; }
+    inline void set_HDOP(double h) { _hdop = h * 10; }
+    inline void set_HDOP(uint16_t h) { _hdop = h; }
+
+    inline const double GDOP(void) const { return _gdop * 0.1; }
+    inline const uint16_t GDOP_raw(void) const { return _gdop; }
+    inline void set_GDOP(double g) { _gdop = g * 10; }
+    inline void set_GDOP(uint16_t g) { _gdop = g; }
+
+    inline const UpdateType update_type(void) const { return _update_type; }
+    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+
+  }; // class Config_DOP_mask
+
+
   //! QUERY DATUM - Query datum used by the GNSS receiver
   class Q_datum : public Input_message {
   private:
@@ -524,6 +573,20 @@ namespace SkyTraqBin {
     {}
 
   }; // class Q_datum
+
+
+  //! QUERY DOP MASK - Query information of DOP mask used by the GNSS receiver
+  class Q_DOP_mask : public Input_message {
+  private:
+    inline const Payload_length body_length(void) const { return 0; }
+    virtual inline void body_to_buf(unsigned char* buffer) const {}
+
+  public:
+    Q_DOP_mask(void) :
+      Input_message(0x2E)
+    {}
+
+  }; // class Q_DOP_mask
 
 
   //! CONFIGURE NMEA TALKER ID - Configure NMEA talker ID of GNSS receive
