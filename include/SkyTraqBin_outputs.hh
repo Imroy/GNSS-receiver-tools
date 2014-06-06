@@ -145,17 +145,17 @@ namespace SkyTraqBin {
 
 
   //! GNSS NMEA TALKER ID - NMEA talker ID of GNSS receiver
-  class NMEA_talker_id : public Output_message {
+  class NMEA_talker_ID : public Output_message {
   private:
     TalkerID _talker_id;
 
   public:
     //! Constructor from a binary buffer
-    NMEA_talker_id(unsigned char* payload, Payload_length payload_len);
+    NMEA_talker_ID(unsigned char* payload, Payload_length payload_len);
 
     inline const TalkerID talker_id(void) const { return _talker_id; }
 
-  }; //class NMEA_talker_id
+  }; //class NMEA_talker_ID
 
 
   //! MEAS_TIME - Measurement time information (0xDC) (Periodic)

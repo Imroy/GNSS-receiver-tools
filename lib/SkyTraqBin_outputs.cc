@@ -66,7 +66,7 @@ namespace SkyTraqBin {
   {}
 
 
-  NMEA_talker_id::NMEA_talker_id(unsigned char* payload, Payload_length payload_len) :
+  NMEA_talker_ID::NMEA_talker_ID(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _talker_id((TalkerID)payload[1])
   {}

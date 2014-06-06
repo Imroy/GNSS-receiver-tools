@@ -85,7 +85,7 @@ namespace SkyTraqBin {
     OUTPUT1(0x83, Ack),
     OUTPUT1(0x84, Nack),
     OUTPUT1(0x86, Pos_update_rate),
-    OUTPUT1(0x93, NMEA_talker_id),
+    OUTPUT1(0x93, NMEA_talker_ID),
     OUTPUT1(0xdc, Measurement_time),
     OUTPUT1(0xdd, Raw_measurements),
     OUTPUT1(0xde, SV_channel_status),
