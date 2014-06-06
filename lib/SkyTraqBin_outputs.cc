@@ -72,6 +72,22 @@ namespace SkyTraqBin {
   {}
 
 
+  Nav_data_msg::Nav_data_msg(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _fix_type((FixType)payload[1]),
+    _num_sv(payload[2]),
+    _week_no(extract_be<uint16_t>(payload, 3)),
+    _tow(extract_be<uint32_t>(payload, 5)),
+    _lat(extract_be<int32_t>(payload, 9)), _lon(extract_be<int32_t>(payload, 13)),
+    _e_alt(extract_be<int32_t>(payload, 17)), _alt(extract_be<int32_t>(payload, 21)),
+    _gdop(extract_be<uint16_t>(payload, 25)), _pdop(extract_be<uint16_t>(payload, 27)),
+    _hdop(extract_be<uint16_t>(payload, 29)), _vdop(extract_be<uint16_t>(payload, 31)),
+    _tdop(extract_be<uint16_t>(payload, 33)),
+    _ecef_x(extract_be<int32_t>(payload, 35)), _ecef_y(extract_be<int32_t>(payload, 39)), _ecef_z(extract_be<int32_t>(payload, 43)),
+    _ecef_vx(extract_be<int32_t>(payload, 47)), _ecef_vy(extract_be<int32_t>(payload, 51)), _ecef_vz(extract_be<int32_t>(payload, 55))
+  {}
+
+
   GNSS_power_mode_status::GNSS_power_mode_status(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _power_mode((PowerMode)payload[1])

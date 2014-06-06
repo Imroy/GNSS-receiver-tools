@@ -21,6 +21,14 @@
 
 namespace SkyTraqBin {
 
+  enum class FixType : uint8_t {
+    None = 0,
+      TwoDimensional,
+      ThreeDimensional,
+      Differential,
+  }; // class FixType
+
+
   //! GNSS BOOT STATUS - Boot status of GNSS receiver
   class GNSS_boot_status : public Output_message_with_subid {
   private:
@@ -150,6 +158,75 @@ namespace SkyTraqBin {
     inline const TalkerID talker_id(void) const { return _talker_id; }
 
   }; //class NMEA_talker_ID
+
+
+  //! NAVIGATION DATA MESSAGE - Message of user navigation data in binary format
+  class Nav_data_msg : public Output_message {
+  private:
+    FixType _fix_type;
+    uint8_t _num_sv;
+    uint16_t _week_no;
+    uint32_t _tow;
+    int32_t _lat, _lon; // * 1e-7 degrees, negative is south/west
+    int32_t _e_alt, _alt; // centimetres (this must be signed, right?)
+    uint16_t _gdop, _pdop, _hdop, _vdop, _tdop; // * 1e-2
+    int32_t _ecef_x, _ecef_y, _ecef_z; // centimetres
+    int32_t _ecef_vx, _ecef_vy, _ecef_vz; // centimetres/s
+
+  public:
+    Nav_data_msg(unsigned char* payload, Payload_length payload_len);
+
+    inline const FixType fix_type(void) const { return _fix_type; }
+    inline const uint8_t num_sv(void) const { return _num_sv; }
+    inline const uint16_t week_no(void) const { return _week_no; }
+    inline const uint32_t time_of_week(void) const { return _tow; }
+
+    inline const double lat(void) const { return _lat * 1e-7; }
+    inline const int32_t lat_raw(void) const { return _lat; }
+
+    inline const double lon(void) const { return _lon * 1e-7; }
+    inline const int32_t lon_raw(void) const { return _lon; }
+
+    inline const double ellipsoid_alt(void) const { return _e_alt * 0.01; }
+    inline const int32_t ellipsoid_alt_raw(void) const { return _e_alt; }
+
+    inline const double alt(void) const { return _alt * 0.01; }
+    inline const int32_t alt_raw(void) const { return _alt; }
+
+    inline const double GDOP(void) const { return _gdop * 0.01; }
+    inline const uint16_t GDOP_raw(void) const { return _gdop; }
+
+    inline const double PDOP(void) const { return _pdop * 0.01; }
+    inline const uint16_t PDOP_raw(void) const { return _pdop; }
+
+    inline const double HDOP(void) const { return _hdop * 0.01; }
+    inline const uint16_t HDOP_raw(void) const { return _hdop; }
+
+    inline const double VDOP(void) const { return _vdop * 0.01; }
+    inline const uint16_t VDOP_raw(void) const { return _vdop; }
+
+    inline const double TDOP(void) const { return _tdop * 0.01; }
+    inline const uint16_t TDOP_raw(void) const { return _tdop; }
+
+    inline const double ECEF_X(void) const { return _ecef_x * 0.01; }
+    inline const int32_t ECEF_X_raw(void) const { return _ecef_x; }
+
+    inline const double ECEF_Y(void) const { return _ecef_y * 0.01; }
+    inline const int32_t ECEF_Y_raw(void) const { return _ecef_y; }
+
+    inline const double ECEF_Z(void) const { return _ecef_z * 0.01; }
+    inline const int32_t ECEF_Z_raw(void) const { return _ecef_z; }
+
+    inline const double ECEF_VX(void) const { return _ecef_vx * 0.01; }
+    inline const int32_t ECEF_VX_raw(void) const { return _ecef_vx; }
+
+    inline const double ECEF_VY(void) const { return _ecef_vy * 0.01; }
+    inline const int32_t ECEF_VY_raw(void) const { return _ecef_vy; }
+
+    inline const double ECEF_VZ(void) const { return _ecef_vz * 0.01; }
+    inline const int32_t ECEF_VZ_raw(void) const { return _ecef_vz; }
+
+  }; // class Nav_data_msg
 
 
   //! GNSS POWER MODE STATUS - Power mode status of the GNSS receiver
