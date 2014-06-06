@@ -100,6 +100,17 @@ namespace SkyTraqBin {
   }
 
 
+  void Config_bin_measurement_output_rates::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, static_cast<uint8_t>(_output_rate));
+    append_be(buffer, _meas_time);
+    append_be(buffer, _raw_meas);
+    append_be(buffer, _sv_ch_status);
+    append_be(buffer, _rcv_state);
+    append_be(buffer, _subframe);
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
   void Config_datum::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, _datum_index);
     append_be(buffer, _ellip_index);

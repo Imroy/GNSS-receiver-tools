@@ -57,6 +57,16 @@ namespace SkyTraqBin {
   }; // class MessageType
 
 
+  enum class OutputRate : uint8_t {
+    Rate1Hz = 0,
+      Rate2Hz,
+      Rate4Hz,
+      Rate5Hz,
+      Rate10Hz,
+      Rate20Hz,
+  }; // class OutputRate
+
+
   enum class FlashType : uint8_t {
     Auto = 0,
       QSPI_Winbond,
@@ -444,6 +454,53 @@ namespace SkyTraqBin {
     inline void set_update_type(UpdateType ut) { _update_type = ut; }
 
   }; // class Config_nav_data_msg_interval
+
+
+  //! Configure Binary Measurement Output Rates
+  class Config_bin_measurement_output_rates : public Input_message {
+  private:
+    OutputRate _output_rate;
+    bool _meas_time, _raw_meas, _sv_ch_status, _rcv_state, _subframe;
+    UpdateType _update_type;
+
+    inline const Payload_length body_length(void) const { return 7; }
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_bin_measurement_output_rates(OutputRate o, bool mt, bool rm, bool svch, bool rcv, bool sub, UpdateType ut) :
+      Input_message(0x12),
+      _output_rate(o),
+      _meas_time(mt), _raw_meas(rm), _sv_ch_status(svch), _rcv_state(rcv), _subframe(sub),
+      _update_type(ut)
+    {}
+
+    inline const OutputRate output_rate(void) const { return _output_rate; }
+    inline void set_output_rate(OutputRate o) { _output_rate = o; }
+
+    inline const bool meas_time(void) const { return _meas_time; }
+    inline void set_meas_time(bool mt=true) { _meas_time = mt; }
+    inline void unset_meas_time(void) { _meas_time = false; }
+
+    inline const bool raw_meas(void) const { return _raw_meas; }
+    inline void set_raw_meas(bool rm=true) { _raw_meas = rm; }
+    inline void unset_raw_meas(void) { _raw_meas = false; }
+
+    inline const bool SV_CH_status(void) const { return _sv_ch_status; }
+    inline void set_SV_CH_status(bool svch=true) { _sv_ch_status = svch; }
+    inline void unset_SV_CH_status(void) { _sv_ch_status = false; }
+
+    inline const bool RCV_state(void) const { return _rcv_state; }
+    inline void set_RCV_state(bool rcv=true) { _rcv_state = rcv; }
+    inline void unset_RCV_state(void) { _rcv_state = false; }
+
+    inline const bool subframe(void) const { return _subframe; }
+    inline void set_subframe(bool sub=true) { _subframe = sub; }
+    inline void unset_subframe(void) { _subframe = false; }
+
+    inline const UpdateType update_type(void) const { return _update_type; }
+    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+
+  }; // class Config_bin_measurement_output_rates
 
 
   //! QUERY POWER MODE - Query status of power mode of GNSS receiver

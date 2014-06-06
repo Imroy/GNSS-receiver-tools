@@ -18,6 +18,13 @@
 */
 #include "BE.hh"
 
+// Write a boolean as a single byte
+template <>
+void append_be<bool>(unsigned char* &buffer, bool val) {
+  buffer[0] = (unsigned char)val;
+  buffer++;
+}
+
 template <>
 void append_be<char>(unsigned char* &buffer, char val) {
   buffer[0] = val;
