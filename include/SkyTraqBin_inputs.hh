@@ -411,10 +411,6 @@ namespace SkyTraqBin {
 
   //! QUERY POSITION UPDATE RATE - Query the position update rate of GNSS system
   class Q_pos_update_rate : public Input_message {
-  private:
-    inline const Payload_length body_length(void) const { return 0; }
-    virtual inline void body_to_buf(unsigned char* buffer) const { }
-
   public:
     Q_pos_update_rate(void) :
       Input_message(0x10)
@@ -450,10 +446,6 @@ namespace SkyTraqBin {
 
   //! QUERY POWER MODE - Query status of power mode of GNSS receiver
   class Q_power_mode : public Input_message {
-  private:
-    inline const Payload_length body_length(void) const { return 0; }
-    virtual inline void body_to_buf(unsigned char* buffer) const { }
-
   public:
     Q_power_mode(void) :
       Input_message(0x15)
@@ -596,10 +588,6 @@ namespace SkyTraqBin {
 
   //! QUERY DATUM - Query datum used by the GNSS receiver
   class Q_datum : public Input_message {
-  private:
-    inline const Payload_length body_length(void) const { return 0; }
-    virtual inline void body_to_buf(unsigned char* buffer) const {}
-
   public:
     Q_datum(void) :
       Input_message(0x2D)
@@ -610,10 +598,6 @@ namespace SkyTraqBin {
 
   //! QUERY DOP MASK - Query information of DOP mask used by the GNSS receiver
   class Q_DOP_mask : public Input_message {
-  private:
-    inline const Payload_length body_length(void) const { return 0; }
-    virtual inline void body_to_buf(unsigned char* buffer) const {}
-
   public:
     Q_DOP_mask(void) :
       Input_message(0x2E)
@@ -624,10 +608,6 @@ namespace SkyTraqBin {
 
   //! QUERY ELEVATION AND CNR MASK - Query elevation and CNR mask used by the GNSS receiver
   class Q_elevation_CNR_mask : public Input_message {
-  private:
-    inline const Payload_length body_length(void) const { return 0; }
-    virtual inline void body_to_buf(unsigned char* buffer) const {}
-
   public:
     Q_elevation_CNR_mask(void) :
       Input_message(0x2F)
@@ -663,10 +643,6 @@ namespace SkyTraqBin {
 
   //! QUERY NMEA TALKER ID - Query NMEA talker ID of GNSS receiver
   class Q_NMEA_talker_ID : public Input_message {
-  private:
-    inline const Payload_length body_length(void) const { return 0; }
-    virtual inline void body_to_buf(unsigned char* buffer) const { }
-
   public:
     Q_NMEA_talker_ID(void) :
       Input_message(0x4f)

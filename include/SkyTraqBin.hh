@@ -109,10 +109,10 @@ namespace SkyTraqBin {
   class Input_message : public Message {
   protected:
     //! The length of the body (not including message id)
-    virtual const Payload_length body_length(void) const = 0;
+    virtual inline const Payload_length body_length(void) const { return 0; }
 
     //! Write body fields into a pre-allocated buffer
-    virtual void body_to_buf(unsigned char* buffer) const = 0;
+    virtual inline void body_to_buf(unsigned char* buffer) const { }
 
   public:
     //! Constructor
