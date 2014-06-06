@@ -235,6 +235,14 @@ namespace SkyTraqBin {
   }; // class DOPmode
 
 
+  enum class ElevationCNRmode : uint8_t {
+    Disable = 0,
+      ElevationCNR,
+      Elevation_only,
+      CNR_only,
+  }; // class ElevationCNRmode
+
+
 }; // SkyTraqBin
 
 #include "SkyTraqBin_inputs.hh"

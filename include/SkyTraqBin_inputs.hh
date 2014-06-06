@@ -561,6 +561,39 @@ namespace SkyTraqBin {
   }; // class Config_DOP_mask
 
 
+  //! CONFIGURE ELEVATION AND CNR MASK - Configure values of elevation and CNR mask
+  class Config_elevation_CNR_mask : public Input_message {
+  private:
+    ElevationCNRmode _mode_select;
+    uint8_t _el_mask, _cnr_mask;
+    UpdateType _update_type;
+
+    inline const Payload_length body_length(void) const { return 8; }
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_elevation_CNR_mask(ElevationCNRmode ms, uint8_t em, uint8_t cm, UpdateType ut) :
+      Input_message(0x2B),
+      _mode_select(ms),
+      _el_mask(em), _cnr_mask(cm),
+      _update_type(ut)
+    {}
+
+    inline const ElevationCNRmode mode_select(void) const { return _mode_select; }
+    inline void set_mode_select(ElevationCNRmode ms) { _mode_select = ms; }
+
+    inline const uint8_t elevation_mask(void) const { return _el_mask; }
+    inline void set_elevation_mask(uint8_t em) { _el_mask = em; }
+
+    inline const uint8_t CNR_mask(void) const { return _cnr_mask; }
+    inline void set_CNR_mask(uint8_t cm) { _cnr_mask = cm; }
+
+    inline const UpdateType update_type(void) const { return _update_type; }
+    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+
+  }; // class Config_elevation_CNR_mask
+
+
   //! QUERY DATUM - Query datum used by the GNSS receiver
   class Q_datum : public Input_message {
   private:
@@ -587,6 +620,20 @@ namespace SkyTraqBin {
     {}
 
   }; // class Q_DOP_mask
+
+
+  //! QUERY ELEVATION AND CNR MASK - Query elevation and CNR mask used by the GNSS receiver
+  class Q_elevation_CNR_mask : public Input_message {
+  private:
+    inline const Payload_length body_length(void) const { return 0; }
+    virtual inline void body_to_buf(unsigned char* buffer) const {}
+
+  public:
+    Q_elevation_CNR_mask(void) :
+      Input_message(0x2F)
+    {}
+
+  }; // class Q_elevation_CNR_mask
 
 
   //! CONFIGURE NMEA TALKER ID - Configure NMEA talker ID of GNSS receive

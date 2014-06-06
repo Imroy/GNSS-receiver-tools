@@ -103,6 +103,15 @@ namespace SkyTraqBin {
   {}
 
 
+  GNSS_elevation_CNR_mask::GNSS_elevation_CNR_mask(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _mode_select((ElevationCNRmode)payload[1]),
+    _el_mask(payload[2]),
+    _cnr_mask(payload[3])
+  {}
+
+
+
   GNSS_power_mode_status::GNSS_power_mode_status(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _power_mode((PowerMode)payload[1])

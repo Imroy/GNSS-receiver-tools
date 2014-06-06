@@ -265,6 +265,24 @@ namespace SkyTraqBin {
   }; // class GNSS_DOP_mask
 
 
+  //! GNSS ELEVATION AND CNR MASK - Elevation and CNR mask used by the GNSS receiver
+  class GNSS_elevation_CNR_mask : public Output_message {
+  private:
+    ElevationCNRmode _mode_select;
+    uint8_t _el_mask, _cnr_mask;
+
+  public:
+    GNSS_elevation_CNR_mask(unsigned char* payload, Payload_length payload_len);
+
+    inline void set_mode_select(ElevationCNRmode ms) { _mode_select = ms; }
+
+    inline const uint8_t elevation_mask(void) const { return _el_mask; }
+
+    inline const uint8_t CNR_mask(void) const { return _cnr_mask; }
+
+  }; // class GNSS_elevation_CNR_mask
+
+
   //! GNSS POWER MODE STATUS - Power mode status of the GNSS receiver
   class GNSS_power_mode_status : public Output_message {
   private:
