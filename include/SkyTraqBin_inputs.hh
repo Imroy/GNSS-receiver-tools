@@ -462,6 +462,70 @@ namespace SkyTraqBin {
   }; // class Q_power_mode
 
 
+  //! CONFIGURE DATUM - Configure datum used for GNSS position transformation
+  class Config_datum : public Input_message {
+  private:
+    uint16_t _datum_index;
+    uint8_t _ellip_index;
+    int16_t _delta_x, _delta_y, _delta_z; // metres
+    uint32_t _semi_major_axis, _inv_flattening;
+    UpdateType _update_type;
+
+    inline const Payload_length body_length(void) const { return 18; }
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_datum(uint16_t di, uint8_t ei,
+		 int16_t dx, int16_t dy, int16_t dz,
+		 uint32_t sma, uint32_t inf, UpdateType ut) :
+      Input_message(0x29),
+      _datum_index(di), _ellip_index(ei),
+      _delta_x(dx), _delta_y(dy), _delta_z(dz),
+      _semi_major_axis(sma), _inv_flattening(inf),
+      _update_type(ut)
+    {}
+
+    inline const uint16_t datum_index(void) const { return _datum_index; }
+    inline void set_datum_index(uint16_t di) { _datum_index = di; }
+
+    inline const uint8_t ellipsoid_index(void) const { return _ellip_index; }
+    inline void set_ellipsoid_index(uint8_t ei) { _ellip_index = ei; }
+
+    inline const int16_t delta_X(void) const { return _delta_x; }
+    inline void set_delta_X(int16_t dx) { _delta_x = dx; }
+
+    inline const int16_t delta_Y(void) const { return _delta_y; }
+    inline void set_delta_Y(int16_t dy) { _delta_y = dy; }
+
+    inline const int16_t delta_Z(void) const { return _delta_z; }
+    inline void set_delta_Z(int16_t dz) { _delta_z = dz; }
+
+    inline const uint32_t semi_major_axis(void) const { return _semi_major_axis; }
+    inline void set_semi_major_axis(uint32_t sma) { _semi_major_axis = sma; }
+
+    inline const uint32_t inv_flattening(void) const { return _inv_flattening; }
+    inline void set_inv_flattening(uint32_t inf) { _inv_flattening = inf; }
+
+    inline const UpdateType update_type(void) const { return _update_type; }
+    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+
+  }; // class Config_datum
+
+
+  //! QUERY DATUM - Query datum used by the GNSS receiver
+  class Q_datum : public Input_message {
+  private:
+    inline const Payload_length body_length(void) const { return 0; }
+    virtual inline void body_to_buf(unsigned char* buffer) const {}
+
+  public:
+    Q_datum(void) :
+      Input_message(0x2D)
+    {}
+
+  }; // class Q_datum
+
+
   //! CONFIGURE NMEA TALKER ID - Configure NMEA talker ID of GNSS receive
   class Config_NMEA_talker_ID : public Input_message {
   private:

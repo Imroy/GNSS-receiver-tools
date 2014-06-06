@@ -100,6 +100,18 @@ namespace SkyTraqBin {
   }
 
 
+  void Config_datum::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _datum_index);
+    append_be(buffer, _ellip_index);
+    append_be(buffer, _delta_x);
+    append_be(buffer, _delta_y);
+    append_be(buffer, _delta_z);
+    append_be(buffer, _semi_major_axis);
+    append_be(buffer, _inv_flattening);
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
   void Sw_img_download::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, static_cast<uint8_t>(_baud_rate));
     append_be(buffer, static_cast<uint8_t>(_flash_type));
