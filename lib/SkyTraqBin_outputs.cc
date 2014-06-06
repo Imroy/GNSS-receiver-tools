@@ -111,6 +111,15 @@ namespace SkyTraqBin {
   {}
 
 
+  GPS_ephemeris_data::GPS_ephemeris_data(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _sv_num(extract_be<uint16_t>(payload, 1))
+  {
+    memcpy(&_subframe1, payload + 3, 28);
+    memcpy(&_subframe2, payload + 31, 28);
+    memcpy(&_subframe3, payload + 59, 28);
+  }
+
 
   GNSS_power_mode_status::GNSS_power_mode_status(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),

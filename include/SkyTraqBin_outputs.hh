@@ -283,6 +283,22 @@ namespace SkyTraqBin {
   }; // class GNSS_elevation_CNR_mask
 
 
+  //! GPS EPHEMERIS DATA - GPS ephemeris data of the GPS receiver
+  class GPS_ephemeris_data : public Output_message {
+  private:
+    uint16_t _sv_num;
+    uint8_t _subframe1[28], _subframe2[28], _subframe3[28];
+
+  public:
+    GPS_ephemeris_data(unsigned char* payload, Payload_length payload_len);
+
+    inline const uint8_t* subframe1(void) const { return _subframe1; }
+    inline const uint8_t* subframe2(void) const { return _subframe2; }
+    inline const uint8_t* subframe3(void) const { return _subframe3; }
+
+  }; // class GPS_ephemeris_data
+
+
   //! GNSS POWER MODE STATUS - Power mode status of the GNSS receiver
   class GNSS_power_mode_status : public Output_message {
   private:

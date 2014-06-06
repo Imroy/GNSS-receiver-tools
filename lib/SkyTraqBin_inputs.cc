@@ -129,6 +129,23 @@ namespace SkyTraqBin {
   }
 
 
+  void Get_GPS_ephemeris::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _sv_num);
+  }
+
+
+  void Set_GPS_ephemeris::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _sv_num);
+    int i;
+    for (i = 0; i < 28; i++)
+      append_be(buffer, _subframe1[i]);
+    for (i = 0; i < 28; i++)
+      append_be(buffer, _subframe2[i]);
+    for (i = 0; i < 28; i++)
+      append_be(buffer, _subframe3[i]);
+  }
+
+
   void Sw_img_download::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, static_cast<uint8_t>(_baud_rate));
     append_be(buffer, static_cast<uint8_t>(_flash_type));

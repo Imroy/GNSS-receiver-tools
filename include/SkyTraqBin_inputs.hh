@@ -19,6 +19,8 @@
 #ifndef __SKYTRAQBIN_INPUTS_HH__
 #define __SKYTRAQBIN_INPUTS_HH__
 
+#include <string.h>
+
 namespace SkyTraqBin {
 
   enum class StartMode : uint8_t {
@@ -614,6 +616,60 @@ namespace SkyTraqBin {
     {}
 
   }; // class Q_elevation_CNR_mask
+
+
+  //! GET GPS EPHEMERIS - Get GPS ephemeris used of GNSS receiver
+  class Get_GPS_ephemeris : public Input_message {
+  private:
+    uint8_t _sv_num;
+
+    inline const Payload_length body_length(void) const { return 1; }
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Get_GPS_ephemeris(uint8_t sv) :
+      Input_message(0x30),
+      _sv_num(sv)
+    {}
+
+    inline const uint8_t SV_number(void) const { return _sv_num; }
+    inline void set_SV_number(uint8_t sv) { _sv_num = sv; }
+
+  }; // class Get_GPS_ephemeris
+
+
+  //! SET GPS EPHEMERIS - Set GPS ephemeris to GNSS receiver
+  class Set_GPS_ephemeris : public Input_message {
+  private:
+    uint16_t _sv_num;
+    uint8_t _subframe1[28], _subframe2[28], _subframe3[28];
+
+    inline const Payload_length body_length(void) const { return 86; }
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Set_GPS_ephemeris(uint16_t sv, uint8_t sf1[28], uint8_t sf2[28], uint8_t sf3[28]) :
+      Input_message(0x41),
+      _sv_num(sv)
+    {
+      memcpy(&_subframe1, sf1, 28);
+      memcpy(&_subframe2, sf2, 28);
+      memcpy(&_subframe3, sf3, 28);
+    }
+
+    inline const uint16_t SV_number(void) const { return _sv_num; }
+    inline void set_SV_number(uint16_t sv) { _sv_num = sv; }
+
+    inline const uint8_t* subframe1(void) const { return _subframe1; }
+    inline void set_subframe1(uint8_t sf1[28]) { memcpy(&_subframe1, sf1, 28); }
+
+    inline const uint8_t* subframe2(void) const { return _subframe2; }
+    inline void set_subframe2(uint8_t sf2[28]) { memcpy(&_subframe2, sf2, 28); }
+
+    inline const uint8_t* subframe3(void) const { return _subframe3; }
+    inline void set_subframe3(uint8_t sf3[28]) { memcpy(&_subframe3, sf3, 28); }
+
+  }; // class Set_GPS_ephemeris
 
 
   //! CONFIGURE NMEA TALKER ID - Configure NMEA talker ID of GNSS receive

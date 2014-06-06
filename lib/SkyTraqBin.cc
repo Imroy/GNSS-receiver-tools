@@ -90,6 +90,7 @@ namespace SkyTraqBin {
     OUTPUT1(0xAE, GNSS_datum),
     OUTPUT1(0xAF, GNSS_DOP_mask),
     OUTPUT1(0xB0, GNSS_elevation_CNR_mask),
+    OUTPUT1(0xB1, GPS_ephemeris_data),
     OUTPUT1(0xB9, GNSS_power_mode_status),
     OUTPUT1(0xDC, Measurement_time),
     OUTPUT1(0xDD, Raw_measurements),
