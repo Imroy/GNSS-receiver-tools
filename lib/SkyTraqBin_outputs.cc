@@ -88,6 +88,12 @@ namespace SkyTraqBin {
   {}
 
 
+  GNSS_datum::GNSS_datum(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _datum_index(extract_be<uint16_t>(payload, 1))
+  {}
+
+
   GNSS_power_mode_status::GNSS_power_mode_status(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _power_mode((PowerMode)payload[1])

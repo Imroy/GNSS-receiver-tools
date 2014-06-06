@@ -229,6 +229,19 @@ namespace SkyTraqBin {
   }; // class Nav_data_msg
 
 
+  //! GNSS DATUM - datum used by the GNSS receiver
+  class GNSS_datum : public Output_message {
+  private:
+    uint16_t _datum_index;
+
+  public:
+    GNSS_datum(unsigned char* payload, Payload_length payload_len);
+
+    inline const uint16_t datum_index(void) const { return _datum_index; }
+
+  }; // class GNSS_datum
+
+
   //! GNSS POWER MODE STATUS - Power mode status of the GNSS receiver
   class GNSS_power_mode_status : public Output_message {
   private:
