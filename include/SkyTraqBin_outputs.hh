@@ -37,8 +37,8 @@ namespace SkyTraqBin {
   public:
     GNSS_boot_status(unsigned char* payload, Payload_length payload_len);
 
-    inline const uint8_t status(void) const { return _status; }
-    inline const uint8_t flash_type(void) const { return _flash_type; }
+    GETTER(uint8_t, status, _status);
+    GETTER(uint8_t, flash_type, _flash_type);
 
   }; // class GNSS_boot_status
 
@@ -72,10 +72,10 @@ namespace SkyTraqBin {
     //! Constructor from a binary buffer
     Sw_ver(unsigned char* payload, Payload_length payload_len);
 
-    inline const SwType software_type(void) const { return _sw_type; }
-    inline PackedVersion kernel_version(void) const { return _kernel_ver; }
-    inline const PackedVersion ODM_version(void) const { return _odm_ver; }
-    inline PackedDate revision(void) const { return _revision; }
+    GETTER(SwType, software_type, _sw_type);
+    GETTER(PackedVersion, kernel_version, _kernel_ver);
+    GETTER(PackedVersion, ODM_version, _odm_ver);
+    GETTER(PackedDate, revision, _revision);
 
   }; // class Sw_ver
 
@@ -90,8 +90,8 @@ namespace SkyTraqBin {
     //! Constructor from a binary buffer
     Sw_CRC(unsigned char* payload, Payload_length payload_len);
 
-    inline const SwType software_type(void) const { return _sw_type; }
-    inline uint16_t CRC(void) const { return _crc; }
+    GETTER(SwType, software_type, _sw_type);
+    GETTER(uint16_t, CRC, _crc);
 
   }; // class Sw_CRC
 
@@ -107,9 +107,9 @@ namespace SkyTraqBin {
     //! Constructor from a binary buffer
     Ack(unsigned char* payload, Payload_length payload_len);
 
-    inline const uint8_t ack_id(void) const { return _ack_id; }
-    inline const bool has_subid(void) const { return _has_subid; }
-    inline const uint8_t ack_subid(void) const { return _ack_subid; }
+    GETTER(uint8_t, ack_id, _ack_id);
+    GETTER(bool, has_subid, _has_subid);
+    GETTER(uint8_t, ack_subid, _ack_subid);
 
   }; // class Ack
 
@@ -125,9 +125,9 @@ namespace SkyTraqBin {
     //! Constructor from a binary buffer
     Nack(unsigned char* payload, Payload_length payload_len);
 
-    inline const uint8_t ack_id(void) const { return _ack_id; }
-    inline const bool has_subid(void) const { return _has_subid; }
-    inline const uint8_t ack_subid(void) const { return _ack_subid; }
+    GETTER(uint8_t, ack_id, _ack_id);
+    GETTER(bool, has_subid, _has_subid);
+    GETTER(uint8_t, ack_subid, _ack_subid);
 
   }; // class Ack
 
@@ -141,7 +141,7 @@ namespace SkyTraqBin {
     //! Constructor from a binary buffer
     Pos_update_rate(unsigned char* payload, Payload_length payload_len);
 
-    inline const uint8_t update_rate(void) const { return _update_rate; }
+    GETTER(uint8_t, update_rate, _update_rate);
 
   }; // class Pos_update_rate
 
@@ -155,7 +155,7 @@ namespace SkyTraqBin {
     //! Constructor from a binary buffer
     NMEA_talker_ID(unsigned char* payload, Payload_length payload_len);
 
-    inline const TalkerID talker_id(void) const { return _talker_id; }
+    GETTER(TalkerID, talker_id, _talker_id);
 
   }; //class NMEA_talker_ID
 
@@ -176,55 +176,55 @@ namespace SkyTraqBin {
   public:
     Nav_data_msg(unsigned char* payload, Payload_length payload_len);
 
-    inline const FixType fix_type(void) const { return _fix_type; }
-    inline const uint8_t num_sv(void) const { return _num_sv; }
-    inline const uint16_t week_no(void) const { return _week_no; }
-    inline const uint32_t time_of_week(void) const { return _tow; }
+    GETTER(FixType, fix_type, _fix_type);
+    GETTER(uint8_t, num_sv, _num_sv);
+    GETTER(uint16_t, week_no, _week_no);
+    GETTER(uint32_t, time_of_week, _tow);
 
-    inline const double lat(void) const { return _lat * 1e-7; }
-    inline const int32_t lat_raw(void) const { return _lat; }
+    GETTER_MOD(double, lat, _lat * 1e-7);
+    GETTER_RAW(int32_t, lat, _lat);
 
-    inline const double lon(void) const { return _lon * 1e-7; }
-    inline const int32_t lon_raw(void) const { return _lon; }
+    GETTER_MOD(double, lon, _lon * 1e-7);
+    GETTER_RAW(int32_t, lon, _lon);
 
-    inline const double ellipsoid_alt(void) const { return _e_alt * 0.01; }
-    inline const int32_t ellipsoid_alt_raw(void) const { return _e_alt; }
+    GETTER_MOD(double, ellipsoid_alt, _e_alt * 0.01);
+    GETTER_RAW(int32_t, ellipsoid_alt, _e_alt);
 
-    inline const double alt(void) const { return _alt * 0.01; }
-    inline const int32_t alt_raw(void) const { return _alt; }
+    GETTER_MOD(double, alt, _alt * 0.01);
+    GETTER_RAW(int32_t, alt, _alt);
 
-    inline const double GDOP(void) const { return _gdop * 0.01; }
-    inline const uint16_t GDOP_raw(void) const { return _gdop; }
+    GETTER_MOD(double, GDOP, _gdop * 0.01);
+    GETTER_RAW(uint16_t, GDOP, _gdop);
 
-    inline const double PDOP(void) const { return _pdop * 0.01; }
-    inline const uint16_t PDOP_raw(void) const { return _pdop; }
+    GETTER_MOD(double, PDOP, _pdop * 0.01);
+    GETTER_RAW(uint16_t, PDOP, _pdop);
 
-    inline const double HDOP(void) const { return _hdop * 0.01; }
-    inline const uint16_t HDOP_raw(void) const { return _hdop; }
+    GETTER_MOD(double, HDOP, _hdop * 0.01);
+    GETTER_RAW(uint16_t, HDOP, _hdop);
 
-    inline const double VDOP(void) const { return _vdop * 0.01; }
-    inline const uint16_t VDOP_raw(void) const { return _vdop; }
+    GETTER_MOD(double, VDOP, _vdop * 0.01);
+    GETTER_RAW(uint16_t, VDOP, _vdop);
 
-    inline const double TDOP(void) const { return _tdop * 0.01; }
-    inline const uint16_t TDOP_raw(void) const { return _tdop; }
+    GETTER_MOD(double, TDOP, _tdop * 0.01);
+    GETTER_RAW(uint16_t, TDOP, _tdop);
 
-    inline const double ECEF_X(void) const { return _ecef_x * 0.01; }
-    inline const int32_t ECEF_X_raw(void) const { return _ecef_x; }
+    GETTER_MOD(double, ECEF_X, _ecef_x * 0.01);
+    GETTER_RAW(int32_t, ECEF_X, _ecef_x);
 
-    inline const double ECEF_Y(void) const { return _ecef_y * 0.01; }
-    inline const int32_t ECEF_Y_raw(void) const { return _ecef_y; }
+    GETTER_MOD(double, ECEF_Y, _ecef_y * 0.01);
+    GETTER_RAW(int32_t, ECEF_Y, _ecef_y);
 
-    inline const double ECEF_Z(void) const { return _ecef_z * 0.01; }
-    inline const int32_t ECEF_Z_raw(void) const { return _ecef_z; }
+    GETTER_MOD(double, ECEF_Z, _ecef_z * 0.01);
+    GETTER_RAW(int32_t, ECEF_Z, _ecef_z);
 
-    inline const double ECEF_VX(void) const { return _ecef_vx * 0.01; }
-    inline const int32_t ECEF_VX_raw(void) const { return _ecef_vx; }
+    GETTER_MOD(double, ECEF_VX, _ecef_vx * 0.01);
+    GETTER_RAW(int32_t, ECEF_VX, _ecef_vx);
 
-    inline const double ECEF_VY(void) const { return _ecef_vy * 0.01; }
-    inline const int32_t ECEF_VY_raw(void) const { return _ecef_vy; }
+    GETTER_MOD(double, ECEF_VY, _ecef_vy * 0.01);
+    GETTER_RAW(int32_t, ECEF_VY, _ecef_vy);
 
-    inline const double ECEF_VZ(void) const { return _ecef_vz * 0.01; }
-    inline const int32_t ECEF_VZ_raw(void) const { return _ecef_vz; }
+    GETTER_MOD(double, ECEF_VZ, _ecef_vz * 0.01);
+    GETTER_RAW(int32_t, ECEF_VZ, _ecef_vz);
 
   }; // class Nav_data_msg
 
@@ -237,7 +237,7 @@ namespace SkyTraqBin {
   public:
     GNSS_datum(unsigned char* payload, Payload_length payload_len);
 
-    inline const uint16_t datum_index(void) const { return _datum_index; }
+    GETTER(uint16_t, datum_index, _datum_index);
 
   }; // class GNSS_datum
 
@@ -251,16 +251,16 @@ namespace SkyTraqBin {
   public:
     GNSS_DOP_mask(unsigned char* payload, Payload_length payload_len);
 
-    inline const DOPmode DOP_mode(void) const { return _dop_mode; }
+    GETTER(DOPmode, DOP_mode, _dop_mode);
 
-    inline const double PDOP(void) const { return _pdop * 0.1; }
-    inline const uint16_t PDOP_raw(void) const { return _pdop; }
+    GETTER_MOD(double, PDOP, _pdop * 0.1);
+    GETTER_RAW(uint16_t, PDOP, _pdop);
 
-    inline const double HDOP(void) const { return _hdop * 0.1; }
-    inline const uint16_t HDOP_raw(void) const { return _hdop; }
+    GETTER_MOD(double, HDOP, _hdop * 0.1);
+    GETTER_RAW(uint16_t, HDOP, _hdop);
 
-    inline const double GDOP(void) const { return _gdop * 0.1; }
-    inline const uint16_t GDOP_raw(void) const { return _gdop; }
+    GETTER_MOD(double, GDOP, _gdop * 0.1);
+    GETTER_RAW(uint16_t, GDOP, _gdop);
 
   }; // class GNSS_DOP_mask
 
@@ -274,11 +274,9 @@ namespace SkyTraqBin {
   public:
     GNSS_elevation_CNR_mask(unsigned char* payload, Payload_length payload_len);
 
-    inline const ElevationCNRmode mode_select(void) { return _mode_select; }
-
-    inline const uint8_t elevation_mask(void) const { return _el_mask; }
-
-    inline const uint8_t CNR_mask(void) const { return _cnr_mask; }
+    GETTER(ElevationCNRmode, mode_select, _mode_select);
+    GETTER(uint8_t, elevation_mask, _el_mask);
+    GETTER(uint8_t, CNR_mask, _cnr_mask);
 
   }; // class GNSS_elevation_CNR_mask
 
@@ -292,9 +290,9 @@ namespace SkyTraqBin {
   public:
     GPS_ephemeris_data(unsigned char* payload, Payload_length payload_len);
 
-    inline const uint8_t* subframe1(void) const { return _subframe1; }
-    inline const uint8_t* subframe2(void) const { return _subframe2; }
-    inline const uint8_t* subframe3(void) const { return _subframe3; }
+    GETTER(uint8_t*, subframe1, _subframe1);
+    GETTER(uint8_t*, subframe2, _subframe2);
+    GETTER(uint8_t*, subframe3, _subframe3);
 
   }; // class GPS_ephemeris_data
 
@@ -307,7 +305,7 @@ namespace SkyTraqBin {
   public:
     GNSS_power_mode_status(unsigned char* payload, Payload_length payload_len);
 
-    inline const PowerMode power_mode(void) const { return _power_mode; }
+    GETTER(PowerMode, power_mode, _power_mode);
 
   }; // class GNSS_power_mode_status
 
@@ -324,10 +322,10 @@ namespace SkyTraqBin {
     //! Constructor from a binary buffer
     Measurement_time(unsigned char* payload, Payload_length payload_len);
 
-    inline const uint8_t issue_of_data(void) const { return _issue; }
-    inline const uint16_t week_number(void) const { return _weeknumber; }
-    inline const uint32_t time_in_week(void) const { return _time_in_week; }
-    inline const uint16_t period(void) const { return _period; }
+    GETTER(uint8_t, issue_of_data, _issue);
+    GETTER(uint16_t, week_number, _weeknumber);
+    GETTER(uint32_t, time_in_week, _time_in_week);
+    GETTER(uint16_t, period, _period);
 
   }; // class Measurement_time
 
@@ -356,9 +354,9 @@ namespace SkyTraqBin {
     //! Constructor from a binary buffer
     Raw_measurements(unsigned char* payload, Payload_length payload_len);
 
-    inline const uint8_t issue_of_data(void) const { return _issue; }
-    inline const uint8_t num_measurements(void) const { return _num_meas; }
-    inline const std::vector<RawMeasurement> measurements(void) const { return _measurements; }
+    GETTER(uint8_t, issue_of_data, _issue);
+    GETTER(uint8_t, num_measurements, _num_meas);
+    GETTER(std::vector<RawMeasurement>, measurements, _measurements);
 
   }; // class Raw_measurements
 
@@ -386,9 +384,9 @@ namespace SkyTraqBin {
     //! Constructor from a binary buffer
     SV_channel_status(unsigned char* payload, Payload_length payload_len);
 
-    inline const uint8_t issue_of_data(void) const { return _issue; }
-    inline const uint8_t num_svs(void) const { return _num_sv; }
-    inline const std::vector<SvStatus> statuses(void) const { return _statuses; }
+    GETTER(uint8_t, issue_of_data, _issue);
+    GETTER(uint8_t, num_svs, _num_sv);
+    GETTER(std::vector<SvStatus>, statuses, _statuses);
 
   };
 

@@ -106,7 +106,7 @@ namespace SkyTraqBin {
     uint8_t _utc_month, _utc_day, _utc_hour, _utc_minute, _utc_second;
     int16_t _lattitude, _longitude, _altitude;
 
-    inline const Payload_length body_length(void) const { return 14; }
+    GETTER(Payload_length, body_length, 14);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -134,41 +134,21 @@ namespace SkyTraqBin {
       _lattitude(floor(0.5 + lat * 100)), _longitude(floor(0.5 + lon * 100)), _altitude(floor(0.5 + alt))
     {}
 
-    inline const StartMode start_mode(void) const { return _start_mode; }
-    inline void set_start_mode(StartMode mode) { _start_mode = mode; }
+    GETTER_SETTER(StartMode, start_mode, _start_mode);
+    GETTER_SETTER(uint16_t, UTC_year, _utc_year);
+    GETTER_SETTER(uint8_t, UTC_month, _utc_month);
+    GETTER_SETTER(uint8_t, UTC_day, _utc_day);
+    GETTER_SETTER(uint8_t, UTC_hour, _utc_hour);
+    GETTER_SETTER(uint8_t, UTC_minute, _utc_minute);
+    GETTER_SETTER(uint8_t, UTC_second, _utc_second);
 
-    inline const uint16_t UTC_year(void) const { return _utc_year; }
-    inline void set_UTC_year(uint16_t y) { _utc_year = y; }
+    GETTER_SETTER_RAW(int16_t, lattitude, _lattitude);
+    GETTER_SETTER_MOD(double, lattitude, _lattitude, _lattitude * 0.01, val * 100);
 
-    inline const uint8_t UTC_month(void) const { return _utc_month; }
-    inline void set_UTC_month(uint8_t m) { _utc_month = m; }
+    GETTER_SETTER_RAW(int16_t, longitude, _longitude);
+    GETTER_SETTER_MOD(double, longitude, _longitude, _longitude * 0.01, val * 100);
 
-    inline const uint8_t UTC_day(void) const { return _utc_day; }
-    inline void set_UTC_day(uint8_t d) { _utc_day = d; }
-
-    inline const uint8_t UTC_hour(void) const { return _utc_hour; }
-    inline void set_UTC_hour(uint8_t hr) { _utc_hour = hr; }
-
-    inline const uint8_t UTC_minute(void) const { return _utc_minute; }
-    inline void set_UTC_minute(uint8_t min) { _utc_minute = min; }
-
-    inline const uint8_t UTC_second(void) const { return _utc_second; }
-    inline void set_UTC_second(uint8_t sec) { _utc_second = sec; }
-
-    inline const int16_t lattitude_raw(void) const { return _lattitude; }
-    inline void set_lattitude_raw(int16_t lat) { _lattitude = lat; }
-
-    inline const double lattitude(void) const { return _lattitude * 0.01; }
-    inline void set_lattitude(double lat) { _lattitude = floor(0.5 + lat * 100); }
-
-    inline const int16_t longitude_raw(void) const { return _longitude; }
-    inline void set_longitude_raw(int16_t lon) { _longitude = lon; }
-
-    inline const double longitude(void) const { return _longitude * 0.01; }
-    inline void set_longitude(double lon) { _longitude = floor(0.5 + lon * 100); }
-
-    inline const int16_t altitude(void) const { return _altitude; }
-    inline void set_altitude(int16_t alt) { _altitude = alt; }
+    GETTER_SETTER(int16_t, altitude, _altitude);
 
   };
 
@@ -178,7 +158,7 @@ namespace SkyTraqBin {
   private:
     SwType _sw_type;
 
-    inline const Payload_length body_length(void) const { return 1; }
+    GETTER(Payload_length, body_length, 1);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -188,8 +168,7 @@ namespace SkyTraqBin {
       _sw_type(type)
     {}
 
-    inline const SwType software_type(void) const { return _sw_type; }
-    inline void set_software_type(SwType type) { _sw_type = type; }
+    GETTER_SETTER(SwType, software_type, _sw_type);
 
   }; // class Q_sw_ver
 
@@ -199,7 +178,7 @@ namespace SkyTraqBin {
   private:
     SwType _sw_type;
 
-    inline const Payload_length body_length(void) const { return 1; }
+    GETTER(Payload_length, body_length, 1);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -209,8 +188,7 @@ namespace SkyTraqBin {
       _sw_type(type)
     {}
 
-    inline const SwType software_type(void) const { return _sw_type; }
-    inline void set_software_type(SwType type) { _sw_type = type; }
+    GETTER_SETTER(SwType, software_type, _sw_type);
 
   }; // class Q_sw_CRC
 
@@ -220,7 +198,7 @@ namespace SkyTraqBin {
   private:
     bool _reset;
 
-    inline const Payload_length body_length(void) const { return 1; }
+    GETTER(Payload_length, body_length, 1);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -229,8 +207,8 @@ namespace SkyTraqBin {
       _reset(r)
     {}
 
-    inline const bool reset(void) const { return _reset; }
-    inline void set_reset(bool r) { _reset = r; }
+    GETTER(bool, reset, _reset);
+    SETTER_BOOL(reset, _reset);
 
   }; // class Set_factory_defaults
 
@@ -242,7 +220,7 @@ namespace SkyTraqBin {
     BaudRate _baud_rate;
     UpdateType _update_type;
 
-    inline const Payload_length body_length(void) const { return 3; }
+    GETTER(Payload_length, body_length, 3);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -251,14 +229,9 @@ namespace SkyTraqBin {
       _com_port(cp), _baud_rate(br), _update_type(ut)
     {}
 
-    inline const uint8_t com_port(void) const { return _com_port; }
-    inline void set_com_port(uint8_t cp) { _com_port = cp; }
-
-    inline const BaudRate baud_rate(void) const { return _baud_rate; }
-    inline void set_baud_rate(BaudRate br) { _baud_rate = br; }
-
-    inline const UpdateType update_type(void) const { return _update_type; }
-    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+    GETTER_SETTER(uint8_t, com_port, _com_port);
+    GETTER_SETTER(BaudRate, baud_rate, _baud_rate);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
 
   }; // class Config_serial_port
 
@@ -269,7 +242,7 @@ namespace SkyTraqBin {
     uint8_t _gga_int, _gsa_int, _gsv_int, _gll_int, _rmc_int, _vtg_int, _zda_int;
     UpdateType _update_type;
 
-    inline const Payload_length body_length(void) const { return 8; }
+    GETTER(Payload_length, body_length, 8);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -280,29 +253,14 @@ namespace SkyTraqBin {
       _rmc_int(rmc), _vtg_int(vtg), _zda_int(zda), _update_type(ut)
     {}
 
-    inline const uint8_t GGA_interval(void) const { return _gga_int; }
-    inline void set_GGA_interval(uint8_t i) { _gga_int = i; }
-
-    inline const uint8_t GSA_interval(void) const { return _gsa_int; }
-    inline void set_GSA_interval(uint8_t i) { _gsa_int = i; }
-
-    inline const uint8_t GSV_interval(void) const { return _gsv_int; }
-    inline void set_GSV_interval(uint8_t i) { _gsv_int = i; }
-
-    inline const uint8_t GLL_interval(void) const { return _gll_int; }
-    inline void set_GLL_interval(uint8_t i) { _gll_int = i; }
-
-    inline const uint8_t RMC_interval(void) const { return _rmc_int; }
-    inline void set_RMC_interval(uint8_t i) { _rmc_int = i; }
-
-    inline const uint8_t VTG_interval(void) const { return _vtg_int; }
-    inline void set_VTG_interval(uint8_t i) { _vtg_int = i; }
-
-    inline const uint8_t ZDA_interval(void) const { return _zda_int; }
-    inline void set_ZDA_interval(uint8_t i) { _zda_int = i; }
-
-    inline const UpdateType update_type(void) const { return _update_type; }
-    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+    GETTER_SETTER(uint8_t, GGA_interval, _gga_int);
+    GETTER_SETTER(uint8_t, GSA_interval, _gsa_int);
+    GETTER_SETTER(uint8_t, GSV_interval, _gsv_int);
+    GETTER_SETTER(uint8_t, GLL_interval, _gll_int);
+    GETTER_SETTER(uint8_t, RMC_interval, _rmc_int);
+    GETTER_SETTER(uint8_t, VTG_interval, _vtg_int);
+    GETTER_SETTER(uint8_t, ZDA_interval, _zda_int);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
 
   }; // class Config_NMEA_msg
 
@@ -313,7 +271,7 @@ namespace SkyTraqBin {
     MessageType _msg_type;
     UpdateType _update_type;
 
-    inline const Payload_length body_length(void) const { return 2; }
+    GETTER(Payload_length, body_length, 2);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -323,11 +281,8 @@ namespace SkyTraqBin {
       _update_type(ut)
     {}
 
-    inline const MessageType message_type(void) const { return _msg_type; }
-    inline void set_message_type(MessageType mt) { _msg_type = mt; }
-
-    inline const UpdateType update_type(void) const { return _update_type; }
-    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+    GETTER_SETTER(MessageType, message_type, _msg_type);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
 
   }; // class Config_msg_type
 
@@ -340,7 +295,7 @@ namespace SkyTraqBin {
     uint16_t _flash_id;
     BufferUsed _buffer_used;
 
-    inline const Payload_length body_length(void) const { return 5; }
+    GETTER(Payload_length, body_length, 5);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -359,14 +314,9 @@ namespace SkyTraqBin {
       _buffer_used(bu)
     {}
 
-    inline const BaudRate baud_rate(void) const { return _baud_rate; }
-    inline void set_baud_rate(BaudRate br) { _baud_rate = br; }
-
-    inline const FlashType flash_type(void) const { return _flash_type; }
-    inline void set_flash_type(FlashType ft) { _flash_type = ft; }
-
-    inline const BufferUsed buffer_used(void) const { return _buffer_used; }
-    inline void set_buffer_used(BufferUsed bu) { _buffer_used = bu; }
+    GETTER_SETTER(BaudRate, baud_rate, _baud_rate);
+    GETTER_SETTER(FlashType, flash_type, _flash_type);
+    GETTER_SETTER(BufferUsed, buffer_used, _buffer_used);
 
   }; // class Sw_img_download
 
@@ -377,7 +327,7 @@ namespace SkyTraqBin {
     PowerMode _power_mode;
     UpdateType _update_type;
 
-    inline const Payload_length body_length(void) const { return 2; }
+    GETTER(Payload_length, body_length, 2);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -387,11 +337,8 @@ namespace SkyTraqBin {
       _update_type(ut)
     {}
 
-    inline const PowerMode power_mode(void) const { return _power_mode; }
-    inline void set_power_mode(PowerMode pm) { _power_mode = pm; }
-
-    inline const UpdateType update_type(void) const { return _update_type; }
-    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+    GETTER_SETTER(PowerMode, power_mode, _power_mode);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
 
   }; // class Config_sys_power_mode
 
@@ -402,7 +349,7 @@ namespace SkyTraqBin {
     uint8_t _rate;
     UpdateType _update_type;
 
-    inline const Payload_length body_length(void) const { return 2; }
+    GETTER(Payload_length, body_length, 2);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -412,11 +359,8 @@ namespace SkyTraqBin {
       _update_type(ut)
     {}
 
-    inline const uint8_t rate(void) const { return _rate; }
-    inline void set_rate(uint8_t r) { _rate = r; }
-
-    inline const UpdateType update_type(void) const { return _update_type; }
-    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+    GETTER_SETTER(uint8_t, rate, _rate);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
 
   }; // class Config_sys_pos_rate
 
@@ -437,7 +381,7 @@ namespace SkyTraqBin {
     uint8_t _interval;	// 0: disable
     UpdateType _update_type;
 
-    inline const Payload_length body_length(void) const { return 2; }
+    GETTER(Payload_length, body_length, 2);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -447,11 +391,8 @@ namespace SkyTraqBin {
       _update_type(ut)
     {}
 
-    inline const uint8_t interval(void) const { return _interval; }
-    inline void set_interval(uint8_t i) { _interval = i; }
-
-    inline const UpdateType update_type(void) const { return _update_type; }
-    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+    GETTER_SETTER(uint8_t, interval, _interval);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
 
   }; // class Config_nav_data_msg_interval
 
@@ -463,7 +404,7 @@ namespace SkyTraqBin {
     bool _meas_time, _raw_meas, _sv_ch_status, _rcv_state, _subframe;
     UpdateType _update_type;
 
-    inline const Payload_length body_length(void) const { return 7; }
+    GETTER(Payload_length, body_length, 7);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -474,31 +415,23 @@ namespace SkyTraqBin {
       _update_type(ut)
     {}
 
-    inline const OutputRate output_rate(void) const { return _output_rate; }
-    inline void set_output_rate(OutputRate o) { _output_rate = o; }
+    GETTER_SETTER(OutputRate, output_rate, _output_rate);
+    GETTER(bool, meas_time, _meas_time);
+    SETTER_BOOL(meas_time, _meas_time);
 
-    inline const bool meas_time(void) const { return _meas_time; }
-    inline void set_meas_time(bool mt=true) { _meas_time = mt; }
-    inline void unset_meas_time(void) { _meas_time = false; }
+    GETTER(bool, raw_meas, _raw_meas);
+    SETTER_BOOL(raw_meas, _raw_meas);
 
-    inline const bool raw_meas(void) const { return _raw_meas; }
-    inline void set_raw_meas(bool rm=true) { _raw_meas = rm; }
-    inline void unset_raw_meas(void) { _raw_meas = false; }
+    GETTER(bool, SV_CH_status, _sv_ch_status);
+    SETTER_BOOL(SV_CH_status, _sv_ch_status);
 
-    inline const bool SV_CH_status(void) const { return _sv_ch_status; }
-    inline void set_SV_CH_status(bool svch=true) { _sv_ch_status = svch; }
-    inline void unset_SV_CH_status(void) { _sv_ch_status = false; }
+    GETTER(bool, RCV_state, _rcv_state);
+    SETTER_BOOL(RCV_state, _rcv_state);
 
-    inline const bool RCV_state(void) const { return _rcv_state; }
-    inline void set_RCV_state(bool rcv=true) { _rcv_state = rcv; }
-    inline void unset_RCV_state(void) { _rcv_state = false; }
+    GETTER(bool, subframe, _subframe);
+    SETTER_BOOL(subframe, _subframe);
 
-    inline const bool subframe(void) const { return _subframe; }
-    inline void set_subframe(bool sub=true) { _subframe = sub; }
-    inline void unset_subframe(void) { _subframe = false; }
-
-    inline const UpdateType update_type(void) const { return _update_type; }
-    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+    GETTER_SETTER(UpdateType, update_type, _update_type);
 
   }; // class Config_bin_measurement_output_rates
 
@@ -522,7 +455,7 @@ namespace SkyTraqBin {
     uint32_t _semi_major_axis, _inv_flattening;
     UpdateType _update_type;
 
-    inline const Payload_length body_length(void) const { return 18; }
+    GETTER(Payload_length, body_length, 18);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -536,29 +469,14 @@ namespace SkyTraqBin {
       _update_type(ut)
     {}
 
-    inline const uint16_t datum_index(void) const { return _datum_index; }
-    inline void set_datum_index(uint16_t di) { _datum_index = di; }
-
-    inline const uint8_t ellipsoid_index(void) const { return _ellip_index; }
-    inline void set_ellipsoid_index(uint8_t ei) { _ellip_index = ei; }
-
-    inline const int16_t delta_X(void) const { return _delta_x; }
-    inline void set_delta_X(int16_t dx) { _delta_x = dx; }
-
-    inline const int16_t delta_Y(void) const { return _delta_y; }
-    inline void set_delta_Y(int16_t dy) { _delta_y = dy; }
-
-    inline const int16_t delta_Z(void) const { return _delta_z; }
-    inline void set_delta_Z(int16_t dz) { _delta_z = dz; }
-
-    inline const uint32_t semi_major_axis(void) const { return _semi_major_axis; }
-    inline void set_semi_major_axis(uint32_t sma) { _semi_major_axis = sma; }
-
-    inline const uint32_t inv_flattening(void) const { return _inv_flattening; }
-    inline void set_inv_flattening(uint32_t inf) { _inv_flattening = inf; }
-
-    inline const UpdateType update_type(void) const { return _update_type; }
-    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+    GETTER_SETTER(uint16_t, datum_index, _datum_index);
+    GETTER_SETTER(uint8_t, ellipsoid_index, _ellip_index);
+    GETTER_SETTER(int16_t, delta_X, _delta_x);
+    GETTER_SETTER(int16_t, delta_Y, _delta_y);
+    GETTER_SETTER(int16_t, delta_Z, _delta_z);
+    GETTER_SETTER(uint32_t, semi_major_axis, _semi_major_axis);
+    GETTER_SETTER(uint32_t, inv_flattening, _inv_flattening);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
 
   }; // class Config_datum
 
@@ -570,7 +488,7 @@ namespace SkyTraqBin {
     uint16_t _pdop, _hdop, _gdop; // * 0.1
     UpdateType _update_type;
 
-    inline const Payload_length body_length(void) const { return 8; }
+    GETTER(Payload_length, body_length, 8);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -588,26 +506,18 @@ namespace SkyTraqBin {
       _update_type(ut)
     {}
 
-    inline const DOPmode DOP_mode(void) const { return _dop_mode; }
-    inline void set_DOP_mode(DOPmode m) { _dop_mode = m; }
+    GETTER_SETTER(DOPmode, DOP_mode, _dop_mode);
 
-    inline const double PDOP(void) const { return _pdop * 0.1; }
-    inline const uint16_t PDOP_raw(void) const { return _pdop; }
-    inline void set_PDOP(double p) { _pdop = p * 10; }
-    inline void set_PDOP(uint16_t p) { _pdop = p; }
+    GETTER_SETTER_MOD(double, PDOP, _pdop, _pdop * 0.1, val * 10);
+    GETTER_SETTER_RAW(uint16_t, PDOP, _pdop);
 
-    inline const double HDOP(void) const { return _hdop * 0.1; }
-    inline const uint16_t HDOP_raw(void) const { return _hdop; }
-    inline void set_HDOP(double h) { _hdop = h * 10; }
-    inline void set_HDOP(uint16_t h) { _hdop = h; }
+    GETTER_SETTER_MOD(double, HDOP, _hdop, _hdop * 0.1, val * 10);
+    GETTER_SETTER_RAW(uint16_t, HDOP, _hdop);
 
-    inline const double GDOP(void) const { return _gdop * 0.1; }
-    inline const uint16_t GDOP_raw(void) const { return _gdop; }
-    inline void set_GDOP(double g) { _gdop = g * 10; }
-    inline void set_GDOP(uint16_t g) { _gdop = g; }
+    GETTER_SETTER_MOD(double, GDOP, _gdop, _gdop * 0.1, val * 10);
+    GETTER_SETTER_RAW(uint16_t, GDOP, _gdop);
 
-    inline const UpdateType update_type(void) const { return _update_type; }
-    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+    GETTER_SETTER(UpdateType, update_type, _update_type);
 
   }; // class Config_DOP_mask
 
@@ -619,7 +529,7 @@ namespace SkyTraqBin {
     uint8_t _el_mask, _cnr_mask;
     UpdateType _update_type;
 
-    inline const Payload_length body_length(void) const { return 8; }
+    GETTER(Payload_length, body_length, 8);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -630,17 +540,10 @@ namespace SkyTraqBin {
       _update_type(ut)
     {}
 
-    inline const ElevationCNRmode mode_select(void) const { return _mode_select; }
-    inline void set_mode_select(ElevationCNRmode ms) { _mode_select = ms; }
-
-    inline const uint8_t elevation_mask(void) const { return _el_mask; }
-    inline void set_elevation_mask(uint8_t em) { _el_mask = em; }
-
-    inline const uint8_t CNR_mask(void) const { return _cnr_mask; }
-    inline void set_CNR_mask(uint8_t cm) { _cnr_mask = cm; }
-
-    inline const UpdateType update_type(void) const { return _update_type; }
-    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+    GETTER_SETTER(ElevationCNRmode, mode_select, _mode_select);
+    GETTER_SETTER(uint8_t, elevation_mask, _el_mask);
+    GETTER_SETTER(uint8_t, CNR_mask, _cnr_mask);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
 
   }; // class Config_elevation_CNR_mask
 
@@ -680,7 +583,7 @@ namespace SkyTraqBin {
   private:
     uint8_t _sv_num;
 
-    inline const Payload_length body_length(void) const { return 1; }
+    GETTER(Payload_length, body_length, 1);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -689,8 +592,7 @@ namespace SkyTraqBin {
       _sv_num(sv)
     {}
 
-    inline const uint8_t SV_number(void) const { return _sv_num; }
-    inline void set_SV_number(uint8_t sv) { _sv_num = sv; }
+    GETTER_SETTER(uint8_t, SV_number, _sv_num);
 
   }; // class Get_GPS_ephemeris
 
@@ -701,7 +603,7 @@ namespace SkyTraqBin {
     uint16_t _sv_num;
     uint8_t _subframe1[28], _subframe2[28], _subframe3[28];
 
-    inline const Payload_length body_length(void) const { return 86; }
+    GETTER(Payload_length, body_length, 86);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -714,16 +616,15 @@ namespace SkyTraqBin {
       memcpy(&_subframe3, sf3, 28);
     }
 
-    inline const uint16_t SV_number(void) const { return _sv_num; }
-    inline void set_SV_number(uint16_t sv) { _sv_num = sv; }
+    GETTER_SETTER(uint16_t, SV_number, _sv_num);
 
-    inline const uint8_t* subframe1(void) const { return _subframe1; }
+    GETTER(uint8_t*, subframe1, _subframe1);
     inline void set_subframe1(uint8_t sf1[28]) { memcpy(&_subframe1, sf1, 28); }
 
-    inline const uint8_t* subframe2(void) const { return _subframe2; }
+    GETTER(uint8_t*, subframe2, _subframe2);
     inline void set_subframe2(uint8_t sf2[28]) { memcpy(&_subframe2, sf2, 28); }
 
-    inline const uint8_t* subframe3(void) const { return _subframe3; }
+    GETTER(uint8_t*, subframe3, _subframe3);
     inline void set_subframe3(uint8_t sf3[28]) { memcpy(&_subframe3, sf3, 28); }
 
   }; // class Set_GPS_ephemeris
@@ -735,7 +636,7 @@ namespace SkyTraqBin {
     TalkerID _talker_id;
     UpdateType _update_type;
 
-    inline const Payload_length body_length(void) const { return 2; }
+    GETTER(Payload_length, body_length, 2);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
@@ -745,11 +646,8 @@ namespace SkyTraqBin {
       _update_type(ut)
     {}
 
-    inline const TalkerID talker_id(void) const { return _talker_id; }
-    inline void set_talker_id(TalkerID id) { _talker_id = id; }
-
-    inline const UpdateType update_type(void) const { return _update_type; }
-    inline void set_update_type(UpdateType ut) { _update_type = ut; }
+    GETTER_SETTER(TalkerID, talker_id, _talker_id);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
 
   }; // class Config_NMEA_talker_ID
 
@@ -767,7 +665,7 @@ namespace SkyTraqBin {
   //! QUERY GNSS BOOT STATUS - Query boot status of GNSS receiver
   class Q_GNSS_boot_status : public Input_message_with_subid {
   private:
-    inline const Payload_length body_length(void) const { return 0; }
+    GETTER(Payload_length, body_length, 0);
     virtual inline void body_to_buf(unsigned char* buffer) const { }
 
   public:

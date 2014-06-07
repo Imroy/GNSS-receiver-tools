@@ -243,6 +243,25 @@ namespace SkyTraqBin {
   }; // class ElevationCNRmode
 
 
+#define GETTER(type, name, field) inline const type name(void) const { return field; }
+
+#define GETTER_SETTER(type, name, field) inline const type name(void) const { return field; } \
+inline void set_##name(type val) { field = val; }
+
+#define SETTER_BOOL(name, field) inline void set_##name(bool val=true) { field = val; } \
+inline void unset_##name(void) { field = false; }
+
+#define GETTER_RAW(type, name, field) inline const type name##_raw(void) const { return field; }
+
+#define GETTER_SETTER_RAW(type, name, field) inline const type name##_raw(void) const { return field; } \
+inline void set_##name##_raw(type val) { field = val; }
+
+#define GETTER_MOD(type, name, code) inline const type name(void) const { return code; }
+
+#define GETTER_SETTER_MOD(type, name, field, code_get, code_set) inline const type name(void) const { return code_get; } \
+inline void set_##name(type val) { field = code_set; }
+
+
 }; // SkyTraqBin
 
 #include "SkyTraqBin_inputs.hh"
