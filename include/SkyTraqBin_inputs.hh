@@ -155,7 +155,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY SOFTWARE VERSION - Query revision information of loaded software
-  // Responds with Sw_ver message
+  //! - Responds with Sw_ver message
   class Q_sw_ver : public Input_message {
   private:
     SwType _sw_type;
@@ -176,7 +176,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY SOFTWARE CRC - Query CRC information of loaded software
-  // Responds with Sw_CRC message
+  //! - Responds with Sw_CRC message
   class Q_sw_CRC : public Input_message {
   private:
     SwType _sw_type;
@@ -369,7 +369,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY POSITION UPDATE RATE - Query the position update rate of GNSS system
-  // Responds with Pos_update_rate message
+  //! - Responds with Pos_update_rate message
   class Q_pos_update_rate : public Input_message {
   public:
     Q_pos_update_rate(void) :
@@ -441,7 +441,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY POWER MODE - Query status of power mode of GNSS receiver
-  // Responds with GNSS_power_mode_status message
+  //! - Responds with GNSS_power_mode_status message
   class Q_power_mode : public Input_message {
   public:
     Q_power_mode(void) :
@@ -554,7 +554,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY DATUM - Query datum used by the GNSS receiver
-  // Responds with GNSS_datum message
+  //! - Responds with GNSS_datum message
   class Q_datum : public Input_message {
   public:
     Q_datum(void) :
@@ -565,7 +565,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY DOP MASK - Query information of DOP mask used by the GNSS receiver
-  // Responds with GNSS_DOP_mask message
+  //! - Responds with GNSS_DOP_mask message
   class Q_DOP_mask : public Input_message {
   public:
     Q_DOP_mask(void) :
@@ -576,7 +576,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY ELEVATION AND CNR MASK - Query elevation and CNR mask used by the GNSS receiver
-  // Responds with GNSS_elevation_CNR_mask message
+  //! - Responds with GNSS_elevation_CNR_mask message
   class Q_elevation_CNR_mask : public Input_message {
   public:
     Q_elevation_CNR_mask(void) :
@@ -587,7 +587,7 @@ namespace SkyTraqBin {
 
 
   //! GET GPS EPHEMERIS - Get GPS ephemeris used of GNSS receiver
-  // Responds with GPS_ephemeris_data message
+  //! - Responds with GPS_ephemeris_data message
   class Get_GPS_ephemeris : public Input_message {
   private:
     uint8_t _sv_num;
@@ -662,7 +662,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY NMEA TALKER ID - Query NMEA talker ID of GNSS receiver
-  // Responds with NMEA_talker_ID message
+  //! - Responds with NMEA_talker_ID message
   class Q_NMEA_talker_ID : public Input_message {
   public:
     Q_NMEA_talker_ID(void) :
@@ -673,7 +673,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY GNSS BOOT STATUS - Query boot status of GNSS receiver
-  // Responds with GNSS_boot_status message
+  //! - Responds with GNSS_boot_status message
   class Q_GNSS_boot_status : public Input_message_with_subid {
   private:
     GETTER(Payload_length, body_length, 0);

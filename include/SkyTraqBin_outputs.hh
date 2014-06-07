@@ -64,6 +64,7 @@ namespace SkyTraqBin {
 
 
   //! SOFTWARE VERSION - Software version of the GNSS receiver
+  //! - Answer to Q_sw_ver message
   class Sw_ver : public Output_message {
   private:
     SwType _sw_type;
@@ -83,6 +84,7 @@ namespace SkyTraqBin {
 
 
   //! SOFTWARE CRC -Software CRC of the GNSS receiver
+  //! - Answer to Q_sw_CRC message
   class Sw_CRC : public Output_message {
   private:
     SwType _sw_type;
@@ -135,6 +137,7 @@ namespace SkyTraqBin {
 
 
   //! POSITON UPDATE RATE - Position Update rate of the GNSS system
+  //! - Answer to Q_pos_update_rate message
   class Pos_update_rate : public Output_message {
   private:
     uint8_t _update_rate;
@@ -149,6 +152,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS NMEA TALKER ID - NMEA talker ID of GNSS receiver
+  //! - Answer to Q_NMEA_talker_ID message
   class NMEA_talker_ID : public Output_message {
   private:
     TalkerID _talker_id;
@@ -232,6 +236,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS DATUM - datum used by the GNSS receiver
+  //! - Answer to Q_datum message
   class GNSS_datum : public Output_message {
   private:
     uint16_t _datum_index;
@@ -245,6 +250,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS DOP MASK - DOP Mask used by the GNSS receiver
+  //! - Answer to Q_DOP_mask message
   class GNSS_DOP_mask : public Output_message {
   private:
     DOPmode _dop_mode;
@@ -268,6 +274,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS ELEVATION AND CNR MASK - Elevation and CNR mask used by the GNSS receiver
+  //! - Answer to Q_elevation_CNR_mask message
   class GNSS_elevation_CNR_mask : public Output_message {
   private:
     ElevationCNRmode _mode_select;
@@ -284,6 +291,7 @@ namespace SkyTraqBin {
 
 
   //! GPS EPHEMERIS DATA - GPS ephemeris data of the GPS receiver
+  //! - Answer to Get_GPS_ephemeris message
   class GPS_ephemeris_data : public Output_message {
   private:
     uint16_t _sv_num;
@@ -300,6 +308,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS POWER MODE STATUS - Power mode status of the GNSS receiver
+  //! - Answer to Q_power_mode message
   class GNSS_power_mode_status : public Output_message {
   private:
     PowerMode _power_mode;
