@@ -4,5 +4,6 @@
 *.s
 .depend
 .depend.bak
+bin
 parse
 gps_status
