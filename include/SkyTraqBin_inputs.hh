@@ -20,6 +20,7 @@
 #define __SKYTRAQBIN_INPUTS_HH__
 
 #include <string.h>
+#include "SkyTraqBin.hh"
 
 namespace SkyTraqBin {
 

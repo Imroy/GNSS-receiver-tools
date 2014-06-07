@@ -19,6 +19,8 @@
 #ifndef __SKYTRAQBIN_OUTPUTS_HH__
 #define __SKYTRAQBIN_OUTPUTS_HH__
 
+#include "SkyTraqBin.hh"
+
 namespace SkyTraqBin {
 
   enum class FixType : uint8_t {
