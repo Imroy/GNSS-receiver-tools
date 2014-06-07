@@ -142,29 +142,29 @@ namespace SkyTraqBin {
 
 
   //! Role base class for adding a message sub-ID to message classes
-  class subid_role {
+  class with_subid {
   protected:
     uint8_t _msg_subid;
 
   public:
     //! Constructor
-    subid_role(uint8_t subid) :
+    with_subid(uint8_t subid) :
       _msg_subid(subid)
     {}
 
     inline const uint8_t message_subid(void) const { return _msg_subid; }
-  }; // class subid_role
+  }; // class with_subid
 
 
   //! Base class for messages that come from the GPS receiver with a sub-ID
-  class Output_message_with_subid : public Output_message, public subid_role {
+  class Output_message_with_subid : public Output_message, public with_subid {
   protected:
 
   public:
     //! Constructor from a binary buffer
     inline Output_message_with_subid(unsigned char* payload, Payload_length payload_len) :
       Output_message(payload, payload_len),
-      subid_role(payload_len > 1 ? payload[1] : 0)
+      with_subid(payload_len > 1 ? payload[1] : 0)
     {}
 
     typedef std::shared_ptr<Output_message_with_subid> ptr;
@@ -172,7 +172,7 @@ namespace SkyTraqBin {
 
 
   //! Base class for messages that go to the GPS receiver with a sub-ID
-  class Input_message_with_subid : public Input_message, public subid_role {
+  class Input_message_with_subid : public Input_message, public with_subid {
   protected:
     //! The length of the body (not including message id or sub-id)
     virtual const Payload_length body_length(void) const = 0;
@@ -184,7 +184,7 @@ namespace SkyTraqBin {
     //! Constructor
     Input_message_with_subid(uint8_t id, uint8_t subid) :
       Input_message(id),
-      subid_role(subid)
+      with_subid(subid)
     {}
 
     //! The total length of the message
