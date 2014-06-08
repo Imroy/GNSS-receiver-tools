@@ -18,7 +18,7 @@ PROGRAMS = $(patsubst %.cc,%, $(wildcard *.cc))
 all: $(PROGRAMS)
 
 clean:
-	@rm -fv .depend *.o $(PROGRAMS)
+	@rm -fv .depend *.o $(LIB_OBJS) $(APP_OBJS) $(PROGRAMS)
 
 install: $(PROGRAMS)
 	install -t $(BINDIR) $(PROGRAMS)
