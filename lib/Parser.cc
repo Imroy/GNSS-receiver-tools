@@ -90,4 +90,56 @@ namespace SkyTraq {
   }
 
 
+  Reader::Reader(std::istream &is, Listener::ptr l) :
+    _is(&is), _listener(l)
+  {}
+
+
+  void Reader::read(void) {
+    _is->read((char*)_buffer, 16);
+    _parser.add_bytes(_buffer, _is->gcount());
+
+    try {
+      auto messages = _parser.parse_messages();
+
+      for (auto msg : messages) {
+
+#define FIRE_IF(class, method) if (msg->isa<class>()) \
+    _listener->method(*(msg->cast_as<class>()));
+
+	try {
+	  msg->cast_as<NMEA0183::Sentence>();	// Will throw std::bad_cast if not possible
+
+	  FIRE_IF(NMEA0183::GGA, GGA)
+	  else FIRE_IF(NMEA0183::GLL, GLL)
+	  else FIRE_IF(NMEA0183::GSA, GSA)
+	  else FIRE_IF(NMEA0183::GSV, GSV)
+	  else FIRE_IF(NMEA0183::RMC, RMC)
+	  else FIRE_IF(NMEA0183::VTG, VTG)
+	  else FIRE_IF(NMEA0183::ZDA, ZDA)
+	  else FIRE_IF(NMEA0183::STI, STI);
+
+	} catch (std::bad_cast) {
+	}
+
+	try {
+	  msg->cast_as<SkyTraqBin::Output_message>();	// throw a std::bas_cast exception if it can't be done
+
+	  FIRE_IF(SkyTraqBin::Measurement_time, Measurement_time)
+	  else FIRE_IF(SkyTraqBin::Raw_measurements, Raw_measurements)
+	  else FIRE_IF(SkyTraqBin::SV_channel_status, SV_channel_status)
+	  else FIRE_IF(SkyTraqBin::Subframe_data, Subframe_data);
+
+	} catch (std::bad_cast) {
+	}
+
+#undef FIRE_IF
+      }
+    } catch (std::exception &e) {
+      std::cerr << e.what() << std::endl;
+    }
+  }
+
+
+
 }; // namespace SkyTraq

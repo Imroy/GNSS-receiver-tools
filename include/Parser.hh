@@ -50,6 +50,49 @@ namespace SkyTraq {
   }; // class Parser
 
 
+  //! Base class that receives parsed messages
+  class Listener {
+  public:
+    inline Listener() {}
+
+    inline virtual ~Listener() {}
+
+    // handler methods for NMEA-0183 sentences
+    inline virtual void GGA(const NMEA0183::GGA &gga) {}
+    inline virtual void GLL(const NMEA0183::GLL &gll) {}
+    inline virtual void GSA(const NMEA0183::GSA &gsa) {}
+    inline virtual void GSV(const NMEA0183::GSV &gsv) {}
+    inline virtual void RMC(const NMEA0183::RMC &rmc) {}
+    inline virtual void VTG(const NMEA0183::VTG &vtg) {}
+    inline virtual void ZDA(const NMEA0183::ZDA &zda) {}
+    inline virtual void STI(const NMEA0183::STI &sti) {}
+
+    // handler methods for SkyTraq binary messages
+    inline virtual void Measurement_time(const SkyTraqBin::Measurement_time &mt) {}
+    inline virtual void Raw_measurements(const SkyTraqBin::Raw_measurements &rm) {}
+    inline virtual void SV_channel_status(const SkyTraqBin::SV_channel_status &sv_chan) {}
+    inline virtual void Subframe_data(const SkyTraqBin::Subframe_data &sfd) {}
+
+    typedef std::shared_ptr<Listener> ptr;
+  }; // class Listener
+
+
+  //! Class for an object that reads from a stream and calls methods in a Listener object
+  class Reader {
+  private:
+    std::istream *_is;
+    Listener::ptr _listener;
+    unsigned char _buffer[16];
+    SkyTraq::Parser _parser;
+
+  public:
+    Reader(std::istream &is, Listener::ptr l);
+
+    void read(void);
+
+  }; // class Reader
+
+
 }; // namespace SkyTraq
 
 
