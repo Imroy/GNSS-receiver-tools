@@ -57,15 +57,10 @@ namespace SkyTraq {
       }
 
       // Remove this packet from the parse buffer
-      if (parse_length == end) {
-	free(parse_buffer);
-	parse_buffer = NULL;
-	parse_length = 0;
-      } else {
+      if (parse_length < end)
 	memmove(parse_buffer, parse_buffer + end, parse_length - end);
-	parse_length -= end;
-	parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length);
-      }
+      parse_length -= end;
+      parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length);
     } while (parse_length > 0);
 
     return messages;
