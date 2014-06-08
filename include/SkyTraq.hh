@@ -20,6 +20,7 @@
 #define __SKYTRAQ_HH__
 
 #include <memory>
+#include <vector>
 
 namespace SkyTraq {
 
@@ -39,6 +40,8 @@ namespace SkyTraq {
 
     typedef std::shared_ptr<Message> ptr;
   }; // class Message
+
+  std::vector<Message::ptr> parse_messages(unsigned char* buffer, std::streamsize len);
 
 
 }; // namespace SkyTraq

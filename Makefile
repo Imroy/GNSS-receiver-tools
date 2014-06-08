@@ -27,9 +27,6 @@ install: $(PROGRAMS)
 parse: parse.o $(LIB_OBJS)
 	$(CXX) $(LDFLAGS) $^ $(LIBS) -o $@
 
-bin: bin.o $(LIB_OBJS)
-	$(CXX) $(LDFLAGS) $^ $(LIBS) -o $@
-
 $(LIB_OBJS): %.o: %.cc
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
