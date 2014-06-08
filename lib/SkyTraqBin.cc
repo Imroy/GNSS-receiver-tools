@@ -106,24 +106,26 @@ namespace SkyTraqBin {
     if (len < end)
       throw InsufficientData();
 
-    if ((buffer[end - 2] != 0x0d)
+    if ((buffer[0] != 0xa0)
+	|| (buffer[1] != 0xa1)
+	|| (buffer[end - 2] != 0x0d)
 	|| (buffer[end - 1] != 0x0a))
       throw InvalidMessage();
 
-    uint8_t cs = buffer[end - 3];
     unsigned char *payload = buffer + 2 + 2;
-    {
-      uint8_t ccs = checksum(payload, payload_len);
-      if (cs != ccs)
-	throw ChecksumMismatch(ccs, cs);
-    }
-
     uint16_t id = payload[0];
     if ((id >= 0x62) && (id <= 0x65))	// construct a composite id if the message has a sub-ID
       id = (payload[0] << 8) | payload[1];
 
     if (output_message_factories.count(id) == 0)
       throw UnknownMessageID(id);
+
+    uint8_t cs = buffer[end - 3];
+    {
+      uint8_t ccs = checksum(payload, payload_len);
+      if (cs != ccs)
+	throw ChecksumMismatch(ccs, cs);
+    }
 
     return (*output_message_factories[id])(payload, payload_len);
   }
