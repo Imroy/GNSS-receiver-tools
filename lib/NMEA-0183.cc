@@ -116,7 +116,7 @@ namespace NMEA0183 {
 	(tid == "P"))
       return std::make_shared<STI>(tid, type, fields, checksum);
 
-    return std::make_shared<Sentence>(tid, type, checksum);
+    throw UnknownSentenceType(tid, type);
   }
 
 

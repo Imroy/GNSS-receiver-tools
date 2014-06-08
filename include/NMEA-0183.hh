@@ -39,6 +39,7 @@ namespace NMEA0183 {
     }
   }; // class InvalidSentence
 
+
   class ChecksumMismatch : public std::exception {
   private:
     unsigned char _computed_cs, _stream_cs;
@@ -55,6 +56,24 @@ namespace NMEA0183 {
       return oss.str().c_str();
     }
   }; // class ChecksumMismatch
+
+
+  class UnknownSentenceType : public std::exception {
+  private:
+    std::string _tid, _type;
+
+  public:
+    UnknownSentenceType(std::string tid, std::string type) :
+      _tid(tid), _type(type)
+    {}
+
+    const char* what() const throw() {
+      std::ostringstream oss;
+      oss << "Unrecognised sentence $" << _tid << _type;
+      return oss.str().c_str();
+    }
+  }; // class UnknownSentenceType
+
 
   //! Base class for holding NMEA-0183 sentence data
   class Sentence : public SkyTraq::Message {
