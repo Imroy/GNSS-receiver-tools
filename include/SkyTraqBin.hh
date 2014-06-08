@@ -29,6 +29,18 @@ namespace SkyTraqBin {
 
   typedef uint16_t Payload_length;
 
+  class InsufficientData : public std::exception {
+  private:
+
+  public:
+    InsufficientData() {}
+
+    const char* what() const throw() {
+      return "InsufficientData";
+    }
+  }; // class InsufficientData
+
+
   class InvalidMessage : public std::exception {
   private:
 
@@ -58,6 +70,25 @@ namespace SkyTraqBin {
       return oss.str().c_str();
     }
   }; // class ChecksumMismatch
+
+
+  class UnknownMessageID : public std::exception {
+  private:
+    uint8_t _id;
+
+  public:
+    UnknownMessageID(uint8_t i) :
+      _id(i)
+    {}
+
+    const char* what() const throw() {
+      std::ostringstream oss;
+      oss.width(2);
+      oss.fill('0');
+      oss << "Unknown message id 0x" << std::hex << (int)_id;
+      return oss.str().c_str();
+    }
+  }; // class UnknownMessageID
 
 
   //! Base class for a binary message
@@ -91,7 +122,7 @@ namespace SkyTraqBin {
 
 
   //! Parser
-  std::vector<Output_message::ptr> parse_messages(unsigned char* buffer, std::streamsize len);
+  Output_message::ptr parse_message(unsigned char* buffer, std::streamsize len);
 
 
   //! Base class for messages that go to the GPS receiver

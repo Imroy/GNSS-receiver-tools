@@ -100,86 +100,32 @@ namespace SkyTraqBin {
 #undef OUTPUT2
 
 
-  unsigned char *parse_buffer = NULL;
-  std::streamsize parse_length = 0;
-  std::vector<Output_message::ptr> parse_messages(unsigned char* buffer, std::streamsize len) {
-    parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length + len);
-    memcpy(parse_buffer + parse_length, buffer, len);
-    parse_length += len;
+  Output_message::ptr parse_message(unsigned char* buffer, std::streamsize len) {
+    Payload_length payload_len = extract_be<uint16_t>(buffer, 2);
+    std::streamsize end = 2 + 2 + payload_len + 1 + 2;
+    if (len < end)
+      throw InsufficientData();
 
-    std::vector<Output_message::ptr> messages;
+    if ((buffer[end - 2] != 0x0d)
+	|| (buffer[end - 1] != 0x0a))
+      throw InvalidMessage();
 
-    std::streamsize start = -1;
-    for (std::streamsize i = 0; i < parse_length - 1; i++)
-      if ((parse_buffer[i] == 0xa0)
-	  && (parse_buffer[i + 1] == 0xa1)) {
-	start = i;
-	break;
-      }
-
-    if (start > -1) {
-      do {
-	Payload_length payload_len = extract_be<uint16_t>(parse_buffer, start + 2);
-
-	std::streamsize end = start + 2 + 2 + payload_len + 1 + 2;
-	if (parse_length >= end) {
-	  if ((parse_buffer[end - 2] != 0x0d)
-	      || (parse_buffer[end - 1] != 0x0a)) {
-	    memmove(parse_buffer, parse_buffer + start + 2, parse_length - start - 2);
-	    parse_length -= start + 2;
-	    start = 0;
-	    parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length);
-
-	    throw InvalidMessage();
-	  }
-
-	  uint8_t cs = parse_buffer[end - 3];
-	  unsigned char *payload = parse_buffer + start + 2 + 2;
-	  {
-	    uint8_t ccs = checksum(payload, payload_len);
-	    if (cs != ccs)
-	      throw ChecksumMismatch(ccs, cs);
-	  }
-
-	  uint16_t id = payload[0];
-	  if ((id >= 0x62) && (id <= 0x65))	// construct a composite id if the message has a sub-ID
-	    id = (payload[0] << 8) | payload[1];
-
-	  if (output_message_factories.count(id) > 0)
-	    messages.push_back((*output_message_factories[id])(payload, payload_len));
-	  else
-	    std::cerr << "Unknown message id 0x" << std::hex << std::setw(2) << std::setfill('0') << (int)id << std::dec << std::endl;
-
-	  // Remove this packet from the parse buffer
-	  if (parse_length == end) {
-	    free(parse_buffer);
-	    parse_buffer = NULL;
-	    parse_length = 0;
-	  } else {
-	    memmove(parse_buffer, parse_buffer + end, parse_length - end);
-	    parse_length -= end;
-	    start = 0;
-	    parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length);
-	  }
-	} else {
-	  if (start > 0) {
-	    // parse buffer is not yet large enough for whole message, remove preceding bytes
-	    memmove(parse_buffer, parse_buffer + start, parse_length - start);
-	    parse_length -= start;
-	    start = 0;
-	    parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length);
-	  }
-	  break;
-	}
-      } while ((parse_buffer != nullptr) && (parse_length > 7) && (parse_buffer[start] == 0xa0) && (parse_buffer[start + 1] == 0xa1));
-    } else {
-      // No start sequence found
-      free(parse_buffer);
-      parse_buffer = NULL;
-      parse_length = 0;
+    uint8_t cs = buffer[end - 3];
+    unsigned char *payload = buffer + 2 + 2;
+    {
+      uint8_t ccs = checksum(payload, payload_len);
+      if (cs != ccs)
+	throw ChecksumMismatch(ccs, cs);
     }
 
-    return messages;
+    uint16_t id = payload[0];
+    if ((id >= 0x62) && (id <= 0x65))	// construct a composite id if the message has a sub-ID
+      id = (payload[0] << 8) | payload[1];
+
+    if (output_message_factories.count(id) == 0)
+      throw UnknownMessageID(id);
+
+    return (*output_message_factories[id])(payload, payload_len);
   }
 
 
