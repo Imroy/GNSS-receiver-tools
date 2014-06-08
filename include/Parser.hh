@@ -16,39 +16,41 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef __SKYTRAQ_HH__
-#define __SKYTRAQ_HH__
+#ifndef __PARSER_HH__
+#define __PARSER_HH__
 
-#include <iostream>
-#include <memory>
-#include <typeinfo>
-#include <vector>
+#include <istream>
+#include "NMEA-0183.hh"
+#include "SkyTraqBin.hh"
 
 namespace SkyTraq {
 
-  //! Abstract base class for both NMEA-0183 and binary messages
-  class Message {
+  //! Unified parser class
+  class Parser {
+  private:
+    unsigned char *_parse_buffer;
+    std::streamsize _parse_buflen;
+
   public:
-    //! Virtual destructor to force polymorphism
-    inline virtual ~Message() {}
+    //! Empty constructor
+    Parser();
 
-    //! Check the type of an object
-    template <typename T>
-    inline bool isa(void) const { return typeid(*this) == typeid(T); }
+    //! Destructor
+    ~Parser();
 
-    //! Recast this object to another type
-    template <typename T>
-    inline T* cast_as(void) {
-      T *a = dynamic_cast<T*>(this);
-      if (a == nullptr)
-	throw std::bad_cast();
-      return a;
-    }
+    //! Clear the parse buffer
+    void reset_buffer(void);
 
-    typedef std::shared_ptr<Message> ptr;
-  }; // class Message
+    //! Add bytes to the end of the parse buffer
+    void add_bytes(unsigned char* buffer, std::streamsize buffer_len);
+
+    //! Parse contents of the parse buffer into messages
+    std::vector<Message::ptr> parse_messages(void);
+
+  }; // class Parser
 
 
 }; // namespace SkyTraq
 
-#endif // __SKYTRAQ_HH__
+
+#endif //__PARSER_HH__

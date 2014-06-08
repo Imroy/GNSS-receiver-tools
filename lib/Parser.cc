@@ -17,9 +17,7 @@
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <string.h>
-#include "SkyTraq.hh"
-#include "NMEA-0183.hh"
-#include "SkyTraqBin.hh"
+#include "Parser.hh"
 
 namespace SkyTraq {
 

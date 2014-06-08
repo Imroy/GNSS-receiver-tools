@@ -21,6 +21,7 @@
 #include "SkyTraq.hh"
 #include "NMEA-0183.hh"
 #include "SkyTraqBin.hh"
+#include "Parser.hh"
 
 int main(int argc, char* argv[]) {
   unsigned char buffer[16];
