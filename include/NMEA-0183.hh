@@ -24,6 +24,7 @@
 #include <sstream>
 #include <vector>
 #include <memory>
+#include "SkyTraq.hh"
 
 namespace NMEA0183 {
 
@@ -56,7 +57,7 @@ namespace NMEA0183 {
   }; // class ChecksumMismatch
 
   //! Base class for holding NMEA-0183 sentence data
-  class Sentence {
+  class Sentence : public SkyTraq::Message {
   private:
     const char _talker_id[2], _type[3];
     const unsigned char _checksum;
@@ -65,24 +66,13 @@ namespace NMEA0183 {
     //! Constructor
     Sentence(std::string tid, std::string type, unsigned char checksum);
 
-    //! Virtual destructor to force polymorphism
-    inline virtual ~Sentence() {}
-
     typedef std::shared_ptr<Sentence> ptr;
 
     inline const std::string talker_id(void) const { return std::string(_talker_id, 2); }
     inline const std::string type(void) const { return std::string(_type, 3); }
     inline const unsigned char checksum(void) const { return _checksum; }
 
-    //! Check the type of an object
-    template <typename T>
-    inline bool isa(void) const { return typeid(*this) == typeid(T); }
-
-    //! Recast this object to another type
-    template <typename T>
-    inline T* cast_as(void) { return dynamic_cast<T*>(this); }
-
-    friend Sentence::ptr parse_sentence(std::string line);
+    //    friend Sentence::ptr parse_sentence(std::string line);
   }; // class Sentence
 
   //! Sentence parser

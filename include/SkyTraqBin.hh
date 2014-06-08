@@ -23,6 +23,7 @@
 #include <sstream>
 #include <vector>
 #include <math.h>
+#include "SkyTraq.hh"
 
 namespace SkyTraqBin {
 
@@ -60,7 +61,7 @@ namespace SkyTraqBin {
 
 
   //! Base class for a binary message
-  class Message {
+  class Message : public SkyTraq::Message {
   protected:
     uint8_t _msg_id;
 
@@ -70,20 +71,8 @@ namespace SkyTraqBin {
       _msg_id(id)
     {}
 
-    //! Virtual destructor to force polymorphism
-    inline virtual ~Message() {}
-
     inline const uint8_t message_id(void) const { return _msg_id; }
 
-    //! Check the type of an object
-    template <typename T>
-    inline bool isa(void) const { return typeid(*this) == typeid(T); }
-
-    //! Recast this object to another type
-    template <typename T>
-    inline T* cast_as(void) { return dynamic_cast<T*>(this); }
-
-    typedef std::shared_ptr<Message> ptr;
   }; // class Message
 
 
