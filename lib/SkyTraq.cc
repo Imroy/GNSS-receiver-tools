@@ -32,9 +32,9 @@ namespace SkyTraq {
 
     std::vector<Message::ptr> messages;
 
-    std::streamsize end = -1;	// actually the start of the next message
-
+    std::streamsize end;	// actually the start of the next message
     do {
+      end = -1;
       for (std::streamsize i = 0; i < parse_length - 1; i++)
 	if ((parse_buffer[i] == 0x0d)
 	    && (parse_buffer[i + 1] == 0x0a)) {
