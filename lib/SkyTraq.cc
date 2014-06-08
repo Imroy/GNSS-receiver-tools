@@ -79,7 +79,7 @@ namespace SkyTraq {
       }
 
       // Remove this packet from the parse buffer
-      if (_parse_buflen < end)
+      if (_parse_buflen > end)
 	memmove(_parse_buffer, _parse_buffer + end, _parse_buflen - end);
       _parse_buflen -= end;
       _parse_buffer = (unsigned char*)realloc(_parse_buffer, _parse_buflen);
