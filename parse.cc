@@ -147,6 +147,10 @@ int main(int argc, char* argv[]) {
 			<< ", azimuth " << s.azimuth << "°"
 			<< std::endl;
 
+	  } else if (msg->isa<SkyTraqBin::Subframe_data>()) {
+	    SkyTraqBin::Subframe_data *sd = msg->cast_as<SkyTraqBin::Subframe_data>();
+	    std::cout << "\tSubframe data, PRN " << (int)sd->PRN() << ", subframe #" << (int)sd->subframe_num() << std::endl;
+
 	  }
 	} catch (std::bad_cast) {
 	}

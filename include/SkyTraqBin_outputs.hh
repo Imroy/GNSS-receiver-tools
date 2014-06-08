@@ -402,6 +402,22 @@ namespace SkyTraqBin {
   };
 
 
+  //! SUBFRAME - Sub frame buffer data
+  class Subframe_data : public Output_message {
+  private:
+    uint8_t _prn, _subframe_num;
+    uint8_t _words[30];
+
+  public:
+    //! Constructor from a binary buffer
+    Subframe_data(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(uint8_t, PRN, _prn);
+    GETTER(uint8_t, subframe_num, _subframe_num);
+    GETTER(uint8_t*, words, _words);
+  }; // class Subframe_data
+
+
 }; // namespace SkyTraqBin
 
 #endif // __SKYTRAQBIN_OUTPUTS_HH__

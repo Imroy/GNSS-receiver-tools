@@ -95,6 +95,7 @@ namespace SkyTraqBin {
     OUTPUT1(0xDC, Measurement_time),
     OUTPUT1(0xDD, Raw_measurements),
     OUTPUT1(0xDE, SV_channel_status),
+    OUTPUT1(0xE0, Subframe_data),
   };
 #undef OUTPUT1
 #undef OUTPUT2

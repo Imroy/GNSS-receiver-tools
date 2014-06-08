@@ -168,4 +168,13 @@ namespace SkyTraqBin {
   }
 
 
+  Subframe_data::Subframe_data(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _prn(payload[1]),
+    _subframe_num(payload[2])
+  {
+    memcpy(&_words, payload + 3, 30);
+  }
+
+
 }; // namespace SkyTraqBin
