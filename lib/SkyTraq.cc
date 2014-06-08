@@ -44,6 +44,7 @@ namespace SkyTraq {
       if (end == -1)
 	break;
 
+      std::exception_ptr exp = nullptr;
       try {
 	if (parse_buffer[0] == '$')
 	  messages.push_back(NMEA0183::parse_sentence(std::string((const char*)parse_buffer, end - 2)));
@@ -54,6 +55,9 @@ namespace SkyTraq {
       } catch (const NMEA0183::InvalidSentence &e) {
       } catch (const SkyTraqBin::InvalidMessage &e) {
       } catch (const SkyTraqBin::InsufficientData &e) {
+
+      } catch (const std::exception) {
+	exp = std::current_exception();
       }
 
       // Remove this packet from the parse buffer
@@ -61,6 +65,9 @@ namespace SkyTraq {
 	memmove(parse_buffer, parse_buffer + end, parse_length - end);
       parse_length -= end;
       parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length);
+
+      if (exp != nullptr)
+	std::rethrow_exception(exp);
     } while (parse_length > 0);
 
     return messages;
