@@ -24,11 +24,14 @@
 
 int main(int argc, char* argv[]) {
   unsigned char buffer[16];
+  SkyTraq::Parser parser;
+
   while (1) {
     std::cin.read((char*)buffer, 16);
+    parser.add_bytes(buffer, std::cin.gcount());
 
     try {
-      auto messages = SkyTraq::parse_messages(buffer, std::cin.gcount());
+      auto messages = parser.parse_messages();
 
       for (auto msg : messages) {
 	if (msg->isa<NMEA0183::Sentence>()) {

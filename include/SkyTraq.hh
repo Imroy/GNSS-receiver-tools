@@ -45,7 +45,30 @@ namespace SkyTraq {
     typedef std::shared_ptr<Message> ptr;
   }; // class Message
 
-  std::vector<Message::ptr> parse_messages(unsigned char* buffer, std::streamsize len);
+
+  //! Unified parser class
+  class Parser {
+  private:
+    unsigned char *_parse_buffer;
+    std::streamsize _parse_buflen;
+
+  public:
+    //! Empty constructor
+    Parser();
+
+    //! Destructor
+    ~Parser();
+
+    //! Clear the parse buffer
+    void reset_buffer(void);
+
+    //! Add bytes to the end of the parse buffer
+    void add_bytes(unsigned char* buffer, std::streamsize buffer_len);
+
+    //! Parse contents of the parse buffer into messages
+    std::vector<Message::ptr> parse_messages(void);
+
+  }; // class Parser
 
 
 }; // namespace SkyTraq

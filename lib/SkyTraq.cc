@@ -23,21 +23,39 @@
 
 namespace SkyTraq {
 
-  unsigned char *parse_buffer = NULL;
-  std::streamsize parse_length = 0;
-  std::vector<Message::ptr> parse_messages(unsigned char* buffer, std::streamsize len) {
-    parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length + len);
-    memcpy(parse_buffer + parse_length, buffer, len);
-    parse_length += len;
+  Parser::Parser() :
+    _parse_buffer(NULL),
+    _parse_buflen(0)
+  {}
 
+  Parser::~Parser() {
+    if (_parse_buflen > 0)
+      free(_parse_buffer);
+  }
+
+  void Parser::reset_buffer(void) {
+    if (_parse_buflen > 0) {
+      free(_parse_buffer);
+      _parse_buffer = NULL;
+      _parse_buflen = 0;
+    }
+  }
+
+  void Parser::add_bytes(unsigned char* buffer, std::streamsize buffer_len) {
+    _parse_buffer = (unsigned char*)realloc(_parse_buffer, _parse_buflen + buffer_len);
+    memcpy(_parse_buffer + _parse_buflen, buffer, buffer_len);
+    _parse_buflen += buffer_len;
+  }
+
+  std::vector<Message::ptr> Parser::parse_messages(void) {
     std::vector<Message::ptr> messages;
 
     std::streamsize end;	// actually the start of the next message
     do {
       end = -1;
-      for (std::streamsize i = 0; i < parse_length - 1; i++)
-	if ((parse_buffer[i] == 0x0d)
-	    && (parse_buffer[i + 1] == 0x0a)) {
+      for (std::streamsize i = 0; i < _parse_buflen - 1; i++)
+	if ((_parse_buffer[i] == 0x0d)
+	    && (_parse_buffer[i + 1] == 0x0a)) {
 	  end = i + 2;
 	  break;
 	}
@@ -46,10 +64,10 @@ namespace SkyTraq {
 
       std::exception_ptr exp = nullptr;
       try {
-	if (parse_buffer[0] == '$')
-	  messages.push_back(NMEA0183::parse_sentence(std::string((const char*)parse_buffer, end - 2)));
-	else if ((parse_buffer[0] == 0xa0) && (parse_buffer[1] == 0xa1))
-	  messages.push_back(SkyTraqBin::parse_message(parse_buffer, end));
+	if (_parse_buffer[0] == '$')
+	  messages.push_back(NMEA0183::parse_sentence(std::string((const char*)_parse_buffer, end - 2)));
+	else if ((_parse_buffer[0] == 0xa0) && (_parse_buffer[1] == 0xa1))
+	  messages.push_back(SkyTraqBin::parse_message(_parse_buffer, end));
 
 	// Catch the harmless exceptions
       } catch (const NMEA0183::InvalidSentence &e) {
@@ -61,14 +79,14 @@ namespace SkyTraq {
       }
 
       // Remove this packet from the parse buffer
-      if (parse_length < end)
-	memmove(parse_buffer, parse_buffer + end, parse_length - end);
-      parse_length -= end;
-      parse_buffer = (unsigned char*)realloc(parse_buffer, parse_length);
+      if (_parse_buflen < end)
+	memmove(_parse_buffer, _parse_buffer + end, _parse_buflen - end);
+      _parse_buflen -= end;
+      _parse_buffer = (unsigned char*)realloc(_parse_buffer, _parse_buflen);
 
       if (exp != nullptr)
 	std::rethrow_exception(exp);
-    } while (parse_length > 0);
+    } while (_parse_buflen > 0);
 
     return messages;
   }
