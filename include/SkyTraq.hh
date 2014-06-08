@@ -20,6 +20,7 @@
 #define __SKYTRAQ_HH__
 
 #include <memory>
+#include <typeinfo>
 #include <vector>
 
 namespace SkyTraq {
@@ -32,7 +33,10 @@ namespace SkyTraq {
 
     //! Check the type of an object
     template <typename T>
-    inline bool isa(void) const { return typeid(*this) == typeid(T); }
+    inline bool isa(void) const {
+      const std::type_info &us = typeid(*this), &them = typeid(T);
+      return (us == them) || us.before(them);
+    }
 
     //! Recast this object to another type
     template <typename T>
