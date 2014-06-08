@@ -27,7 +27,7 @@
 
 namespace NMEA0183 {
 
-  unsigned char Sentence::_generate_checksum(std::string tid, std::string type, std::string data) {
+  unsigned char generate_checksum(std::string tid, std::string type, std::string data) {
     unsigned char cs;
     cs = tid[0];
     cs ^= tid[1];
@@ -43,7 +43,7 @@ namespace NMEA0183 {
   }
 
 
-  std::vector<std::string> Sentence::_split_fields(std::string data) {
+  std::vector<std::string> split_fields(std::string data) {
     std::vector<std::string> fields;
     size_t field_start = data.find_first_of(',') + 1;
     size_t next_comma;
@@ -78,11 +78,11 @@ namespace NMEA0183 {
     std::string data = line.substr(first_comma, line.length() - first_comma - 3);
 
     unsigned char checksum = std::stoi(line.substr(line.length() - 2, 2), NULL, 16);
-    unsigned char computed_cs = Sentence::_generate_checksum(tid, type, data);
+    unsigned char computed_cs = generate_checksum(tid, type, data);
     if (computed_cs != checksum)
       throw ChecksumMismatch(computed_cs, checksum);
 
-    auto fields = Sentence::_split_fields(data);
+    auto fields = split_fields(data);
 
     if ((type == "GGA") &&
 	((tid == "GP") || (tid == "GN")))

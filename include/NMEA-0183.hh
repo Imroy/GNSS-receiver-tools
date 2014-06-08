@@ -61,9 +61,6 @@ namespace NMEA0183 {
     const char _talker_id[2], _type[3];
     const unsigned char _checksum;
 
-    static unsigned char _generate_checksum(std::string tid, std::string type, std::string data);
-    static std::vector<std::string> _split_fields(std::string data);
-
   public:
     //! Constructor
     Sentence(std::string tid, std::string type, unsigned char checksum);
