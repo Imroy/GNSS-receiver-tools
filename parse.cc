@@ -34,136 +34,121 @@ int main(int argc, char* argv[]) {
       auto messages = parser.parse_messages();
 
       for (auto msg : messages) {
-	if (msg->isa<NMEA0183::Sentence>()) {
-	  NMEA0183::Sentence *s = msg->cast_as<NMEA0183::Sentence>();
+
+	try {
+	  NMEA0183::Sentence *s = msg->cast_as<NMEA0183::Sentence>();	// Will throw std::bad_cast if not possible
 	  std::cout << "Talker id=\"" << s->talker_id() << "\", type=\"" << s->type() << "\"" << std::endl;
 
 	  if (s->isa<NMEA0183::GGA>()) {
 	    NMEA0183::GGA *gga = s->cast_as<NMEA0183::GGA>();
-	    if (gga != NULL) {
-	      std::cout << "\tTime " << gga->UTC_time()
-			<< ", longitude " << gga->longitude() << "°, lattitude " << gga->lattitude() << "°"
-			<< ", \"" << gga->fix_quality() << "\""
-			<< ", " << gga->num_sats_used() << " satellites used"
-			<< ", HDOP " << gga->HDOP()
-			<< ", altitude " << gga->altitude() << " m"
-			<< std::endl;
-	    }
+	    std::cout << "\tTime " << gga->UTC_time()
+		      << ", longitude " << gga->longitude() << "°, lattitude " << gga->lattitude() << "°"
+		      << ", \"" << gga->fix_quality() << "\""
+		      << ", " << gga->num_sats_used() << " satellites used"
+		      << ", HDOP " << gga->HDOP()
+		      << ", altitude " << gga->altitude() << " m"
+		      << std::endl;
 
 	  } else if (s->isa<NMEA0183::GLL>()) {
 	    NMEA0183::GLL *gll = s->cast_as<NMEA0183::GLL>();
-	    if (gll != NULL) {
-	      std::cout << "\tLongitude " << gll->longitude() << "°, lattitude " << gll->lattitude() << "°"
-			<< ", time " << gll->UTC_time()
-			<< ", " << gll->receiver_mode()
-			<< std::endl;
-	    }
+	    std::cout << "\tLongitude " << gll->longitude() << "°, lattitude " << gll->lattitude() << "°"
+		      << ", time " << gll->UTC_time()
+		      << ", " << gll->receiver_mode()
+		      << std::endl;
 
 	  } else if (s->isa<NMEA0183::GSA>()) {
 	    NMEA0183::GSA *gsa = s->cast_as<NMEA0183::GSA>();
-	    if (gsa != NULL) {
-	      std::cout << "\t" << gsa->mode()
-			<< ", fix: " << gsa->fix_type()
-			<< ", PDOP " << gsa->PDOP() << ", HDOP " << gsa->HDOP() << ", VDOP " << gsa->VDOP()
-			<< std::endl;
-	      std::cout << "\tSatellites:";
-	      for (auto sat : gsa->satellite_ids())
-		std::cout << " " << sat;
-	      std::cout << std::endl;
-	    }
+	    std::cout << "\t" << gsa->mode()
+		      << ", fix: " << gsa->fix_type()
+		      << ", PDOP " << gsa->PDOP() << ", HDOP " << gsa->HDOP() << ", VDOP " << gsa->VDOP()
+		      << std::endl;
+	    std::cout << "\tSatellites:";
+	    for (auto sat : gsa->satellite_ids())
+	      std::cout << " " << sat;
+	    std::cout << std::endl;
 
 	  } else if (s->isa<NMEA0183::GSV>()) {
 	    NMEA0183::GSV *gsv = s->cast_as<NMEA0183::GSV>();
-	    if (gsv != NULL) {
-	      std::cout << "\t" << gsv->message_seq() << "/" << gsv->num_messages() << " messages"
-			<< ", " << gsv->satellites_in_view() << " satellites in view"
-			<< std::endl;
-	      std::cout << "\t";
-	      for (auto sat : gsv->satellite_data()) {
-		std::cout << sat->id << "{el " << sat->elevation << "°, az " << sat->azimuth << "°";
-		if (sat->snr >= 0)
-		  std::cout << ", " << sat->snr << " dB";
-		std::cout << "} ";
-	      }
-	      std::cout << std::endl;
+	    std::cout << "\t" << gsv->message_seq() << "/" << gsv->num_messages() << " messages"
+		      << ", " << gsv->satellites_in_view() << " satellites in view"
+		      << std::endl;
+	    std::cout << "\t";
+	    for (auto sat : gsv->satellite_data()) {
+	      std::cout << sat->id << "{el " << sat->elevation << "°, az " << sat->azimuth << "°";
+	      if (sat->snr >= 0)
+		std::cout << ", " << sat->snr << " dB";
+	      std::cout << "} ";
 	    }
+	    std::cout << std::endl;
 
 	  } else if (s->isa<NMEA0183::RMC>()) {
 	    NMEA0183::RMC *rmc = s->cast_as<NMEA0183::RMC>();
-	    if (rmc != NULL) {
-	      std::cout << "\tTime " << rmc->UTC_time()
-			<< ", " << (rmc->status() ? "data valid" : "warning")
-			<< ", longitude " << rmc->longitude() << "°, lattitude " << rmc->lattitude() << "°"
-			<< ", speed " << rmc->speed() << ", course " << rmc->course()
-			<< ", date " << rmc->UTC_day() << "/" << rmc->UTC_month() << "/" << rmc->UTC_year()
-			<< ", " << rmc->receiver_mode()
-			<< std::endl;
-	    }
+	    std::cout << "\tTime " << rmc->UTC_time()
+		      << ", " << (rmc->status() ? "data valid" : "warning")
+		      << ", longitude " << rmc->longitude() << "°, lattitude " << rmc->lattitude() << "°"
+		      << ", speed " << rmc->speed() << ", course " << rmc->course()
+		      << ", date " << rmc->UTC_day() << "/" << rmc->UTC_month() << "/" << rmc->UTC_year()
+		      << ", " << rmc->receiver_mode()
+		      << std::endl;
 
 	  } else if (s->isa<NMEA0183::VTG>()) {
 	    NMEA0183::VTG *vtg = s->cast_as<NMEA0183::VTG>();
-	    if (vtg != NULL) {
-	      std::cout << "\tCourse " << vtg->true_course() << "°"
-			<< ", speed " << vtg->speed() << " km/h"
-			<< ", " << vtg->receiver_mode()
-			<< std::endl;
-	    }
+	    std::cout << "\tCourse " << vtg->true_course() << "°"
+		      << ", speed " << vtg->speed() << " km/h"
+		      << ", " << vtg->receiver_mode()
+		      << std::endl;
 
 	  } else if (s->isa<NMEA0183::ZDA>()) {
 	    NMEA0183::ZDA *zda = s->cast_as<NMEA0183::ZDA>();
-	    if (zda != NULL) {
-	      std::cout << "\tTime " << zda->UTC_time()
-			<< ", date " << zda->UTC_day() << "/" << zda->UTC_month() << "/" << zda->UTC_year()
-			<< ", TZ " << zda->TZ_hours() << ":" << zda->TZ_minutes()
-			<< std::endl;
-	    }
+	    std::cout << "\tTime " << zda->UTC_time()
+		      << ", date " << zda->UTC_day() << "/" << zda->UTC_month() << "/" << zda->UTC_year()
+		      << ", TZ " << zda->TZ_hours() << ":" << zda->TZ_minutes()
+		      << std::endl;
 
 	  } else if (s->isa<NMEA0183::STI>()) {
 	    NMEA0183::STI *sti = s->cast_as<NMEA0183::STI>();
-	    if (sti != NULL) {
-	      std::cout << "\tProprietary " << sti->proprietary()
-			<< ", PPS mode \"" << sti->PPS_mode() << "\""
-			<< std::endl;
-	    }
+	    std::cout << "\tProprietary " << sti->proprietary()
+		      << ", PPS mode \"" << sti->PPS_mode() << "\""
+		      << std::endl;
 	  }
-	} else if (msg->isa<SkyTraqBin::Output_message>()) {
+	} catch (std::bad_cast) {
+	}
+
+	try {
+	  msg->cast_as<SkyTraqBin::Output_message>();	// throw a std::bas_cast exception if it can't be done
+
 	  if (msg->isa<SkyTraqBin::Measurement_time>()) {
 	    SkyTraqBin::Measurement_time *mt = msg->cast_as<SkyTraqBin::Measurement_time>();
-	    if (mt != NULL) {
-	      std::cout << "\tMeasurement time, issue of data: " << (int)mt->issue_of_data()
-			<< ", week " << mt->week_number()
-			<< ", " << mt->time_in_week() << " ms in week"
-			<< ", measurement period " << mt->period() << " ms" << std::endl;
-	    }
+	    std::cout << "\tMeasurement time, issue of data: " << (int)mt->issue_of_data()
+		      << ", week " << mt->week_number()
+		      << ", " << mt->time_in_week() << " ms in week"
+		      << ", measurement period " << mt->period() << " ms" << std::endl;
 
 	  } else if (msg->isa<SkyTraqBin::Raw_measurements>()) {
 	    SkyTraqBin::Raw_measurements *rm = msg->cast_as<SkyTraqBin::Raw_measurements>();
-	    if (rm != NULL) {
-	      std::cout << "\tRaw measurements, issue of data: " << (int)rm->issue_of_data() << ", " << (int)rm->num_measurements() << " raw measurements." << std::endl;
-	      for (auto m : rm->measurements())
-		std::cout << "\t\tPRN " << (int)m.PRN
-			  << ", CN0 " << (int)m.CN0 << " dBHz"
-			  << ", pseudo-range " << m.pseudorange << " m"
-			  << ", carrier phase " << m.carrier_phase << " cycles"
-			  << ", doppler " << m.doppler_freq << " Hz"
-			  << std::endl;
-	    }
+	    std::cout << "\tRaw measurements, issue of data: " << (int)rm->issue_of_data() << ", " << (int)rm->num_measurements() << " raw measurements." << std::endl;
+	    for (auto m : rm->measurements())
+	      std::cout << "\t\tPRN " << (int)m.PRN
+			<< ", CN0 " << (int)m.CN0 << " dBHz"
+			<< ", pseudo-range " << m.pseudorange << " m"
+			<< ", carrier phase " << m.carrier_phase << " cycles"
+			<< ", doppler " << m.doppler_freq << " Hz"
+			<< std::endl;
 
 	  } else if (msg->isa<SkyTraqBin::SV_channel_status>()) {
 	    SkyTraqBin::SV_channel_status *sv = msg->cast_as<SkyTraqBin::SV_channel_status>();
-	    if (sv != NULL) {
-	      std::cout << "\tSV channel status, issue of data: " << (int)sv->issue_of_data() << ", " << (int)sv->num_svs() << " SV statuses." << std::endl;
-	      for (auto s : sv->statuses())
-		std::cout << "\t\tChannel " << (int)s.channel_id
-			  << ", PRN " << (int)s.PRN
-			  << ", URA " << (int)s.URA
-			  << ", CN0 " << (int)s.CN0 << " dBHz"
-			  << ", elevation " << s.elevation << "°"
-			  << ", azimuth " << s.azimuth << "°"
-			  << std::endl;
-	    }
+	    std::cout << "\tSV channel status, issue of data: " << (int)sv->issue_of_data() << ", " << (int)sv->num_svs() << " SV statuses." << std::endl;
+	    for (auto s : sv->statuses())
+	      std::cout << "\t\tChannel " << (int)s.channel_id
+			<< ", PRN " << (int)s.PRN
+			<< ", URA " << (int)s.URA
+			<< ", CN0 " << (int)s.CN0 << " dBHz"
+			<< ", elevation " << s.elevation << "°"
+			<< ", azimuth " << s.azimuth << "°"
+			<< std::endl;
 
 	  }
+	} catch (std::bad_cast) {
 	}
 
       }

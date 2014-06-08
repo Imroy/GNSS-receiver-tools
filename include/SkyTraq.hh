@@ -33,14 +33,16 @@ namespace SkyTraq {
 
     //! Check the type of an object
     template <typename T>
-    inline bool isa(void) const {
-      const std::type_info &us = typeid(*this), &them = typeid(T);
-      return (us == them) || us.before(them);
-    }
+    inline bool isa(void) const { return typeid(*this) == typeid(T); }
 
     //! Recast this object to another type
     template <typename T>
-    inline T* cast_as(void) { return dynamic_cast<T*>(this); }
+    inline T* cast_as(void) {
+      T *a = dynamic_cast<T*>(this);
+      if (a == nullptr)
+	throw std::bad_cast();
+      return a;
+    }
 
     typedef std::shared_ptr<Message> ptr;
   }; // class Message
