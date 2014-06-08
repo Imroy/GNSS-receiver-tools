@@ -1,10 +1,4 @@
  - Complete message classes
- - Make a unified parser
-  - Take advantage of both NMEA-0183 and binary messages ending with 0x0d 0x0a
-  - Need a common base class for messages?
-  - Change parse_messages into parse_message, more like parse_sentence
-    i.e it parses only one message that has already been picked out
-
  - Make a function that allows a binary query/get message to be sent and waits for the response
   - Throws an exception if a NACK is received
 
