@@ -68,6 +68,19 @@ namespace SkyTraq {
     inline virtual void STI(const NMEA0183::STI &sti) {}
 
     // handler methods for SkyTraq binary messages
+    inline virtual void GNSS_boot_status(const SkyTraqBin::GNSS_boot_status &bs) {}
+    inline virtual void Sw_ver(const SkyTraqBin::Sw_ver &ver) {}
+    inline virtual void Sw_CRC(const SkyTraqBin::Sw_CRC &crc) {}
+    inline virtual void Ack(const SkyTraqBin::Ack &ack) {}
+    inline virtual void Nack(const SkyTraqBin::Nack &nack) {}
+    inline virtual void Pos_update_rate(const SkyTraqBin::Pos_update_rate &rate) {}
+    inline virtual void NMEA_talker_ID(const SkyTraqBin::NMEA_talker_ID &id) {}
+    inline virtual void Nav_data_msg(const SkyTraqBin::Nav_data_msg &msg) {}
+    inline virtual void GNSS_datum(const SkyTraqBin::GNSS_datum &datum) {}
+    inline virtual void GNSS_DOP_mask(const SkyTraqBin::GNSS_DOP_mask &mask) {}
+    inline virtual void GNSS_elevation_CNR_mask(const SkyTraqBin::GNSS_elevation_CNR_mask &mask) {}
+    inline virtual void GPS_ephemeris_data(const SkyTraqBin::GPS_ephemeris_data &eph) {}
+    inline virtual void GNSS_power_mode_status(const SkyTraqBin::GNSS_power_mode_status &stat) {}
     inline virtual void Measurement_time(const SkyTraqBin::Measurement_time &mt) {}
     inline virtual void Raw_measurements(const SkyTraqBin::Raw_measurements &rm) {}
     inline virtual void SV_channel_status(const SkyTraqBin::SV_channel_status &sv_chan) {}

@@ -125,7 +125,20 @@ namespace SkyTraq {
 	try {
 	  msg->cast_as<SkyTraqBin::Output_message>();	// throw a std::bas_cast exception if it can't be done
 
-	  FIRE_IF(SkyTraqBin::Measurement_time, Measurement_time)
+	  FIRE_IF(SkyTraqBin::GNSS_boot_status, GNSS_boot_status)
+	  else FIRE_IF(SkyTraqBin::Sw_ver, Sw_ver)
+	  else FIRE_IF(SkyTraqBin::Sw_CRC, Sw_CRC)
+	  else FIRE_IF(SkyTraqBin::Ack, Ack)
+	  else FIRE_IF(SkyTraqBin::Nack, Nack)
+	  else FIRE_IF(SkyTraqBin::Pos_update_rate, Pos_update_rate)
+	  else FIRE_IF(SkyTraqBin::NMEA_talker_ID, NMEA_talker_ID)
+	  else FIRE_IF(SkyTraqBin::Nav_data_msg, Nav_data_msg)
+	  else FIRE_IF(SkyTraqBin::GNSS_datum, GNSS_datum)
+	  else FIRE_IF(SkyTraqBin::GNSS_DOP_mask, GNSS_DOP_mask)
+	  else FIRE_IF(SkyTraqBin::GNSS_elevation_CNR_mask, GNSS_elevation_CNR_mask)
+	  else FIRE_IF(SkyTraqBin::GPS_ephemeris_data, GPS_ephemeris_data)
+	  else FIRE_IF(SkyTraqBin::GNSS_power_mode_status, GNSS_power_mode_status)
+	  else FIRE_IF(SkyTraqBin::Measurement_time, Measurement_time)
 	  else FIRE_IF(SkyTraqBin::Raw_measurements, Raw_measurements)
 	  else FIRE_IF(SkyTraqBin::SV_channel_status, SV_channel_status)
 	  else FIRE_IF(SkyTraqBin::Subframe_data, Subframe_data);
