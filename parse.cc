@@ -161,7 +161,11 @@ int main(int argc, char* argv[]) {
   SkyTraq::Reader r(file, l);
 
   while (1) {
-    r.read();
+    try {
+      r.read();
+    } catch (std::exception &e) {
+      std::cerr << e.what() << std::endl;
+    }
   }
 
   return 0;
