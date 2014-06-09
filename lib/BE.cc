@@ -56,7 +56,7 @@ void append_be<int>(unsigned char* &buffer, int val) {
   buffer[0] = val >> 24;
   buffer[1] = (val >> 16) & 0xff;
   buffer[2] = (val >> 8) & 0xff;
-  buffer[2] = val & 0xff;
+  buffer[3] = val & 0xff;
   buffer += 4;
 }
 
@@ -65,7 +65,7 @@ void append_be<unsigned int>(unsigned char* &buffer, unsigned int val) {
   buffer[0] = val >> 24;
   buffer[1] = (val >> 16) & 0xff;
   buffer[2] = (val >> 8) & 0xff;
-  buffer[2] = val & 0xff;
+  buffer[3] = val & 0xff;
   buffer += 4;
 }
 
