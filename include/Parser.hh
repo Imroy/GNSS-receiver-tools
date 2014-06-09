@@ -19,7 +19,7 @@
 #ifndef __PARSER_HH__
 #define __PARSER_HH__
 
-#include <istream>
+#include <cstdio>
 #include "NMEA-0183.hh"
 #include "SkyTraqBin.hh"
 
@@ -29,7 +29,7 @@ namespace SkyTraq {
   class Parser {
   private:
     unsigned char *_parse_buffer;
-    std::streamsize _parse_buflen;
+    std::size_t _parse_buflen;
 
   public:
     //! Empty constructor
@@ -42,7 +42,7 @@ namespace SkyTraq {
     void reset_buffer(void);
 
     //! Add bytes to the end of the parse buffer
-    void add_bytes(unsigned char* buffer, std::streamsize buffer_len);
+    void add_bytes(unsigned char* buffer, std::size_t buffer_len);
 
     //! Parse contents of the parse buffer into messages
     std::vector<Message::ptr> parse_messages(void);
@@ -93,13 +93,13 @@ namespace SkyTraq {
   //! Class for an object that reads from a stream and calls methods in a Listener object
   class Reader {
   private:
-    std::istream *_is;
+    std::FILE *_file;
     Listener::ptr _listener;
     unsigned char _buffer[16];
     SkyTraq::Parser _parser;
 
   public:
-    Reader(std::istream &is, Listener::ptr l);
+    Reader(std::FILE* f, Listener::ptr l);
 
     void read(void);
 

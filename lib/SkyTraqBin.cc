@@ -103,9 +103,9 @@ namespace SkyTraqBin {
 #undef OUTPUT2
 
 
-  Output_message::ptr parse_message(unsigned char* buffer, std::streamsize len) {
+  Output_message::ptr parse_message(unsigned char* buffer, std::size_t len) {
     Payload_length payload_len = extract_be<uint16_t>(buffer, 2);
-    std::streamsize end = 2 + 2 + payload_len + 1 + 2;
+    std::size_t end = 2 + 2 + payload_len + 1 + 2;
     if (len < end)
       throw InsufficientData();
 

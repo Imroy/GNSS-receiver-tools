@@ -39,7 +39,7 @@ namespace SkyTraq {
     }
   }
 
-  void Parser::add_bytes(unsigned char* buffer, std::streamsize buffer_len) {
+  void Parser::add_bytes(unsigned char* buffer, std::size_t buffer_len) {
     _parse_buffer = (unsigned char*)realloc(_parse_buffer, _parse_buflen + buffer_len);
     memcpy(_parse_buffer + _parse_buflen, buffer, buffer_len);
     _parse_buflen += buffer_len;
@@ -48,16 +48,16 @@ namespace SkyTraq {
   std::vector<Message::ptr> Parser::parse_messages(void) {
     std::vector<Message::ptr> messages;
 
-    std::streamsize end;	// actually the start of the next message
+    std::size_t end;	// actually the start of the next message
     do {
-      end = -1;
-      for (std::streamsize i = 0; i < _parse_buflen - 1; i++)
+      end = 0;
+      for (std::size_t i = 0; i < _parse_buflen - 1; i++)
 	if ((_parse_buffer[i] == 0x0d)
 	    && (_parse_buffer[i + 1] == 0x0a)) {
 	  end = i + 2;
 	  break;
 	}
-      if (end == -1)
+      if (end == 0)
 	break;
 
       std::exception_ptr exp = nullptr;
@@ -90,14 +90,16 @@ namespace SkyTraq {
   }
 
 
-  Reader::Reader(std::istream &is, Listener::ptr l) :
-    _is(&is), _listener(l)
+  Reader::Reader(std::FILE* f, Listener::ptr l) :
+    _file(f), _listener(l)
   {}
 
 
   void Reader::read(void) {
-    _is->read((char*)_buffer, 16);
-    _parser.add_bytes(_buffer, _is->gcount());
+    std::size_t len = fread(_buffer, 1, 16, _file);
+    if (len == 0)
+      return;
+    _parser.add_bytes(_buffer, len);
 
     try {
       auto messages = _parser.parse_messages();

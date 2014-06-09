@@ -19,6 +19,7 @@
 #ifndef __SKYTRAQBIN_HH__
 #define __SKYTRAQBIN_HH__
 
+#include <cstdio>
 #include <memory>
 #include <sstream>
 #include <vector>
@@ -122,7 +123,7 @@ namespace SkyTraqBin {
 
 
   //! Parser
-  Output_message::ptr parse_message(unsigned char* buffer, std::streamsize len);
+  Output_message::ptr parse_message(unsigned char* buffer, std::size_t len);
 
 
   //! Base class for messages that go to the GPS receiver

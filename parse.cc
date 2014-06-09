@@ -17,7 +17,7 @@
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <string>
-#include <fstream>
+#include <cstdio>
 #include "SkyTraq.hh"
 #include "NMEA-0183.hh"
 #include "SkyTraqBin.hh"
@@ -151,7 +151,12 @@ int main(int argc, char* argv[]) {
   std::string filename = "/dev/ttyUSB0";
   if (argc > 1)
     filename = argv[1];
-  std::fstream file(filename);
+  std::FILE *file = fopen(filename.c_str(), "a+");
+  if (file == NULL) {
+    std::cerr << "input is not open." << std::endl;
+    exit(1);
+  }
+
   auto l = std::make_shared<AppListener>();
   SkyTraq::Reader r(file, l);
 
