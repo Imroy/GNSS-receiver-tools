@@ -99,9 +99,14 @@ namespace SkyTraq {
     SkyTraq::Parser _parser;
 
   public:
+    //! Constructor
     Reader(std::FILE* f, Listener::ptr l);
 
+    //! Read a small amount of data from the file, parse it, send messages to the listener object
     void read(void);
+
+    //! Send a message to the device
+    void write(SkyTraqBin::Input_message::ptr msg);
 
   }; // class Reader
 

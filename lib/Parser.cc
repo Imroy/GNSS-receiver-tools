@@ -152,5 +152,18 @@ namespace SkyTraq {
   }
 
 
+  void Reader::write(SkyTraqBin::Input_message::ptr msg) {
+    SkyTraqBin::Payload_length len = msg->message_length();
+
+    unsigned char *buffer = (unsigned char*)malloc(len);
+    msg->to_buf(buffer);
+
+    fwrite(buffer, 1, len, _file);
+    fflush(_file);
+
+    free(buffer);
+  }
+
+
 
 }; // namespace SkyTraq
