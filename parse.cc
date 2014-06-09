@@ -98,17 +98,17 @@ public:
   }
 
   void Ack(const SkyTraqBin::Ack &ack) {
-    std::cout << "\tAcknowledge message id 0x" << std::hex << ack.ack_id();
+    std::cout << "\tAcknowledge message id 0x" << std::hex << (int)ack.ack_id();
     if (ack.has_subid())
-      std::cout << ", sub id 0x" << ack.ack_subid();
-    std::cout << std::endl;
+      std::cout << ", sub id 0x" << (int)ack.ack_subid();
+    std::cout << std::dec << std::endl;
   }
 
   void Nack(const SkyTraqBin::Nack &nack) {
-    std::cout << "\tNegative acknowledge message id 0x" << std::hex << nack.nack_id();
+    std::cout << "\tNegative acknowledge message id 0x" << std::hex << (int)nack.nack_id();
     if (nack.has_subid())
-      std::cout << ", sub id 0x" << nack.nack_subid();
-    std::cout << std::endl;
+      std::cout << ", sub id 0x" << (int)nack.nack_subid();
+    std::cout << std::dec << std::endl;
   }
 
   void Measurement_time(const SkyTraqBin::Measurement_time &mt) {
