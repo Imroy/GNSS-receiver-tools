@@ -121,17 +121,17 @@ namespace SkyTraqBin {
   //! NACK - Response to an unsuccessful request message
   class Nack : public Output_message {
   private:
-    uint8_t _ack_id;
+    uint8_t _nack_id;
     bool _has_subid;
-    uint8_t _ack_subid;
+    uint8_t _nack_subid;
 
   public:
     //! Constructor from a binary buffer
     Nack(unsigned char* payload, Payload_length payload_len);
 
-    GETTER(uint8_t, ack_id, _ack_id);
+    GETTER(uint8_t, nack_id, _nack_id);
     GETTER(bool, has_subid, _has_subid);
-    GETTER(uint8_t, ack_subid, _ack_subid);
+    GETTER(uint8_t, nack_subid, _nack_subid);
 
   }; // class Ack
 

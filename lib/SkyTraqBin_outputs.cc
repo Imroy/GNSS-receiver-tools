@@ -54,9 +54,9 @@ namespace SkyTraqBin {
 
   Nack::Nack(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
-    _ack_id(payload[1]),
+    _nack_id(payload[1]),
     _has_subid(payload_len > 2),
-    _ack_subid(payload_len > 2 ? payload[2] : 0)
+    _nack_subid(payload_len > 2 ? payload[2] : 0)
   {}
 
 
