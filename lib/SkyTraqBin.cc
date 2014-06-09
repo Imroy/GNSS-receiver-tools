@@ -49,6 +49,7 @@ namespace SkyTraqBin {
     unsigned char *payload = buffer;
     append_be(buffer, _msg_id);
     body_to_buf(buffer);
+    buffer = payload + payload_len;
 
     append_be(buffer, checksum(payload, payload_len));
     append_be<uint8_t>(buffer, 0x0d);
@@ -67,6 +68,7 @@ namespace SkyTraqBin {
     append_be(buffer, _msg_id);
     append_be(buffer, _msg_subid);
     body_to_buf(buffer);
+    buffer = payload + payload_len;
 
     append_be(buffer, checksum(payload, payload_len));
     append_be<uint8_t>(buffer, 0x0d);
