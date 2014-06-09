@@ -77,7 +77,11 @@ namespace NMEA0183 {
     std::string type = line.substr(first_comma - 3, 3);
     std::string data = line.substr(first_comma, line.length() - first_comma - 3);
 
-    unsigned char checksum = std::stoi(line.substr(line.length() - 2, 2), NULL, 16);
+    size_t asterisk = line.find_last_of('*');
+    if (asterisk == line.npos)
+      throw InvalidSentence();
+
+    unsigned char checksum = std::stoi(line.substr(asterisk + 1, line.length() - asterisk - 1), NULL, 16);
     unsigned char computed_cs = generate_checksum(tid, type, data);
     if (computed_cs != checksum)
       throw ChecksumMismatch(computed_cs, checksum);
