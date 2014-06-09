@@ -16,6 +16,7 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include <unistd.h>
 #include <string>
 #include <cstdio>
 #include "SkyTraq.hh"
@@ -149,8 +150,34 @@ public:
 
 int main(int argc, char* argv[]) {
   std::string filename = "/dev/ttyUSB0";
-  if (argc > 1)
-    filename = argv[1];
+  SkyTraqBin::MessageType mt;
+  bool change_mt = false;
+
+  if (argc > 1) {
+    int opt;
+    while ((opt = getopt(argc, argv, "ntb")) != -1) {
+      switch (opt) {
+      case 'n':
+	mt = SkyTraqBin::MessageType::None;
+	change_mt = true;
+	break;
+      case 't':
+	mt = SkyTraqBin::MessageType::NMEA0183;
+	change_mt = true;
+	break;
+      case 'b':
+	mt = SkyTraqBin::MessageType::Binary;
+	change_mt = true;
+	break;
+      default:
+	break;
+      }
+    }
+
+    if (optind > argc)
+      filename = argv[optind];
+  }
+
   std::FILE *file = fopen(filename.c_str(), "a+");
   if (file == NULL) {
     std::cerr << "input is not open." << std::endl;
@@ -159,6 +186,11 @@ int main(int argc, char* argv[]) {
 
   auto l = std::make_shared<AppListener>();
   SkyTraq::Reader r(file, l);
+
+  if (change_mt) {
+    std::cout << "Switching to " << mt << " message type..." << std::endl;
+    r.write(std::make_shared<SkyTraqBin::Config_msg_type>(mt, SkyTraqBin::UpdateType::SRAM));
+  }
 
   while (1) {
     try {
