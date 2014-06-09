@@ -22,6 +22,12 @@
 
 namespace SkyTraqBin {
 
+  std::ostream& operator<< (std::ostream& out, MessageType mt) {
+    out << std::to_string(mt);
+    return out;
+  }
+
+
   void Restart_sys::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, (uint8_t)_start_mode);
     append_be(buffer, _utc_year);
@@ -166,3 +172,22 @@ namespace SkyTraqBin {
 
 
 }; // namespace SkyTraqBin
+
+namespace std {
+
+  std::string to_string(SkyTraqBin::MessageType mt) {
+    switch (mt) {
+    case SkyTraqBin::MessageType::None:
+      return "none";
+      break;
+    case SkyTraqBin::MessageType::NMEA0183:
+      return "NMEA-0183";
+      break;
+    case SkyTraqBin::MessageType::Binary:
+      return "binary";
+      break;
+    }
+    return "";
+  }
+
+}; // namespace std

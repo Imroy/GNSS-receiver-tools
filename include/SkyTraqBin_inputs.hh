@@ -57,6 +57,7 @@ namespace SkyTraqBin {
       Binary,
   }; // class MessageType
 
+  std::ostream& operator<< (std::ostream& out, MessageType mt);
 
   enum class OutputRate : uint8_t {
     Rate1Hz = 0,
@@ -688,5 +689,9 @@ namespace SkyTraqBin {
 
 
 }; // namespace SkyTraqBin
+
+namespace std {
+  std::string to_string(SkyTraqBin::MessageType mt);
+}; // namespace std
 
 #endif // __SKYTRAQBIN_INPUTS_HH__
