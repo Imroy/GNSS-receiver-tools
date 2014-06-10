@@ -16,6 +16,7 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include <functional>
 #include <iostream>
 #include <iomanip>
 #include <map>
@@ -76,9 +77,9 @@ namespace SkyTraqBin {
   }
 
 
-  typedef Output_message::ptr (*output_message_factory)(uint8_t* payload, Payload_length payload_len);
-#define OUTPUT1(ID, CLASS) std::make_pair<uint16_t, output_message_factory>((ID), [](uint8_t* payload, Payload_length len) -> Output_message::ptr { return std::make_shared<CLASS>(payload, len); })
-#define OUTPUT2(ID, SUBID, CLASS) std::make_pair<uint16_t, output_message_factory>(((ID) << 8) | (SUBID), [](uint8_t* payload, Payload_length len) -> Output_message::ptr { return std::make_shared<CLASS>(payload, len); })
+  typedef std::function<Output_message::ptr(uint8_t*, Payload_length)> output_message_factory;
+#define OUTPUT1(ID, CLASS) std::make_pair<uint16_t, output_message_factory>((ID), [](uint8_t* payload, Payload_length len) { return std::make_shared<CLASS>(payload, len); })
+#define OUTPUT2(ID, SUBID, CLASS) std::make_pair<uint16_t, output_message_factory>(((ID) << 8) | (SUBID), [](uint8_t* payload, Payload_length len) { return std::make_shared<CLASS>(payload, len); })
 
   std::map<uint16_t, output_message_factory> output_message_factories = {
     OUTPUT2(0x64, 0x80, GNSS_boot_status),
@@ -130,7 +131,7 @@ namespace SkyTraqBin {
 	throw ChecksumMismatch(ccs, cs);
     }
 
-    return (*output_message_factories[id])(payload, payload_len);
+    return output_message_factories[id](payload, payload_len);
   }
 
 
