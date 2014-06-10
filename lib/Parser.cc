@@ -16,7 +16,7 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <string.h>
+#include <thread>
 #include "Parser.hh"
 
 namespace SkyTraq {
@@ -136,8 +136,12 @@ namespace SkyTraq {
   void Interface::read(void) {
     unsigned char buffer[16];
     std::size_t len = fread(buffer, 1, 16, _file);
-    if (len == 0)
+
+    if (len == 0) {
+      std::this_thread::sleep_for(std::chrono::milliseconds(10));
       return;
+    }
+
     _parser.add_bytes(buffer, len);
 
     auto messages = _parser.parse_messages();
