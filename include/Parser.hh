@@ -80,7 +80,7 @@ namespace SkyTraq {
 
 
   //! Class for an object that reads from a stream and calls methods in a Listener object
-  class Reader {
+  class Interface {
   public:
     //! Type for a function called when a query/get input message gets a response
     /*!
@@ -108,18 +108,18 @@ namespace SkyTraq {
       \param f Open file handle
       \param l Listener object that will receive messages
      */
-    Reader(std::FILE* f, Listener::ptr l);
+    Interface(std::FILE* f, Listener::ptr l);
 
     //! Read a small amount of data from the file, parse it, send messages to the listener object
     void read(void);
 
     //! Send a message to the device
-    void write(SkyTraqBin::Input_message::ptr msg);
+    void send(SkyTraqBin::Input_message::ptr msg);
 
     //! Send a message to the device, call lambda when response is received
-    void write(SkyTraqBin::Input_message::ptr msg, ResponseHandler rh);
+    void send(SkyTraqBin::Input_message::ptr msg, ResponseHandler rh);
 
-  }; // class Reader
+  }; // class Interface
 
 
 }; // namespace SkyTraq

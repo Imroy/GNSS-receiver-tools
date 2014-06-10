@@ -190,26 +190,26 @@ int main(int argc, char* argv[]) {
   }
 
   auto l = std::make_shared<AppListener>();
-  SkyTraq::Reader r(file, l);
+  SkyTraq::Interface iface(file, l);
 
   if (change_mt) {
     std::cout << "Switching to " << mt << " message type..." << std::endl;
-    r.write(std::make_shared<SkyTraqBin::Config_msg_type>(mt, SkyTraqBin::UpdateType::SRAM),
-	    [](bool ack, SkyTraqBin::Output_message* msg) {
-	      std::cout << (ack ? "A" : "Not a") << "cknowledged message type switch." << std::endl;
-	    });
+    iface.send(std::make_shared<SkyTraqBin::Config_msg_type>(mt, SkyTraqBin::UpdateType::SRAM),
+	       [](bool ack, SkyTraqBin::Output_message* msg) {
+		 std::cout << (ack ? "A" : "Not a") << "cknowledged message type switch." << std::endl;
+	       });
   }
   if (change_rate) {
     std::cout << "Changing output rate to " << rate << " Hz" << std::endl;
-    r.write(std::make_shared<SkyTraqBin::Config_sys_pos_rate>(rate, SkyTraqBin::UpdateType::SRAM),
-	    [](bool ack, SkyTraqBin::Output_message* msg) {
-	      std::cout << (ack ? "A" : "Not a") << "cknowledged output rate change." << std::endl;
-	    });
+    iface.send(std::make_shared<SkyTraqBin::Config_sys_pos_rate>(rate, SkyTraqBin::UpdateType::SRAM),
+	       [](bool ack, SkyTraqBin::Output_message* msg) {
+		 std::cout << (ack ? "A" : "Not a") << "cknowledged output rate change." << std::endl;
+	       });
   }
 
   while (1) {
     try {
-      r.read();
+      iface.read();
     } catch (std::invalid_argument &e) {
       std::cerr << e.what() << std::endl;
     } catch (std::exception &e) {

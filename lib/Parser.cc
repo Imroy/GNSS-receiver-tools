@@ -90,7 +90,7 @@ namespace SkyTraq {
   }
 
 
-  Reader::Reader(std::FILE* f, Listener::ptr l) :
+  Interface::Interface(std::FILE* f, Listener::ptr l) :
     _file(f), _listener(l)
   {}
 
@@ -119,7 +119,7 @@ namespace SkyTraq {
 #undef RES1
 #undef RES2
 
-  void Reader::read(void) {
+  void Interface::read(void) {
     unsigned char buffer[16];
     std::size_t len = fread(buffer, 1, 16, _file);
     if (len == 0)
@@ -206,7 +206,7 @@ namespace SkyTraq {
     }
   }
 
-  void Reader::write(SkyTraqBin::Input_message::ptr msg) {
+  void Interface::send(SkyTraqBin::Input_message::ptr msg) {
     SkyTraqBin::Payload_length len = msg->message_length();
 
     unsigned char *buffer = (unsigned char*)malloc(len);
@@ -218,8 +218,8 @@ namespace SkyTraq {
     free(buffer);
   }
 
-  void Reader::write(SkyTraqBin::Input_message::ptr msg, ResponseHandler rh) {
-    write(msg);
+  void Interface::send(SkyTraqBin::Input_message::ptr msg, ResponseHandler rh) {
+    send(msg);
     uint16_t id = msg->message_id();
     try {
       auto msg_with_subid = msg->cast_as<SkyTraqBin::with_subid>();
