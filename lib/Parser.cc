@@ -96,10 +96,11 @@ namespace SkyTraq {
 
 
   void Reader::read(void) {
-    std::size_t len = fread(_buffer, 1, 16, _file);
+    unsigned char buffer[16];
+    std::size_t len = fread(buffer, 1, 16, _file);
     if (len == 0)
       return;
-    _parser.add_bytes(_buffer, len);
+    _parser.add_bytes(buffer, len);
 
     auto messages = _parser.parse_messages();
 

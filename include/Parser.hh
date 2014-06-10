@@ -95,7 +95,6 @@ namespace SkyTraq {
   private:
     std::FILE *_file;
     Listener::ptr _listener;
-    unsigned char _buffer[16];
     SkyTraq::Parser _parser;
 
   public:
