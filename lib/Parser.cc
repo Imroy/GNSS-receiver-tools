@@ -22,7 +22,7 @@
 namespace SkyTraq {
 
   Parser::Parser() :
-    _parse_buffer(NULL),
+    _parse_buffer(nullptr),
     _parse_buflen(0)
   {}
 
@@ -34,7 +34,7 @@ namespace SkyTraq {
   void Parser::reset_buffer(void) {
     if (_parse_buflen > 0) {
       free(_parse_buffer);
-      _parse_buffer = NULL;
+      _parse_buffer = nullptr;
       _parse_buflen = 0;
     }
   }

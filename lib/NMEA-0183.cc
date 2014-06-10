@@ -81,7 +81,7 @@ namespace NMEA0183 {
     if (asterisk == line.npos)
       throw InvalidSentence();
 
-    unsigned char checksum = std::stoi(line.substr(asterisk + 1, line.length() - asterisk - 1), NULL, 16);
+    unsigned char checksum = std::stoi(line.substr(asterisk + 1, line.length() - asterisk - 1), nullptr, 16);
     unsigned char computed_cs = generate_checksum(tid, type, data);
     if (computed_cs != checksum)
       throw ChecksumMismatch(computed_cs, checksum);
