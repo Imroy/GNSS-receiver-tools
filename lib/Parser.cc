@@ -94,6 +94,30 @@ namespace SkyTraq {
     _file(f), _listener(l)
   {}
 
+  // A table mapping the id of input messages to the id of their output message responses
+#define RES1(a, b) std::make_pair<uint16_t, uint16_t>(a, b)
+#define RES2(a1, a2, b1, b2) std::make_pair<uint16_t, uint16_t>(((a1) << 8) | a2, ((b1) << 8) | b2)
+  std::map<uint16_t, uint16_t> response_ids = {
+    RES1(0x02, 0x80),
+    RES1(0x03, 0x81),
+    RES1(0x10, 0x86),
+    RES1(0x15, 0xB9),
+    RES1(0x2D, 0xAE),
+    RES1(0x2E, 0xAF),
+    RES1(0x2F, 0xB0),
+    RES1(0x30, 0xB1),
+    RES1(0x3A, 0xB4),
+    RES1(0x46, 0xBB),
+    RES1(0x4F, 0x93),
+    RES2(0x64, 0x01, 0x64, 0x80),
+    RES2(0x64, 0x03, 0x64, 0x81),
+    RES2(0x64, 0x07, 0x64, 0x83),
+    RES2(0x64, 0x18, 0x64, 0x8B),
+    RES2(0x64, 0x1A, 0x64, 0x8C),
+    RES2(0x65, 0x02, 0x65, 0x80),
+  };
+#undef RES1
+#undef RES2
 
   void Reader::read(void) {
     unsigned char buffer[16];
@@ -125,25 +149,55 @@ namespace SkyTraq {
       }
 
       try {
-	msg->cast_as<SkyTraqBin::Output_message>();	// throw a std::bas_cast exception if it can't be done
+	auto m = msg->cast_as<SkyTraqBin::Output_message>();	// Will throw a std::bad_cast exception if not possible
 
-	FIRE_IF(SkyTraqBin::GNSS_boot_status, GNSS_boot_status)
-	else FIRE_IF(SkyTraqBin::Sw_ver, Sw_ver)
-	else FIRE_IF(SkyTraqBin::Sw_CRC, Sw_CRC)
-	else FIRE_IF(SkyTraqBin::Ack, Ack)
-	else FIRE_IF(SkyTraqBin::Nack, Nack)
-	else FIRE_IF(SkyTraqBin::Pos_update_rate, Pos_update_rate)
-	else FIRE_IF(SkyTraqBin::NMEA_talker_ID, NMEA_talker_ID)
-	else FIRE_IF(SkyTraqBin::Nav_data_msg, Nav_data_msg)
-	else FIRE_IF(SkyTraqBin::GNSS_datum, GNSS_datum)
-	else FIRE_IF(SkyTraqBin::GNSS_DOP_mask, GNSS_DOP_mask)
-	else FIRE_IF(SkyTraqBin::GNSS_elevation_CNR_mask, GNSS_elevation_CNR_mask)
-	else FIRE_IF(SkyTraqBin::GPS_ephemeris_data, GPS_ephemeris_data)
-	else FIRE_IF(SkyTraqBin::GNSS_power_mode_status, GNSS_power_mode_status)
-	else FIRE_IF(SkyTraqBin::Measurement_time, Measurement_time)
+	if (msg->isa<SkyTraqBin::Ack>()) {
+	  auto ack = msg->cast_as<SkyTraqBin::Ack>();
+	  uint16_t id = ack->ack_id();
+	  if (ack->has_subid())
+	    id = (id << 8) | ack->ack_subid();
+
+	  if (_response_handlers.count(id) > 0) {
+	    // Call the response handler with a null message
+	    _response_handlers[id](true, nullptr);
+
+	    // If there is a response message type, move the handler to its id
+	    if (response_ids.count(id) > 0)
+	      _response_handlers[response_ids[id]] = _response_handlers[id];
+
+	    _response_handlers.erase(id);
+	  }
+
+	} else if (msg->isa<SkyTraqBin::Nack>()) {
+	  auto nack = msg->cast_as<SkyTraqBin::Nack>();
+	  uint16_t id = nack->nack_id();
+	  if (nack->has_subid())
+	    id = (id << 8) | nack->nack_subid();
+
+	  if (_response_handlers.count(id) > 0) {
+	    // Call the response handler with a null message
+	    _response_handlers[id](false, nullptr);
+	    _response_handlers.erase(id);
+	  }
+
+	} else FIRE_IF(SkyTraqBin::Measurement_time, Measurement_time)
 	else FIRE_IF(SkyTraqBin::Raw_measurements, Raw_measurements)
 	else FIRE_IF(SkyTraqBin::SV_channel_status, SV_channel_status)
-	else FIRE_IF(SkyTraqBin::Subframe_data, Subframe_data);
+	else FIRE_IF(SkyTraqBin::Subframe_data, Subframe_data)
+	else {
+	  uint16_t id = m->message_id();
+	  try {
+	    auto m_with_subid = m->cast_as<SkyTraqBin::with_subid>();
+	    id = (id << 8) | m_with_subid->message_subid();
+	  } catch (std::bad_cast) {
+	  }
+
+	  if (_response_handlers.count(id) > 0) {
+	    // Call the response handler with the message
+	    _response_handlers[id](true, m);
+	    _response_handlers.erase(id);
+	  }
+	}
 
       } catch (std::bad_cast) {
       }
@@ -151,7 +205,6 @@ namespace SkyTraq {
 #undef FIRE_IF
     }
   }
-
 
   void Reader::write(SkyTraqBin::Input_message::ptr msg) {
     SkyTraqBin::Payload_length len = msg->message_length();
@@ -165,6 +218,16 @@ namespace SkyTraq {
     free(buffer);
   }
 
+  void Reader::write(SkyTraqBin::Input_message::ptr msg, ResponseHandler rh) {
+    write(msg);
+    uint16_t id = msg->message_id();
+    try {
+      auto msg_with_subid = msg->cast_as<SkyTraqBin::with_subid>();
+      id = (id << 8) | msg_with_subid->message_subid();
+    } catch (std::bad_cast) {
+    }
+    _response_handlers[id] = rh;
+  }
 
 
 }; // namespace SkyTraq

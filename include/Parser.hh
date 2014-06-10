@@ -19,7 +19,9 @@
 #ifndef __PARSER_HH__
 #define __PARSER_HH__
 
+#include <functional>
 #include <cstdio>
+#include <map>
 #include "NMEA-0183.hh"
 #include "SkyTraqBin.hh"
 
@@ -68,19 +70,6 @@ namespace SkyTraq {
     inline virtual void STI(const NMEA0183::STI &sti) {}
 
     // handler methods for SkyTraq binary messages
-    inline virtual void GNSS_boot_status(const SkyTraqBin::GNSS_boot_status &bs) {}
-    inline virtual void Sw_ver(const SkyTraqBin::Sw_ver &ver) {}
-    inline virtual void Sw_CRC(const SkyTraqBin::Sw_CRC &crc) {}
-    inline virtual void Ack(const SkyTraqBin::Ack &ack) {}
-    inline virtual void Nack(const SkyTraqBin::Nack &nack) {}
-    inline virtual void Pos_update_rate(const SkyTraqBin::Pos_update_rate &rate) {}
-    inline virtual void NMEA_talker_ID(const SkyTraqBin::NMEA_talker_ID &id) {}
-    inline virtual void Nav_data_msg(const SkyTraqBin::Nav_data_msg &msg) {}
-    inline virtual void GNSS_datum(const SkyTraqBin::GNSS_datum &datum) {}
-    inline virtual void GNSS_DOP_mask(const SkyTraqBin::GNSS_DOP_mask &mask) {}
-    inline virtual void GNSS_elevation_CNR_mask(const SkyTraqBin::GNSS_elevation_CNR_mask &mask) {}
-    inline virtual void GPS_ephemeris_data(const SkyTraqBin::GPS_ephemeris_data &eph) {}
-    inline virtual void GNSS_power_mode_status(const SkyTraqBin::GNSS_power_mode_status &stat) {}
     inline virtual void Measurement_time(const SkyTraqBin::Measurement_time &mt) {}
     inline virtual void Raw_measurements(const SkyTraqBin::Raw_measurements &rm) {}
     inline virtual void SV_channel_status(const SkyTraqBin::SV_channel_status &sv_chan) {}
@@ -92,13 +81,33 @@ namespace SkyTraq {
 
   //! Class for an object that reads from a stream and calls methods in a Listener object
   class Reader {
+  public:
+    //! Type for a function called when a query/get input message gets a response
+    /*!
+      \param ack Did the input message receive an ack (true), or a nack (false)?
+      \param msg The output message that was received
+
+      There are three ways this lambda will be called:
+      -# (false, nullptr) - Nack was received
+      -# (true, nullptr) - Ack was received
+      -# (true, msg) - Response message received
+
+      The third variant only happens with response-type messages.
+     */
+    typedef std::function<void(bool ack, SkyTraqBin::Output_message* msg)> ResponseHandler;
+
   private:
     std::FILE *_file;
     Listener::ptr _listener;
     SkyTraq::Parser _parser;
+    std::map<uint16_t, ResponseHandler> _response_handlers;
 
   public:
     //! Constructor
+    /*!
+      \param f Open file handle
+      \param l Listener object that will receive messages
+     */
     Reader(std::FILE* f, Listener::ptr l);
 
     //! Read a small amount of data from the file, parse it, send messages to the listener object
@@ -106,6 +115,9 @@ namespace SkyTraq {
 
     //! Send a message to the device
     void write(SkyTraqBin::Input_message::ptr msg);
+
+    //! Send a message to the device, call lambda when response is received
+    void write(SkyTraqBin::Input_message::ptr msg, ResponseHandler rh);
 
   }; // class Reader
 

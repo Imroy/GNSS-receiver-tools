@@ -194,12 +194,17 @@ int main(int argc, char* argv[]) {
 
   if (change_mt) {
     std::cout << "Switching to " << mt << " message type..." << std::endl;
-    r.write(std::make_shared<SkyTraqBin::Config_msg_type>(mt, SkyTraqBin::UpdateType::SRAM));
+    r.write(std::make_shared<SkyTraqBin::Config_msg_type>(mt, SkyTraqBin::UpdateType::SRAM),
+	    [](bool ack, SkyTraqBin::Output_message* msg) {
+	      std::cout << (ack ? "A" : "Not a") << "cknowledged message type switch." << std::endl;
+	    });
   }
   if (change_rate) {
     std::cout << "Changing output rate to " << rate << " Hz" << std::endl;
-    r.write(std::make_shared<SkyTraqBin::Config_sys_pos_rate>
-	    (rate, SkyTraqBin::UpdateType::SRAM));
+    r.write(std::make_shared<SkyTraqBin::Config_sys_pos_rate>(rate, SkyTraqBin::UpdateType::SRAM),
+	    [](bool ack, SkyTraqBin::Output_message* msg) {
+	      std::cout << (ack ? "A" : "Not a") << "cknowledged output rate change." << std::endl;
+	    });
   }
 
   while (1) {
