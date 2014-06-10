@@ -151,11 +151,12 @@ public:
 int main(int argc, char* argv[]) {
   std::string filename = "/dev/ttyUSB0";
   SkyTraqBin::MessageType mt;
-  bool change_mt = false;
+  int rate;
+  bool change_mt = false, change_rate = false;
 
   if (argc > 1) {
     int opt;
-    while ((opt = getopt(argc, argv, "ntb")) != -1) {
+    while ((opt = getopt(argc, argv, "ntbr:")) != -1) {
       switch (opt) {
       case 'n':
 	mt = SkyTraqBin::MessageType::None;
@@ -168,6 +169,10 @@ int main(int argc, char* argv[]) {
       case 'b':
 	mt = SkyTraqBin::MessageType::Binary;
 	change_mt = true;
+	break;
+      case 'r':
+	rate = atoi(optarg);
+	change_rate = true;
 	break;
       default:
 	break;
@@ -191,10 +196,17 @@ int main(int argc, char* argv[]) {
     std::cout << "Switching to " << mt << " message type..." << std::endl;
     r.write(std::make_shared<SkyTraqBin::Config_msg_type>(mt, SkyTraqBin::UpdateType::SRAM));
   }
+  if (change_rate) {
+    std::cout << "Changing output rate to " << rate << " Hz" << std::endl;
+    r.write(std::make_shared<SkyTraqBin::Config_sys_pos_rate>
+	    (rate, SkyTraqBin::UpdateType::SRAM));
+  }
 
   while (1) {
     try {
       r.read();
+    } catch (std::invalid_argument &e) {
+      std::cerr << e.what() << std::endl;
     } catch (std::exception &e) {
       std::cerr << e.what() << std::endl;
     }
