@@ -22,6 +22,7 @@
 #include <functional>
 #include <cstdio>
 #include <map>
+#include <queue>
 #include "NMEA-0183.hh"
 #include "SkyTraqBin.hh"
 
@@ -100,7 +101,11 @@ namespace SkyTraq {
     std::FILE *_file;
     Listener::ptr _listener;
     SkyTraq::Parser _parser;
+    std::queue<std::pair<unsigned char*, SkyTraqBin::Payload_length> > _output_queue;
+    bool _response_pending;
     std::map<uint16_t, ResponseHandler> _response_handlers;
+
+    void _send_from_queue(void);
 
   public:
     //! Constructor

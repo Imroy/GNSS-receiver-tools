@@ -91,7 +91,7 @@ namespace SkyTraq {
 
 
   Interface::Interface(std::FILE* f, Listener::ptr l) :
-    _file(f), _listener(l)
+    _file(f), _listener(l), _response_pending(false)
   {}
 
   // A table mapping the id of input messages to the id of their output message responses
@@ -118,6 +118,20 @@ namespace SkyTraq {
   };
 #undef RES1
 #undef RES2
+
+  void Interface::_send_from_queue(void) {
+    if (_output_queue.empty())
+      return;
+
+    auto msg = _output_queue.front();
+    fwrite(msg.first, 1, msg.second, _file);
+    fflush(_file);
+    free(msg.first);
+
+    _output_queue.pop();
+    if (_output_queue.empty())
+      _response_pending = false;
+  }
 
   void Interface::read(void) {
     unsigned char buffer[16];
@@ -168,7 +182,14 @@ namespace SkyTraq {
 	    _response_handlers.erase(id);
 	  }
 
+	  // If there is no additional "response" message incoming, it's okay to send another message
+	  if (response_ids.count(id) == 0)
+	    _send_from_queue();
+
 	} else if (msg->isa<SkyTraqBin::Nack>()) {
+	  // There's no additional "response" message, send another message
+	  _send_from_queue();
+
 	  auto nack = msg->cast_as<SkyTraqBin::Nack>();
 	  uint16_t id = nack->nack_id();
 	  if (nack->has_subid())
@@ -185,6 +206,9 @@ namespace SkyTraq {
 	else FIRE_IF(SkyTraqBin::SV_channel_status, SV_channel_status)
 	else FIRE_IF(SkyTraqBin::Subframe_data, Subframe_data)
 	else {
+	  // Assume this is a "response" ouput message, send another message from the queue
+	  _send_from_queue();
+
 	  uint16_t id = m->message_id();
 	  try {
 	    auto m_with_subid = m->cast_as<SkyTraqBin::with_subid>();
@@ -212,10 +236,13 @@ namespace SkyTraq {
     unsigned char *buffer = (unsigned char*)malloc(len);
     msg->to_buf(buffer);
 
-    fwrite(buffer, 1, len, _file);
-    fflush(_file);
-
-    free(buffer);
+    if (!_response_pending) {
+      fwrite(buffer, 1, len, _file);
+      fflush(_file);
+      free(buffer);
+      _response_pending = true;
+    } else
+      _output_queue.push(std::make_pair(buffer, len));
   }
 
   void Interface::send(SkyTraqBin::Input_message::ptr msg, ResponseHandler rh) {
