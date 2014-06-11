@@ -264,6 +264,15 @@ namespace SkyTraqBin {
   }; // class ElevationCNRmode
 
 
+  enum class DefaultOrEnable : uint8_t {
+    Default = 0,
+      Enable = 1,
+      Enabled = 1,
+      Disable = 2,
+      Disabled = 2,
+  }; // class DefaultOrEnable
+
+
 #define GETTER(type, name, field) inline const type name(void) const { return field; }
 
 #define GETTER_SETTER(type, name, field) inline const type name(void) const { return field; } \

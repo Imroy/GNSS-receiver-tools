@@ -607,6 +607,67 @@ namespace SkyTraqBin {
   }; // class Get_GPS_ephemeris
 
 
+  //! CONFIGURE POSITION PINNING - Enable or disable position pinning of GNSS receiver
+  class Config_pos_pinning : public Input_message {
+  private:
+    DefaultOrEnable _pinning;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 2);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_pos_pinning(DefaultOrEnable p, UpdateType ut) :
+      Input_message(0x39),
+      _pinning(p), _update_type(ut)
+    {}
+
+    GETTER_SETTER(DefaultOrEnable, pinning, _pinning);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_pos_pinning
+
+
+  //! QUERY POSITION PINNING - Query position pinning status of GNSS receiver
+  //! - Responds with GNSS_pos_pinning_status
+  class Q_pos_pinning : public Input_message {
+  public:
+    Q_pos_pinning(void) :
+      Input_message(0x3A)
+    {}
+
+  }; // class Q_pos_pinning
+
+
+  //! CONFIGURE POSITION PINNING PARAMETERS - Set position pinning parameters of GNSS receiver
+  class Config_pos_pinning_params : public Input_message {
+  private:
+    uint16_t _pin_speed, _pin_count;
+    uint16_t _unpin_speed, _unpin_count, _unpin_dist;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 1);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_pos_pinning_params(uint16_t ps, uint16_t pc,
+			      uint16_t us, uint16_t uc, uint16_t ud, UpdateType ut) :
+      Input_message(0x3B),
+      _pin_speed(ps), _pin_count(pc),
+      _unpin_speed(us), _unpin_count(uc), _unpin_dist(ud),
+      _update_type(ut)
+    {}
+
+    GETTER_SETTER(uint16_t, pinning_speed, _pin_speed);
+    GETTER_SETTER(uint16_t, pinning_count, _pin_count);
+    GETTER_SETTER(uint16_t, unpinning_speed, _unpin_speed);
+    GETTER_SETTER(uint16_t, unpinning_count, _unpin_count);
+    GETTER_SETTER(uint16_t, unpinning_distance, _unpin_dist);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_pos_pinning_params
+
+
   //! SET GPS EPHEMERIS - Set GPS ephemeris to GNSS receiver
   class Set_GPS_ephemeris : public Input_message {
   private:

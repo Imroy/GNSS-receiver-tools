@@ -151,6 +151,22 @@ namespace SkyTraqBin {
   }
 
 
+  void Config_pos_pinning::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, static_cast<uint8_t>(_pinning));
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
+  void Config_pos_pinning_params::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _pin_speed);
+    append_be(buffer, _pin_count);
+    append_be(buffer, _unpin_speed);
+    append_be(buffer, _unpin_count);
+    append_be(buffer, _unpin_dist);
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
   void Set_GPS_ephemeris::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, _sv_num);
     int i;

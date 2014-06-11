@@ -339,6 +339,27 @@ namespace SkyTraqBin {
   }; // class GPS_ephemeris_data
 
 
+  //! GNSS POSITON PINNING STATUS - Position pinning status of the GNSS receiver
+  //! - Answer to Q_pos_pinning
+  class GNSS_pos_pinning_status : public Output_message {
+  private:
+    DefaultOrEnable _status;
+    uint16_t _pin_speed, _pin_count;
+    uint16_t _unpin_speed, _unpin_count, _unpin_dist;
+
+  public:
+    GNSS_pos_pinning_status(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(DefaultOrEnable, status, _status);
+    GETTER(uint16_t, pinning_speed, _pin_speed);
+    GETTER(uint16_t, pinning_count, _pin_count);
+    GETTER(uint16_t, unpinning_speed, _unpin_speed);
+    GETTER(uint16_t, unpinning_count, _unpin_count);
+    GETTER(uint16_t, unpinning_distance, _unpin_dist);
+
+  }; // class GNSS_pos_pinning_status
+
+
   //! GNSS POWER MODE STATUS - Power mode status of the GNSS receiver
   //! - Answer to Q_power_mode message
   class GNSS_power_mode_status : public Output_message {

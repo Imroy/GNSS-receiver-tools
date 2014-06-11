@@ -130,6 +130,17 @@ namespace SkyTraqBin {
   }
 
 
+  GNSS_pos_pinning_status::GNSS_pos_pinning_status(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _status((DefaultOrEnable)payload[1]),
+    _pin_speed(extract_be<uint16_t>(payload, 2)),
+    _pin_count(extract_be<uint16_t>(payload, 4)),
+    _unpin_speed(extract_be<uint16_t>(payload, 6)),
+    _unpin_count(extract_be<uint16_t>(payload, 8)),
+    _unpin_dist(extract_be<uint16_t>(payload, 10))
+  {}
+
+
   GNSS_power_mode_status::GNSS_power_mode_status(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _power_mode((PowerMode)payload[1])
