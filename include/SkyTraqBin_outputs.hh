@@ -55,6 +55,20 @@ namespace SkyTraqBin {
   }; // class GNSS_boot_status
 
 
+  //! 1PPS PULSE WIDTH - 1PPS pulse width of GNSS receiver
+  class GNSS_1PPS_pulse_width : public Output_message_with_subid {
+  private:
+    uint32_t _width;
+
+  public:
+    GNSS_1PPS_pulse_width(unsigned char* payload, Payload_length payload_len);
+
+    GETTER_MOD(double, width, _width * 1.0e-06);
+    GETTER_RAW(uint32_t, width, _width);
+
+  }; // class GNSS_1PPS_pulse_width
+
+
   struct PackedVersion {
     uint8_t X, Y, Z;
 

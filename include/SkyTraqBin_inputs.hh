@@ -778,6 +778,39 @@ namespace SkyTraqBin {
   }; // class Q_GNSS_boot_status
 
 
+  //! CONFIGURE 1PPS PULSE WIDTH - Configure 1PPS pulse width of GNSS receiver
+  class Config_1PPS_pulse_width : public Input_message_with_subid {
+  private:
+    uint32_t _width;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 5);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_1PPS_pulse_width(uint32_t w, UpdateType ut) :
+      Input_message_with_subid(0x65, 0x01),
+      _width(w), _update_type(ut)
+    {}
+
+    GETTER_SETTER_MOD(double, width, _width, _width * 1.0e-6, val * 1e+6);
+    GETTER_SETTER_RAW(int32_t, width, _width);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_1PPS_pulse_width
+
+
+  //! QUERY 1PPS PULSE WIDTH - Query 1PPS pulse width of GNSS receiver
+  //! - Answer with GNSS_1PPS_pulse_width
+  class Q_1PPS_pulse_width : public Input_message_with_subid {
+  public:
+    Q_1PPS_pulse_width(void) :
+      Input_message_with_subid(0x65, 0x02)
+    {}
+
+  }; // class Q_1PPS_pulse_width
+
+
 }; // namespace SkyTraqBin
 
 namespace std {

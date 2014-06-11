@@ -193,6 +193,12 @@ namespace SkyTraqBin {
   }
 
 
+  void Config_1PPS_pulse_width::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _width);
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
 }; // namespace SkyTraqBin
 
 namespace std {
