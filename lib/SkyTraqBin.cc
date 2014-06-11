@@ -86,6 +86,7 @@ namespace SkyTraqBin {
     OUTPUT2(0x62, 0x81, GNSS_QZSS_status),
     OUTPUT2(0x63, 0x80, GNSS_SAEE_status),
     OUTPUT2(0x64, 0x80, GNSS_boot_status),
+    OUTPUT2(0x64, 0x81, GNSS_extended_NMEA_msg_interval),
     OUTPUT2(0x64, 0x80, GNSS_1PPS_pulse_width),
     OUTPUT1(0x80, Sw_ver),
     OUTPUT1(0x81, Sw_CRC),

@@ -137,6 +137,23 @@ namespace SkyTraqBin {
   }
 
 
+  void Config_extended_NMEA_msg_interval::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _gga);
+    append_be(buffer, _gsa);
+    append_be(buffer, _gsv);
+    append_be(buffer, _gll);
+    append_be(buffer, _rmc);
+    append_be(buffer, _vtg);
+    append_be(buffer, _zda);
+    append_be(buffer, _gns);
+    append_be(buffer, _gbs);
+    append_be(buffer, _grs);
+    append_be(buffer, _dtm);
+    append_be(buffer, _gst);
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
   void Config_nav_data_msg_interval::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, _interval);
     append_be(buffer, static_cast<uint8_t>(_update_type));

@@ -968,6 +968,56 @@ namespace SkyTraqBin {
   }; // class Q_GNSS_boot_status
 
 
+  //! CONFIGURE EXTENDED NMEA MESSAGE INTERVAL - Configure extended NMEA message Interval of GNSS receiver
+  class Config_extended_NMEA_msg_interval : public Input_message_with_subid {
+  private:
+    uint8_t _gga, _gsa, _gsv, _gll, _rmc, _vtg, _zda, _gns, _gbs, _grs, _dtm, _gst;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 13);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_extended_NMEA_msg_interval(uint8_t gga, uint8_t gsa, uint8_t gsv, uint8_t gll,
+				      uint8_t rmc, uint8_t vtg, uint8_t zda, uint8_t gns,
+				      uint8_t gbs, uint8_t grs, uint8_t dtm, uint8_t gst,
+				      UpdateType ut) :
+      Input_message_with_subid(0x64, 0x02),
+      _gga(gga), _gsa(gsa), _gsv(gsv), _gll(gll),
+      _rmc(rmc), _vtg(vtg), _zda(zda), _gns(gns),
+      _gbs(gbs), _grs(grs), _dtm(dtm), _gst(gst),
+      _update_type(ut)
+    {}
+
+    GETTER_SETTER(uint8_t, GGA_interval, _gga);
+    GETTER_SETTER(uint8_t, GSA_interval, _gsa);
+    GETTER_SETTER(uint8_t, GSV_interval, _gsv);
+    GETTER_SETTER(uint8_t, GLL_interval, _gll);
+    GETTER_SETTER(uint8_t, RMC_interval, _rmc);
+    GETTER_SETTER(uint8_t, VTG_interval, _vtg);
+    GETTER_SETTER(uint8_t, ZDA_interval, _zda);
+    GETTER_SETTER(uint8_t, GNS_interval, _gns);
+    GETTER_SETTER(uint8_t, GBS_interval, _gbs);
+    GETTER_SETTER(uint8_t, GRS_interval, _grs);
+    GETTER_SETTER(uint8_t, DTM_interval, _dtm);
+    GETTER_SETTER(uint8_t, GST_interval, _gst);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_extended_NMEA_msg_interval
+
+
+  //! QUERY EXTENDED NMEA MESSAGE INTERVAL
+  class Q_extended_NMEA_msg_interval : public Input_message_with_subid, public with_response {
+  public:
+    Q_extended_NMEA_msg_interval(void) :
+      Input_message_with_subid(0x64, 0x03)
+    {}
+
+    RESPONSE2(0x64, 0x81);
+
+  }; // class Q_extended_NMEA_msg_interval
+
+
   //! CONFIGURE 1PPS PULSE WIDTH - Configure 1PPS pulse width of GNSS receiver
   class Config_1PPS_pulse_width : public Input_message_with_subid {
   private:

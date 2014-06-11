@@ -259,6 +259,14 @@ namespace SkyTraqBin {
   {}
 
 
+  GNSS_extended_NMEA_msg_interval::GNSS_extended_NMEA_msg_interval(unsigned char* payload, Payload_length payload_len) :
+    Output_message_with_subid(payload, payload_len),
+    _gga(payload[2]), _gsa(payload[3]), _gsv(payload[4]), _gll(payload[5]),
+    _rmc(payload[6]), _vtg(payload[7]), _zda(payload[8]), _gns(payload[9]),
+    _gbs(payload[10]), _grs(payload[11]), _dtm(payload[12]), _gst(payload[13])
+  {}
+
+
   GNSS_1PPS_pulse_width::GNSS_1PPS_pulse_width(unsigned char* payload, Payload_length payload_len) :
     Output_message_with_subid(payload, payload_len),
     _width(extract_be<uint32_t>(payload, 2))

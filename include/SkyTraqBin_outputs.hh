@@ -585,6 +585,30 @@ namespace SkyTraqBin {
   }; // class GNSS_boot_status
 
 
+  //! EXTENDED NMEA MESSAGE INTERVAL - Extended NMEA message interval of the GNSS receiver
+  class GNSS_extended_NMEA_msg_interval : public Output_message_with_subid {
+  private:
+    uint8_t _gga, _gsa, _gsv, _gll, _rmc, _vtg, _zda, _gns, _gbs, _grs, _dtm, _gst;
+
+  public:
+    GNSS_extended_NMEA_msg_interval(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(uint8_t, GGA_interval, _gga);
+    GETTER(uint8_t, GSA_interval, _gsa);
+    GETTER(uint8_t, GSV_interval, _gsv);
+    GETTER(uint8_t, GLL_interval, _gll);
+    GETTER(uint8_t, RMC_interval, _rmc);
+    GETTER(uint8_t, VTG_interval, _vtg);
+    GETTER(uint8_t, ZDA_interval, _zda);
+    GETTER(uint8_t, GNS_interval, _gns);
+    GETTER(uint8_t, GBS_interval, _gbs);
+    GETTER(uint8_t, GRS_interval, _grs);
+    GETTER(uint8_t, DTM_interval, _dtm);
+    GETTER(uint8_t, GST_interval, _gst);
+
+  }; // class GNSS_extended_NMEA_msg_interval
+
+
   //! 1PPS PULSE WIDTH - 1PPS pulse width of GNSS receiver
   //! - Answer to Q_1PPS_pulse_width
   class GNSS_1PPS_pulse_width : public Output_message_with_subid {
