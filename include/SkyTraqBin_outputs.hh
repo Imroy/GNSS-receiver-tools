@@ -19,6 +19,7 @@
 #ifndef __SKYTRAQBIN_OUTPUTS_HH__
 #define __SKYTRAQBIN_OUTPUTS_HH__
 
+#include <stdexcept>
 #include "SkyTraqBin.hh"
 
 namespace SkyTraqBin {
@@ -295,14 +296,18 @@ namespace SkyTraqBin {
   class GPS_ephemeris_data : public Output_message {
   private:
     uint16_t _sv_num;
-    uint8_t _subframe1[28], _subframe2[28], _subframe3[28];
+    uint8_t _subframe[3][28];
 
   public:
     GPS_ephemeris_data(unsigned char* payload, Payload_length payload_len);
 
-    GETTER(uint8_t*, subframe1, _subframe1);
-    GETTER(uint8_t*, subframe2, _subframe2);
-    GETTER(uint8_t*, subframe3, _subframe3);
+    GETTER(uint16_t, SV_num, _sv_num);
+
+    inline const uint8_t* subframe(unsigned char i) const {
+      if (i > 2)
+	throw std::out_of_range(std::to_string(i) + " > 2");
+      return _subframe[i];
+    }
 
   }; // class GPS_ephemeris_data
 

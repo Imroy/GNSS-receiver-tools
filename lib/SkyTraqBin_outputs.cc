@@ -115,9 +115,8 @@ namespace SkyTraqBin {
     Output_message(payload, payload_len),
     _sv_num(extract_be<uint16_t>(payload, 1))
   {
-    memcpy(&_subframe1, payload + 3, 28);
-    memcpy(&_subframe2, payload + 31, 28);
-    memcpy(&_subframe3, payload + 59, 28);
+    for (unsigned char i = 0; i < 3; i++)
+      memcpy(_subframe[i], payload + 3 + (i * 28), 28);
   }
 
 
