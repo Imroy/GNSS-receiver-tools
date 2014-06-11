@@ -42,6 +42,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS BOOT STATUS - Boot status of GNSS receiver
+  //! - Answer to Q_GNSS_boot_status
   class GNSS_boot_status : public Output_message_with_subid {
   private:
     uint8_t _status, _flash_type;
@@ -56,6 +57,7 @@ namespace SkyTraqBin {
 
 
   //! 1PPS PULSE WIDTH - 1PPS pulse width of GNSS receiver
+  //! - Answer to Q_1PPS_pulse_width
   class GNSS_1PPS_pulse_width : public Output_message_with_subid {
   private:
     uint32_t _width;
