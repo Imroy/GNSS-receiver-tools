@@ -246,6 +246,12 @@ namespace SkyTraqBin {
   {}
 
 
+  GNSS_SAEE_status::GNSS_SAEE_status(unsigned char* payload, Payload_length payload_len) :
+    Output_message_with_subid(payload, payload_len),
+    _enabled((DefaultOrEnable)payload[2])
+  {}
+
+
   GNSS_boot_status::GNSS_boot_status(unsigned char* payload, Payload_length payload_len) :
     Output_message_with_subid(payload, payload_len),
     _status(payload[2]),

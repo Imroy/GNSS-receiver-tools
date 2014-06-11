@@ -922,6 +922,39 @@ namespace SkyTraqBin {
   }; // class Q_QZSS_status
 
 
+  //! CONFIGURE SAEE - configure SAEE of GNSS receiver
+  class Config_SAEE : public Input_message_with_subid {
+  private:
+    DefaultOrEnable _enable;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 2);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_SAEE(DefaultOrEnable e, UpdateType ut) :
+      Input_message_with_subid(0x63, 0x01),
+      _enable(e), _update_type(ut)
+    {}
+
+    GETTER_SETTER(DefaultOrEnable, enable, _enable);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_SAEE
+
+
+  //! QUERY SAEE STATUS
+  class Q_SAEE_status : public Input_message_with_subid, public with_response {
+  public:
+    Q_SAEE_status(void) :
+      Input_message_with_subid(0x63, 0x02)
+    {}
+
+    RESPONSE2(0x63, 0x80);
+
+  }; // class Q_SAEE_status
+
+
   //! QUERY GNSS BOOT STATUS - Query boot status of GNSS receiver
   //! - Responds with GNSS_boot_status message
   class Q_GNSS_boot_status : public Input_message_with_subid, public with_response {

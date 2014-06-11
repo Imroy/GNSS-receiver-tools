@@ -556,6 +556,20 @@ namespace SkyTraqBin {
   }; // class GNSS_QZSS_status
 
 
+  //! SAEE STATUS - SAEE status of GNSS receiver
+  class GNSS_SAEE_status : public Output_message_with_subid {
+  private:
+    DefaultOrEnable _enabled;
+
+  public:
+    GNSS_SAEE_status(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(DefaultOrEnable, enabled, _enabled);
+
+
+  }; // class GNSS_SAEE_status
+
+
   //! GNSS BOOT STATUS - Boot status of GNSS receiver
   //! - Answer to Q_GNSS_boot_status
   class GNSS_boot_status : public Output_message_with_subid {
