@@ -770,10 +770,6 @@ namespace SkyTraqBin {
   //! QUERY GNSS BOOT STATUS - Query boot status of GNSS receiver
   //! - Responds with GNSS_boot_status message
   class Q_GNSS_boot_status : public Input_message_with_subid {
-  private:
-    GETTER(Payload_length, body_length, 0);
-    virtual inline void body_to_buf(unsigned char* buffer) const { }
-
   public:
     Q_GNSS_boot_status(void) :
       Input_message_with_subid(0x64, 0x01)
