@@ -94,31 +94,6 @@ namespace SkyTraq {
     _file(f), _listener(l), _response_pending(false)
   {}
 
-  // A table mapping the id of input messages to the id of their output message responses
-#define RES1(a, b) std::make_pair<uint16_t, uint16_t>(a, b)
-#define RES2(a1, a2, b1, b2) std::make_pair<uint16_t, uint16_t>(((a1) << 8) | a2, ((b1) << 8) | b2)
-  std::map<uint16_t, uint16_t> response_ids = {
-    RES1(0x02, 0x80),
-    RES1(0x03, 0x81),
-    RES1(0x10, 0x86),
-    RES1(0x15, 0xB9),
-    RES1(0x2D, 0xAE),
-    RES1(0x2E, 0xAF),
-    RES1(0x2F, 0xB0),
-    RES1(0x30, 0xB1),
-    RES1(0x3A, 0xB4),
-    RES1(0x46, 0xBB),
-    RES1(0x4F, 0x93),
-    RES2(0x64, 0x01, 0x64, 0x80),
-    RES2(0x64, 0x03, 0x64, 0x81),
-    RES2(0x64, 0x07, 0x64, 0x83),
-    RES2(0x64, 0x18, 0x64, 0x8B),
-    RES2(0x64, 0x1A, 0x64, 0x8C),
-    RES2(0x65, 0x02, 0x65, 0x80),
-  };
-#undef RES1
-#undef RES2
-
   void Interface::_send_from_queue(void) {
     if (_output_queue.empty())
       return;
@@ -175,19 +150,30 @@ namespace SkyTraq {
 	  if (ack->has_subid())
 	    id = (id << 8) | ack->ack_subid();
 
+	  bool response_type = false;
+	  uint16_t rid;
+	  try {
+	    auto *wr = msg->cast_as<SkyTraqBin::with_response>();
+	    rid = wr->response_id();
+	    if (wr->has_response_subid())
+	      rid = (rid << 8) | wr->response_subid();
+	    response_type = true;
+	  } catch (std::bad_cast) {
+	  }
+
 	  if (_response_handlers.count(id) > 0) {
 	    // Call the response handler with a null message
 	    _response_handlers[id](true, nullptr);
 
 	    // If there is a response message type, move the handler to its id
-	    if (response_ids.count(id) > 0)
-	      _response_handlers[response_ids[id]] = _response_handlers[id];
+	    if (response_type)
+	      _response_handlers[rid] = _response_handlers[id];
 
 	    _response_handlers.erase(id);
 	  }
 
 	  // If there is no additional "response" message incoming, it's okay to send another message
-	  if (response_ids.count(id) == 0)
+	  if (!response_type)
 	    _send_from_queue();
 
 	} else if (msg->isa<SkyTraqBin::Nack>()) {

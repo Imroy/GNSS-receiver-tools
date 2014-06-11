@@ -86,6 +86,29 @@ namespace SkyTraqBin {
   }; // class BufferUsed
 
 
+  //! Role base class for input messages that have a response message
+  class with_response {
+  public:
+    //! Return the message ID of the response message
+    virtual uint8_t response_id(void) const = 0;
+
+    //! Does the response message type have a sub-ID?
+    virtual bool has_response_subid(void) const = 0;
+
+    //! Return the message sub-ID of the response message
+    virtual uint8_t response_subid(void) const = 0;
+
+  }; // class with_response
+
+#define RESPONSE1(id)  uint8_t response_id(void) const { return id; } \
+    bool has_response_subid(void) const { return false; } \
+    uint8_t response_subid(void) const { return 0; }
+
+#define RESPONSE2(id, subid)  uint8_t response_id(void) const { return id; }	\
+    bool has_response_subid(void) const { return true; } \
+    uint8_t response_subid(void) const { return subid; }
+
+
   /* All input message class names shall start with a verb
      Common words shortened:
       configure => config
@@ -157,7 +180,7 @@ namespace SkyTraqBin {
 
   //! QUERY SOFTWARE VERSION - Query revision information of loaded software
   //! - Responds with Sw_ver message
-  class Q_sw_ver : public Input_message {
+  class Q_sw_ver : public Input_message, public with_response {
   private:
     SwType _sw_type;
 
@@ -171,6 +194,8 @@ namespace SkyTraqBin {
       _sw_type(type)
     {}
 
+    RESPONSE1(0x80);
+
     GETTER_SETTER(SwType, software_type, _sw_type);
 
   }; // class Q_sw_ver
@@ -178,7 +203,7 @@ namespace SkyTraqBin {
 
   //! QUERY SOFTWARE CRC - Query CRC information of loaded software
   //! - Responds with Sw_CRC message
-  class Q_sw_CRC : public Input_message {
+  class Q_sw_CRC : public Input_message, public with_response {
   private:
     SwType _sw_type;
 
@@ -191,6 +216,8 @@ namespace SkyTraqBin {
       Input_message(0x03),
       _sw_type(type)
     {}
+
+    RESPONSE1(0x81);
 
     GETTER_SETTER(SwType, software_type, _sw_type);
 
@@ -371,11 +398,13 @@ namespace SkyTraqBin {
 
   //! QUERY POSITION UPDATE RATE - Query the position update rate of GNSS system
   //! - Responds with Pos_update_rate message
-  class Q_pos_update_rate : public Input_message {
+  class Q_pos_update_rate : public Input_message, public with_response {
   public:
     Q_pos_update_rate(void) :
       Input_message(0x10)
     {}
+
+    RESPONSE1(0x86);
 
   }; // class Q_pos_update_rate
 
@@ -443,11 +472,13 @@ namespace SkyTraqBin {
 
   //! QUERY POWER MODE - Query status of power mode of GNSS receiver
   //! - Responds with GNSS_power_mode_status message
-  class Q_power_mode : public Input_message {
+  class Q_power_mode : public Input_message, public with_response {
   public:
     Q_power_mode(void) :
       Input_message(0x15)
     {}
+
+    RESPONSE1(0xB9);
 
   }; // class Q_power_mode
 
@@ -556,40 +587,46 @@ namespace SkyTraqBin {
 
   //! QUERY DATUM - Query datum used by the GNSS receiver
   //! - Responds with GNSS_datum message
-  class Q_datum : public Input_message {
+  class Q_datum : public Input_message, public with_response {
   public:
     Q_datum(void) :
       Input_message(0x2D)
     {}
+
+    RESPONSE1(0xAE);
 
   }; // class Q_datum
 
 
   //! QUERY DOP MASK - Query information of DOP mask used by the GNSS receiver
   //! - Responds with GNSS_DOP_mask message
-  class Q_DOP_mask : public Input_message {
+  class Q_DOP_mask : public Input_message, public with_response {
   public:
     Q_DOP_mask(void) :
       Input_message(0x2E)
     {}
+
+    RESPONSE1(0xAF);
 
   }; // class Q_DOP_mask
 
 
   //! QUERY ELEVATION AND CNR MASK - Query elevation and CNR mask used by the GNSS receiver
   //! - Responds with GNSS_elevation_CNR_mask message
-  class Q_elevation_CNR_mask : public Input_message {
+  class Q_elevation_CNR_mask : public Input_message, public with_response {
   public:
     Q_elevation_CNR_mask(void) :
       Input_message(0x2F)
     {}
+
+    RESPONSE1(0xB0);
 
   }; // class Q_elevation_CNR_mask
 
 
   //! GET GPS EPHEMERIS - Get GPS ephemeris used of GNSS receiver
   //! - Responds with GPS_ephemeris_data message
-  class Get_GPS_ephemeris : public Input_message {
+  class Get_GPS_ephemeris : public Input_message, public with_response {
   private:
     uint8_t _sv_num;
 
@@ -601,6 +638,8 @@ namespace SkyTraqBin {
       Input_message(0x30),
       _sv_num(sv)
     {}
+
+    RESPONSE1(0xB1);
 
     GETTER_SETTER(uint8_t, SV_number, _sv_num);
 
@@ -630,11 +669,13 @@ namespace SkyTraqBin {
 
   //! QUERY POSITION PINNING - Query position pinning status of GNSS receiver
   //! - Responds with GNSS_pos_pinning_status
-  class Q_pos_pinning : public Input_message {
+  class Q_pos_pinning : public Input_message, public with_response {
   public:
     Q_pos_pinning(void) :
       Input_message(0x3A)
     {}
+
+    RESPONSE1(0xB4);
 
   }; // class Q_pos_pinning
 
@@ -725,11 +766,13 @@ namespace SkyTraqBin {
 
   //! QUERY 1PPS CABLE DELAY - Query 1PPS cable delay of the GNSS receiver
   //! - Responds with GNSS_1PPS_cable_delay
-  class Q_1PPS_cable_delay : public Input_message {
+  class Q_1PPS_cable_delay : public Input_message, public with_response {
   public:
     Q_1PPS_cable_delay(void) :
       Input_message(0x46)
     {}
+
+    RESPONSE1(0xBB);
 
   }; // class Q_1PPS_cable_delay
 
@@ -758,11 +801,13 @@ namespace SkyTraqBin {
 
   //! QUERY NMEA TALKER ID - Query NMEA talker ID of GNSS receiver
   //! - Responds with NMEA_talker_ID message
-  class Q_NMEA_talker_ID : public Input_message {
+  class Q_NMEA_talker_ID : public Input_message, public with_response {
   public:
     Q_NMEA_talker_ID(void) :
       Input_message(0x4f)
     {}
+
+    RESPONSE1(0x93);
 
   }; // class Q_NMEA_talker_ID
 
@@ -822,22 +867,26 @@ namespace SkyTraqBin {
 
   //! QUERY SBAS STATUS - Query SBAS status of GNSS receiver
   //! - Responds with GNSS_SBAS_status
-  class Q_SBAS_status : public Input_message_with_subid {
+  class Q_SBAS_status : public Input_message_with_subid, public with_response {
   public:
     Q_SBAS_status(void) :
       Input_message_with_subid(0x62, 0x02)
     {}
+
+    RESPONSE2(0x62, 0x80);
 
   }; // class Q_SBAS_status
 
 
   //! QUERY GNSS BOOT STATUS - Query boot status of GNSS receiver
   //! - Responds with GNSS_boot_status message
-  class Q_GNSS_boot_status : public Input_message_with_subid {
+  class Q_GNSS_boot_status : public Input_message_with_subid, public with_response {
   public:
     Q_GNSS_boot_status(void) :
       Input_message_with_subid(0x64, 0x01)
     {}
+
+    RESPONSE2(0x64, 0x80);
 
   }; // class Q_GNSS_boot_status
 
@@ -866,11 +915,13 @@ namespace SkyTraqBin {
 
   //! QUERY 1PPS PULSE WIDTH - Query 1PPS pulse width of GNSS receiver
   //! - Answer with GNSS_1PPS_pulse_width
-  class Q_1PPS_pulse_width : public Input_message_with_subid {
+  class Q_1PPS_pulse_width : public Input_message_with_subid, public with_response {
   public:
     Q_1PPS_pulse_width(void) :
       Input_message_with_subid(0x65, 0x02)
     {}
+
+    RESPONSE2(0x65, 0x80);
 
   }; // class Q_1PPS_pulse_width
 
