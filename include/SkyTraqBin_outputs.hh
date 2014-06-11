@@ -406,7 +406,7 @@ namespace SkyTraqBin {
   class Subframe_data : public Output_message {
   private:
     uint8_t _prn, _subframe_num;
-    uint8_t _words[30];
+    uint32_t _words[10];
 
   public:
     //! Constructor from a binary buffer
@@ -414,7 +414,9 @@ namespace SkyTraqBin {
 
     GETTER(uint8_t, PRN, _prn);
     GETTER(uint8_t, subframe_num, _subframe_num);
-    GETTER(uint8_t*, words, _words);
+    GETTER(uint32_t*, words, _words);
+    inline const uint32_t word(int i) const { return _words[i]; }
+
   }; // class Subframe_data
 
 
