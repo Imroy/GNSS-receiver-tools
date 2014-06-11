@@ -179,6 +179,12 @@ namespace SkyTraqBin {
   }
 
 
+  void Config_1PPS_cable_delay::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _delay);
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
   void Sw_img_download::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, static_cast<uint8_t>(_baud_rate));
     append_be(buffer, static_cast<uint8_t>(_flash_type));

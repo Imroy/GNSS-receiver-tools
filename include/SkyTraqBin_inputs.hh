@@ -701,6 +701,39 @@ namespace SkyTraqBin {
   }; // class Set_GPS_ephemeris
 
 
+  //! CONFIGURE 1PPS CABLE DELAY - Configure cable delay of 1PPS timing
+  class Config_1PPS_cable_delay : public Input_message {
+  private:
+    int32_t _delay;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 5);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_1PPS_cable_delay(int32_t d, UpdateType ut) :
+      Input_message(0x45),
+      _delay(d), _update_type(ut)
+    {}
+
+    GETTER_SETTER_MOD(double, delay, _delay, _delay * 1.0e-11, val * 1e+11);
+    GETTER_SETTER_RAW(int32_t, delay, _delay);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_1PPS_cable_delay
+
+
+  //! QUERY 1PPS CABLE DELAY - Query 1PPS cable delay of the GNSS receiver
+  //! - Responds with GNSS_1PPS_cable_delay
+  class Q_1PPS_cable_delay : public Input_message {
+  public:
+    Q_1PPS_cable_delay(void) :
+      Input_message(0x46)
+    {}
+
+  }; // class Q_1PPS_cable_delay
+
+
   //! CONFIGURE NMEA TALKER ID - Configure NMEA talker ID of GNSS receive
   class Config_NMEA_talker_ID : public Input_message {
   private:

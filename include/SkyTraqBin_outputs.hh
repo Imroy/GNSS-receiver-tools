@@ -374,6 +374,21 @@ namespace SkyTraqBin {
   }; // class GNSS_power_mode_status
 
 
+  //! GNSS 1PPS CABLE DELAY - 1PPS cable delay of the GNSS receiver
+  //! - Answer to Q_1PPS_cable_delay
+  class GNSS_1PPS_cable_delay : public Output_message {
+  private:
+    int32_t _delay;
+
+  public:
+    GNSS_1PPS_cable_delay(unsigned char* payload, Payload_length payload_len);
+
+    GETTER_MOD(double, delay, _delay * 1.0e-11);
+    GETTER_RAW(int32_t, delay, _delay);
+
+  }; // class GNSS_1PPS_cable_delay
+
+
   //! MEAS_TIME - Measurement time information (0xDC) (Periodic)
   class Measurement_time : public Output_message {
   private:

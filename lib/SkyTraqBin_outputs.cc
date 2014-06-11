@@ -147,6 +147,12 @@ namespace SkyTraqBin {
   {}
 
 
+  GNSS_1PPS_cable_delay::GNSS_1PPS_cable_delay(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _delay(extract_be<int32_t>(payload, 1))
+  {}
+
+
   Measurement_time::Measurement_time(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _issue(payload[1]),

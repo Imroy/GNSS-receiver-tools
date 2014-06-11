@@ -97,6 +97,7 @@ namespace SkyTraqBin {
     OUTPUT1(0xB1, GPS_ephemeris_data),
     OUTPUT1(0xB4, GNSS_pos_pinning_status),
     OUTPUT1(0xB9, GNSS_power_mode_status),
+    OUTPUT1(0xBB, GNSS_1PPS_cable_delay),
     OUTPUT1(0xDC, Measurement_time),
     OUTPUT1(0xDD, Raw_measurements),
     OUTPUT1(0xDE, SV_channel_status),
