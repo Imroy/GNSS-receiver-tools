@@ -147,6 +147,12 @@ unsigned int extract_be<unsigned int>(unsigned char* buffer, unsigned int offset
     | (unsigned int)buffer[offset + 3];
 }
 
+unsigned int extract_be24(unsigned char* buffer, unsigned int offset) {
+  return ((unsigned int)buffer[offset + 0] << 16)
+    | ((unsigned int)buffer[offset + 1] << 8)
+    | (unsigned int)buffer[offset + 2];
+}
+
 template <>
 float extract_be<float>(unsigned char* buffer, unsigned int offset) {
   float val;

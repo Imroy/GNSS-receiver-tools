@@ -35,4 +35,7 @@ void append_be(unsigned char* &buffer, T val);
 template <typename T>
 T extract_be(unsigned char* buffer, unsigned int offset);
 
+//! Extract a 24-bit value from a buffer, in big-endian byte order
+unsigned int extract_be24(unsigned char* buffer, unsigned int offset);
+
 #endif // __BE_HH__
