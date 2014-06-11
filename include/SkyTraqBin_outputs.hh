@@ -152,6 +152,24 @@ namespace SkyTraqBin {
   }; // class Pos_update_rate
 
 
+  //! GPS ALMANAC Data - almanac data of GPS receiver
+  class GPS_almanac_data : public Output_message {
+  private:
+    uint8_t _prn;
+    uint32_t _words[8];
+    int16_t _week_no;
+
+  public:
+    GPS_almanac_data(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(uint8_t, PRN, _prn);
+    GETTER(uint32_t*, words, _words);
+    inline const uint32_t word(int i) const { return _words[i+3]; }
+    GETTER(int16_t, week_no, _week_no);
+
+  }; // class GPS_almanac_data
+
+
   //! GNSS NMEA TALKER ID - NMEA talker ID of GNSS receiver
   //! - Answer to Q_NMEA_talker_ID message
   class NMEA_talker_ID : public Output_message {

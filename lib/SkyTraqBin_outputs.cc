@@ -66,6 +66,16 @@ namespace SkyTraqBin {
   {}
 
 
+  GPS_almanac_data::GPS_almanac_data(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _prn(payload[1]),
+    _week_no(extract_be<int16_t>(payload, 26))
+  {
+    for (int i = 0; i < 8; i++)
+      _words[i] = extract_be24(payload, 2 + i * 3);
+  }
+
+
   NMEA_talker_ID::NMEA_talker_ID(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _talker_id((TalkerID)payload[1])
