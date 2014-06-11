@@ -32,6 +32,15 @@ namespace SkyTraqBin {
   }; // class FixType
 
 
+  enum class NavigationState : uint8_t {
+    NoFix = 0,
+      Predicted,
+      TwoDimensional,
+      ThreeDimensional,
+      Differential,
+  }; //class NavigationState
+
+
   //! GNSS BOOT STATUS - Boot status of GNSS receiver
   class GNSS_boot_status : public Output_message_with_subid {
   private:
@@ -423,6 +432,42 @@ namespace SkyTraqBin {
     GETTER(std::vector<SvStatus>, statuses, _statuses);
 
   };
+
+
+  //! RCV_STATE - Receiver navigation status
+  class Rcv_state : public Output_message {
+  private:
+    uint8_t _issue;
+    NavigationState _nav_state;
+    uint16_t _weeknum;
+    double _tow, _ecef_x, _ecef_y, _ecef_z;
+    float _ecef_vx, _ecef_vy, _ecef_vz;
+    double _clock_bias;
+    float _clock_drift;
+    float _gdop, _pdop, _hdop, _vdop, _tdop;
+
+  public:
+    Rcv_state(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(uint8_t, issue_of_data, _issue);
+    GETTER(NavigationState, navigation_state, _nav_state);
+    GETTER(uint16_t, week_number, _weeknum);
+    GETTER(double, time_of_week, _tow);
+    GETTER(double, ECEF_X, _ecef_x);
+    GETTER(double, ECEF_Y, _ecef_y);
+    GETTER(double, ECEF_Z, _ecef_z);
+    GETTER(float, ECEF_VX, _ecef_vx);
+    GETTER(float, ECEF_VY, _ecef_vy);
+    GETTER(float, ECEF_VZ, _ecef_vz);
+    GETTER(double, clock_bias, _clock_bias);
+    GETTER(float, clock_drift, _clock_drift);
+    GETTER(float, GDOP, _gdop);
+    GETTER(float, PDOP, _pdop);
+    GETTER(float, HDOP, _hdop);
+    GETTER(float, VDOP, _vdop);
+    GETTER(float, TDOP, _tdop);
+
+  }; // class Rcv_state
 
 
   //! SUBFRAME - Sub frame buffer data

@@ -177,6 +177,28 @@ namespace SkyTraqBin {
   }
 
 
+  Rcv_state::Rcv_state(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _issue(payload[1]),
+    _nav_state((NavigationState)payload[2]),
+    _weeknum(extract_be<uint16_t>(payload, 3)),
+    _tow(extract_be<double>(payload, 5)),
+    _ecef_x(extract_be<double>(payload, 13)),
+    _ecef_y(extract_be<double>(payload, 21)),
+    _ecef_z(extract_be<double>(payload, 29)),
+    _ecef_vx(extract_be<float>(payload, 37)),
+    _ecef_vy(extract_be<float>(payload, 41)),
+    _ecef_vz(extract_be<float>(payload, 45)),
+    _clock_bias(extract_be<double>(payload, 49)),
+    _clock_drift(extract_be<float>(payload, 57)),
+    _gdop(extract_be<float>(payload, 61)),
+    _pdop(extract_be<float>(payload, 65)),
+    _hdop(extract_be<float>(payload, 69)),
+    _vdop(extract_be<float>(payload, 73)),
+    _tdop(extract_be<float>(payload, 77))
+  {}
+
+
   Subframe_data::Subframe_data(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _prn(payload[1]),
