@@ -21,32 +21,6 @@
 
 namespace SkyTraqBin {
 
-  GNSS_SBAS_status::GNSS_SBAS_status(unsigned char* payload, Payload_length payload_len) :
-    Output_message_with_subid(payload, payload_len),
-    _enabled((bool)payload[2]),
-    _ranging((EnableOrAuto)payload[3]),
-    _ranging_ura_mask(payload[4]),
-    _correction((bool)payload[5]),
-    _num_channels(payload[6])
-  {
-    uint8_t sub_mask = payload[7];
-    _waas = sub_mask & 0x01;
-    _egnos = sub_mask & 0x02;
-    _msas = sub_mask & 0x04;
-  }
-
-  GNSS_boot_status::GNSS_boot_status(unsigned char* payload, Payload_length payload_len) :
-    Output_message_with_subid(payload, payload_len),
-    _status(payload[2]),
-    _flash_type(payload[3])
-  {}
-
-  GNSS_1PPS_pulse_width::GNSS_1PPS_pulse_width(unsigned char* payload, Payload_length payload_len) :
-    Output_message_with_subid(payload, payload_len),
-    _width(extract_be<uint32_t>(payload, 2))
-  {}
-
-
   Sw_ver::Sw_ver(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _sw_type((SwType)payload[1]),
@@ -243,6 +217,39 @@ namespace SkyTraqBin {
     for (int i = 0; i < 10; i++)
       _words[i] = extract_be24(payload, 3 + i * 3);
   }
+
+
+  /**************************
+   * Messages with a sub-ID *
+   **************************/
+
+
+  GNSS_SBAS_status::GNSS_SBAS_status(unsigned char* payload, Payload_length payload_len) :
+    Output_message_with_subid(payload, payload_len),
+    _enabled((bool)payload[2]),
+    _ranging((EnableOrAuto)payload[3]),
+    _ranging_ura_mask(payload[4]),
+    _correction((bool)payload[5]),
+    _num_channels(payload[6])
+  {
+    uint8_t sub_mask = payload[7];
+    _waas = sub_mask & 0x01;
+    _egnos = sub_mask & 0x02;
+    _msas = sub_mask & 0x04;
+  }
+
+
+  GNSS_boot_status::GNSS_boot_status(unsigned char* payload, Payload_length payload_len) :
+    Output_message_with_subid(payload, payload_len),
+    _status(payload[2]),
+    _flash_type(payload[3])
+  {}
+
+
+  GNSS_1PPS_pulse_width::GNSS_1PPS_pulse_width(unsigned char* payload, Payload_length payload_len) :
+    Output_message_with_subid(payload, payload_len),
+    _width(extract_be<uint32_t>(payload, 2))
+  {}
 
 
 }; // namespace SkyTraqBin

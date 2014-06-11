@@ -41,62 +41,6 @@ namespace SkyTraqBin {
   }; //class NavigationState
 
 
-  //! SBAS STATUS - SBAS status of GNSS receiver
-  //! - Answer to Q_SBAS_status
-  class GNSS_SBAS_status : public Output_message_with_subid {
-  private:
-    bool _enabled;
-    EnableOrAuto _ranging;
-    uint8_t _ranging_ura_mask;
-    bool _correction;
-    uint8_t _num_channels;
-    bool _waas, _egnos, _msas;
-
-  public:
-    GNSS_SBAS_status(unsigned char* payload, Payload_length payload_len);
-
-    GETTER(bool, enabled, _enabled);
-    GETTER(EnableOrAuto, ranging, _ranging);
-    GETTER(uint8_t, ranging_URA_mask, _ranging_ura_mask);
-    GETTER(bool, correction, _correction);
-    GETTER(uint8_t, num_channels, _num_channels);
-    GETTER(bool, WAAS_enabled, _waas);
-    GETTER(bool, EGNOS_enabled, _egnos);
-    GETTER(bool, MSAS_enabled, _msas);
-
-  }; // class GNSS_SBAS_status
-
-
-  //! GNSS BOOT STATUS - Boot status of GNSS receiver
-  //! - Answer to Q_GNSS_boot_status
-  class GNSS_boot_status : public Output_message_with_subid {
-  private:
-    uint8_t _status, _flash_type;
-
-  public:
-    GNSS_boot_status(unsigned char* payload, Payload_length payload_len);
-
-    GETTER(uint8_t, status, _status);
-    GETTER(uint8_t, flash_type, _flash_type);
-
-  }; // class GNSS_boot_status
-
-
-  //! 1PPS PULSE WIDTH - 1PPS pulse width of GNSS receiver
-  //! - Answer to Q_1PPS_pulse_width
-  class GNSS_1PPS_pulse_width : public Output_message_with_subid {
-  private:
-    uint32_t _width;
-
-  public:
-    GNSS_1PPS_pulse_width(unsigned char* payload, Payload_length payload_len);
-
-    GETTER_MOD(double, width, _width * 1.0e-06);
-    GETTER_RAW(uint32_t, width, _width);
-
-  }; // class GNSS_1PPS_pulse_width
-
-
   struct PackedVersion {
     uint8_t X, Y, Z;
 
@@ -564,6 +508,67 @@ namespace SkyTraqBin {
     inline const uint32_t word(int i) const { return _words[i]; }
 
   }; // class Subframe_data
+
+
+  /**************************
+   * Messages with a sub-ID *
+   **************************/
+
+
+  //! SBAS STATUS - SBAS status of GNSS receiver
+  //! - Answer to Q_SBAS_status
+  class GNSS_SBAS_status : public Output_message_with_subid {
+  private:
+    bool _enabled;
+    EnableOrAuto _ranging;
+    uint8_t _ranging_ura_mask;
+    bool _correction;
+    uint8_t _num_channels;
+    bool _waas, _egnos, _msas;
+
+  public:
+    GNSS_SBAS_status(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(bool, enabled, _enabled);
+    GETTER(EnableOrAuto, ranging, _ranging);
+    GETTER(uint8_t, ranging_URA_mask, _ranging_ura_mask);
+    GETTER(bool, correction, _correction);
+    GETTER(uint8_t, num_channels, _num_channels);
+    GETTER(bool, WAAS_enabled, _waas);
+    GETTER(bool, EGNOS_enabled, _egnos);
+    GETTER(bool, MSAS_enabled, _msas);
+
+  }; // class GNSS_SBAS_status
+
+
+  //! GNSS BOOT STATUS - Boot status of GNSS receiver
+  //! - Answer to Q_GNSS_boot_status
+  class GNSS_boot_status : public Output_message_with_subid {
+  private:
+    uint8_t _status, _flash_type;
+
+  public:
+    GNSS_boot_status(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(uint8_t, status, _status);
+    GETTER(uint8_t, flash_type, _flash_type);
+
+  }; // class GNSS_boot_status
+
+
+  //! 1PPS PULSE WIDTH - 1PPS pulse width of GNSS receiver
+  //! - Answer to Q_1PPS_pulse_width
+  class GNSS_1PPS_pulse_width : public Output_message_with_subid {
+  private:
+    uint32_t _width;
+
+  public:
+    GNSS_1PPS_pulse_width(unsigned char* payload, Payload_length payload_len);
+
+    GETTER_MOD(double, width, _width * 1.0e-06);
+    GETTER_RAW(uint32_t, width, _width);
+
+  }; // class GNSS_1PPS_pulse_width
 
 
 }; // namespace SkyTraqBin

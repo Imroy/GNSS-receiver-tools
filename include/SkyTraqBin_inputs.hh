@@ -812,6 +812,11 @@ namespace SkyTraqBin {
   }; // class Q_NMEA_talker_ID
 
 
+  /**************************
+   * Messages with a sub-ID *
+   **************************/
+
+
   //! CONFIGURE SBAS - Configure SBAS parameters of GNSS receiver
   class Config_SBAS : public Input_message_with_subid {
   private:

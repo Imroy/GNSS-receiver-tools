@@ -108,6 +108,11 @@ namespace SkyTraqBin {
   }
 
 
+  /**************************
+   * Messages with a sub-ID *
+   **************************/
+
+
   void Config_SBAS::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, static_cast<uint8_t>(_enable));
     append_be(buffer, static_cast<uint8_t>(_ranging));
