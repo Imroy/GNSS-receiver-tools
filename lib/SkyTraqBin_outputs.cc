@@ -239,6 +239,13 @@ namespace SkyTraqBin {
   }
 
 
+  GNSS_QZSS_status::GNSS_QZSS_status(unsigned char* payload, Payload_length payload_len) :
+    Output_message_with_subid(payload, payload_len),
+    _enabled((bool)payload[2]),
+    _num_channels(payload[3])
+  {}
+
+
   GNSS_boot_status::GNSS_boot_status(unsigned char* payload, Payload_length payload_len) :
     Output_message_with_subid(payload, payload_len),
     _status(payload[2]),

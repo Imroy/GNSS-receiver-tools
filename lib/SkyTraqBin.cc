@@ -83,6 +83,7 @@ namespace SkyTraqBin {
 
   std::map<uint16_t, output_message_factory> output_message_factories = {
     OUTPUT2(0x62, 0x80, GNSS_SBAS_status),
+    OUTPUT2(0x62, 0x81, GNSS_QZSS_status),
     OUTPUT2(0x64, 0x80, GNSS_boot_status),
     OUTPUT2(0x64, 0x80, GNSS_1PPS_pulse_width),
     OUTPUT1(0x80, Sw_ver),

@@ -541,6 +541,21 @@ namespace SkyTraqBin {
   }; // class GNSS_SBAS_status
 
 
+  //! QZSS STATUS - QZSS status of GNSS receiver
+  class GNSS_QZSS_status : public Output_message_with_subid {
+  private:
+    bool _enabled;
+    uint8_t _num_channels;
+
+  public:
+    GNSS_QZSS_status(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(bool, enabled, _enabled);
+    GETTER(uint8_t, num_channels, _num_channels);
+
+  }; // class GNSS_QZSS_status
+
+
   //! GNSS BOOT STATUS - Boot status of GNSS receiver
   //! - Answer to Q_GNSS_boot_status
   class GNSS_boot_status : public Output_message_with_subid {

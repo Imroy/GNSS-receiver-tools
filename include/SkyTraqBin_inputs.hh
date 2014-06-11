@@ -883,6 +883,45 @@ namespace SkyTraqBin {
   }; // class Q_SBAS_status
 
 
+  //! CONFIGURE QZSS - Configure QZSS of GNSS receiver
+  class Config_QZSS : public Input_message_with_subid {
+  private:
+    bool _enable;
+    uint8_t _num_channels;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 3);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_QZSS(bool e, uint8_t nc, UpdateType ut) :
+      Input_message_with_subid(0x62, 0x03),
+      _enable(e), _num_channels(nc), _update_type(ut)
+    {}
+
+    GETTER(bool, enabled, _enable);
+    inline void enable(bool en=true) { _enable = en; }
+    inline void disable(void) { _enable = false; }
+
+    GETTER_SETTER(uint8_t, num_channels, _num_channels);
+
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_QZSS
+
+
+  //! QUERY QZSS STATUS - Query QZSS status of GNSS receiver
+  class Q_QZSS_status : public Input_message_with_subid, public with_response {
+  public:
+    Q_QZSS_status(void) :
+      Input_message_with_subid(0x62, 0x04)
+    {}
+
+    RESPONSE2(0x62, 0x81);
+
+  }; // class Q_QZSS_status
+
+
   //! QUERY GNSS BOOT STATUS - Query boot status of GNSS receiver
   //! - Responds with GNSS_boot_status message
   class Q_GNSS_boot_status : public Input_message_with_subid, public with_response {

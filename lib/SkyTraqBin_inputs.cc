@@ -124,6 +124,13 @@ namespace SkyTraqBin {
   }
 
 
+  void Config_QZSS::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, static_cast<uint8_t>(_enable));
+    append_be(buffer, _num_channels);
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
   void Config_nav_data_msg_interval::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, _interval);
     append_be(buffer, static_cast<uint8_t>(_update_type));
