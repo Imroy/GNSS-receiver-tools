@@ -41,6 +41,32 @@ namespace SkyTraqBin {
   }; //class NavigationState
 
 
+  //! SBAS STATUS - SBAS status of GNSS receiver
+  //! - Answer to Q_SBAS_status
+  class GNSS_SBAS_status : public Output_message_with_subid {
+  private:
+    bool _enabled;
+    EnableOrAuto _ranging;
+    uint8_t _ranging_ura_mask;
+    bool _correction;
+    uint8_t _num_channels;
+    bool _waas, _egnos, _msas;
+
+  public:
+    GNSS_SBAS_status(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(bool, enabled, _enabled);
+    GETTER(EnableOrAuto, ranging, _ranging);
+    GETTER(uint8_t, ranging_URA_mask, _ranging_ura_mask);
+    GETTER(bool, correction, _correction);
+    GETTER(uint8_t, num_channels, _num_channels);
+    GETTER(bool, WAAS_enabled, _waas);
+    GETTER(bool, EGNOS_enabled, _egnos);
+    GETTER(bool, MSAS_enabled, _msas);
+
+  }; // class GNSS_SBAS_status
+
+
   //! GNSS BOOT STATUS - Boot status of GNSS receiver
   //! - Answer to Q_GNSS_boot_status
   class GNSS_boot_status : public Output_message_with_subid {

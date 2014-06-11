@@ -273,6 +273,13 @@ namespace SkyTraqBin {
   }; // class DefaultOrEnable
 
 
+  enum class EnableOrAuto : uint8_t {
+    Disabled = 0,
+      Enabled,
+      Auto,
+  }; // class EnableOrAuto
+
+
 #define GETTER(type, name, field) inline const type name(void) const { return field; }
 
 #define GETTER_SETTER(type, name, field) inline const type name(void) const { return field; } \

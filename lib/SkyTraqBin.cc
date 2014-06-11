@@ -82,6 +82,7 @@ namespace SkyTraqBin {
 #define OUTPUT2(ID, SUBID, CLASS) std::make_pair<uint16_t, output_message_factory>(((ID) << 8) | (SUBID), [](uint8_t* payload, Payload_length len) { return std::make_shared<CLASS>(payload, len); })
 
   std::map<uint16_t, output_message_factory> output_message_factories = {
+    OUTPUT2(0x62, 0x80, GNSS_SBAS_status),
     OUTPUT2(0x64, 0x80, GNSS_boot_status),
     OUTPUT2(0x64, 0x80, GNSS_1PPS_pulse_width),
     OUTPUT1(0x80, Sw_ver),

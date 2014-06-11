@@ -21,6 +21,20 @@
 
 namespace SkyTraqBin {
 
+  GNSS_SBAS_status::GNSS_SBAS_status(unsigned char* payload, Payload_length payload_len) :
+    Output_message_with_subid(payload, payload_len),
+    _enabled((bool)payload[2]),
+    _ranging((EnableOrAuto)payload[3]),
+    _ranging_ura_mask(payload[4]),
+    _correction((bool)payload[5]),
+    _num_channels(payload[6])
+  {
+    uint8_t sub_mask = payload[7];
+    _waas = sub_mask & 0x01;
+    _egnos = sub_mask & 0x02;
+    _msas = sub_mask & 0x04;
+  }
+
   GNSS_boot_status::GNSS_boot_status(unsigned char* payload, Payload_length payload_len) :
     Output_message_with_subid(payload, payload_len),
     _status(payload[2]),

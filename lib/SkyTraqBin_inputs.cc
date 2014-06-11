@@ -108,6 +108,17 @@ namespace SkyTraqBin {
   }
 
 
+  void Config_SBAS::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, static_cast<uint8_t>(_enable));
+    append_be(buffer, static_cast<uint8_t>(_ranging));
+    append_be(buffer, _ranging_ura_mask);
+    append_be(buffer, static_cast<uint8_t>(_correction));
+    append_be(buffer, _num_channels);
+    append_be(buffer, static_cast<uint8_t>(_waas) | (static_cast<uint8_t>(_egnos) << 1) | (static_cast<uint8_t>(_msas) << 2));
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
   void Config_nav_data_msg_interval::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, _interval);
     append_be(buffer, static_cast<uint8_t>(_update_type));

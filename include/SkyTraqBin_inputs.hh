@@ -767,6 +767,70 @@ namespace SkyTraqBin {
   }; // class Q_NMEA_talker_ID
 
 
+  //! CONFIGURE SBAS - Configure SBAS parameters of GNSS receiver
+  class Config_SBAS : public Input_message_with_subid {
+  private:
+    bool _enable;
+    EnableOrAuto _ranging;
+    uint8_t _ranging_ura_mask;
+    bool _correction;
+    uint8_t _num_channels;
+    bool _waas, _egnos, _msas;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 8);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_SBAS(bool en, EnableOrAuto r, uint8_t rm, bool c, uint8_t nc, bool w, bool e, bool m, UpdateType ut) :
+      Input_message_with_subid(0x62, 0x01),
+      _enable(en),
+      _ranging(r), _ranging_ura_mask(rm),
+      _correction(c), _num_channels(nc),
+      _waas(w), _egnos(e), _msas(m),
+      _update_type(ut)
+    {}
+
+    GETTER(bool, enabled, _enable);
+    inline void enable(bool en=true) { _enable = en; }
+    inline void disable(void) { _enable = false; }
+
+    GETTER_SETTER(EnableOrAuto, ranging, _ranging);
+    GETTER_SETTER(uint8_t, ranging_URA_mask, _ranging_ura_mask);
+
+    GETTER(bool, correction, _correction);
+    SETTER_BOOL(correction, _correction);
+
+    GETTER_SETTER(uint8_t, num_channels, _num_channels);
+
+    GETTER(bool, WAAS_enabled, _waas);
+    inline void enable_WAAS(bool w=true) { _waas = w; }
+    inline void disable_WAAS(void) { _waas = false; }
+
+    GETTER(bool, EGNOS_enabled, _egnos);
+    inline void enable_EGNOS(bool e=true) { _egnos = e; }
+    inline void disable_EGNOS(void) { _egnos = false; }
+
+    GETTER(bool, MSAS_enabled, _msas);
+    inline void enable_MSAS(bool m=true) { _msas = m; }
+    inline void disable_MSAS(void) { _msas = false; }
+
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_SBAS
+
+
+  //! QUERY SBAS STATUS - Query SBAS status of GNSS receiver
+  //! - Responds with GNSS_SBAS_status
+  class Q_SBAS_status : public Input_message_with_subid {
+  public:
+    Q_SBAS_status(void) :
+      Input_message_with_subid(0x62, 0x02)
+    {}
+
+  }; // class Q_SBAS_status
+
+
   //! QUERY GNSS BOOT STATUS - Query boot status of GNSS receiver
   //! - Responds with GNSS_boot_status message
   class Q_GNSS_boot_status : public Input_message_with_subid {
