@@ -291,6 +291,20 @@ namespace SkyTraqBin {
   }
 
 
+  GNSS_time::GNSS_time(unsigned char* payload, Payload_length payload_len) :
+    Output_message_with_subid(payload, payload_len),
+    _tow_ms(extract_be<uint32_t>(payload, 2)),
+    _tow_ns(extract_be<uint32_t>(payload, 6)),
+    _week_no(extract_be<uint16_t>(payload, 10)),
+    _def_leap_secs(payload[12]),
+    _curr_leap_secs(payload[13])
+  {
+    uint8_t valid = payload[14];
+    _tow_valid = valid & 0x01;
+    _wn_valid = valid & 0x02;
+    _ls_valid = valid & 0x04;
+  }
+
   GNSS_1PPS_pulse_width::GNSS_1PPS_pulse_width(unsigned char* payload, Payload_length payload_len) :
     Output_message_with_subid(payload, payload_len),
     _width(extract_be<uint32_t>(payload, 2))

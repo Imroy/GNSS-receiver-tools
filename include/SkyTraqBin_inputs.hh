@@ -1155,6 +1155,39 @@ namespace SkyTraqBin {
   }; // class Q_constellation_type
 
 
+  //! CONFIGURE GPS/UTC LEAP SECONDS - Configure GPS/UTC leap seconds of GNSS receiver
+  class Config_leap_seconds : public Input_message_with_subid {
+  private:
+    int8_t _seconds;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 2);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_leap_seconds(int8_t s, UpdateType ut) :
+      Input_message_with_subid(0x64, 0x1f),
+      _seconds(s), _update_type(ut)
+    {}
+
+    GETTER_SETTER(int8_t, seconds, _seconds);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_leap_seconds
+
+
+  //! QUERY GPS TIME - Query GPS time of GNSS receiver
+  class Q_GPS_time : public Input_message_with_subid, public with_response {
+  public:
+    Q_GPS_time(void) :
+      Input_message_with_subid(0x64, 0x20)
+    {}
+
+    RESPONSE2(0x64, 0x8E);
+
+  }; // class Q_GPS_time
+
+
   //! CONFIGURE 1PPS PULSE WIDTH - Configure 1PPS pulse width of GNSS receiver
   class Config_1PPS_pulse_width : public Input_message_with_subid {
   private:

@@ -90,6 +90,7 @@ namespace SkyTraqBin {
     OUTPUT2(0x64, 0x83, GNSS_interference_detection_status),
     OUTPUT2(0x64, 0x8B, GNSS_nav_mode),
     OUTPUT2(0x64, 0x8C, GNSS_constellation_type),
+    OUTPUT2(0x64, 0x8E, GNSS_time),
     OUTPUT2(0x65, 0x80, GNSS_1PPS_pulse_width),
     OUTPUT1(0x80, Sw_ver),
     OUTPUT1(0x81, Sw_CRC),
