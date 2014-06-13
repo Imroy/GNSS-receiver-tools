@@ -160,6 +160,11 @@ namespace SkyTraqBin {
   }
 
 
+  void Get_almanac::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _sv_num);
+  }
+
+
   void Config_bin_measurement_output_rates::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, static_cast<uint8_t>(_output_rate));
     append_be(buffer, _meas_time);

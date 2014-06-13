@@ -148,6 +148,7 @@ namespace SkyTraqBin {
 
 
   //! GPS ALMANAC Data - almanac data of GPS receiver
+  //! - Answer to Get_almanac, only on NavSpark-Raw boards
   class GPS_almanac_data : public Output_message {
   private:
     uint8_t _prn;

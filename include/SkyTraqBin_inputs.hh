@@ -410,6 +410,7 @@ namespace SkyTraqBin {
 
 
   //! CONFIGURE NAVIGATION DATA MESSAGE INTERVAL - Configure binary navigation data message interval
+  //! Only valid on non-raw NavSparks i.e -GPS, -GL, -BD models
   class Config_nav_data_msg_interval : public Input_message {
   private:
     uint8_t _interval;	// 0: disable
@@ -429,6 +430,28 @@ namespace SkyTraqBin {
     GETTER_SETTER(UpdateType, update_type, _update_type);
 
   }; // class Config_nav_data_msg_interval
+
+
+  //! Get Almanac - Get almanac used of firmware
+  //! Only valid on NavSpark-Raws
+  class Get_almanac : public Input_message, public with_response {
+  private:
+    uint8_t _sv_num;
+
+    GETTER(Payload_length, body_length, 1);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Get_almanac(uint8_t sv) :
+      Input_message(0x11),
+      _sv_num(sv)
+    {}
+
+    GETTER_SETTER(uint8_t, SV_num, _sv_num);
+
+    RESPONSE1(0x87);
+
+  }; // class Get_almanac
 
 
   //! Configure Binary Measurement Output Rates
