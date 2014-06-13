@@ -254,9 +254,13 @@ namespace SkyTraqBin {
 
   GNSS_boot_status::GNSS_boot_status(unsigned char* payload, Payload_length payload_len) :
     Output_message_with_subid(payload, payload_len),
-    _status(payload[2]),
-    _flash_type(payload[3])
-  {}
+    _status((BootStatus)payload[2])
+  {
+    uint8_t flash_type = payload[3];
+    _winbond = flash_type & 0x01;
+    _eon = flash_type & 0x02;
+    _parallel = flash_type & 0x04;
+  }
 
 
   GNSS_extended_NMEA_msg_interval::GNSS_extended_NMEA_msg_interval(unsigned char* payload, Payload_length payload_len) :

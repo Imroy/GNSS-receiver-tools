@@ -41,6 +41,12 @@ namespace SkyTraqBin {
   }; // class NavigationState
 
 
+  enum class BootStatus : uint8_t {
+    FromFlash = 0,
+      FromROM,
+  }; // class BootStatus
+
+
   enum class InterferenceStatus : uint8_t {
     Unknown = 0,
       None,
@@ -588,13 +594,18 @@ namespace SkyTraqBin {
   //! - Answer to Q_GNSS_boot_status
   class GNSS_boot_status : public Output_message_with_subid {
   private:
-    uint8_t _status, _flash_type;
+    BootStatus _status;
+    bool _winbond, _eon, _parallel;
 
   public:
     GNSS_boot_status(unsigned char* payload, Payload_length payload_len);
 
-    GETTER(uint8_t, status, _status);
-    GETTER(uint8_t, flash_type, _flash_type);
+    GETTER(BootStatus, status, _status);
+
+    GETTER_MOD(bool, ROM, !(_winbond || _eon || _parallel));
+    GETTER(bool, Winbond_flash, _winbond);
+    GETTER(bool, EON_flash, _eon);
+    GETTER(bool, parallel_flash, _parallel);
 
   }; // class GNSS_boot_status
 
