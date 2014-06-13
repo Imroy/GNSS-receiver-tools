@@ -280,6 +280,16 @@ namespace SkyTraqBin {
   }; // class EnableOrAuto
 
 
+  enum class NavigationMode : uint8_t {
+    Auto = 0,
+      Pedestrian,
+      Car,
+      Marine,
+      Balloon,
+      Airborne,
+  }; // class NavigationMode
+
+
 #define GETTER(type, name, field) inline const type name(void) const { return field; }
 
 #define GETTER_SETTER(type, name, field) inline const type name(void) const { return field; } \

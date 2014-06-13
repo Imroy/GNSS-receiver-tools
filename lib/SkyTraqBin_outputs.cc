@@ -274,6 +274,11 @@ namespace SkyTraqBin {
   {}
 
 
+  GNSS_nav_mode::GNSS_nav_mode(unsigned char* payload, Payload_length payload_len) :
+    Output_message_with_subid(payload, payload_len),
+    _mode((NavigationMode)payload[2])
+  {}
+
 
   GNSS_1PPS_pulse_width::GNSS_1PPS_pulse_width(unsigned char* payload, Payload_length payload_len) :
     Output_message_with_subid(payload, payload_len),

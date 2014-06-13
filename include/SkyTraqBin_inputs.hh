@@ -1078,6 +1078,39 @@ namespace SkyTraqBin {
   }; // class Q_interference_detection_status
 
 
+  //! CONFIGURE GNSS NAVIGATION MODE - Configure the navigation mode of GNSS receiver
+  class Config_GNSS_nav_mode : public Input_message_with_subid {
+  private:
+    NavigationMode _mode;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 2);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_GNSS_nav_mode(NavigationMode m, UpdateType ut) :
+      Input_message_with_subid(0x64, 0x17),
+      _mode(m), _update_type(ut)
+    {}
+
+    GETTER_SETTER(NavigationMode, navigation_mode, _mode);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_GNSS_nav_mode
+
+
+  //! QUERY GNSS NAVIGATION MODE - Query the navigation mode of GNSS receiver
+  class Q_GNSS_nav_mode : public Input_message_with_subid, public with_response {
+  public:
+    Q_GNSS_nav_mode(void) :
+      Input_message_with_subid(0x64, 0x18)
+    {}
+
+    RESPONSE2(0x64, 0x8B);
+
+  }; // class Q_GNSS_nav_mode
+
+
   //! CONFIGURE 1PPS PULSE WIDTH - Configure 1PPS pulse width of GNSS receiver
   class Config_1PPS_pulse_width : public Input_message_with_subid {
   private:
