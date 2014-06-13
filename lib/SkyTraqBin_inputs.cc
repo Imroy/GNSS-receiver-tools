@@ -102,58 +102,6 @@ namespace SkyTraqBin {
   }
 
 
-  void Config_NMEA_talker_ID::body_to_buf(unsigned char* buffer) const {
-    append_be(buffer, static_cast<uint8_t>(_talker_id));
-    append_be(buffer, static_cast<uint8_t>(_update_type));
-  }
-
-
-  /**************************
-   * Messages with a sub-ID *
-   **************************/
-
-
-  void Config_SBAS::body_to_buf(unsigned char* buffer) const {
-    append_be(buffer, static_cast<uint8_t>(_enable));
-    append_be(buffer, static_cast<uint8_t>(_ranging));
-    append_be(buffer, _ranging_ura_mask);
-    append_be(buffer, static_cast<uint8_t>(_correction));
-    append_be(buffer, _num_channels);
-    append_be(buffer, static_cast<uint8_t>(_waas) | (static_cast<uint8_t>(_egnos) << 1) | (static_cast<uint8_t>(_msas) << 2));
-    append_be(buffer, static_cast<uint8_t>(_update_type));
-  }
-
-
-  void Config_QZSS::body_to_buf(unsigned char* buffer) const {
-    append_be(buffer, static_cast<uint8_t>(_enable));
-    append_be(buffer, _num_channels);
-    append_be(buffer, static_cast<uint8_t>(_update_type));
-  }
-
-
-  void Config_SAEE::body_to_buf(unsigned char* buffer) const {
-    append_be(buffer, static_cast<uint8_t>(_enable));
-    append_be(buffer, static_cast<uint8_t>(_update_type));
-  }
-
-
-  void Config_extended_NMEA_msg_interval::body_to_buf(unsigned char* buffer) const {
-    append_be(buffer, _gga);
-    append_be(buffer, _gsa);
-    append_be(buffer, _gsv);
-    append_be(buffer, _gll);
-    append_be(buffer, _rmc);
-    append_be(buffer, _vtg);
-    append_be(buffer, _zda);
-    append_be(buffer, _gns);
-    append_be(buffer, _gbs);
-    append_be(buffer, _grs);
-    append_be(buffer, _dtm);
-    append_be(buffer, _gst);
-    append_be(buffer, static_cast<uint8_t>(_update_type));
-  }
-
-
   void Config_nav_data_msg_interval::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, _interval);
     append_be(buffer, static_cast<uint8_t>(_update_type));
@@ -240,6 +188,58 @@ namespace SkyTraqBin {
 
   void Config_1PPS_cable_delay::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, _delay);
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
+  void Config_NMEA_talker_ID::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, static_cast<uint8_t>(_talker_id));
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
+  /**************************
+   * Messages with a sub-ID *
+   **************************/
+
+
+  void Config_SBAS::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, static_cast<uint8_t>(_enable));
+    append_be(buffer, static_cast<uint8_t>(_ranging));
+    append_be(buffer, _ranging_ura_mask);
+    append_be(buffer, static_cast<uint8_t>(_correction));
+    append_be(buffer, _num_channels);
+    append_be(buffer, static_cast<uint8_t>(_waas) | (static_cast<uint8_t>(_egnos) << 1) | (static_cast<uint8_t>(_msas) << 2));
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
+  void Config_QZSS::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, static_cast<uint8_t>(_enable));
+    append_be(buffer, _num_channels);
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
+  void Config_SAEE::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, static_cast<uint8_t>(_enable));
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
+  void Config_extended_NMEA_msg_interval::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _gga);
+    append_be(buffer, _gsa);
+    append_be(buffer, _gsv);
+    append_be(buffer, _gll);
+    append_be(buffer, _rmc);
+    append_be(buffer, _vtg);
+    append_be(buffer, _zda);
+    append_be(buffer, _gns);
+    append_be(buffer, _gbs);
+    append_be(buffer, _grs);
+    append_be(buffer, _dtm);
+    append_be(buffer, _gst);
     append_be(buffer, static_cast<uint8_t>(_update_type));
   }
 
