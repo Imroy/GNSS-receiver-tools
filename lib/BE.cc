@@ -26,7 +26,7 @@ void append_be<bool>(unsigned char* &buffer, bool val) {
 }
 
 template <>
-void append_be<char>(unsigned char* &buffer, char val) {
+void append_be<signed char>(unsigned char* &buffer, signed char val) {
   buffer[0] = val;
   buffer++;
 }
