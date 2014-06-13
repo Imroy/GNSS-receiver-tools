@@ -244,6 +244,12 @@ namespace SkyTraqBin {
   }
 
 
+  void Config_interference_detection::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, static_cast<uint8_t>(_enable));
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
   void Config_1PPS_pulse_width::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, _width);
     append_be(buffer, static_cast<uint8_t>(_update_type));

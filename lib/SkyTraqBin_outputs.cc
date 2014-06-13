@@ -267,6 +267,14 @@ namespace SkyTraqBin {
   {}
 
 
+  GNSS_interference_detection_status::GNSS_interference_detection_status(unsigned char* payload, Payload_length payload_len) :
+    Output_message_with_subid(payload, payload_len),
+    _enabled((bool)payload[2]),
+    _status((InterferenceStatus)payload[3])
+  {}
+
+
+
   GNSS_1PPS_pulse_width::GNSS_1PPS_pulse_width(unsigned char* payload, Payload_length payload_len) :
     Output_message_with_subid(payload, payload_len),
     _width(extract_be<uint32_t>(payload, 2))

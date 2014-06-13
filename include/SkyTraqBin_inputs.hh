@@ -1042,6 +1042,42 @@ namespace SkyTraqBin {
   }; // class Q_extended_NMEA_msg_interval
 
 
+  //! CONFIGURE INTERFERENCE DETECTION - Configure the interference detection of GNSS receiver
+  class Config_interference_detection : public Input_message_with_subid {
+  private:
+    bool _enable;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 2);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_interference_detection(bool e, UpdateType ut) :
+      Input_message_with_subid(0x64, 0x06),
+      _enable(e), _update_type(ut)
+    {}
+
+    GETTER(bool, enabled, _enable);
+    inline void enable(bool en=true) { _enable = en; }
+    inline void disable(void) { _enable = false; }
+
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_interference_detection
+
+
+  //! QUERY INTERFERENCE DETECTION STATUS - Query the status of interference detection of the GNSS receiver
+  class Q_interference_detection_status : public Input_message_with_subid, public with_response {
+  public:
+    Q_interference_detection_status(void) :
+      Input_message_with_subid(0x64, 0x07)
+    {}
+
+    RESPONSE2(0x64, 0x83);
+
+  }; // class Q_interference_detection_status
+
+
   //! CONFIGURE 1PPS PULSE WIDTH - Configure 1PPS pulse width of GNSS receiver
   class Config_1PPS_pulse_width : public Input_message_with_subid {
   private:

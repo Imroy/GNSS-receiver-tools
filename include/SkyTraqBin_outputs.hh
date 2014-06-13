@@ -38,7 +38,15 @@ namespace SkyTraqBin {
       TwoDimensional,
       ThreeDimensional,
       Differential,
-  }; //class NavigationState
+  }; // class NavigationState
+
+
+  enum class InterferenceStatus : uint8_t {
+    Unknown = 0,
+      None,
+      Little,
+      Critical,
+  }; // class InterferenceStatus
 
 
   struct PackedVersion {
@@ -613,6 +621,22 @@ namespace SkyTraqBin {
     GETTER(uint8_t, GST_interval, _gst);
 
   }; // class GNSS_extended_NMEA_msg_interval
+
+
+  //! INTERFERENCE DETECTION STATUS - Interference detection status of GNSS receiver
+  //! - Answer to Q_interference_detection_status
+  class GNSS_interference_detection_status : public Output_message_with_subid {
+  private:
+    bool _enabled;
+    InterferenceStatus _status;
+
+  public:
+    GNSS_interference_detection_status(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(bool, enabled, _enabled);
+    GETTER(InterferenceStatus, status, _status);
+
+  }; // class GNSS_interference_detection_status
 
 
   //! 1PPS PULSE WIDTH - 1PPS pulse width of GNSS receiver
