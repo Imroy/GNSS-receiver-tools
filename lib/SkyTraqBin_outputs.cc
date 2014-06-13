@@ -280,6 +280,17 @@ namespace SkyTraqBin {
   {}
 
 
+  GNSS_constellation_type::GNSS_constellation_type(unsigned char* payload, Payload_length payload_len) :
+    Output_message_with_subid(payload, payload_len)
+  {
+    uint16_t mode = extract_be<uint16_t>(payload, 2);
+    _gps = mode & 0x0001;
+    _glonass = mode & 0x0002;
+    _galileo = mode & 0x0004;
+    _beidou = mode & 0x0008;
+  }
+
+
   GNSS_1PPS_pulse_width::GNSS_1PPS_pulse_width(unsigned char* payload, Payload_length payload_len) :
     Output_message_with_subid(payload, payload_len),
     _width(extract_be<uint32_t>(payload, 2))

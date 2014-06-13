@@ -256,6 +256,16 @@ namespace SkyTraqBin {
   }
 
 
+  void Config_constellation_type::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer,
+	      static_cast<uint16_t>(_gps)
+	      | (static_cast<uint16_t>(_glonass) << 1)
+	      | (static_cast<uint8_t>(_galileo) << 2)
+	      | (static_cast<uint8_t>(_beidou) << 3));
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
   void Config_1PPS_pulse_width::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, _width);
     append_be(buffer, static_cast<uint8_t>(_update_type));

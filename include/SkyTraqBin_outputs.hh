@@ -653,6 +653,23 @@ namespace SkyTraqBin {
   }; // class GNSS_nav_mode
 
 
+  //! GNSS CONSTELLATION TYPE FOR NAVIGATION SOLUTION - GNSS constellation type for navigation solution
+  //! - Answer to Q_constellation_type
+  class GNSS_constellation_type : public Output_message_with_subid {
+  private:
+    bool _gps, _glonass, _galileo, _beidou;
+
+  public:
+    GNSS_constellation_type(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(bool, GPS, _gps);
+    GETTER(bool, GLONASS, _glonass);
+    GETTER(bool, Galileo, _galileo);
+    GETTER(bool, Beidou, _beidou);
+
+  }; // class GNSS_constellation_type
+
+
   //! 1PPS PULSE WIDTH - 1PPS pulse width of GNSS receiver
   //! - Answer to Q_1PPS_pulse_width
   class GNSS_1PPS_pulse_width : public Output_message_with_subid {

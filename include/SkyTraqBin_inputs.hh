@@ -1111,6 +1111,50 @@ namespace SkyTraqBin {
   }; // class Q_GNSS_nav_mode
 
 
+  //! CONFIGURE GNSS CONSTELLATION TYPE FOR NAVIGATION SOLUTION - Set the GNSS constellation type for navigation solution
+  class Config_constellation_type : public Input_message_with_subid {
+  private:
+    bool _gps, _glonass, _galileo, _beidou;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 3);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_constellation_type(bool gp, bool gl, bool ga, bool bd, UpdateType ut) :
+      Input_message_with_subid(0x64, 0x19),
+      _gps(gp), _glonass(gl), _galileo(ga), _beidou(bd), _update_type(ut)
+    {}
+
+    GETTER(bool, GPS, _gps);
+    SETTER_BOOL(GPS, _gps);
+
+    GETTER(bool, GLONASS, _glonass);
+    SETTER_BOOL(GLONASS, _glonass);
+
+    GETTER(bool, Galileo, _galileo);
+    SETTER_BOOL(Galileo, _galileo);
+
+    GETTER(bool, Beidou, _beidou);
+    SETTER_BOOL(Beidou, _beidou);
+
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_constellation_type
+
+
+  //! QUERY GNSS CONSTELLATION TYPE FOR NAVIGATION SOLUTION - Query the GNSS constellation type for navigation solution
+  class Q_constellation_type : public Input_message_with_subid, public with_response {
+  public:
+    Q_constellation_type(void) :
+      Input_message_with_subid(0x64, 0x1A)
+    {}
+
+    RESPONSE2(0x64, 0x8C);
+
+  }; // class Q_constellation_type
+
+
   //! CONFIGURE 1PPS PULSE WIDTH - Configure 1PPS pulse width of GNSS receiver
   class Config_1PPS_pulse_width : public Input_message_with_subid {
   private:
