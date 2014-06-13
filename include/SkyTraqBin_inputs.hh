@@ -455,6 +455,7 @@ namespace SkyTraqBin {
 
 
   //! Configure Binary Measurement Output Rates
+  //! Only valid on NavSpark-Raws
   class Config_bin_measurement_output_rates : public Input_message {
   private:
     OutputRate _output_rate;

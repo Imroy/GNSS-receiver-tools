@@ -376,7 +376,8 @@ namespace SkyTraqBin {
   }; // class GNSS_1PPS_cable_delay
 
 
-  //! MEAS_TIME - Measurement time information (0xDC) (Periodic)
+  //! MEAS_TIME - Measurement time information
+  //! - Periodic message only on NavSpark-Raws
   class Measurement_time : public Output_message {
   private:
     uint8_t _issue;
@@ -409,7 +410,8 @@ namespace SkyTraqBin {
   }; // struct RawMeasurement
 
 
-  //! RAW_MEAS - Raw measurements from each channel (0xDD) (Periodic)
+  //! RAW_MEAS - Raw measurements from each channel
+  //! - Periodic message only on NavSpark-Raws
   class Raw_measurements : public Output_message {
   private:
     uint8_t _issue;
@@ -439,7 +441,8 @@ namespace SkyTraqBin {
   }; // struct SvStatus
 
 
-  //! SV_CH_STATUS - SV and channel status (0xDE) (Periodic)
+  //! SV_CH_STATUS - SV and channel status
+  //! - Periodic message only on NavSpark-Raws
   class SV_channel_status : public Output_message {
   private:
     uint8_t _issue;
@@ -458,6 +461,7 @@ namespace SkyTraqBin {
 
 
   //! RCV_STATE - Receiver navigation status
+  //! - Periodic message only on NavSpark-Raws
   class Rcv_state : public Output_message {
   private:
     uint8_t _issue;
@@ -494,6 +498,7 @@ namespace SkyTraqBin {
 
 
   //! SUBFRAME - Sub frame buffer data
+  //! - Periodic message only on NavSpark-Raws
   class Subframe_data : public Output_message {
   private:
     uint8_t _prn, _subframe_num;
