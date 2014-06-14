@@ -17,6 +17,7 @@
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <iostream>
+#include <sys/time.h>
 #include <boost/format.hpp>
 #include <SDL2/SDL.h>
 #include "App.hh"
@@ -177,6 +178,8 @@ namespace GPSstatus {
   }
 
   void App::render_satellites(void) {
+    struct timeval start, end;
+    gettimeofday(&start, NULL);
     SDL_FillRect(_hemisphere_surface, NULL, SDL_MapRGBA(_hemisphere_surface->format, 0, 0, 0, 0));
 
     SDL_LockSurface(_hemisphere_surface);
@@ -250,6 +253,10 @@ namespace GPSstatus {
 
     _new_sat_data = false;
     _need_redraw = true;
+
+    gettimeofday(&end, NULL);
+    int elapsed = (end.tv_usec - start.tv_usec) + ((end.tv_sec - start.tv_sec) * 1e+6);
+    std::cerr << "render_satellites: " << elapsed << " μs" << std::endl;
   }
 
   std::string degrees_to_dms(double degrees) {
@@ -262,6 +269,9 @@ namespace GPSstatus {
   }
 
   void App::render_fix() {
+    struct timeval start, end;
+    gettimeofday(&start, NULL);
+
     SDL_FillRect(_fix_surface, NULL, SDL_MapRGBA(_fix_surface->format, 0, 0, 0, 0));
 
     SDL_Colour white = { 255, 255, 255, SDL_ALPHA_OPAQUE };
@@ -280,6 +290,10 @@ namespace GPSstatus {
 
     _new_fix_data = false;
     _need_redraw = true;
+
+    gettimeofday(&end, NULL);
+    int elapsed = (end.tv_usec - start.tv_usec) + ((end.tv_sec - start.tv_sec) * 1e+6);
+    std::cerr << "render_fix: " << elapsed << " μs" << std::endl;
   }
 
   void App::render_time() {
@@ -300,6 +314,9 @@ namespace GPSstatus {
   }
 
   void App::Render(void) {
+    struct timeval start, end;
+    gettimeofday(&start, NULL);
+
     SDL_SetRenderDrawColor(_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // black
     SDL_RenderClear(_renderer);
 
@@ -333,6 +350,10 @@ namespace GPSstatus {
 
     SDL_RenderPresent(_renderer);
     _need_redraw = false;
+
+    gettimeofday(&end, NULL);
+    int elapsed = (end.tv_usec - start.tv_usec) + ((end.tv_sec - start.tv_sec) * 1e+6);
+    std::cerr << "Render: " << elapsed << " μs" << std::endl;
   }
 
   void App::new_sat_data(std::vector<NMEA0183::SatelliteData::ptr>& sat_data) {
