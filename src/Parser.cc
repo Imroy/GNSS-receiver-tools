@@ -58,6 +58,7 @@ namespace GPSstatus {
       line.resize(line.length() - 1);
 
     try {
+      //      std::cerr << line << std::endl;
       auto s = NMEA0183::parse_sentence(line);
 
       if (s->isa<NMEA0183::GGA>()) {

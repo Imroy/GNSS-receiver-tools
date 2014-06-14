@@ -53,6 +53,7 @@ namespace GPSstatus {
     for (int y = miny; y <= maxy; y++) {
       double d = rsq - sqr(y - cy);
       if (d >= 0.0) {
+	//	std::cerr << "y=" << y << std::endl;
 	double dsqrt = sqrt(d);
 	(*ins)[y] = std::make_pair(cx - dsqrt, cx + dsqrt);
       }
