@@ -24,36 +24,20 @@
 
 namespace SkyTraqBin {
 
-  enum class FixType : uint8_t {
-    None = 0,
-      TwoDimensional,
-      ThreeDimensional,
-      Differential,
-  }; // class FixType
+  /* All input message class names shall start with a noun
 
-
-  enum class NavigationState : uint8_t {
-    NoFix = 0,
-      Predicted,
-      TwoDimensional,
-      ThreeDimensional,
-      Differential,
-  }; // class NavigationState
-
-
-  enum class BootStatus : uint8_t {
-    FromFlash = 0,
-      FromROM,
-  }; // class BootStatus
-
-
-  enum class InterferenceStatus : uint8_t {
-    Unknown = 0,
-      None,
-      Little,
-      Critical,
-  }; // class InterferenceStatus
-
+     Common words shortened:
+      configure => config
+      download => dl
+      image => img
+      message => msg
+      navigation => nav
+      position => pos
+      query => q
+      software => sw
+      system => sys
+      version => ver
+   */
 
   struct PackedVersion {
     uint8_t X, Y, Z;

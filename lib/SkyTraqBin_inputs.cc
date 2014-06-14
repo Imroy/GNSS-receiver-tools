@@ -22,11 +22,6 @@
 
 namespace SkyTraqBin {
 
-  std::ostream& operator<< (std::ostream& out, MessageType mt) {
-    out << std::to_string(mt);
-    return out;
-  }
-
 
   void Restart_sys::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, (uint8_t)_start_mode);

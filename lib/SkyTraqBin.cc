@@ -148,4 +148,10 @@ namespace SkyTraqBin {
   }
 
 
+  std::ostream& operator<< (std::ostream& out, MessageType mt) {
+    out << std::to_string(mt);
+    return out;
+  }
+
+
 }; // namespace SkyTraqBin

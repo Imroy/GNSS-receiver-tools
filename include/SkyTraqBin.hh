@@ -290,6 +290,100 @@ namespace SkyTraqBin {
   }; // class NavigationMode
 
 
+  enum class StartMode : uint8_t {
+    HotStart = 1,
+      WarmStart,
+      ColdStart,
+  }; // class StartMode
+
+
+  enum class BaudRate : uint8_t {
+    Baud4800 = 0,
+    Baud9600,
+    Baud19200,
+    Baud38400,
+    Baud57600,
+    Baud115200,
+    Baud230400,
+    Baud460800,
+    Baud921600,
+  }; // class BaudRate
+
+
+  enum class UpdateType : uint8_t {
+    SRAM = 0,
+      SRAM_and_flash,
+      Temporary,
+  }; // class UpdateType
+
+
+  enum class MessageType : uint8_t {
+    None = 0,
+      NMEA0183,
+      Binary,
+  }; // class MessageType
+
+  std::ostream& operator<< (std::ostream& out, MessageType mt);
+
+
+  enum class OutputRate : uint8_t {
+    Rate1Hz = 0,
+      Rate2Hz,
+      Rate4Hz,
+      Rate5Hz,
+      Rate10Hz,
+      Rate20Hz,
+  }; // class OutputRate
+
+
+  enum class FlashType : uint8_t {
+    Auto = 0,
+      QSPI_Winbond,
+      QSPI_EON,
+      Parallel_Numonyx,
+      Parallel_EON,
+  }; // class FlashType
+
+
+  enum class BufferUsed : uint8_t {
+    Size8K = 0,
+      Size16K,
+      Size24K,
+      Size32K,
+  }; // class BufferUsed
+
+
+  enum class FixType : uint8_t {
+    None = 0,
+      TwoDimensional,
+      ThreeDimensional,
+      Differential,
+  }; // class FixType
+
+
+  enum class NavigationState : uint8_t {
+    NoFix = 0,
+      Predicted,
+      TwoDimensional,
+      ThreeDimensional,
+      Differential,
+  }; // class NavigationState
+
+
+  enum class BootStatus : uint8_t {
+    FromFlash = 0,
+      FromROM,
+  }; // class BootStatus
+
+
+  enum class InterferenceStatus : uint8_t {
+    Unknown = 0,
+      None,
+      Little,
+      Critical,
+  }; // class InterferenceStatus
+
+
 #define GETTER(type, name, field) inline const type name(void) const { return field; }
 
 #define GETTER_SETTER(type, name, field) inline const type name(void) const { return field; } \
@@ -313,5 +407,9 @@ inline void set_##name(type val) { field = code_set; }
 
 #include "SkyTraqBin_inputs.hh"
 #include "SkyTraqBin_outputs.hh"
+
+namespace std {
+  std::string to_string(SkyTraqBin::MessageType mt);
+}; // namespace std
 
 #endif // __SKYTRAQBIN_HH__
