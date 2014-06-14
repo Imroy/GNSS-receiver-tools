@@ -138,8 +138,15 @@ $(document).ready(function(){initNavTree('class_sky_traq_bin_1_1_q__extended___n
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0c4e7d6d8723de5eeee91ac6953312d1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_q__extended___n_m_e_a__msg__interval.html#a0c4e7d6d8723de5eeee91ac6953312d1">Q_extended_NMEA_msg_interval</a> (void)</td></tr>
 <tr class="separator:a0c4e7d6d8723de5eeee91ac6953312d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a920da546091f7ec93300728422569c9f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_q__extended___n_m_e_a__msg__interval.html#a920da546091f7ec93300728422569c9f">RESPONSE2</a> (0x64, 0x81)</td></tr>
-<tr class="separator:a920da546091f7ec93300728422569c9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afec6e54cc4654ee91806dd25eef46380"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_q__extended___n_m_e_a__msg__interval.html#afec6e54cc4654ee91806dd25eef46380">response_id</a> (void) const </td></tr>
+<tr class="memdesc:afec6e54cc4654ee91806dd25eef46380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the message ID of the response message.  <a href="#afec6e54cc4654ee91806dd25eef46380">More...</a><br /></td></tr>
+<tr class="separator:afec6e54cc4654ee91806dd25eef46380"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a073950af576163dd8d27746e44e26109"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_q__extended___n_m_e_a__msg__interval.html#a073950af576163dd8d27746e44e26109">has_response_subid</a> (void) const </td></tr>
+<tr class="memdesc:a073950af576163dd8d27746e44e26109"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does the response message type have a sub-ID?  <a href="#a073950af576163dd8d27746e44e26109">More...</a><br /></td></tr>
+<tr class="separator:a073950af576163dd8d27746e44e26109"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6268be1138c86c3a1f2b3fed46b26869"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_q__extended___n_m_e_a__msg__interval.html#a6268be1138c86c3a1f2b3fed46b26869">response_subid</a> (void) const </td></tr>
+<tr class="memdesc:a6268be1138c86c3a1f2b3fed46b26869"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the message sub-ID of the response message.  <a href="#a6268be1138c86c3a1f2b3fed46b26869">More...</a><br /></td></tr>
+<tr class="separator:a6268be1138c86c3a1f2b3fed46b26869"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_sky_traq_bin_1_1_input__message__with__subid"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_sky_traq_bin_1_1_input__message__with__subid')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_sky_traq_bin_1_1_input__message__with__subid.html">SkyTraqBin::Input_message_with_subid</a></td></tr>
 <tr class="memitem:aaf0bc3c1c1a60940cb94e28a94909828 inherit pub_methods_class_sky_traq_bin_1_1_input__message__with__subid"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_input__message__with__subid.html#aaf0bc3c1c1a60940cb94e28a94909828">Input_message_with_subid</a> (uint8_t id, uint8_t subid)</td></tr>
 <tr class="memdesc:aaf0bc3c1c1a60940cb94e28a94909828 inherit pub_methods_class_sky_traq_bin_1_1_input__message__with__subid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#aaf0bc3c1c1a60940cb94e28a94909828">More...</a><br /></td></tr>
@@ -181,16 +188,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0f805ea44363d2ae1b559bf9da5f9005 inherit pub_methods_class_sky_traq_bin_1_1with__subid"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9e01583d2c50cdfb170eb01e119e90e inherit pub_methods_class_sky_traq_bin_1_1with__subid"><td class="memItemLeft" align="right" valign="top">const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1with__subid.html#ad9e01583d2c50cdfb170eb01e119e90e">message_subid</a> (void) const </td></tr>
 <tr class="separator:ad9e01583d2c50cdfb170eb01e119e90e inherit pub_methods_class_sky_traq_bin_1_1with__subid"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_sky_traq_bin_1_1with__response"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_sky_traq_bin_1_1with__response')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_sky_traq_bin_1_1with__response.html">SkyTraqBin::with_response</a></td></tr>
-<tr class="memitem:a97cc845b464559008982139b2a094f49 inherit pub_methods_class_sky_traq_bin_1_1with__response"><td class="memItemLeft" align="right" valign="top">virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1with__response.html#a97cc845b464559008982139b2a094f49">response_id</a> (void) const =0</td></tr>
-<tr class="memdesc:a97cc845b464559008982139b2a094f49 inherit pub_methods_class_sky_traq_bin_1_1with__response"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the message ID of the response message.  <a href="#a97cc845b464559008982139b2a094f49">More...</a><br /></td></tr>
-<tr class="separator:a97cc845b464559008982139b2a094f49 inherit pub_methods_class_sky_traq_bin_1_1with__response"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95c70efb19871521206d4492ae8b26f3 inherit pub_methods_class_sky_traq_bin_1_1with__response"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1with__response.html#a95c70efb19871521206d4492ae8b26f3">has_response_subid</a> (void) const =0</td></tr>
-<tr class="memdesc:a95c70efb19871521206d4492ae8b26f3 inherit pub_methods_class_sky_traq_bin_1_1with__response"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does the response message type have a sub-ID?  <a href="#a95c70efb19871521206d4492ae8b26f3">More...</a><br /></td></tr>
-<tr class="separator:a95c70efb19871521206d4492ae8b26f3 inherit pub_methods_class_sky_traq_bin_1_1with__response"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a804b59fb92f310545ab394a119a530ab inherit pub_methods_class_sky_traq_bin_1_1with__response"><td class="memItemLeft" align="right" valign="top">virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1with__response.html#a804b59fb92f310545ab394a119a530ab">response_subid</a> (void) const =0</td></tr>
-<tr class="memdesc:a804b59fb92f310545ab394a119a530ab inherit pub_methods_class_sky_traq_bin_1_1with__response"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the message sub-ID of the response message.  <a href="#a804b59fb92f310545ab394a119a530ab">More...</a><br /></td></tr>
-<tr class="separator:a804b59fb92f310545ab394a119a530ab inherit pub_methods_class_sky_traq_bin_1_1with__response"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -251,29 +248,93 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a920da546091f7ec93300728422569c9f"></a>
+<a class="anchor" id="a073950af576163dd8d27746e44e26109"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SkyTraqBin::Q_extended_NMEA_msg_interval::RESPONSE2 </td>
+          <td class="memname">bool SkyTraqBin::Q_extended_NMEA_msg_interval::has_response_subid </td>
           <td>(</td>
-          <td class="paramtype">0x64&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">0x81&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>Does the response message type have a sub-ID? </p>
+
+<p>Implements <a class="el" href="class_sky_traq_bin_1_1with__response.html#a95c70efb19871521206d4492ae8b26f3">SkyTraqBin::with_response</a>.</p>
+
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs__with__subid_8hh_source.html#l00274">274</a> of file <a class="el" href="_sky_traq_bin__inputs__with__subid_8hh_source.html">SkyTraqBin_inputs_with_subid.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afec6e54cc4654ee91806dd25eef46380"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t SkyTraqBin::Q_extended_NMEA_msg_interval::response_id </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the message ID of the response message. </p>
+
+<p>Implements <a class="el" href="class_sky_traq_bin_1_1with__response.html#a97cc845b464559008982139b2a094f49">SkyTraqBin::with_response</a>.</p>
+
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs__with__subid_8hh_source.html#l00274">274</a> of file <a class="el" href="_sky_traq_bin__inputs__with__subid_8hh_source.html">SkyTraqBin_inputs_with_subid.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6268be1138c86c3a1f2b3fed46b26869"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t SkyTraqBin::Q_extended_NMEA_msg_interval::response_subid </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the message sub-ID of the response message. </p>
+
+<p>Implements <a class="el" href="class_sky_traq_bin_1_1with__response.html#a804b59fb92f310545ab394a119a530ab">SkyTraqBin::with_response</a>.</p>
+
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs__with__subid_8hh_source.html#l00274">274</a> of file <a class="el" href="_sky_traq_bin__inputs__with__subid_8hh_source.html">SkyTraqBin_inputs_with_subid.hh</a>.</p>
 
 </div>
 </div>
@@ -286,7 +347,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_sky_traq_bin.html">SkyTraqBin</a></li><li class="navelem"><a class="el" href="class_sky_traq_bin_1_1_q__extended___n_m_e_a__msg__interval.html">Q_extended_NMEA_msg_interval</a></li>
-    <li class="footer">Generated on Sat Jun 14 2014 23:50:38 for NavSpark tools by
+    <li class="footer">Generated on Sun Jun 15 2014 00:09:58 for NavSpark tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>
