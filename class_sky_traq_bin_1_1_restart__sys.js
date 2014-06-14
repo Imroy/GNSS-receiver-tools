@@ -3,8 +3,6 @@ var class_sky_traq_bin_1_1_restart__sys =
     [ "Restart_sys", "class_sky_traq_bin_1_1_restart__sys.html#a8bc8c70a861a374929bcebaac3dab0fb", null ],
     [ "Restart_sys", "class_sky_traq_bin_1_1_restart__sys.html#a985d10f86358ff94f793c05c5ef03e4f", null ],
     [ "altitude", "class_sky_traq_bin_1_1_restart__sys.html#a4a2ae6dc7a66b5f70421a7c087fe7065", null ],
-    [ "body_length", "class_sky_traq_bin_1_1_restart__sys.html#a39c8404f46ee45e2c1f0d7dd44b05e24", null ],
-    [ "body_to_buf", "class_sky_traq_bin_1_1_restart__sys.html#ae97d668faec238bc5fcd5527f370e0c6", null ],
     [ "lattitude", "class_sky_traq_bin_1_1_restart__sys.html#a302a295dfab9f6b20586b3cbfe4f38af", null ],
     [ "lattitude_raw", "class_sky_traq_bin_1_1_restart__sys.html#aabb81e734cd54806e4d791b8710244e5", null ],
     [ "longitude", "class_sky_traq_bin_1_1_restart__sys.html#ad113154a5bc6681607b55800d65f0a1b", null ],
@@ -27,15 +25,5 @@ var class_sky_traq_bin_1_1_restart__sys =
     [ "UTC_minute", "class_sky_traq_bin_1_1_restart__sys.html#a0687e1be10435d5bcce812ee8fc52a38", null ],
     [ "UTC_month", "class_sky_traq_bin_1_1_restart__sys.html#afe5996e816eac31017943edb983babcf", null ],
     [ "UTC_second", "class_sky_traq_bin_1_1_restart__sys.html#abe26de12f14b6b240aa0093af2c89d93", null ],
-    [ "UTC_year", "class_sky_traq_bin_1_1_restart__sys.html#a33177148331d840f7ac1abc296a9286a", null ],
-    [ "_altitude", "class_sky_traq_bin_1_1_restart__sys.html#ad439e85711a7ecc4a3d5f5abaf20daf2", null ],
-    [ "_lattitude", "class_sky_traq_bin_1_1_restart__sys.html#a9f5762545dde1688b1d933cdefbb8f27", null ],
-    [ "_longitude", "class_sky_traq_bin_1_1_restart__sys.html#a6e4e45f96f1afea17ed702dd5ef4ce2c", null ],
-    [ "_start_mode", "class_sky_traq_bin_1_1_restart__sys.html#a9cb3a4f65891fbcf0256d2336266d3bb", null ],
-    [ "_utc_day", "class_sky_traq_bin_1_1_restart__sys.html#aa966fabf5ecdafbb1cfe1246e03b743f", null ],
-    [ "_utc_hour", "class_sky_traq_bin_1_1_restart__sys.html#a2341f929a5ac2b32a6dc63ca458b46f3", null ],
-    [ "_utc_minute", "class_sky_traq_bin_1_1_restart__sys.html#a9136dce563b483942140c7ad9f6fe0d6", null ],
-    [ "_utc_month", "class_sky_traq_bin_1_1_restart__sys.html#a9f4c0518f68ac055b4ba33878589bf1f", null ],
-    [ "_utc_second", "class_sky_traq_bin_1_1_restart__sys.html#a023617d9719284f4c5f12f2b9360a3a2", null ],
-    [ "_utc_year", "class_sky_traq_bin_1_1_restart__sys.html#a2252bb5da98fb54f9fbe4aa6ee9fa998", null ]
+    [ "UTC_year", "class_sky_traq_bin_1_1_restart__sys.html#a33177148331d840f7ac1abc296a9286a", null ]
 ];

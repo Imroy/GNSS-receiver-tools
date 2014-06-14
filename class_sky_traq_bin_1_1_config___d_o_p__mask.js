@@ -2,8 +2,6 @@ var class_sky_traq_bin_1_1_config___d_o_p__mask =
 [
     [ "Config_DOP_mask", "class_sky_traq_bin_1_1_config___d_o_p__mask.html#a189bf7c11495ea95ccae414ae7554a1b", null ],
     [ "Config_DOP_mask", "class_sky_traq_bin_1_1_config___d_o_p__mask.html#a3e92d675eade4c0717ee7c086576fa3d", null ],
-    [ "body_length", "class_sky_traq_bin_1_1_config___d_o_p__mask.html#aec5ba7f17121e99272c7df2bfc3b62b8", null ],
-    [ "body_to_buf", "class_sky_traq_bin_1_1_config___d_o_p__mask.html#a4a26caad7b30875fc0ea73480509aa00", null ],
     [ "DOP_mode", "class_sky_traq_bin_1_1_config___d_o_p__mask.html#adff5e66880728b5c9604b67f62aec010", null ],
     [ "GDOP", "class_sky_traq_bin_1_1_config___d_o_p__mask.html#a482908fa48d00efc239966e5be7151d9", null ],
     [ "GDOP_raw", "class_sky_traq_bin_1_1_config___d_o_p__mask.html#ae9e4abff75904e0987a767208434b6aa", null ],
@@ -19,10 +17,5 @@ var class_sky_traq_bin_1_1_config___d_o_p__mask =
     [ "set_PDOP", "class_sky_traq_bin_1_1_config___d_o_p__mask.html#a051b62315765f0387e82a1cf5d4dd763", null ],
     [ "set_PDOP_raw", "class_sky_traq_bin_1_1_config___d_o_p__mask.html#a43e5cc2f3f95ea5616ba948e9b03179b", null ],
     [ "set_update_type", "class_sky_traq_bin_1_1_config___d_o_p__mask.html#acd66482a40ddf374ca406bbf235726cf", null ],
-    [ "update_type", "class_sky_traq_bin_1_1_config___d_o_p__mask.html#ad1accbe506301467ccababce2ac7a370", null ],
-    [ "_dop_mode", "class_sky_traq_bin_1_1_config___d_o_p__mask.html#ae180aa5b4ef990cec58381e757eab3bc", null ],
-    [ "_gdop", "class_sky_traq_bin_1_1_config___d_o_p__mask.html#a656077f3d50f856a207c9abfbb356fc5", null ],
-    [ "_hdop", "class_sky_traq_bin_1_1_config___d_o_p__mask.html#a1c06c19c8ef5ac5bd6daebc219ff0fe4", null ],
-    [ "_pdop", "class_sky_traq_bin_1_1_config___d_o_p__mask.html#a1f41dc1f965ada436f743fd573bc1184", null ],
-    [ "_update_type", "class_sky_traq_bin_1_1_config___d_o_p__mask.html#ad049013047afaf4c6958d9d470414282", null ]
+    [ "update_type", "class_sky_traq_bin_1_1_config___d_o_p__mask.html#ad1accbe506301467ccababce2ac7a370", null ]
 ];

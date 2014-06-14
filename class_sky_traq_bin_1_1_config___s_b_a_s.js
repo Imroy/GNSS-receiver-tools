@@ -1,8 +1,6 @@
 var class_sky_traq_bin_1_1_config___s_b_a_s =
 [
     [ "Config_SBAS", "class_sky_traq_bin_1_1_config___s_b_a_s.html#a6210f5e0f94603a7521b1fda29e82794", null ],
-    [ "body_length", "class_sky_traq_bin_1_1_config___s_b_a_s.html#a3bc8e9cb970968fefa2a3d59e835d6c0", null ],
-    [ "body_to_buf", "class_sky_traq_bin_1_1_config___s_b_a_s.html#a1a5be9069d2472ad3b6d8f202127d8a3", null ],
     [ "correction", "class_sky_traq_bin_1_1_config___s_b_a_s.html#aa8b17cb92ba76775fc57de549b6942f9", null ],
     [ "disable", "class_sky_traq_bin_1_1_config___s_b_a_s.html#ad765fe9db34b350f72aa8e14073600d9", null ],
     [ "disable_EGNOS", "class_sky_traq_bin_1_1_config___s_b_a_s.html#ac7165aa3f47906278188af4df827b590", null ],
@@ -25,14 +23,5 @@ var class_sky_traq_bin_1_1_config___s_b_a_s =
     [ "set_update_type", "class_sky_traq_bin_1_1_config___s_b_a_s.html#a1d3312c99a3ca51840c18a5d72a31b3d", null ],
     [ "unset_correction", "class_sky_traq_bin_1_1_config___s_b_a_s.html#a7f96362979725121abbdd445365c54fd", null ],
     [ "update_type", "class_sky_traq_bin_1_1_config___s_b_a_s.html#a63c70fca8a96a16998ff49ea279b605f", null ],
-    [ "WAAS_enabled", "class_sky_traq_bin_1_1_config___s_b_a_s.html#a040d4b97598ebb77e175993a6e2f38b9", null ],
-    [ "_correction", "class_sky_traq_bin_1_1_config___s_b_a_s.html#a26554f741d8af189269f485b27aa9474", null ],
-    [ "_egnos", "class_sky_traq_bin_1_1_config___s_b_a_s.html#aeb9a2fd023f932ceca97604c6422d616", null ],
-    [ "_enable", "class_sky_traq_bin_1_1_config___s_b_a_s.html#a85813f973d770b4e8e641b619724f60f", null ],
-    [ "_msas", "class_sky_traq_bin_1_1_config___s_b_a_s.html#a76b1f2eff189a13e461e3b5d621496ef", null ],
-    [ "_num_channels", "class_sky_traq_bin_1_1_config___s_b_a_s.html#a409d15930306c3a78e27848d20c709dc", null ],
-    [ "_ranging", "class_sky_traq_bin_1_1_config___s_b_a_s.html#a3f73f7288e82c03fb965f1b07524c310", null ],
-    [ "_ranging_ura_mask", "class_sky_traq_bin_1_1_config___s_b_a_s.html#ad7088a96c2e05f0e55f351e26a4bda88", null ],
-    [ "_update_type", "class_sky_traq_bin_1_1_config___s_b_a_s.html#a89e3cd0a40c24f09bce0e1d67ba6198a", null ],
-    [ "_waas", "class_sky_traq_bin_1_1_config___s_b_a_s.html#afcb76493896d34b62107a5415ef0f1e5", null ]
+    [ "WAAS_enabled", "class_sky_traq_bin_1_1_config___s_b_a_s.html#a040d4b97598ebb77e175993a6e2f38b9", null ]
 ];

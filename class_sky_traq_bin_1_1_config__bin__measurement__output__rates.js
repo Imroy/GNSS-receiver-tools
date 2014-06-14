@@ -1,8 +1,6 @@
 var class_sky_traq_bin_1_1_config__bin__measurement__output__rates =
 [
     [ "Config_bin_measurement_output_rates", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a6061e2ee87760cc7ca7a0902863d3274", null ],
-    [ "body_length", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a9748f3cd3b2d24a60547d227911e8caf", null ],
-    [ "body_to_buf", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#ad594f607f9f3fd3329890753607c696c", null ],
     [ "meas_time", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#aa1da85703c59b285999898129d3e788e", null ],
     [ "output_rate", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a03ba0dedc6f74d9587eb5462ced8cc62", null ],
     [ "raw_meas", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#aa2f0e1706501344b2b102bd8d21352ee", null ],
@@ -21,12 +19,5 @@ var class_sky_traq_bin_1_1_config__bin__measurement__output__rates =
     [ "unset_RCV_state", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a2b7820c33c4bbc6671a9805cc133ad0e", null ],
     [ "unset_subframe", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#aff89e806fd7d0a6a9f9f74b2545d4c3e", null ],
     [ "unset_SV_CH_status", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#acc35be5cb8a4b9798f4ee502739c0957", null ],
-    [ "update_type", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a1a0a96569cf9e9c15aa0f548bc0aefcb", null ],
-    [ "_meas_time", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#ab041d0a28bb7d45daf258367632fb000", null ],
-    [ "_output_rate", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#ad3e8fe4a2bc1d147a60c671a3a1e92cd", null ],
-    [ "_raw_meas", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#afb0bcab443c437ec20cc5a2167fb085c", null ],
-    [ "_rcv_state", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a7724c44226331571ef85bde7f711b8d4", null ],
-    [ "_subframe", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a4767bfe016c7b0ac67f18f15a87fe559", null ],
-    [ "_sv_ch_status", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#aad79e370cf6babf606551e6f871b2b3a", null ],
-    [ "_update_type", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a9acaf9ad59d0319caa8ec1df2e8788d1", null ]
+    [ "update_type", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a1a0a96569cf9e9c15aa0f548bc0aefcb", null ]
 ];

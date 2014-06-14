@@ -327,7 +327,7 @@ $(document).ready(function(){initNavTree('_n_m_e_a-0183_8cc_source.html','');});
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  {</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 2; i &lt; fields.size() - 3; i++)</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;      <span class="keywordflow">if</span> (fields[i].length() &gt; 0)</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        <a class="code" href="class_n_m_e_a0183_1_1_g_s_a.html#a622f22827329cccb3bcc56493402149b">_sat_ids</a>.push_back(std::stoi(fields[i]));</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        _sat_ids.push_back(std::stoi(fields[i]));</div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  }</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
@@ -341,7 +341,7 @@ $(document).ready(function(){initNavTree('_n_m_e_a-0183_8cc_source.html','');});
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      <span class="keywordtype">int</span> snr = -1;</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      <span class="keywordflow">if</span> (fields[i + 3].size() &gt; 0)</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        snr = std::stoi(fields[i + 3]);</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      <a class="code" href="class_n_m_e_a0183_1_1_g_s_v.html#ac6bae8b5c773a3ef1c93b51b0bb83d7c">_sat_data</a>.push_back(std::make_shared&lt;SatelliteData&gt;(std::stoi(fields[i]),</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      _sat_data.push_back(std::make_shared&lt;SatelliteData&gt;(std::stoi(fields[i]),</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                                                          std::stoi(fields[i + 1]),</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                                                          std::stoi(fields[i + 2]),</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                                                          snr));</div>
@@ -477,7 +477,6 @@ $(document).ready(function(){initNavTree('_n_m_e_a-0183_8cc_source.html','');});
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;  }</div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;</div>
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;}; <span class="comment">// namespace std</span></div>
-<div class="ttc" id="class_n_m_e_a0183_1_1_g_s_v_html_ac6bae8b5c773a3ef1c93b51b0bb83d7c"><div class="ttname"><a href="class_n_m_e_a0183_1_1_g_s_v.html#ac6bae8b5c773a3ef1c93b51b0bb83d7c">NMEA0183::GSV::_sat_data</a></div><div class="ttdeci">std::vector&lt; SatelliteData::ptr &gt; _sat_data</div><div class="ttdef"><b>Definition:</b> <a href="_n_m_e_a-0183_8hh_source.html#l00232">NMEA-0183.hh:232</a></div></div>
 <div class="ttc" id="namespace_n_m_e_a0183_html_ad4add89b28c75830e7e0205e3c9275e1ae1ba155a9f2e8c3be94020eef32a0301"><div class="ttname"><a href="namespace_n_m_e_a0183.html#ad4add89b28c75830e7e0205e3c9275e1ae1ba155a9f2e8c3be94020eef32a0301">NMEA0183::OpMode::Manual</a></div></div>
 <div class="ttc" id="namespace_n_m_e_a0183_html_ab433b019f1fdc66200387d281c3010cd"><div class="ttname"><a href="namespace_n_m_e_a0183.html#ab433b019f1fdc66200387d281c3010cd">NMEA0183::FixType</a></div><div class="ttdeci">FixType</div><div class="ttdef"><b>Definition:</b> <a href="_n_m_e_a-0183_8hh_source.html#l00184">NMEA-0183.hh:184</a></div></div>
 <div class="ttc" id="namespace_n_m_e_a0183_html_a927c0bad84f71ff8e857aa93c167d8b6a1c2eaa5d56340808f2a94368501e5496"><div class="ttname"><a href="namespace_n_m_e_a0183.html#a927c0bad84f71ff8e857aa93c167d8b6a1c2eaa5d56340808f2a94368501e5496">NMEA0183::ReceiverMode::Differential</a></div></div>
@@ -499,7 +498,6 @@ $(document).ready(function(){initNavTree('_n_m_e_a-0183_8cc_source.html','');});
 <div class="ttc" id="class_n_m_e_a0183_1_1_z_d_a_html_aa7049d139763b727157f300fc903a1ad"><div class="ttname"><a href="class_n_m_e_a0183_1_1_z_d_a.html#aa7049d139763b727157f300fc903a1ad">NMEA0183::ZDA::ZDA</a></div><div class="ttdeci">ZDA(std::string tid, std::string type, std::vector&lt; std::string &gt; fields, unsigned char checksum)</div><div class="ttdef"><b>Definition:</b> <a href="_n_m_e_a-0183_8cc_source.html#l00299">NMEA-0183.cc:299</a></div></div>
 <div class="ttc" id="class_n_m_e_a0183_1_1_sentence_html"><div class="ttname"><a href="class_n_m_e_a0183_1_1_sentence.html">NMEA0183::Sentence</a></div><div class="ttdoc">Base class for holding NMEA-0183 sentence data. </div><div class="ttdef"><b>Definition:</b> <a href="_n_m_e_a-0183_8hh_source.html#l00079">NMEA-0183.hh:79</a></div></div>
 <div class="ttc" id="namespace_n_m_e_a0183_html_a927c0bad84f71ff8e857aa93c167d8b6a04665ec171e86ef749cc563d7bdeec91"><div class="ttname"><a href="namespace_n_m_e_a0183.html#a927c0bad84f71ff8e857aa93c167d8b6a04665ec171e86ef749cc563d7bdeec91">NMEA0183::ReceiverMode::NotValid</a></div></div>
-<div class="ttc" id="class_n_m_e_a0183_1_1_g_s_a_html_a622f22827329cccb3bcc56493402149b"><div class="ttname"><a href="class_n_m_e_a0183_1_1_g_s_a.html#a622f22827329cccb3bcc56493402149b">NMEA0183::GSA::_sat_ids</a></div><div class="ttdeci">std::vector&lt; int &gt; _sat_ids</div><div class="ttdef"><b>Definition:</b> <a href="_n_m_e_a-0183_8hh_source.html#l00198">NMEA-0183.hh:198</a></div></div>
 <div class="ttc" id="namespace_n_m_e_a0183_html_a927c0bad84f71ff8e857aa93c167d8b6"><div class="ttname"><a href="namespace_n_m_e_a0183.html#a927c0bad84f71ff8e857aa93c167d8b6">NMEA0183::ReceiverMode</a></div><div class="ttdeci">ReceiverMode</div><div class="ttdef"><b>Definition:</b> <a href="_n_m_e_a-0183_8hh_source.html#l00146">NMEA-0183.hh:146</a></div></div>
 <div class="ttc" id="namespace_n_m_e_a0183_html_ae7b81b2e62b4cbcc6561a054217b46aea35fe396889ec1365d72a2300a9e1c59b"><div class="ttname"><a href="namespace_n_m_e_a0183.html#ae7b81b2e62b4cbcc6561a054217b46aea35fe396889ec1365d72a2300a9e1c59b">NMEA0183::FixQuality::ManualMode</a></div></div>
 <div class="ttc" id="namespace_n_m_e_a0183_html_a2f73fed36de5ac6ab4edc38e32eeaeab"><div class="ttname"><a href="namespace_n_m_e_a0183.html#a2f73fed36de5ac6ab4edc38e32eeaeab">NMEA0183::dm_to_degrees</a></div><div class="ttdeci">double dm_to_degrees(std::string dm, int dlen, std::string indicator, std::string neg)</div><div class="ttdoc">Convert the "ddmm.mm" or "dddmm.mm" string to a number of degrees. </div><div class="ttdef"><b>Definition:</b> <a href="_n_m_e_a-0183_8cc_source.html#l00143">NMEA-0183.cc:143</a></div></div>
@@ -537,7 +535,7 @@ $(document).ready(function(){initNavTree('_n_m_e_a-0183_8cc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="_n_m_e_a-0183_8cc.html">NMEA-0183.cc</a></li>
-    <li class="footer">Generated on Sat Jun 14 2014 23:34:14 for NavSpark tools by
+    <li class="footer">Generated on Sat Jun 14 2014 23:50:21 for NavSpark tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

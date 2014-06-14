@@ -4,7 +4,6 @@ var files =
     [ "BE.hh", "_b_e_8hh.html", "_b_e_8hh" ],
     [ "NMEA-0183.cc", "_n_m_e_a-0183_8cc.html", "_n_m_e_a-0183_8cc" ],
     [ "NMEA-0183.hh", "_n_m_e_a-0183_8hh.html", "_n_m_e_a-0183_8hh" ],
-    [ "parse.cc", "parse_8cc.html", "parse_8cc" ],
     [ "Parser.cc", "_parser_8cc.html", "_parser_8cc" ],
     [ "Parser.hh", "_parser_8hh.html", [
       [ "Parser", "class_sky_traq_1_1_parser.html", "class_sky_traq_1_1_parser" ],

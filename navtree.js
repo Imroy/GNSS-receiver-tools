@@ -19,7 +19,7 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", "functions_vars" ],
+        [ "Variables", "functions_vars.html", null ],
         [ "Typedefs", "functions_type.html", null ]
       ] ]
     ] ],
@@ -37,11 +37,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_b_e_8cc.html",
-"class_n_m_e_a0183_1_1_g_g_a.html#a632651ae1a5977d47e0e1acac54752f1",
-"class_sky_traq_bin_1_1_config___n_m_e_a__msg.html#a535eb45abbaa3e00c422b3a1ec0bebdf",
-"class_sky_traq_bin_1_1_config__msg__type.html#a1d6206b7ee7bae3493e10855c4c2025d",
-"class_sky_traq_bin_1_1_g_p_s__ephemeris__data.html",
-"class_sky_traq_bin_1_1_restart__sys.html#a0687e1be10435d5bcce812ee8fc52a38"
+"class_n_m_e_a0183_1_1_g_s_a.html#a8b34ee84792ffe25dad3cddc4d22fe28",
+"class_sky_traq_bin_1_1_config__datum.html#ac0bfd9b5cf5039714e0809b7179dc363",
+"class_sky_traq_bin_1_1_measurement__time.html#a5ec966c292ddca7ff2a0e0c3e6a9e952",
+"functions_func_k.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

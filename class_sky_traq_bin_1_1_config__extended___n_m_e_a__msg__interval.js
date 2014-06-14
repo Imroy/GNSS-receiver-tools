@@ -1,8 +1,6 @@
 var class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval =
 [
     [ "Config_extended_NMEA_msg_interval", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#a7f7709568fce5b41f890050a58b5d62f", null ],
-    [ "body_length", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#a74e86799aec9f10808426c812ca23d90", null ],
-    [ "body_to_buf", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#aaba7e80296ba4f7e91777d57d2ee5abc", null ],
     [ "DTM_interval", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#ab65cd6495e513ba34bdf19efe882b18c", null ],
     [ "GBS_interval", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#a28de21ce8410a1841c982ddf02910c17", null ],
     [ "GGA_interval", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#a24ecd403ef2e766f6861acb9bbd2afb0", null ],
@@ -28,18 +26,5 @@ var class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval =
     [ "set_ZDA_interval", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#adf184b6329e81c53861193ce7c790019", null ],
     [ "update_type", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#a7134efa36217123e9ca7f2ec54a612f9", null ],
     [ "VTG_interval", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#aab4f31c8696d0a60fc0a1ba9e3a32a64", null ],
-    [ "ZDA_interval", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#a6fca7b598d559993e3c566d91c789703", null ],
-    [ "_dtm", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#a82e492dc6946b134b5e120cca4dd5590", null ],
-    [ "_gbs", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#a09c3928fc361cc588aaf45f5ad01726b", null ],
-    [ "_gga", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#ac023a23161ac98f5cf770570774855d1", null ],
-    [ "_gll", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#a6e1b885d42d9076f4c15e991ed246be7", null ],
-    [ "_gns", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#acb162f7f9fd1605aeca7ca64bb13eba8", null ],
-    [ "_grs", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#a436b7502ca5e50289d6abdd93f3b1049", null ],
-    [ "_gsa", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#a94134420d464770d6df95b108f1e49d4", null ],
-    [ "_gst", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#a9b4de441913ca54502ac4a1ebb95a6f5", null ],
-    [ "_gsv", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#a8ded92d19f3a0b141c3b09671f1dcfbd", null ],
-    [ "_rmc", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#aac21016f3118ce15f3232f99d93f46c7", null ],
-    [ "_update_type", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#ae71cbcee5b0df26b33ab7089b2a3e34b", null ],
-    [ "_vtg", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#af479a52a07eb909ec3ae7e7d9ee0e98e", null ],
-    [ "_zda", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#aa82e0daeb6aab894d9e2524b26468992", null ]
+    [ "ZDA_interval", "class_sky_traq_bin_1_1_config__extended___n_m_e_a__msg__interval.html#a6fca7b598d559993e3c566d91c789703", null ]
 ];

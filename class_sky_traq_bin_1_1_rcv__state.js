@@ -17,22 +17,5 @@ var class_sky_traq_bin_1_1_rcv__state =
     [ "TDOP", "class_sky_traq_bin_1_1_rcv__state.html#a07dab58f67ceebd66a8b7d5b919b2147", null ],
     [ "time_of_week", "class_sky_traq_bin_1_1_rcv__state.html#aaab8a875b6cf7552a4c91aa3717d8394", null ],
     [ "VDOP", "class_sky_traq_bin_1_1_rcv__state.html#acbc50fa6c347a79d7fa6c173a5961950", null ],
-    [ "week_number", "class_sky_traq_bin_1_1_rcv__state.html#a2ca80fe80d65943929aaa0ccbb3b18ef", null ],
-    [ "_clock_bias", "class_sky_traq_bin_1_1_rcv__state.html#ae7289c2aa7503a0b6cb5336c70bb6d0e", null ],
-    [ "_clock_drift", "class_sky_traq_bin_1_1_rcv__state.html#ab13c811189675972f98b7805b146f3d1", null ],
-    [ "_ecef_vx", "class_sky_traq_bin_1_1_rcv__state.html#ab76c3267c5ce54655c2a7663f45b020a", null ],
-    [ "_ecef_vy", "class_sky_traq_bin_1_1_rcv__state.html#ad204f58b44b82b874c421c0d62e62e4c", null ],
-    [ "_ecef_vz", "class_sky_traq_bin_1_1_rcv__state.html#a8b0d43e6e4299155b00ffb148cc85e75", null ],
-    [ "_ecef_x", "class_sky_traq_bin_1_1_rcv__state.html#a47f3aea24f51f1bb12959cb686d79894", null ],
-    [ "_ecef_y", "class_sky_traq_bin_1_1_rcv__state.html#a459987b6966de6fe9bbef389890b546f", null ],
-    [ "_ecef_z", "class_sky_traq_bin_1_1_rcv__state.html#aefdb31aac7e0a4e221ff7b6decfca505", null ],
-    [ "_gdop", "class_sky_traq_bin_1_1_rcv__state.html#ae4bcee6dc76f9a14ab96ee6a0a70b1ce", null ],
-    [ "_hdop", "class_sky_traq_bin_1_1_rcv__state.html#a72297ba00f71ea8b4b7e9d5fcff9f858", null ],
-    [ "_issue", "class_sky_traq_bin_1_1_rcv__state.html#a641a4e51fb72689d3cb9de38a0217e28", null ],
-    [ "_nav_state", "class_sky_traq_bin_1_1_rcv__state.html#a481e0631ae624b78f388af011822ccc3", null ],
-    [ "_pdop", "class_sky_traq_bin_1_1_rcv__state.html#a23faab43614cc1eac93e3932f397a87b", null ],
-    [ "_tdop", "class_sky_traq_bin_1_1_rcv__state.html#ab796002f59a4af9af56253e2b1d7a50d", null ],
-    [ "_tow", "class_sky_traq_bin_1_1_rcv__state.html#a457b898227c0ab506e380b2b7bbc54d4", null ],
-    [ "_vdop", "class_sky_traq_bin_1_1_rcv__state.html#ad25851ec593a8c1fbc8fdc3b63375c93", null ],
-    [ "_weeknum", "class_sky_traq_bin_1_1_rcv__state.html#aa2897665c5bfdc4c884b94f792a6bd29", null ]
+    [ "week_number", "class_sky_traq_bin_1_1_rcv__state.html#a2ca80fe80d65943929aaa0ccbb3b18ef", null ]
 ];

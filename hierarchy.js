@@ -10,9 +10,7 @@ var hierarchy =
       [ "SkyTraqBin::UnknownMessageID", "class_sky_traq_bin_1_1_unknown_message_i_d.html", null ]
     ] ],
     [ "SkyTraq::Interface", "class_sky_traq_1_1_interface.html", null ],
-    [ "SkyTraq::Listener", "class_sky_traq_1_1_listener.html", [
-      [ "AppListener", "class_app_listener.html", null ]
-    ] ],
+    [ "SkyTraq::Listener", "class_sky_traq_1_1_listener.html", null ],
     [ "SkyTraq::Message", "class_sky_traq_1_1_message.html", [
       [ "NMEA0183::Sentence", "class_n_m_e_a0183_1_1_sentence.html", [
         [ "NMEA0183::GGA", "class_n_m_e_a0183_1_1_g_g_a.html", null ],
