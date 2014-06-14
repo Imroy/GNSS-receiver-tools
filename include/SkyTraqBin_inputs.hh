@@ -24,29 +24,6 @@
 
 namespace SkyTraqBin {
 
-  //! Role base class for input messages that have a response message
-  class with_response {
-  public:
-    //! Return the message ID of the response message
-    virtual uint8_t response_id(void) const = 0;
-
-    //! Does the response message type have a sub-ID?
-    virtual bool has_response_subid(void) const = 0;
-
-    //! Return the message sub-ID of the response message
-    virtual uint8_t response_subid(void) const = 0;
-
-  }; // class with_response
-
-#define RESPONSE1(id)  uint8_t response_id(void) const { return id; } \
-    bool has_response_subid(void) const { return false; } \
-    uint8_t response_subid(void) const { return 0; }
-
-#define RESPONSE2(id, subid)  uint8_t response_id(void) const { return id; }	\
-    bool has_response_subid(void) const { return true; } \
-    uint8_t response_subid(void) const { return subid; }
-
-
   /* All input message class names shall start with a verb
      Common words shortened:
       configure => config
