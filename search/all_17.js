@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['x',['X',['../struct_sky_traq_bin_1_1_packed_version.html#aad889b73d0359793604fcbdb62f54128',1,'SkyTraqBin::PackedVersion']]]
+  ['y',['Y',['../struct_sky_traq_bin_1_1_packed_version.html#a38bcbc321c02944e42ff18d2cee08fdd',1,'SkyTraqBin::PackedVersion']]],
+  ['year',['year',['../struct_sky_traq_bin_1_1_packed_date.html#a8a0775cea54c63fa476700fe1f5154e7',1,'SkyTraqBin::PackedDate']]]
 ];

@@ -14,7 +14,6 @@ var searchData=
   ['baudrate',['BaudRate',['../namespace_sky_traq_bin.html#a563e3749a9599c896a4ddcb46b2b8a47',1,'SkyTraqBin']]],
   ['be_2ecc',['BE.cc',['../_b_e_8cc.html',1,'']]],
   ['be_2ehh',['BE.hh',['../_b_e_8hh.html',1,'']]],
-  ['beidou',['Beidou',['../class_sky_traq_bin_1_1_config__constellation__type.html#afb6bb1c3b386ebeda3d8fbbca9a986d8',1,'SkyTraqBin::Config_constellation_type::Beidou()'],['../class_sky_traq_bin_1_1_g_n_s_s__constellation__type.html#a9fc3236447d4d225d24f7827394f34f4',1,'SkyTraqBin::GNSS_constellation_type::Beidou()']]],
   ['binary',['Binary',['../namespace_sky_traq_bin.html#ad6dfb9b099caedb49ad438b8b3606fcca6ce976e8f061b2b5cfe4d0c50c3405dd',1,'SkyTraqBin']]],
   ['body_5flength',['body_length',['../class_sky_traq_bin_1_1_input__message.html#a835f9d226e1744856e9a10b64c5692b8',1,'SkyTraqBin::Input_message::body_length()'],['../class_sky_traq_bin_1_1_input__message__with__subid.html#a4b2a93fda1672ab19e3f867aa2966d73',1,'SkyTraqBin::Input_message_with_subid::body_length()']]],
   ['body_5fto_5fbuf',['body_to_buf',['../class_sky_traq_bin_1_1_input__message.html#abc4a3cd1b5b66d00cd7dbf5875670341',1,'SkyTraqBin::Input_message::body_to_buf()'],['../class_sky_traq_bin_1_1_input__message__with__subid.html#a93c91d56bdc9964022d6f4ae7df390e0',1,'SkyTraqBin::Input_message_with_subid::body_to_buf()']]],

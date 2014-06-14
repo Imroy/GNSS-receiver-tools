@@ -132,11 +132,13 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_insufficient_data.html">SkyTraqBin::InsufficientData</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_invalid_message.html">SkyTraqBin::InvalidMessage</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception signifying that the start and/or end sequence bytes of a message are wrong.  <a href="class_sky_traq_bin_1_1_invalid_message.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_checksum_mismatch.html">SkyTraqBin::ChecksumMismatch</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception class for when checksums don't match.  <a href="class_sky_traq_bin_1_1_checksum_mismatch.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_unknown_message_i_d.html">SkyTraqBin::UnknownMessageID</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception class for when we can't find the message ID in our list.  <a href="class_sky_traq_bin_1_1_unknown_message_i_d.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_message.html">SkyTraqBin::Message</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for a binary message.  <a href="class_sky_traq_bin_1_1_message.html#details">More...</a><br /></td></tr>
@@ -161,7 +163,7 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a53cd5f752177296ab45f08b0c367bea9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_sky_traq_bin_8hh.html#a53cd5f752177296ab45f08b0c367bea9">GETTER</a>(type, name, field)&#160;&#160;&#160;inline const type name(void) const { return field; }</td></tr>
+<tr class="memitem:a53cd5f752177296ab45f08b0c367bea9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_sky_traq_bin_8hh.html#a53cd5f752177296ab45f08b0c367bea9">GETTER</a>(type, name, field)</td></tr>
 <tr class="separator:a53cd5f752177296ab45f08b0c367bea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1106b7ee83bdaa31b755bc3022235f18"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_sky_traq_bin_8hh.html#a1106b7ee83bdaa31b755bc3022235f18">GETTER_SETTER</a>(type, name, field)</td></tr>
 <tr class="separator:a1106b7ee83bdaa31b755bc3022235f18"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,6 +185,7 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a636b95f91ba4b517bd69f364d692765d"><td class="memItemLeft" align="right" valign="top">typedef uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sky_traq_bin.html#a636b95f91ba4b517bd69f364d692765d">SkyTraqBin::Payload_length</a></td></tr>
+<tr class="memdesc:a636b95f91ba4b517bd69f364d692765d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for the binary message payload length, limited to 64 KiB.  <a href="#a636b95f91ba4b517bd69f364d692765d">More...</a><br /></td></tr>
 <tr class="separator:a636b95f91ba4b517bd69f364d692765d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -364,12 +367,12 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;inline const type name(void) const { return field; }</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00165">165</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00174">174</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
 
 </div>
 </div>
@@ -403,7 +406,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00178">178</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00188">188</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
 
 </div>
 </div>
@@ -437,7 +440,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00173">173</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00183">183</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
 
 </div>
 </div>
@@ -473,7 +476,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">inline</span> <span class="keyword">const</span> type name(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> field; } \</div>
 <div class="line">inline <span class="keywordtype">void</span> set_##name(type val) { field = val; }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00167">167</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00177">177</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
 
 </div>
 </div>
@@ -521,7 +524,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">inline</span> <span class="keyword">const</span> type name(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> code_get; } \</div>
 <div class="line">inline <span class="keywordtype">void</span> set_##name(type val) { field = code_set; }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00180">180</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00190">190</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
 
 </div>
 </div>
@@ -557,7 +560,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">inline</span> <span class="keyword">const</span> type name##_raw(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> field; } \</div>
 <div class="line">inline <span class="keywordtype">void</span> set_##name##_raw(type val) { field = val; }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00175">175</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00185">185</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
 
 </div>
 </div>
@@ -578,7 +581,7 @@ Functions</h2></td></tr>
 <div class="line">    bool has_response_subid(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="keyword">false</span>; } \</div>
 <div class="line">    uint8_t response_subid(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> 0; }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00213">213</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00228">228</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
 
 </div>
 </div>
@@ -609,7 +612,7 @@ Functions</h2></td></tr>
 <div class="line">    bool has_response_subid(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="keyword">true</span>; } \</div>
 <div class="line">    uint8_t response_subid(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> subid; }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00217">217</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00232">232</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
 
 </div>
 </div>
@@ -639,7 +642,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">inline</span> <span class="keywordtype">void</span> set_##name(<span class="keywordtype">bool</span> val=<span class="keyword">true</span>) { field = val; } \</div>
 <div class="line">inline <span class="keywordtype">void</span> unset_##name(<span class="keywordtype">void</span>) { field = <span class="keyword">false</span>; }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00170">170</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00180">180</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
 
 </div>
 </div>
@@ -649,7 +652,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="_sky_traq_bin_8hh.html">SkyTraqBin.hh</a></li>
-    <li class="footer">Generated on Sun Jun 15 2014 00:09:42 for NavSpark tools by
+    <li class="footer">Generated on Sun Jun 15 2014 04:57:33 for NavSpark tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

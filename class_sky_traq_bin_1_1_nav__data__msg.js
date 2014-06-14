@@ -17,7 +17,6 @@ var class_sky_traq_bin_1_1_nav__data__msg =
     [ "ECEF_Z_raw", "class_sky_traq_bin_1_1_nav__data__msg.html#abf5c535b894c550c3a053b503b6f1a93", null ],
     [ "ellipsoid_alt", "class_sky_traq_bin_1_1_nav__data__msg.html#a1131f9e8122a7c11f2b5009b00c52894", null ],
     [ "ellipsoid_alt_raw", "class_sky_traq_bin_1_1_nav__data__msg.html#a186078a838fe6371354d865e15442406", null ],
-    [ "fix_type", "class_sky_traq_bin_1_1_nav__data__msg.html#a01bb55d53077726fe7099b4ea502677c", null ],
     [ "GDOP", "class_sky_traq_bin_1_1_nav__data__msg.html#a0ec06266c665f3e48fe282b6e9f032e2", null ],
     [ "GDOP_raw", "class_sky_traq_bin_1_1_nav__data__msg.html#a21bc2a61bab2351733524084f5840ee7", null ],
     [ "HDOP", "class_sky_traq_bin_1_1_nav__data__msg.html#aa7ed347541a2135c65ce3eb11d5bb0ce", null ],
@@ -26,13 +25,10 @@ var class_sky_traq_bin_1_1_nav__data__msg =
     [ "lat_raw", "class_sky_traq_bin_1_1_nav__data__msg.html#a3eaaad188860558da56282265888abec", null ],
     [ "lon", "class_sky_traq_bin_1_1_nav__data__msg.html#ab5b5259a9bddb09b2a96afadf392ad0d", null ],
     [ "lon_raw", "class_sky_traq_bin_1_1_nav__data__msg.html#aec4c348250c5c76e742844a848a3937c", null ],
-    [ "num_sv", "class_sky_traq_bin_1_1_nav__data__msg.html#afb2560133058f3624676d1e52284553d", null ],
     [ "PDOP", "class_sky_traq_bin_1_1_nav__data__msg.html#a22557979f2f556ed0b67ffdec8127d21", null ],
     [ "PDOP_raw", "class_sky_traq_bin_1_1_nav__data__msg.html#af2f5949c0bafc17969e697dce01302fe", null ],
     [ "TDOP", "class_sky_traq_bin_1_1_nav__data__msg.html#ae6d50eabff0d08835d09549e44aa29ac", null ],
     [ "TDOP_raw", "class_sky_traq_bin_1_1_nav__data__msg.html#ab0279d39e61780ed5accc3adb399151e", null ],
-    [ "time_of_week", "class_sky_traq_bin_1_1_nav__data__msg.html#a466ef78e9ffe1e7650928b46fb2797bc", null ],
     [ "VDOP", "class_sky_traq_bin_1_1_nav__data__msg.html#a46f26e4d4264230d05f6c14b248da8a2", null ],
-    [ "VDOP_raw", "class_sky_traq_bin_1_1_nav__data__msg.html#a063e7698e0c4288284262b3d5e2cdaf0", null ],
-    [ "week_no", "class_sky_traq_bin_1_1_nav__data__msg.html#ad2e5b4245f74373aae71c6673745c7e8", null ]
+    [ "VDOP_raw", "class_sky_traq_bin_1_1_nav__data__msg.html#a063e7698e0c4288284262b3d5e2cdaf0", null ]
 ];

@@ -1,10 +1,6 @@
 var class_sky_traq_bin_1_1_config__constellation__type =
 [
     [ "Config_constellation_type", "class_sky_traq_bin_1_1_config__constellation__type.html#a85f4b97d743e8a0f0cb12f1427e822d9", null ],
-    [ "Beidou", "class_sky_traq_bin_1_1_config__constellation__type.html#afb6bb1c3b386ebeda3d8fbbca9a986d8", null ],
-    [ "Galileo", "class_sky_traq_bin_1_1_config__constellation__type.html#a67afb11d68216a67edad355b7f3fb30b", null ],
-    [ "GLONASS", "class_sky_traq_bin_1_1_config__constellation__type.html#a26773c8f5a6ccf7075d6506675146ac0", null ],
-    [ "GPS", "class_sky_traq_bin_1_1_config__constellation__type.html#a2fa8766d8e214986e0c12fe8b9cde015", null ],
     [ "set_Beidou", "class_sky_traq_bin_1_1_config__constellation__type.html#a990a246c9473b1cab24862056426bf29", null ],
     [ "set_Galileo", "class_sky_traq_bin_1_1_config__constellation__type.html#a8fdfb2948e709cb55e2c13b54b14986a", null ],
     [ "set_GLONASS", "class_sky_traq_bin_1_1_config__constellation__type.html#a421e27e0528d60d294310ef3c0511897", null ],

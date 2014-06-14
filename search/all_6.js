@@ -2,7 +2,7 @@ var searchData=
 [
   ['fire_5fif',['FIRE_IF',['../_parser_8cc.html#afe1bf6fec8702c731305304b8197709e',1,'Parser.cc']]],
   ['fix_5fquality',['fix_quality',['../class_n_m_e_a0183_1_1_g_g_a.html#ab05ddcec6636681ab96f2fdd8d9d74f4',1,'NMEA0183::GGA']]],
-  ['fix_5ftype',['fix_type',['../class_n_m_e_a0183_1_1_g_s_a.html#aa5fe4636df4160a58daa4156cf27e240',1,'NMEA0183::GSA::fix_type()'],['../class_sky_traq_bin_1_1_nav__data__msg.html#a01bb55d53077726fe7099b4ea502677c',1,'SkyTraqBin::Nav_data_msg::fix_type()']]],
+  ['fix_5ftype',['fix_type',['../class_n_m_e_a0183_1_1_g_s_a.html#aa5fe4636df4160a58daa4156cf27e240',1,'NMEA0183::GSA']]],
   ['fixquality',['FixQuality',['../namespace_n_m_e_a0183.html#ae7b81b2e62b4cbcc6561a054217b46ae',1,'NMEA0183']]],
   ['fixtype',['FixType',['../namespace_n_m_e_a0183.html#ab433b019f1fdc66200387d281c3010cd',1,'NMEA0183::FixType()'],['../namespace_sky_traq_bin.html#a2503838326eb69a8104c6bad34d8e957',1,'SkyTraqBin::FixType()']]],
   ['flash_5ftype',['flash_type',['../class_sky_traq_bin_1_1_sw__img__download.html#a09e1d74e35d0164fc6a9fcc4ca40f6cc',1,'SkyTraqBin::Sw_img_download']]],

@@ -1,15 +1,20 @@
 var searchData=
 [
-  ['lat',['lat',['../class_sky_traq_bin_1_1_nav__data__msg.html#af4b1fa66db5ae84cd4bc45ed8c8f1c88',1,'SkyTraqBin::Nav_data_msg']]],
-  ['lat_5fraw',['lat_raw',['../class_sky_traq_bin_1_1_nav__data__msg.html#a3eaaad188860558da56282265888abec',1,'SkyTraqBin::Nav_data_msg']]],
-  ['lattitude',['lattitude',['../class_n_m_e_a0183_1_1_g_g_a.html#a0a855e523d0daa3f093660bc5c8d473c',1,'NMEA0183::GGA::lattitude()'],['../class_n_m_e_a0183_1_1_g_l_l.html#a676610823cf9835f849f4e88d2dcab37',1,'NMEA0183::GLL::lattitude()'],['../class_n_m_e_a0183_1_1_r_m_c.html#abfc8e00811611ff428bf989c9b0f86cf',1,'NMEA0183::RMC::lattitude()'],['../class_sky_traq_bin_1_1_restart__sys.html#a302a295dfab9f6b20586b3cbfe4f38af',1,'SkyTraqBin::Restart_sys::lattitude()']]],
-  ['lattitude_5fraw',['lattitude_raw',['../class_sky_traq_bin_1_1_restart__sys.html#aabb81e734cd54806e4d791b8710244e5',1,'SkyTraqBin::Restart_sys']]],
-  ['leap_5fseconds_5fvalid',['leap_seconds_valid',['../class_sky_traq_bin_1_1_g_n_s_s__time.html#ad26402dc3ab240df0350931af7668cae',1,'SkyTraqBin::GNSS_time']]],
-  ['listener',['Listener',['../class_sky_traq_1_1_listener.html',1,'SkyTraq']]],
-  ['listener',['Listener',['../class_sky_traq_1_1_listener.html#a661da58a48124cc17f7f62294e4cd36b',1,'SkyTraq::Listener']]],
-  ['little',['Little',['../namespace_sky_traq_bin.html#a9b53c23e0e879d107e280b8faa4c8e25a0f9197b3e286a7522984831949087332',1,'SkyTraqBin']]],
-  ['lon',['lon',['../class_sky_traq_bin_1_1_nav__data__msg.html#ab5b5259a9bddb09b2a96afadf392ad0d',1,'SkyTraqBin::Nav_data_msg']]],
-  ['lon_5fraw',['lon_raw',['../class_sky_traq_bin_1_1_nav__data__msg.html#aec4c348250c5c76e742844a848a3937c',1,'SkyTraqBin::Nav_data_msg']]],
-  ['longitude',['longitude',['../class_n_m_e_a0183_1_1_g_g_a.html#a77bafc6c79d6701e8cc9325f5e714d29',1,'NMEA0183::GGA::longitude()'],['../class_n_m_e_a0183_1_1_g_l_l.html#aab7eba76409be4e28cd9b0bd46133966',1,'NMEA0183::GLL::longitude()'],['../class_n_m_e_a0183_1_1_r_m_c.html#a82459c53ff27e9bb594321b4dcc19c95',1,'NMEA0183::RMC::longitude()'],['../class_sky_traq_bin_1_1_restart__sys.html#ad113154a5bc6681607b55800d65f0a1b',1,'SkyTraqBin::Restart_sys::longitude()']]],
-  ['longitude_5fraw',['longitude_raw',['../class_sky_traq_bin_1_1_restart__sys.html#a5b31a06054d238d16b82c30feb2d8dc3',1,'SkyTraqBin::Restart_sys']]]
+  ['magnetic_5fcourse',['magnetic_course',['../class_n_m_e_a0183_1_1_v_t_g.html#a1797c197210cb834fb36e7fc27410be3',1,'NMEA0183::VTG']]],
+  ['manual',['Manual',['../namespace_n_m_e_a0183.html#ad4add89b28c75830e7e0205e3c9275e1ae1ba155a9f2e8c3be94020eef32a0301',1,'NMEA0183']]],
+  ['manualmode',['ManualMode',['../namespace_n_m_e_a0183.html#ae7b81b2e62b4cbcc6561a054217b46aea35fe396889ec1365d72a2300a9e1c59b',1,'NMEA0183']]],
+  ['marine',['Marine',['../namespace_sky_traq_bin.html#a14dad65c7948b35a97ef81891c8d0cf9a801a61583a73f5c3e28d34771df22617',1,'SkyTraqBin']]],
+  ['measurement_5ftime',['Measurement_time',['../class_sky_traq_bin_1_1_measurement__time.html',1,'SkyTraqBin']]],
+  ['measurement_5ftime',['Measurement_time',['../class_sky_traq_1_1_listener.html#a094e13b759e61077ef6c83fcac05c234',1,'SkyTraq::Listener::Measurement_time()'],['../class_sky_traq_bin_1_1_measurement__time.html#a40815daa5911870168c94ebdff763f23',1,'SkyTraqBin::Measurement_time::Measurement_time()']]],
+  ['message',['Message',['../class_sky_traq_1_1_message.html',1,'SkyTraq']]],
+  ['message',['Message',['../class_sky_traq_bin_1_1_message.html#a31ae815ca7db5a875844be3915f0bdfa',1,'SkyTraqBin::Message']]],
+  ['message',['Message',['../class_sky_traq_bin_1_1_message.html',1,'SkyTraqBin']]],
+  ['message_5fid',['message_id',['../class_sky_traq_bin_1_1_message.html#a7d233eeb419f11e8aa7c86244ef0b865',1,'SkyTraqBin::Message']]],
+  ['message_5flength',['message_length',['../class_sky_traq_bin_1_1_input__message.html#acd02bb30ce4eb26abd8c6bba493ed5e5',1,'SkyTraqBin::Input_message::message_length()'],['../class_sky_traq_bin_1_1_input__message__with__subid.html#aa4b4e18661d3a180adcf5a40a9c494c1',1,'SkyTraqBin::Input_message_with_subid::message_length()']]],
+  ['message_5fseq',['message_seq',['../class_n_m_e_a0183_1_1_g_s_v.html#a3414711da5feed7fce787b5215c7b1f4',1,'NMEA0183::GSV']]],
+  ['message_5ftype',['message_type',['../class_sky_traq_bin_1_1_config__msg__type.html#aaffa459df93b9d05d437d26a4daa099b',1,'SkyTraqBin::Config_msg_type']]],
+  ['messagetype',['MessageType',['../namespace_sky_traq_bin.html#ad6dfb9b099caedb49ad438b8b3606fcc',1,'SkyTraqBin']]],
+  ['mode',['mode',['../class_n_m_e_a0183_1_1_g_s_a.html#a8b60f181e13c0eb0d66003a529671aed',1,'NMEA0183::GSA']]],
+  ['mode_5fselect',['mode_select',['../class_sky_traq_bin_1_1_config__elevation___c_n_r__mask.html#a5dadd563ba68d97ac0fa884e27281c6b',1,'SkyTraqBin::Config_elevation_CNR_mask']]],
+  ['month',['month',['../struct_sky_traq_bin_1_1_packed_date.html#ad815552acf2938842ded3d9a83dde2b4',1,'SkyTraqBin::PackedDate']]]
 ];
