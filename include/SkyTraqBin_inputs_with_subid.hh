@@ -1,0 +1,462 @@
+/*
+        Copyright 2014 Ian Tester
+
+        This file is part of NavSpark tools.
+
+        NavSpark tools is free software: you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation, either version 3 of the License, or
+        (at your option) any later version.
+
+        NavSpark tools is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
+
+        You should have received a copy of the GNU General Public License
+        along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
+*/
+#ifndef __SKYTRAQBIN_INPUTS_WITH_SUBID_HH__
+#define __SKYTRAQBIN_INPUTS_WITH_SUBID_HH__
+
+#include "SkyTraqBin.hh"
+
+namespace SkyTraqBin {
+
+  /* All input message class names shall start with a verb
+     Common words shortened:
+      configure => config
+      download => dl
+      image => img
+      message => msg
+      navigation => nav
+      position => pos
+      query => q
+      software => sw
+      system => sys
+      version => ver
+   */
+
+  //! Base class for messages that go to the GPS receiver with a sub-ID
+  class Input_message_with_subid : public Input_message, public with_subid {
+  protected:
+    //! The length of the body (not including message id or sub-id)
+    virtual const Payload_length body_length(void) const = 0;
+
+    //! Write body fields into a pre-allocated buffer
+    virtual void body_to_buf(unsigned char* buffer) const = 0;
+
+  public:
+    //! Constructor
+    Input_message_with_subid(uint8_t id, uint8_t subid) :
+      Input_message(id),
+      with_subid(subid)
+    {}
+
+    //! The total length of the message
+    /*! This includes:
+      - start sequence (2)
+      - payload length (2)
+      - message ID (1)
+      - message sub-ID (1)
+      - body length
+      - checksum (1)
+      - end sequence (2)
+    */
+    inline const Payload_length message_length(void) const { return 2 + 2 + 1 + 1 + body_length() + 1 + 2; }
+
+    //! Write the message into a buffer
+    /*!
+      Use message_length() to know how big the buffer needs to be.
+     */
+    virtual void to_buf(unsigned char *buffer) const;
+
+    typedef std::shared_ptr<Input_message_with_subid> ptr;
+  }; // class Input_message_with_subid
+
+
+  //! CONFIGURE SBAS - Configure SBAS parameters of GNSS receiver
+  class Config_SBAS : public Input_message_with_subid {
+  private:
+    bool _enable;
+    EnableOrAuto _ranging;
+    uint8_t _ranging_ura_mask;
+    bool _correction;
+    uint8_t _num_channels;
+    bool _waas, _egnos, _msas;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 8);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_SBAS(bool en, EnableOrAuto r, uint8_t rm, bool c, uint8_t nc, bool w, bool e, bool m, UpdateType ut) :
+      Input_message_with_subid(0x62, 0x01),
+      _enable(en),
+      _ranging(r), _ranging_ura_mask(rm),
+      _correction(c), _num_channels(nc),
+      _waas(w), _egnos(e), _msas(m),
+      _update_type(ut)
+    {}
+
+    GETTER(bool, enabled, _enable);
+    inline void enable(bool en=true) { _enable = en; }
+    inline void disable(void) { _enable = false; }
+
+    GETTER_SETTER(EnableOrAuto, ranging, _ranging);
+    GETTER_SETTER(uint8_t, ranging_URA_mask, _ranging_ura_mask);
+
+    GETTER(bool, correction, _correction);
+    SETTER_BOOL(correction, _correction);
+
+    GETTER_SETTER(uint8_t, num_channels, _num_channels);
+
+    GETTER(bool, WAAS_enabled, _waas);
+    inline void enable_WAAS(bool w=true) { _waas = w; }
+    inline void disable_WAAS(void) { _waas = false; }
+
+    GETTER(bool, EGNOS_enabled, _egnos);
+    inline void enable_EGNOS(bool e=true) { _egnos = e; }
+    inline void disable_EGNOS(void) { _egnos = false; }
+
+    GETTER(bool, MSAS_enabled, _msas);
+    inline void enable_MSAS(bool m=true) { _msas = m; }
+    inline void disable_MSAS(void) { _msas = false; }
+
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_SBAS
+
+
+  //! QUERY SBAS STATUS - Query SBAS status of GNSS receiver
+  //! - Responds with GNSS_SBAS_status
+  class Q_SBAS_status : public Input_message_with_subid, public with_response {
+  public:
+    Q_SBAS_status(void) :
+      Input_message_with_subid(0x62, 0x02)
+    {}
+
+    RESPONSE2(0x62, 0x80);
+
+  }; // class Q_SBAS_status
+
+
+  //! CONFIGURE QZSS - Configure QZSS of GNSS receiver
+  class Config_QZSS : public Input_message_with_subid {
+  private:
+    bool _enable;
+    uint8_t _num_channels;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 3);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_QZSS(bool e, uint8_t nc, UpdateType ut) :
+      Input_message_with_subid(0x62, 0x03),
+      _enable(e), _num_channels(nc), _update_type(ut)
+    {}
+
+    GETTER(bool, enabled, _enable);
+    inline void enable(bool en=true) { _enable = en; }
+    inline void disable(void) { _enable = false; }
+
+    GETTER_SETTER(uint8_t, num_channels, _num_channels);
+
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_QZSS
+
+
+  //! QUERY QZSS STATUS - Query QZSS status of GNSS receiver
+  class Q_QZSS_status : public Input_message_with_subid, public with_response {
+  public:
+    Q_QZSS_status(void) :
+      Input_message_with_subid(0x62, 0x04)
+    {}
+
+    RESPONSE2(0x62, 0x81);
+
+  }; // class Q_QZSS_status
+
+
+  //! CONFIGURE SAEE - configure SAEE of GNSS receiver
+  class Config_SAEE : public Input_message_with_subid {
+  private:
+    DefaultOrEnable _enable;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 2);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_SAEE(DefaultOrEnable e, UpdateType ut) :
+      Input_message_with_subid(0x63, 0x01),
+      _enable(e), _update_type(ut)
+    {}
+
+    GETTER_SETTER(DefaultOrEnable, enable, _enable);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_SAEE
+
+
+  //! QUERY SAEE STATUS
+  class Q_SAEE_status : public Input_message_with_subid, public with_response {
+  public:
+    Q_SAEE_status(void) :
+      Input_message_with_subid(0x63, 0x02)
+    {}
+
+    RESPONSE2(0x63, 0x80);
+
+  }; // class Q_SAEE_status
+
+
+  //! QUERY GNSS BOOT STATUS - Query boot status of GNSS receiver
+  //! - Responds with GNSS_boot_status message
+  class Q_GNSS_boot_status : public Input_message_with_subid, public with_response {
+  public:
+    Q_GNSS_boot_status(void) :
+      Input_message_with_subid(0x64, 0x01)
+    {}
+
+    RESPONSE2(0x64, 0x80);
+
+  }; // class Q_GNSS_boot_status
+
+
+  //! CONFIGURE EXTENDED NMEA MESSAGE INTERVAL - Configure extended NMEA message Interval of GNSS receiver
+  class Config_extended_NMEA_msg_interval : public Input_message_with_subid {
+  private:
+    uint8_t _gga, _gsa, _gsv, _gll, _rmc, _vtg, _zda, _gns, _gbs, _grs, _dtm, _gst;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 13);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_extended_NMEA_msg_interval(uint8_t gga, uint8_t gsa, uint8_t gsv, uint8_t gll,
+				      uint8_t rmc, uint8_t vtg, uint8_t zda, uint8_t gns,
+				      uint8_t gbs, uint8_t grs, uint8_t dtm, uint8_t gst,
+				      UpdateType ut) :
+      Input_message_with_subid(0x64, 0x02),
+      _gga(gga), _gsa(gsa), _gsv(gsv), _gll(gll),
+      _rmc(rmc), _vtg(vtg), _zda(zda), _gns(gns),
+      _gbs(gbs), _grs(grs), _dtm(dtm), _gst(gst),
+      _update_type(ut)
+    {}
+
+    GETTER_SETTER(uint8_t, GGA_interval, _gga);
+    GETTER_SETTER(uint8_t, GSA_interval, _gsa);
+    GETTER_SETTER(uint8_t, GSV_interval, _gsv);
+    GETTER_SETTER(uint8_t, GLL_interval, _gll);
+    GETTER_SETTER(uint8_t, RMC_interval, _rmc);
+    GETTER_SETTER(uint8_t, VTG_interval, _vtg);
+    GETTER_SETTER(uint8_t, ZDA_interval, _zda);
+    GETTER_SETTER(uint8_t, GNS_interval, _gns);
+    GETTER_SETTER(uint8_t, GBS_interval, _gbs);
+    GETTER_SETTER(uint8_t, GRS_interval, _grs);
+    GETTER_SETTER(uint8_t, DTM_interval, _dtm);
+    GETTER_SETTER(uint8_t, GST_interval, _gst);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_extended_NMEA_msg_interval
+
+
+  //! QUERY EXTENDED NMEA MESSAGE INTERVAL
+  class Q_extended_NMEA_msg_interval : public Input_message_with_subid, public with_response {
+  public:
+    Q_extended_NMEA_msg_interval(void) :
+      Input_message_with_subid(0x64, 0x03)
+    {}
+
+    RESPONSE2(0x64, 0x81);
+
+  }; // class Q_extended_NMEA_msg_interval
+
+
+  //! CONFIGURE INTERFERENCE DETECTION - Configure the interference detection of GNSS receiver
+  class Config_interference_detection : public Input_message_with_subid {
+  private:
+    bool _enable;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 2);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_interference_detection(bool e, UpdateType ut) :
+      Input_message_with_subid(0x64, 0x06),
+      _enable(e), _update_type(ut)
+    {}
+
+    GETTER(bool, enabled, _enable);
+    inline void enable(bool en=true) { _enable = en; }
+    inline void disable(void) { _enable = false; }
+
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_interference_detection
+
+
+  //! QUERY INTERFERENCE DETECTION STATUS - Query the status of interference detection of the GNSS receiver
+  class Q_interference_detection_status : public Input_message_with_subid, public with_response {
+  public:
+    Q_interference_detection_status(void) :
+      Input_message_with_subid(0x64, 0x07)
+    {}
+
+    RESPONSE2(0x64, 0x83);
+
+  }; // class Q_interference_detection_status
+
+
+  //! CONFIGURE GNSS NAVIGATION MODE - Configure the navigation mode of GNSS receiver
+  class Config_GNSS_nav_mode : public Input_message_with_subid {
+  private:
+    NavigationMode _mode;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 2);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_GNSS_nav_mode(NavigationMode m, UpdateType ut) :
+      Input_message_with_subid(0x64, 0x17),
+      _mode(m), _update_type(ut)
+    {}
+
+    GETTER_SETTER(NavigationMode, navigation_mode, _mode);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_GNSS_nav_mode
+
+
+  //! QUERY GNSS NAVIGATION MODE - Query the navigation mode of GNSS receiver
+  class Q_GNSS_nav_mode : public Input_message_with_subid, public with_response {
+  public:
+    Q_GNSS_nav_mode(void) :
+      Input_message_with_subid(0x64, 0x18)
+    {}
+
+    RESPONSE2(0x64, 0x8B);
+
+  }; // class Q_GNSS_nav_mode
+
+
+  //! CONFIGURE GNSS CONSTELLATION TYPE FOR NAVIGATION SOLUTION - Set the GNSS constellation type for navigation solution
+  class Config_constellation_type : public Input_message_with_subid {
+  private:
+    bool _gps, _glonass, _galileo, _beidou;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 3);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_constellation_type(bool gp, bool gl, bool ga, bool bd, UpdateType ut) :
+      Input_message_with_subid(0x64, 0x19),
+      _gps(gp), _glonass(gl), _galileo(ga), _beidou(bd), _update_type(ut)
+    {}
+
+    GETTER(bool, GPS, _gps);
+    SETTER_BOOL(GPS, _gps);
+
+    GETTER(bool, GLONASS, _glonass);
+    SETTER_BOOL(GLONASS, _glonass);
+
+    GETTER(bool, Galileo, _galileo);
+    SETTER_BOOL(Galileo, _galileo);
+
+    GETTER(bool, Beidou, _beidou);
+    SETTER_BOOL(Beidou, _beidou);
+
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_constellation_type
+
+
+  //! QUERY GNSS CONSTELLATION TYPE FOR NAVIGATION SOLUTION - Query the GNSS constellation type for navigation solution
+  class Q_constellation_type : public Input_message_with_subid, public with_response {
+  public:
+    Q_constellation_type(void) :
+      Input_message_with_subid(0x64, 0x1A)
+    {}
+
+    RESPONSE2(0x64, 0x8C);
+
+  }; // class Q_constellation_type
+
+
+  //! CONFIGURE GPS/UTC LEAP SECONDS - Configure GPS/UTC leap seconds of GNSS receiver
+  class Config_leap_seconds : public Input_message_with_subid {
+  private:
+    int8_t _seconds;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 2);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_leap_seconds(int8_t s, UpdateType ut) :
+      Input_message_with_subid(0x64, 0x1f),
+      _seconds(s), _update_type(ut)
+    {}
+
+    GETTER_SETTER(int8_t, seconds, _seconds);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_leap_seconds
+
+
+  //! QUERY GPS TIME - Query GPS time of GNSS receiver
+  class Q_GPS_time : public Input_message_with_subid, public with_response {
+  public:
+    Q_GPS_time(void) :
+      Input_message_with_subid(0x64, 0x20)
+    {}
+
+    RESPONSE2(0x64, 0x8E);
+
+  }; // class Q_GPS_time
+
+
+  //! CONFIGURE 1PPS PULSE WIDTH - Configure 1PPS pulse width of GNSS receiver
+  class Config_1PPS_pulse_width : public Input_message_with_subid {
+  private:
+    uint32_t _width;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 5);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_1PPS_pulse_width(uint32_t w, UpdateType ut) :
+      Input_message_with_subid(0x65, 0x01),
+      _width(w), _update_type(ut)
+    {}
+
+    GETTER_SETTER_MOD(double, width, _width, _width * 1.0e-6, val * 1e+6);
+    GETTER_SETTER_RAW(int32_t, width, _width);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_1PPS_pulse_width
+
+
+  //! QUERY 1PPS PULSE WIDTH - Query 1PPS pulse width of GNSS receiver
+  //! - Answer with GNSS_1PPS_pulse_width
+  class Q_1PPS_pulse_width : public Input_message_with_subid, public with_response {
+  public:
+    Q_1PPS_pulse_width(void) :
+      Input_message_with_subid(0x65, 0x02)
+    {}
+
+    RESPONSE2(0x65, 0x80);
+
+  }; // class Q_1PPS_pulse_width
+
+
+}; // namespace SkyTraqBin
+
+#endif // __SKYTRAQBIN_INPUTS_WITH_SUBID_HH__

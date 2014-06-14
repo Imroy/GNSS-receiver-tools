@@ -177,59 +177,6 @@ namespace SkyTraqBin {
   }; // class with_subid
 
 
-  //! Base class for messages that come from the GPS receiver with a sub-ID
-  class Output_message_with_subid : public Output_message, public with_subid {
-  protected:
-
-  public:
-    //! Constructor from a binary buffer
-    inline Output_message_with_subid(unsigned char* payload, Payload_length payload_len) :
-      Output_message(payload, payload_len),
-      with_subid(payload_len > 1 ? payload[1] : 0)
-    {}
-
-    typedef std::shared_ptr<Output_message_with_subid> ptr;
-  }; // class Output_message_with_subid
-
-
-  //! Base class for messages that go to the GPS receiver with a sub-ID
-  class Input_message_with_subid : public Input_message, public with_subid {
-  protected:
-    //! The length of the body (not including message id or sub-id)
-    virtual const Payload_length body_length(void) const = 0;
-
-    //! Write body fields into a pre-allocated buffer
-    virtual void body_to_buf(unsigned char* buffer) const = 0;
-
-  public:
-    //! Constructor
-    Input_message_with_subid(uint8_t id, uint8_t subid) :
-      Input_message(id),
-      with_subid(subid)
-    {}
-
-    //! The total length of the message
-    /*! This includes:
-      - start sequence (2)
-      - payload length (2)
-      - message ID (1)
-      - message sub-ID (1)
-      - body length
-      - checksum (1)
-      - end sequence (2)
-    */
-    inline const Payload_length message_length(void) const { return 2 + 2 + 1 + 1 + body_length() + 1 + 2; }
-
-    //! Write the message into a buffer
-    /*!
-      Use message_length() to know how big the buffer needs to be.
-     */
-    virtual void to_buf(unsigned char *buffer) const;
-
-    typedef std::shared_ptr<Input_message_with_subid> ptr;
-  }; // class Input_message_with_subid
-
-
   enum class SwType : uint8_t {
     SystemCode = 1,
   }; // class SwType
@@ -429,7 +376,9 @@ inline void set_##name(type val) { field = code_set; }
 }; // SkyTraqBin
 
 #include "SkyTraqBin_inputs.hh"
+#include "SkyTraqBin_inputs_with_subid.hh"
 #include "SkyTraqBin_outputs.hh"
+#include "SkyTraqBin_outputs_with_subid.hh"
 
 namespace std {
   std::string to_string(SkyTraqBin::MessageType mt);
