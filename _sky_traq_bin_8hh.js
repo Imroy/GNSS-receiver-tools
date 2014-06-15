@@ -133,9 +133,11 @@ var _sky_traq_bin_8hh =
       [ "SRAM_and_flash", "_sky_traq_bin_8hh.html#af89d769ff084045d495d6690463f40ffa376a105e22e7a9a85938c3584592bcaa", null ],
       [ "Temporary", "_sky_traq_bin_8hh.html#af89d769ff084045d495d6690463f40ffa10d85d7664a911bcaec89732098c269a", null ]
     ] ],
-    [ "Hz_to_OutputRate", "_sky_traq_bin_8hh.html#a3e35d7a361c2991fac8a3b499e057fed", null ],
+    [ "BaudRate_rate", "_sky_traq_bin_8hh.html#ac4c413ae7ddea98f97dc35ed70c2c155", null ],
+    [ "Hz_to_OutputRate", "_sky_traq_bin_8hh.html#aafcd2a471992ace57aef6d239c9fc25b", null ],
     [ "operator<<", "_sky_traq_bin_8hh.html#adda73b1159b0c2084ea8fbc4d02b4d73", null ],
-    [ "OutputRate_Hz", "_sky_traq_bin_8hh.html#ac9b7f8729630599821f91949f9721ca0", null ],
+    [ "OutputRate_Hz", "_sky_traq_bin_8hh.html#a23c0fd6dbaf052a3a879c5a5f58bcb1b", null ],
     [ "parse_message", "_sky_traq_bin_8hh.html#ad75eeec10b9c8e7b60142223eb79d5d8", null ],
+    [ "rate_to_BaudRate", "_sky_traq_bin_8hh.html#abac30adfeb0ce1594d4d486380b940ef", null ],
     [ "to_string", "_sky_traq_bin_8hh.html#a4e95d05eb10e6cec4b82352ce00951a3", null ]
 ];

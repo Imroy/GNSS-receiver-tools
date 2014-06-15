@@ -133,6 +133,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aed94d2b99bfa4583e8089b600d36b8e1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_s_v__channel__status.html#aed94d2b99bfa4583e8089b600d36b8e1">SV_channel_status</a> (unsigned char *payload, <a class="el" href="namespace_sky_traq_bin.html#a636b95f91ba4b517bd69f364d692765d">Payload_length</a> payload_len)</td></tr>
 <tr class="memdesc:aed94d2b99bfa4583e8089b600d36b8e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor from a binary buffer.  <a href="#aed94d2b99bfa4583e8089b600d36b8e1">More...</a><br /></td></tr>
 <tr class="separator:aed94d2b99bfa4583e8089b600d36b8e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc0ab1fb7641df5f30de911c2f45f99b"><td class="memItemLeft" align="right" valign="top">const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_s_v__channel__status.html#afc0ab1fb7641df5f30de911c2f45f99b">issue_of_data</a> (void) const </td></tr>
+<tr class="separator:afc0ab1fb7641df5f30de911c2f45f99b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ca6d5ee44cb725e41836625dcece522"><td class="memItemLeft" align="right" valign="top">const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_s_v__channel__status.html#a7ca6d5ee44cb725e41836625dcece522">num_svs</a> (void) const </td></tr>
+<tr class="separator:a7ca6d5ee44cb725e41836625dcece522"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5840c1515e868267809b8e62cc6bdf9e"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="struct_sky_traq_bin_1_1_sv_status.html">SvStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_s_v__channel__status.html#a5840c1515e868267809b8e62cc6bdf9e">statuses</a> (void) const </td></tr>
+<tr class="separator:a5840c1515e868267809b8e62cc6bdf9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_sky_traq_bin_1_1_output__message"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_sky_traq_bin_1_1_output__message')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_sky_traq_bin_1_1_output__message.html">SkyTraqBin::Output_message</a></td></tr>
 <tr class="memitem:a5b2c442ad5d8cfb1682d070ec0493abb inherit pub_methods_class_sky_traq_bin_1_1_output__message"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_output__message.html#a5b2c442ad5d8cfb1682d070ec0493abb">Output_message</a> (unsigned char *payload, <a class="el" href="namespace_sky_traq_bin.html#a636b95f91ba4b517bd69f364d692765d">Payload_length</a> payload_len)</td></tr>
 <tr class="memdesc:a5b2c442ad5d8cfb1682d070ec0493abb inherit pub_methods_class_sky_traq_bin_1_1_output__message"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor from a binary buffer.  <a href="#a5b2c442ad5d8cfb1682d070ec0493abb">More...</a><br /></td></tr>
@@ -207,6 +213,85 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="afc0ab1fb7641df5f30de911c2f45f99b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t SkyTraqBin::SV_channel_status::issue_of_data </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00453">453</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7ca6d5ee44cb725e41836625dcece522"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t SkyTraqBin::SV_channel_status::num_svs </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00454">454</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5840c1515e868267809b8e62cc6bdf9e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt;<a class="el" href="struct_sky_traq_bin_1_1_sv_status.html">SvStatus</a>&gt; SkyTraqBin::SV_channel_status::statuses </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00455">455</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a></li>
 <li><a class="el" href="_sky_traq_bin__outputs_8cc_source.html">SkyTraqBin_outputs.cc</a></li>
@@ -217,7 +302,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_sky_traq_bin.html">SkyTraqBin</a></li><li class="navelem"><a class="el" href="class_sky_traq_bin_1_1_s_v__channel__status.html">SV_channel_status</a></li>
-    <li class="footer">Generated on Sun Jun 15 2014 04:57:56 for NavSpark tools by
+    <li class="footer">Generated on Sun Jun 15 2014 14:47:42 for NavSpark tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

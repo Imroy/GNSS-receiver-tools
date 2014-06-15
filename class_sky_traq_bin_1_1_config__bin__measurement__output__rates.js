@@ -1,7 +1,10 @@
 var class_sky_traq_bin_1_1_config__bin__measurement__output__rates =
 [
     [ "Config_bin_measurement_output_rates", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a6061e2ee87760cc7ca7a0902863d3274", null ],
+    [ "meas_time", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#aa1da85703c59b285999898129d3e788e", null ],
     [ "output_rate", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a03ba0dedc6f74d9587eb5462ced8cc62", null ],
+    [ "raw_meas", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#aa2f0e1706501344b2b102bd8d21352ee", null ],
+    [ "RCV_state", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#af7540ae19dc06bce5e07bf1cbead8b8a", null ],
     [ "set_meas_time", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a2e58807e75980ed41f4f91839b21c669", null ],
     [ "set_output_rate", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a7d881a6bc761b84fe6974daf67a7005b", null ],
     [ "set_raw_meas", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a13d4ad42a42dfbd0f6acdbd1b9fef9ff", null ],
@@ -9,6 +12,8 @@ var class_sky_traq_bin_1_1_config__bin__measurement__output__rates =
     [ "set_subframe", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a662dd277e3e3536d2ca5e9b5a582be7f", null ],
     [ "set_SV_CH_status", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#ada847b0707bc6e6260f9c0c55a106974", null ],
     [ "set_update_type", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a5dce30447312774a7cd5687fa44e9019", null ],
+    [ "subframe", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a7bb26baf212ed49f3cb3cda24c3e273a", null ],
+    [ "SV_CH_status", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#aae6cee1149229bbf348ace6e66a0e209", null ],
     [ "unset_meas_time", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a4310d31a9467bed4c5df986db9d836e5", null ],
     [ "unset_raw_meas", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a2a02b9581d14ce88624ecb547a7a0bd1", null ],
     [ "unset_RCV_state", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a2b7820c33c4bbc6671a9805cc133ad0e", null ],

@@ -206,7 +206,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a835f9d226e1744856e9a10b64c5692b8"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="namespace_sky_traq_bin.html#a636b95f91ba4b517bd69f364d692765d">Payload_length</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_input__message.html#a835f9d226e1744856e9a10b64c5692b8">body_length</a> (void) const </td></tr>
-<tr class="memdesc:a835f9d226e1744856e9a10b64c5692b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The length of the body (not including message id)  <a href="#a835f9d226e1744856e9a10b64c5692b8">More...</a><br /></td></tr>
+<tr class="memdesc:a835f9d226e1744856e9a10b64c5692b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The length of the body (not including message ID or sub-ID)  <a href="#a835f9d226e1744856e9a10b64c5692b8">More...</a><br /></td></tr>
 <tr class="separator:a835f9d226e1744856e9a10b64c5692b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc4a3cd1b5b66d00cd7dbf5875670341"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_input__message.html#abc4a3cd1b5b66d00cd7dbf5875670341">body_to_buf</a> (unsigned char *buffer) const </td></tr>
 <tr class="memdesc:abc4a3cd1b5b66d00cd7dbf5875670341"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write body fields into a pre-allocated buffer.  <a href="#abc4a3cd1b5b66d00cd7dbf5875670341">More...</a><br /></td></tr>
@@ -221,7 +221,7 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for messages that go to the GPS receiver. </p>
 
-<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00139">139</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00143">143</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a class="anchor" id="afeb88b272ee5131e2a42078b4bc0214e"></a>
 <div class="memitem">
@@ -233,7 +233,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00170">170</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00175">175</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
 
 </div>
 </div>
@@ -262,7 +262,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Constructor from a message ID. </p>
 
-<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00149">149</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00153">153</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
 
 </div>
 </div>
@@ -289,11 +289,11 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The length of the body (not including message id) </p>
+<p>The length of the body (not including message ID or sub-ID) </p>
 
-<p>Reimplemented in <a class="el" href="class_sky_traq_bin_1_1_input__message__with__subid.html#a4b2a93fda1672ab19e3f867aa2966d73">SkyTraqBin::Input_message_with_subid</a>.</p>
+<p>Reimplemented in <a class="el" href="class_sky_traq_bin_1_1_input__message__with__subid.html#a68e3d3b729fe8c5b209922edee80274c">SkyTraqBin::Input_message_with_subid</a>.</p>
 
-<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00142">142</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00146">146</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
 
 </div>
 </div>
@@ -321,9 +321,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Write body fields into a pre-allocated buffer. </p>
 
-<p>Reimplemented in <a class="el" href="class_sky_traq_bin_1_1_input__message__with__subid.html#a93c91d56bdc9964022d6f4ae7df390e0">SkyTraqBin::Input_message_with_subid</a>.</p>
+<p>Reimplemented in <a class="el" href="class_sky_traq_bin_1_1_input__message__with__subid.html#af1261e9abe2fb8980fae92e8a66afe03">SkyTraqBin::Input_message_with_subid</a>.</p>
 
-<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00145">145</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00149">149</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
 
 </div>
 </div>
@@ -359,7 +359,7 @@ Additional Inherited Members</h2></td></tr>
 <li>end sequence (2) </li>
 </ul>
 
-<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00162">162</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8hh_source.html#l00166">166</a> of file <a class="el" href="_sky_traq_bin_8hh_source.html">SkyTraqBin.hh</a>.</p>
 
 </div>
 </div>
@@ -388,14 +388,14 @@ Additional Inherited Members</h2></td></tr>
 <p>Write the message into a buffer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">buffer</td><td>Pointer to a buffer, allocated by the caller. Use <a class="el" href="class_sky_traq_bin_1_1_input__message.html#acd02bb30ce4eb26abd8c6bba493ed5e5" title="The total length of the message. ">message_length()</a> to know how big the buffer needs to be. </td></tr>
+    <tr><td class="paramname">buffer</td><td>Pointer to a buffer, allocated and freed by the caller. Use <a class="el" href="class_sky_traq_bin_1_1_input__message.html#acd02bb30ce4eb26abd8c6bba493ed5e5" title="The total length of the message. ">message_length()</a> to know how big the buffer needs to be. </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="class_sky_traq_bin_1_1_input__message__with__subid.html#ac64001fb60ecb92b446176e1c1b14fa7">SkyTraqBin::Input_message_with_subid</a>.</p>
 
-<p>Definition at line <a class="el" href="_sky_traq_bin_8cc_source.html#l00043">43</a> of file <a class="el" href="_sky_traq_bin_8cc_source.html">SkyTraqBin.cc</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8cc_source.html#l00044">44</a> of file <a class="el" href="_sky_traq_bin_8cc_source.html">SkyTraqBin.cc</a>.</p>
 
 </div>
 </div>
@@ -409,7 +409,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_sky_traq_bin.html">SkyTraqBin</a></li><li class="navelem"><a class="el" href="class_sky_traq_bin_1_1_input__message.html">Input_message</a></li>
-    <li class="footer">Generated on Sun Jun 15 2014 04:57:47 for NavSpark tools by
+    <li class="footer">Generated on Sun Jun 15 2014 14:47:35 for NavSpark tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

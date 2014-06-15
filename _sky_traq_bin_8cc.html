@@ -117,6 +117,7 @@ $(document).ready(function(){initNavTree('_sky_traq_bin_8cc.html','');});
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;iomanip&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
+<code>#include &lt;stdexcept&gt;</code><br />
 <code>#include &lt;endian.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
@@ -153,10 +154,18 @@ Functions</h2></td></tr>
 <tr class="separator:ad75eeec10b9c8e7b60142223eb79d5d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adda73b1159b0c2084ea8fbc4d02b4d73"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sky_traq_bin.html#adda73b1159b0c2084ea8fbc4d02b4d73">SkyTraqBin::operator&lt;&lt;</a> (std::ostream &amp;out, MessageType mt)</td></tr>
 <tr class="separator:adda73b1159b0c2084ea8fbc4d02b4d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e35d7a361c2991fac8a3b499e057fed"><td class="memItemLeft" align="right" valign="top">OutputRate&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sky_traq_bin.html#a3e35d7a361c2991fac8a3b499e057fed">SkyTraqBin::Hz_to_OutputRate</a> (int hz)</td></tr>
-<tr class="separator:a3e35d7a361c2991fac8a3b499e057fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9b7f8729630599821f91949f9721ca0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sky_traq_bin.html#ac9b7f8729630599821f91949f9721ca0">SkyTraqBin::OutputRate_Hz</a> (OutputRate r)</td></tr>
-<tr class="separator:ac9b7f8729630599821f91949f9721ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abac30adfeb0ce1594d4d486380b940ef"><td class="memItemLeft" align="right" valign="top">BaudRate&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sky_traq_bin.html#abac30adfeb0ce1594d4d486380b940ef">SkyTraqBin::rate_to_BaudRate</a> (unsigned int rate)</td></tr>
+<tr class="memdesc:abac30adfeb0ce1594d4d486380b940ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert from an integer baud rate to a BaudRate enum.  <a href="#abac30adfeb0ce1594d4d486380b940ef">More...</a><br /></td></tr>
+<tr class="separator:abac30adfeb0ce1594d4d486380b940ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4c413ae7ddea98f97dc35ed70c2c155"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sky_traq_bin.html#ac4c413ae7ddea98f97dc35ed70c2c155">SkyTraqBin::BaudRate_rate</a> (BaudRate br)</td></tr>
+<tr class="memdesc:ac4c413ae7ddea98f97dc35ed70c2c155"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert from a BaudRate enum to an integer value.  <a href="#ac4c413ae7ddea98f97dc35ed70c2c155">More...</a><br /></td></tr>
+<tr class="separator:ac4c413ae7ddea98f97dc35ed70c2c155"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafcd2a471992ace57aef6d239c9fc25b"><td class="memItemLeft" align="right" valign="top">OutputRate&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sky_traq_bin.html#aafcd2a471992ace57aef6d239c9fc25b">SkyTraqBin::Hz_to_OutputRate</a> (unsigned int hz)</td></tr>
+<tr class="memdesc:aafcd2a471992ace57aef6d239c9fc25b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert from an integer rate to an OutputRate enum.  <a href="#aafcd2a471992ace57aef6d239c9fc25b">More...</a><br /></td></tr>
+<tr class="separator:aafcd2a471992ace57aef6d239c9fc25b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23c0fd6dbaf052a3a879c5a5f58bcb1b"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sky_traq_bin.html#a23c0fd6dbaf052a3a879c5a5f58bcb1b">SkyTraqBin::OutputRate_Hz</a> (OutputRate r)</td></tr>
+<tr class="memdesc:a23c0fd6dbaf052a3a879c5a5f58bcb1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert from an OutputRate enum to an integer value.  <a href="#a23c0fd6dbaf052a3a879c5a5f58bcb1b">More...</a><br /></td></tr>
+<tr class="separator:a23c0fd6dbaf052a3a879c5a5f58bcb1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -189,7 +198,7 @@ output_message_factory &gt;&#160;</td><td class="memItemRight" valign="bottom"><
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin_8cc_source.html#l00081">81</a> of file <a class="el" href="_sky_traq_bin_8cc_source.html">SkyTraqBin.cc</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8cc_source.html#l00082">82</a> of file <a class="el" href="_sky_traq_bin_8cc_source.html">SkyTraqBin.cc</a>.</p>
 
 </div>
 </div>
@@ -223,7 +232,7 @@ output_message_factory &gt;&#160;</td><td class="memItemRight" valign="bottom"><
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin_8cc_source.html#l00082">82</a> of file <a class="el" href="_sky_traq_bin_8cc_source.html">SkyTraqBin.cc</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin_8cc_source.html#l00083">83</a> of file <a class="el" href="_sky_traq_bin_8cc_source.html">SkyTraqBin.cc</a>.</p>
 
 </div>
 </div>
@@ -233,7 +242,7 @@ output_message_factory &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="_sky_traq_bin_8cc.html">SkyTraqBin.cc</a></li>
-    <li class="footer">Generated on Sun Jun 15 2014 04:57:33 for NavSpark tools by
+    <li class="footer">Generated on Sun Jun 15 2014 14:47:22 for NavSpark tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

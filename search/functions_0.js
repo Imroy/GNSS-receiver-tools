@@ -1,6 +1,8 @@
 var searchData=
 [
   ['ack',['Ack',['../class_sky_traq_bin_1_1_ack.html#a78cdf6fb0f1ff5d1955a7765a2226194',1,'SkyTraqBin::Ack']]],
+  ['ack_5fid',['ack_id',['../class_sky_traq_bin_1_1_ack.html#af560d7a6f83fae1ad3a820aec53921b2',1,'SkyTraqBin::Ack']]],
+  ['ack_5fsubid',['ack_subid',['../class_sky_traq_bin_1_1_ack.html#ae7cd79ad9496aa14838b096c767583c4',1,'SkyTraqBin::Ack']]],
   ['add_5fbytes',['add_bytes',['../class_sky_traq_1_1_parser.html#a7510caf5502d3c2c89325c4a643eec91',1,'SkyTraq::Parser']]],
   ['alt',['alt',['../class_sky_traq_bin_1_1_nav__data__msg.html#a84eea577756c4bea98e419d4d3f3078c',1,'SkyTraqBin::Nav_data_msg']]],
   ['alt_5fraw',['alt_raw',['../class_sky_traq_bin_1_1_nav__data__msg.html#a0cb515b56621f24e88ed4c38457d3264',1,'SkyTraqBin::Nav_data_msg']]],
