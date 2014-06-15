@@ -28,8 +28,11 @@
 
 namespace SkyTraqBin {
 
+  //! Type for the binary message payload length, limited to 64 KiB
   typedef uint16_t Payload_length;
 
+  //! Exception signifying that the parser buffer isn't big enough for the message
+  //! Completely harmless - read some more data into the buffer and try again
   class InsufficientData : public std::exception {
   private:
 
@@ -37,11 +40,12 @@ namespace SkyTraqBin {
     InsufficientData() {}
 
     const char* what() const throw() {
-      return "InsufficientData";
+      return "Insufficient data";
     }
   }; // class InsufficientData
 
 
+  //! Exception signifying that the start and/or end sequence bytes of a message are wrong
   class InvalidMessage : public std::exception {
   private:
 
@@ -73,6 +77,7 @@ namespace SkyTraqBin {
   }; // class ChecksumMismatch
 
 
+  //! Exception class for when we can't find the message ID in our list
   class UnknownMessageID : public std::exception {
   private:
     uint8_t _id;
@@ -99,10 +104,14 @@ namespace SkyTraqBin {
 
   public:
     //! Constructor
+    /*!
+      \param id ID for this message
+    */
     Message(uint8_t id) :
       _msg_id(id)
     {}
 
+    //! Getter method for the message ID
     inline const uint8_t message_id(void) const { return _msg_id; }
 
   }; // class Message
@@ -114,6 +123,10 @@ namespace SkyTraqBin {
 
   public:
     //! Constructor from a binary buffer
+    /*!
+      \param payload Pointer to start of payload
+      \param payload_len Length of payload
+     */
     inline Output_message(unsigned char* payload, Payload_length payload_len) :
       Message(payload_len > 0 ? payload[0] : 0)
     {}
@@ -129,14 +142,14 @@ namespace SkyTraqBin {
   //! Base class for messages that go to the GPS receiver
   class Input_message : public Message {
   protected:
-    //! The length of the body (not including message id)
+    //! The length of the body (not including message ID or sub-ID)
     virtual inline const Payload_length body_length(void) const { return 0; }
 
     //! Write body fields into a pre-allocated buffer
     virtual inline void body_to_buf(unsigned char* buffer) const { }
 
   public:
-    //! Constructor
+    //! Constructor from a message ID
     Input_message(uint8_t id) :
       Message(id)
     {}
@@ -154,7 +167,8 @@ namespace SkyTraqBin {
 
     //! Write the message into a buffer
     /*!
-      Use message_length() to know how big the buffer needs to be.
+      \param buffer Pointer to a buffer, allocated and freed by the caller. Use
+      message_length() to know how big the buffer needs to be.
      */
     virtual void to_buf(unsigned char *buffer) const;
 
@@ -188,11 +202,16 @@ inline void set_##name(type val) { field = code_set; }
 
   public:
     //! Constructor
+    /*!
+      \param subid Message sub-ID
+    */
     with_subid(uint8_t subid) :
       _msg_subid(subid)
     {}
 
-    inline const uint8_t message_subid(void) const { return _msg_subid; }
+    //! Getter method for message sub-ID
+    GETTER(uint8_t, message_subid, _msg_subid);
+
   }; // class with_subid
 
 
