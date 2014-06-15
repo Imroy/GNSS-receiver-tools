@@ -317,6 +317,12 @@ inline void set_##name(type val) { field = code_set; }
     Baud921600,
   }; // class BaudRate
 
+  //! Convert from an integer baud rate to a BaudRate enum
+  BaudRate rate_to_BaudRate(unsigned int rate);
+
+  //! Convert from a BaudRate enum to an integer value
+  unsigned int BaudRate_rate(BaudRate br);
+
 
   enum class UpdateType : uint8_t {
     SRAM = 0,
@@ -342,6 +348,12 @@ inline void set_##name(type val) { field = code_set; }
       Rate10Hz,
       Rate20Hz,
   }; // class OutputRate
+
+  //! Convert from an integer rate to an OutputRate enum
+  OutputRate Hz_to_OutputRate(unsigned int hz);
+
+  //! Convert from an OutputRate enum to an integer value
+  unsigned int OutputRate_Hz(OutputRate r);
 
 
   enum class FlashType : uint8_t {

@@ -20,6 +20,7 @@
 #include <iostream>
 #include <iomanip>
 #include <map>
+#include <stdexcept>
 #include <endian.h>
 #include <stdlib.h>
 #include <string.h>
@@ -151,6 +152,119 @@ namespace SkyTraqBin {
   std::ostream& operator<< (std::ostream& out, MessageType mt) {
     out << std::to_string(mt);
     return out;
+  }
+
+
+  BaudRate rate_to_BaudRate(unsigned int rate) {
+    if (rate > 921600)
+      throw std::invalid_argument("Baud rate too high");
+
+    if (rate > 460800)
+      return BaudRate::Baud921600;
+
+    if (rate > 230400)
+      return BaudRate::Baud460800;
+
+    if (rate > 115200)
+      return BaudRate::Baud230400;
+
+    if (rate > 57600)
+      return BaudRate::Baud115200;
+
+    if (rate > 38400)
+      return BaudRate::Baud57600;
+
+    if (rate > 19200)
+      return BaudRate::Baud38400;
+
+    if (rate > 9600)
+      return BaudRate::Baud19200;
+
+    if (rate > 4800)
+      return BaudRate::Baud9600;
+
+    return BaudRate::Baud4800;
+  }
+
+  unsigned int BaudRate_rate(BaudRate br) {
+    switch (br) {
+    case BaudRate::Baud4800:
+      return 4800;
+      break;
+    case BaudRate::Baud9600:
+      return 9600;
+      break;
+    case BaudRate::Baud19200:
+      return 19200;
+      break;
+    case BaudRate::Baud38400:
+      return 38400;
+      break;
+    case BaudRate::Baud57600:
+      return 57600;
+      break;
+    case BaudRate::Baud115200:
+      return 115200;
+      break;
+    case BaudRate::Baud230400:
+      return 230400;
+      break;
+    case BaudRate::Baud460800:
+      return 460800;
+      break;
+    case BaudRate::Baud921600:
+      return 921600;
+      break;
+    }
+
+    throw std::invalid_argument("Unrecognised baud rate");
+  }
+
+  OutputRate Hz_to_OutputRate(unsigned int hz) {
+    if (hz < 2)
+      return OutputRate::Rate1Hz;
+
+    if (hz < 4)
+      return OutputRate::Rate2Hz;
+
+    if (hz < 5)
+      return OutputRate::Rate4Hz;
+
+    if (hz < 10)
+      return OutputRate::Rate5Hz;
+
+    if (hz < 20)
+      return OutputRate::Rate10Hz;
+
+    if (hz == 20)
+      return OutputRate::Rate20Hz;
+
+    throw std::invalid_argument("Output rate too high");
+  }
+
+  unsigned int OutputRate_Hz(OutputRate r) {
+    switch (r) {
+    case OutputRate::Rate1Hz:
+      return 1;
+      break;
+    case OutputRate::Rate2Hz:
+      return 2;
+      break;
+    case OutputRate::Rate4Hz:
+      return 4;
+      break;
+    case OutputRate::Rate5Hz:
+      return 5;
+      break;
+    case OutputRate::Rate10Hz:
+      return 10;
+      break;
+    case OutputRate::Rate20Hz:
+      return 20;
+      break;
+    }
+
+    throw std::invalid_argument("Unrecognised output rate");
   }
 
 
