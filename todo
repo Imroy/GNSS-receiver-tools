@@ -1,1 +1,2 @@
- - Complete message classes
+ - Add std::to_string() and ostream operator<<() overloaded functions for all enum types
+ - Add converter functions for the enums that represent a numerical value
