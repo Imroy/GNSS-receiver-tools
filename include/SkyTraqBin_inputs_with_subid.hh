@@ -41,10 +41,10 @@ namespace SkyTraqBin {
   class Input_message_with_subid : public Input_message, public with_subid {
   protected:
     //! The length of the body (not including message id or sub-id)
-    virtual const Payload_length body_length(void) const = 0;
+    virtual const Payload_length body_length(void) const { return 0; }
 
     //! Write body fields into a pre-allocated buffer
-    virtual void body_to_buf(unsigned char* buffer) const = 0;
+    virtual void body_to_buf(unsigned char* buffer) const {}
 
   public:
     //! Constructor
