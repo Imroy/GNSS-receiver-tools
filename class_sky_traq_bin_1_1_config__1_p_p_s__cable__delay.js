@@ -1,6 +1,7 @@
 var class_sky_traq_bin_1_1_config__1_p_p_s__cable__delay =
 [
     [ "Config_1PPS_cable_delay", "class_sky_traq_bin_1_1_config__1_p_p_s__cable__delay.html#ae6a2488341473ca7d207ed2d3d84be91", null ],
+    [ "Config_1PPS_cable_delay", "class_sky_traq_bin_1_1_config__1_p_p_s__cable__delay.html#a717c3456ccde8d7cac1ef492f5f4ec96", null ],
     [ "delay", "class_sky_traq_bin_1_1_config__1_p_p_s__cable__delay.html#a6b543be65d19e2cf185c3b917caaf167", null ],
     [ "delay_raw", "class_sky_traq_bin_1_1_config__1_p_p_s__cable__delay.html#a35a0d39808189762390cf2602f19c040", null ],
     [ "set_delay", "class_sky_traq_bin_1_1_config__1_p_p_s__cable__delay.html#a2a27dcf0b72101c73a23ba7f51b3698b", null ],

@@ -134,8 +134,10 @@ $(document).ready(function(){initNavTree('class_sky_traq_bin_1_1_config___d_o_p_
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a189bf7c11495ea95ccae414ae7554a1b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_config___d_o_p__mask.html#a189bf7c11495ea95ccae414ae7554a1b">Config_DOP_mask</a> (<a class="el" href="namespace_sky_traq_bin.html#a62ea0f1258e151d9e6fc275c6b46e912">DOPmode</a> m, double p, double h, double g, <a class="el" href="namespace_sky_traq_bin.html#af89d769ff084045d495d6690463f40ff">UpdateType</a> ut)</td></tr>
+<tr class="memdesc:a189bf7c11495ea95ccae414ae7554a1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with floating-point parameters.  <a href="#a189bf7c11495ea95ccae414ae7554a1b">More...</a><br /></td></tr>
 <tr class="separator:a189bf7c11495ea95ccae414ae7554a1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e92d675eade4c0717ee7c086576fa3d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_config___d_o_p__mask.html#a3e92d675eade4c0717ee7c086576fa3d">Config_DOP_mask</a> (<a class="el" href="namespace_sky_traq_bin.html#a62ea0f1258e151d9e6fc275c6b46e912">DOPmode</a> m, uint16_t p, uint16_t h, uint16_t g, <a class="el" href="namespace_sky_traq_bin.html#af89d769ff084045d495d6690463f40ff">UpdateType</a> ut)</td></tr>
+<tr class="memdesc:a3e92d675eade4c0717ee7c086576fa3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with raw integer parameters.  <a href="#a3e92d675eade4c0717ee7c086576fa3d">More...</a><br /></td></tr>
 <tr class="separator:a3e92d675eade4c0717ee7c086576fa3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adff5e66880728b5c9604b67f62aec010"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespace_sky_traq_bin.html#a62ea0f1258e151d9e6fc275c6b46e912">DOPmode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_bin_1_1_config___d_o_p__mask.html#adff5e66880728b5c9604b67f62aec010">DOP_mode</a> (void) const </td></tr>
 <tr class="separator:adff5e66880728b5c9604b67f62aec010"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -215,7 +217,7 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>CONFIGURE DOP MASK - Configure values of DOP mask. </p>
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00461">461</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00558">558</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a189bf7c11495ea95ccae414ae7554a1b"></a>
 <div class="memitem">
@@ -267,7 +269,17 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00471">471</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Constructor with floating-point parameters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>DOP mode </td></tr>
+    <tr><td class="paramname">p,h,g</td><td>PDOP, HDOP, and GDOP mask value </td></tr>
+    <tr><td class="paramname">ut</td><td>Update type </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00574">574</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -321,7 +333,17 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00478">478</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Constructor with raw integer parameters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>DOP mode </td></tr>
+    <tr><td class="paramname">p,h,g</td><td>PDOP, HDOP, and GDOP mask value (scaled by 10) </td></tr>
+    <tr><td class="paramname">ut</td><td>Update type </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00587">587</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -348,7 +370,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00485">485</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00594">594</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -374,7 +396,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00493">493</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00602">602</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -400,7 +422,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00494">494</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00603">603</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -426,7 +448,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00490">490</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00599">599</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -452,7 +474,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00491">491</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00600">600</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -478,7 +500,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00487">487</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00596">596</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -504,7 +526,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00488">488</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00597">597</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -530,7 +552,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00485">485</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00594">594</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -556,7 +578,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00493">493</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00602">602</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -582,7 +604,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00494">494</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00603">603</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -608,7 +630,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00490">490</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00599">599</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -634,7 +656,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00491">491</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00600">600</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -660,7 +682,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00487">487</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00596">596</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -686,7 +708,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00488">488</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00597">597</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -712,7 +734,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00496">496</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00605">605</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -738,7 +760,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00496">496</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__inputs_8hh_source.html#l00605">605</a> of file <a class="el" href="_sky_traq_bin__inputs_8hh_source.html">SkyTraqBin_inputs.hh</a>.</p>
 
 </div>
 </div>
@@ -752,7 +774,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_sky_traq_bin.html">SkyTraqBin</a></li><li class="navelem"><a class="el" href="class_sky_traq_bin_1_1_config___d_o_p__mask.html">Config_DOP_mask</a></li>
-    <li class="footer">Generated on Sun Jun 15 2014 14:47:27 for NavSpark tools by
+    <li class="footer">Generated on Tue Jun 17 2014 00:36:22 for NavSpark tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

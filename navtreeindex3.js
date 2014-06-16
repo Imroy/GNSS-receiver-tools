@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"class_sky_traq_bin_1_1_insufficient_data.html":[1,0,2,47],
+"class_sky_traq_bin_1_1_insufficient_data.html#a770e0bd00808183cab2b480bc7510825":[1,0,2,47,0],
 "class_sky_traq_bin_1_1_insufficient_data.html#afa355ddfd7c32705c2e5e6116e53dd16":[1,0,2,47,1],
 "class_sky_traq_bin_1_1_invalid_message.html":[1,0,2,48],
 "class_sky_traq_bin_1_1_invalid_message.html#a7b55cf44886f24a182cfe8f5fc3d1b39":[1,0,2,48,0],
@@ -174,8 +176,9 @@ var NAVTREEINDEX3 =
 "class_sky_traq_bin_1_1_raw__measurements.html":[1,0,2,79],
 "class_sky_traq_bin_1_1_raw__measurements.html#a011f38b49d6be6698217c43547f5dae4":[1,0,2,79,1],
 "class_sky_traq_bin_1_1_raw__measurements.html#a47feb1ee1993056ddd2b3645e326d1c8":[1,0,2,79,0],
-"class_sky_traq_bin_1_1_raw__measurements.html#aba14b50143ce84786f02d4b1020491c7":[1,0,2,79,3],
-"class_sky_traq_bin_1_1_raw__measurements.html#acc93339809f86a79fcc8fa434603c5ad":[1,0,2,79,2],
+"class_sky_traq_bin_1_1_raw__measurements.html#aab028a8a07658202c2068307ebc6fb37":[1,0,2,79,2],
+"class_sky_traq_bin_1_1_raw__measurements.html#aba14b50143ce84786f02d4b1020491c7":[1,0,2,79,4],
+"class_sky_traq_bin_1_1_raw__measurements.html#acc93339809f86a79fcc8fa434603c5ad":[1,0,2,79,3],
 "class_sky_traq_bin_1_1_rcv__state.html":[1,0,2,81],
 "class_sky_traq_bin_1_1_rcv__state.html#a07dab58f67ceebd66a8b7d5b919b2147":[1,0,2,81,14],
 "class_sky_traq_bin_1_1_rcv__state.html#a1681a4f4e9ddf1a403e991ab23a05a08":[1,0,2,81,2],
@@ -223,8 +226,9 @@ var NAVTREEINDEX3 =
 "class_sky_traq_bin_1_1_restart__sys.html#af99f09c6dbab21d2c61d77f9b7298210":[1,0,2,82,12],
 "class_sky_traq_bin_1_1_restart__sys.html#afe5996e816eac31017943edb983babcf":[1,0,2,82,23],
 "class_sky_traq_bin_1_1_s_v__channel__status.html":[1,0,2,86],
-"class_sky_traq_bin_1_1_s_v__channel__status.html#a5840c1515e868267809b8e62cc6bdf9e":[1,0,2,86,3],
+"class_sky_traq_bin_1_1_s_v__channel__status.html#a5840c1515e868267809b8e62cc6bdf9e":[1,0,2,86,4],
 "class_sky_traq_bin_1_1_s_v__channel__status.html#a7ca6d5ee44cb725e41836625dcece522":[1,0,2,86,2],
+"class_sky_traq_bin_1_1_s_v__channel__status.html#a8466e29004f10245cc1c27d74f2f4572":[1,0,2,86,3],
 "class_sky_traq_bin_1_1_s_v__channel__status.html#aed94d2b99bfa4583e8089b600d36b8e1":[1,0,2,86,0],
 "class_sky_traq_bin_1_1_s_v__channel__status.html#afc0ab1fb7641df5f30de911c2f45f99b":[1,0,2,86,1],
 "class_sky_traq_bin_1_1_set___g_p_s__ephemeris.html":[1,0,2,84],
@@ -245,9 +249,5 @@ var NAVTREEINDEX3 =
 "class_sky_traq_bin_1_1_subframe__data.html":[1,0,2,85],
 "class_sky_traq_bin_1_1_subframe__data.html#ab52c60385f67a1ef7981b7a549d4b6e9":[1,0,2,85,0],
 "class_sky_traq_bin_1_1_subframe__data.html#abf26daf12deed662a7361b584ea76092":[1,0,2,85,3],
-"class_sky_traq_bin_1_1_subframe__data.html#ae2a0c6fdbff33c7cd3e2e718fb455cdb":[1,0,2,85,2],
-"class_sky_traq_bin_1_1_subframe__data.html#af90284ebdb6a1046b109c7e24187d85f":[1,0,2,85,1],
-"class_sky_traq_bin_1_1_subframe__data.html#afb283aad9af28cb549c981f1c7b75b96":[1,0,2,85,4],
-"class_sky_traq_bin_1_1_sw___c_r_c.html":[1,0,2,88],
-"class_sky_traq_bin_1_1_sw___c_r_c.html#a40d3baff730a3c0167784d371ac8b7e3":[1,0,2,88,0]
+"class_sky_traq_bin_1_1_subframe__data.html#ae2a0c6fdbff33c7cd3e2e718fb455cdb":[1,0,2,85,2]
 };

@@ -2,7 +2,8 @@ var searchData=
 [
   ['magnetic_5fcourse',['magnetic_course',['../class_n_m_e_a0183_1_1_v_t_g.html#a1797c197210cb834fb36e7fc27410be3',1,'NMEA0183::VTG']]],
   ['meas_5ftime',['meas_time',['../class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#aa1da85703c59b285999898129d3e788e',1,'SkyTraqBin::Config_bin_measurement_output_rates']]],
-  ['measurement_5ftime',['Measurement_time',['../class_sky_traq_1_1_listener.html#a094e13b759e61077ef6c83fcac05c234',1,'SkyTraq::Listener::Measurement_time()'],['../class_sky_traq_bin_1_1_measurement__time.html#a40815daa5911870168c94ebdff763f23',1,'SkyTraqBin::Measurement_time::Measurement_time()']]],
+  ['measurement',['measurement',['../class_sky_traq_bin_1_1_raw__measurements.html#aab028a8a07658202c2068307ebc6fb37',1,'SkyTraqBin::Raw_measurements']]],
+  ['measurement_5ftime',['Measurement_time',['../class_sky_traq_1_1_listener.html#aa5d375f2e112b3a541ce19c505ad223f',1,'SkyTraq::Listener::Measurement_time()'],['../class_sky_traq_bin_1_1_measurement__time.html#a40815daa5911870168c94ebdff763f23',1,'SkyTraqBin::Measurement_time::Measurement_time()']]],
   ['measurements',['measurements',['../class_sky_traq_bin_1_1_raw__measurements.html#acc93339809f86a79fcc8fa434603c5ad',1,'SkyTraqBin::Raw_measurements']]],
   ['message',['Message',['../class_sky_traq_bin_1_1_message.html#a31ae815ca7db5a875844be3915f0bdfa',1,'SkyTraqBin::Message']]],
   ['message_5fid',['message_id',['../class_sky_traq_bin_1_1_message.html#a7d233eeb419f11e8aa7c86244ef0b865',1,'SkyTraqBin::Message']]],
