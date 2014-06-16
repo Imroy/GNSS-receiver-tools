@@ -26,7 +26,7 @@
 
 class AppListener : public SkyTraq::Listener {
 public:
-  void GGA(const NMEA0183::GGA &gga) {
+  void GGA(SkyTraq::Interface* iface, const NMEA0183::GGA &gga) {
     std::cout << "\tTime " << gga.UTC_time()
 	      << ", longitude " << gga.longitude() << "°, lattitude " << gga.lattitude() << "°"
 	      << ", \"" << gga.fix_quality() << "\""
@@ -36,14 +36,14 @@ public:
 	      << std::endl;
   }
 
-  void GLL(const NMEA0183::GLL &gll) {
+  void GLL(SkyTraq::Interface* iface, const NMEA0183::GLL &gll) {
     std::cout << "\tLongitude " << gll.longitude() << "°, lattitude " << gll.lattitude() << "°"
 	      << ", time " << gll.UTC_time()
 	      << ", " << gll.receiver_mode()
 	      << std::endl;
   }
 
-  void GSA(const NMEA0183::GSA &gsa) {
+  void GSA(SkyTraq::Interface* iface, const NMEA0183::GSA &gsa) {
     std::cout << "\t" << gsa.mode()
 	      << ", fix: " << gsa.fix_type()
 	      << ", PDOP " << gsa.PDOP() << ", HDOP " << gsa.HDOP() << ", VDOP " << gsa.VDOP()
@@ -54,7 +54,7 @@ public:
     std::cout << std::endl;
   }
 
-  void GSV(const NMEA0183::GSV &gsv) {
+  void GSV(SkyTraq::Interface* iface, const NMEA0183::GSV &gsv) {
     std::cout << "\t" << gsv.message_seq() << "/" << gsv.num_messages() << " messages"
 	      << ", " << gsv.satellites_in_view() << " satellites in view"
 	      << std::endl;
@@ -68,7 +68,7 @@ public:
     std::cout << std::endl;
   }
 
-  void RMC(const NMEA0183::RMC &rmc) {
+  void RMC(SkyTraq::Interface* iface, const NMEA0183::RMC &rmc) {
     std::cout << "\tTime " << rmc.UTC_time()
 	      << ", " << (rmc.status() ? "data valid" : "warning")
 	      << ", longitude " << rmc.longitude() << "°, lattitude " << rmc.lattitude() << "°"
@@ -78,48 +78,48 @@ public:
 	      << std::endl;
   }
 
-  void VTG(const NMEA0183::VTG &vtg) {
+  void VTG(SkyTraq::Interface* iface, const NMEA0183::VTG &vtg) {
     std::cout << "\tCourse " << vtg.true_course() << "°"
 	      << ", speed " << vtg.speed() << " km/h"
 	      << ", " << vtg.receiver_mode()
 	      << std::endl;
   }
 
-  void ZDA(const NMEA0183::ZDA &zda) {
+  void ZDA(SkyTraq::Interface* iface, const NMEA0183::ZDA &zda) {
     std::cout << "\tTime " << zda.UTC_time()
 	      << ", date " << zda.UTC_day() << "/" << zda.UTC_month() << "/" << zda.UTC_year()
 	      << ", TZ " << zda.TZ_hours() << ":" << zda.TZ_minutes()
 	      << std::endl;
   }
 
-  void STI(const NMEA0183::STI &sti) {
+  void STI(SkyTraq::Interface* iface, const NMEA0183::STI &sti) {
     std::cout << "\tProprietary " << sti.proprietary()
 	      << ", PPS mode \"" << sti.PPS_mode() << "\""
 	      << std::endl;
   }
 
-  void Ack(const SkyTraqBin::Ack &ack) {
+  void Ack(SkyTraq::Interface* iface, const SkyTraqBin::Ack &ack) {
     std::cout << "\tAcknowledge message id 0x" << std::hex << (int)ack.ack_id();
     if (ack.has_subid())
       std::cout << ", sub id 0x" << (int)ack.ack_subid();
     std::cout << std::dec << std::endl;
   }
 
-  void Nack(const SkyTraqBin::Nack &nack) {
+  void Nack(SkyTraq::Interface* iface, const SkyTraqBin::Nack &nack) {
     std::cout << "\tNegative acknowledge message id 0x" << std::hex << (int)nack.nack_id();
     if (nack.has_subid())
       std::cout << ", sub id 0x" << (int)nack.nack_subid();
     std::cout << std::dec << std::endl;
   }
 
-  void Measurement_time(const SkyTraqBin::Measurement_time &mt) {
+  void Measurement_time(SkyTraq::Interface* iface, const SkyTraqBin::Measurement_time &mt) {
     std::cout << "\tMeasurement time, issue of data: " << (int)mt.issue_of_data()
 	      << ", week " << mt.week_number()
 	      << ", " << mt.time_in_week() << " ms in week"
 	      << ", measurement period " << mt.period() << " ms" << std::endl;
   }
 
-  void Raw_measurements(const SkyTraqBin::Raw_measurements &rm) {
+  void Raw_measurements(SkyTraq::Interface* iface, const SkyTraqBin::Raw_measurements &rm) {
     std::cout << "\tRaw measurements, issue of data: " << (int)rm.issue_of_data() << ", " << (int)rm.num_measurements() << " raw measurements." << std::endl;
     for (auto m : rm.measurements())
       std::cout << "\t\tPRN " << (int)m.PRN
@@ -130,9 +130,9 @@ public:
 		<< std::endl;
   }
 
-  void SV_channel_status(const SkyTraqBin::SV_channel_status &sv_chan) {
+  void SV_channel_status(SkyTraq::Interface* iface, const SkyTraqBin::SV_channel_status &sv_chan) {
     std::cout << "\tSV channel status, issue of data: " << (int)sv_chan.issue_of_data() << ", " << (int)sv_chan.num_svs() << " SV statuses." << std::endl;
-    for (auto s : sv_chan.statuses())
+    for (auto s : sv_chan.statuses()) {
       std::cout << "\t\tChannel " << (int)s.channel_id
 		<< ", PRN " << (int)s.PRN
 		<< ", URA " << (int)s.URA
@@ -142,7 +142,7 @@ public:
 		<< std::endl;
   }
 
-  void Subframe_data(const SkyTraqBin::Subframe_data &sfd) {
+  void Subframe_data(SkyTraq::Interface* iface, const SkyTraqBin::Subframe_data &sfd) {
     std::cout << "\tSubframe data, PRN " << (int)sfd.PRN() << ", subframe #" << (int)sfd.subframe_num() << std::endl;
   }
 

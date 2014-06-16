@@ -53,6 +53,8 @@ namespace SkyTraq {
   }; // class Parser
 
 
+  class Interface;
+
   //! Base class that receives parsed messages
   class Listener {
   public:
@@ -61,20 +63,20 @@ namespace SkyTraq {
     inline virtual ~Listener() {}
 
     // handler methods for NMEA-0183 sentences
-    inline virtual void GGA(const NMEA0183::GGA &gga) {}
-    inline virtual void GLL(const NMEA0183::GLL &gll) {}
-    inline virtual void GSA(const NMEA0183::GSA &gsa) {}
-    inline virtual void GSV(const NMEA0183::GSV &gsv) {}
-    inline virtual void RMC(const NMEA0183::RMC &rmc) {}
-    inline virtual void VTG(const NMEA0183::VTG &vtg) {}
-    inline virtual void ZDA(const NMEA0183::ZDA &zda) {}
-    inline virtual void STI(const NMEA0183::STI &sti) {}
+    inline virtual void GGA(Interface* iface, const NMEA0183::GGA &gga) {}
+    inline virtual void GLL(Interface* iface, const NMEA0183::GLL &gll) {}
+    inline virtual void GSA(Interface* iface, const NMEA0183::GSA &gsa) {}
+    inline virtual void GSV(Interface* iface, const NMEA0183::GSV &gsv) {}
+    inline virtual void RMC(Interface* iface, const NMEA0183::RMC &rmc) {}
+    inline virtual void VTG(Interface* iface, const NMEA0183::VTG &vtg) {}
+    inline virtual void ZDA(Interface* iface, const NMEA0183::ZDA &zda) {}
+    inline virtual void STI(Interface* iface, const NMEA0183::STI &sti) {}
 
     // handler methods for SkyTraq binary messages
-    inline virtual void Measurement_time(const SkyTraqBin::Measurement_time &mt) {}
-    inline virtual void Raw_measurements(const SkyTraqBin::Raw_measurements &rm) {}
-    inline virtual void SV_channel_status(const SkyTraqBin::SV_channel_status &sv_chan) {}
-    inline virtual void Subframe_data(const SkyTraqBin::Subframe_data &sfd) {}
+    inline virtual void Measurement_time(Interface* iface, const SkyTraqBin::Measurement_time &mt) {}
+    inline virtual void Raw_measurements(Interface* iface, const SkyTraqBin::Raw_measurements &rm) {}
+    inline virtual void SV_channel_status(Interface* iface, const SkyTraqBin::SV_channel_status &sv_chan) {}
+    inline virtual void Subframe_data(Interface* iface, const SkyTraqBin::Subframe_data &sfd) {}
 
     typedef std::shared_ptr<Listener> ptr;
   }; // class Listener

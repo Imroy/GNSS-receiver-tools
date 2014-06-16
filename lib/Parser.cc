@@ -124,7 +124,7 @@ namespace SkyTraq {
     for (auto msg : messages) {
 
 #define FIRE_IF(class, method) if (msg->isa<class>()) \
-	_listener->method(*(msg->cast_as<class>()));
+	_listener->method(this, *(msg->cast_as<class>()));
 
       try {
 	msg->cast_as<NMEA0183::Sentence>();	// Will throw std::bad_cast if not possible
