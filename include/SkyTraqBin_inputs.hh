@@ -51,6 +51,13 @@ namespace SkyTraqBin {
 
   public:
     //! Constructor
+    /*!
+      \param mode	Ways to restart the receiver
+      \param y,m,d	Current date
+      \param hr,min,sec	Current time
+      \param lat,lon	Current lattitude and longitude (in 1/100 degree)
+      \param alt	Current altitude (metres)
+     */
     inline Restart_sys(StartMode mode,
 		       uint16_t y, uint8_t m, uint8_t d,
 		       uint8_t hr, uint8_t min, uint8_t sec,
@@ -63,6 +70,13 @@ namespace SkyTraqBin {
     {}
 
     //! Constructor with floating point lat/long/alt
+    /*!
+      \param mode	Ways to restart the receiver
+      \param y,m,d	Current date
+      \param hr,min,sec	Current time
+      \param lat,lon	Current lattitude and longitude (degrees)
+      \param alt	Current altitude (metres)
+     */
     inline Restart_sys(StartMode mode,
 		       uint16_t y, uint8_t m, uint8_t d,
 		       uint8_t hr, uint8_t min, uint8_t sec,
@@ -104,6 +118,10 @@ namespace SkyTraqBin {
 
   public:
     //! Constructor
+    /*!
+      \param type Software type. Defaults to 'system code', the only
+      non-reserved code documented.
+    */
     inline Q_sw_ver(SwType type = SwType::SystemCode) :
       Input_message(0x02),
       _sw_type(type)
@@ -127,6 +145,10 @@ namespace SkyTraqBin {
 
   public:
     //! Constructor
+    /*!
+      \param type Software type. Defaults to 'system code', the only
+      non-reserved code documented.
+    */
     inline Q_sw_CRC(SwType type = SwType::SystemCode) :
       Input_message(0x03),
       _sw_type(type)
@@ -148,6 +170,10 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param r Reboot after setting factory defaults
+    */
     inline Set_factory_defaults(bool r = true) :
       Input_message(0x04),
       _reset(r)
@@ -170,6 +196,12 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param cp "COM" port number
+      \param br Baud rate
+      \param ut Update type
+     */
     inline Config_serial_port(uint8_t cp, BaudRate br, UpdateType ut) :
       Input_message(0x05),
       _com_port(cp), _baud_rate(br), _update_type(ut)
@@ -192,6 +224,17 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param gga GGA sentence interval (seconds)
+      \param gsa GSA sentence interval (seconds)
+      \param gsv GSV sentence interval (seconds)
+      \param gll GLL sentence interval (seconds)
+      \param rmc RMC sentence interval (seconds)
+      \param vtg VTG sentence interval (seconds)
+      \param zda ZDA sentence interval (seconds)
+      \param ut Update type
+     */
     inline Config_NMEA_msg(uint8_t gga, uint8_t gsa, uint8_t gsv, uint8_t gll,
 			   uint8_t rmc, uint8_t vtg, uint8_t zda, UpdateType ut) :
       Input_message(0x08),
@@ -221,6 +264,11 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param mt Message type
+      \param ut Update type
+     */
     inline Config_msg_type(MessageType mt, UpdateType ut) :
       Input_message(0x09),
       _msg_type(mt),
@@ -246,6 +294,10 @@ namespace SkyTraqBin {
 
   public:
     //! Constructor using 'automatic' flash type and flash ID of 0
+    /*!
+      \param br Baud rate
+      \param bu Size of buffer used
+     */
     inline Sw_img_download(BaudRate br, BufferUsed bu) :
       Input_message(0x0b),
       _baud_rate(br),
@@ -253,6 +305,13 @@ namespace SkyTraqBin {
       _buffer_used(bu)
     {}
 
+    //! Constructor
+    /*!
+      \param br Baud rate
+      \param ft Flash type
+      \param fid Flash ID (if flash type is not 'auto')
+      \param bu Size of buffer used
+     */
     inline Sw_img_download(BaudRate br, FlashType ft, uint16_t fid, BufferUsed bu) :
       Input_message(0x0b),
       _baud_rate(br),
@@ -277,6 +336,11 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param pm Power mode
+      \param ut Update type
+     */
     Config_sys_power_mode(PowerMode pm, UpdateType ut) :
       Input_message(0x0c),
       _power_mode(pm),
@@ -299,6 +363,11 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param r Rate - 1, 2, 4, 5, 8, 10, 20, 25, 40, or 50 (Hz)
+      \param ut Update type
+     */
     Config_sys_pos_rate(uint8_t r, UpdateType ut) :
       Input_message(0x0e),
       _rate(r),
@@ -335,6 +404,11 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param i Navigation data message interval (seconds)
+      \param ut Update type
+     */
     Config_nav_data_msg_interval(uint8_t i, UpdateType ut) :
       Input_message(0x11),
       _interval(i),
@@ -357,6 +431,10 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param sv SV number of satellite, or 0 for all
+    */
     Get_almanac(uint8_t sv) :
       Input_message(0x11),
       _sv_num(sv)
@@ -381,6 +459,16 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param o Output rate
+      \param mt Enable Meas_time reporting
+      \param rm Enable Raw_meas reporting
+      \param svch Enable SV_ch_status reporting
+      \param rcv Enable RCV_state reporting
+      \param sub Enable subframe reporting
+      \param ut Update type
+     */
     Config_bin_measurement_output_rates(OutputRate o, bool mt, bool rm, bool svch, bool rcv, bool sub, UpdateType ut) :
       Input_message(0x12),
       _output_rate(o),
@@ -435,6 +523,15 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param di Datum index (see appendix B of AN0028)
+      \param ei Ellipsoid index (see appendix A)
+      \param dx,dy,dz Delta X, Y, and Z (metres)
+      \param sma Semi-major axis
+      \param inf Inverse flattening
+      \param ut Update type
+     */
     Config_datum(uint16_t di, uint8_t ei,
 		 int16_t dx, int16_t dy, int16_t dz,
 		 uint32_t sma, uint32_t inf, UpdateType ut) :
@@ -468,6 +565,12 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor with floating-point parameters
+    /*!
+      \param m DOP mode
+      \param p,h,g PDOP, HDOP, and GDOP mask value
+      \param ut Update type
+     */
     Config_DOP_mask(DOPmode m, double p, double h, double g, UpdateType ut) :
       Input_message(0x2A),
       _dop_mode(m),
@@ -475,6 +578,12 @@ namespace SkyTraqBin {
       _update_type(ut)
     {}
 
+    //! Constructor with raw integer parameters
+    /*!
+      \param m DOP mode
+      \param p,h,g PDOP, HDOP, and GDOP mask value (scaled by 10)
+      \param ut Update type
+     */
     Config_DOP_mask(DOPmode m, uint16_t p, uint16_t h, uint16_t g, UpdateType ut) :
       Input_message(0x2A),
       _dop_mode(m),
@@ -509,6 +618,13 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param ms Elevation and CNR mode
+      \param em Elevation mask (degrees)
+      \param cm CNR mask (dB)
+      \param ut Update type
+     */
     Config_elevation_CNR_mask(ElevationCNRmode ms, uint8_t em, uint8_t cm, UpdateType ut) :
       Input_message(0x2B),
       _mode_select(ms),
@@ -573,6 +689,10 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param sv SV number of satellite, 0 for all
+     */
     Get_GPS_ephemeris(uint8_t sv) :
       Input_message(0x30),
       _sv_num(sv)
@@ -595,6 +715,11 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param p Enable position pinning
+      \param ut Update type
+     */
     Config_pos_pinning(DefaultOrEnable p, UpdateType ut) :
       Input_message(0x39),
       _pinning(p), _update_type(ut)
@@ -630,6 +755,15 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param ps Pinning speed (km/h)
+      \param pc Pinning count
+      \param us Unpinning speed (km/h)
+      \param uc Unpinning count
+      \param ud Unpinning distance (metres)
+      \param ut Update type
+    */
     Config_pos_pinning_params(uint16_t ps, uint16_t pc,
 			      uint16_t us, uint16_t uc, uint16_t ud, UpdateType ut) :
       Input_message(0x3B),
@@ -658,6 +792,11 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param sv SV number of satellite
+      \param sf1,sf2,sf3 Subframe data
+     */
     Set_GPS_ephemeris(uint16_t sv, uint8_t sf1[28], uint8_t sf2[28], uint8_t sf3[28]) :
       Input_message(0x41),
       _sv_num(sv)
@@ -691,9 +830,24 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor from raw integer values
+    /*!
+      \param d Delay (1/100 ns)
+      \param ut Update type
+     */
     Config_1PPS_cable_delay(int32_t d, UpdateType ut) :
       Input_message(0x45),
       _delay(d), _update_type(ut)
+    {}
+
+    //! Constructor from floating-point values
+    /*!
+      \param d Delay (seconds)
+      \param ut Update type
+     */
+    Config_1PPS_cable_delay(double d, UpdateType ut) :
+      Input_message(0x45),
+      _delay(d * 1e+11), _update_type(ut)
     {}
 
     GETTER_SETTER_MOD(double, delay, _delay, _delay * 1.0e-11, val * 1e+11);
@@ -726,6 +880,11 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param id Talker ID
+      \param ut Update type
+     */
     Config_NMEA_talker_ID(TalkerID id, UpdateType ut) :
       Input_message(0x4b),
       _talker_id(id),

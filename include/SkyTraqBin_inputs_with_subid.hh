@@ -90,6 +90,16 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param en Enable or disable use of SBAS
+      \param r Use SBAS satellite for ranging?
+      \param rm Ranging URA mask (0~15, default 8)
+      \param c Enable correction
+      \param nc Number of tracking channels (0~3)
+      \param w,e,m Enable use of WAAS, EGNOS, or MSAS satellites
+      \param ut Update type
+     */
     Config_SBAS(bool en, EnableOrAuto r, uint8_t rm, bool c, uint8_t nc, bool w, bool e, bool m, UpdateType ut) :
       Input_message_with_subid(0x62, 0x01),
       _enable(en),
@@ -152,6 +162,12 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param e Enable use of QZSS
+      \param nc Number of tracking channels (1~3, default 1)
+      \param ut Update type
+     */
     Config_QZSS(bool e, uint8_t nc, UpdateType ut) :
       Input_message_with_subid(0x62, 0x03),
       _enable(e), _num_channels(nc), _update_type(ut)
@@ -190,6 +206,11 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param e Enable SAEE
+      \param ut Update type
+     */
     Config_SAEE(DefaultOrEnable e, UpdateType ut) :
       Input_message_with_subid(0x63, 0x01),
       _enable(e), _update_type(ut)
@@ -236,6 +257,22 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param gga GGA sentence interval (seconds)
+      \param gsa GSA sentence interval (seconds)
+      \param gsv GSV sentence interval (seconds)
+      \param gll GLL sentence interval (seconds)
+      \param rmc RMC sentence interval (seconds)
+      \param vtg VTG sentence interval (seconds)
+      \param zda ZDA sentence interval (seconds)
+      \param gns GNS sentence interval (seconds)
+      \param gbs GBS sentence interval (seconds)
+      \param grs GRS sentence interval (seconds)
+      \param dtm DTM sentence interval (seconds)
+      \param gst GST sentence interval (seconds)
+      \param ut Update type
+     */
     Config_extended_NMEA_msg_interval(uint8_t gga, uint8_t gsa, uint8_t gsv, uint8_t gll,
 				      uint8_t rmc, uint8_t vtg, uint8_t zda, uint8_t gns,
 				      uint8_t gbs, uint8_t grs, uint8_t dtm, uint8_t gst,
@@ -286,6 +323,11 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param e Enable interference detection
+      \param ut Update type
+     */
     Config_interference_detection(bool e, UpdateType ut) :
       Input_message_with_subid(0x64, 0x06),
       _enable(e), _update_type(ut)
@@ -322,6 +364,11 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param m Navigation mode
+      \param ut Update type
+     */
     Config_GNSS_nav_mode(NavigationMode m, UpdateType ut) :
       Input_message_with_subid(0x64, 0x17),
       _mode(m), _update_type(ut)
@@ -355,6 +402,14 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param gp Enable GPS
+      \param gl Enable Glonass
+      \param ga Enable Galileo
+      \param bd Enable Beidou
+      \param ut Update type
+     */
     Config_constellation_type(bool gp, bool gl, bool ga, bool bd, UpdateType ut) :
       Input_message_with_subid(0x64, 0x19),
       _gps(gp), _glonass(gl), _galileo(ga), _beidou(bd), _update_type(ut)
@@ -399,6 +454,11 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param s Leap seconds (seconds)
+      \param ut Update type
+     */
     Config_leap_seconds(int8_t s, UpdateType ut) :
       Input_message_with_subid(0x64, 0x1f),
       _seconds(s), _update_type(ut)
@@ -432,9 +492,24 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor from raw integer values
+    /*!
+      \param w Pulse width (microseconds, 1~100000)
+      \param ut Update type
+     */
     Config_1PPS_pulse_width(uint32_t w, UpdateType ut) :
       Input_message_with_subid(0x65, 0x01),
       _width(w), _update_type(ut)
+    {}
+
+    //! Constructor from floating-point values
+    /*!
+      \param w Pulse width (seconds, 1~100000 us)
+      \param ut Update type
+     */
+    Config_1PPS_pulse_width(double w, UpdateType ut) :
+      Input_message_with_subid(0x65, 0x01),
+      _width(w * 1e+6), _update_type(ut)
     {}
 
     GETTER_SETTER_MOD(double, width, _width, _width * 1.0e-6, val * 1e+6);
