@@ -422,6 +422,7 @@ namespace SkyTraqBin {
     GETTER(uint8_t, issue_of_data, _issue);
     GETTER(uint8_t, num_measurements, _num_meas);
     GETTER(std::vector<RawMeasurement>, measurements, _measurements);
+    const RawMeasurement measurement(uint8_t i) const { return _measurements[i]; }
 
   }; // class Raw_measurements
 
@@ -453,6 +454,7 @@ namespace SkyTraqBin {
     GETTER(uint8_t, issue_of_data, _issue);
     GETTER(uint8_t, num_svs, _num_sv);
     GETTER(std::vector<SvStatus>, statuses, _statuses);
+    const SvStatus status(uint8_t i) const { return _statuses[i]; }
 
   };
 
