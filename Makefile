@@ -4,8 +4,8 @@ BINDIR = $(PREFIX)/bin
 # Libraries with pkg-config data
 PKGS =
 
-COMMON_FLAGS = -g -O0 -Wall -I. -Iinclude -fopenmp -finput-charset=UTF-8 `pkg-config --cflags $(PKGS)`
-LIBS = -lm -lstdc++ -lgomp `pkg-config --libs $(PKGS)`
+COMMON_FLAGS = -g -O0 -Wall -I. -Iinclude -fopenmp -finput-charset=UTF-8 #`pkg-config --cflags $(PKGS)`
+LIBS = -lm -lstdc++ -lgomp #`pkg-config --libs $(PKGS)`
 LIB_OBJS = $(patsubst %.cc,%.o, $(wildcard lib/*.cc))
 
 CFLAGS += -flto $(COMMON_FLAGS)
