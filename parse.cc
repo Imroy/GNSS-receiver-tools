@@ -154,14 +154,18 @@ public:
 
 int main(int argc, char* argv[]) {
   std::string filename = "/dev/ttyUSB0";
+  SkyTraqBin::UpdateType ut = SkyTraqBin::UpdateType::SRAM;
   SkyTraqBin::MessageType mt;
   int rate;
   bool change_mt = false, change_rate = false;
 
   if (argc > 1) {
     int opt;
-    while ((opt = getopt(argc, argv, "ntbr:")) != -1) {
+    while ((opt = getopt(argc, argv, "fntbr:")) != -1) {
       switch (opt) {
+      case 'f':
+	ut = SkyTraqBin::UpdateType::SRAM_and_flash;
+	break;
       case 'n':
 	mt = SkyTraqBin::MessageType::None;
 	change_mt = true;
@@ -198,14 +202,14 @@ int main(int argc, char* argv[]) {
 
   if (change_mt) {
     std::cout << "Switching to " << mt << " message type..." << std::endl;
-    iface.send(std::make_shared<SkyTraqBin::Config_msg_type>(mt, SkyTraqBin::UpdateType::SRAM),
+    iface.send(std::make_shared<SkyTraqBin::Config_msg_type>(mt, ut),
 	       [](bool ack, SkyTraqBin::Output_message* msg) {
 		 std::cout << (ack ? "A" : "Not a") << "cknowledged message type switch." << std::endl;
 	       });
   }
   if (change_rate) {
     std::cout << "Changing output rate to " << rate << " Hz" << std::endl;
-    iface.send(std::make_shared<SkyTraqBin::Config_sys_pos_rate>(rate, SkyTraqBin::UpdateType::SRAM),
+    iface.send(std::make_shared<SkyTraqBin::Config_sys_pos_rate>(rate, ut),
 	       [](bool ack, SkyTraqBin::Output_message* msg) {
 		 std::cout << (ack ? "A" : "Not a") << "cknowledged output rate change." << std::endl;
 	       });
