@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['x',['X',['../struct_sky_traq_bin_1_1_packed_version.html#aad889b73d0359793604fcbdb62f54128',1,'SkyTraqBin::PackedVersion']]]
+  ['ura',['URA',['../struct_sky_traq_bin_1_1_sv_status.html#a24cde94b4f6238d0a395115583e3fe26',1,'SkyTraqBin::SvStatus']]]
 ];

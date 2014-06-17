@@ -118,8 +118,8 @@ $(document).ready(function(){initNavTree('struct_sky_traq_bin_1_1_sv_status.html
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae76d53694023a23c39673127fc0ee941"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html#ae76d53694023a23c39673127fc0ee941">SvStatus</a> (uint8_t cid, uint8_t p, uint8_t svs, uint8_t u, int8_t c, int16_t el, int16_t az, uint8_t cs)</td></tr>
-<tr class="separator:ae76d53694023a23c39673127fc0ee941"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a312775bd107ea3f8be9d8f947cfadd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html#a4a312775bd107ea3f8be9d8f947cfadd">SvStatus</a> (uint8_t cid, uint8_t p, bool sha, bool she, bool sih, uint8_t u, int8_t c, int16_t el, int16_t az, bool chpi, bool chbs, bool chfs, bool che, bool cfn, bool cfd)</td></tr>
+<tr class="separator:a4a312775bd107ea3f8be9d8f947cfadd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -127,8 +127,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a90e9fa25be2565cbbe16c481c1c228e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9d201b421aa274fce7941d750ae0e9e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html#af9d201b421aa274fce7941d750ae0e9e">PRN</a></td></tr>
 <tr class="separator:af9d201b421aa274fce7941d750ae0e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d49cb54e39710153b6f69962079650c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html#a8d49cb54e39710153b6f69962079650c">SV_status</a></td></tr>
-<tr class="separator:a8d49cb54e39710153b6f69962079650c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a036960cab7b0bda82ed4d09fcea8be6d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html#a036960cab7b0bda82ed4d09fcea8be6d">sv_has_almanac</a></td></tr>
+<tr class="separator:a036960cab7b0bda82ed4d09fcea8be6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a598af2a77dc61b96393f5985a7653923"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html#a598af2a77dc61b96393f5985a7653923">sv_has_ephemeris</a></td></tr>
+<tr class="separator:a598af2a77dc61b96393f5985a7653923"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc53495caa10eb5bdc4e2c5ddd30b0df"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html#adc53495caa10eb5bdc4e2c5ddd30b0df">sv_is_healthy</a></td></tr>
+<tr class="separator:adc53495caa10eb5bdc4e2c5ddd30b0df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24cde94b4f6238d0a395115583e3fe26"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html#a24cde94b4f6238d0a395115583e3fe26">URA</a></td></tr>
 <tr class="separator:a24cde94b4f6238d0a395115583e3fe26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c3241c370fc14b29febadef39c0788a"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html#a3c3241c370fc14b29febadef39c0788a">CN0</a></td></tr>
@@ -137,14 +141,24 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ab5051e9da2f57878302b4cf8928941d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7bf90892e91c015778549823416979f"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html#ac7bf90892e91c015778549823416979f">azimuth</a></td></tr>
 <tr class="separator:ac7bf90892e91c015778549823416979f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a585b1789171838ca94b95c199654e9d8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html#a585b1789171838ca94b95c199654e9d8">channel_status</a></td></tr>
-<tr class="separator:a585b1789171838ca94b95c199654e9d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1d4310cbbf9968833311ab46e92b49c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html#ac1d4310cbbf9968833311ab46e92b49c">chan_has_pull_in</a></td></tr>
+<tr class="separator:ac1d4310cbbf9968833311ab46e92b49c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa66ac674069b4a6b18a5bef64a7f6de"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html#afa66ac674069b4a6b18a5bef64a7f6de">chan_has_bit_sync</a></td></tr>
+<tr class="separator:afa66ac674069b4a6b18a5bef64a7f6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b06b887a92c0f69e12a2f0cd4db3fbb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html#a9b06b887a92c0f69e12a2f0cd4db3fbb">chan_has_frame_sync</a></td></tr>
+<tr class="separator:a9b06b887a92c0f69e12a2f0cd4db3fbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a979214faa0041e2ad9f4400813846bf7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html#a979214faa0041e2ad9f4400813846bf7">chan_has_ephemeris</a></td></tr>
+<tr class="separator:a979214faa0041e2ad9f4400813846bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae20dff55ee3708e1e96006a04e52e26c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html#ae20dff55ee3708e1e96006a04e52e26c">chan_for_normal</a></td></tr>
+<tr class="separator:ae20dff55ee3708e1e96006a04e52e26c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63b5df454372dd97c5d30372f45598fb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html#a63b5df454372dd97c5d30372f45598fb">chan_for_differential</a></td></tr>
+<tr class="separator:a63b5df454372dd97c5d30372f45598fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00430">430</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00431">431</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ae76d53694023a23c39673127fc0ee941"></a>
+<a class="anchor" id="a4a312775bd107ea3f8be9d8f947cfadd"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -166,8 +180,20 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>svs</em>, </td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>sha</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>she</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>sih</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -196,8 +222,38 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>cs</em>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>chpi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>chbs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>chfs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>che</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>cfn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>cfd</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -212,7 +268,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00436">436</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00439">439</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
 
 </div>
 </div>
@@ -227,7 +283,91 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00433">433</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00436">436</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a63b5df454372dd97c5d30372f45598fb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SkyTraqBin::SvStatus::chan_for_differential</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00437">437</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae20dff55ee3708e1e96006a04e52e26c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SkyTraqBin::SvStatus::chan_for_normal</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00437">437</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afa66ac674069b4a6b18a5bef64a7f6de"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SkyTraqBin::SvStatus::chan_has_bit_sync</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00437">437</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a979214faa0041e2ad9f4400813846bf7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SkyTraqBin::SvStatus::chan_has_ephemeris</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00437">437</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9b06b887a92c0f69e12a2f0cd4db3fbb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SkyTraqBin::SvStatus::chan_has_frame_sync</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00437">437</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac1d4310cbbf9968833311ab46e92b49c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SkyTraqBin::SvStatus::chan_has_pull_in</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00437">437</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
 
 </div>
 </div>
@@ -241,21 +381,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00431">431</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a585b1789171838ca94b95c199654e9d8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t SkyTraqBin::SvStatus::channel_status</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00434">434</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00432">432</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
 
 </div>
 </div>
@@ -269,7 +395,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00432">432</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00435">435</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
 
 </div>
 </div>
@@ -283,7 +409,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00433">433</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00436">436</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
 
 </div>
 </div>
@@ -297,21 +423,49 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00431">431</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00432">432</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a8d49cb54e39710153b6f69962079650c"></a>
+<a class="anchor" id="a036960cab7b0bda82ed4d09fcea8be6d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t SkyTraqBin::SvStatus::SV_status</td>
+          <td class="memname">bool SkyTraqBin::SvStatus::sv_has_almanac</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00431">431</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00433">433</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a598af2a77dc61b96393f5985a7653923"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SkyTraqBin::SvStatus::sv_has_ephemeris</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00433">433</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adc53495caa10eb5bdc4e2c5ddd30b0df"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SkyTraqBin::SvStatus::sv_is_healthy</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00433">433</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
 
 </div>
 </div>
@@ -325,7 +479,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00431">431</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
+<p>Definition at line <a class="el" href="_sky_traq_bin__outputs_8hh_source.html#l00434">434</a> of file <a class="el" href="_sky_traq_bin__outputs_8hh_source.html">SkyTraqBin_outputs.hh</a>.</p>
 
 </div>
 </div>
@@ -338,7 +492,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_sky_traq_bin.html">SkyTraqBin</a></li><li class="navelem"><a class="el" href="struct_sky_traq_bin_1_1_sv_status.html">SvStatus</a></li>
-    <li class="footer">Generated on Tue Jun 17 2014 00:36:38 for NavSpark tools by
+    <li class="footer">Generated on Wed Jun 18 2014 01:53:39 for NavSpark tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

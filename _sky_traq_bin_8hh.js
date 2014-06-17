@@ -139,5 +139,11 @@ var _sky_traq_bin_8hh =
     [ "OutputRate_Hz", "_sky_traq_bin_8hh.html#a23c0fd6dbaf052a3a879c5a5f58bcb1b", null ],
     [ "parse_message", "_sky_traq_bin_8hh.html#ad75eeec10b9c8e7b60142223eb79d5d8", null ],
     [ "rate_to_BaudRate", "_sky_traq_bin_8hh.html#abac30adfeb0ce1594d4d486380b940ef", null ],
-    [ "to_string", "_sky_traq_bin_8hh.html#a4e95d05eb10e6cec4b82352ce00951a3", null ]
+    [ "to_string", "_sky_traq_bin_8hh.html#a4e95d05eb10e6cec4b82352ce00951a3", null ],
+    [ "Checksum_len", "_sky_traq_bin_8hh.html#a75ca2e026f7ed32fd0cff834f868b6a8", null ],
+    [ "EndSeq_len", "_sky_traq_bin_8hh.html#a3c12dc5a633b8f839dac347480410787", null ],
+    [ "MsgID_len", "_sky_traq_bin_8hh.html#ab8fe0a1d36834d6e2c32139872bef903", null ],
+    [ "MsgSubID_len", "_sky_traq_bin_8hh.html#a80ce12e2020149f4d08e73e704edf089", null ],
+    [ "PayloadLength_len", "_sky_traq_bin_8hh.html#a79ffd3db555c591a789e36bef96756cd", null ],
+    [ "StartSeq_len", "_sky_traq_bin_8hh.html#a4967ad167360fc1aefbcb853b07dd66a", null ]
 ];

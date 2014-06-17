@@ -12,7 +12,7 @@ var indexSectionsWithContent =
   2: "ns",
   3: "bnps",
   4: "abcdefghiklmnopqrstuvwz~",
-  5: "_acdeimopsuxyz",
+  5: "_acdehimopsuwxyz",
   6: "opr",
   7: "bdefimnoprstu",
   8: "abcdefghlmnpqrstuw",

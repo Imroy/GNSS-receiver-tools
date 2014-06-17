@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['snr',['snr',['../struct_n_m_e_a0183_1_1_satellite_data.html#acd9851c68c6dc17855cc0b9ff41e66fe',1,'NMEA0183::SatelliteData']]],
-  ['sv_5fstatus',['SV_status',['../struct_sky_traq_bin_1_1_sv_status.html#a8d49cb54e39710153b6f69962079650c',1,'SkyTraqBin::SvStatus']]]
+  ['payloadlength_5flen',['PayloadLength_len',['../namespace_sky_traq_bin.html#a79ffd3db555c591a789e36bef96756cd',1,'SkyTraqBin']]],
+  ['prn',['PRN',['../struct_sky_traq_bin_1_1_raw_measurement.html#a15fd5bc0532ba364ea571804315f3587',1,'SkyTraqBin::RawMeasurement::PRN()'],['../struct_sky_traq_bin_1_1_sv_status.html#af9d201b421aa274fce7941d750ae0e9e',1,'SkyTraqBin::SvStatus::PRN()']]],
+  ['pseudo_5frange',['pseudo_range',['../struct_sky_traq_bin_1_1_raw_measurement.html#a9edb6d693161801674f8e9a2bb217ad3',1,'SkyTraqBin::RawMeasurement']]]
 ];

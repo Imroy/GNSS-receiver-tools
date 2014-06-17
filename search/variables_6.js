@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['month',['month',['../struct_sky_traq_bin_1_1_packed_date.html#ad815552acf2938842ded3d9a83dde2b4',1,'SkyTraqBin::PackedDate']]]
+  ['id',['id',['../struct_n_m_e_a0183_1_1_satellite_data.html#ac14614370f60dc8052efbe247faccfb9',1,'NMEA0183::SatelliteData']]]
 ];
