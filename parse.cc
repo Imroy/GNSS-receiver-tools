@@ -121,13 +121,17 @@ public:
 
   void Raw_measurements(SkyTraq::Interface* iface, const SkyTraqBin::Raw_measurements &rm) {
     std::cout << "\tRaw measurements, issue of data: " << (int)rm.issue_of_data() << ", " << (int)rm.num_measurements() << " raw measurements." << std::endl;
-    for (auto m : rm.measurements())
+    for (auto m : rm.measurements()) {
       std::cout << "\t\tPRN " << (int)m.PRN
-		<< ", CN0 " << (int)m.CN0 << " dBHz"
-		<< ", pseudo-range " << m.pseudorange << " m"
-		<< ", carrier phase " << m.carrier_phase << " cycles"
-		<< ", doppler " << m.doppler_freq << " Hz"
-		<< std::endl;
+		<< ", CN0 " << (int)m.CN0 << " dBHz";
+      if (m.has_pseudo_range)
+	std::cout << ", pseudo-range " << m.pseudo_range << " m";
+      if (m.has_carrier_phase)
+	std::cout << ", carrier phase " << m.carrier_phase << " cycles";
+      if (m.has_doppler_freq)
+	std::cout << ", doppler " << m.doppler_freq << " Hz";
+      std::cout << std::endl;
+    }
   }
 
   void SV_channel_status(SkyTraq::Interface* iface, const SkyTraqBin::SV_channel_status &sv_chan) {

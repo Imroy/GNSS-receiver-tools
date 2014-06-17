@@ -396,13 +396,14 @@ namespace SkyTraqBin {
 
   struct RawMeasurement {
     uint8_t PRN, CN0;
-    double pseudorange;
+    double pseudo_range;
     double carrier_phase;
     float doppler_freq;
-    uint8_t channel_indicator;
+    bool has_pseudo_range, has_doppler_freq, has_carrier_phase, will_cycle_slip, coherent_integration_time;
 
-    RawMeasurement(uint8_t p, uint8_t c, double pr, double cph, float df, uint8_t ci) :
-      PRN(p), CN0(c), pseudorange(pr), carrier_phase(cph), doppler_freq(df), channel_indicator(ci)
+    RawMeasurement(uint8_t p, uint8_t c, double pr, double cph, float df, bool hpr, bool hdf, bool hcp, bool wcs, bool cit) :
+      PRN(p), CN0(c), pseudo_range(pr), carrier_phase(cph), doppler_freq(df),
+      has_pseudo_range(hpr), has_doppler_freq(hdf), has_carrier_phase(hcp), will_cycle_slip(wcs), coherent_integration_time(cit)
     {}
   }; // struct RawMeasurement
 
@@ -428,13 +429,18 @@ namespace SkyTraqBin {
 
 
   struct SvStatus {
-    uint8_t channel_id, PRN, SV_status, URA;
+    uint8_t channel_id, PRN;
+    bool sv_has_almanac, sv_has_ephemeris, sv_is_healthy;
+    uint8_t URA;
     int8_t CN0;
     int16_t elevation, azimuth;
-    uint8_t channel_status;
+    bool chan_has_pull_in, chan_has_bit_sync, chan_has_frame_sync, chan_has_ephemeris, chan_for_normal, chan_for_differential;
 
-    SvStatus(uint8_t cid, uint8_t p, uint8_t svs, uint8_t u, int8_t c, int16_t el, int16_t az, uint8_t cs) :
-      channel_id(cid), PRN(p), SV_status(svs), URA(u), CN0(c), elevation(el), azimuth(az), channel_status(cs)
+    SvStatus(uint8_t cid, uint8_t p, bool sha, bool she, bool sih, uint8_t u, int8_t c, int16_t el, int16_t az, bool chpi, bool chbs, bool chfs, bool che, bool cfn, bool cfd) :
+      channel_id(cid), PRN(p),
+      sv_has_almanac(sha), sv_has_ephemeris(she), sv_is_healthy(sih),
+      URA(u), CN0(c), elevation(el), azimuth(az),
+      chan_has_pull_in(chpi), chan_has_bit_sync(chbs), chan_has_frame_sync(chfs), chan_has_ephemeris(che), chan_for_normal(cfn), chan_for_differential(cfd)
     {}
   }; // struct SvStatus
 

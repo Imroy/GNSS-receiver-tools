@@ -160,13 +160,16 @@ namespace SkyTraqBin {
     _issue(payload[1]),
     _num_meas(payload[2])
   {
-    for (int i = 3; i <= payload_len - 23; i += 23)
+    uint8_t ci;
+    for (int i = 3; i <= payload_len - 23; i += 23) {
+      ci = payload[i + 22];
       _measurements.push_back(RawMeasurement(payload[i],
 					     payload[i + 1],
 					     extract_be<double>(payload, i + 2),
 					     extract_be<double>(payload, i + 10),
 					     extract_be<float>(payload, i + 18),
-					     payload[i + 22]));
+					     ci & 0x01, ci & 0x02, ci & 0x04, ci & 0x08, ci & 0x10));
+    }
   }
 
 
@@ -175,15 +178,21 @@ namespace SkyTraqBin {
     _issue(payload[1]),
     _num_sv(payload[2])
   {
-    for (int i = 3; i <= payload_len - 10; i += 10)
+    uint8_t sv_status, chan_status;
+    for (int i = 3; i <= payload_len - 10; i += 10) {
+      sv_status = payload[i + 2];
+      chan_status = payload[i + 9];
       _statuses.push_back(SvStatus(payload[i],
 				   payload[i + 1],
-				   payload[i + 2],
+				   sv_status & 0x01, sv_status & 0x02, sv_status & 0x04,
 				   payload[i + 3],
 				   payload[i + 4],
 				   extract_be<int16_t>(payload, i + 5),
 				   extract_be<int16_t>(payload, i + 7),
-				   payload[i + 9]));
+				   chan_status & 0x01, chan_status & 0x02,
+				   chan_status & 0x04, chan_status & 0x08,
+				   chan_status & 0x10, chan_status & 0x20));
+    }
   }
 
 
