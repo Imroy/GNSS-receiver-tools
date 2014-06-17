@@ -45,7 +45,7 @@ namespace SkyTraqBin {
     append_be<uint8_t>(buffer, 0xa0);
     append_be<uint8_t>(buffer, 0xa1);
 
-    Payload_length payload_len = body_length() + 1; // include message ID
+    Payload_length payload_len = body_length() + MsgID_len;
     append_be(buffer, payload_len);
 
     unsigned char *payload = buffer;
@@ -63,7 +63,7 @@ namespace SkyTraqBin {
     append_be<uint8_t>(buffer, 0xa0);
     append_be<uint8_t>(buffer, 0xa1);
 
-    Payload_length payload_len = body_length() + 1 + 1; // include message ID and sub-ID
+    Payload_length payload_len = body_length() + MsgID_len + MsgSubID_len;
     append_be(buffer, payload_len);
 
     unsigned char *payload = buffer;
@@ -120,7 +120,7 @@ namespace SkyTraqBin {
 
   Output_message::ptr parse_message(unsigned char* buffer, std::size_t len) {
     Payload_length payload_len = extract_be<uint16_t>(buffer, 2);
-    std::size_t end = 2 + 2 + payload_len + 1 + 2;
+    std::size_t end = StartSeq_len + PayloadLength_len + payload_len + Checksum_len + EndSeq_len;
     if (len < end)
       throw InsufficientData();
 
@@ -130,7 +130,7 @@ namespace SkyTraqBin {
 	|| (buffer[end - 1] != 0x0a))
       throw InvalidMessage();
 
-    unsigned char *payload = buffer + 2 + 2;
+    unsigned char *payload = buffer + StartSeq_len + PayloadLength_len;
     uint16_t id = payload[0];
     if ((id >= 0x62) && (id <= 0x65))	// construct a composite id if the message has a sub-ID
       id = (payload[0] << 8) | payload[1];

@@ -31,6 +31,13 @@ namespace SkyTraqBin {
   //! Type for the binary message payload length, limited to 64 KiB
   typedef uint16_t Payload_length;
 
+  const Payload_length StartSeq_len = 2;
+  const Payload_length PayloadLength_len = 2;
+  const Payload_length MsgID_len = 1;
+  const Payload_length MsgSubID_len = 1;
+  const Payload_length Checksum_len = 1;
+  const Payload_length EndSeq_len = 2;
+
   //! Exception signifying that the parser buffer isn't big enough for the message
   //! Completely harmless - read some more data into the buffer and try again
   class InsufficientData : public std::exception {
@@ -155,15 +162,7 @@ namespace SkyTraqBin {
     {}
 
     //! The total length of the message
-    /*! This includes:
-      - start sequence (2)
-      - payload length (2)
-      - message ID (1)
-      - body length
-      - checksum (1)
-      - end sequence (2)
-    */
-    inline const Payload_length message_length(void) const { return 2 + 2 + 1 + body_length() + 1 + 2; }
+    inline const Payload_length message_length(void) const { return StartSeq_len + PayloadLength_len + MsgID_len + body_length() + Checksum_len + EndSeq_len; }
 
     //! Write the message into a buffer
     /*!
