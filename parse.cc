@@ -69,11 +69,10 @@ public:
   }
 
   void RMC(SkyTraq::Interface* iface, const NMEA0183::RMC &rmc) {
-    std::cout << "\tTime " << rmc.UTC_time()
+    std::cout << "\tTime " << rmc.UTC_datetime()
 	      << ", " << (rmc.status() ? "data valid" : "warning")
 	      << ", longitude " << rmc.longitude() << "°, lattitude " << rmc.lattitude() << "°"
 	      << ", speed " << rmc.speed() << ", course " << rmc.course()
-	      << ", date " << rmc.UTC_day() << "/" << rmc.UTC_month() << "/" << rmc.UTC_year()
 	      << ", " << rmc.receiver_mode()
 	      << std::endl;
   }
@@ -86,8 +85,7 @@ public:
   }
 
   void ZDA(SkyTraq::Interface* iface, const NMEA0183::ZDA &zda) {
-    std::cout << "\tTime " << zda.UTC_time()
-	      << ", date " << zda.UTC_day() << "/" << zda.UTC_month() << "/" << zda.UTC_year()
+    std::cout << "\tTime " << zda.UTC_datetime()
 	      << ", TZ " << zda.TZ_hours() << ":" << zda.TZ_minutes()
 	      << std::endl;
   }

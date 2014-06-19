@@ -24,7 +24,11 @@
 #include <sstream>
 #include <vector>
 #include <memory>
+#include "boost/date_time/posix_time/posix_time.hpp"
 #include "SkyTraq.hh"
+
+namespace greg = boost::gregorian;
+namespace ptime = boost::posix_time;
 
 namespace NMEA0183 {
 
@@ -116,7 +120,7 @@ namespace NMEA0183 {
   //! Global Positioning System fix data
   class GGA : public Sentence {
   private:
-    double _utc_time;
+    ptime::time_duration _utc_time;
     double _lattitude, _longitude; // north and east are positive, respectively
     FixQuality _fix_quality;
     int _num_sats_used;
@@ -129,7 +133,7 @@ namespace NMEA0183 {
   public:
     GGA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
 
-    inline const double UTC_time(void) const { return _utc_time; }
+    inline const ptime::time_duration UTC_time(void) const { return _utc_time; }
     inline const double lattitude(void) const { return _lattitude; }
     inline const double longitude(void) const { return _longitude; }
     inline const FixQuality fix_quality(void) const { return _fix_quality; }
@@ -159,7 +163,7 @@ namespace NMEA0183 {
   class GLL : public Sentence {
   private:
     double _lattitude, _longitude; // north and east are positive, respectively
-    double _utc_time;
+    ptime::time_duration _utc_time;
     ReceiverMode _mode;
 
   public:
@@ -167,7 +171,7 @@ namespace NMEA0183 {
 
     inline const double lattitude(void) const { return _lattitude; }
     inline const double longitude(void) const { return _longitude; }
-    inline const double UTC_time(void) const { return _utc_time; }
+    inline const ptime::time_duration UTC_time(void) const { return _utc_time; }
     inline const ReceiverMode receiver_mode(void) const { return _mode; }
 
   }; // class GLL
@@ -245,25 +249,23 @@ namespace NMEA0183 {
   //! Recommended minimum specific GNSS data
   class RMC : public Sentence {
   private:
-    double _utc_time;
+    ptime::ptime _utc_datetime;
     bool _status;
     double _lattitude, _longitude; // north and east are positive, respectively
     double _speed, _course;
-    int _day, _month, _year;
     ReceiverMode _mode;
 
   public:
     RMC(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
 
-    inline const double UTC_time(void) const { return _utc_time; }
+    inline const ptime::ptime UTC_datetime(void) const { return _utc_datetime; }
+    inline const ptime::time_duration UTC_time(void) const { return _utc_datetime.time_of_day(); }
     inline const bool status(void) const { return _status; }
     inline const double lattitude(void) const { return _lattitude; }
     inline const double longitude(void) const { return _longitude; }
     inline const double speed(void) const { return _speed; }
     inline const double course(void) const { return _course; }
-    inline const int UTC_day(void) const { return _day; }
-    inline const int UTC_month(void) const { return _month; }
-    inline const int UTC_year(void) const { return _year; }
+    inline const greg::date UTC_date(void) const { return _utc_datetime.date(); }
     inline const ReceiverMode receiver_mode(void) const { return _mode; }
 
   }; // class RMC
@@ -291,17 +293,15 @@ namespace NMEA0183 {
   //! Time and date
   class ZDA : public Sentence {
   private:
-    double _utc_time;
-    int _day, _month, _year;
+    ptime::ptime _utc_datetime;
     int _tzhr, _tzmin;
 
   public:
     ZDA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
 
-    inline const double UTC_time(void) const { return _utc_time; }
-    inline const int UTC_day(void) const { return _day; }
-    inline const int UTC_month(void) const { return _month; }
-    inline const int UTC_year(void) const { return _year; }
+    inline const ptime::ptime UTC_datetime(void) const { return _utc_datetime; }
+    inline const ptime::time_duration UTC_time(void) const { return _utc_datetime.time_of_day(); }
+    inline const greg::date UTC_date(void) const { return _utc_datetime.date(); }
     inline const int TZ_hours(void) const { return _tzhr; }
     inline const int TZ_minutes(void) const { return _tzmin; }
 

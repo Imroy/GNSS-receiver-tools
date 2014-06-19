@@ -124,13 +124,13 @@ namespace NMEA0183 {
   }
 
 
-  //! Convert the "hhmmss.ss" string to a number of seconds
-  double hhmmss_to_seconds(std::string hhmmss) {
+  //! Convert the "hhmmss.ss" string to a time_duration object
+  ptime::time_duration hhmmss_to_duration(std::string hhmmss) {
     int hours = std::stoi(hhmmss.substr(0, 2));
     int minutes = std::stoi(hhmmss.substr(2, 2));
     double seconds = std::stod(hhmmss.substr(4));
 
-    return seconds + (minutes * 60.0) + (hours * 3600.0);
+    return ptime::time_duration(hours, minutes, seconds);
   }
 
   //! Convert the "ddmm.mm" or "dddmm.mm" string to a number of degrees
@@ -156,7 +156,7 @@ namespace NMEA0183 {
 
   GGA::GGA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
     Sentence(tid, type, checksum),
-    _utc_time(hhmmss_to_seconds(fields[0])),
+    _utc_time(hhmmss_to_duration(fields[0])),
     _lattitude(dm_to_degrees(fields[1], 2, fields[2], "S")),
     _longitude(dm_to_degrees(fields[3], 3, fields[4], "W")),
     _fix_quality((FixQuality)std::stoi(fields[5])),
@@ -191,7 +191,7 @@ namespace NMEA0183 {
     Sentence(tid, type, checksum),
     _lattitude(dm_to_degrees(fields[0], 2, fields[1], "S")),
     _longitude(dm_to_degrees(fields[2], 3, fields[3], "W")),
-    _utc_time(hhmmss_to_seconds(fields[4])),
+    _utc_time(hhmmss_to_duration(fields[4])),
     _mode(read_receivermode(fields[5]))
   {}
 
@@ -273,15 +273,15 @@ namespace NMEA0183 {
 
   RMC::RMC(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
     Sentence(tid, type, checksum),
-    _utc_time(hhmmss_to_seconds(fields[0])),
+    _utc_datetime(greg::date(std::stoi(fields[8].substr(4, 2)) + 2000,	// NOTE: two-digit year!
+			     std::stoi(fields[8].substr(2, 2)),
+			     std::stoi(fields[8].substr(0, 2))),
+		  hhmmss_to_duration(fields[0])),
     _status(fields[1] == "A"),
     _lattitude(dm_to_degrees(fields[2], 2, fields[3], "S")),
     _longitude(dm_to_degrees(fields[4], 3, fields[5], "W")),
     _speed(std::stod(fields[6])),
     _course(std::stod(fields[7])),
-    _day(std::stoi(fields[8].substr(0, 2))),
-    _month(std::stoi(fields[8].substr(2, 2))),
-    _year(std::stoi(fields[8].substr(4, 2))),
     _mode(read_receivermode(fields[11]))
   {}
 
@@ -298,10 +298,8 @@ namespace NMEA0183 {
 
   ZDA::ZDA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
     Sentence(tid, type, checksum),
-    _utc_time(hhmmss_to_seconds(fields[0])),
-    _day(std::stoi(fields[1])),
-    _month(std::stoi(fields[2])),
-    _year(std::stoi(fields[3])),
+    _utc_datetime(greg::date(std::stoi(fields[3]), std::stoi(fields[2]), std::stoi(fields[1])),
+		  hhmmss_to_duration(fields[0])),
     _tzhr(std::stoi(fields[4])),
     _tzmin(std::stoi(fields[5]))
   {}
