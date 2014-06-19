@@ -1,6 +1,5 @@
  - Improve Doxygen documentation
  - Use some Boost libraries
   - program_options instead of getopt()
-  - date_time for dates and times
  - Add a program that records the data from NMEA-0183 sentences or binary messages into a database
   - And another program(s) to draw interesting diagrams or graphs of the data over time
