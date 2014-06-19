@@ -284,7 +284,7 @@ namespace std {
       return "binary";
       break;
     }
-    return "";
+    throw invalid_argument("Unrecognised value for SwType");
   }
 
 }; // namespace std
