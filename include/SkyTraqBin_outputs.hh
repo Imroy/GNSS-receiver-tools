@@ -19,7 +19,10 @@
 #ifndef __SKYTRAQBIN_OUTPUTS_HH__
 #define __SKYTRAQBIN_OUTPUTS_HH__
 
+#include "boost/date_time/posix_time/posix_time_types.hpp"
 #include "SkyTraqBin.hh"
+
+namespace greg = boost::gregorian;
 
 namespace SkyTraqBin {
 
@@ -47,22 +50,13 @@ namespace SkyTraqBin {
   }; // struct PackedVersion
 
 
-  struct PackedDate {
-    uint8_t year, month, day;
-
-    inline PackedDate(uint8_t y, uint8_t m, uint8_t d) :
-      year(y), month(m), day(d)
-    {}
-  }; // struct PackedDate
-
-
   //! SOFTWARE VERSION - Software version of the GNSS receiver
   //! - Answer to Q_sw_ver message
   class Sw_ver : public Output_message {
   private:
     SwType _sw_type;
     PackedVersion _kernel_ver, _odm_ver;
-    PackedDate _revision;
+    greg::date _revision;
 
   public:
     //! Constructor from a binary buffer
@@ -71,7 +65,7 @@ namespace SkyTraqBin {
     GETTER(SwType, software_type, _sw_type);
     GETTER(PackedVersion, kernel_version, _kernel_ver);
     GETTER(PackedVersion, ODM_version, _odm_ver);
-    GETTER(PackedDate, revision, _revision);
+    GETTER(greg::date, revision, _revision);
 
   }; // class Sw_ver
 

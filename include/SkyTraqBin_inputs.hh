@@ -19,8 +19,12 @@
 #ifndef __SKYTRAQBIN_INPUTS_HH__
 #define __SKYTRAQBIN_INPUTS_HH__
 
+#include "boost/date_time/posix_time/posix_time_types.hpp"
 #include <string.h>
 #include "SkyTraqBin.hh"
+
+namespace greg = boost::gregorian;
+namespace ptime = boost::posix_time;
 
 namespace SkyTraqBin {
 
@@ -42,8 +46,7 @@ namespace SkyTraqBin {
   class Restart_sys : public Input_message {
   private:
     StartMode _start_mode;
-    uint16_t _utc_year;
-    uint8_t _utc_month, _utc_day, _utc_hour, _utc_minute, _utc_second;
+    ptime::ptime _utc_time;
     int16_t _lattitude, _longitude, _altitude;
 
     GETTER(Payload_length, body_length, 14);
@@ -64,8 +67,7 @@ namespace SkyTraqBin {
 		       int16_t lat, int16_t lon, int16_t alt) :
       Input_message(0x01),
       _start_mode(mode),
-      _utc_year(y), _utc_month(m), _utc_day(d),
-      _utc_hour(hr), _utc_minute(min), _utc_second(sec),
+      _utc_time(greg::date(y, m, d), ptime::time_duration(hr, min, sec)),
       _lattitude(lat), _longitude(lon), _altitude(alt)
     {}
 
@@ -83,18 +85,12 @@ namespace SkyTraqBin {
 		       double lat, double lon, double alt) :
       Input_message(0x01),
       _start_mode(mode),
-      _utc_year(y), _utc_month(m), _utc_day(d),
-      _utc_hour(hr), _utc_minute(min), _utc_second(sec),
+      _utc_time(greg::date(y, m, d), ptime::hours(hr) + ptime::minutes(min) + ptime::seconds(sec)),
       _lattitude(floor(0.5 + lat * 100)), _longitude(floor(0.5 + lon * 100)), _altitude(floor(0.5 + alt))
     {}
 
     GETTER_SETTER(StartMode, start_mode, _start_mode);
-    GETTER_SETTER(uint16_t, UTC_year, _utc_year);
-    GETTER_SETTER(uint8_t, UTC_month, _utc_month);
-    GETTER_SETTER(uint8_t, UTC_day, _utc_day);
-    GETTER_SETTER(uint8_t, UTC_hour, _utc_hour);
-    GETTER_SETTER(uint8_t, UTC_minute, _utc_minute);
-    GETTER_SETTER(uint8_t, UTC_second, _utc_second);
+    GETTER(ptime::ptime, UTC_time, _utc_time);
 
     GETTER_SETTER_RAW(int16_t, lattitude, _lattitude);
     GETTER_SETTER_MOD(double, lattitude, _lattitude, _lattitude * 0.01, val * 100);

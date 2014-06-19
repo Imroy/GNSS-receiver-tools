@@ -26,7 +26,7 @@ namespace SkyTraqBin {
     _sw_type((SwType)payload[1]),
     _kernel_ver(payload[3], payload[4], payload[5]),
     _odm_ver(payload[7], payload[8], payload[9]),
-    _revision(payload[11], payload[12], payload[13])
+    _revision(greg::date(payload[11] + 1900, payload[12], payload[13]))
   {}
 
 

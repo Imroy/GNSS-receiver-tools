@@ -25,12 +25,17 @@ namespace SkyTraqBin {
 
   void Restart_sys::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, (uint8_t)_start_mode);
-    append_be(buffer, _utc_year);
-    append_be(buffer, _utc_month);
-    append_be(buffer, _utc_day);
-    append_be(buffer, _utc_hour);
-    append_be(buffer, _utc_minute);
-    append_be(buffer, _utc_second);
+
+    greg::date date = _utc_time.date();
+    append_be(buffer, (uint16_t)date.year());
+    append_be(buffer, (uint8_t)date.month());
+    append_be(buffer, (uint8_t)date.day());
+
+    ptime::time_duration time = _utc_time.time_of_day();
+    append_be(buffer, (uint8_t)time.hours());
+    append_be(buffer, (uint8_t)time.minutes());
+    append_be(buffer, (uint8_t)time.seconds());
+
     append_be(buffer, _lattitude);
     append_be(buffer, _longitude);
     append_be(buffer, _altitude);
