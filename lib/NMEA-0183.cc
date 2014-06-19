@@ -345,7 +345,7 @@ namespace std {
     case NMEA0183::FixQuality::SimulationMode:
       return "valid position fix, simulation mode";
     }
-    return "";
+    throw invalid_argument("Unrecognised value for FixQuality");
   }
 
   std::string to_string(NMEA0183::FixType type) {
@@ -357,7 +357,7 @@ namespace std {
     case NMEA0183::FixType::ThreeDimensional:
       return "3D";
     }
-    return "";
+    throw invalid_argument("Unrecognised value for FixType");
   }
 
   std::string to_string(NMEA0183::PPSmode mode) {
@@ -369,7 +369,7 @@ namespace std {
     case NMEA0183::PPSmode::Static:
       return "static";
     }
-    return "";
+    throw invalid_argument("Unrecognised value for PPSmode");
   }
 
 }; // namespace std
