@@ -2,7 +2,7 @@ var _n_m_e_a_0183_8cc =
 [
     [ "dm_to_degrees", "_n_m_e_a-0183_8cc.html#a2f73fed36de5ac6ab4edc38e32eeaeab", null ],
     [ "generate_checksum", "_n_m_e_a-0183_8cc.html#a14bb7c1d54c56056c1e39b7cb88f898e", null ],
-    [ "hhmmss_to_seconds", "_n_m_e_a-0183_8cc.html#adf406efb1229baf8ac5a21441fdb36c6", null ],
+    [ "hhmmss_to_duration", "_n_m_e_a-0183_8cc.html#aaf156d73a7c76de1c18aa22043dd3483", null ],
     [ "operator<<", "_n_m_e_a-0183_8cc.html#a1a99f65e8c1c6c6f0a79ea22b225bac5", null ],
     [ "operator<<", "_n_m_e_a-0183_8cc.html#af7a79f845a361620711f16e0c1b5a236", null ],
     [ "operator<<", "_n_m_e_a-0183_8cc.html#a0a529075f55013868ab190112c92727e", null ],
@@ -12,6 +12,8 @@ var _n_m_e_a_0183_8cc =
     [ "read_receivermode", "_n_m_e_a-0183_8cc.html#a0c205f58bd9746e0f97be12585ac6581", null ],
     [ "split_fields", "_n_m_e_a-0183_8cc.html#a0cdcb19beab093730cd7b9b4a7e38c12", null ],
     [ "to_string", "_n_m_e_a-0183_8cc.html#ab75ee1a1f5d684cab1105173a6c11e90", null ],
+    [ "to_string", "_n_m_e_a-0183_8cc.html#ab03395413bb242d8af5d8d6bad5da53e", null ],
+    [ "to_string", "_n_m_e_a-0183_8cc.html#ab355e4047b542d5404e6947538a62f20", null ],
     [ "to_string", "_n_m_e_a-0183_8cc.html#aa89edeb8387becc61780b061e46260c8", null ],
     [ "to_string", "_n_m_e_a-0183_8cc.html#a6c0a723684a096bf9bb064974b9bf655", null ]
 ];

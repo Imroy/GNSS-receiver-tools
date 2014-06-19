@@ -10,5 +10,5 @@ var class_n_m_e_a0183_1_1_g_g_a =
     [ "lattitude", "class_n_m_e_a0183_1_1_g_g_a.html#a0a855e523d0daa3f093660bc5c8d473c", null ],
     [ "longitude", "class_n_m_e_a0183_1_1_g_g_a.html#a77bafc6c79d6701e8cc9325f5e714d29", null ],
     [ "num_sats_used", "class_n_m_e_a0183_1_1_g_g_a.html#a65dad66cc3dbc2982250248d283c10fe", null ],
-    [ "UTC_time", "class_n_m_e_a0183_1_1_g_g_a.html#aca224dca6ba54f5e6bd463926af5631a", null ]
+    [ "UTC_time", "class_n_m_e_a0183_1_1_g_g_a.html#afa2afaa22aff3170246c7dae776024ad", null ]
 ];

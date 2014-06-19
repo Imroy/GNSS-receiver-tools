@@ -15,7 +15,7 @@ var files =
     ] ],
     [ "SkyTraqBin.cc", "_sky_traq_bin_8cc.html", "_sky_traq_bin_8cc" ],
     [ "SkyTraqBin.hh", "_sky_traq_bin_8hh.html", "_sky_traq_bin_8hh" ],
-    [ "SkyTraqBin_inputs.cc", "_sky_traq_bin__inputs_8cc.html", "_sky_traq_bin__inputs_8cc" ],
+    [ "SkyTraqBin_inputs.cc", "_sky_traq_bin__inputs_8cc.html", null ],
     [ "SkyTraqBin_inputs.hh", "_sky_traq_bin__inputs_8hh.html", [
       [ "Restart_sys", "class_sky_traq_bin_1_1_restart__sys.html", "class_sky_traq_bin_1_1_restart__sys" ],
       [ "Q_sw_ver", "class_sky_traq_bin_1_1_q__sw__ver.html", "class_sky_traq_bin_1_1_q__sw__ver" ],
@@ -73,7 +73,6 @@ var files =
     [ "SkyTraqBin_outputs.cc", "_sky_traq_bin__outputs_8cc.html", null ],
     [ "SkyTraqBin_outputs.hh", "_sky_traq_bin__outputs_8hh.html", [
       [ "PackedVersion", "struct_sky_traq_bin_1_1_packed_version.html", "struct_sky_traq_bin_1_1_packed_version" ],
-      [ "PackedDate", "struct_sky_traq_bin_1_1_packed_date.html", "struct_sky_traq_bin_1_1_packed_date" ],
       [ "Sw_ver", "class_sky_traq_bin_1_1_sw__ver.html", "class_sky_traq_bin_1_1_sw__ver" ],
       [ "Sw_CRC", "class_sky_traq_bin_1_1_sw___c_r_c.html", "class_sky_traq_bin_1_1_sw___c_r_c" ],
       [ "Ack", "class_sky_traq_bin_1_1_ack.html", "class_sky_traq_bin_1_1_ack" ],

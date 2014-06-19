@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['packeddate',['PackedDate',['../struct_sky_traq_bin_1_1_packed_date.html#ab77c731642f113f93ea3155826d9ad44',1,'SkyTraqBin::PackedDate']]],
   ['packedversion',['PackedVersion',['../struct_sky_traq_bin_1_1_packed_version.html#a30fac71d124de48391cfbb20ce5e84ac',1,'SkyTraqBin::PackedVersion']]],
   ['parallel_5fflash',['parallel_flash',['../class_sky_traq_bin_1_1_g_n_s_s__boot__status.html#a4a2132800df1ae26cff920f601d1807b',1,'SkyTraqBin::GNSS_boot_status']]],
   ['parse_5fmessage',['parse_message',['../namespace_sky_traq_bin.html#ad75eeec10b9c8e7b60142223eb79d5d8',1,'SkyTraqBin']]],

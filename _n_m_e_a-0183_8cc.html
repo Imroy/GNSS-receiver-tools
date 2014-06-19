@@ -129,9 +129,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a13e6d7d6fc95ea1ff212304ed1074a61"><td class="memItemLeft" align="right" valign="top">Sentence::ptr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_m_e_a0183.html#a13e6d7d6fc95ea1ff212304ed1074a61">NMEA0183::parse_sentence</a> (std::string line)</td></tr>
 <tr class="memdesc:a13e6d7d6fc95ea1ff212304ed1074a61"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_n_m_e_a0183_1_1_sentence.html" title="Base class for holding NMEA-0183 sentence data. ">Sentence</a> parser.  <a href="#a13e6d7d6fc95ea1ff212304ed1074a61">More...</a><br /></td></tr>
 <tr class="separator:a13e6d7d6fc95ea1ff212304ed1074a61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf406efb1229baf8ac5a21441fdb36c6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_m_e_a0183.html#adf406efb1229baf8ac5a21441fdb36c6">NMEA0183::hhmmss_to_seconds</a> (std::string hhmmss)</td></tr>
-<tr class="memdesc:adf406efb1229baf8ac5a21441fdb36c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the "hhmmss.ss" string to a number of seconds.  <a href="#adf406efb1229baf8ac5a21441fdb36c6">More...</a><br /></td></tr>
-<tr class="separator:adf406efb1229baf8ac5a21441fdb36c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf156d73a7c76de1c18aa22043dd3483"><td class="memItemLeft" align="right" valign="top">ptime::time_duration&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_m_e_a0183.html#aaf156d73a7c76de1c18aa22043dd3483">NMEA0183::hhmmss_to_duration</a> (std::string hhmmss)</td></tr>
+<tr class="memdesc:aaf156d73a7c76de1c18aa22043dd3483"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the "hhmmss.ss" string to a time_duration object.  <a href="#aaf156d73a7c76de1c18aa22043dd3483">More...</a><br /></td></tr>
+<tr class="separator:aaf156d73a7c76de1c18aa22043dd3483"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f73fed36de5ac6ab4edc38e32eeaeab"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_m_e_a0183.html#a2f73fed36de5ac6ab4edc38e32eeaeab">NMEA0183::dm_to_degrees</a> (std::string dm, int dlen, std::string indicator, std::string neg)</td></tr>
 <tr class="memdesc:a2f73fed36de5ac6ab4edc38e32eeaeab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the "ddmm.mm" or "dddmm.mm" string to a number of degrees.  <a href="#a2f73fed36de5ac6ab4edc38e32eeaeab">More...</a><br /></td></tr>
 <tr class="separator:a2f73fed36de5ac6ab4edc38e32eeaeab"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,6 +149,10 @@ Functions</h2></td></tr>
 <tr class="separator:a400b279a539878fce44d1576970e4181"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab75ee1a1f5d684cab1105173a6c11e90"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><b>std::to_string</b> (<a class="el" href="namespace_n_m_e_a0183.html#ae7b81b2e62b4cbcc6561a054217b46ae">NMEA0183::FixQuality</a> quality)</td></tr>
 <tr class="separator:ab75ee1a1f5d684cab1105173a6c11e90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab355e4047b542d5404e6947538a62f20"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><b>std::to_string</b> (<a class="el" href="namespace_n_m_e_a0183.html#ad4add89b28c75830e7e0205e3c9275e1">NMEA0183::OpMode</a> mode)</td></tr>
+<tr class="separator:ab355e4047b542d5404e6947538a62f20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab03395413bb242d8af5d8d6bad5da53e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><b>std::to_string</b> (<a class="el" href="namespace_n_m_e_a0183.html#a927c0bad84f71ff8e857aa93c167d8b6">NMEA0183::ReceiverMode</a> mode)</td></tr>
+<tr class="separator:ab03395413bb242d8af5d8d6bad5da53e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa89edeb8387becc61780b061e46260c8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><b>std::to_string</b> (<a class="el" href="namespace_n_m_e_a0183.html#ab433b019f1fdc66200387d281c3010cd">NMEA0183::FixType</a> type)</td></tr>
 <tr class="separator:aa89edeb8387becc61780b061e46260c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c0a723684a096bf9bb064974b9bf655"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><b>std::to_string</b> (<a class="el" href="namespace_n_m_e_a0183.html#a117d78d6c7bfe07c02ae4a8aa2012f3a">NMEA0183::PPSmode</a> mode)</td></tr>
@@ -160,7 +164,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="_n_m_e_a-0183_8cc.html">NMEA-0183.cc</a></li>
-    <li class="footer">Generated on Wed Jun 18 2014 01:53:15 for NavSpark tools by
+    <li class="footer">Generated on Fri Jun 20 2014 05:00:33 for NavSpark tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

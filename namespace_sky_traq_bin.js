@@ -56,7 +56,6 @@ var namespace_sky_traq_bin =
     [ "NMEA_talker_ID", "class_sky_traq_bin_1_1_n_m_e_a__talker___i_d.html", "class_sky_traq_bin_1_1_n_m_e_a__talker___i_d" ],
     [ "Output_message", "class_sky_traq_bin_1_1_output__message.html", "class_sky_traq_bin_1_1_output__message" ],
     [ "Output_message_with_subid", "class_sky_traq_bin_1_1_output__message__with__subid.html", "class_sky_traq_bin_1_1_output__message__with__subid" ],
-    [ "PackedDate", "struct_sky_traq_bin_1_1_packed_date.html", "struct_sky_traq_bin_1_1_packed_date" ],
     [ "PackedVersion", "struct_sky_traq_bin_1_1_packed_version.html", "struct_sky_traq_bin_1_1_packed_version" ],
     [ "Pos_update_rate", "class_sky_traq_bin_1_1_pos__update__rate.html", "class_sky_traq_bin_1_1_pos__update__rate" ],
     [ "Q_1PPS_cable_delay", "class_sky_traq_bin_1_1_q__1_p_p_s__cable__delay.html", "class_sky_traq_bin_1_1_q__1_p_p_s__cable__delay" ],

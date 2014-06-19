@@ -53,6 +53,8 @@ var _n_m_e_a_0183_8hh =
     [ "operator<<", "_n_m_e_a-0183_8hh.html#a400b279a539878fce44d1576970e4181", null ],
     [ "parse_sentence", "_n_m_e_a-0183_8hh.html#a13e6d7d6fc95ea1ff212304ed1074a61", null ],
     [ "to_string", "_n_m_e_a-0183_8hh.html#ab75ee1a1f5d684cab1105173a6c11e90", null ],
+    [ "to_string", "_n_m_e_a-0183_8hh.html#ab03395413bb242d8af5d8d6bad5da53e", null ],
+    [ "to_string", "_n_m_e_a-0183_8hh.html#ab355e4047b542d5404e6947538a62f20", null ],
     [ "to_string", "_n_m_e_a-0183_8hh.html#aa89edeb8387becc61780b061e46260c8", null ],
     [ "to_string", "_n_m_e_a-0183_8hh.html#a6c0a723684a096bf9bb064974b9bf655", null ]
 ];

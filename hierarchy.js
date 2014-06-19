@@ -112,7 +112,6 @@ var hierarchy =
         ] ]
       ] ]
     ] ],
-    [ "SkyTraqBin::PackedDate", "struct_sky_traq_bin_1_1_packed_date.html", null ],
     [ "SkyTraqBin::PackedVersion", "struct_sky_traq_bin_1_1_packed_version.html", null ],
     [ "SkyTraq::Parser", "class_sky_traq_1_1_parser.html", null ],
     [ "SkyTraqBin::RawMeasurement", "struct_sky_traq_bin_1_1_raw_measurement.html", null ],
