@@ -237,71 +237,16 @@ inline void set_##name(type val) { field = code_set; }
     uint8_t response_subid(void) const { return subid; }
 
 
-  enum class SwType : uint8_t {
-    SystemCode = 1,
-  }; // class SwType
-
-
-  enum class TalkerID : uint8_t {
-    GP = 0,
-      GN,
-  }; // class TalkerID
-
-
-  enum class PowerMode : uint8_t {
-    Normal = 0,
-      PowerSave,
-  }; // class PowerMode
-
-
-  enum class DOPmode : uint8_t {
-    Disable = 0,
-      Auto,
-      PDOP_only,
-      HDOP_only,
-      GDOP_only,
-  }; // class DOPmode
-
-
-  enum class ElevationCNRmode : uint8_t {
-    Disable = 0,
-      ElevationCNR,
-      Elevation_only,
-      CNR_only,
-  }; // class ElevationCNRmode
-
-
-  enum class DefaultOrEnable : uint8_t {
-    Default = 0,
-      Enable = 1,
-      Enabled = 1,
-      Disable = 2,
-      Disabled = 2,
-  }; // class DefaultOrEnable
-
-
-  enum class EnableOrAuto : uint8_t {
-    Disabled = 0,
-      Enabled,
-      Auto,
-  }; // class EnableOrAuto
-
-
-  enum class NavigationMode : uint8_t {
-    Auto = 0,
-      Pedestrian,
-      Car,
-      Marine,
-      Balloon,
-      Airborne,
-  }; // class NavigationMode
-
-
   enum class StartMode : uint8_t {
     HotStart = 1,
       WarmStart,
       ColdStart,
   }; // class StartMode
+
+
+  enum class SwType : uint8_t {
+    SystemCode = 1,
+  }; // class SwType
 
 
   enum class BaudRate : uint8_t {
@@ -339,6 +284,29 @@ inline void set_##name(type val) { field = code_set; }
   std::ostream& operator<< (std::ostream& out, MessageType mt);
 
 
+  enum class FlashType : uint8_t {
+    Auto = 0,
+      QSPI_Winbond,
+      QSPI_EON,
+      Parallel_Numonyx,
+      Parallel_EON,
+  }; // class FlashType
+
+
+  enum class BufferUsed : uint8_t {
+    Size8K = 0,
+      Size16K,
+      Size24K,
+      Size32K,
+  }; // class BufferUsed
+
+
+  enum class PowerMode : uint8_t {
+    Normal = 0,
+      PowerSave,
+  }; // class PowerMode
+
+
   enum class OutputRate : uint8_t {
     Rate1Hz = 0,
       Rate2Hz,
@@ -355,21 +323,64 @@ inline void set_##name(type val) { field = code_set; }
   unsigned int OutputRate_Hz(OutputRate r);
 
 
-  enum class FlashType : uint8_t {
+  enum class DOPmode : uint8_t {
+    Disable = 0,
+      Auto,
+      PDOP_only,
+      HDOP_only,
+      GDOP_only,
+  }; // class DOPmode
+
+
+  enum class ElevationCNRmode : uint8_t {
+    Disable = 0,
+      ElevationCNR,
+      Elevation_only,
+      CNR_only,
+  }; // class ElevationCNRmode
+
+
+  enum class DefaultOrEnable : uint8_t {
+    Default = 0,
+      Enable,
+      Disable,
+  }; // class DefaultOrEnable
+
+
+  enum class TalkerID : uint8_t {
+    GP = 0,
+      GN,
+  }; // class TalkerID
+
+
+  enum class EnableOrAuto : uint8_t {
+    Disable = 0,
+      Enable,
+      Auto,
+  }; // class EnableOrAuto
+
+
+  enum class NavigationMode : uint8_t {
     Auto = 0,
-      QSPI_Winbond,
-      QSPI_EON,
-      Parallel_Numonyx,
-      Parallel_EON,
-  }; // class FlashType
+      Pedestrian,
+      Car,
+      Marine,
+      Balloon,
+      Airborne,
+  }; // class NavigationMode
 
 
-  enum class BufferUsed : uint8_t {
-    Size8K = 0,
-      Size16K,
-      Size24K,
-      Size32K,
-  }; // class BufferUsed
+  enum class BootStatus : uint8_t {
+    FromFlash = 0,
+      FromROM,
+  }; // class BootStatus
+
+  enum class InterferenceStatus : uint8_t {
+    Unknown = 0,
+      None,
+      Little,
+      Critical,
+  }; // class InterferenceStatus
 
 
   enum class FixType : uint8_t {
@@ -388,19 +399,6 @@ inline void set_##name(type val) { field = code_set; }
       Differential,
   }; // class NavigationState
 
-
-  enum class BootStatus : uint8_t {
-    FromFlash = 0,
-      FromROM,
-  }; // class BootStatus
-
-
-  enum class InterferenceStatus : uint8_t {
-    Unknown = 0,
-      None,
-      Little,
-      Critical,
-  }; // class InterferenceStatus
 
 
 }; // SkyTraqBin
