@@ -274,22 +274,3 @@ namespace SkyTraqBin {
 
 
 }; // namespace SkyTraqBin
-
-namespace std {
-
-  std::string to_string(SkyTraqBin::MessageType mt) {
-    switch (mt) {
-    case SkyTraqBin::MessageType::None:
-      return "none";
-      break;
-    case SkyTraqBin::MessageType::NMEA0183:
-      return "NMEA-0183";
-      break;
-    case SkyTraqBin::MessageType::Binary:
-      return "binary";
-      break;
-    }
-    return "";
-  }
-
-}; // namespace std
