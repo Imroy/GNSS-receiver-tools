@@ -149,11 +149,20 @@ namespace SkyTraqBin {
   }
 
 
-  std::ostream& operator<< (std::ostream& out, MessageType mt) {
-    out << std::to_string(mt);
+  std::ostream& operator<< (std::ostream& out, StartMode mode) {
+    out << std::to_string(mode);
     return out;
   }
 
+  std::ostream& operator<< (std::ostream& out, SwType st) {
+    out << std::to_string(st);
+    return out;
+  }
+
+  std::ostream& operator<< (std::ostream& out, BaudRate rate){
+    out << std::to_string(rate);
+    return out;
+  }
 
   BaudRate rate_to_BaudRate(unsigned int rate) {
     if (rate > 921600)
@@ -220,6 +229,36 @@ namespace SkyTraqBin {
     throw std::invalid_argument("Unrecognised baud rate");
   }
 
+  std::ostream& operator<< (std::ostream& out, UpdateType ut) {
+    out << std::to_string(ut);
+    return out;
+  }
+
+  std::ostream& operator<< (std::ostream& out, MessageType mt) {
+    out << std::to_string(mt);
+    return out;
+  }
+
+  std::ostream& operator<< (std::ostream& out, FlashType ft) {
+    out << std::to_string(ft);
+    return out;
+  }
+
+  std::ostream& operator<< (std::ostream& out, BufferUsed bu) {
+    out << std::to_string(bu);
+    return out;
+  }
+
+  std::ostream& operator<< (std::ostream& out, PowerMode pm) {
+    out << std::to_string(pm);
+    return out;
+  }
+
+  std::ostream& operator<< (std::ostream& out, OutputRate o) {
+    out << std::to_string(o);
+    return out;
+  }
+
   OutputRate Hz_to_OutputRate(unsigned int hz) {
     if (hz < 2)
       return OutputRate::Rate1Hz;
@@ -267,10 +306,96 @@ namespace SkyTraqBin {
     throw std::invalid_argument("Unrecognised output rate");
   }
 
+  std::ostream& operator<< (std::ostream& out, DOPmode mode) {
+    out << std::to_string(mode);
+    return out;
+  }
+
+  std::ostream& operator<< (std::ostream& out, ElevationCNRmode mode) {
+    out << std::to_string(mode);
+    return out;
+  }
+
+  std::ostream& operator<< (std::ostream& out, DefaultOrEnable doe) {
+    out << std::to_string(doe);
+    return out;
+  }
+
+  std::ostream& operator<< (std::ostream& out, TalkerID id) {
+    out << std::to_string(id);
+    return out;
+  }
+
+  std::ostream& operator<< (std::ostream& out, EnableOrAuto eoa) {
+    out << std::to_string(eoa);
+    return out;
+  }
+
+  std::ostream& operator<< (std::ostream& out, NavigationMode mode) {
+    out << std::to_string(mode);
+    return out;
+  }
+
+  std::ostream& operator<< (std::ostream& out, BootStatus bs) {
+    out << std::to_string(bs);
+    return out;
+  }
+
+  std::ostream& operator<< (std::ostream& out, InterferenceStatus is) {
+    out << std::to_string(is);
+    return out;
+  }
+
+  std::ostream& operator<< (std::ostream& out, FixType ft) {
+    out << std::to_string(ft);
+    return out;
+  }
+
+  std::ostream& operator<< (std::ostream& out, NavigationState ns) {
+    out << std::to_string(ns);
+    return out;
+  }
+
 
 }; // namespace SkyTraqBin
 
 namespace std {
+
+  string to_string(SkyTraqBin::StartMode mode) {
+    switch (mode) {
+    case SkyTraqBin::StartMode::HotStart:
+      return "hot start";
+    case SkyTraqBin::StartMode::WarmStart:
+      return "warm start";
+    case SkyTraqBin::StartMode::ColdStart:
+      return "cold start";
+    }
+    throw invalid_argument("Unrecognised value for StartMode");
+  }
+
+  string to_string(SkyTraqBin::SwType sw) {
+    switch (sw) {
+    case SkyTraqBin::SwType::SystemCode:
+      return "system code";
+    }
+    throw invalid_argument("Unrecognised value for SwType");
+  }
+
+  string to_string(SkyTraqBin::BaudRate r) {
+    return to_string(SkyTraqBin::BaudRate_rate(r));
+  }
+
+  string to_string(SkyTraqBin::UpdateType ut) {
+    switch (ut) {
+    case SkyTraqBin::UpdateType::SRAM:
+      return "SRAM";
+    case SkyTraqBin::UpdateType::SRAM_and_flash:
+      return "SRAM and Flash";
+    case SkyTraqBin::UpdateType::Temporary:
+      return "temporary";
+    }
+    throw invalid_argument("Unrecognised value for UpdateType");
+  }
 
   string to_string(SkyTraqBin::MessageType mt) {
     switch (mt) {
@@ -286,5 +411,200 @@ namespace std {
     }
     throw invalid_argument("Unrecognised value for SwType");
   }
+
+  string to_string(SkyTraqBin::FlashType ft) {
+    switch (ft) {
+    case SkyTraqBin::FlashType::Auto:
+      return "auto";
+    case SkyTraqBin::FlashType::QSPI_Winbond:
+      return "QSPI Winbond";
+    case SkyTraqBin::FlashType::QSPI_EON:
+      return "QSPI Eon";
+    case SkyTraqBin::FlashType::Parallel_Numonyx:
+      return "parallel Flash Numonyx";
+    case SkyTraqBin::FlashType::Parallel_EON:
+      return "parallel Flash Eon";
+    }
+    throw invalid_argument("Unrecognised value for FlashType");
+  }
+
+  string to_string(SkyTraqBin::BufferUsed bu) {
+    switch (bu) {
+    case SkyTraqBin::BufferUsed::Size8K:
+      return "8 KiB";
+    case SkyTraqBin::BufferUsed::Size16K:
+      return "16 KiB";
+    case SkyTraqBin::BufferUsed::Size24K:
+      return "24 KiB";
+    case SkyTraqBin::BufferUsed::Size32K:
+      return "32 KiB";
+    }
+    throw invalid_argument("Unrecognised value for BufferUsed");
+  }
+
+  string to_string(SkyTraqBin::PowerMode pm) {
+    switch (pm) {
+    case SkyTraqBin::PowerMode::Normal:
+      return "normal";
+    case SkyTraqBin::PowerMode::PowerSave:
+      return "power save";
+    }
+    throw invalid_argument("Unrecognised value for PowerMode");
+  }
+
+  string to_string(SkyTraqBin::OutputRate o) {
+    switch (o) {
+    case SkyTraqBin::OutputRate::Rate1Hz:
+      return "1 Hz";
+    case SkyTraqBin::OutputRate::Rate2Hz:
+      return "2 Hz";
+    case SkyTraqBin::OutputRate::Rate4Hz:
+      return "4 Hz";
+    case SkyTraqBin::OutputRate::Rate5Hz:
+      return "5 Hz";
+    case SkyTraqBin::OutputRate::Rate10Hz:
+      return "10 Hz";
+    case SkyTraqBin::OutputRate::Rate20Hz:
+      return "20 Hz";
+    }
+    throw invalid_argument("Unrecognised value for OutputRate");
+  }
+
+  string to_string(SkyTraqBin::DOPmode mode) {
+    switch (mode) {
+    case SkyTraqBin::DOPmode::Disable:
+      return "disable";
+    case SkyTraqBin::DOPmode::Auto:
+      return "automatic";
+    case SkyTraqBin::DOPmode::PDOP_only:
+      return "PDOP only";
+    case SkyTraqBin::DOPmode::HDOP_only:
+      return "HDOP only";
+    case SkyTraqBin::DOPmode::GDOP_only:
+      return "GDOP only";
+    }
+    throw invalid_argument("Unrecognised value for DOPmode");
+  }
+
+  string to_string(SkyTraqBin::ElevationCNRmode mode) {
+    switch (mode) {
+    case SkyTraqBin::ElevationCNRmode::Disable:
+      return "disable";
+    case SkyTraqBin::ElevationCNRmode::ElevationCNR:
+      return "elevation and CNR";
+    case SkyTraqBin::ElevationCNRmode::Elevation_only:
+      return "elevation only";
+    case SkyTraqBin::ElevationCNRmode::CNR_only:
+      return "CNR only";
+    }
+    throw invalid_argument("Unrecognised value for ElevationCNRmode");
+  }
+
+  string to_string(SkyTraqBin::DefaultOrEnable doe) {
+    switch (doe) {
+    case SkyTraqBin::DefaultOrEnable::Default:
+      return "default";
+    case SkyTraqBin::DefaultOrEnable::Enable:
+      return "enable";
+    case SkyTraqBin::DefaultOrEnable::Disable:
+      return "disable";
+    }
+    throw invalid_argument("Unrecognised value for DefaultOrEnable");
+  }
+
+  string to_string(SkyTraqBin::TalkerID id) {
+    switch (id) {
+    case SkyTraqBin::TalkerID::GP:
+      return "GP mode";
+    case SkyTraqBin::TalkerID::GN:
+      return "GN mode";
+    }
+    throw invalid_argument("Unrecognised value for TalkerID");
+  }
+
+  string to_string(SkyTraqBin::EnableOrAuto eoa) {
+    switch (eoa) {
+    case SkyTraqBin::EnableOrAuto::Disable:
+      return "disable";
+    case SkyTraqBin::EnableOrAuto::Enable:
+      return "enable";
+    case SkyTraqBin::EnableOrAuto::Auto:
+      return "automatic";
+    }
+    throw invalid_argument("Unrecognised value for EnableOrAuto");
+  }
+
+  string to_string(SkyTraqBin::NavigationMode mode) {
+    switch (mode) {
+    case SkyTraqBin::NavigationMode::Auto:
+      return "automatic";
+    case SkyTraqBin::NavigationMode::Pedestrian:
+      return "pedestrian";
+    case SkyTraqBin::NavigationMode::Car:
+      return "car";
+    case SkyTraqBin::NavigationMode::Marine:
+      return "marine";
+    case SkyTraqBin::NavigationMode::Balloon:
+      return "balloon";
+    case SkyTraqBin::NavigationMode::Airborne:
+      return "airborne";
+    }
+    throw invalid_argument("Unrecognised value for NavigatioMode");
+  }
+
+  string to_string(SkyTraqBin::BootStatus bs) {
+    switch (bs) {
+    case SkyTraqBin::BootStatus::FromFlash:
+      return "boot from Flash";
+    case SkyTraqBin::BootStatus::FromROM:
+      return "boot from ROM due to Flash boot failure";
+    }
+    throw invalid_argument("Unrecognised value for BootStatus");
+  }
+
+  string to_string(SkyTraqBin::InterferenceStatus is) {
+    switch (is) {
+    case SkyTraqBin::InterferenceStatus::Unknown:
+      return "unknown";
+    case SkyTraqBin::InterferenceStatus::None:
+      return "none";
+    case SkyTraqBin::InterferenceStatus::Little:
+      return "little";
+    case SkyTraqBin::InterferenceStatus::Critical:
+      return "critical";
+    }
+    throw invalid_argument("Unrecognised value for InterferenceStatus");
+  }
+
+  string to_string(SkyTraqBin::FixType ft) {
+    switch (ft) {
+    case SkyTraqBin::FixType::None:
+      return "none";
+    case SkyTraqBin::FixType::TwoDimensional:
+      return "2D";
+    case SkyTraqBin::FixType::ThreeDimensional:
+      return "3D";
+    case SkyTraqBin::FixType::Differential:
+      return "differential";
+    }
+    throw invalid_argument("Unrecognised value for FixType");
+  }
+
+  string to_string(SkyTraqBin::NavigationState ns) {
+    switch (ns) {
+    case SkyTraqBin::NavigationState::NoFix:
+      return "no fix";
+    case SkyTraqBin::NavigationState::Predicted:
+      return "predicted";
+    case SkyTraqBin::NavigationState::TwoDimensional:
+      return "2D";
+    case SkyTraqBin::NavigationState::ThreeDimensional:
+      return "3D";
+    case SkyTraqBin::NavigationState::Differential:
+      return "differential";
+    }
+    throw invalid_argument("Unrecognised value for NavigationState");
+  }
+
 
 }; // namespace std
