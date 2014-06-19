@@ -337,6 +337,8 @@ namespace NMEA0183 {
 
 namespace std {
   std::string to_string(NMEA0183::FixQuality quality);
+  std::string to_string(NMEA0183::ReceiverMode mode);
+  std::string to_string(NMEA0183::OpMode mode);
   std::string to_string(NMEA0183::FixType type);
   std::string to_string(NMEA0183::PPSmode mode);
 }; // namespace std

@@ -197,14 +197,7 @@ namespace NMEA0183 {
 
 
   std::ostream& operator<< (std::ostream& out, OpMode mode) {
-    switch (mode) {
-    case OpMode::Manual:
-      out << "manual";
-      break;
-    case OpMode::Automatic:
-      out << "automatic";
-      break;
-    }
+    out << std::to_string(mode);
     return out;
   }
 
@@ -248,25 +241,7 @@ namespace NMEA0183 {
 
 
   std::ostream& operator<< (std::ostream& out, ReceiverMode mode) {
-    switch (mode) {
-    case ReceiverMode::unknown:
-      break;
-    case ReceiverMode::NotValid:
-      out << "data not valid";
-      break;
-    case ReceiverMode::Autonomous:
-      out << "autonomous mode";
-      break;
-    case ReceiverMode::Differential:
-      out << "differential mode";
-      break;
-    case ReceiverMode::Estimated:
-      out << "estimated mode";
-      break;
-    case ReceiverMode::Simulated:
-      out << "simulated mode";
-      break;
-    }
+    out << std::to_string(mode);
     return out;
   }
 
@@ -346,6 +321,34 @@ namespace std {
       return "valid position fix, simulation mode";
     }
     throw invalid_argument("Unrecognised value for FixQuality");
+  }
+
+  std::string to_string(NMEA0183::OpMode mode) {
+    switch (mode) {
+    case NMEA0183::OpMode::Manual:
+      return "manual";
+    case NMEA0183::OpMode::Automatic:
+      return "automatic";
+    }
+    throw invalid_argument("Unrecognised value for OpMode");
+  }
+
+  std::string to_string(NMEA0183::ReceiverMode mode) {
+    switch (mode) {
+    case NMEA0183::ReceiverMode::unknown:
+      return "";
+    case NMEA0183::ReceiverMode::NotValid:
+      return "data not valid";
+    case NMEA0183::ReceiverMode::Autonomous:
+      return "autonomous mode";
+    case NMEA0183::ReceiverMode::Differential:
+      return "differential mode";
+    case NMEA0183::ReceiverMode::Estimated:
+      return "estimated mode";
+    case NMEA0183::ReceiverMode::Simulated:
+      return "simulated mode";
+    }
+    throw invalid_argument("Unrecognised value for ReceiverMode");
   }
 
   std::string to_string(NMEA0183::FixType type) {
