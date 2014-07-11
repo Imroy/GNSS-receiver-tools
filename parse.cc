@@ -19,6 +19,7 @@
 #include <unistd.h>
 #include <string>
 #include <cstdio>
+#include <string.h>
 #include "SkyTraq.hh"
 #include "NMEA-0183.hh"
 #include "SkyTraqBin.hh"
@@ -185,13 +186,13 @@ int main(int argc, char* argv[]) {
       }
     }
 
-    if (optind > argc)
+    if (optind < argc)
       filename = argv[optind];
   }
 
   std::FILE *file = fopen(filename.c_str(), "a+");
   if (file == NULL) {
-    std::cerr << "input is not open." << std::endl;
+    std::cerr << "input is not open: " << strerror(errno) << std::endl;
     exit(1);
   }
 
