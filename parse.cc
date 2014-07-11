@@ -135,7 +135,7 @@ public:
 
   void SV_channel_status(SkyTraq::Interface* iface, const SkyTraqBin::SV_channel_status &sv_chan) {
     std::cout << "\tSV channel status, issue of data: " << (int)sv_chan.issue_of_data() << ", " << (int)sv_chan.num_svs() << " SV statuses." << std::endl;
-    for (auto s : sv_chan.statuses()) {
+    for (auto s : sv_chan.statuses())
       std::cout << "\t\tChannel " << (int)s.channel_id
 		<< ", PRN " << (int)s.PRN
 		<< ", URA " << (int)s.URA
