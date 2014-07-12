@@ -230,6 +230,9 @@ namespace SkyTraq {
   }
 
   void Interface::send(SkyTraqBin::Input_message::ptr msg) {
+    if (!is_sendable())
+      throw NotSendable();
+
     SkyTraqBin::Payload_length len = msg->message_length();
 
     unsigned char *buffer = (unsigned char*)malloc(len);

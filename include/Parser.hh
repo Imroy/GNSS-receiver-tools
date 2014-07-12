@@ -40,6 +40,18 @@ namespace SkyTraq {
   }; // class EndOfFile
 
 
+  class NotSendable : public std::exception {
+  private:
+
+  public:
+    NotSendable() {}
+
+    const char* what() const throw() {
+      return "Is not sendable";
+    }
+  }; // class NotSendable
+
+
   //! Unified parser class
   class Parser {
   private:
@@ -132,6 +144,12 @@ namespace SkyTraq {
 
     //! Read a small amount of data from the file, parse it, send messages to the listener object
     void read(void);
+
+    // Can this interface send messages?
+    /*!
+      Only currently sendable if the file is a character device.
+     */
+    bool is_sendable(void) const { return _is_chrdev; }
 
     //! Send a message to the device
     void send(SkyTraqBin::Input_message::ptr msg);
