@@ -17,6 +17,7 @@
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <thread>
+#include <sys/stat.h>
 #include "Parser.hh"
 
 namespace SkyTraq {
@@ -92,7 +93,11 @@ namespace SkyTraq {
 
   Interface::Interface(std::FILE* f, Listener::ptr l) :
     _file(f), _listener(l), _response_pending(false)
-  {}
+  {
+    struct stat st;
+    fstat(fileno(_file), &st);
+    _is_chrdev = S_ISCHR(st.st_mode);
+  }
 
   void Interface::_send_from_queue(void) {
     if (_output_queue.empty())
@@ -113,8 +118,12 @@ namespace SkyTraq {
     std::size_t len = fread(buffer, 1, 16, _file);
 
     if (len == 0) {
-      std::this_thread::sleep_for(std::chrono::milliseconds(10));
-      return;
+      if (_is_chrdev) {
+	std::this_thread::sleep_for(std::chrono::milliseconds(10));
+	return;
+      } else {
+	throw EndOfFile();
+      }
     }
 
     _parser.add_bytes(buffer, len);

@@ -28,6 +28,18 @@
 
 namespace SkyTraq {
 
+  class EndOfFile : public std::exception {
+  private:
+
+  public:
+    EndOfFile() {}
+
+    const char* what() const throw() {
+      return "End of file";
+    }
+  }; // class EndOfFile
+
+
   //! Unified parser class
   class Parser {
   private:
@@ -101,6 +113,7 @@ namespace SkyTraq {
 
   private:
     std::FILE *_file;
+    bool _is_chrdev;
     Listener::ptr _listener;
     SkyTraq::Parser _parser;
     std::queue<std::pair<unsigned char*, SkyTraqBin::Payload_length> > _output_queue;

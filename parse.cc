@@ -217,6 +217,8 @@ int main(int argc, char* argv[]) {
   while (1) {
     try {
       iface.read();
+    } catch (SkyTraq::EndOfFile &e) {
+      break;
     } catch (std::invalid_argument &e) {
       std::cerr << e.what() << std::endl;
     } catch (std::exception &e) {
