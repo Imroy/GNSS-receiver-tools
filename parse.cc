@@ -199,19 +199,23 @@ int main(int argc, char* argv[]) {
   auto l = std::make_shared<AppListener>();
   SkyTraq::Interface iface(file, l);
 
-  if (change_mt) {
-    std::cout << "Switching to " << mt << " message type..." << std::endl;
-    iface.send(std::make_shared<SkyTraqBin::Config_msg_type>(mt, ut),
-	       [](bool ack, SkyTraqBin::Output_message* msg) {
-		 std::cout << (ack ? "A" : "Not a") << "cknowledged message type switch." << std::endl;
-	       });
-  }
-  if (change_rate) {
-    std::cout << "Changing output rate to " << rate << " Hz" << std::endl;
-    iface.send(std::make_shared<SkyTraqBin::Config_sys_pos_rate>(rate, ut),
-	       [](bool ack, SkyTraqBin::Output_message* msg) {
-		 std::cout << (ack ? "A" : "Not a") << "cknowledged output rate change." << std::endl;
-	       });
+  try {
+    if (change_mt) {
+      std::cout << "Switching to " << mt << " message type..." << std::endl;
+      iface.send(std::make_shared<SkyTraqBin::Config_msg_type>(mt, ut),
+		 [](bool ack, SkyTraqBin::Output_message* msg) {
+		   std::cout << (ack ? "A" : "Not a") << "cknowledged message type switch." << std::endl;
+		 });
+    }
+    if (change_rate) {
+      std::cout << "Changing output rate to " << rate << " Hz" << std::endl;
+      iface.send(std::make_shared<SkyTraqBin::Config_sys_pos_rate>(rate, ut),
+		 [](bool ack, SkyTraqBin::Output_message* msg) {
+		   std::cout << (ack ? "A" : "Not a") << "cknowledged output rate change." << std::endl;
+		 });
+    }
+  } catch (SkyTraq::NotSendable &e) {
+    std::cerr << "Interface is not sendable." << std::endl;
   }
 
   while (1) {
