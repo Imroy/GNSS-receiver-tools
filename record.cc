@@ -51,7 +51,10 @@ public:
   MongoListener(mongo::ScopedDbConnection *s, std::string db) :
     _sdc(s), _dbname(db),
     _current_doc(nullptr), _current_issue(0)
-  {}
+  {
+    _sdc->conn().ensureIndex(db + ".messages", BSON("week_number" << 1 << "time_in_week" << 1));
+    _sdc->conn().ensureIndex(db + ".subframes", BSON("PRN" << "1" << "subframe_num" << 1));
+  }
 
   void Measurement_time(SkyTraq::Interface* iface, const SkyTraqBin::Measurement_time &mt) {
     _check_issue(mt.issue_of_data());
