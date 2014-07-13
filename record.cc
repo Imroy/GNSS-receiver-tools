@@ -128,6 +128,27 @@ public:
   }
 
   void Subframe_data(SkyTraq::Interface* iface, const SkyTraqBin::Subframe_data &sfd) {
+    mongo::BSONObjBuilder doc;
+    doc << "PRN" << sfd.PRN()
+	<< "subframe_num" << sfd.subframe_num();
+    mongo::BSONArrayBuilder words;
+    for (int i = 0; i < 10; i++) {
+      mongo::BSONArrayBuilder wb;
+      uint32_t word = sfd.word(i);
+      unsigned char bytes[3] = { (unsigned char)(word & 0xff),
+				 (unsigned char)((word >> 8) & 0xff),
+				 (unsigned char)((word >> 16) & 0xff) };
+      wb << bytes[0] << bytes[1] << bytes[2];
+      words.append(wb.arr());
+    }
+    doc << "words" << words.arr();
+
+    std::cerr << "Inserting sub-frame #" << (int)sfd.subframe_num() << " of SV #" << (int)sfd.PRN() << std::endl;
+    _sdc->conn().update(_dbname + ".subframes",
+			QUERY("PRN" << sfd.PRN()
+			      << "subframe_num" << sfd.subframe_num()),
+			doc.obj(),
+			true);
   }
 
 }; // class MongoListener
