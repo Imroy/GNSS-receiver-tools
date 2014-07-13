@@ -136,6 +136,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0da1adb13802a5fb3880389c40c89ee5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_1_1_interface.html#a0da1adb13802a5fb3880389c40c89ee5">read</a> (void)</td></tr>
 <tr class="memdesc:a0da1adb13802a5fb3880389c40c89ee5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a small amount of data from the file, parse it, send messages to the listener object.  <a href="#a0da1adb13802a5fb3880389c40c89ee5">More...</a><br /></td></tr>
 <tr class="separator:a0da1adb13802a5fb3880389c40c89ee5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cf69108b6f40e5560f7c51bb0755a08"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_1_1_interface.html#a2cf69108b6f40e5560f7c51bb0755a08">is_sendable</a> (void) const </td></tr>
+<tr class="separator:a2cf69108b6f40e5560f7c51bb0755a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5732924270a18fcc96d3c86847d0aab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_traq_1_1_interface.html#ae5732924270a18fcc96d3c86847d0aab">send</a> (<a class="el" href="class_sky_traq_bin_1_1_input__message.html#afeb88b272ee5131e2a42078b4bc0214e">SkyTraqBin::Input_message::ptr</a> msg)</td></tr>
 <tr class="memdesc:ae5732924270a18fcc96d3c86847d0aab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message to the device.  <a href="#ae5732924270a18fcc96d3c86847d0aab">More...</a><br /></td></tr>
 <tr class="separator:ae5732924270a18fcc96d3c86847d0aab"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,7 +148,7 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for an object that reads from a stream and calls methods in a <a class="el" href="class_sky_traq_1_1_listener.html" title="Base class that receives parsed messages. ">Listener</a> object. </p>
 
-<p>Definition at line <a class="el" href="_parser_8hh_source.html#l00086">86</a> of file <a class="el" href="_parser_8hh_source.html">Parser.hh</a>.</p>
+<p>Definition at line <a class="el" href="_parser_8hh_source.html#l00111">111</a> of file <a class="el" href="_parser_8hh_source.html">Parser.hh</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a class="anchor" id="a79042eeec182c0ac96c1c476f4da1cde"></a>
 <div class="memitem">
@@ -173,7 +175,7 @@ Public Member Functions</h2></td></tr>
 </ol>
 <p>The third variant only happens with response-type messages. </p>
 
-<p>Definition at line <a class="el" href="_parser_8hh_source.html#l00100">100</a> of file <a class="el" href="_parser_8hh_source.html">Parser.hh</a>.</p>
+<p>Definition at line <a class="el" href="_parser_8hh_source.html#l00125">125</a> of file <a class="el" href="_parser_8hh_source.html">Parser.hh</a>.</p>
 
 </div>
 </div>
@@ -211,11 +213,38 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_parser_8cc_source.html#l00093">93</a> of file <a class="el" href="_parser_8cc_source.html">Parser.cc</a>.</p>
+<p>Definition at line <a class="el" href="_parser_8cc_source.html#l00094">94</a> of file <a class="el" href="_parser_8cc_source.html">Parser.cc</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a2cf69108b6f40e5560f7c51bb0755a08"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SkyTraq::Interface::is_sendable </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Only currently sendable if the file is a character device. </p>
+
+<p>Definition at line <a class="el" href="_parser_8hh_source.html#l00153">153</a> of file <a class="el" href="_parser_8hh_source.html">Parser.hh</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a0da1adb13802a5fb3880389c40c89ee5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -232,7 +261,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Read a small amount of data from the file, parse it, send messages to the listener object. </p>
 
-<p>Definition at line <a class="el" href="_parser_8cc_source.html#l00111">111</a> of file <a class="el" href="_parser_8cc_source.html">Parser.cc</a>.</p>
+<p>Definition at line <a class="el" href="_parser_8cc_source.html#l00116">116</a> of file <a class="el" href="_parser_8cc_source.html">Parser.cc</a>.</p>
 
 </div>
 </div>
@@ -252,7 +281,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Send a message to the device. </p>
 
-<p>Definition at line <a class="el" href="_parser_8cc_source.html#l00223">223</a> of file <a class="el" href="_parser_8cc_source.html">Parser.cc</a>.</p>
+<p>Definition at line <a class="el" href="_parser_8cc_source.html#l00233">233</a> of file <a class="el" href="_parser_8cc_source.html">Parser.cc</a>.</p>
 
 </div>
 </div>
@@ -282,7 +311,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Send a message to the device, call lambda when response is received. </p>
 
-<p>Definition at line <a class="el" href="_parser_8cc_source.html#l00238">238</a> of file <a class="el" href="_parser_8cc_source.html">Parser.cc</a>.</p>
+<p>Definition at line <a class="el" href="_parser_8cc_source.html#l00251">251</a> of file <a class="el" href="_parser_8cc_source.html">Parser.cc</a>.</p>
 
 </div>
 </div>
@@ -296,7 +325,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_sky_traq.html">SkyTraq</a></li><li class="navelem"><a class="el" href="class_sky_traq_1_1_interface.html">Interface</a></li>
-    <li class="footer">Generated on Fri Jun 20 2014 05:00:35 for NavSpark tools by
+    <li class="footer">Generated on Sun Jul 13 2014 19:09:20 for NavSpark tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

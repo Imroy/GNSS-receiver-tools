@@ -9,6 +9,7 @@ var class_sky_traq_1_1_listener =
     [ "GSV", "class_sky_traq_1_1_listener.html#a90dc8996fab9367f8ab6c72ee88d5694", null ],
     [ "Measurement_time", "class_sky_traq_1_1_listener.html#aa5d375f2e112b3a541ce19c505ad223f", null ],
     [ "Raw_measurements", "class_sky_traq_1_1_listener.html#abe3179aeb3af9b51b55497a07c5ebe19", null ],
+    [ "Rcv_state", "class_sky_traq_1_1_listener.html#ad314d1c11ba7905203d3de18c213c61f", null ],
     [ "RMC", "class_sky_traq_1_1_listener.html#a1f0e09c66a54c639f922348a3687dd0b", null ],
     [ "STI", "class_sky_traq_1_1_listener.html#a1aed65a0e184d91629270d614260f53a", null ],
     [ "Subframe_data", "class_sky_traq_1_1_listener.html#a4b219f456ebb3e4ad66070d089b2c53c", null ],

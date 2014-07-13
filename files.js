@@ -6,6 +6,8 @@ var files =
     [ "NMEA-0183.hh", "_n_m_e_a-0183_8hh.html", "_n_m_e_a-0183_8hh" ],
     [ "Parser.cc", "_parser_8cc.html", "_parser_8cc" ],
     [ "Parser.hh", "_parser_8hh.html", [
+      [ "EndOfFile", "class_sky_traq_1_1_end_of_file.html", "class_sky_traq_1_1_end_of_file" ],
+      [ "NotSendable", "class_sky_traq_1_1_not_sendable.html", "class_sky_traq_1_1_not_sendable" ],
       [ "Parser", "class_sky_traq_1_1_parser.html", "class_sky_traq_1_1_parser" ],
       [ "Listener", "class_sky_traq_1_1_listener.html", "class_sky_traq_1_1_listener" ],
       [ "Interface", "class_sky_traq_1_1_interface.html", "class_sky_traq_1_1_interface" ]

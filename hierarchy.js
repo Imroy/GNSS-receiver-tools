@@ -4,6 +4,8 @@ var hierarchy =
       [ "NMEA0183::ChecksumMismatch", "class_n_m_e_a0183_1_1_checksum_mismatch.html", null ],
       [ "NMEA0183::InvalidSentence", "class_n_m_e_a0183_1_1_invalid_sentence.html", null ],
       [ "NMEA0183::UnknownSentenceType", "class_n_m_e_a0183_1_1_unknown_sentence_type.html", null ],
+      [ "SkyTraq::EndOfFile", "class_sky_traq_1_1_end_of_file.html", null ],
+      [ "SkyTraq::NotSendable", "class_sky_traq_1_1_not_sendable.html", null ],
       [ "SkyTraqBin::ChecksumMismatch", "class_sky_traq_bin_1_1_checksum_mismatch.html", null ],
       [ "SkyTraqBin::InsufficientData", "class_sky_traq_bin_1_1_insufficient_data.html", null ],
       [ "SkyTraqBin::InvalidMessage", "class_sky_traq_bin_1_1_invalid_message.html", null ],
