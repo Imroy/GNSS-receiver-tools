@@ -145,6 +145,10 @@ public:
 		<< std::endl;
   }
 
+  void Rcv_state(SkyTraq::Interface* iface, const SkyTraqBin::Rcv_state &rcv_state) {
+    std::cout << "\tReceiver status" << std::endl;
+  }
+
   void Subframe_data(SkyTraq::Interface* iface, const SkyTraqBin::Subframe_data &sfd) {
     std::cout << "\tSubframe data, PRN " << (int)sfd.PRN() << ", subframe #" << (int)sfd.subframe_num() << std::endl;
   }

@@ -96,10 +96,11 @@ namespace SkyTraq {
     inline virtual void ZDA(Interface* iface, const NMEA0183::ZDA &zda) {}
     inline virtual void STI(Interface* iface, const NMEA0183::STI &sti) {}
 
-    // handler methods for SkyTraq binary messages
+    // handler methods for periodic SkyTraq binary messages
     inline virtual void Measurement_time(Interface* iface, const SkyTraqBin::Measurement_time &mt) {}
     inline virtual void Raw_measurements(Interface* iface, const SkyTraqBin::Raw_measurements &rm) {}
     inline virtual void SV_channel_status(Interface* iface, const SkyTraqBin::SV_channel_status &sv_chan) {}
+    inline virtual void Rcv_state(Interface* iface, const SkyTraqBin::Rcv_state &rcv_state) {}
     inline virtual void Subframe_data(Interface* iface, const SkyTraqBin::Subframe_data &sfd) {}
 
     typedef std::shared_ptr<Listener> ptr;

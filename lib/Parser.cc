@@ -203,6 +203,7 @@ namespace SkyTraq {
 	} else FIRE_IF(SkyTraqBin::Measurement_time, Measurement_time)
 	else FIRE_IF(SkyTraqBin::Raw_measurements, Raw_measurements)
 	else FIRE_IF(SkyTraqBin::SV_channel_status, SV_channel_status)
+	else FIRE_IF(SkyTraqBin::Rcv_state, Rcv_state)
 	else FIRE_IF(SkyTraqBin::Subframe_data, Subframe_data)
 	else {
 	  // Assume this is a "response" ouput message, send another message from the queue
