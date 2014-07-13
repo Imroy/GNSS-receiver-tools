@@ -22,9 +22,11 @@ clean:
 install: $(PROGRAMS)
 	install -t $(BINDIR) $(PROGRAMS)
 
-# Ordinary programs that just need the libs
 parse: parse.o $(LIB_OBJS)
 	$(CXX) $(LDFLAGS) $^ $(LIBS) -o $@
+
+record: record.o $(LIB_OBJS)
+	$(CXX) $(LDFLAHS) $^ $(LIBS) -lmongoclient -lboost_thread -lboost_filesystem -lboost_system -lpthread -lssl -lcrypto -o $@
 
 $(LIB_OBJS): %.o: %.cc
 	$(CXX) $(CXXFLAGS) -c $< -o $@
