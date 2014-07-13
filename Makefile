@@ -33,7 +33,7 @@ $(LIB_OBJS): %.o: %.cc
 
 depend:
 	touch .depend
-	makedepend -f .depend -I include include/*.hh lib/*.cc src/*.hh src/*.cc *.cc 2> /dev/null
+	makedepend -f .depend -I include include/*.hh lib/*.cc *.cc 2> /dev/null
 
 ifneq ($(wildcard .depend),)
 include .depend
