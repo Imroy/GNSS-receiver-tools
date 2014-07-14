@@ -167,7 +167,7 @@ public:
       }
     }
 
-    mongo::Query query(doc.asTempObj());
+    mongo::BSONObj query(doc.asTempObj().copy());
 
     mongo::BSONArrayBuilder data;
     for (int i = 0; i < 30; i++)
