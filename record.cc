@@ -18,10 +18,17 @@
 */
 #include <mongo/client/connpool.h>
 #include <mongo/client/dbclient.h>
+#include <boost/date_time/posix_time/posix_time_types.hpp>
 #include "SkyTraq.hh"
 #include "NMEA-0183.hh"
 #include "SkyTraqBin.hh"
 #include "Parser.hh"
+
+namespace greg = boost::gregorian;
+namespace ptime = boost::posix_time;
+
+ptime::ptime GPS_epoch(greg::date(1980, greg::Jan, 6), ptime::seconds(0));
+ptime::ptime time_epoch(greg::date(1970, greg::Jan, 1), ptime::seconds(0));
 
 class MongoListener : public SkyTraq::Listener {
 private:
@@ -30,6 +37,7 @@ private:
   mongo::BSONObjBuilder *_current_doc;
   uint8_t _current_issue;
   uint32_t _time_in_week;
+  ptime::time_duration _leap_seconds = ptime::seconds(16); // Current value since June 30, 2012
 
   void _check_issue(uint8_t i) {
     if (i != _current_issue) {
@@ -54,6 +62,7 @@ public:
     _current_doc(nullptr), _current_issue(0)
   {
     _sdc->conn().ensureIndex(db + ".messages", BSON("week_number" << 1 << "time_in_week" << 1));
+    _sdc->conn().ensureIndex(db + ".messages", BSON("time" << 1));
     _sdc->conn().ensureIndex(db + ".subframes", BSON("PRN" << "1" << "subframe_num" << 1));
     _sdc->conn().ensureIndex(db + ".subframes", BSON("PRN" << "1" << "subframe_num" << 1 << "page_num" << 1));
   }
@@ -63,8 +72,11 @@ public:
 
     _check_issue(mt.issue_of_data());
 
+    ptime::ptime time = GPS_epoch + greg::days(mt.week_number() * 7) + ptime::milliseconds(mt.time_in_week()) - _leap_seconds;
+
     *_current_doc << "week_number" << mt.week_number()
 		  << "time_in_week" << mt.time_in_week()
+		  << "time" << mongo::Date_t((time - time_epoch).total_milliseconds())
 		  << "period" << mt.period();
   }
 
@@ -144,6 +156,15 @@ public:
       // Without this subframe 5 would appear to be page_num + 1.
       uint8_t page_num = 1 + ((_time_in_week - 6000) / 30000) % 25;
       doc << "page_num" << page_num;
+
+      if ((sfd.subframe_num() == 4) && (page_num == 18)) {
+	uint8_t dt_LS = (sfd.word(2) >> 8) & 0xff;
+	if (_leap_seconds.total_seconds() > dt_LS)
+	  // NOTE: Don't know why it's incorrect some times
+	  std::cerr << "Decreasing number of leap seconds!" << std::endl;
+	else
+	  _leap_seconds = ptime::seconds(dt_LS);
+      }
     }
 
     mongo::Query query(doc.asTempObj());
