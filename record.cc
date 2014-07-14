@@ -29,6 +29,7 @@ private:
   std::string _dbname;
   mongo::BSONObjBuilder *_current_doc;
   uint8_t _current_issue;
+  uint32_t _time_in_week;
 
   void _check_issue(uint8_t i) {
     if (i != _current_issue) {
@@ -54,9 +55,12 @@ public:
   {
     _sdc->conn().ensureIndex(db + ".messages", BSON("week_number" << 1 << "time_in_week" << 1));
     _sdc->conn().ensureIndex(db + ".subframes", BSON("PRN" << "1" << "subframe_num" << 1));
+    _sdc->conn().ensureIndex(db + ".subframes", BSON("PRN" << "1" << "subframe_num" << 1 << "page_num" << 1));
   }
 
   void Measurement_time(SkyTraq::Interface* iface, const SkyTraqBin::Measurement_time &mt) {
+    _time_in_week = mt.time_in_week();
+
     _check_issue(mt.issue_of_data());
 
     *_current_doc << "week_number" << mt.week_number()
@@ -134,6 +138,16 @@ public:
     mongo::BSONObjBuilder doc;
     doc << "PRN" << sfd.PRN()
 	<< "subframe_num" << sfd.subframe_num();
+    if (sfd.subframe_num() > 3) {
+      // Note: Fudge factor! I'm going to assume it takes a short amount of
+      // time from the last Measurement_time message until this subframe.
+      // Without this subframe 5 would appear to be page_num + 1.
+      uint8_t page_num = 1 + ((_time_in_week - 6000) / 30000) % 25;
+      doc << "page_num" << page_num;
+    }
+
+    mongo::Query query(doc.asTempObj());
+
     mongo::BSONArrayBuilder words;
     for (int i = 0; i < 10; i++) {
       mongo::BSONArrayBuilder wb;
@@ -148,8 +162,7 @@ public:
 
     std::cerr << "Inserting sub-frame #" << (int)sfd.subframe_num() << " of SV #" << (int)sfd.PRN() << std::endl;
     _sdc->conn().update(_dbname + ".subframes",
-			QUERY("PRN" << sfd.PRN()
-			      << "subframe_num" << sfd.subframe_num()),
+			query,
 			doc.obj(),
 			true);
   }
