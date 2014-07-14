@@ -138,6 +138,7 @@ public:
     for (auto s : sv_chan.statuses())
       std::cout << "\t\tChannel " << (int)s.channel_id
 		<< ", PRN " << (int)s.PRN
+		<< ", is" << (s.sv_is_healthy ? " " : " un") << "healthy"
 		<< ", URA " << (int)s.URA
 		<< ", CN0 " << (int)s.CN0 << " dBHz"
 		<< ", elevation " << s.elevation << "°"
