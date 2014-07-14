@@ -223,8 +223,8 @@ namespace SkyTraqBin {
     _prn(payload[1]),
     _subframe_num(payload[2])
   {
-    for (int i = 0; i < 10; i++)
-      _words[i] = extract_be24(payload, 3 + i * 3);
+    for (int i = 0; i < 30; i++)
+      _bytes[i] = extract_be<unsigned char>(payload, 3 + i);
   }
 
 

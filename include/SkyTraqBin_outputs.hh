@@ -501,7 +501,7 @@ namespace SkyTraqBin {
   class Subframe_data : public Output_message {
   private:
     uint8_t _prn, _subframe_num;
-    uint32_t _words[10];
+    uint8_t _bytes[30];
 
   public:
     //! Constructor from a binary buffer
@@ -509,8 +509,12 @@ namespace SkyTraqBin {
 
     GETTER(uint8_t, PRN, _prn);
     GETTER(uint8_t, subframe_num, _subframe_num);
-    GETTER(uint32_t*, words, _words);
-    inline const uint32_t word(int i) const { return _words[i]; }
+    GETTER(uint8_t*, bytes, _bytes);
+    inline const uint8_t byte(int i) const {
+      if ((i < 0) || (i >= 30))
+	throw std::out_of_range("Can only access byte 0~29");
+      return _bytes[i];
+    }
 
   }; // class Subframe_data
 
