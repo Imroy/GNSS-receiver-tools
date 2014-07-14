@@ -158,7 +158,7 @@ public:
       doc << "page_num" << page_num;
 
       if ((sfd.subframe_num() == 4) && (page_num == 18))
-	_leap_seconds = ptime::seconds(sfd.byte(24));
+	_leap_seconds = ptime::seconds((signed char)sfd.byte(27));
     }
 
     mongo::BSONObj query(doc.asTempObj().copy());
