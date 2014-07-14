@@ -157,14 +157,8 @@ public:
       uint8_t page_num = 1 + ((_time_in_week - 6000) / 30000) % 25;
       doc << "page_num" << page_num;
 
-      if ((sfd.subframe_num() == 4) && (page_num == 18)) {
-	uint8_t dt_LS = sfd.byte(7);
-	if (_leap_seconds.total_seconds() > dt_LS)
-	  // NOTE: Don't know why it's incorrect some times
-	  std::cerr << "Decreasing number of leap seconds!" << std::endl;
-	else
-	  _leap_seconds = ptime::seconds(dt_LS);
-      }
+      if ((sfd.subframe_num() == 4) && (page_num == 18))
+	_leap_seconds = ptime::seconds(sfd.byte(24));
     }
 
     mongo::BSONObj query(doc.asTempObj().copy());
