@@ -145,7 +145,7 @@ namespace SkyTraq {
 	else FIRE_IF(NMEA0183::RMC, RMC)
 	else FIRE_IF(NMEA0183::VTG, VTG)
 	else FIRE_IF(NMEA0183::ZDA, ZDA)
-	else FIRE_IF(NMEA0183::STI, STI);
+	else FIRE_IF(NMEA0183::STI_PPS, STI_PPS);
 
       } catch (std::bad_cast) {
       }

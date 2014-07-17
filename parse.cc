@@ -91,9 +91,8 @@ public:
 	      << std::endl;
   }
 
-  void STI(SkyTraq::Interface* iface, const NMEA0183::STI &sti) {
-    std::cout << "\tProprietary " << sti.proprietary()
-	      << ", PPS mode \"" << sti.PPS_mode() << "\""
+  void STI_PPS(SkyTraq::Interface* iface, const NMEA0183::STI_PPS &sti_pps) {
+    std::cout << "\tSTI PPS, PPS mode \"" << sti_pps.PPS_mode() << "\""
 	      << std::endl;
   }
 

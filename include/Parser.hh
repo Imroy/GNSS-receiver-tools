@@ -94,7 +94,7 @@ namespace SkyTraq {
     inline virtual void RMC(Interface* iface, const NMEA0183::RMC &rmc) {}
     inline virtual void VTG(Interface* iface, const NMEA0183::VTG &vtg) {}
     inline virtual void ZDA(Interface* iface, const NMEA0183::ZDA &zda) {}
-    inline virtual void STI(Interface* iface, const NMEA0183::STI &sti) {}
+    inline virtual void STI_PPS(Interface* iface, const NMEA0183::STI_PPS &sti_pps) {}
 
     // handler methods for periodic SkyTraq binary messages
     inline virtual void Measurement_time(Interface* iface, const SkyTraqBin::Measurement_time &mt) {}

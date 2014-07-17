@@ -21,7 +21,8 @@
 
 /*
   Sources:
-  https://store-lgdi92x.mybigcommerce.com/content/NMEA_Format_v0.1.pdf (Skytraq/NavSpark)
+  https://store-lgdi92x.mybigcommerce.com/content/NMEA_Format_v0.1.pdf	(Skytraq/NavSpark)
+  https://store-lgdi92x.mybigcommerce.com/content/SUP800F_v0.3.pdf	(Skytraq SUP800F)
   http://www.gpsinformation.org/dale/nmea.htm
  */
 
@@ -118,7 +119,10 @@ namespace NMEA0183 {
 
     if ((type == "STI") &&
 	(tid == "P"))
-      return std::make_shared<STI>(tid, type, fields, checksum);
+      switch (std::stoi(fields[0])) {
+      case 1:
+	return std::make_shared<STI_PPS>(tid, type, fields, checksum);
+      }
 
     throw UnknownSentenceType(tid, type);
   }
@@ -286,9 +290,8 @@ namespace NMEA0183 {
   }
 
 
-  STI::STI(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
+  STI_PPS::STI_PPS(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
     Sentence(tid, type, checksum),
-    _proprietary(std::stoi(fields[0])),
     _ppsmode((PPSmode)std::stoi(fields[1])),
     _survey_length((fields.size() > 2 && fields[2].length() > 0) ? std::stod(fields[2]) : 0),
     _quant_error((fields.size() > 3 && fields[3].length() > 0) ? std::stod(fields[3]) : -1e+9)

@@ -30,6 +30,13 @@
 namespace greg = boost::gregorian;
 namespace ptime = boost::posix_time;
 
+/*
+  Sources:
+  https://store-lgdi92x.mybigcommerce.com/content/NMEA_Format_v0.1.pdf	(Skytraq/NavSpark)
+  https://store-lgdi92x.mybigcommerce.com/content/SUP800F_v0.3.pdf	(Skytraq SUP800F)
+  http://www.gpsinformation.org/dale/nmea.htm
+ */
+
 namespace NMEA0183 {
 
   class InvalidSentence : public std::exception {
@@ -317,21 +324,19 @@ namespace NMEA0183 {
   std::ostream& operator<< (std::ostream& out, PPSmode mode);
 
   //! 1 PPS timing report
-  class STI : public Sentence {
+  class STI_PPS : public Sentence {
   private:
-    int _proprietary;
     PPSmode _ppsmode;
     double _survey_length, _quant_error;
 
   public:
-    STI(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
+    STI_PPS(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
 
-    inline const int proprietary(void) const { return _proprietary; }
     inline const PPSmode PPS_mode(void) const { return _ppsmode; }
     inline const double survey_length(void) const { return _survey_length; }
     inline const double quant_error(void) const { return _quant_error; }
 
-  }; // class STI
+  }; // class STI_PPS
 
 }; // namespace NMEA0183
 
