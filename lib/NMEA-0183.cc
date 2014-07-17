@@ -122,6 +122,13 @@ namespace NMEA0183 {
       switch (std::stoi(fields[0])) {
       case 1:
 	return std::make_shared<STI_PPS>(tid, type, fields, checksum);
+
+      case 4:
+	switch (std::stoi(fields[1])) {
+	case 1:
+	  return std::make_shared<STI_sensors>(tid, type, fields, checksum);
+
+	}
       }
 
     throw UnknownSentenceType(tid, type);
@@ -296,6 +303,17 @@ namespace NMEA0183 {
     _survey_length((fields.size() > 2 && fields[2].length() > 0) ? std::stod(fields[2]) : 0),
     _quant_error((fields.size() > 3 && fields[3].length() > 0) ? std::stod(fields[3]) : -1e+9)
   {}
+
+
+  STI_sensors::STI_sensors(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
+    Sentence(tid, type, checksum),
+    _pitch(std::stod(fields[2])),
+    _roll(std::stod(fields[3])),
+    _yaw(std::stod(fields[4])),
+    _pres(std::stod(fields[5])),
+    _temp(std::stod(fields[6]))
+  {}
+
 
 
 }; // namespace NMEA0183

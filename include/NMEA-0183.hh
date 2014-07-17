@@ -338,6 +338,24 @@ namespace NMEA0183 {
 
   }; // class STI_PPS
 
+
+  //! Sensor data from the SUP800F
+  class STI_sensors : public Sentence {
+  private:
+    double _pitch, _roll, _yaw;
+    double _pres, _temp;
+
+  public:
+    STI_sensors(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
+
+    const double pitch(void) const { return _pitch; }
+    const double roll(void) const { return _roll; }
+    const double yaw(void) const { return _yaw; }
+    const double pressure(void) const { return _pres; }
+    const double temperature(void) const { return _temp; }
+
+  }; // class STI_sensors
+
 }; // namespace NMEA0183
 
 namespace std {
