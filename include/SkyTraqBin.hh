@@ -445,6 +445,17 @@ inline void set_##name(type val) { field = code_set; }
 #include "SkyTraqBin_outputs.hh"
 #include "SkyTraqBin_outputs_with_subid.hh"
 
+#undef GETTER
+#undef GETTER_SETTER
+#undef SETTER_BOOL
+#undef GETTER_RAW
+#undef GETTER_SETTER_RAW
+#undef GETTER_MOD
+#undef GETTER_SETTER_MOD
+
+#undef RESPONSE1
+#undef RESPONSE2
+
 namespace std {
   std::string to_string(SkyTraqBin::StartMode mode);
   std::string to_string(SkyTraqBin::SwType sw);
