@@ -62,7 +62,7 @@ namespace SkyTraqBin {
   GPS_almanac_data::GPS_almanac_data(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _prn(payload[1]),
-    _week_no(extract_be<int16_t>(payload, 26))
+    _week_num(extract_be<int16_t>(payload, 26))
   {
     for (int i = 0; i < 8; i++)
       _words[i] = extract_be24(payload, 2 + i * 3);
@@ -79,7 +79,7 @@ namespace SkyTraqBin {
     Output_message(payload, payload_len),
     _fix_type((FixType)payload[1]),
     _num_sv(payload[2]),
-    _week_no(extract_be<uint16_t>(payload, 3)),
+    _week_num(extract_be<uint16_t>(payload, 3)),
     _tow(extract_be<uint32_t>(payload, 5)),
     _lat(extract_be<int32_t>(payload, 9)), _lon(extract_be<int32_t>(payload, 13)),
     _e_alt(extract_be<int32_t>(payload, 17)), _alt(extract_be<int32_t>(payload, 21)),
@@ -308,7 +308,7 @@ namespace SkyTraqBin {
     Output_message_with_subid(payload, payload_len),
     _tow_ms(extract_be<uint32_t>(payload, 2)),
     _tow_ns(extract_be<uint32_t>(payload, 6)),
-    _week_no(extract_be<uint16_t>(payload, 10)),
+    _week_num(extract_be<uint16_t>(payload, 10)),
     _def_leap_secs(payload[12]),
     _curr_leap_secs(payload[13])
   {

@@ -203,7 +203,7 @@ namespace SkyTraqBin {
   class GNSS_time : public Output_message_with_subid {
   private:
     uint32_t _tow_ms, _tow_ns;
-    uint16_t _week_no;
+    uint16_t _week_num;
     int8_t _def_leap_secs, _curr_leap_secs;
     bool _tow_valid, _wn_valid, _ls_valid;
 
@@ -214,11 +214,11 @@ namespace SkyTraqBin {
     GETTER_RAW(uint32_t, subtime_in_week, _tow_ns);
     GETTER_MOD(double, time_in_week, (_tow_ms * 1e-6) + (_tow_ns * 1e-9));
 
-    GETTER(uint16_t, week_no, _week_no);
+    GETTER(uint16_t, week_number, _week_num);
     GETTER(int8_t, default_leap_seconds, _def_leap_secs);
     GETTER(int8_t, current_leap_seconds, _curr_leap_secs);
     GETTER(bool, time_in_week_valid, _tow_valid);
-    GETTER(bool, week_no_valid, _wn_valid);
+    GETTER(bool, week_number_valid, _wn_valid);
     GETTER(bool, leap_seconds_valid, _ls_valid);
 
   }; // class GNSS_time

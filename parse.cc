@@ -112,8 +112,8 @@ public:
 
   void Navigation_data(SkyTraq::Interface* iface, const SkyTraqBin::Nav_data_msg &nav) {
     std::cout << "\tNavigation: " << std::to_string(nav.fix_type())
-	      << ", " << nav.num_sv() << " satellites"
-	      << ", time = " << nav.week_no() << " weeks + " << nav.time_of_week() << " seconds"
+	      << ", " << (int)nav.num_sv() << " satellites"
+	      << ", time = " << nav.week_number() << " weeks + " << nav.time_of_week() << " seconds"
 	      << ", " << nav.lat() << " ° latitude, " << nav.lon() << " ° longitude"
 	      << ", " << nav.alt() << " m altitude"
 	      << ", PDOP " << nav.PDOP() << ", HDOP " << nav.HDOP() << ", VDOP " << nav.VDOP()

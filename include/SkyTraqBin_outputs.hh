@@ -144,7 +144,7 @@ namespace SkyTraqBin {
   private:
     uint8_t _prn;
     uint32_t _words[8];
-    int16_t _week_no;
+    int16_t _week_num;
 
   public:
     GPS_almanac_data(unsigned char* payload, Payload_length payload_len);
@@ -152,7 +152,7 @@ namespace SkyTraqBin {
     GETTER(uint8_t, PRN, _prn);
     GETTER(uint32_t*, words, _words);
     inline const uint32_t word(int i) const { return _words[i+3]; }
-    GETTER(int16_t, week_no, _week_no);
+    GETTER(int16_t, week_number, _week_num);
 
   }; // class GPS_almanac_data
 
@@ -177,7 +177,7 @@ namespace SkyTraqBin {
   private:
     FixType _fix_type;
     uint8_t _num_sv;
-    uint16_t _week_no;
+    uint16_t _week_num;
     uint32_t _tow;
     int32_t _lat, _lon; // * 1e-7 degrees, negative is south/west
     int32_t _e_alt, _alt; // centimetres (this must be signed, right?)
@@ -190,7 +190,7 @@ namespace SkyTraqBin {
 
     GETTER(FixType, fix_type, _fix_type);
     GETTER(uint8_t, num_sv, _num_sv);
-    GETTER(uint16_t, week_no, _week_no);
+    GETTER(uint16_t, week_number, _week_num);
 
     GETTER_MOD(double, time_of_week, _tow * 1e-02);
     GETTER_RAW(uint32_t, time_of_week, _tow);
