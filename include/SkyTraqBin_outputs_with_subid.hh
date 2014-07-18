@@ -239,6 +239,34 @@ namespace SkyTraqBin {
   }; // class GNSS_1PPS_pulse_width
 
 
+  //! Message of accelerometer, magnetometer, pressure and temperature data
+  class Sensor_data : public Output_message_with_subid {
+  private:
+    float _gx, _gy, _gz, _mx, _my, _mz;
+    uint32_t _pres;
+    float _temp;
+
+  public:
+    Sensor_data(unsigned char* payload, Payload_length payload_len);
+
+    GETTER_MOD(float, Gx, _gx * 1e-3);
+    GETTER_RAW(float, Gx, _gx);
+    GETTER_MOD(float, Gy, _gy * 1e-3);
+    GETTER_RAW(float, Gy, _gy);
+    GETTER_MOD(float, Gz, _gz * 1e-3);
+    GETTER_RAW(float, Gz, _gz);
+    GETTER_MOD(float, Mx, _mx * 1e-6);
+    GETTER_RAW(float, Mx, _mx);
+    GETTER_MOD(float, My, _my * 1e-6);
+    GETTER_RAW(float, My, _my);
+    GETTER_MOD(float, Mz, _mz * 1e-6);
+    GETTER_RAW(float, Mz, _mz);
+    GETTER(uint32_t, pressure, _pres);
+    GETTER(float, temperature, _temp);
+
+  }; // class Sensor_data
+
+
 }; // namespace SkyTraqBin
 
 #endif // __SKYTRAQBIN_OUTPUTS_WITH_SUBID_HH__

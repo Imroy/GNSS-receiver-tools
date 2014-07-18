@@ -324,4 +324,17 @@ namespace SkyTraqBin {
   {}
 
 
+  Sensor_data::Sensor_data(unsigned char* payload, Payload_length payload_len) :
+    Output_message_with_subid(payload, payload_len),
+    _gx(extract_be<float>(payload, 2)),
+    _gy(extract_be<float>(payload, 6)),
+    _gz(extract_be<float>(payload, 10)),
+    _mx(extract_be<float>(payload, 14)),
+    _my(extract_be<float>(payload, 18)),
+    _mz(extract_be<float>(payload, 22)),
+    _pres(extract_be<uint32_t>(payload, 26)),
+    _temp(extract_be<float>(payload, 30))
+  {}
+
+
 }; // namespace SkyTraqBin
