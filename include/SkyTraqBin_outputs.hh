@@ -191,7 +191,9 @@ namespace SkyTraqBin {
     GETTER(FixType, fix_type, _fix_type);
     GETTER(uint8_t, num_sv, _num_sv);
     GETTER(uint16_t, week_no, _week_no);
-    GETTER(uint32_t, time_of_week, _tow);
+
+    GETTER_MOD(double, time_of_week, _tow * 1e-02);
+    GETTER_RAW(uint32_t, time_of_week, _tow);
 
     GETTER_MOD(double, lat, _lat * 1e-7);
     GETTER_RAW(int32_t, lat, _lat);
