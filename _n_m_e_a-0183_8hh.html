@@ -106,6 +106,7 @@ $(document).ready(function(){initNavTree('_n_m_e_a-0183_8hh.html','');});
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -157,14 +158,22 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_m_e_a0183_1_1_z_d_a.html">NMEA0183::ZDA</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time and date.  <a href="class_n_m_e_a0183_1_1_z_d_a.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_m_e_a0183_1_1_s_t_i.html">NMEA0183::STI</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">1 PPS timing report  <a href="class_n_m_e_a0183_1_1_s_t_i.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_m_e_a0183_1_1_s_t_i___p_p_s.html">NMEA0183::STI_PPS</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">1 PPS timing report  <a href="class_n_m_e_a0183_1_1_s_t_i___p_p_s.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_m_e_a0183_1_1_s_t_i__sensors.html">NMEA0183::STI_sensors</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sensor data from the SUP800F.  <a href="class_n_m_e_a0183_1_1_s_t_i__sensors.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespace_n_m_e_a0183"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_m_e_a0183.html">NMEA0183</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a53cd5f752177296ab45f08b0c367bea9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_n_m_e_a-0183_8hh.html#a53cd5f752177296ab45f08b0c367bea9">GETTER</a>(type, name, field)&#160;&#160;&#160;inline const type name(void) const { return field; }</td></tr>
+<tr class="separator:a53cd5f752177296ab45f08b0c367bea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -235,13 +244,48 @@ Functions</h2></td></tr>
 <tr class="memitem:a6c0a723684a096bf9bb064974b9bf655"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><b>std::to_string</b> (<a class="el" href="namespace_n_m_e_a0183.html#a117d78d6c7bfe07c02ae4a8aa2012f3a">NMEA0183::PPSmode</a> mode)</td></tr>
 <tr class="separator:a6c0a723684a096bf9bb064974b9bf655"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a53cd5f752177296ab45f08b0c367bea9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GETTER</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">name, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">field&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;inline const type name(void) const { return field; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_n_m_e_a-0183_8hh_source.html#l00089">89</a> of file <a class="el" href="_n_m_e_a-0183_8hh_source.html">NMEA-0183.hh</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="_n_m_e_a-0183_8hh.html">NMEA-0183.hh</a></li>
-    <li class="footer">Generated on Sun Jul 13 2014 19:09:18 for NavSpark tools by
+    <li class="footer">Generated on Fri Jul 18 2014 13:45:25 for NavSpark tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

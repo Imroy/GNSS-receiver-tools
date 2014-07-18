@@ -1,12 +1,12 @@
 var class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status =
 [
     [ "GNSS_SBAS_status", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#a9001d71566c2e74c23f4d50185cc1fbd", null ],
-    [ "correction", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#aa9ef099a17599c3b0e3877d1a572d4ba", null ],
-    [ "EGNOS_enabled", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#a9fa5a22278c59ed169a9e8c83c53dd58", null ],
-    [ "enabled", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#a6841d41819f72a5e5c2a272b06956c31", null ],
-    [ "MSAS_enabled", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#a3f67efc416ad90c80f6e076cd78ceb6f", null ],
-    [ "num_channels", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#a6d04ac6dd671b91637ae00cd0e66f113", null ],
-    [ "ranging", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#a1b9a49808b6d8e9056e5ba4b68ceb581", null ],
-    [ "ranging_URA_mask", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#a99206096ebf22ee357257173be28f364", null ],
-    [ "WAAS_enabled", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#a7b566adaacde112c771e764b6a24c15d", null ]
+    [ "GETTER", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#ae84d58b77fbf62d32310cb0615511a46", null ],
+    [ "GETTER", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#a0c5d449f6c902ee57b16a9438a14e6d2", null ],
+    [ "GETTER", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#a07c3136cf0516851482f2e580aa7912f", null ],
+    [ "GETTER", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#a99aeab822e66d13e4a86b7da9296537b", null ],
+    [ "GETTER", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#a59f62df83390ed8137dc15ee70b528f3", null ],
+    [ "GETTER", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#a56f638785908fcf68a1f75176f8306d8", null ],
+    [ "GETTER", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#a9826651bc26fed0700f79439ec8e42ea", null ],
+    [ "GETTER", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#a8511e395e8567e2fd53d98a227a494a8", null ]
 ];

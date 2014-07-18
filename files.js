@@ -109,6 +109,7 @@ var files =
       [ "GNSS_nav_mode", "class_sky_traq_bin_1_1_g_n_s_s__nav__mode.html", "class_sky_traq_bin_1_1_g_n_s_s__nav__mode" ],
       [ "GNSS_constellation_type", "class_sky_traq_bin_1_1_g_n_s_s__constellation__type.html", "class_sky_traq_bin_1_1_g_n_s_s__constellation__type" ],
       [ "GNSS_time", "class_sky_traq_bin_1_1_g_n_s_s__time.html", "class_sky_traq_bin_1_1_g_n_s_s__time" ],
-      [ "GNSS_1PPS_pulse_width", "class_sky_traq_bin_1_1_g_n_s_s__1_p_p_s__pulse__width.html", "class_sky_traq_bin_1_1_g_n_s_s__1_p_p_s__pulse__width" ]
+      [ "GNSS_1PPS_pulse_width", "class_sky_traq_bin_1_1_g_n_s_s__1_p_p_s__pulse__width.html", "class_sky_traq_bin_1_1_g_n_s_s__1_p_p_s__pulse__width" ],
+      [ "Sensor_data", "class_sky_traq_bin_1_1_sensor__data.html", "class_sky_traq_bin_1_1_sensor__data" ]
     ] ]
 ];

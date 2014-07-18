@@ -12,7 +12,9 @@ var _n_m_e_a_0183_8hh =
     [ "RMC", "class_n_m_e_a0183_1_1_r_m_c.html", "class_n_m_e_a0183_1_1_r_m_c" ],
     [ "VTG", "class_n_m_e_a0183_1_1_v_t_g.html", "class_n_m_e_a0183_1_1_v_t_g" ],
     [ "ZDA", "class_n_m_e_a0183_1_1_z_d_a.html", "class_n_m_e_a0183_1_1_z_d_a" ],
-    [ "STI", "class_n_m_e_a0183_1_1_s_t_i.html", "class_n_m_e_a0183_1_1_s_t_i" ],
+    [ "STI_PPS", "class_n_m_e_a0183_1_1_s_t_i___p_p_s.html", "class_n_m_e_a0183_1_1_s_t_i___p_p_s" ],
+    [ "STI_sensors", "class_n_m_e_a0183_1_1_s_t_i__sensors.html", "class_n_m_e_a0183_1_1_s_t_i__sensors" ],
+    [ "GETTER", "_n_m_e_a-0183_8hh.html#a53cd5f752177296ab45f08b0c367bea9", null ],
     [ "FixQuality", "_n_m_e_a-0183_8hh.html#ae7b81b2e62b4cbcc6561a054217b46ae", [
       [ "Unavailable", "_n_m_e_a-0183_8hh.html#ae7b81b2e62b4cbcc6561a054217b46aea453e6aa38d87b28ccae545967c53004f", null ],
       [ "SPSmode", "_n_m_e_a-0183_8hh.html#ae7b81b2e62b4cbcc6561a054217b46aeaf96ca3891a20024d07a64bc83adddcc6", null ],

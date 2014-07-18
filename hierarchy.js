@@ -20,7 +20,8 @@ var hierarchy =
         [ "NMEA0183::GSA", "class_n_m_e_a0183_1_1_g_s_a.html", null ],
         [ "NMEA0183::GSV", "class_n_m_e_a0183_1_1_g_s_v.html", null ],
         [ "NMEA0183::RMC", "class_n_m_e_a0183_1_1_r_m_c.html", null ],
-        [ "NMEA0183::STI", "class_n_m_e_a0183_1_1_s_t_i.html", null ],
+        [ "NMEA0183::STI_PPS", "class_n_m_e_a0183_1_1_s_t_i___p_p_s.html", null ],
+        [ "NMEA0183::STI_sensors", "class_n_m_e_a0183_1_1_s_t_i__sensors.html", null ],
         [ "NMEA0183::VTG", "class_n_m_e_a0183_1_1_v_t_g.html", null ],
         [ "NMEA0183::ZDA", "class_n_m_e_a0183_1_1_z_d_a.html", null ]
       ] ],
@@ -102,7 +103,8 @@ var hierarchy =
             [ "SkyTraqBin::GNSS_QZSS_status", "class_sky_traq_bin_1_1_g_n_s_s___q_z_s_s__status.html", null ],
             [ "SkyTraqBin::GNSS_SAEE_status", "class_sky_traq_bin_1_1_g_n_s_s___s_a_e_e__status.html", null ],
             [ "SkyTraqBin::GNSS_SBAS_status", "class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html", null ],
-            [ "SkyTraqBin::GNSS_time", "class_sky_traq_bin_1_1_g_n_s_s__time.html", null ]
+            [ "SkyTraqBin::GNSS_time", "class_sky_traq_bin_1_1_g_n_s_s__time.html", null ],
+            [ "SkyTraqBin::Sensor_data", "class_sky_traq_bin_1_1_sensor__data.html", null ]
           ] ],
           [ "SkyTraqBin::Pos_update_rate", "class_sky_traq_bin_1_1_pos__update__rate.html", null ],
           [ "SkyTraqBin::Raw_measurements", "class_sky_traq_bin_1_1_raw__measurements.html", null ],

@@ -9,7 +9,8 @@ var namespace_n_m_e_a0183 =
     [ "RMC", "class_n_m_e_a0183_1_1_r_m_c.html", "class_n_m_e_a0183_1_1_r_m_c" ],
     [ "SatelliteData", "struct_n_m_e_a0183_1_1_satellite_data.html", "struct_n_m_e_a0183_1_1_satellite_data" ],
     [ "Sentence", "class_n_m_e_a0183_1_1_sentence.html", "class_n_m_e_a0183_1_1_sentence" ],
-    [ "STI", "class_n_m_e_a0183_1_1_s_t_i.html", "class_n_m_e_a0183_1_1_s_t_i" ],
+    [ "STI_PPS", "class_n_m_e_a0183_1_1_s_t_i___p_p_s.html", "class_n_m_e_a0183_1_1_s_t_i___p_p_s" ],
+    [ "STI_sensors", "class_n_m_e_a0183_1_1_s_t_i__sensors.html", "class_n_m_e_a0183_1_1_s_t_i__sensors" ],
     [ "UnknownSentenceType", "class_n_m_e_a0183_1_1_unknown_sentence_type.html", "class_n_m_e_a0183_1_1_unknown_sentence_type" ],
     [ "VTG", "class_n_m_e_a0183_1_1_v_t_g.html", "class_n_m_e_a0183_1_1_v_t_g" ],
     [ "ZDA", "class_n_m_e_a0183_1_1_z_d_a.html", "class_n_m_e_a0183_1_1_z_d_a" ]

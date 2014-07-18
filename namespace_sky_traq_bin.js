@@ -82,6 +82,7 @@ var namespace_sky_traq_bin =
     [ "RawMeasurement", "struct_sky_traq_bin_1_1_raw_measurement.html", "struct_sky_traq_bin_1_1_raw_measurement" ],
     [ "Rcv_state", "class_sky_traq_bin_1_1_rcv__state.html", "class_sky_traq_bin_1_1_rcv__state" ],
     [ "Restart_sys", "class_sky_traq_bin_1_1_restart__sys.html", "class_sky_traq_bin_1_1_restart__sys" ],
+    [ "Sensor_data", "class_sky_traq_bin_1_1_sensor__data.html", "class_sky_traq_bin_1_1_sensor__data" ],
     [ "Set_factory_defaults", "class_sky_traq_bin_1_1_set__factory__defaults.html", "class_sky_traq_bin_1_1_set__factory__defaults" ],
     [ "Set_GPS_ephemeris", "class_sky_traq_bin_1_1_set___g_p_s__ephemeris.html", "class_sky_traq_bin_1_1_set___g_p_s__ephemeris" ],
     [ "Subframe_data", "class_sky_traq_bin_1_1_subframe__data.html", "class_sky_traq_bin_1_1_subframe__data" ],
