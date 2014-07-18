@@ -86,6 +86,8 @@ namespace NMEA0183 {
   }; // class UnknownSentenceType
 
 
+#define GETTER(type, name, field) inline const type name(void) const { return field; }
+
   //! Base class for holding NMEA-0183 sentence data
   class Sentence : public SkyTraq::Message {
   private:
@@ -98,9 +100,9 @@ namespace NMEA0183 {
 
     typedef std::shared_ptr<Sentence> ptr;
 
-    inline const std::string talker_id(void) const { return std::string(_talker_id, 2); }
-    inline const std::string type(void) const { return std::string(_type, 3); }
-    inline const unsigned char checksum(void) const { return _checksum; }
+    GETTER(std::string, talker_id, std::string(_talker_id, 2));
+    GETTER(std::string, type, std::string(_type, 3));
+    GETTER(unsigned, char checksum, _checksum);
 
     //    friend Sentence::ptr parse_sentence(std::string line);
   }; // class Sentence
@@ -140,16 +142,16 @@ namespace NMEA0183 {
   public:
     GGA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
 
-    inline const ptime::time_duration UTC_time(void) const { return _utc_time; }
-    inline const double lattitude(void) const { return _lattitude; }
-    inline const double longitude(void) const { return _longitude; }
-    inline const FixQuality fix_quality(void) const { return _fix_quality; }
-    inline const int num_sats_used(void) const { return _num_sats_used; }
-    inline const double HDOP(void) const { return _hdop; }
-    inline const double altitude(void) const { return _altitude; }
-    inline const double GEOID_separation(void) const { return _geoid_sep; }
-    inline const int DGPS_update_age(void) const { return _dgps_update_age; }
-    inline const int DGPS_station_id(void) const { return _dgps_station_id; }
+    GETTER(ptime::time_duration, UTC_time, _utc_time);
+    GETTER(double, lattitude, _lattitude);
+    GETTER(double, longitude, _longitude);
+    GETTER(FixQuality, fix_quality, _fix_quality);
+    GETTER(int, num_sats_used, _num_sats_used);
+    GETTER(double, HDOP, _hdop);
+    GETTER(double, altitude, _altitude);
+    GETTER(double, GEOID_separation, _geoid_sep);
+    GETTER(int, DGPS_update_age, _dgps_update_age);
+    GETTER(int, DGPS_station_id, _dgps_station_id);
 
   }; // class GGA
 
@@ -176,10 +178,10 @@ namespace NMEA0183 {
   public:
     GLL(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
 
-    inline const double lattitude(void) const { return _lattitude; }
-    inline const double longitude(void) const { return _longitude; }
-    inline const ptime::time_duration UTC_time(void) const { return _utc_time; }
-    inline const ReceiverMode receiver_mode(void) const { return _mode; }
+    GETTER(double, lattitude, _lattitude);
+    GETTER(double, longitude, _longitude);
+    GETTER(ptime::time_duration, UTC_time, _utc_time);
+    GETTER(ReceiverMode, receiver_mode, _mode);
 
   }; // class GLL
 
@@ -212,12 +214,12 @@ namespace NMEA0183 {
   public:
     GSA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
 
-    inline const OpMode mode(void) const { return _mode; }
-    inline const FixType fix_type(void) const { return _fixtype; }
-    inline const std::vector<int> satellite_ids(void) const { return _sat_ids; }
-    inline const double PDOP(void) const { return _pdop; }
-    inline const double HDOP(void) const { return _hdop; }
-    inline const double VDOP(void) const { return _vdop; }
+    GETTER(OpMode, mode, _mode);
+    GETTER(FixType, fix_type, _fixtype);
+    GETTER(std::vector<int>, satellite_ids, _sat_ids);
+    GETTER(double, PDOP, _pdop);
+    GETTER(double, HDOP, _hdop);
+    GETTER(double, VDOP, _vdop);
 
   }; // class GSA
 
@@ -245,10 +247,10 @@ namespace NMEA0183 {
   public:
     GSV(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
 
-    inline const int num_messages(void) const { return _num_messages; }
-    inline const int message_seq(void) const { return _msg_seq; }
-    inline const int satellites_in_view(void) const { return _sats_in_view; }
-    inline const std::vector<SatelliteData::ptr> satellite_data(void) const { return _sat_data; }
+    GETTER(int, num_messages, _num_messages);
+    GETTER(int, message_seq, _msg_seq);
+    GETTER(int, satellites_in_view, _sats_in_view);
+    GETTER(std::vector<SatelliteData::ptr>, satellite_data, _sat_data);
 
   }; // class GSV
 
@@ -265,15 +267,15 @@ namespace NMEA0183 {
   public:
     RMC(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
 
-    inline const ptime::ptime UTC_datetime(void) const { return _utc_datetime; }
-    inline const ptime::time_duration UTC_time(void) const { return _utc_datetime.time_of_day(); }
-    inline const bool status(void) const { return _status; }
-    inline const double lattitude(void) const { return _lattitude; }
-    inline const double longitude(void) const { return _longitude; }
-    inline const double speed(void) const { return _speed; }
-    inline const double course(void) const { return _course; }
-    inline const greg::date UTC_date(void) const { return _utc_datetime.date(); }
-    inline const ReceiverMode receiver_mode(void) const { return _mode; }
+    GETTER(ptime::ptime, UTC_datetime, _utc_datetime);
+    GETTER(ptime::time_duration, UTC_time, _utc_datetime.time_of_day());
+    GETTER(bool, status, _status);
+    GETTER(double, lattitude, _lattitude);
+    GETTER(double, longitude, _longitude);
+    GETTER(double, speed, _speed);
+    GETTER(double, course, _course);
+    GETTER(greg::date, UTC_date, _utc_datetime.date());
+    GETTER(ReceiverMode, receiver_mode, _mode);
 
   }; // class RMC
 
@@ -288,11 +290,11 @@ namespace NMEA0183 {
   public:
     VTG(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
 
-    inline const double true_course(void) const { return _course_true; }
-    inline const double magnetic_course(void) const { return _course_magnetic; }
-    inline const double speed_knots(void) const { return _speed_knots; }
-    inline const double speed(void) const { return _speed; }
-    inline const ReceiverMode receiver_mode(void) const { return _mode; }
+    GETTER(double, true_course, _course_true);
+    GETTER(double, magnetic_course, _course_magnetic);
+    GETTER(double, speed_knots, _speed_knots);
+    GETTER(double, speed, _speed);
+    GETTER(ReceiverMode, receiver_mode, _mode);
 
   }; // class VTG
 
@@ -306,11 +308,11 @@ namespace NMEA0183 {
   public:
     ZDA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
 
-    inline const ptime::ptime UTC_datetime(void) const { return _utc_datetime; }
-    inline const ptime::time_duration UTC_time(void) const { return _utc_datetime.time_of_day(); }
-    inline const greg::date UTC_date(void) const { return _utc_datetime.date(); }
-    inline const int TZ_hours(void) const { return _tzhr; }
-    inline const int TZ_minutes(void) const { return _tzmin; }
+    GETTER(ptime::ptime, UTC_datetime, _utc_datetime);
+    GETTER(ptime::time_duration, UTC_time, _utc_datetime.time_of_day());
+    GETTER(greg::date, UTC_date, _utc_datetime.date());
+    GETTER(int, TZ_hours, _tzhr);
+    GETTER(int, TZ_minutes, _tzmin);
 
   }; // class ZDA
 
@@ -332,9 +334,9 @@ namespace NMEA0183 {
   public:
     STI_PPS(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
 
-    inline const PPSmode PPS_mode(void) const { return _ppsmode; }
-    inline const double survey_length(void) const { return _survey_length; }
-    inline const double quant_error(void) const { return _quant_error; }
+    GETTER(PPSmode, PPS_mode, _ppsmode);
+    GETTER(double, survey_length, _survey_length);
+    GETTER(double, quant_error, _quant_error);
 
   }; // class STI_PPS
 
@@ -348,13 +350,15 @@ namespace NMEA0183 {
   public:
     STI_sensors(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
 
-    const double pitch(void) const { return _pitch; }
-    const double roll(void) const { return _roll; }
-    const double yaw(void) const { return _yaw; }
-    const double pressure(void) const { return _pres; }
-    const double temperature(void) const { return _temp; }
+    GETTER(double, pitch, _pitch);
+    GETTER(double, roll, _roll);
+    GETTER(double, yaw, _yaw);
+    GETTER(double, pressure, _pres);
+    GETTER(double, temperature, _temp);
 
   }; // class STI_sensors
+
+#undef GETTER
 
 }; // namespace NMEA0183
 
