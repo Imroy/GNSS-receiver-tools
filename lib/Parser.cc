@@ -201,7 +201,9 @@ namespace SkyTraq {
 	    _response_handlers.erase(id);
 	  }
 
-	} else FIRE_IF(SkyTraqBin::Measurement_time, Measurement_time)
+	} else FIRE_IF(SkyTraqBin::Nav_data_msg, Navigation_data)
+	else FIRE_IF(SkyTraqBin::Sensor_data, Sensor_data)
+	else FIRE_IF(SkyTraqBin::Measurement_time, Measurement_time)
 	else FIRE_IF(SkyTraqBin::Raw_measurements, Raw_measurements)
 	else FIRE_IF(SkyTraqBin::SV_channel_status, SV_channel_status)
 	else FIRE_IF(SkyTraqBin::Rcv_state, Rcv_state)

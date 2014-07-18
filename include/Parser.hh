@@ -95,11 +95,15 @@ namespace SkyTraq {
     inline virtual void VTG(Interface* iface, const NMEA0183::VTG &vtg) {}
     inline virtual void ZDA(Interface* iface, const NMEA0183::ZDA &zda) {}
 
-    // Proprietary SkyTraq sentences
+    // handler methods for proprietary SkyTraq sentences
     inline virtual void STI_PPS(Interface* iface, const NMEA0183::STI_PPS &sti_pps) {}
     inline virtual void STI_sensors(Interface* iface, const NMEA0183::STI_sensors &sti_sensors) {}
 
     // handler methods for periodic SkyTraq binary messages
+    inline virtual void Navigation_data(Interface* iface, const SkyTraqBin::Nav_data_msg &nav) {}
+    inline virtual void Sensor_data(Interface* iface, const SkyTraqBin::Sensor_data &sd) {}
+
+    // handler methods for periodic NS-RAW binary messages
     inline virtual void Measurement_time(Interface* iface, const SkyTraqBin::Measurement_time &mt) {}
     inline virtual void Raw_measurements(Interface* iface, const SkyTraqBin::Raw_measurements &rm) {}
     inline virtual void SV_channel_status(Interface* iface, const SkyTraqBin::SV_channel_status &sv_chan) {}

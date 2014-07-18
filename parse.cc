@@ -110,6 +110,24 @@ public:
     std::cout << std::dec << std::endl;
   }
 
+  void Navigation_data(SkyTraq::Interface* iface, const SkyTraqBin::Nav_data_msg &nav) {
+    std::cout << "\tNavigation: " << std::to_string(nav.fix_type())
+	      << ", " << nav.num_sv() << " satellites"
+	      << ", time = " << nav.week_no() << " weeks + " << nav.time_of_week() << " seconds"
+	      << ", " << nav.lat() << " ° latitude, " << nav.lon() << " ° longitude"
+	      << ", " << nav.alt() << " m altitude"
+	      << ", PDOP " << nav.PDOP() << ", HDOP " << nav.HDOP() << ", VDOP " << nav.VDOP()
+	      << std::endl;
+  }
+
+  void Sensor_data(SkyTraq::Interface* iface, const SkyTraqBin::Sensor_data &sd) {
+    std::cout << "\tSensors: acceleration (" << sd.Gx() << ", " << sd.Gy() << ", " << sd.Gz() << ") g"
+	      << ", magnetic flux (" << sd.Mx() << ", " << sd.My() << ", " << sd.My() << ") T"
+	      << ", atmospheric pressure " << sd.pressure() << " Pa"
+	      << ", temperature " << sd.temperature() << " °C"
+	      << std::endl;
+  }
+
   void Measurement_time(SkyTraq::Interface* iface, const SkyTraqBin::Measurement_time &mt) {
     std::cout << "\tMeasurement time, issue of data: " << (int)mt.issue_of_data()
 	      << ", week " << mt.week_number()
