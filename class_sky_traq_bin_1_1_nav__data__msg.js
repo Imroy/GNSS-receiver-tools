@@ -3,7 +3,7 @@ var class_sky_traq_bin_1_1_nav__data__msg =
     [ "Nav_data_msg", "class_sky_traq_bin_1_1_nav__data__msg.html#a2917801890155d29de98e964f1e3b3d3", null ],
     [ "GETTER", "class_sky_traq_bin_1_1_nav__data__msg.html#a289fadb034d616066bcb32ef4531e3cd", null ],
     [ "GETTER", "class_sky_traq_bin_1_1_nav__data__msg.html#acc1938e3459157c323400495ed6f1ad2", null ],
-    [ "GETTER", "class_sky_traq_bin_1_1_nav__data__msg.html#a60f0f7c25d2d4fb696d0ce4983b7987c", null ],
+    [ "GETTER", "class_sky_traq_bin_1_1_nav__data__msg.html#ac6ccefcaa05ae3bad9d97dc7ed2e0946", null ],
     [ "GETTER_MOD", "class_sky_traq_bin_1_1_nav__data__msg.html#ad785b45f436c3f40a56ea5caa9784bc2", null ],
     [ "GETTER_MOD", "class_sky_traq_bin_1_1_nav__data__msg.html#a0b03661fcc8c62e929d92d74a5c44f5b", null ],
     [ "GETTER_MOD", "class_sky_traq_bin_1_1_nav__data__msg.html#aebe20391d2654a241177726a7d3c5766", null ],

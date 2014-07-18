@@ -238,7 +238,7 @@ $(document).ready(function(){initNavTree('_sky_traq_bin__outputs_8hh_source.html
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    uint8_t _prn;</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    uint32_t _words[8];</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    int16_t _week_no;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    int16_t _week_num;</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <a class="code" href="class_sky_traq_bin_1_1_g_p_s__almanac__data.html#a858916e7d2f9b2bdbcf027c55ab2bd80">GPS_almanac_data</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* payload, <a class="code" href="namespace_sky_traq_bin.html#a636b95f91ba4b517bd69f364d692765d">Payload_length</a> payload_len);</div>
@@ -246,7 +246,7 @@ $(document).ready(function(){initNavTree('_sky_traq_bin__outputs_8hh_source.html
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <a class="code" href="class_sky_traq_bin_1_1_g_p_s__almanac__data.html#ab9dabc5813d91f410d0ca474583e707b">GETTER</a>(uint8_t, PRN, _prn);</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <a class="code" href="class_sky_traq_bin_1_1_g_p_s__almanac__data.html#ab9dabc5813d91f410d0ca474583e707b">GETTER</a>(uint32_t*, words, _words);</div>
 <div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="class_sky_traq_bin_1_1_g_p_s__almanac__data.html#a7594e84da512d8f828d7af6ef066e456">  154</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> uint32_t <a class="code" href="class_sky_traq_bin_1_1_g_p_s__almanac__data.html#a7594e84da512d8f828d7af6ef066e456">word</a>(<span class="keywordtype">int</span> i)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _words[i+3]; }</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <a class="code" href="class_sky_traq_bin_1_1_g_p_s__almanac__data.html#ab9dabc5813d91f410d0ca474583e707b">GETTER</a>(int16_t, week_no, _week_no);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <a class="code" href="class_sky_traq_bin_1_1_g_p_s__almanac__data.html#ab9dabc5813d91f410d0ca474583e707b">GETTER</a>(int16_t, week_number, _week_num);</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  }; <span class="comment">// class GPS_almanac_data</span></div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
@@ -267,7 +267,7 @@ $(document).ready(function(){initNavTree('_sky_traq_bin__outputs_8hh_source.html
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <a class="code" href="namespace_sky_traq_bin.html#a2503838326eb69a8104c6bad34d8e957">FixType</a> _fix_type;</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    uint8_t _num_sv;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    uint16_t _week_no;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    uint16_t _week_num;</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    uint32_t _tow;</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    int32_t _lat, _lon; <span class="comment">// * 1e-7 degrees, negative is south/west</span></div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    int32_t _e_alt, _alt; <span class="comment">// centimetres (this must be signed, right?)</span></div>
@@ -280,7 +280,7 @@ $(document).ready(function(){initNavTree('_sky_traq_bin__outputs_8hh_source.html
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <a class="code" href="class_sky_traq_bin_1_1_nav__data__msg.html#a289fadb034d616066bcb32ef4531e3cd">GETTER</a>(<a class="code" href="namespace_sky_traq_bin.html#a2503838326eb69a8104c6bad34d8e957">FixType</a>, fix_type, _fix_type);</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <a class="code" href="class_sky_traq_bin_1_1_nav__data__msg.html#a289fadb034d616066bcb32ef4531e3cd">GETTER</a>(uint8_t, num_sv, _num_sv);</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <a class="code" href="class_sky_traq_bin_1_1_nav__data__msg.html#a289fadb034d616066bcb32ef4531e3cd">GETTER</a>(uint16_t, week_no, _week_no);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <a class="code" href="class_sky_traq_bin_1_1_nav__data__msg.html#a289fadb034d616066bcb32ef4531e3cd">GETTER</a>(uint16_t, week_number, _week_num);</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <a class="code" href="class_sky_traq_bin_1_1_nav__data__msg.html#ad785b45f436c3f40a56ea5caa9784bc2">GETTER_MOD</a>(<span class="keywordtype">double</span>, time_of_week, _tow * 1e-02);</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <a class="code" href="class_sky_traq_bin_1_1_nav__data__msg.html#aa77f2f6727303468339068c7a85fc53a">GETTER_RAW</a>(uint32_t, time_of_week, _tow);</div>
@@ -707,7 +707,7 @@ $(document).ready(function(){initNavTree('_sky_traq_bin__outputs_8hh_source.html
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="_sky_traq_bin__outputs_8hh.html">SkyTraqBin_outputs.hh</a></li>
-    <li class="footer">Generated on Fri Jul 18 2014 13:45:25 for NavSpark tools by
+    <li class="footer">Generated on Fri Jul 18 2014 21:05:35 for NavSpark tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>
