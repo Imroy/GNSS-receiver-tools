@@ -249,18 +249,17 @@ namespace SkyTraqBin {
   public:
     Sensor_data(unsigned char* payload, Payload_length payload_len);
 
-    GETTER_MOD(float, Gx, _gx * 1e-3);
-    GETTER_RAW(float, Gx, _gx);
-    GETTER_MOD(float, Gy, _gy * 1e-3);
-    GETTER_RAW(float, Gy, _gy);
-    GETTER_MOD(float, Gz, _gz * 1e-3);
-    GETTER_RAW(float, Gz, _gz);
+    GETTER(float, Gx, _gx);
+    GETTER(float, Gy, _gy);
+    GETTER(float, Gz, _gz);
+
     GETTER_MOD(float, Mx, _mx * 1e-6);
     GETTER_RAW(float, Mx, _mx);
     GETTER_MOD(float, My, _my * 1e-6);
     GETTER_RAW(float, My, _my);
     GETTER_MOD(float, Mz, _mz * 1e-6);
     GETTER_RAW(float, Mz, _mz);
+
     GETTER(uint32_t, pressure, _pres);
     GETTER(float, temperature, _temp);
 
