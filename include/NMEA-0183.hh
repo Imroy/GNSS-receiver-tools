@@ -33,7 +33,7 @@ namespace ptime = boost::posix_time;
 /*
   Sources:
   https://store-lgdi92x.mybigcommerce.com/content/NMEA_Format_v0.1.pdf	(Skytraq/NavSpark)
-  https://store-lgdi92x.mybigcommerce.com/content/SUP800F_v0.3.pdf	(Skytraq SUP800F)
+  https://store-lgdi92x.mybigcommerce.com/content/SUP800F_v0.6.pdf	(Skytraq SUP800F)
   http://www.gpsinformation.org/dale/nmea.htm
  */
 
