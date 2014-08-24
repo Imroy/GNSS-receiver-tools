@@ -16,13 +16,7 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef __SKYTRAQ_HH__
-#define __SKYTRAQ_HH__
-
-#include <iostream>
-#include <memory>
-#include <typeinfo>
-#include <vector>
+#include "SkyTraq.hh"
 
 /*
   Sources:
@@ -32,44 +26,26 @@
 
 namespace SkyTraq {
 
-  //! Abstract base class for both NMEA-0183 and binary messages
-  class Message {
-  public:
-    //! Virtual destructor to force polymorphism
-    inline virtual ~Message() {}
-
-    //! Check the type of an object
-    template <typename T>
-    inline bool isa(void) const { return typeid(*this) == typeid(T); }
-
-    //! Recast this object to another type
-    template <typename T>
-    inline T* cast_as(void) {
-      T *a = dynamic_cast<T*>(this);
-      if (a == nullptr)
-	throw std::bad_cast();
-      return a;
-    }
-
-    typedef std::shared_ptr<Message> ptr;
-  }; // class Message
-
-
-  enum class TimingMode : uint8_t {
-    PVT = 0,
-      Survey,
-      Static,
-  }; // class TimingMode
-
-  std::ostream& operator<< (std::ostream& out, TimingMode tm);
+  std::ostream& operator<< (std::ostream& out, TimingMode tm) {
+    out << std::to_string(tm);
+    return out;
+  }
 
 
 }; // namespace SkyTraq
 
 namespace std {
 
-  std::string to_string(SkyTraq::TimingMode tm);
+  std::string to_string(SkyTraq::TimingMode tm) {
+    switch (tm) {
+    case SkyTraq::TimingMode::PVT:
+      return "PVT";
+    case SkyTraq::TimingMode::Survey:
+      return "survey";
+    case SkyTraq::TimingMode::Static:
+      return "static";
+    }
+    throw invalid_argument("Unrecognised value for TimingMode");
+  }
 
 }; // namespace std
-
-#endif // __SKYTRAQ_HH__

@@ -317,24 +317,16 @@ namespace NMEA0183 {
   }; // class ZDA
 
 
-  enum class PPSmode : uint8_t {
-    PVT = 0,
-      Survey,
-      Static,
-  }; // class PPSmode
-
-  std::ostream& operator<< (std::ostream& out, PPSmode mode);
-
   //! 1 PPS timing report
   class STI_PPS : public Sentence {
   private:
-    PPSmode _ppsmode;
+    SkyTraq::TimingMode _timing_mode;
     double _survey_length, _quant_error;
 
   public:
     STI_PPS(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum);
 
-    GETTER(PPSmode, PPS_mode, _ppsmode);
+    GETTER(SkyTraq::TimingMode, timing_mode, _timing_mode);
     GETTER(double, survey_length, _survey_length);
     GETTER(double, quant_error, _quant_error);
 
@@ -367,7 +359,6 @@ namespace std {
   std::string to_string(NMEA0183::ReceiverMode mode);
   std::string to_string(NMEA0183::OpMode mode);
   std::string to_string(NMEA0183::FixType type);
-  std::string to_string(NMEA0183::PPSmode mode);
 }; // namespace std
 
 #endif // __NMEA_0183_HH__

@@ -92,7 +92,7 @@ public:
   }
 
   void STI_PPS(SkyTraq::Interface* iface, const NMEA0183::STI_PPS &sti_pps) {
-    std::cout << "\tSTI PPS, PPS mode \"" << sti_pps.PPS_mode() << "\""
+    std::cout << "\tSTI PPS, PPS mode \"" << sti_pps.timing_mode() << "\""
 	      << std::endl;
   }
 

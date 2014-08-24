@@ -291,7 +291,7 @@ namespace NMEA0183 {
   {}
 
 
-  std::ostream& operator<< (std::ostream& out, PPSmode mode) {
+  std::ostream& operator<< (std::ostream& out, SkyTraq::TimingMode mode) {
     out << std::to_string(mode);
     return out;
   }
@@ -299,7 +299,7 @@ namespace NMEA0183 {
 
   STI_PPS::STI_PPS(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
     Sentence(tid, type, checksum),
-    _ppsmode((PPSmode)std::stoi(fields[1])),
+    _timing_mode((SkyTraq::TimingMode)std::stoi(fields[1])),
     _survey_length((fields.size() > 2 && fields[2].length() > 0) ? std::stod(fields[2]) : 0),
     _quant_error((fields.size() > 3 && fields[3].length() > 0) ? std::stod(fields[3]) : -1e+9)
   {}
@@ -384,16 +384,5 @@ namespace std {
     throw invalid_argument("Unrecognised value for FixType");
   }
 
-  std::string to_string(NMEA0183::PPSmode mode) {
-    switch (mode) {
-    case NMEA0183::PPSmode::PVT:
-      return "PVT";
-    case NMEA0183::PPSmode::Survey:
-      return "survey";
-    case NMEA0183::PPSmode::Static:
-      return "static";
-    }
-    throw invalid_argument("Unrecognised value for PPSmode");
-  }
 
 }; // namespace std
