@@ -393,6 +393,17 @@ inline void set_##name(type val) { field = code_set; }
   std::ostream& operator<< (std::ostream& out, EnableOrAuto eoa);
 
 
+  enum class ParameterSearchEngineMode : uint8_t {
+    Default = 0,
+      Low,
+      Mid,
+      High,
+      Full,
+  }; // class ParameterSearchEngineMode
+
+  std::ostream& operator<< (std::ostream& out, ParameterSearchEngineMode mode);
+
+
   enum class NavigationMode : uint8_t {
     Auto = 0,
       Pedestrian,
@@ -478,6 +489,7 @@ namespace std {
   std::string to_string(SkyTraqBin::DefaultOrEnable doe);
   std::string to_string(SkyTraqBin::TalkerID id);
   std::string to_string(SkyTraqBin::EnableOrAuto eoa);
+  std::string to_string(SkyTraqBin::ParameterSearchEngineMode psem);
   std::string to_string(SkyTraqBin::NavigationMode mode);
   std::string to_string(SkyTraqBin::BootStatus bs);
   std::string to_string(SkyTraqBin::InterferenceStatus is);

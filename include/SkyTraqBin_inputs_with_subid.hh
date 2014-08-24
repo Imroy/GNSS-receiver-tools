@@ -352,6 +352,39 @@ namespace SkyTraqBin {
   }; // class Q_interference_detection_status
 
 
+  //! CONFIGURE GPS PARAMETER SEARCH ENGINE NUMBER - Configure the parameter search engine number of GPS receiver
+  class Config_GPS_param_search_engine_num : public Input_message_with_subid {
+  private:
+    ParameterSearchEngineMode _pse_mode;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 2);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_GPS_param_search_engine_num(ParameterSearchEngineMode pm, UpdateType ut) :
+      Input_message_with_subid(0x64, 0x0a),
+      _pse_mode(pm), _update_type(ut)
+    {}
+
+    GETTER_SETTER(ParameterSearchEngineMode, pse_mode, _pse_mode);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_GPS_param_search_engine_num
+
+
+  //! QUERY GPS PARAMETER SEARCH ENGINE NUMBER - Query the parameter search engine number of the GPS receiver
+  class Q_GPS_param_search_engine_num : public Input_message_with_subid, public with_response {
+  public:
+    Q_GPS_param_search_engine_num(void) :
+      Input_message_with_subid(0x64, 0x0b)
+    {}
+
+    RESPONSE2(0x64, 0x85);
+
+  }; // class Q_GPS_param_search_engine_num
+
+
   //! CONFIGURE GNSS NAVIGATION MODE - Configure the navigation mode of GNSS receiver
   class Config_GNSS_nav_mode : public Input_message_with_subid {
   private:

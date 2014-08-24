@@ -256,6 +256,12 @@ namespace SkyTraqBin {
   }
 
 
+  void Config_GPS_param_search_engine_num::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, static_cast<uint8_t>(_pse_mode));
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
   void Config_GNSS_nav_mode::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, static_cast<uint8_t>(_mode));
     append_be(buffer, static_cast<uint8_t>(_update_type));

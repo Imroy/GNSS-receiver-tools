@@ -175,6 +175,20 @@ namespace SkyTraqBin {
   }; // class GNSS_interference_detection_status
 
 
+  //! GPS PARAMETER SEARCH ENGINE NUMBER - Number of parameter search engine of GPS receiver
+  //! - Answer to Q_GPS_param_search_engine_num
+  class GPS_param_search_engine_num : public Output_message_with_subid {
+  private:
+    ParameterSearchEngineMode _pse_mode;
+
+  public:
+    GPS_param_search_engine_num(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(ParameterSearchEngineMode, pse_mode, _pse_mode);
+
+  }; // class GPS_param_search_engine_num
+
+
   //! GNSS NAVIGATION MODE - Navigation mode of the GNSS receiver
   //! - Answer to Q_GNSS_nav_mode
   class GNSS_nav_mode : public Output_message_with_subid {

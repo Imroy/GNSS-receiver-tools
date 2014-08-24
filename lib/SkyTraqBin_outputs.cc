@@ -294,6 +294,12 @@ namespace SkyTraqBin {
   {}
 
 
+  GPS_param_search_engine_num::GPS_param_search_engine_num(unsigned char* payload, Payload_length payload_len) :
+    Output_message_with_subid(payload, payload_len),
+    _pse_mode((ParameterSearchEngineMode)payload[2])
+  {}
+
+
   GNSS_nav_mode::GNSS_nav_mode(unsigned char* payload, Payload_length payload_len) :
     Output_message_with_subid(payload, payload_len),
     _mode((NavigationMode)payload[2])

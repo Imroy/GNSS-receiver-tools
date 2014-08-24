@@ -96,6 +96,7 @@ namespace SkyTraqBin {
     OUTPUT2(0x64, 0x80, GNSS_boot_status),
     OUTPUT2(0x64, 0x81, GNSS_extended_NMEA_msg_interval),
     OUTPUT2(0x64, 0x83, GNSS_interference_detection_status),
+    OUTPUT2(0x64, 0x65, GPS_param_search_engine_num),
     OUTPUT2(0x64, 0x8B, GNSS_nav_mode),
     OUTPUT2(0x64, 0x8C, GNSS_constellation_type),
     OUTPUT2(0x64, 0x8E, GNSS_time),
@@ -339,6 +340,11 @@ namespace SkyTraqBin {
     return out;
   }
 
+  std::ostream& operator<< (std::ostream& out, ParameterSearchEngineMode psem) {
+    out << std::to_string(psem);
+    return out;
+  }
+
   std::ostream& operator<< (std::ostream& out, NavigationMode mode) {
     out << std::to_string(mode);
     return out;
@@ -540,6 +546,22 @@ namespace std {
       return "automatic";
     }
     throw invalid_argument("Unrecognised value for EnableOrAuto");
+  }
+
+  string to_string(SkyTraqBin::ParameterSearchEngineMode psem) {
+    switch (psem) {
+    case SkyTraqBin::ParameterSearchEngineMode::Default:
+      return "default";
+    case SkyTraqBin::ParameterSearchEngineMode::Low:
+      return "low";
+    case SkyTraqBin::ParameterSearchEngineMode::Mid:
+      return "mid";
+    case SkyTraqBin::ParameterSearchEngineMode::High:
+      return "high";
+    case SkyTraqBin::ParameterSearchEngineMode::Full:
+      return "full";
+    }
+    throw invalid_argument("Unrecognised value for ParameterSearchEngineMode");
   }
 
   string to_string(SkyTraqBin::NavigationMode mode) {
