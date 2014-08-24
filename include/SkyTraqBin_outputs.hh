@@ -376,6 +376,32 @@ namespace SkyTraqBin {
   }; // class GNSS_1PPS_cable_delay
 
 
+  //! GNSS 1PPS TIMING - 1PPS timing information of the GNSS receiver
+  //! - Answer to Q_1PPS_timing
+  class GNSS_1PPS_timing : public Output_message {
+  private:
+    SkyTraq::TimingMode _timing_mode;
+    uint32_t _survey_len, _std_dev;
+    double _lat, _lon;
+    float _alt;
+    SkyTraq::TimingMode _curr_timing_mode;
+    uint32_t _curr_survey_len;
+
+  public:
+    GNSS_1PPS_timing(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(SkyTraq::TimingMode, saved_timing_mode, _timing_mode);
+    GETTER(uint32_t, saved_survey_length, _survey_len);
+    GETTER(uint32_t, saved_standard_deviation, _std_dev);
+    GETTER(double, saved_lattitude, _lat);
+    GETTER(double, saved_longitude, _lon);
+    GETTER(float, saved_altitude, _alt);
+    GETTER(SkyTraq::TimingMode, current_timing_mode, _curr_timing_mode);
+    GETTER(uint32_t, current_survey_length, _curr_survey_len);
+
+  }; // class GNSS_1PPS_timing
+
+
   //! MEAS_TIME - Measurement time information
   //! - Periodic message only on NavSpark-Raws
   class Measurement_time : public Output_message {

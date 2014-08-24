@@ -153,6 +153,18 @@ namespace SkyTraqBin {
   {}
 
 
+  GNSS_1PPS_timing::GNSS_1PPS_timing(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _timing_mode((SkyTraq::TimingMode)payload[1]),
+    _survey_len(extract_be<uint32_t>(payload, 2)),
+    _std_dev(extract_be<uint32_t>(payload, 6)),
+    _lat(extract_be<double>(payload, 10)),
+    _lon(extract_be<double>(payload, 18)),
+    _alt(extract_be<float>(payload, 26)),
+    _curr_timing_mode((SkyTraq::TimingMode)payload[30]),
+    _curr_survey_len(extract_be<uint32_t>(payload, 31))
+  {}
+
   Measurement_time::Measurement_time(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _issue(payload[1]),

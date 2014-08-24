@@ -203,6 +203,16 @@ namespace SkyTraqBin {
     append_be(buffer, static_cast<uint8_t>(_update_type));
   }
 
+  void Config_1PPS_timing::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, static_cast<uint8_t>(_timing_mode));
+    append_be(buffer, _survey_len);
+    append_be(buffer, _std_dev);
+    append_be(buffer, _lat);
+    append_be(buffer, _lon);
+    append_be(buffer, _alt);
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
 
   /**************************
    * Messages with a sub-ID *

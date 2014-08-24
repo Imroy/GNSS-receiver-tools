@@ -823,6 +823,19 @@ namespace SkyTraqBin {
   }; // class Set_GPS_ephemeris
 
 
+  //! QUERY 1PPS TIMING - Query 1PPS timing of the GNSS receiver
+  //! Supported only in Venus838LPx-T, S1216F8-T timing mode receivers.
+  class Q_1PPS_timing : public Input_message, public with_response {
+  public:
+    Q_1PPS_timing(void) :
+      Input_message(0x44)
+    {}
+
+    RESPONSE1(0xc2);
+
+  }; // class Q_1PPS_timing
+
+
   //! CONFIGURE 1PPS CABLE DELAY - Configure cable delay of 1PPS timing
   class Config_1PPS_cable_delay : public Input_message {
   private:
@@ -911,6 +924,40 @@ namespace SkyTraqBin {
     RESPONSE1(0x93);
 
   }; // class Q_NMEA_talker_ID
+
+
+  //! CONFIGURE 1PPS TIMING - Configure 1PPS timing of the GNSS receiver
+  //! Supported only in Venus838LPx-T, S1216F8-T timing mode receivers.
+  class Config_1PPS_timing : public Input_message {
+  private:
+    SkyTraq::TimingMode _timing_mode;
+    uint32_t _survey_len, _std_dev;
+    double _lat, _lon;
+    float _alt;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 30);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_1PPS_timing(SkyTraq::TimingMode tm, uint32_t sl, uint32_t sd, double lat, double lon, float alt, UpdateType ut) :
+      Input_message(0x54),
+      _timing_mode(tm),
+      _survey_len(sl),
+      _std_dev(sd),
+      _lat(lat), _lon(lon), _alt(alt),
+      _update_type(ut)
+    {}
+
+    GETTER_SETTER(SkyTraq::TimingMode, timing_mode, _timing_mode);
+    GETTER_SETTER(uint32_t, survey_length, _survey_len);
+    GETTER_SETTER(uint32_t, standard_deviation, _std_dev);
+    GETTER_SETTER(double, lattitude, _lat);
+    GETTER_SETTER(double, longitude, _lon);
+    GETTER_SETTER(float, altitude, _alt);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_1PPS_timing
 
 
 }; // namespace SkyTraqBin
