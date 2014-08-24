@@ -13,6 +13,7 @@ var searchData=
   ['num_5fmeasurements',['num_measurements',['../class_sky_traq_bin_1_1_raw__measurements.html#aba14b50143ce84786f02d4b1020491c7',1,'SkyTraqBin::Raw_measurements']]],
   ['num_5fmessages',['num_messages',['../class_n_m_e_a0183_1_1_g_s_v.html#a02f8204f60f47d29404dd7baf314ee56',1,'NMEA0183::GSV']]],
   ['num_5fsats_5fused',['num_sats_used',['../class_n_m_e_a0183_1_1_g_g_a.html#a65dad66cc3dbc2982250248d283c10fe',1,'NMEA0183::GGA']]],
+  ['num_5fsectors',['num_sectors',['../class_sky_traq_bin_1_1_read__log.html#a48a94ab3090e6ccea167f39755e59450',1,'SkyTraqBin::Read_log']]],
   ['num_5fsv',['num_sv',['../class_sky_traq_bin_1_1_nav__data__msg.html#afb2560133058f3624676d1e52284553d',1,'SkyTraqBin::Nav_data_msg']]],
   ['num_5fsvs',['num_svs',['../class_sky_traq_bin_1_1_s_v__channel__status.html#a7ca6d5ee44cb725e41836625dcece522',1,'SkyTraqBin::SV_channel_status']]]
 ];

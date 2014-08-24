@@ -2,6 +2,7 @@ var searchData=
 [
   ['checksummismatch',['ChecksumMismatch',['../class_n_m_e_a0183_1_1_checksum_mismatch.html',1,'NMEA0183']]],
   ['checksummismatch',['ChecksumMismatch',['../class_sky_traq_bin_1_1_checksum_mismatch.html',1,'SkyTraqBin']]],
+  ['clear_5flog',['Clear_log',['../class_sky_traq_bin_1_1_clear__log.html',1,'SkyTraqBin']]],
   ['config_5f1pps_5fcable_5fdelay',['Config_1PPS_cable_delay',['../class_sky_traq_bin_1_1_config__1_p_p_s__cable__delay.html',1,'SkyTraqBin']]],
   ['config_5f1pps_5ffreq_5foutput',['Config_1PPS_freq_output',['../class_sky_traq_bin_1_1_config__1_p_p_s__freq__output.html',1,'SkyTraqBin']]],
   ['config_5f1pps_5fpulse_5fwidth',['Config_1PPS_pulse_width',['../class_sky_traq_bin_1_1_config__1_p_p_s__pulse__width.html',1,'SkyTraqBin']]],
@@ -17,6 +18,7 @@ var searchData=
   ['config_5fgps_5fparam_5fsearch_5fengine_5fnum',['Config_GPS_param_search_engine_num',['../class_sky_traq_bin_1_1_config___g_p_s__param__search__engine__num.html',1,'SkyTraqBin']]],
   ['config_5finterference_5fdetection',['Config_interference_detection',['../class_sky_traq_bin_1_1_config__interference__detection.html',1,'SkyTraqBin']]],
   ['config_5fleap_5fseconds',['Config_leap_seconds',['../class_sky_traq_bin_1_1_config__leap__seconds.html',1,'SkyTraqBin']]],
+  ['config_5flogging',['Config_logging',['../class_sky_traq_bin_1_1_config__logging.html',1,'SkyTraqBin']]],
   ['config_5fmsg_5ftype',['Config_msg_type',['../class_sky_traq_bin_1_1_config__msg__type.html',1,'SkyTraqBin']]],
   ['config_5fnav_5fdata_5fmsg_5finterval',['Config_nav_data_msg_interval',['../class_sky_traq_bin_1_1_config__nav__data__msg__interval.html',1,'SkyTraqBin']]],
   ['config_5fnmea_5fmsg',['Config_NMEA_msg',['../class_sky_traq_bin_1_1_config___n_m_e_a__msg.html',1,'SkyTraqBin']]],

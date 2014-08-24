@@ -15,6 +15,7 @@ var searchData=
   ['q_5fgps_5fparam_5fsearch_5fengine_5fnum',['Q_GPS_param_search_engine_num',['../class_sky_traq_bin_1_1_q___g_p_s__param__search__engine__num.html',1,'SkyTraqBin']]],
   ['q_5fgps_5ftime',['Q_GPS_time',['../class_sky_traq_bin_1_1_q___g_p_s__time.html',1,'SkyTraqBin']]],
   ['q_5finterference_5fdetection_5fstatus',['Q_interference_detection_status',['../class_sky_traq_bin_1_1_q__interference__detection__status.html',1,'SkyTraqBin']]],
+  ['q_5flog_5fstatus',['Q_log_status',['../class_sky_traq_bin_1_1_q__log__status.html',1,'SkyTraqBin']]],
   ['q_5fnmea_5ftalker_5fid',['Q_NMEA_talker_ID',['../class_sky_traq_bin_1_1_q___n_m_e_a__talker___i_d.html',1,'SkyTraqBin']]],
   ['q_5fpos_5fpinning',['Q_pos_pinning',['../class_sky_traq_bin_1_1_q__pos__pinning.html',1,'SkyTraqBin']]],
   ['q_5fpos_5fupdate_5frate',['Q_pos_update_rate',['../class_sky_traq_bin_1_1_q__pos__update__rate.html',1,'SkyTraqBin']]],

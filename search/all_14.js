@@ -1,7 +1,7 @@
 var searchData=
 [
   ['unavailable',['Unavailable',['../namespace_n_m_e_a0183.html#ae7b81b2e62b4cbcc6561a054217b46aea453e6aa38d87b28ccae545967c53004f',1,'NMEA0183']]],
-  ['unknown',['unknown',['../namespace_n_m_e_a0183.html#a927c0bad84f71ff8e857aa93c167d8b6aad921d60486366258809553a3db49a4a',1,'NMEA0183::unknown()'],['../namespace_sky_traq_bin.html#a9b53c23e0e879d107e280b8faa4c8e25a88183b946cc5f0e8c96b2e66e1c74a7e',1,'SkyTraqBin::Unknown()']]],
+  ['unknown',['Unknown',['../namespace_sky_traq_bin.html#a9b53c23e0e879d107e280b8faa4c8e25a88183b946cc5f0e8c96b2e66e1c74a7e',1,'SkyTraqBin::Unknown()'],['../namespace_n_m_e_a0183.html#a927c0bad84f71ff8e857aa93c167d8b6aad921d60486366258809553a3db49a4a',1,'NMEA0183::unknown()']]],
   ['unknownmessageid',['UnknownMessageID',['../class_sky_traq_bin_1_1_unknown_message_i_d.html',1,'SkyTraqBin']]],
   ['unknownmessageid',['UnknownMessageID',['../class_sky_traq_bin_1_1_unknown_message_i_d.html#af97fb95412b5c2943cbd87f67c578b25',1,'SkyTraqBin::UnknownMessageID']]],
   ['unknownsentencetype',['UnknownSentenceType',['../class_n_m_e_a0183_1_1_unknown_sentence_type.html',1,'NMEA0183']]],
@@ -11,6 +11,7 @@ var searchData=
   ['unpinning_5fspeed',['unpinning_speed',['../class_sky_traq_bin_1_1_config__pos__pinning__params.html#a3be4275c09adf1b228899509021e087e',1,'SkyTraqBin::Config_pos_pinning_params::unpinning_speed()'],['../class_sky_traq_bin_1_1_g_n_s_s__pos__pinning__status.html#ad6a5772c8befacf8732bd0510891b580',1,'SkyTraqBin::GNSS_pos_pinning_status::unpinning_speed()']]],
   ['unset_5fbeidou',['unset_Beidou',['../class_sky_traq_bin_1_1_config__constellation__type.html#a85a87b46d421911e60b78d99f56b1df5',1,'SkyTraqBin::Config_constellation_type']]],
   ['unset_5fcorrection',['unset_correction',['../class_sky_traq_bin_1_1_config___s_b_a_s.html#a7f96362979725121abbdd445365c54fd',1,'SkyTraqBin::Config_SBAS']]],
+  ['unset_5fdatalog',['unset_datalog',['../class_sky_traq_bin_1_1_config__logging.html#a8ea1f36e6d3c7c08c668fd3e4f3c9005',1,'SkyTraqBin::Config_logging']]],
   ['unset_5fgalileo',['unset_Galileo',['../class_sky_traq_bin_1_1_config__constellation__type.html#a1a098a51b47569e1b146b85e8eed0255',1,'SkyTraqBin::Config_constellation_type']]],
   ['unset_5fglonass',['unset_GLONASS',['../class_sky_traq_bin_1_1_config__constellation__type.html#a8b218649e678c47e489adc791e89ec36',1,'SkyTraqBin::Config_constellation_type']]],
   ['unset_5fgps',['unset_GPS',['../class_sky_traq_bin_1_1_config__constellation__type.html#af1bda463b303cf02596718ce7399f97a',1,'SkyTraqBin::Config_constellation_type']]],

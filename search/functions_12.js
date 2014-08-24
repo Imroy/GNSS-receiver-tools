@@ -11,6 +11,7 @@ var searchData=
   ['time_5fof_5fweek_5fraw',['time_of_week_raw',['../class_sky_traq_bin_1_1_nav__data__msg.html#aea03c5391f2065a0cea211d77017018c',1,'SkyTraqBin::Nav_data_msg']]],
   ['timing_5fmode',['timing_mode',['../class_n_m_e_a0183_1_1_s_t_i___p_p_s.html#acf8bcad1ee6748c3d8ca2cb3797be354',1,'NMEA0183::STI_PPS::timing_mode()'],['../class_sky_traq_bin_1_1_config__1_p_p_s__timing.html#acc3f92eb10b019dd5a6a4d31f23f22c7',1,'SkyTraqBin::Config_1PPS_timing::timing_mode()']]],
   ['to_5fbuf',['to_buf',['../class_sky_traq_bin_1_1_input__message.html#af943c1649ccaa59b40d1cba817fbc6fa',1,'SkyTraqBin::Input_message::to_buf()'],['../class_sky_traq_bin_1_1_input__message__with__subid.html#ac64001fb60ecb92b446176e1c1b14fa7',1,'SkyTraqBin::Input_message_with_subid::to_buf()']]],
+  ['total_5fsectors',['total_sectors',['../class_sky_traq_bin_1_1_log__status__output.html#aed25a44e103490c5f69cb395f928e157',1,'SkyTraqBin::Log_status_output']]],
   ['true_5fcourse',['true_course',['../class_n_m_e_a0183_1_1_v_t_g.html#aab65fb7e0d702e4f50941d8b3c1f3cb3',1,'NMEA0183::VTG']]],
   ['type',['type',['../class_n_m_e_a0183_1_1_sentence.html#a7bf9a3440fdf2a62a5a8335c18ba0124',1,'NMEA0183::Sentence']]],
   ['tz_5fhours',['TZ_hours',['../class_n_m_e_a0183_1_1_z_d_a.html#a27d5dca1290c79059c23ebfd0a7870c4',1,'NMEA0183::ZDA']]],
