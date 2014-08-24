@@ -3,7 +3,9 @@ var class_sky_traq_bin_1_1_config___q_z_s_s =
     [ "Config_QZSS", "class_sky_traq_bin_1_1_config___q_z_s_s.html#a6c40d7f019d71502b1157b0a64c06584", null ],
     [ "disable", "class_sky_traq_bin_1_1_config___q_z_s_s.html#a15fc64f7bf40c44cea0f98c0dd5992b2", null ],
     [ "enable", "class_sky_traq_bin_1_1_config___q_z_s_s.html#a40b952c1057aa1f0222d82217812fad0", null ],
-    [ "GETTER", "class_sky_traq_bin_1_1_config___q_z_s_s.html#a3d7fe937f40a308b5dcefeee2b28c84e", null ],
-    [ "GETTER_SETTER", "class_sky_traq_bin_1_1_config___q_z_s_s.html#ad7b18a32d51323e1906071c7336f0f91", null ],
-    [ "GETTER_SETTER", "class_sky_traq_bin_1_1_config___q_z_s_s.html#ab7ac7e9e9853c76f3906ea3be40a4d63", null ]
+    [ "enabled", "class_sky_traq_bin_1_1_config___q_z_s_s.html#a589da9adc4fc5a13d900f89e5abd5a8d", null ],
+    [ "num_channels", "class_sky_traq_bin_1_1_config___q_z_s_s.html#a56f3aa719c768a1bc72436010a42344d", null ],
+    [ "set_num_channels", "class_sky_traq_bin_1_1_config___q_z_s_s.html#aa506f10344bfd81583d9ed9b8a18e5e0", null ],
+    [ "set_update_type", "class_sky_traq_bin_1_1_config___q_z_s_s.html#acdf72885e440cd78150963f65292dd32", null ],
+    [ "update_type", "class_sky_traq_bin_1_1_config___q_z_s_s.html#abb7bf07232b1d64f52f8f5612bae59a5", null ]
 ];

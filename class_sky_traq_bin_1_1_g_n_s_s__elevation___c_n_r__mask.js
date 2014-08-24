@@ -1,7 +1,7 @@
 var class_sky_traq_bin_1_1_g_n_s_s__elevation___c_n_r__mask =
 [
     [ "GNSS_elevation_CNR_mask", "class_sky_traq_bin_1_1_g_n_s_s__elevation___c_n_r__mask.html#aa42084149d0428cd68c675f27de2c44f", null ],
-    [ "GETTER", "class_sky_traq_bin_1_1_g_n_s_s__elevation___c_n_r__mask.html#a075bc558cbc8e84e93a6592ece460c89", null ],
-    [ "GETTER", "class_sky_traq_bin_1_1_g_n_s_s__elevation___c_n_r__mask.html#abd54eee9d20372fa41a934e5d7714807", null ],
-    [ "GETTER", "class_sky_traq_bin_1_1_g_n_s_s__elevation___c_n_r__mask.html#ad674f5d034e5fdbb248b6ca2af853bd9", null ]
+    [ "CNR_mask", "class_sky_traq_bin_1_1_g_n_s_s__elevation___c_n_r__mask.html#ac8d37563680f7097a69189b71e2dd84f", null ],
+    [ "elevation_mask", "class_sky_traq_bin_1_1_g_n_s_s__elevation___c_n_r__mask.html#ada1b32e5ef36e3e5b10852f6bd45cb5d", null ],
+    [ "mode_select", "class_sky_traq_bin_1_1_g_n_s_s__elevation___c_n_r__mask.html#af0985a0ea0bea95b8c299995a0c9952a", null ]
 ];

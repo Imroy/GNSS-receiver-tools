@@ -35,11 +35,6 @@ var _n_m_e_a_0183_8hh =
       [ "Manual", "_n_m_e_a-0183_8hh.html#ad4add89b28c75830e7e0205e3c9275e1ae1ba155a9f2e8c3be94020eef32a0301", null ],
       [ "Automatic", "_n_m_e_a-0183_8hh.html#ad4add89b28c75830e7e0205e3c9275e1a086247a9b57fde6eefee2a0c4752242d", null ]
     ] ],
-    [ "PPSmode", "_n_m_e_a-0183_8hh.html#a117d78d6c7bfe07c02ae4a8aa2012f3a", [
-      [ "PVT", "_n_m_e_a-0183_8hh.html#a117d78d6c7bfe07c02ae4a8aa2012f3aad171f1ba90a837de143fd7b283873632", null ],
-      [ "Survey", "_n_m_e_a-0183_8hh.html#a117d78d6c7bfe07c02ae4a8aa2012f3aa9fd9f9ccd630cd4b6894051c35710572", null ],
-      [ "Static", "_n_m_e_a-0183_8hh.html#a117d78d6c7bfe07c02ae4a8aa2012f3aa84a8921b25f505d0d2077aeb5db4bc16", null ]
-    ] ],
     [ "ReceiverMode", "_n_m_e_a-0183_8hh.html#a927c0bad84f71ff8e857aa93c167d8b6", [
       [ "unknown", "_n_m_e_a-0183_8hh.html#a927c0bad84f71ff8e857aa93c167d8b6aad921d60486366258809553a3db49a4a", null ],
       [ "NotValid", "_n_m_e_a-0183_8hh.html#a927c0bad84f71ff8e857aa93c167d8b6a04665ec171e86ef749cc563d7bdeec91", null ],
@@ -52,11 +47,9 @@ var _n_m_e_a_0183_8hh =
     [ "operator<<", "_n_m_e_a-0183_8hh.html#af7a79f845a361620711f16e0c1b5a236", null ],
     [ "operator<<", "_n_m_e_a-0183_8hh.html#a0a529075f55013868ab190112c92727e", null ],
     [ "operator<<", "_n_m_e_a-0183_8hh.html#acca4e9a4b1eeb0f9b7dd08dab615e62a", null ],
-    [ "operator<<", "_n_m_e_a-0183_8hh.html#a400b279a539878fce44d1576970e4181", null ],
     [ "parse_sentence", "_n_m_e_a-0183_8hh.html#a13e6d7d6fc95ea1ff212304ed1074a61", null ],
     [ "to_string", "_n_m_e_a-0183_8hh.html#ab75ee1a1f5d684cab1105173a6c11e90", null ],
     [ "to_string", "_n_m_e_a-0183_8hh.html#ab03395413bb242d8af5d8d6bad5da53e", null ],
     [ "to_string", "_n_m_e_a-0183_8hh.html#ab355e4047b542d5404e6947538a62f20", null ],
-    [ "to_string", "_n_m_e_a-0183_8hh.html#aa89edeb8387becc61780b061e46260c8", null ],
-    [ "to_string", "_n_m_e_a-0183_8hh.html#a6c0a723684a096bf9bb064974b9bf655", null ]
+    [ "to_string", "_n_m_e_a-0183_8hh.html#aa89edeb8387becc61780b061e46260c8", null ]
 ];

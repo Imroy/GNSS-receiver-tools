@@ -1,8 +1,8 @@
 var class_sky_traq_bin_1_1_g_n_s_s__constellation__type =
 [
     [ "GNSS_constellation_type", "class_sky_traq_bin_1_1_g_n_s_s__constellation__type.html#aa6a3210b599d703f950367fb0045844d", null ],
-    [ "GETTER", "class_sky_traq_bin_1_1_g_n_s_s__constellation__type.html#a249088c94f70d3ee1dda5392ad818f10", null ],
-    [ "GETTER", "class_sky_traq_bin_1_1_g_n_s_s__constellation__type.html#a3e5968cc54f546ada969a75df4c581c3", null ],
-    [ "GETTER", "class_sky_traq_bin_1_1_g_n_s_s__constellation__type.html#a4c72837028740d4c612360baa3878bb0", null ],
-    [ "GETTER", "class_sky_traq_bin_1_1_g_n_s_s__constellation__type.html#a7cf04db00d1b7e635c8585608113178c", null ]
+    [ "Beidou", "class_sky_traq_bin_1_1_g_n_s_s__constellation__type.html#a9fc3236447d4d225d24f7827394f34f4", null ],
+    [ "Galileo", "class_sky_traq_bin_1_1_g_n_s_s__constellation__type.html#a069dce5d7391fe2bb5fff457274cf08d", null ],
+    [ "GLONASS", "class_sky_traq_bin_1_1_g_n_s_s__constellation__type.html#ace290d243118faf737ef38ec67787068", null ],
+    [ "GPS", "class_sky_traq_bin_1_1_g_n_s_s__constellation__type.html#a03d25d8532494318b1a4a0c9d378231a", null ]
 ];

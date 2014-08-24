@@ -1,8 +1,18 @@
 var searchData=
 [
-  ['unknownmessageid',['UnknownMessageID',['../class_sky_traq_bin_1_1_unknown_message_i_d.html#af97fb95412b5c2943cbd87f67c578b25',1,'SkyTraqBin::UnknownMessageID']]],
-  ['unknownsentencetype',['UnknownSentenceType',['../class_n_m_e_a0183_1_1_unknown_sentence_type.html#a83f22d3e3139ac7cb28cc1e7957506cf',1,'NMEA0183::UnknownSentenceType']]],
-  ['utc_5fdate',['UTC_date',['../class_n_m_e_a0183_1_1_r_m_c.html#a993b275ba69d88b23617f005125ad346',1,'NMEA0183::RMC::UTC_date()'],['../class_n_m_e_a0183_1_1_z_d_a.html#ad3ef3398bc84e687b650e38bb4576a88',1,'NMEA0183::ZDA::UTC_date()']]],
-  ['utc_5fdatetime',['UTC_datetime',['../class_n_m_e_a0183_1_1_r_m_c.html#a1370d6e5c35c3915efe10a0445c8370a',1,'NMEA0183::RMC::UTC_datetime()'],['../class_n_m_e_a0183_1_1_z_d_a.html#afdc381840b070bf378ba9d1765bd166e',1,'NMEA0183::ZDA::UTC_datetime()']]],
-  ['utc_5ftime',['UTC_time',['../class_n_m_e_a0183_1_1_g_g_a.html#afa2afaa22aff3170246c7dae776024ad',1,'NMEA0183::GGA::UTC_time()'],['../class_n_m_e_a0183_1_1_g_l_l.html#a182e77a7c1f80839cef71ae1c6d33aed',1,'NMEA0183::GLL::UTC_time()'],['../class_n_m_e_a0183_1_1_r_m_c.html#a4e5b7399224b806b73938405f51bd21a',1,'NMEA0183::RMC::UTC_time()'],['../class_n_m_e_a0183_1_1_z_d_a.html#abd593c2460b9db44c3a0a660df3c9067',1,'NMEA0183::ZDA::UTC_time()']]]
+  ['talker_5fid',['talker_id',['../class_n_m_e_a0183_1_1_sentence.html#a8bb1cdf5a972229cd72745c2b66cf545',1,'NMEA0183::Sentence::talker_id()'],['../class_sky_traq_bin_1_1_config___n_m_e_a__talker___i_d.html#a3214d56b49c279d1081eff633ed1ac6f',1,'SkyTraqBin::Config_NMEA_talker_ID::talker_id()'],['../class_sky_traq_bin_1_1_n_m_e_a__talker___i_d.html#a7a2f0d24dde4d8ba072cc8200bbe925a',1,'SkyTraqBin::NMEA_talker_ID::talker_id()']]],
+  ['tdop',['TDOP',['../class_sky_traq_bin_1_1_nav__data__msg.html#ae6d50eabff0d08835d09549e44aa29ac',1,'SkyTraqBin::Nav_data_msg::TDOP()'],['../class_sky_traq_bin_1_1_rcv__state.html#a07dab58f67ceebd66a8b7d5b919b2147',1,'SkyTraqBin::Rcv_state::TDOP()']]],
+  ['tdop_5fraw',['TDOP_raw',['../class_sky_traq_bin_1_1_nav__data__msg.html#ab0279d39e61780ed5accc3adb399151e',1,'SkyTraqBin::Nav_data_msg']]],
+  ['temperature',['temperature',['../class_n_m_e_a0183_1_1_s_t_i__sensors.html#ab6da5ac626a7a277dbd7b28efe767978',1,'NMEA0183::STI_sensors::temperature()'],['../class_sky_traq_bin_1_1_sensor__data.html#a763060614ea61e379cf7807d97c0506e',1,'SkyTraqBin::Sensor_data::temperature()']]],
+  ['time_5fin_5fweek',['time_in_week',['../class_sky_traq_bin_1_1_measurement__time.html#a5ec966c292ddca7ff2a0e0c3e6a9e952',1,'SkyTraqBin::Measurement_time::time_in_week()'],['../class_sky_traq_bin_1_1_g_n_s_s__time.html#a02d287d43208ba39602993f2c7e69f4f',1,'SkyTraqBin::GNSS_time::time_in_week()']]],
+  ['time_5fin_5fweek_5fraw',['time_in_week_raw',['../class_sky_traq_bin_1_1_g_n_s_s__time.html#a10f3c73688206c54e7317d7347fdd3a6',1,'SkyTraqBin::GNSS_time']]],
+  ['time_5fin_5fweek_5fvalid',['time_in_week_valid',['../class_sky_traq_bin_1_1_g_n_s_s__time.html#a2cdf02bc90dae79da80abd53c5b93dc3',1,'SkyTraqBin::GNSS_time']]],
+  ['time_5fof_5fweek',['time_of_week',['../class_sky_traq_bin_1_1_nav__data__msg.html#ad4b9ffeef49c29ef5dbfaba6717c73ab',1,'SkyTraqBin::Nav_data_msg::time_of_week()'],['../class_sky_traq_bin_1_1_rcv__state.html#aaab8a875b6cf7552a4c91aa3717d8394',1,'SkyTraqBin::Rcv_state::time_of_week()']]],
+  ['time_5fof_5fweek_5fraw',['time_of_week_raw',['../class_sky_traq_bin_1_1_nav__data__msg.html#aea03c5391f2065a0cea211d77017018c',1,'SkyTraqBin::Nav_data_msg']]],
+  ['timing_5fmode',['timing_mode',['../class_n_m_e_a0183_1_1_s_t_i___p_p_s.html#acf8bcad1ee6748c3d8ca2cb3797be354',1,'NMEA0183::STI_PPS::timing_mode()'],['../class_sky_traq_bin_1_1_config__1_p_p_s__timing.html#acc3f92eb10b019dd5a6a4d31f23f22c7',1,'SkyTraqBin::Config_1PPS_timing::timing_mode()']]],
+  ['to_5fbuf',['to_buf',['../class_sky_traq_bin_1_1_input__message.html#af943c1649ccaa59b40d1cba817fbc6fa',1,'SkyTraqBin::Input_message::to_buf()'],['../class_sky_traq_bin_1_1_input__message__with__subid.html#ac64001fb60ecb92b446176e1c1b14fa7',1,'SkyTraqBin::Input_message_with_subid::to_buf()']]],
+  ['true_5fcourse',['true_course',['../class_n_m_e_a0183_1_1_v_t_g.html#aab65fb7e0d702e4f50941d8b3c1f3cb3',1,'NMEA0183::VTG']]],
+  ['type',['type',['../class_n_m_e_a0183_1_1_sentence.html#a7bf9a3440fdf2a62a5a8335c18ba0124',1,'NMEA0183::Sentence']]],
+  ['tz_5fhours',['TZ_hours',['../class_n_m_e_a0183_1_1_z_d_a.html#a27d5dca1290c79059c23ebfd0a7870c4',1,'NMEA0183::ZDA']]],
+  ['tz_5fminutes',['TZ_minutes',['../class_n_m_e_a0183_1_1_z_d_a.html#a7618af892440b706082e5e6ebcdacad0',1,'NMEA0183::ZDA']]]
 ];
