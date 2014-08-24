@@ -32,6 +32,7 @@
   https://store-lgdi92x.mybigcommerce.com/content/AN0028_1.4.31.pdf	(Binary messages of Skytraq Venus 8)
   https://store-lgdi92x.mybigcommerce.com/content/AN0024_v07.pdf	(Raw measurement binary messages of Skytraq 6 & 8)
   https://store-lgdi92x.mybigcommerce.com/content/SUP800F_v0.6.pdf	(Skytraq SUP800F datasheet)
+  https://store-lgdi92x.mybigcommerce.com/content/AN0008_v1.4.17.pdf    (Datalogging extension for Venus 8)
 */
 
 namespace SkyTraqBin {
@@ -110,6 +111,7 @@ namespace SkyTraqBin {
     OUTPUT1(0x86, Pos_update_rate),
     OUTPUT1(0x87, GPS_almanac_data),
     OUTPUT1(0x93, NMEA_talker_ID),
+    OUTPUT1(0x94, Log_status_output),
     OUTPUT1(0xA8, Nav_data_msg),
     OUTPUT1(0xAE, GNSS_datum),
     OUTPUT1(0xAF, GNSS_DOP_mask),

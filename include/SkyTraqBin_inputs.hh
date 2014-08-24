@@ -31,6 +31,7 @@ namespace ptime = boost::posix_time;
   https://store-lgdi92x.mybigcommerce.com/content/AN0028_1.4.31.pdf	(Binary messages of Skytraq Venus 8)
   https://store-lgdi92x.mybigcommerce.com/content/AN0024_v07.pdf	(Raw measurement binary messages of Skytraq 6 & 8)
   https://store-lgdi92x.mybigcommerce.com/content/SUP800F_v0.6.pdf	(Skytraq SUP800F datasheet)
+  https://store-lgdi92x.mybigcommerce.com/content/AN0008_v1.4.17.pdf    (Datalogging extension for Venus 8)
 */
 
 namespace SkyTraqBin {
@@ -511,6 +512,92 @@ namespace SkyTraqBin {
     RESPONSE1(0xB9);
 
   }; // class Q_power_mode
+
+
+  //! LOG READ BATCH CONTROL - Enable data read from the log buffer
+  class Read_log : public Input_message {
+  private:
+    uint16_t _start_sector, _num_sectors;
+
+    GETTER(Payload_length, body_length, 24);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    //! Constructor
+    /*!
+      \param ss Start sector
+      \param num Number of sectors
+     */
+    Read_log(uint16_t ss, uint16_t num) :
+      Input_message(0x1d),
+      _start_sector(ss), _num_sectors(num)
+    {}
+
+    GETTER_SETTER(uint16_t, start_sector, _start_sector);
+    GETTER_SETTER(uint16_t, num_sectors, _num_sectors);
+
+  }; // class Read_log
+
+
+  //! LOG STATUS CONTROL - Request Information of the Log Buffer Status
+  class Q_log_status : public Input_message, public with_response {
+  public:
+    Q_log_status(void) :
+      Input_message(0x17)
+    {}
+
+    RESPONSE1(0x94);
+
+  }; // class Q_log_status
+
+
+  //! LOG CONFIGURE CONTROL - Configuration Data Logging Criteria
+  class Config_logging : public Input_message {
+  private:
+    uint32_t _max_time, _min_time, _max_dist, _min_dist, _max_speed, _min_speed;
+    bool _datalog;
+
+    GETTER(Payload_length, body_length, 26);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    //! Constructor
+    /*!
+      \param max_t,min_t Maximum and minimum time thresholds (seconds)
+      \param max_d,min_d Maximum and minimum distance thresholds (metres)
+      \param max_s,min_s Maximum and minimum speed thresholds (km/h)
+      \param dl Enable datalogging
+     */
+    Config_logging(uint32_t max_t, uint32_t min_t, uint32_t max_d, uint32_t min_d,
+		   uint32_t max_s, uint32_t min_s, bool dl) :
+      Input_message(0x18),
+      _max_time(max_t), _min_time(min_t),
+      _max_dist(max_d), _min_dist(min_d),
+      _max_speed(max_s), _min_speed(min_s),
+      _datalog(dl)
+    {}
+
+    GETTER_SETTER(uint32_t, max_time, _max_time);
+    GETTER_SETTER(uint32_t, min_time, _min_time);
+    GETTER_SETTER(uint32_t, max_distance, _max_dist);
+    GETTER_SETTER(uint32_t, min_distance, _min_dist);
+    GETTER_SETTER(uint32_t, max_speed, _max_speed);
+    GETTER_SETTER(uint32_t, min_speed, _min_speed);
+
+    GETTER(bool, datalog, _datalog);
+    SETTER_BOOL(datalog, _datalog);
+
+  }; // class Config_logging
+
+
+  //! LOG CLEAR CONTROL - Clear Data Logging Buffer
+  class Clear_log : public Input_message {
+  public:
+    Clear_log(void) :
+      Input_message(0x19)
+    {}
+
+  }; // class Clear_log
 
 
   //! CONFIGURE DATUM - Configure datum used for GNSS position transformation

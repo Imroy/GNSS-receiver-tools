@@ -18,12 +18,14 @@
 */
 #include "SkyTraqBin.hh"
 #include "BE.hh"
+#include "LE.hh"
 
 /*
   Sources:
   https://store-lgdi92x.mybigcommerce.com/content/AN0028_1.4.31.pdf	(Binary messages of Skytraq Venus 8)
   https://store-lgdi92x.mybigcommerce.com/content/AN0024_v07.pdf	(Raw measurement binary messages of Skytraq 6 & 8)
   https://store-lgdi92x.mybigcommerce.com/content/SUP800F_v0.6.pdf	(Skytraq SUP800F datasheet)
+  https://store-lgdi92x.mybigcommerce.com/content/AN0008_v1.4.17.pdf    (Datalogging extension for Venus 8)
 */
 
 namespace SkyTraqBin {
@@ -79,6 +81,22 @@ namespace SkyTraqBin {
   NMEA_talker_ID::NMEA_talker_ID(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _talker_id((TalkerID)payload[1])
+  {}
+
+
+  Log_status_output::Log_status_output(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _wr_ptr(extract_le<uint32_t>(payload, 1)),
+    _sectors_left(extract_le<uint16_t>(payload, 5)),
+    _total_sectors(extract_le<uint16_t>(payload, 7)),
+    _max_time(extract_le<uint32_t>(payload, 9)),
+    _min_time(extract_le<uint32_t>(payload, 13)),
+    _max_dist(extract_le<uint32_t>(payload, 17)),
+    _min_dist(extract_le<uint32_t>(payload, 21)),
+    _max_speed(extract_le<uint32_t>(payload, 25)),
+    _min_speed(extract_le<uint32_t>(payload, 29)),
+    _datalog((bool)payload[33]),
+    _fifo_mode(payload[34])
   {}
 
 

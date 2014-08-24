@@ -25,6 +25,7 @@
   https://store-lgdi92x.mybigcommerce.com/content/AN0028_1.4.31.pdf	(Binary messages of Skytraq Venus 8)
   https://store-lgdi92x.mybigcommerce.com/content/AN0024_v07.pdf	(Raw measurement binary messages of Skytraq 6 & 8)
   https://store-lgdi92x.mybigcommerce.com/content/SUP800F_v0.6.pdf	(Skytraq SUP800F datasheet)
+  https://store-lgdi92x.mybigcommerce.com/content/AN0008_v1.4.17.pdf    (Datalogging extension for Venus 8)
 */
 
 namespace SkyTraqBin {
@@ -99,6 +100,24 @@ namespace SkyTraqBin {
   void Config_sys_power_mode::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, static_cast<uint8_t>(_power_mode));
     append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
+  void Read_log::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _start_sector);
+    append_be(buffer, _num_sectors);
+  }
+
+
+  void Config_logging::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _max_time);
+    append_be(buffer, _min_time);
+    append_be(buffer, _max_dist);
+    append_be(buffer, _min_dist);
+    append_be(buffer, _max_speed);
+    append_be(buffer, _min_speed);
+    append_be(buffer, static_cast<uint8_t>(_datalog));
+    append_be(buffer, static_cast<uint8_t>(0)); // reseverved byte
   }
 
 

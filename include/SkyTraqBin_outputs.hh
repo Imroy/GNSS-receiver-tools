@@ -29,6 +29,7 @@ namespace greg = boost::gregorian;
   https://store-lgdi92x.mybigcommerce.com/content/AN0028_1.4.31.pdf	(Binary messages of Skytraq Venus 8)
   https://store-lgdi92x.mybigcommerce.com/content/AN0024_v07.pdf	(Raw measurement binary messages of Skytraq 6 & 8)
   https://store-lgdi92x.mybigcommerce.com/content/SUP800F_v0.6.pdf	(Skytraq SUP800F datasheet)
+  https://store-lgdi92x.mybigcommerce.com/content/AN0008_v1.4.17.pdf    (Datalogging extension for Venus 8)
 */
 
 namespace SkyTraqBin {
@@ -177,6 +178,34 @@ namespace SkyTraqBin {
     GETTER(TalkerID, talker_id, _talker_id);
 
   }; //class NMEA_talker_ID
+
+
+  //! LOG STATUS OUTPUT - Output Status of the Log Buffer
+  class Log_status_output : public Output_message {
+  private:
+    uint32_t _wr_ptr;
+    uint16_t _sectors_left, _total_sectors;
+    uint32_t _max_time, _min_time, _max_dist, _min_dist, _max_speed, _min_speed;
+    bool _datalog;
+    uint8_t _fifo_mode;
+
+  public:
+    Log_status_output(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(uint32_t, write_pointer, _wr_ptr);
+    GETTER(uint16_t, sectors_left, _sectors_left);
+    GETTER(uint16_t, total_sectors, _total_sectors);
+
+    GETTER(uint32_t, max_time, _max_time);
+    GETTER(uint32_t, min_time, _min_time);
+    GETTER(uint32_t, max_distance, _max_dist);
+    GETTER(uint32_t, min_distance, _min_dist);
+    GETTER(uint32_t, max_speed, _max_speed);
+    GETTER(uint32_t, min_speed, _min_speed);
+    GETTER(bool, datalog, _datalog);
+    GETTER(uint8_t, fifo_mode, _fifo_mode);
+
+  }; // class Log_status_output
 
 
   //! NAVIGATION DATA MESSAGE - Message of user navigation data in binary format
