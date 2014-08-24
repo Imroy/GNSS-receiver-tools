@@ -69,7 +69,7 @@ namespace SkyTraqBin {
     uint8_t _ranging_ura_mask;
     bool _correction;
     uint8_t _num_channels;
-    bool _waas, _egnos, _msas;
+    bool _waas, _egnos, _msas, _all_sbas;
 
   public:
     GNSS_SBAS_status(unsigned char* payload, Payload_length payload_len);
@@ -82,6 +82,7 @@ namespace SkyTraqBin {
     GETTER(bool, WAAS_enabled, _waas);
     GETTER(bool, EGNOS_enabled, _egnos);
     GETTER(bool, MSAS_enabled, _msas);
+    GETTER(bool, All_SBAS_enabled, _all_sbas);
 
   }; // class GNSS_SBAS_status
 

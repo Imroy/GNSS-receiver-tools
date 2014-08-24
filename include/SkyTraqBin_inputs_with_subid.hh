@@ -81,13 +81,32 @@ namespace SkyTraqBin {
     uint8_t _ranging_ura_mask;
     bool _correction;
     uint8_t _num_channels;
-    bool _waas, _egnos, _msas;
+    bool _waas, _egnos, _msas, _all_sbas;
     UpdateType _update_type;
 
     GETTER(Payload_length, body_length, 8);
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param en Enable or disable use of SBAS
+      \param r Use SBAS satellite for ranging?
+      \param rm Ranging URA mask (0~15, default 8)
+      \param c Enable correction
+      \param nc Number of tracking channels (0~3)
+      \param w,e,m,a Enable use of WAAS, EGNOS, MSAS, or all SBAS satellites
+      \param ut Update type
+     */
+    Config_SBAS(bool en, EnableOrAuto r, uint8_t rm, bool c, uint8_t nc, bool w, bool e, bool m, bool a, UpdateType ut) :
+      Input_message_with_subid(0x62, 0x01),
+      _enable(en),
+      _ranging(r), _ranging_ura_mask(rm),
+      _correction(c), _num_channels(nc),
+      _waas(w), _egnos(e), _msas(m), _all_sbas(a),
+      _update_type(ut)
+    {}
+
     //! Constructor
     /*!
       \param en Enable or disable use of SBAS
@@ -103,7 +122,7 @@ namespace SkyTraqBin {
       _enable(en),
       _ranging(r), _ranging_ura_mask(rm),
       _correction(c), _num_channels(nc),
-      _waas(w), _egnos(e), _msas(m),
+      _waas(w), _egnos(e), _msas(m), _all_sbas(false),
       _update_type(ut)
     {}
 
@@ -130,6 +149,10 @@ namespace SkyTraqBin {
     GETTER(bool, MSAS_enabled, _msas);
     inline void enable_MSAS(bool m=true) { _msas = m; }
     inline void disable_MSAS(void) { _msas = false; }
+
+    GETTER(bool, All_SBAS_enabled, _all_sbas);
+    inline void enable_All_SBAS(bool a=true) { _all_sbas = a; }
+    inline void disable_All_SBAS(void) { _all_sbas = false; }
 
     GETTER_SETTER(UpdateType, update_type, _update_type);
 

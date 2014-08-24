@@ -252,6 +252,7 @@ namespace SkyTraqBin {
     _waas = sub_mask & 0x01;
     _egnos = sub_mask & 0x02;
     _msas = sub_mask & 0x04;
+    _all_sbas = sub_mask & 0x80;
   }
 
 
