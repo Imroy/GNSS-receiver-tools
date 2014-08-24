@@ -29,7 +29,7 @@
 
 /*
   Sources:
-  https://store-lgdi92x.mybigcommerce.com/content/AN0028_1.4.27.pdf	(Binary messages of Skytraq Venus 8)
+  https://store-lgdi92x.mybigcommerce.com/content/AN0028_1.4.31.pdf	(Binary messages of Skytraq Venus 8)
   https://store-lgdi92x.mybigcommerce.com/content/AN0024_v07.pdf	(Raw measurement binary messages of Skytraq 6 & 8)
   https://store-lgdi92x.mybigcommerce.com/content/SUP800F_v0.6.pdf	(Skytraq SUP800F datasheet)
 */
