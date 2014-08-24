@@ -463,6 +463,8 @@ inline void set_##name(type val) { field = code_set; }
 #include "SkyTraqBin_outputs.hh"
 #include "SkyTraqBin_outputs_with_subid.hh"
 
+// Undefine our macros here, unless Doxygen is reading this
+#ifndef DOXYGEN_SKIP_FOR_USERS
 #undef GETTER
 #undef GETTER_SETTER
 #undef SETTER_BOOL
@@ -473,6 +475,7 @@ inline void set_##name(type val) { field = code_set; }
 
 #undef RESPONSE1
 #undef RESPONSE2
+#endif
 
 namespace std {
   std::string to_string(SkyTraqBin::StartMode mode);
