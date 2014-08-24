@@ -160,7 +160,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY SBAS STATUS - Query SBAS status of GNSS receiver
-  //! - Responds with GNSS_SBAS_status
+  /*! Responds with GNSS_SBAS_status */
   class Q_SBAS_status : public Input_message_with_subid, public with_response {
   public:
     Q_SBAS_status(void) :
@@ -256,7 +256,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY GNSS BOOT STATUS - Query boot status of GNSS receiver
-  //! - Responds with GNSS_boot_status message
+  /*! Responds with GNSS_boot_status message */
   class Q_GNSS_boot_status : public Input_message_with_subid, public with_response {
   public:
     Q_GNSS_boot_status(void) :
@@ -542,7 +542,7 @@ namespace SkyTraqBin {
 
 
   //! CONFIGURE GNSS DATUM INDEX - Configure the datum index of GNSS receiver
-  //! Supported only in Flash V8 version
+  /*! Supported only in Flash V8 version */
   class Config_GNSS_datum_index : public Input_message_with_subid {
   private:
     uint16_t _datum_index;
@@ -570,7 +570,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY GNSS DATUM INDEX - Query the datum index of the GNSS receiver
-  //! Supported only in Flash V8 version
+  /*! Supported only in Flash V8 version */
   class Q_GNSS_datum_index : public Input_message_with_subid, public with_response {
   public:
     Q_GNSS_datum_index(void) :
@@ -620,7 +620,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY 1PPS PULSE WIDTH - Query 1PPS pulse width of GNSS receiver
-  //! - Answer with GNSS_1PPS_pulse_width
+  /*! Answer with GNSS_1PPS_pulse_width */
   class Q_1PPS_pulse_width : public Input_message_with_subid, public with_response {
   public:
     Q_1PPS_pulse_width(void) :
@@ -633,7 +633,7 @@ namespace SkyTraqBin {
 
 
   //! CONFIGURE 1PPS FREQUENCY OUTPUT - Configure frequency output of 1PPS
-  //! Supported only in Flash V8 version
+  /*! Supported only in Flash V8 version */
   class Config_1PPS_freq_output : public Input_message_with_subid {
   private:
     uint32_t _frequency;
@@ -660,7 +660,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY 1PPS FREQUENCY OUTPUT - Query 1PPS frequency output of the GNSS receive
-  //! Supported only in Flash V8 version
+  /*! Supported only in Flash V8 version */
   class Q_1PPS_freq_output : public Input_message_with_subid, public with_response {
   public:
     Q_1PPS_freq_output(void) :

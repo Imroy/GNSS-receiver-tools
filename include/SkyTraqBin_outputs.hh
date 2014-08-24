@@ -58,7 +58,7 @@ namespace SkyTraqBin {
 
 
   //! SOFTWARE VERSION - Software version of the GNSS receiver
-  //! - Answer to Q_sw_ver message
+  /*! Answer to Q_sw_ver message */
   class Sw_ver : public Output_message {
   private:
     SwType _sw_type;
@@ -78,7 +78,7 @@ namespace SkyTraqBin {
 
 
   //! SOFTWARE CRC -Software CRC of the GNSS receiver
-  //! - Answer to Q_sw_CRC message
+  /*! Answer to Q_sw_CRC message */
   class Sw_CRC : public Output_message {
   private:
     SwType _sw_type;
@@ -131,7 +131,7 @@ namespace SkyTraqBin {
 
 
   //! POSITON UPDATE RATE - Position Update rate of the GNSS system
-  //! - Answer to Q_pos_update_rate message
+  /*! Answer to Q_pos_update_rate message */
   class Pos_update_rate : public Output_message {
   private:
     uint8_t _update_rate;
@@ -146,7 +146,7 @@ namespace SkyTraqBin {
 
 
   //! GPS ALMANAC Data - almanac data of GPS receiver
-  //! - Answer to Get_almanac, only on NavSpark-Raw boards
+  /*! Answer to Get_almanac, only on NavSpark-Raw boards */
   class GPS_almanac_data : public Output_message {
   private:
     uint8_t _prn;
@@ -165,7 +165,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS NMEA TALKER ID - NMEA talker ID of GNSS receiver
-  //! - Answer to Q_NMEA_talker_ID message
+  /*! Answer to Q_NMEA_talker_ID message */
   class NMEA_talker_ID : public Output_message {
   private:
     TalkerID _talker_id;
@@ -251,7 +251,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS DATUM - datum used by the GNSS receiver
-  //! - Answer to Q_datum message
+  /*! Answer to Q_datum message */
   class GNSS_datum : public Output_message {
   private:
     uint16_t _datum_index;
@@ -265,7 +265,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS DOP MASK - DOP Mask used by the GNSS receiver
-  //! - Answer to Q_DOP_mask message
+  /*! Answer to Q_DOP_mask message */
   class GNSS_DOP_mask : public Output_message {
   private:
     DOPmode _dop_mode;
@@ -289,7 +289,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS ELEVATION AND CNR MASK - Elevation and CNR mask used by the GNSS receiver
-  //! - Answer to Q_elevation_CNR_mask message
+  /*! Answer to Q_elevation_CNR_mask message */
   class GNSS_elevation_CNR_mask : public Output_message {
   private:
     ElevationCNRmode _mode_select;
@@ -306,7 +306,7 @@ namespace SkyTraqBin {
 
 
   //! GPS EPHEMERIS DATA - GPS ephemeris data of the GPS receiver
-  //! - Answer to Get_GPS_ephemeris message
+  /*! Answer to Get_GPS_ephemeris message */
   class GPS_ephemeris_data : public Output_message {
   private:
     uint16_t _sv_num;
@@ -327,7 +327,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS POSITON PINNING STATUS - Position pinning status of the GNSS receiver
-  //! - Answer to Q_pos_pinning
+  /*! Answer to Q_pos_pinning */
   class GNSS_pos_pinning_status : public Output_message {
   private:
     DefaultOrEnable _status;
@@ -348,7 +348,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS POWER MODE STATUS - Power mode status of the GNSS receiver
-  //! - Answer to Q_power_mode message
+  /*! Answer to Q_power_mode message */
   class GNSS_power_mode_status : public Output_message {
   private:
     PowerMode _power_mode;
@@ -362,7 +362,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS 1PPS CABLE DELAY - 1PPS cable delay of the GNSS receiver
-  //! - Answer to Q_1PPS_cable_delay
+  /*! Answer to Q_1PPS_cable_delay */
   class GNSS_1PPS_cable_delay : public Output_message {
   private:
     int32_t _delay;
@@ -377,7 +377,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS 1PPS TIMING - 1PPS timing information of the GNSS receiver
-  //! - Answer to Q_1PPS_timing
+  /*! Answer to Q_1PPS_timing */
   class GNSS_1PPS_timing : public Output_message {
   private:
     SkyTraq::TimingMode _timing_mode;
@@ -403,7 +403,7 @@ namespace SkyTraqBin {
 
 
   //! MEAS_TIME - Measurement time information
-  //! - Periodic message only on NavSpark-Raws
+  /*! Periodic message only on NavSpark-Raws */
   class Measurement_time : public Output_message {
   private:
     uint8_t _issue;
@@ -438,7 +438,7 @@ namespace SkyTraqBin {
 
 
   //! RAW_MEAS - Raw measurements from each channel
-  //! - Periodic message only on NavSpark-Raws
+  /*! Periodic message only on NavSpark-Raws */
   class Raw_measurements : public Output_message {
   private:
     uint8_t _issue;
@@ -475,7 +475,7 @@ namespace SkyTraqBin {
 
 
   //! SV_CH_STATUS - SV and channel status
-  //! - Periodic message only on NavSpark-Raws
+  /*! Periodic message only on NavSpark-Raws */
   class SV_channel_status : public Output_message {
   private:
     uint8_t _issue;
@@ -495,7 +495,7 @@ namespace SkyTraqBin {
 
 
   //! RCV_STATE - Receiver navigation status
-  //! - Periodic message only on NavSpark-Raws
+  /*! Periodic message only on NavSpark-Raws */
   class Rcv_state : public Output_message {
   private:
     uint8_t _issue;
@@ -532,7 +532,7 @@ namespace SkyTraqBin {
 
 
   //! SUBFRAME - Sub frame buffer data
-  //! - Periodic message only on NavSpark-Raws
+  /*! Periodic message only on NavSpark-Raws */
   class Subframe_data : public Output_message {
   private:
     uint8_t _prn, _subframe_num;

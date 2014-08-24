@@ -111,7 +111,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY SOFTWARE VERSION - Query revision information of loaded software
-  //! - Responds with Sw_ver message
+  /*! Responds with Sw_ver message */
   class Q_sw_ver : public Input_message, public with_response {
   private:
     SwType _sw_type;
@@ -138,7 +138,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY SOFTWARE CRC - Query CRC information of loaded software
-  //! - Responds with Sw_CRC message
+  /*! Responds with Sw_CRC message */
   class Q_sw_CRC : public Input_message, public with_response {
   private:
     SwType _sw_type;
@@ -384,7 +384,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY POSITION UPDATE RATE - Query the position update rate of GNSS system
-  //! - Responds with Pos_update_rate message
+  /*! Responds with Pos_update_rate message */
   class Q_pos_update_rate : public Input_message, public with_response {
   public:
     Q_pos_update_rate(void) :
@@ -425,7 +425,7 @@ namespace SkyTraqBin {
 
 
   //! Get Almanac - Get almanac used of firmware
-  //! Only valid on NavSpark-Raws
+  /*! Only valid on NavSpark-Raws */
   class Get_almanac : public Input_message, public with_response {
   private:
     uint8_t _sv_num;
@@ -451,7 +451,7 @@ namespace SkyTraqBin {
 
 
   //! Configure Binary Measurement Output Rates
-  //! Only valid on NavSpark-Raws
+  /*! Only valid on NavSpark-Raws */
   class Config_bin_measurement_output_rates : public Input_message {
   private:
     OutputRate _output_rate;
@@ -501,7 +501,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY POWER MODE - Query status of power mode of GNSS receiver
-  //! - Responds with GNSS_power_mode_status message
+  /*! Responds with GNSS_power_mode_status message */
   class Q_power_mode : public Input_message, public with_response {
   public:
     Q_power_mode(void) :
@@ -644,7 +644,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY DATUM - Query datum used by the GNSS receiver
-  //! - Responds with GNSS_datum message
+  /*! Responds with GNSS_datum message */
   class Q_datum : public Input_message, public with_response {
   public:
     Q_datum(void) :
@@ -657,7 +657,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY DOP MASK - Query information of DOP mask used by the GNSS receiver
-  //! - Responds with GNSS_DOP_mask message
+  /*! Responds with GNSS_DOP_mask message */
   class Q_DOP_mask : public Input_message, public with_response {
   public:
     Q_DOP_mask(void) :
@@ -670,7 +670,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY ELEVATION AND CNR MASK - Query elevation and CNR mask used by the GNSS receiver
-  //! - Responds with GNSS_elevation_CNR_mask message
+  /*! Responds with GNSS_elevation_CNR_mask message */
   class Q_elevation_CNR_mask : public Input_message, public with_response {
   public:
     Q_elevation_CNR_mask(void) :
@@ -683,7 +683,7 @@ namespace SkyTraqBin {
 
 
   //! GET GPS EPHEMERIS - Get GPS ephemeris used of GNSS receiver
-  //! - Responds with GPS_ephemeris_data message
+  /*! Responds with GPS_ephemeris_data message */
   class Get_GPS_ephemeris : public Input_message, public with_response {
   private:
     uint8_t _sv_num;
@@ -735,7 +735,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY POSITION PINNING - Query position pinning status of GNSS receiver
-  //! - Responds with GNSS_pos_pinning_status
+  /*! Responds with GNSS_pos_pinning_status */
   class Q_pos_pinning : public Input_message, public with_response {
   public:
     Q_pos_pinning(void) :
@@ -824,7 +824,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY 1PPS TIMING - Query 1PPS timing of the GNSS receiver
-  //! Supported only in Venus838LPx-T, S1216F8-T timing mode receivers.
+  /*! Supported only in Venus838LPx-T, S1216F8-T timing mode receivers. */
   class Q_1PPS_timing : public Input_message, public with_response {
   public:
     Q_1PPS_timing(void) :
@@ -874,7 +874,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY 1PPS CABLE DELAY - Query 1PPS cable delay of the GNSS receiver
-  //! - Responds with GNSS_1PPS_cable_delay
+  /*! Responds with GNSS_1PPS_cable_delay */
   class Q_1PPS_cable_delay : public Input_message, public with_response {
   public:
     Q_1PPS_cable_delay(void) :
@@ -914,7 +914,7 @@ namespace SkyTraqBin {
 
 
   //! QUERY NMEA TALKER ID - Query NMEA talker ID of GNSS receiver
-  //! - Responds with NMEA_talker_ID message
+  /*! Responds with NMEA_talker_ID message */
   class Q_NMEA_talker_ID : public Input_message, public with_response {
   public:
     Q_NMEA_talker_ID(void) :
@@ -927,7 +927,7 @@ namespace SkyTraqBin {
 
 
   //! CONFIGURE 1PPS TIMING - Configure 1PPS timing of the GNSS receiver
-  //! Supported only in Venus838LPx-T, S1216F8-T timing mode receivers.
+  /*! Supported only in Venus838LPx-T, S1216F8-T timing mode receivers. */
   class Config_1PPS_timing : public Input_message {
   private:
     SkyTraq::TimingMode _timing_mode;

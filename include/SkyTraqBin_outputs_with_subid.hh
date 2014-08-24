@@ -61,7 +61,7 @@ namespace SkyTraqBin {
 
 
   //! SBAS STATUS - SBAS status of GNSS receiver
-  //! - Answer to Q_SBAS_status
+  /*! Answer to Q_SBAS_status */
   class GNSS_SBAS_status : public Output_message_with_subid {
   private:
     bool _enabled;
@@ -117,7 +117,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS BOOT STATUS - Boot status of GNSS receiver
-  //! - Answer to Q_GNSS_boot_status
+  /*! Answer to Q_GNSS_boot_status */
   class GNSS_boot_status : public Output_message_with_subid {
   private:
     BootStatus _status;
@@ -161,7 +161,7 @@ namespace SkyTraqBin {
 
 
   //! INTERFERENCE DETECTION STATUS - Interference detection status of GNSS receiver
-  //! - Answer to Q_interference_detection_status
+  /*! Answer to Q_interference_detection_status */
   class GNSS_interference_detection_status : public Output_message_with_subid {
   private:
     bool _enabled;
@@ -177,7 +177,7 @@ namespace SkyTraqBin {
 
 
   //! GPS PARAMETER SEARCH ENGINE NUMBER - Number of parameter search engine of GPS receiver
-  //! - Answer to Q_GPS_param_search_engine_num
+  /*! Answer to Q_GPS_param_search_engine_num */
   class GPS_param_search_engine_num : public Output_message_with_subid {
   private:
     ParameterSearchEngineMode _pse_mode;
@@ -191,7 +191,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS NAVIGATION MODE - Navigation mode of the GNSS receiver
-  //! - Answer to Q_GNSS_nav_mode
+  /*! Answer to Q_GNSS_nav_mode */
   class GNSS_nav_mode : public Output_message_with_subid {
   private:
     NavigationMode _mode;
@@ -205,7 +205,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS CONSTELLATION TYPE FOR NAVIGATION SOLUTION - GNSS constellation type for navigation solution
-  //! - Answer to Q_constellation_type
+  /*! Answer to Q_constellation_type */
   class GNSS_constellation_type : public Output_message_with_subid {
   private:
     bool _gps, _glonass, _galileo, _beidou;
@@ -247,7 +247,7 @@ namespace SkyTraqBin {
 
 
   //! GNSS DATUM INDEX - Datum index of GNSS receiver
-  //! - Answer to Q_GNSS_datum_index
+  /*! Answer to Q_GNSS_datum_index */
   class GNSS_datum_index : public Output_message_with_subid {
   private:
     uint16_t _datum_index;
@@ -261,7 +261,7 @@ namespace SkyTraqBin {
 
 
   //! 1PPS PULSE WIDTH - 1PPS pulse width of GNSS receiver
-  //! - Answer to Q_1PPS_pulse_width
+  /*! Answer to Q_1PPS_pulse_width */
   class GNSS_1PPS_pulse_width : public Output_message_with_subid {
   private:
     uint32_t _width;
@@ -276,7 +276,7 @@ namespace SkyTraqBin {
 
 
   //! 1PPS FREQUENCY OUTPUT - 1PPS frequency of the GNSS receiver
-  //! Supported only in Flash V8 version
+  /*! Supported only in Flash V8 version */
   class GNSS_1PPS_freq_output : public Output_message_with_subid {
   private:
     uint32_t _frequency;
