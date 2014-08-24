@@ -246,6 +246,20 @@ namespace SkyTraqBin {
   }; // class GNSS_time
 
 
+  //! GNSS DATUM INDEX - Datum index of GNSS receiver
+  //! - Answer to Q_GNSS_datum_index
+  class GNSS_datum_index : public Output_message_with_subid {
+  private:
+    uint16_t _datum_index;
+
+  public:
+    GNSS_datum_index(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(int16_t, datum_index, _datum_index);
+
+  }; // class GNSS_datum_index
+
+
   //! 1PPS PULSE WIDTH - 1PPS pulse width of GNSS receiver
   //! - Answer to Q_1PPS_pulse_width
   class GNSS_1PPS_pulse_width : public Output_message_with_subid {

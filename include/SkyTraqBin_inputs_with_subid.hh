@@ -536,6 +536,42 @@ namespace SkyTraqBin {
   }; // class Q_GPS_time
 
 
+  //! CONFIGURE GNSS DATUM INDEX - Configure the datum index of GNSS receiver
+  //! Supported only in Flash V8 version
+  class Config_GNSS_datum_index : public Input_message_with_subid {
+  private:
+    uint16_t _datum_index;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 5);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    Config_GNSS_datum_index(uint16_t i, UpdateType ut) :
+      Input_message_with_subid(0x64, 0x27),
+      _datum_index(i),
+      _update_type(ut)
+    {}
+
+    GETTER_SETTER(int16_t, datum_index, _datum_index);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_GNSS_datum_index
+
+
+  //! QUERY GNSS DATUM INDEX - Query the datum index of the GNSS receiver
+  //! Supported only in Flash V8 version
+  class Q_GNSS_datum_index : public Input_message_with_subid, public with_response {
+  public:
+    Q_GNSS_datum_index(void) :
+      Input_message_with_subid(0x64, 0x28)
+    {}
+
+    RESPONSE2(0x64, 0x92);
+
+  }; // class Q_GNSS_datum_index
+
+
   //! CONFIGURE 1PPS PULSE WIDTH - Configure 1PPS pulse width of GNSS receiver
   class Config_1PPS_pulse_width : public Input_message_with_subid {
   private:
