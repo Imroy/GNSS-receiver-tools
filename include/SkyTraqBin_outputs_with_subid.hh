@@ -261,6 +261,20 @@ namespace SkyTraqBin {
   }; // class GNSS_1PPS_pulse_width
 
 
+  //! 1PPS FREQUENCY OUTPUT - 1PPS frequency of the GNSS receiver
+  //! Supported only in Flash V8 version
+  class GNSS_1PPS_freq_output : public Output_message_with_subid {
+  private:
+    uint32_t _frequency;
+
+  public:
+    GNSS_1PPS_freq_output(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(uint32_t, frequency, _frequency);
+
+  }; // class GNSS_1PPS_freq_output
+
+
   //! Message of accelerometer, magnetometer, pressure and temperature data
   class Sensor_data : public Output_message_with_subid {
   private:

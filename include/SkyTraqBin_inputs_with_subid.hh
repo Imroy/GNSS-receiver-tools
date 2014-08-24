@@ -586,6 +586,42 @@ namespace SkyTraqBin {
   }; // class Q_1PPS_pulse_width
 
 
+  //! CONFIGURE 1PPS FREQUENCY OUTPUT - Configure frequency output of 1PPS
+  //! Supported only in Flash V8 version
+  class Config_1PPS_freq_output : public Input_message_with_subid {
+  private:
+    uint32_t _frequency;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 5);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    //! Constructor
+    /*!
+      \param freq Output frequency, in Hz (0~10000000)
+      \param ut Update type
+    */
+    Config_1PPS_freq_output(uint32_t freq, UpdateType ut) :
+      Input_message_with_subid(0x65, 0x03),
+      _frequency(freq), _update_type(ut)
+    {}
+
+    GETTER_SETTER(uint32_t, frequency, _frequency);
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_1PPS_freq_output
+
+
+  //! QUERY 1PPS FREQUENCY OUTPUT - Query 1PPS frequency output of the GNSS receive
+  //! Supported only in Flash V8 version
+  class Q_1PPS_freq_output : public Input_message_with_subid, public with_response {
+  public:
+    Q_1PPS_freq_output(void) :
+      Input_message_with_subid(0x65, 0x04)
+    {}
+  }; // class Q_1PPS_freq_output
+
 }; // namespace SkyTraqBin
 
 #endif // __SKYTRAQBIN_INPUTS_WITH_SUBID_HH__

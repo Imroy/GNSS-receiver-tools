@@ -165,6 +165,7 @@ namespace SkyTraqBin {
     _curr_survey_len(extract_be<uint32_t>(payload, 31))
   {}
 
+
   Measurement_time::Measurement_time(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _issue(payload[1]),
@@ -347,6 +348,12 @@ namespace SkyTraqBin {
   GNSS_1PPS_pulse_width::GNSS_1PPS_pulse_width(unsigned char* payload, Payload_length payload_len) :
     Output_message_with_subid(payload, payload_len),
     _width(extract_be<uint32_t>(payload, 2))
+  {}
+
+
+  GNSS_1PPS_freq_output::GNSS_1PPS_freq_output(unsigned char* payload, Payload_length payload_len) :
+    Output_message_with_subid(payload, payload_len),
+    _frequency(extract_be<uint32_t>(payload, 2))
   {}
 
 

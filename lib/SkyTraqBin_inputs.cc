@@ -300,4 +300,10 @@ namespace SkyTraqBin {
   }
 
 
+  void Config_1PPS_freq_output::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _frequency);
+    append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
 }; // namespace SkyTraqBin

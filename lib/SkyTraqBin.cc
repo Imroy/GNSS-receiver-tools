@@ -101,6 +101,7 @@ namespace SkyTraqBin {
     OUTPUT2(0x64, 0x8C, GNSS_constellation_type),
     OUTPUT2(0x64, 0x8E, GNSS_time),
     OUTPUT2(0x65, 0x80, GNSS_1PPS_pulse_width),
+    OUTPUT2(0x64, 0x81, GNSS_1PPS_freq_output),
     OUTPUT1(0x80, Sw_ver),
     OUTPUT1(0x81, Sw_CRC),
     OUTPUT1(0x83, Ack),
