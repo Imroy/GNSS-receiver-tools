@@ -940,6 +940,16 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param tm Timing mode
+      \param sl Survey length when in survey mode
+      \param sd Standard deviation when in survey mode
+      \param lat Lattitude when in static mode
+      \param lon Longitude when in static mode
+      \param alt Altitude when in static mode
+      \param ut Update type
+     */
     Config_1PPS_timing(SkyTraq::TimingMode tm, uint32_t sl, uint32_t sd, double lat, double lon, float alt, UpdateType ut) :
       Input_message(0x54),
       _timing_mode(tm),

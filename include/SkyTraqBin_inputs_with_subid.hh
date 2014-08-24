@@ -385,6 +385,11 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param pm Parameter search engine mode
+      \param ut Update type
+     */
     Config_GPS_param_search_engine_num(ParameterSearchEngineMode pm, UpdateType ut) :
       Input_message_with_subid(0x64, 0x0a),
       _pse_mode(pm), _update_type(ut)
@@ -547,6 +552,11 @@ namespace SkyTraqBin {
     virtual void body_to_buf(unsigned char* buffer) const;
 
   public:
+    //! Constructor
+    /*!
+      \param i Datum index (see appendix B in AN0028)
+      \param ut Update type
+     */
     Config_GNSS_datum_index(uint16_t i, UpdateType ut) :
       Input_message_with_subid(0x64, 0x27),
       _datum_index(i),
