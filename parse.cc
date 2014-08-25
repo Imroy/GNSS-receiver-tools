@@ -16,16 +16,26 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <unistd.h>
 #include <string>
 #include <cstdio>
+#include <unistd.h>
 #include <string.h>
+#include <boost/date_time/posix_time/posix_time_types.hpp>
 #include "SkyTraq.hh"
 #include "NMEA-0183.hh"
 #include "SkyTraqBin.hh"
 #include "Parser.hh"
 
+namespace greg = boost::gregorian;
+namespace ptime = boost::posix_time;
+
+ptime::ptime GPS_epoch(greg::date(1980, greg::Jan, 6), ptime::seconds(0));
+
 class AppListener : public SkyTraq::Listener {
+private:
+  uint32_t _time_in_week;
+  ptime::time_duration _leap_seconds = ptime::seconds(16);
+
 public:
   void GGA(SkyTraq::Interface* iface, const NMEA0183::GGA &gga) {
     std::cout << "\tTime " << gga.UTC_time()
@@ -129,9 +139,14 @@ public:
   }
 
   void Measurement_time(SkyTraq::Interface* iface, const SkyTraqBin::Measurement_time &mt) {
+    _time_in_week = mt.time_in_week();
+
+    ptime::ptime utc_time = GPS_epoch + greg::days(mt.week_number() * 7) + ptime::milliseconds(mt.time_in_week()) - _leap_seconds;
+
     std::cout << "\tMeasurement time, issue of data: " << (int)mt.issue_of_data()
 	      << ", week " << mt.week_number()
 	      << ", " << mt.time_in_week() << " ms in week"
+	      << ", " << utc_time
 	      << ", measurement period " << mt.period() << " ms" << std::endl;
   }
 
@@ -168,7 +183,15 @@ public:
   }
 
   void Subframe_data(SkyTraq::Interface* iface, const SkyTraqBin::Subframe_data &sfd) {
-    std::cout << "\tSubframe data, PRN " << (int)sfd.PRN() << ", subframe #" << (int)sfd.subframe_num() << std::endl;
+    std::cout << "\tSubframe data, PRN " << (int)sfd.PRN() << ", subframe #" << (int)sfd.subframe_num();
+    if (sfd.subframe_num() > 3) {
+      uint8_t page_num = 1 + ((_time_in_week - 6000) / 30000) % 25;
+      std::cout << ", page " << (int)page_num << std::endl;
+
+      if ((sfd.subframe_num() == 4) && (page_num == 18))
+	_leap_seconds = ptime::seconds(sfd.byte(27));
+    } else
+      std::cout << std::endl;
   }
 
 }; // class AppListener
