@@ -162,21 +162,6 @@ namespace SkyTraqBin {
   }
 
 
-  std::ostream& operator<< (std::ostream& out, StartMode mode) {
-    out << std::to_string(mode);
-    return out;
-  }
-
-  std::ostream& operator<< (std::ostream& out, SwType st) {
-    out << std::to_string(st);
-    return out;
-  }
-
-  std::ostream& operator<< (std::ostream& out, BaudRate rate){
-    out << std::to_string(rate);
-    return out;
-  }
-
   BaudRate rate_to_BaudRate(unsigned int rate) {
     if (rate > 921600)
       throw std::invalid_argument("Baud rate too high");
@@ -242,36 +227,6 @@ namespace SkyTraqBin {
     throw std::invalid_argument("Unrecognised baud rate");
   }
 
-  std::ostream& operator<< (std::ostream& out, UpdateType ut) {
-    out << std::to_string(ut);
-    return out;
-  }
-
-  std::ostream& operator<< (std::ostream& out, MessageType mt) {
-    out << std::to_string(mt);
-    return out;
-  }
-
-  std::ostream& operator<< (std::ostream& out, FlashType ft) {
-    out << std::to_string(ft);
-    return out;
-  }
-
-  std::ostream& operator<< (std::ostream& out, BufferUsed bu) {
-    out << std::to_string(bu);
-    return out;
-  }
-
-  std::ostream& operator<< (std::ostream& out, PowerMode pm) {
-    out << std::to_string(pm);
-    return out;
-  }
-
-  std::ostream& operator<< (std::ostream& out, OutputRate o) {
-    out << std::to_string(o);
-    return out;
-  }
-
   OutputRate Hz_to_OutputRate(unsigned int hz) {
     if (hz < 2)
       return OutputRate::Rate1Hz;
@@ -317,61 +272,6 @@ namespace SkyTraqBin {
     }
 
     throw std::invalid_argument("Unrecognised output rate");
-  }
-
-  std::ostream& operator<< (std::ostream& out, DOPmode mode) {
-    out << std::to_string(mode);
-    return out;
-  }
-
-  std::ostream& operator<< (std::ostream& out, ElevationCNRmode mode) {
-    out << std::to_string(mode);
-    return out;
-  }
-
-  std::ostream& operator<< (std::ostream& out, DefaultOrEnable doe) {
-    out << std::to_string(doe);
-    return out;
-  }
-
-  std::ostream& operator<< (std::ostream& out, TalkerID id) {
-    out << std::to_string(id);
-    return out;
-  }
-
-  std::ostream& operator<< (std::ostream& out, EnableOrAuto eoa) {
-    out << std::to_string(eoa);
-    return out;
-  }
-
-  std::ostream& operator<< (std::ostream& out, ParameterSearchEngineMode psem) {
-    out << std::to_string(psem);
-    return out;
-  }
-
-  std::ostream& operator<< (std::ostream& out, NavigationMode mode) {
-    out << std::to_string(mode);
-    return out;
-  }
-
-  std::ostream& operator<< (std::ostream& out, BootStatus bs) {
-    out << std::to_string(bs);
-    return out;
-  }
-
-  std::ostream& operator<< (std::ostream& out, InterferenceStatus is) {
-    out << std::to_string(is);
-    return out;
-  }
-
-  std::ostream& operator<< (std::ostream& out, FixType ft) {
-    out << std::to_string(ft);
-    return out;
-  }
-
-  std::ostream& operator<< (std::ostream& out, NavigationState ns) {
-    out << std::to_string(ns);
-    return out;
   }
 
 

@@ -250,14 +250,10 @@ inline void set_##name(type val) { field = code_set; }
       ColdStart,
   }; // class StartMode
 
-  std::ostream& operator<< (std::ostream& out, StartMode mode);
-
 
   enum class SwType : uint8_t {
     SystemCode = 1,
   }; // class SwType
-
-  std::ostream& operator<< (std::ostream& out, SwType st);
 
 
   enum class BaudRate : uint8_t {
@@ -272,8 +268,6 @@ inline void set_##name(type val) { field = code_set; }
     Baud921600,
   }; // class BaudRate
 
-  std::ostream& operator<< (std::ostream& out, BaudRate rate);
-
   //! Convert from an integer baud rate to a BaudRate enum
   BaudRate rate_to_BaudRate(unsigned int rate);
 
@@ -287,16 +281,12 @@ inline void set_##name(type val) { field = code_set; }
       Temporary,
   }; // class UpdateType
 
-  std::ostream& operator<< (std::ostream& out, UpdateType ut);
-
 
   enum class MessageType : uint8_t {
     None = 0,
       NMEA0183,
       Binary,
   }; // class MessageType
-
-  std::ostream& operator<< (std::ostream& out, MessageType mt);
 
 
   enum class FlashType : uint8_t {
@@ -307,8 +297,6 @@ inline void set_##name(type val) { field = code_set; }
       Parallel_EON,
   }; // class FlashType
 
-  std::ostream& operator<< (std::ostream& out, FlashType ft);
-
 
   enum class BufferUsed : uint8_t {
     Size8K = 0,
@@ -317,15 +305,11 @@ inline void set_##name(type val) { field = code_set; }
       Size32K,
   }; // class BufferUsed
 
-  std::ostream& operator<< (std::ostream& out, BufferUsed bu);
-
 
   enum class PowerMode : uint8_t {
     Normal = 0,
       PowerSave,
   }; // class PowerMode
-
-  std::ostream& operator<< (std::ostream& out, PowerMode pm);
 
 
   enum class OutputRate : uint8_t {
@@ -336,8 +320,6 @@ inline void set_##name(type val) { field = code_set; }
       Rate10Hz,
       Rate20Hz,
   }; // class OutputRate
-
-  std::ostream& operator<< (std::ostream& out, OutputRate o);
 
   //! Convert from an integer rate to an OutputRate enum
   OutputRate Hz_to_OutputRate(unsigned int hz);
@@ -354,8 +336,6 @@ inline void set_##name(type val) { field = code_set; }
       GDOP_only,
   }; // class DOPmode
 
-  std::ostream& operator<< (std::ostream& out, DOPmode mode);
-
 
   enum class ElevationCNRmode : uint8_t {
     Disable = 0,
@@ -364,8 +344,6 @@ inline void set_##name(type val) { field = code_set; }
       CNR_only,
   }; // class ElevationCNRmode
 
-  std::ostream& operator<< (std::ostream& out, ElevationCNRmode mode);
-
 
   enum class DefaultOrEnable : uint8_t {
     Default = 0,
@@ -373,15 +351,11 @@ inline void set_##name(type val) { field = code_set; }
       Disable,
   }; // class DefaultOrEnable
 
-  std::ostream& operator<< (std::ostream& out, DefaultOrEnable doe);
-
 
   enum class TalkerID : uint8_t {
     GP = 0,
       GN,
   }; // class TalkerID
-
-  std::ostream& operator<< (std::ostream& out, TalkerID id);
 
 
   enum class EnableOrAuto : uint8_t {
@@ -389,8 +363,6 @@ inline void set_##name(type val) { field = code_set; }
       Enable,
       Auto,
   }; // class EnableOrAuto
-
-  std::ostream& operator<< (std::ostream& out, EnableOrAuto eoa);
 
 
   enum class ParameterSearchEngineMode : uint8_t {
@@ -400,8 +372,6 @@ inline void set_##name(type val) { field = code_set; }
       High,
       Full,
   }; // class ParameterSearchEngineMode
-
-  std::ostream& operator<< (std::ostream& out, ParameterSearchEngineMode mode);
 
 
   enum class NavigationMode : uint8_t {
@@ -413,15 +383,11 @@ inline void set_##name(type val) { field = code_set; }
       Airborne,
   }; // class NavigationMode
 
-  std::ostream& operator<< (std::ostream& out, NavigationMode mode);
-
 
   enum class BootStatus : uint8_t {
     FromFlash = 0,
       FromROM,
   }; // class BootStatus
-
-  std::ostream& operator<< (std::ostream& out, BootStatus bs);
 
 
   enum class InterferenceStatus : uint8_t {
@@ -431,8 +397,6 @@ inline void set_##name(type val) { field = code_set; }
       Critical,
   }; // class InterferenceStatus
 
-  std::ostream& operator<< (std::ostream& out, InterferenceStatus is);
-
 
   enum class FixType : uint8_t {
     None = 0,
@@ -440,8 +404,6 @@ inline void set_##name(type val) { field = code_set; }
       ThreeDimensional,
       Differential,
   }; // class FixType
-
-  std::ostream& operator<< (std::ostream& out, FixType ft);
 
 
   enum class NavigationState : uint8_t {
@@ -452,9 +414,6 @@ inline void set_##name(type val) { field = code_set; }
       Differential,
   }; // class NavigationState
 
-  std::ostream& operator<< (std::ostream& out, NavigationState ns);
-
-
 
 }; // SkyTraqBin
 
@@ -463,8 +422,73 @@ inline void set_##name(type val) { field = code_set; }
 #include "SkyTraqBin_outputs.hh"
 #include "SkyTraqBin_outputs_with_subid.hh"
 
+#define ENUM_OSTREAM_OPERATOR(type) inline std::ostream& operator<< (std::ostream& out, type val) { out << std::to_string(val); return out;  }
+
+namespace std {
+  std::string to_string(SkyTraqBin::StartMode mode);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::StartMode);
+
+  std::string to_string(SkyTraqBin::SwType sw);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::SwType);
+
+  std::string to_string(SkyTraqBin::BaudRate r);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::BaudRate);
+
+  std::string to_string(SkyTraqBin::UpdateType ut);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::UpdateType);
+
+  std::string to_string(SkyTraqBin::MessageType mt);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::MessageType);
+
+  std::string to_string(SkyTraqBin::FlashType ft);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::FlashType);
+
+  std::string to_string(SkyTraqBin::BufferUsed bu);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::BufferUsed);
+
+  std::string to_string(SkyTraqBin::PowerMode pm);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::PowerMode);
+
+  std::string to_string(SkyTraqBin::OutputRate o);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::OutputRate);
+
+  std::string to_string(SkyTraqBin::DOPmode mode);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::DOPmode);
+
+  std::string to_string(SkyTraqBin::ElevationCNRmode mode);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::ElevationCNRmode);
+
+  std::string to_string(SkyTraqBin::DefaultOrEnable doe);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::DefaultOrEnable);
+
+  std::string to_string(SkyTraqBin::TalkerID id);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::TalkerID);
+
+  std::string to_string(SkyTraqBin::EnableOrAuto eoa);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::EnableOrAuto);
+
+  std::string to_string(SkyTraqBin::ParameterSearchEngineMode psem);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::ParameterSearchEngineMode);
+
+  std::string to_string(SkyTraqBin::NavigationMode mode);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::NavigationMode);
+
+  std::string to_string(SkyTraqBin::BootStatus bs);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::BootStatus);
+
+  std::string to_string(SkyTraqBin::InterferenceStatus is);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::InterferenceStatus);
+
+  std::string to_string(SkyTraqBin::FixType ft);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::FixType);
+
+  std::string to_string(SkyTraqBin::NavigationState ns);
+  ENUM_OSTREAM_OPERATOR(SkyTraqBin::NavigationState);
+}; // namespace std
+
 // Undefine our macros here, unless Doxygen is reading this
 #ifndef DOXYGEN_SKIP_FOR_USERS
+#undef ENUM__OSTREAM_OPERATOR
 #undef GETTER
 #undef GETTER_SETTER
 #undef SETTER_BOOL
@@ -476,28 +500,5 @@ inline void set_##name(type val) { field = code_set; }
 #undef RESPONSE1
 #undef RESPONSE2
 #endif
-
-namespace std {
-  std::string to_string(SkyTraqBin::StartMode mode);
-  std::string to_string(SkyTraqBin::SwType sw);
-  std::string to_string(SkyTraqBin::BaudRate r);
-  std::string to_string(SkyTraqBin::UpdateType ut);
-  std::string to_string(SkyTraqBin::MessageType mt);
-  std::string to_string(SkyTraqBin::FlashType ft);
-  std::string to_string(SkyTraqBin::BufferUsed bu);
-  std::string to_string(SkyTraqBin::PowerMode pm);
-  std::string to_string(SkyTraqBin::OutputRate o);
-  std::string to_string(SkyTraqBin::DOPmode mode);
-  std::string to_string(SkyTraqBin::ElevationCNRmode mode);
-  std::string to_string(SkyTraqBin::DefaultOrEnable doe);
-  std::string to_string(SkyTraqBin::TalkerID id);
-  std::string to_string(SkyTraqBin::EnableOrAuto eoa);
-  std::string to_string(SkyTraqBin::ParameterSearchEngineMode psem);
-  std::string to_string(SkyTraqBin::NavigationMode mode);
-  std::string to_string(SkyTraqBin::BootStatus bs);
-  std::string to_string(SkyTraqBin::InterferenceStatus is);
-  std::string to_string(SkyTraqBin::FixType ft);
-  std::string to_string(SkyTraqBin::NavigationState ns);
-}; // namespace std
 
 #endif // __SKYTRAQBIN_HH__

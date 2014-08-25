@@ -159,12 +159,6 @@ namespace NMEA0183 {
   }
 
 
-  std::ostream& operator<< (std::ostream& out, FixQuality quality) {
-    out << std::to_string(quality);
-    return out;
-  }
-
-
   GGA::GGA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
     Sentence(tid, type, checksum),
     _utc_time(hhmmss_to_duration(fields[0])),
@@ -207,18 +201,6 @@ namespace NMEA0183 {
   {}
 
 
-  std::ostream& operator<< (std::ostream& out, OpMode mode) {
-    out << std::to_string(mode);
-    return out;
-  }
-
-
-  std::ostream& operator<< (std::ostream& out, FixType type) {
-    out << std::to_string(type);
-    return out;
-  }
-
-
   GSA::GSA(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :
     Sentence(tid, type, checksum),
     _mode(fields[0] == "A" ? OpMode::Automatic : OpMode::Manual),
@@ -248,12 +230,6 @@ namespace NMEA0183 {
 							  std::stoi(fields[i + 2]),
 							  snr));
     }
-  }
-
-
-  std::ostream& operator<< (std::ostream& out, ReceiverMode mode) {
-    out << std::to_string(mode);
-    return out;
   }
 
 
@@ -289,12 +265,6 @@ namespace NMEA0183 {
     _tzhr(std::stoi(fields[4])),
     _tzmin(std::stoi(fields[5]))
   {}
-
-
-  std::ostream& operator<< (std::ostream& out, SkyTraq::TimingMode mode) {
-    out << std::to_string(mode);
-    return out;
-  }
 
 
   STI_PPS::STI_PPS(std::string tid, std::string type, std::vector<std::string> fields, unsigned char checksum) :

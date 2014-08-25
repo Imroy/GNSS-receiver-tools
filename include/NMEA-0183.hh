@@ -37,6 +37,7 @@ namespace ptime = boost::posix_time;
   http://www.gpsinformation.org/dale/nmea.htm
  */
 
+
 namespace NMEA0183 {
 
   class InvalidSentence : public std::exception {
@@ -123,8 +124,6 @@ namespace NMEA0183 {
       SimulationMode,
   }; // class FixQuality
 
-  std::ostream& operator<< (std::ostream& out, FixQuality quality);
-
 
   //! Global Positioning System fix data
   class GGA : public Sentence {
@@ -165,8 +164,6 @@ namespace NMEA0183 {
       Simulated,
   }; // class ReceiverMode
 
-  std::ostream& operator<< (std::ostream& out, ReceiverMode mode);
-
 
   //! Geographic position - latitude/longitude
   class GLL : public Sentence {
@@ -191,16 +188,12 @@ namespace NMEA0183 {
       Automatic,
   }; // class OpMode
 
-  std::ostream& operator<< (std::ostream& out, OpMode mode);
-
 
   enum class FixType : uint8_t {
     NotAvailable = 0,
       TwoDimensional,
       ThreeDimensional,
   }; // class FixType
-
-  std::ostream& operator<< (std::ostream& out, FixType type);
 
 
   //! GNSS DOP and active satellites
@@ -354,11 +347,26 @@ namespace NMEA0183 {
 
 }; // namespace NMEA0183
 
+#define ENUM_OSTREAM_OPERATOR(type) inline std::ostream& operator<< (std::ostream& out, type val) { out << std::to_string(val); return out;  }
+
 namespace std {
   std::string to_string(NMEA0183::FixQuality quality);
+  ENUM_OSTREAM_OPERATOR(NMEA0183::FixQuality);
+
   std::string to_string(NMEA0183::ReceiverMode mode);
+  ENUM_OSTREAM_OPERATOR(NMEA0183::ReceiverMode);
+
   std::string to_string(NMEA0183::OpMode mode);
+  ENUM_OSTREAM_OPERATOR(NMEA0183::OpMode);
+
   std::string to_string(NMEA0183::FixType type);
+  ENUM_OSTREAM_OPERATOR(NMEA0183::FixType);
+
 }; // namespace std
+
+// Undefine our macros here, unless Doxygen is reading this
+#ifndef DOXYGEN_SKIP_FOR_USERS
+#undef ENUM_OSTREAM_OPERATOR
+#endif
 
 #endif // __NMEA_0183_HH__
