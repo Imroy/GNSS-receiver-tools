@@ -16,7 +16,7 @@ var indexSectionsWithContent =
   6: "opr",
   7: "bdefimnoprstu",
   8: "abcdefghlmnpqrstuw",
-  9: "fgors"
+  9: "efgors"
 };
 
 var indexSectionNames =

@@ -174,6 +174,8 @@ Namespaces</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a53cd5f752177296ab45f08b0c367bea9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_n_m_e_a-0183_8hh.html#a53cd5f752177296ab45f08b0c367bea9">GETTER</a>(type, name, field)&#160;&#160;&#160;inline const type name(void) const { return field; }</td></tr>
 <tr class="separator:a53cd5f752177296ab45f08b0c367bea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c347e3885411df6be7a3642720040f2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_n_m_e_a-0183_8hh.html#a4c347e3885411df6be7a3642720040f2">ENUM_OSTREAM_OPERATOR</a>(type)&#160;&#160;&#160;inline std::ostream&amp; operator&lt;&lt; (std::ostream&amp; out, type val) { out &lt;&lt; std::to_string(val); return out;  }</td></tr>
+<tr class="separator:a4c347e3885411df6be7a3642720040f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -218,24 +220,42 @@ Functions</h2></td></tr>
 <tr class="memitem:a13e6d7d6fc95ea1ff212304ed1074a61"><td class="memItemLeft" align="right" valign="top">Sentence::ptr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_m_e_a0183.html#a13e6d7d6fc95ea1ff212304ed1074a61">NMEA0183::parse_sentence</a> (std::string line)</td></tr>
 <tr class="memdesc:a13e6d7d6fc95ea1ff212304ed1074a61"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_n_m_e_a0183_1_1_sentence.html" title="Base class for holding NMEA-0183 sentence data. ">Sentence</a> parser.  <a href="#a13e6d7d6fc95ea1ff212304ed1074a61">More...</a><br /></td></tr>
 <tr class="separator:a13e6d7d6fc95ea1ff212304ed1074a61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a99f65e8c1c6c6f0a79ea22b225bac5"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_m_e_a0183.html#a1a99f65e8c1c6c6f0a79ea22b225bac5">NMEA0183::operator&lt;&lt;</a> (std::ostream &amp;out, FixQuality quality)</td></tr>
-<tr class="separator:a1a99f65e8c1c6c6f0a79ea22b225bac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7a79f845a361620711f16e0c1b5a236"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_m_e_a0183.html#af7a79f845a361620711f16e0c1b5a236">NMEA0183::operator&lt;&lt;</a> (std::ostream &amp;out, ReceiverMode mode)</td></tr>
-<tr class="separator:af7a79f845a361620711f16e0c1b5a236"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a529075f55013868ab190112c92727e"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_m_e_a0183.html#a0a529075f55013868ab190112c92727e">NMEA0183::operator&lt;&lt;</a> (std::ostream &amp;out, OpMode mode)</td></tr>
-<tr class="separator:a0a529075f55013868ab190112c92727e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acca4e9a4b1eeb0f9b7dd08dab615e62a"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_m_e_a0183.html#acca4e9a4b1eeb0f9b7dd08dab615e62a">NMEA0183::operator&lt;&lt;</a> (std::ostream &amp;out, FixType type)</td></tr>
-<tr class="separator:acca4e9a4b1eeb0f9b7dd08dab615e62a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab75ee1a1f5d684cab1105173a6c11e90"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><b>std::to_string</b> (<a class="el" href="namespace_n_m_e_a0183.html#ae7b81b2e62b4cbcc6561a054217b46ae">NMEA0183::FixQuality</a> quality)</td></tr>
 <tr class="separator:ab75ee1a1f5d684cab1105173a6c11e90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a513d2560a1f06ae5b753f6f862dcbf0a"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>std::operator&lt;&lt;</b> (std::ostream &amp;out, <a class="el" href="namespace_n_m_e_a0183.html#ae7b81b2e62b4cbcc6561a054217b46ae">NMEA0183::FixQuality</a> val)</td></tr>
+<tr class="separator:a513d2560a1f06ae5b753f6f862dcbf0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab03395413bb242d8af5d8d6bad5da53e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><b>std::to_string</b> (<a class="el" href="namespace_n_m_e_a0183.html#a927c0bad84f71ff8e857aa93c167d8b6">NMEA0183::ReceiverMode</a> mode)</td></tr>
 <tr class="separator:ab03395413bb242d8af5d8d6bad5da53e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c76d47fd1295ae8563f1a5509e8cba5"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>std::operator&lt;&lt;</b> (std::ostream &amp;out, <a class="el" href="namespace_n_m_e_a0183.html#a927c0bad84f71ff8e857aa93c167d8b6">NMEA0183::ReceiverMode</a> val)</td></tr>
+<tr class="separator:a1c76d47fd1295ae8563f1a5509e8cba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab355e4047b542d5404e6947538a62f20"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><b>std::to_string</b> (<a class="el" href="namespace_n_m_e_a0183.html#ad4add89b28c75830e7e0205e3c9275e1">NMEA0183::OpMode</a> mode)</td></tr>
 <tr class="separator:ab355e4047b542d5404e6947538a62f20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa8a508781bfb6a35b8f53b8a9b8b0d1"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>std::operator&lt;&lt;</b> (std::ostream &amp;out, <a class="el" href="namespace_n_m_e_a0183.html#ad4add89b28c75830e7e0205e3c9275e1">NMEA0183::OpMode</a> val)</td></tr>
+<tr class="separator:aaa8a508781bfb6a35b8f53b8a9b8b0d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa89edeb8387becc61780b061e46260c8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><b>std::to_string</b> (<a class="el" href="namespace_n_m_e_a0183.html#ab433b019f1fdc66200387d281c3010cd">NMEA0183::FixType</a> type)</td></tr>
 <tr class="separator:aa89edeb8387becc61780b061e46260c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9980eaf6f960a0a5cd5170e8f5dbbb6e"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>std::operator&lt;&lt;</b> (std::ostream &amp;out, <a class="el" href="namespace_n_m_e_a0183.html#ab433b019f1fdc66200387d281c3010cd">NMEA0183::FixType</a> val)</td></tr>
+<tr class="separator:a9980eaf6f960a0a5cd5170e8f5dbbb6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a4c347e3885411df6be7a3642720040f2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENUM_OSTREAM_OPERATOR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type</td><td>)</td>
+          <td>&#160;&#160;&#160;inline std::ostream&amp; operator&lt;&lt; (std::ostream&amp; out, type val) { out &lt;&lt; std::to_string(val); return out;  }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_n_m_e_a-0183_8hh_source.html#l00350">350</a> of file <a class="el" href="_n_m_e_a-0183_8hh_source.html">NMEA-0183.hh</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a53cd5f752177296ab45f08b0c367bea9"></a>
 <div class="memitem">
 <div class="memproto">
@@ -266,7 +286,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_n_m_e_a-0183_8hh_source.html#l00089">89</a> of file <a class="el" href="_n_m_e_a-0183_8hh_source.html">NMEA-0183.hh</a>.</p>
+<p>Definition at line <a class="el" href="_n_m_e_a-0183_8hh_source.html#l00090">90</a> of file <a class="el" href="_n_m_e_a-0183_8hh_source.html">NMEA-0183.hh</a>.</p>
 
 </div>
 </div>
@@ -276,7 +296,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="_n_m_e_a-0183_8hh.html">NMEA-0183.hh</a></li>
-    <li class="footer">Generated on Mon Aug 25 2014 03:22:53 for NavSpark tools by
+    <li class="footer">Generated on Tue Aug 26 2014 05:37:48 for NavSpark tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

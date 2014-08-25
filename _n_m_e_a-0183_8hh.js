@@ -14,6 +14,7 @@ var _n_m_e_a_0183_8hh =
     [ "ZDA", "class_n_m_e_a0183_1_1_z_d_a.html", "class_n_m_e_a0183_1_1_z_d_a" ],
     [ "STI_PPS", "class_n_m_e_a0183_1_1_s_t_i___p_p_s.html", "class_n_m_e_a0183_1_1_s_t_i___p_p_s" ],
     [ "STI_sensors", "class_n_m_e_a0183_1_1_s_t_i__sensors.html", "class_n_m_e_a0183_1_1_s_t_i__sensors" ],
+    [ "ENUM_OSTREAM_OPERATOR", "_n_m_e_a-0183_8hh.html#a4c347e3885411df6be7a3642720040f2", null ],
     [ "GETTER", "_n_m_e_a-0183_8hh.html#a53cd5f752177296ab45f08b0c367bea9", null ],
     [ "FixQuality", "_n_m_e_a-0183_8hh.html#ae7b81b2e62b4cbcc6561a054217b46ae", [
       [ "Unavailable", "_n_m_e_a-0183_8hh.html#ae7b81b2e62b4cbcc6561a054217b46aea453e6aa38d87b28ccae545967c53004f", null ],
@@ -43,10 +44,10 @@ var _n_m_e_a_0183_8hh =
       [ "Estimated", "_n_m_e_a-0183_8hh.html#a927c0bad84f71ff8e857aa93c167d8b6a3c311fbd0f9e51ce27b984f55164cf83", null ],
       [ "Simulated", "_n_m_e_a-0183_8hh.html#a927c0bad84f71ff8e857aa93c167d8b6a82abd462f92fed638828a450a2ba1f2a", null ]
     ] ],
-    [ "operator<<", "_n_m_e_a-0183_8hh.html#a1a99f65e8c1c6c6f0a79ea22b225bac5", null ],
-    [ "operator<<", "_n_m_e_a-0183_8hh.html#af7a79f845a361620711f16e0c1b5a236", null ],
-    [ "operator<<", "_n_m_e_a-0183_8hh.html#a0a529075f55013868ab190112c92727e", null ],
-    [ "operator<<", "_n_m_e_a-0183_8hh.html#acca4e9a4b1eeb0f9b7dd08dab615e62a", null ],
+    [ "operator<<", "_n_m_e_a-0183_8hh.html#a513d2560a1f06ae5b753f6f862dcbf0a", null ],
+    [ "operator<<", "_n_m_e_a-0183_8hh.html#a1c76d47fd1295ae8563f1a5509e8cba5", null ],
+    [ "operator<<", "_n_m_e_a-0183_8hh.html#aaa8a508781bfb6a35b8f53b8a9b8b0d1", null ],
+    [ "operator<<", "_n_m_e_a-0183_8hh.html#a9980eaf6f960a0a5cd5170e8f5dbbb6e", null ],
     [ "parse_sentence", "_n_m_e_a-0183_8hh.html#a13e6d7d6fc95ea1ff212304ed1074a61", null ],
     [ "to_string", "_n_m_e_a-0183_8hh.html#ab75ee1a1f5d684cab1105173a6c11e90", null ],
     [ "to_string", "_n_m_e_a-0183_8hh.html#ab03395413bb242d8af5d8d6bad5da53e", null ],
