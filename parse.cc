@@ -25,6 +25,7 @@
 #include "NMEA-0183.hh"
 #include "SkyTraqBin.hh"
 #include "Parser.hh"
+#include "GPSNav.hh"
 
 namespace greg = boost::gregorian;
 namespace ptime = boost::posix_time;
@@ -184,6 +185,14 @@ public:
 
   void Subframe_data(SkyTraq::Interface* iface, const SkyTraqBin::Subframe_data &sfd) {
     std::cout << "\tSubframe data, PRN " << (int)sfd.PRN() << ", subframe #" << (int)sfd.subframe_num();
+    if (sfd.subframe_num() == 1) {
+      GPS::Sat_clock_and_health sch(sfd.PRN(), sfd.bytes());
+      std::cout << ", week #" << sch.week_number() << ", URA " << (int)sch.URA()
+		<< ", health \"" << std::to_string(sch.health()) << "\", IODC " << sch.IODC()
+		<< ", T_GD " << sch.T_GD() << ", t_OC " << sch.t_OC()
+		<< ", a_f2 " << sch.a_f2() << ", a_f1 " << sch.a_f1() << ", a_f0 " << sch.a_f0()
+		<< std::endl;
+    }
     if (sfd.subframe_num() > 3) {
       uint8_t page_num = 1 + ((_time_in_week - 6000) / 30000) % 25;
       std::cout << ", page " << (int)page_num << std::endl;
