@@ -189,7 +189,7 @@ public:
       std::cout << ", page " << (int)page_num << std::endl;
 
       if ((sfd.subframe_num() == 4) && (page_num == 18))
-	_leap_seconds = ptime::seconds(sfd.byte(27));
+	_leap_seconds = ptime::seconds(sfd.data<uint8_t>(216, 8));
     } else
       std::cout << std::endl;
   }

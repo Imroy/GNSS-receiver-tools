@@ -19,7 +19,9 @@
 #ifndef __SKYTRAQBIN_OUTPUTS_HH__
 #define __SKYTRAQBIN_OUTPUTS_HH__
 
-#include "boost/date_time/posix_time/posix_time_types.hpp"
+#include <typeinfo>
+#include <type_traits>
+#include <boost/date_time/posix_time/posix_time_types.hpp>
 #include "SkyTraqBin.hh"
 
 namespace greg = boost::gregorian;
@@ -578,6 +580,36 @@ namespace SkyTraqBin {
       if ((i < 0) || (i >= 30))
 	throw std::out_of_range("Can only access byte 0~29");
       return _bytes[i];
+    }
+
+    //! Extract arbitrary bits from the subframe buffer
+    /*!
+      \param start Bit index to start at
+      \param len Number of bits to extract, defaults to size of template argument
+     */
+    template<typename T>
+    const T data(uint8_t start, uint8_t len = sizeof(T) * 8) const {
+      if (start >= 240)
+	throw std::out_of_range("Can only start at bits 0~239");
+      if (start + len >= 240)
+	throw std::out_of_range("Can only end at bits 0~239");
+      if (len > sizeof(T) * 8)
+	throw std::out_of_range("Can only read " + std::to_string(sizeof(T) * 8) + " bits into " + typeid(T).name());
+
+      // TODO: Make this more efficient by working on whole bytes instead of bits
+      T ret = 0;
+      for (uint8_t from_bit = start, to_bit = 0; to_bit < len; from_bit++, to_bit++) {
+	uint8_t from_byte = from_bit / 8, from_byte_bit = from_bit % 8;
+	int8_t shift = from_byte_bit - to_bit;	// right shift; left shift if negative
+
+	uint8_t mask = 1 << from_byte_bit;
+	if (shift < 0)
+	  ret |= (_bytes[from_byte] & mask) << -shift;
+	else
+	  ret |= (_bytes[from_byte] & mask) >> shift;
+      }
+
+      return ret;
     }
 
   }; // class Subframe_data
