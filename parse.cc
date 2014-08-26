@@ -197,8 +197,10 @@ public:
       uint8_t page_num = 1 + ((_time_in_week - 6000) / 30000) % 25;
       std::cout << ", page " << (int)page_num << std::endl;
 
-      if ((sfd.subframe_num() == 4) && (page_num == 18))
-	_leap_seconds = ptime::seconds(sfd.data<uint8_t>(216, 8));
+      if ((sfd.subframe_num() == 4) && (page_num == 18)) {
+	GPS::Ionosphere_UTC iutc(sfd.PRN(), sfd.bytes());
+	_leap_seconds = ptime::seconds(iutc.delta_t_LSF());
+      }
     } else
       std::cout << std::endl;
   }
