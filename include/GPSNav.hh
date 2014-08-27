@@ -17,13 +17,28 @@
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
 #pragma once
+#include <cerrno>
+#include <cfenv>
+#include <cmath>
+#include <cstring>
 #include <stdexcept>
 #include <typeinfo>
 #include <type_traits>
 #include <stdint.h>
-#include <math.h>
 
 #define GETTER(type, name, field) inline const type name(void) const { return field; }
+#define GETTER_RAW(type, name, field) inline const type name##_raw(void) const { return field; }
+#define GETTER_MOD(type, name, code) inline const type name(void) const { \
+    errno = 0; std::feclearexcept(FE_ALL_EXCEPT);			\
+    type ret = code;							\
+    if (errno == EDOM) throw std::domain_error(std::strerror(errno));	\
+    if (std::fetestexcept(FE_INVALID)) throw std::domain_error("Domain error"); \
+    if (errno == ERANGE) throw std::invalid_argument(std::strerror(errno)); \
+    if (std::fetestexcept(FE_DIVBYZERO)) throw std::invalid_argument("Pole error"); \
+    if (std::fetestexcept(FE_OVERFLOW)) throw std::overflow_error("Overflow error"); \
+    if (std::fetestexcept(FE_UNDERFLOW)) throw std::underflow_error("Underflow error"); \
+    return ret;								\
+  }
 
 namespace GPS {
 
@@ -161,20 +176,20 @@ namespace GPS {
 
     GETTER(uint16_t, IODC, _iodc);
 
-    GETTER(int8_t, T_GD_raw, _t_gd);
-    GETTER(double, T_GD, _t_gd * pow(2, -31));
+    GETTER_RAW(int8_t, T_GD, _t_gd);
+    GETTER_MOD(double, T_GD, _t_gd * pow(2, -31));
 
-    GETTER(uint16_t, t_OC_raw, _t_oc);
-    GETTER(uint32_t, t_OC, _t_oc * 16);
+    GETTER_RAW(uint16_t, t_OC, _t_oc);
+    GETTER_MOD(uint32_t, t_OC, _t_oc * 16);
 
-    GETTER(int8_t, a_f2_raw, _a_f2);
-    GETTER(double, a_f2, _a_f2 * pow(2, -55));
+    GETTER_RAW(int8_t, a_f2, _a_f2);
+    GETTER_MOD(double, a_f2, _a_f2 * pow(2, -55));
 
-    GETTER(int16_t, a_f1_raw, _a_f1);
-    GETTER(double, a_f1, _a_f1 * pow(2, -43));
+    GETTER_RAW(int16_t, a_f1, _a_f1);
+    GETTER_MOD(double, a_f1, _a_f1 * pow(2, -43));
 
-    GETTER(int32_t, a_f0_raw, _a_f0);
-    GETTER(double, a_f0, _a_f0 * pow(2, -31));
+    GETTER_RAW(int32_t, a_f0, _a_f0);
+    GETTER_MOD(double, a_f0, _a_f0 * pow(2, -31));
 
   }; // class Sat_clock_and_health
 
@@ -227,18 +242,41 @@ namespace GPS {
       _delta_t_lsf(_bits<int8_t>(bytes, 216, 8))
     {}
 
-    GETTER(int8_t, alpha_0, _alpha_0);
-    GETTER(int8_t, alpha_1, _alpha_1);
-    GETTER(int8_t, alpha_2, _alpha_2);
-    GETTER(int8_t, alpha_3, _alpha_3);
-    GETTER(int8_t, beta_0, _beta_0);
-    GETTER(int8_t, beta_1, _beta_1);
-    GETTER(int8_t, beta_2, _beta_2);
-    GETTER(int8_t, beta_3, _beta_3);
-    GETTER(int32_t, A_0, _a_0);
-    GETTER(int32_t, A_1, _a_1);
+    GETTER_RAW(int8_t, alpha_0, _alpha_0);
+    GETTER_MOD(double, alpha_0, _alpha_0 * pow(2, -30));
+
+    GETTER_RAW(int8_t, alpha_1, _alpha_1);
+    GETTER_MOD(double, alpha_1, _alpha_1 * pow(2, -27));
+
+    GETTER_RAW(int8_t, alpha_2, _alpha_2);
+    GETTER_MOD(double, alpha_2, _alpha_2 * pow(2, -24));
+
+    GETTER_RAW(int8_t, alpha_3, _alpha_3);
+    GETTER_MOD(double, alpha_3, _alpha_3 * pow(2, -24));
+
+    GETTER_RAW(int8_t, beta_0, _beta_0);
+    GETTER_MOD(int32_t, beta_0, _beta_0 << 11);
+
+    GETTER_RAW(int8_t, beta_1, _beta_1);
+    GETTER_MOD(int32_t, beta_1, _beta_1 << 14);
+
+    GETTER_RAW(int8_t, beta_2, _beta_2);
+    GETTER_MOD(int32_t, beta_2, _beta_2 << 16);
+
+    GETTER_RAW(int8_t, beta_3, _beta_3);
+    GETTER_MOD(int32_t, beta_3, _beta_3 << 16);
+
+    GETTER_RAW(int32_t, A_0, _a_0);
+    GETTER_MOD(double, A_0, _a_0 * pow(2, -30));
+
+    GETTER_RAW(int32_t, A_1, _a_1);
+    GETTER_MOD(double, A_1, _a_1 * pow(2, -50));
+
     GETTER(uint8_t, delta_t_LS, _delta_t_ls);
-    GETTER(uint8_t, t_ot, _t_ot);
+
+    GETTER_RAW(uint8_t, t_ot, _t_ot);
+    GETTER_MOD(uint32_t, t_ot, _t_ot << 12);
+
     GETTER(uint8_t, WN_t, _wn_t);
     GETTER(uint8_t, WN_LSF, _wn_lsf);
     GETTER(uint8_t, DN, _dn);
@@ -259,5 +297,7 @@ namespace std {
 // Undefine our macros here, unless Doxygen is reading this
 #ifndef DOXYGEN_SKIP_FOR_USERS
 #undef GETTER
+#undef GETTER_RAW
+#undef GETTER_MOD
 #undef ENUM_OSTREAM_OPERATOR
 #endif
