@@ -193,6 +193,24 @@ public:
 		<< ", a_f2 " << sch.a_f2() << ", a_f1 " << sch.a_f1() << ", a_f0 " << sch.a_f0()
 		<< std::endl;
     }
+    if (sfd.subframe_num() == 2) {
+      GPS::Ephemeris1 eph(sfd.PRN(), sfd.bytes());
+      std::cout << ", IODE #" << (int)eph.IODE() << ", C_rs " << eph.C_rs()
+		<< ", delta_n " << eph.delta_n() << ", M_0 " << eph.M_0()
+		<< ", C_uc " << eph.C_uc() << ", e " << eph.e()
+		<< ", C_us " << eph.C_us() << ", sqrt_A " << eph.sqrt_A()
+		<< ", t_oe " << eph.t_oe()
+		<< std::endl;
+    }
+    if (sfd.subframe_num() == 3) {
+      GPS::Ephemeris2 eph(sfd.PRN(), sfd.bytes());
+      std::cout << ", C_ic " << eph.C_ic() << ", OMEGA_0 " << eph.OMEGA_0()
+		<< ", C_is " << eph.C_is() << ", i_0 " << eph.i_0()
+		<< ", C_rc " << eph.C_rc() << ", omega " << eph.omega()
+		<< ", OMEGADOT " << eph.OMEGADOT() << ", IODE " << (int)eph.IODE()
+		<< ", IDOT " << eph.IDOT()
+		<< std::endl;
+    }
     if (sfd.subframe_num() > 3) {
       uint8_t page_num = 1 + ((_time_in_week - 6000) / 30000) % 25;
       std::cout << ", page " << (int)page_num << std::endl;

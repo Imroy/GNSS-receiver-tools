@@ -227,6 +227,150 @@ namespace GPS {
   }; // class Sat_clock_and_health
 
 
+  //! Subframe 2
+  class Ephemeris1 : public Subframe {
+  private:
+    uint8_t _iode;
+    int16_t _c_rs, _delta_n;
+    int32_t _m_0;
+    int16_t _c_uc;
+    uint32_t _e;
+    int16_t _c_us;
+    uint32_t _sqrt_a;
+    uint16_t _t_oe;
+
+  public:
+    Ephemeris1(uint8_t prn, const uint8_t *bytes, uint8_t len=30) :
+      Subframe(prn, bytes, len),
+      _iode(_bits<uint8_t>(bytes, 48, 8)),
+      _c_rs(_bits<int16_t>(bytes, 56, 16)),
+      _delta_n(_bits<int16_t>(bytes, 72, 16)),
+      _m_0(_bits<int32_t>(bytes, 88, 32)),
+      _c_uc(_bits<int16_t>(bytes, 120, 16)),
+      _e(_bits<uint32_t>(bytes, 136, 32)),
+      _c_us(_bits<int16_t>(bytes, 168, 16)),
+      _sqrt_a(_bits<uint32_t>(bytes, 184, 32)),
+      _t_oe(_bits<uint16_t>(bytes, 216, 16))
+    {}
+
+    //! Issue of data; ephemeris
+    GETTER(uint8_t, IODE, _iode);
+
+    //! Amplitude of the sine harmonic correction term to the orbit radius, raw value
+    GETTER_RAW(int16_t, C_rs, _c_rs);
+    //! Amplitude of the sine harmonic correction term to the orbit radius, metres
+    GETTER_MOD(double, C_rs, _c_rs * pow(2, -5));
+
+    //! Mean motion difference from computed value, raw value
+    GETTER_RAW(int16_t, delta_n, _delta_n);
+    //! Mean motion difference from computed value, semi-circles/second
+    GETTER_MOD(double, delta_n, _delta_n * pow(2, -43));
+
+    //! Mean anomaly at reference time, raw value
+    GETTER_RAW(int32_t, M_0, _m_0);
+    //! Mean anomaly at reference time, semi-circles
+    GETTER_MOD(double, M_0, _m_0 * pow(2, -31));
+
+    //! Amplitude of the cosine harmonic correction term to the argument of latitude, raw value
+    GETTER_RAW(int16_t, C_uc, _c_uc);
+    //! Amplitude of the cosine harmonic correction term to the argument of latitude, radians
+    GETTER_MOD(double, C_uc, _c_uc * pow(2, -29));
+
+    //! Eccentricity, raw value
+    GETTER_RAW(uint32_t, e, _e);
+    //! Eccentricity, real value
+    GETTER_MOD(double, e, _e * pow(2, -33));
+
+    //! Amplitude of the sine harmonic correction term to the argument of latitude, raw value
+    GETTER_RAW(int16_t, C_us, _c_us);
+    //! Amplitude of the sine harmonic correction term to the argument of latitude, radians
+    GETTER_MOD(double, C_us, _c_us * pow(2, -29));
+
+    //! Square root of the semi-major axis, raw value
+    GETTER_RAW(uint32_t, sqrt_A, _sqrt_a);
+    //! Square root of the semi-major axis, metres^(1/2)
+    GETTER_MOD(double, sqrt_A, _sqrt_a * pow(2, -19));
+
+    //! Reference time ephemeris, raw value
+    GETTER_RAW(uint16_t, t_oe, _t_oe);
+    //! Reference time ephemeris, seconds
+    GETTER_MOD(uint32_t, t_oe, _t_oe << 4);
+
+  }; // class Ephemeris1
+
+
+  //! Subframe 3
+  class Ephemeris2 : public Subframe {
+  private:
+    int16_t _c_ic;
+    int32_t _omega_0;
+    int16_t _c_is;
+    int32_t _i_0;
+    int16_t _c_rc;
+    int32_t _omega, _omegadot;	// omegadot is 24 bits
+    uint8_t _iode;
+    int16_t _idot;		// 14 bits
+
+  public:
+    Ephemeris2(uint8_t prn, const uint8_t *bytes, uint8_t len=30) :
+      Subframe(prn, bytes, len),
+      _c_ic(_bits<int16_t>(bytes, 48, 16)),
+      _omega_0(_bits<int32_t>(bytes, 64, 32)),
+      _c_is(_bits<int16_t>(bytes, 96, 16)),
+      _i_0(_bits<int32_t>(bytes, 112, 32)),
+      _c_rc(_bits<int16_t>(bytes, 144, 16)),
+      _omega(_bits<int32_t>(bytes, 160, 32)),
+      _omegadot(_bits<int32_t>(bytes, 192, 24)),
+      _iode(_bits<uint8_t>(bytes, 216, 8)),
+      _idot(_bits<int16_t>(bytes, 224, 14))
+    {}
+
+    //! Amplitude of the cosine harmonic correction term to the angle of inclination, raw value
+    GETTER_RAW(int16_t, C_ic, _c_ic);
+    //! Amplitude of the cosine harmonic correction term to the angle of inclination, radians
+    GETTER_MOD(double, C_ic, _c_ic * pow(2, -29));
+
+    //! Longitude of ascending node of orbit plane at weekly epoch, raw value
+    GETTER_RAW(int32_t, OMEGA_0, _omega_0);
+    //! Longitude of ascending node of orbit plane at weekly epoch, semi-circles
+    GETTER_MOD(double, OMEGA_0, _omega_0 * pow(2, -31));
+
+    //! Amplitude of the sine harmonic correction term to the angle of inclination, raw value
+    GETTER_RAW(int16_t, C_is, _c_is);
+    //! Amplitude of the sine harmonic correction term to the angle of inclination, radians
+    GETTER_MOD(double, C_is, _c_is * pow(2, -29));
+
+    //! Inclination angle at reference time, raw value
+    GETTER_RAW(int32_t, i_0, _i_0);
+    //! Inclination angle at reference time, semi-circles
+    GETTER_MOD(double, i_0, _i_0 * pow(2, -31));
+
+    //! Amplitude of the cosine harmonic correction term to the orbit radius, raw value
+    GETTER_RAW(int16_t, C_rc, _c_rc);
+    //! Amplitude of the cosine harmonic correction term to the orbit radius, metres
+    GETTER_MOD(double, C_rc, _c_rc * pow(2, -5));
+
+    //! Argument of perigee, raw value
+    GETTER_RAW(int32_t, omega, _omega);
+    //! Argument of perigee, semi-circles
+    GETTER_MOD(double, omega, _omega * pow(2, -31));
+
+    //! Rate of right ascension, raw value
+    GETTER_RAW(int32_t, OMEGADOT, _omegadot);
+    //! Rate of right ascension, semi-circles/second
+    GETTER_MOD(double, OMEGADOT, _omegadot * pow(2, -43));
+
+    //! Issue of data; ephemeris
+    GETTER(uint8_t, IODE, _iode);
+
+    //! Rate of inclination angle, raw value
+    GETTER_RAW(int16_t, IDOT, _idot);
+    //! Rate of inclination angle, semi-circles/second
+    GETTER_MOD(double, IDOT, _idot * pow(2, -43));
+
+  }; // class Ephemeris2
+
+
   //! Base class for various "pages" in subframes 4 and 5
   class Subframe_4_or_5 : public Subframe {
   private:
