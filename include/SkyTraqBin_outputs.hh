@@ -609,6 +609,15 @@ namespace SkyTraqBin {
 	  ret |= (_bytes[from_byte] & mask) >> shift;
       }
 
+
+      if (std::is_signed<T>::value && (len < sizeof(T) * 8)) {
+	uint8_t i = len - 1;
+	uint8_t mask = 1 << i;
+	if (ret & mask)
+	  for (i = len; i <= sizeof(T) * 8; i++)
+	    ret |= 1 << i;
+      }
+
       return ret;
     }
 
