@@ -137,6 +137,12 @@ var hierarchy =
     [ "SkyTraq::Parser", "class_sky_traq_1_1_parser.html", null ],
     [ "SkyTraqBin::RawMeasurement", "struct_sky_traq_bin_1_1_raw_measurement.html", null ],
     [ "NMEA0183::SatelliteData", "struct_n_m_e_a0183_1_1_satellite_data.html", null ],
+    [ "GPS::Subframe", "class_g_p_s_1_1_subframe.html", [
+      [ "GPS::Sat_clock_and_health", "class_g_p_s_1_1_sat__clock__and__health.html", null ],
+      [ "GPS::Subframe_4_or_5", "class_g_p_s_1_1_subframe__4__or__5.html", [
+        [ "GPS::Ionosphere_UTC", "class_g_p_s_1_1_ionosphere___u_t_c.html", null ]
+      ] ]
+    ] ],
     [ "SkyTraqBin::SvStatus", "struct_sky_traq_bin_1_1_sv_status.html", null ],
     [ "SkyTraqBin::with_response", "class_sky_traq_bin_1_1with__response.html", [
       [ "SkyTraqBin::Get_almanac", "class_sky_traq_bin_1_1_get__almanac.html", null ],

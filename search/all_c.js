@@ -27,6 +27,7 @@ var searchData=
   ['min_5ftime',['min_time',['../class_sky_traq_bin_1_1_config__logging.html#a8764e078ca16ecb764f932b980073541',1,'SkyTraqBin::Config_logging::min_time()'],['../class_sky_traq_bin_1_1_log__status__output.html#a9570f3897bd363b29db2a2b33acbd47c',1,'SkyTraqBin::Log_status_output::min_time()']]],
   ['mode',['mode',['../class_n_m_e_a0183_1_1_g_s_a.html#a8b60f181e13c0eb0d66003a529671aed',1,'NMEA0183::GSA']]],
   ['mode_5fselect',['mode_select',['../class_sky_traq_bin_1_1_config__elevation___c_n_r__mask.html#a5dadd563ba68d97ac0fa884e27281c6b',1,'SkyTraqBin::Config_elevation_CNR_mask::mode_select()'],['../class_sky_traq_bin_1_1_g_n_s_s__elevation___c_n_r__mask.html#af0985a0ea0bea95b8c299995a0c9952a',1,'SkyTraqBin::GNSS_elevation_CNR_mask::mode_select()']]],
+  ['momentum_5fflag',['momentum_flag',['../class_g_p_s_1_1_subframe.html#a5bb066be9175a1d5466f12cedcac1fcc',1,'GPS::Subframe']]],
   ['msas_5fenabled',['MSAS_enabled',['../class_sky_traq_bin_1_1_config___s_b_a_s.html#a015ad8ada8137a925c1fc80cb35a7c3a',1,'SkyTraqBin::Config_SBAS::MSAS_enabled()'],['../class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#a3f67efc416ad90c80f6e076cd78ceb6f',1,'SkyTraqBin::GNSS_SBAS_status::MSAS_enabled()']]],
   ['msgid_5flen',['MsgID_len',['../namespace_sky_traq_bin.html#ab8fe0a1d36834d6e2c32139872bef903',1,'SkyTraqBin']]],
   ['msgsubid_5flen',['MsgSubID_len',['../namespace_sky_traq_bin.html#a80ce12e2020149f4d08e73e704edf089',1,'SkyTraqBin']]],

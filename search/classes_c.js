@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['sat_5fclock_5fand_5fhealth',['Sat_clock_and_health',['../class_g_p_s_1_1_sat__clock__and__health.html',1,'GPS']]],
   ['satellitedata',['SatelliteData',['../struct_n_m_e_a0183_1_1_satellite_data.html',1,'NMEA0183']]],
   ['sensor_5fdata',['Sensor_data',['../class_sky_traq_bin_1_1_sensor__data.html',1,'SkyTraqBin']]],
   ['sentence',['Sentence',['../class_n_m_e_a0183_1_1_sentence.html',1,'NMEA0183']]],
@@ -7,6 +8,8 @@ var searchData=
   ['set_5fgps_5fephemeris',['Set_GPS_ephemeris',['../class_sky_traq_bin_1_1_set___g_p_s__ephemeris.html',1,'SkyTraqBin']]],
   ['sti_5fpps',['STI_PPS',['../class_n_m_e_a0183_1_1_s_t_i___p_p_s.html',1,'NMEA0183']]],
   ['sti_5fsensors',['STI_sensors',['../class_n_m_e_a0183_1_1_s_t_i__sensors.html',1,'NMEA0183']]],
+  ['subframe',['Subframe',['../class_g_p_s_1_1_subframe.html',1,'GPS']]],
+  ['subframe_5f4_5for_5f5',['Subframe_4_or_5',['../class_g_p_s_1_1_subframe__4__or__5.html',1,'GPS']]],
   ['subframe_5fdata',['Subframe_data',['../class_sky_traq_bin_1_1_subframe__data.html',1,'SkyTraqBin']]],
   ['sv_5fchannel_5fstatus',['SV_channel_status',['../class_sky_traq_bin_1_1_s_v__channel__status.html',1,'SkyTraqBin']]],
   ['svstatus',['SvStatus',['../struct_sky_traq_bin_1_1_sv_status.html',1,'SkyTraqBin']]],

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['unavailable',['Unavailable',['../namespace_n_m_e_a0183.html#ae7b81b2e62b4cbcc6561a054217b46aea453e6aa38d87b28ccae545967c53004f',1,'NMEA0183']]],
-  ['unknown',['unknown',['../namespace_n_m_e_a0183.html#a927c0bad84f71ff8e857aa93c167d8b6aad921d60486366258809553a3db49a4a',1,'NMEA0183::unknown()'],['../namespace_sky_traq_bin.html#a9b53c23e0e879d107e280b8faa4c8e25a88183b946cc5f0e8c96b2e66e1c74a7e',1,'SkyTraqBin::Unknown()']]]
+  ['temporary',['Temporary',['../namespace_sky_traq_bin.html#af89d769ff084045d495d6690463f40ffa10d85d7664a911bcaec89732098c269a',1,'SkyTraqBin']]],
+  ['threedimensional',['ThreeDimensional',['../namespace_n_m_e_a0183.html#ab433b019f1fdc66200387d281c3010cdae53e6a468bc80e076b0d8c3f17f7251e',1,'NMEA0183::ThreeDimensional()'],['../namespace_sky_traq_bin.html#a2503838326eb69a8104c6bad34d8e957ae53e6a468bc80e076b0d8c3f17f7251e',1,'SkyTraqBin::ThreeDimensional()'],['../namespace_sky_traq_bin.html#a2c063605fbe81d1403247e5d2598958fae53e6a468bc80e076b0d8c3f17f7251e',1,'SkyTraqBin::ThreeDimensional()']]],
+  ['twodimensional',['TwoDimensional',['../namespace_n_m_e_a0183.html#ab433b019f1fdc66200387d281c3010cda5c439358dbee64daba17b27a722983ff',1,'NMEA0183::TwoDimensional()'],['../namespace_sky_traq_bin.html#a2503838326eb69a8104c6bad34d8e957a5c439358dbee64daba17b27a722983ff',1,'SkyTraqBin::TwoDimensional()'],['../namespace_sky_traq_bin.html#a2c063605fbe81d1403247e5d2598958fa5c439358dbee64daba17b27a722983ff',1,'SkyTraqBin::TwoDimensional()']]]
 ];

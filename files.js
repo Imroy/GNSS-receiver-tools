@@ -2,6 +2,8 @@ var files =
 [
     [ "BE.cc", "_b_e_8cc.html", "_b_e_8cc" ],
     [ "BE.hh", "_b_e_8hh.html", "_b_e_8hh" ],
+    [ "GPSNav.cc", "_g_p_s_nav_8cc.html", "_g_p_s_nav_8cc" ],
+    [ "GPSNav.hh", "_g_p_s_nav_8hh.html", "_g_p_s_nav_8hh" ],
     [ "LE.cc", "_l_e_8cc.html", "_l_e_8cc" ],
     [ "LE.hh", "_l_e_8hh.html", "_l_e_8hh" ],
     [ "NMEA-0183.cc", "_n_m_e_a-0183_8cc.html", "_n_m_e_a-0183_8cc" ],

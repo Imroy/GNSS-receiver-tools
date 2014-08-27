@@ -1,5 +1,11 @@
 var searchData=
 [
+  ['t_5fgd',['T_GD',['../class_g_p_s_1_1_sat__clock__and__health.html#a5d66f9498b803218dfddb6d2c165f07d',1,'GPS::Sat_clock_and_health']]],
+  ['t_5fgd_5fraw',['T_GD_raw',['../class_g_p_s_1_1_sat__clock__and__health.html#add540b3edd41ba253107a5c3d9402ac4',1,'GPS::Sat_clock_and_health']]],
+  ['t_5foc',['t_OC',['../class_g_p_s_1_1_sat__clock__and__health.html#aa01c77444050ddf8edbfe66d0276088b',1,'GPS::Sat_clock_and_health']]],
+  ['t_5foc_5fraw',['t_OC_raw',['../class_g_p_s_1_1_sat__clock__and__health.html#a4674b69d6a7a98a5c895d0fa18a8e965',1,'GPS::Sat_clock_and_health']]],
+  ['t_5fot',['t_ot',['../class_g_p_s_1_1_ionosphere___u_t_c.html#a628bf4230a9a22070bd4a16f9c873126',1,'GPS::Ionosphere_UTC']]],
+  ['t_5fot_5fraw',['t_ot_raw',['../class_g_p_s_1_1_ionosphere___u_t_c.html#a382b08a2156f7a30f26f3bcf285e4df4',1,'GPS::Ionosphere_UTC']]],
   ['talker_5fid',['talker_id',['../class_n_m_e_a0183_1_1_sentence.html#a8bb1cdf5a972229cd72745c2b66cf545',1,'NMEA0183::Sentence::talker_id()'],['../class_sky_traq_bin_1_1_config___n_m_e_a__talker___i_d.html#a3214d56b49c279d1081eff633ed1ac6f',1,'SkyTraqBin::Config_NMEA_talker_ID::talker_id()'],['../class_sky_traq_bin_1_1_n_m_e_a__talker___i_d.html#a7a2f0d24dde4d8ba072cc8200bbe925a',1,'SkyTraqBin::NMEA_talker_ID::talker_id()']]],
   ['talkerid',['TalkerID',['../namespace_sky_traq_bin.html#a54588077eccf2a252c2fa7d25ce0f018',1,'SkyTraqBin']]],
   ['tdop',['TDOP',['../class_sky_traq_bin_1_1_nav__data__msg.html#ae6d50eabff0d08835d09549e44aa29ac',1,'SkyTraqBin::Nav_data_msg::TDOP()'],['../class_sky_traq_bin_1_1_rcv__state.html#a07dab58f67ceebd66a8b7d5b919b2147',1,'SkyTraqBin::Rcv_state::TDOP()']]],
@@ -16,6 +22,7 @@ var searchData=
   ['timingmode',['TimingMode',['../namespace_sky_traq.html#ac59310efd3da82ccf4d288b52bf29f43',1,'SkyTraq']]],
   ['to_5fbuf',['to_buf',['../class_sky_traq_bin_1_1_input__message.html#af943c1649ccaa59b40d1cba817fbc6fa',1,'SkyTraqBin::Input_message::to_buf()'],['../class_sky_traq_bin_1_1_input__message__with__subid.html#ac64001fb60ecb92b446176e1c1b14fa7',1,'SkyTraqBin::Input_message_with_subid::to_buf()']]],
   ['total_5fsectors',['total_sectors',['../class_sky_traq_bin_1_1_log__status__output.html#aed25a44e103490c5f69cb395f928e157',1,'SkyTraqBin::Log_status_output']]],
+  ['tow_5fcount',['TOW_count',['../class_g_p_s_1_1_subframe.html#ad01ffc1c96d958e16a640b27fe4843fb',1,'GPS::Subframe']]],
   ['true_5fcourse',['true_course',['../class_n_m_e_a0183_1_1_v_t_g.html#aab65fb7e0d702e4f50941d8b3c1f3cb3',1,'NMEA0183::VTG']]],
   ['twodimensional',['TwoDimensional',['../namespace_n_m_e_a0183.html#ab433b019f1fdc66200387d281c3010cda5c439358dbee64daba17b27a722983ff',1,'NMEA0183::TwoDimensional()'],['../namespace_sky_traq_bin.html#a2503838326eb69a8104c6bad34d8e957a5c439358dbee64daba17b27a722983ff',1,'SkyTraqBin::TwoDimensional()'],['../namespace_sky_traq_bin.html#a2c063605fbe81d1403247e5d2598958fa5c439358dbee64daba17b27a722983ff',1,'SkyTraqBin::TwoDimensional()']]],
   ['type',['type',['../class_n_m_e_a0183_1_1_sentence.html#a7bf9a3440fdf2a62a5a8335c18ba0124',1,'NMEA0183::Sentence']]],

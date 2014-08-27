@@ -5,5 +5,6 @@ var searchData=
   ['insufficientdata',['InsufficientData',['../class_sky_traq_bin_1_1_insufficient_data.html',1,'SkyTraqBin']]],
   ['interface',['Interface',['../class_sky_traq_1_1_interface.html',1,'SkyTraq']]],
   ['invalidmessage',['InvalidMessage',['../class_sky_traq_bin_1_1_invalid_message.html',1,'SkyTraqBin']]],
-  ['invalidsentence',['InvalidSentence',['../class_n_m_e_a0183_1_1_invalid_sentence.html',1,'NMEA0183']]]
+  ['invalidsentence',['InvalidSentence',['../class_n_m_e_a0183_1_1_invalid_sentence.html',1,'NMEA0183']]],
+  ['ionosphere_5futc',['Ionosphere_UTC',['../class_g_p_s_1_1_ionosphere___u_t_c.html',1,'GPS']]]
 ];
