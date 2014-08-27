@@ -102,18 +102,34 @@ namespace GPS {
       _subframe_num(_bits<uint8_t>(bytes, 43, 3))
     {}
 
+    //! Satellite PRN number
     GETTER(uint8_t, PRN, _prn);
+
+    //! Preamble of the TLM word at start of each subframe
     GETTER(uint8_t, preamble, _preamble);
+
+    //! The 17 MSB's of the time-of-week (TOW) count in the hand-over word (HOW)
     GETTER(uint32_t, TOW_count, _tow_count);
+
+    //! Roll momentum dump flag in satellites designated by configuration code 000
     GETTER(bool, momentum_flag,_momentum_or_alert_flag);
+
+    //! Alert flag in satellites designated by configuration code 001
     GETTER(bool, alert_flag,_momentum_or_alert_flag);
+
+    //! Synchronisation flag in satellites designated by configuration code 000
     GETTER(bool, sync_flag, _sync_or_antispoof_flag);
+
+    //! Anti-spoof flag in satellites designated by configuration code 001
     GETTER(bool, antispoof_flag, _sync_or_antispoof_flag);
+
+    //! Subframe number
     GETTER(uint8_t, subframe_number, _subframe_num);
 
   }; // class Subframe
 
 
+  //! Health of satellite signal components
   enum class SignalComponentHealth : uint8_t {
     All_ok = 0,
       Is_temporarily_out = 28,
@@ -168,27 +184,44 @@ namespace GPS {
       }
     }
 
+    //! The 10 MSB's of the 29-bit Z-count
     GETTER(uint16_t, week_number, _week_num);
+
+    //! Predicted user range accuracy
     GETTER(uint8_t, URA, _ura);
 
+    //! MSB of the 6-bit health indicator
     GETTER(bool, navigation_data_ok, _nav_data_ok);
+
+    //! The 5 LSB's of the 6-bit health indicator
     GETTER(SignalComponentHealth, health, _health);
 
+    //! Issue of data; clock
     GETTER(uint16_t, IODC, _iodc);
 
+    //! Estimated group delay differential, raw value
     GETTER_RAW(int8_t, T_GD, _t_gd);
+    //! Estimated group delay differential, seconds
     GETTER_MOD(double, T_GD, _t_gd * pow(2, -31));
 
+    //! Satellite clock correction parameter, raw value
     GETTER_RAW(uint16_t, t_OC, _t_oc);
+    //! Satellite clock correction parameter, seconds
     GETTER_MOD(uint32_t, t_OC, _t_oc * 16);
 
+    //! Satellite clock correction second-order term, raw value
     GETTER_RAW(int8_t, a_f2, _a_f2);
+    //! Satellite clock correction second-order term, seconds/second^2
     GETTER_MOD(double, a_f2, _a_f2 * pow(2, -55));
 
+    //! Satellite clock correction first-order term, raw value
     GETTER_RAW(int16_t, a_f1, _a_f1);
+    //! Satellite clock correction first-order term, seconds/second
     GETTER_MOD(double, a_f1, _a_f1 * pow(2, -43));
 
+    //! Satellite clock correction constant term, raw value
     GETTER_RAW(int32_t, a_f0, _a_f0);
+    //! Satellite clock correction constant term, seconds
     GETTER_MOD(double, a_f0, _a_f0 * pow(2, -31));
 
   }; // class Sat_clock_and_health
@@ -242,44 +275,71 @@ namespace GPS {
       _delta_t_lsf(_bits<int8_t>(bytes, 216, 8))
     {}
 
+    //! Ionospheric model constant term, raw value
     GETTER_RAW(int8_t, alpha_0, _alpha_0);
+    //! Ionospheric model constant term, seconds
     GETTER_MOD(double, alpha_0, _alpha_0 * pow(2, -30));
 
+    //! Ionospheric model first-order term, raw value
     GETTER_RAW(int8_t, alpha_1, _alpha_1);
+    //! Ionospheric model first-order term, seconds/semi-circle
     GETTER_MOD(double, alpha_1, _alpha_1 * pow(2, -27));
 
+    //! Ionospheric model second-order term, raw value
     GETTER_RAW(int8_t, alpha_2, _alpha_2);
+    //! Ionospheric model second-order term, seconds/semi-circle^2
     GETTER_MOD(double, alpha_2, _alpha_2 * pow(2, -24));
 
+    //! Ionospheric model third-order term, raw value
     GETTER_RAW(int8_t, alpha_3, _alpha_3);
+    //! Ionospheric model third-order term, seconds/semi-circle^3
     GETTER_MOD(double, alpha_3, _alpha_3 * pow(2, -24));
 
+    //! Ionospheric model constant term, raw value
     GETTER_RAW(int8_t, beta_0, _beta_0);
+    //! Ionospheric model constant term, seconds
     GETTER_MOD(int32_t, beta_0, _beta_0 << 11);
 
+    //! Ionospheric model first-order term, raw value
     GETTER_RAW(int8_t, beta_1, _beta_1);
+    //! Ionospheric model first-order term, seconds/semi-circle
     GETTER_MOD(int32_t, beta_1, _beta_1 << 14);
 
+    //! Ionospheric model second-order term, raw value
     GETTER_RAW(int8_t, beta_2, _beta_2);
+    //! Ionospheric model second-order term, seconds/semi-circle^2
     GETTER_MOD(int32_t, beta_2, _beta_2 << 16);
 
+    //! Ionospheric model third-order term, raw value
     GETTER_RAW(int8_t, beta_3, _beta_3);
+    //! Ionospheric model third-order term, seconds/semi-circle^3
     GETTER_MOD(int32_t, beta_3, _beta_3 << 16);
 
+    //! UTC correction constant term, raw value
     GETTER_RAW(int32_t, A_0, _a_0);
+    //! UTC correction constant term, seconds
     GETTER_MOD(double, A_0, _a_0 * pow(2, -30));
 
+    //! UTC correction first-order term, raw value
     GETTER_RAW(int32_t, A_1, _a_1);
+    //! UTC correction first-order term, seconds/second
     GETTER_MOD(double, A_1, _a_1 * pow(2, -50));
 
+    //! Delta time due to leap seconds, seconds
     GETTER(uint8_t, delta_t_LS, _delta_t_ls);
 
+    //! Reference time for UTC data, raw value
     GETTER_RAW(uint8_t, t_ot, _t_ot);
+    //! Reference time for UTC data, seconds
     GETTER_MOD(uint32_t, t_ot, _t_ot << 12);
 
+    //! UTC reference week number, weeks
     GETTER(uint8_t, WN_t, _wn_t);
+    //! Week number of future leap-second event, weeks
     GETTER(uint8_t, WN_LSF, _wn_lsf);
+    //! Day number of future leap-second event, days
     GETTER(uint8_t, DN, _dn);
+    //! Delta time due to future leap seconds, seconds
     GETTER(int8_t, delta_t_LSF, _delta_t_lsf);
 
   }; // class Ionosphere_UTC
