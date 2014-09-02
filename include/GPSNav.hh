@@ -389,6 +389,16 @@ namespace GPS {
   }; // class Subframe_4_or_5
 
 
+  //! Subframe 4, pages 1, 6, 11~16, 19~24
+  class Reserved_and_spare : public Subframe_4_or_5 {
+  public:
+    Reserved_and_spare(uint8_t prn, const uint8_t *bytes, uint8_t len=30) :
+      Subframe_4_or_5(prn, bytes, len)
+    {}
+
+  }; // class Reserved_and_spare
+
+
   //! Subframe 4, page 18
   class Ionosphere_UTC : public Subframe_4_or_5 {
   private:
