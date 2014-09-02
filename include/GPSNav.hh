@@ -169,7 +169,7 @@ namespace GPS {
       _a_f1(_bits<int16_t>(bytes, 200, 16)),
       _a_f0(_bits<int32_t>(bytes, 216, 22))
     {
-      uint8_t h = _bits<uint8_t>(bytes, 64, 6);
+      uint8_t h = _bits<uint8_t>(bytes, 65, 5);
       switch (h) {
       case 0:
       case 28:
