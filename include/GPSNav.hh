@@ -161,7 +161,7 @@ namespace GPS {
       Subframe(prn, bytes, len),
       _week_num(_bits<uint16_t>(bytes, 48, 10)),
       _ura(_bits<uint8_t>(bytes, 60, 4)),
-      _nav_data_ok(_bits<uint16_t>(bytes, 64, 1)),
+      _nav_data_ok(_bits<bool>(bytes, 64, 1)),
       _iodc((_bits<uint16_t>(bytes, 70, 2) << 8) | _bits<uint16_t>(bytes, 168, 8)),
       _t_gd(_bits<int8_t>(bytes, 160, 8)),
       _t_oc(_bits<uint16_t>(bytes, 176, 16)),
