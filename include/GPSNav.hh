@@ -87,6 +87,8 @@ namespace GPS {
     }
 
   public:
+    static uint8_t extract_subframe_number(const uint8_t *bytes, uint8_t len=30) { return _bits<uint8_t>(bytes, (len * 8) - 197, 3); }
+
     //! Constructor
     /*!
       \param prn PRN of satellite this subframe came from
@@ -374,15 +376,24 @@ namespace GPS {
   //! Base class for various "pages" in subframes 4 and 5
   class Subframe_4_or_5 : public Subframe {
   private:
+    uint8_t _page_num;
     uint8_t _data_id, _sat_id;	// 2 bits and 6 bits
 
   public:
+    static uint8_t extract_page_number(const uint8_t *bytes, uint8_t len=30) {
+      uint8_t subframe_num = Subframe::extract_subframe_number(bytes, len);
+      uint32_t tow_count = _bits<uint32_t>(bytes, (len * 8) - 216, 17);
+      return 1 + ((tow_count - subframe_num + 1) / 20) % 25;
+    }
+
     Subframe_4_or_5(uint8_t prn, const uint8_t *bytes, uint8_t len=30) :
       Subframe(prn, bytes, len),
+      _page_num(extract_page_number(bytes, len)),
       _data_id(_bits<uint8_t>(bytes, 48, 2)),
       _sat_id(_bits<uint8_t>(bytes, 50, 2))
     {}
 
+    GETTER(uint8_t, page_number, _page_num);
     GETTER(uint8_t, data_id, _data_id);
     GETTER(uint8_t, satellite_id, _sat_id);
 
