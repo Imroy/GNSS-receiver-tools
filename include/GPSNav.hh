@@ -54,7 +54,7 @@ namespace GPS {
     uint8_t _subframe_num; // 3 bits
 
     template<typename T>
-    const T _bits(const uint8_t* bytes, uint8_t start, uint8_t len = sizeof(T) * 8) const {
+    static const T _bits(const uint8_t* bytes, uint8_t start, uint8_t len = sizeof(T) * 8) {
       if (start >= 240)
 	throw std::out_of_range("Can only start at bits 0~239");
       if (start + len >= 240)
