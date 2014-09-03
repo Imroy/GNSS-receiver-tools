@@ -22,6 +22,7 @@
 #include <cmath>
 #include <cstring>
 #include <stdexcept>
+#include <memory>
 #include <typeinfo>
 #include <type_traits>
 #include <stdint.h>
@@ -104,6 +105,9 @@ namespace GPS {
       _subframe_num(_bits<uint8_t>(bytes, 43, 3))
     {}
 
+    //! Virtual deconstructor to force polymorphism
+    virtual ~Subframe() {}
+
     //! Satellite PRN number
     GETTER(uint8_t, PRN, _prn);
 
@@ -127,6 +131,21 @@ namespace GPS {
 
     //! Subframe number
     GETTER(uint8_t, subframe_number, _subframe_num);
+
+    typedef std::shared_ptr<Subframe> ptr;
+
+    //! Check the type of an object
+    template <typename T>
+    inline bool isa(void) const { return typeid(*this) == typeid(T); }
+
+    //! Recast this object to another type
+    template <typename T>
+    inline T* cast_as(void) {
+      T *a = dynamic_cast<T*>(this);
+      if (a == nullptr)
+	throw std::bad_cast();
+      return a;
+    }
 
   }; // class Subframe
 
