@@ -226,6 +226,19 @@ public:
 		<< ", a_f0 " << alm->a_f0() << ", a_f1 " << alm->a_f1()
 		<< std::endl;
     }
+    if (sf->isa<GPS::Ionosphere_UTC>()) {
+      auto ion = sf->cast_as<GPS::Ionosphere_UTC>();
+      std::cout << ", alpha_0 " << ion->alpha_0() << ", alpha_1 " << ion->alpha_1()
+		<< ", alpha_2 " << ion->alpha_2() << ", alpha_3 " << ion->alpha_3()
+		<< ", beta_0 " << ion->beta_0() << ", beta_1 " << ion->beta_1()
+		<< ", beta_2 " << ion->beta_2() << ", beta_3 " << ion->beta_3()
+		<< ", A_0 " << ion->A_0() << ", A_1 " << ion->A_1()
+		<< ", delta_t_LS " << ion->delta_t_LS()
+		<< ", t_ot " << ion->t_ot()
+		<< ", WN_t " << ion->WN_t() << ", WN_LSF " << ion->WN_LSF()
+		<< ", DN " << ion->DN() << ", delta_t_LSF " << ion->delta_t_LSF()
+		<< std::endl;
+    }
     std::cout << std::endl;
   }
 
