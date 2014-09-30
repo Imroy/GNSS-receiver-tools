@@ -88,7 +88,14 @@ namespace GPS {
     }
 
   public:
-    static uint8_t extract_subframe_number(const uint8_t *bytes, uint8_t len=30) { return _bits<uint8_t>(bytes, (len * 8) - 197, 3); }
+    static uint32_t extract_tow_count(const uint8_t *bytes, uint8_t len=30) {
+      //      return _bits<uint32_t>(bytes, len - 216, 17);
+      // TODO _bits() didn't work
+      return ((uint32_t)bytes[len-27] << 9)
+	| ((uint32_t)bytes[len-26] << 1)
+	| ((uint32_t)bytes[len-25] >> 7);
+    }
+    static uint8_t extract_subframe_number(const uint8_t *bytes, uint8_t len=30) { return 1 + (extract_tow_count(bytes, len) + 4) % 5; }
 
     //! Constructor
     /*!
@@ -102,7 +109,7 @@ namespace GPS {
       _tow_count(_bits<uint32_t>(bytes, 24, 17)),
       _momentum_or_alert_flag(_bits<bool>(bytes, 41, 1)),
       _sync_or_antispoof_flag(_bits<bool>(bytes, 42, 1)),
-      _subframe_num(_bits<uint8_t>(bytes, 43, 3))
+      _subframe_num(extract_subframe_number(bytes, len))
     {}
 
     //! Virtual deconstructor to force polymorphism
@@ -400,8 +407,8 @@ namespace GPS {
 
   public:
     static uint8_t extract_page_number(const uint8_t *bytes, uint8_t len=30) {
-      uint8_t subframe_num = Subframe::extract_subframe_number(bytes, len);
-      uint32_t tow_count = _bits<uint32_t>(bytes, (len * 8) - 216, 17);
+      uint8_t subframe_num = extract_subframe_number(bytes, len);
+      uint32_t tow_count = extract_tow_count(bytes, len);
       return 1 + ((tow_count - subframe_num + 1) / 20) % 25;
     }
 
