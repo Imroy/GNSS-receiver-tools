@@ -16,7 +16,39 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include <iostream>
+#include <stdexcept>
 #include "GPSNav.hh"
+
+namespace GPS {
+
+  Subframe::ptr parse_subframe(uint8_t prn, const uint8_t *bytes, uint8_t len) {
+    if (len < 25)
+      throw std::domain_error("Not enough bytes to determine the subframe number");
+
+    uint8_t subframe_num = Subframe::extract_subframe_number(bytes, len);
+
+    if (subframe_num == 1)
+      return std::make_shared<Sat_clock_and_health>(prn, bytes, len);
+
+    if (subframe_num == 2)
+      return std::make_shared<Ephemeris1>(prn, bytes, len);
+
+    if (subframe_num == 3)
+      return std::make_shared<Ephemeris2>(prn, bytes, len);
+
+    uint8_t page_num = Subframe_4_or_5::extract_page_number(bytes, len);
+
+    if (subframe_num == 4) {
+      if (page_num == 18)
+	return std::make_shared<Ionosphere_UTC>(prn, bytes, len);
+    }
+
+    return std::make_shared<Reserved_and_spare>(prn, bytes, len);
+  }
+
+
+}; // namespace GPS
 
 namespace std {
 

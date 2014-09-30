@@ -157,6 +157,9 @@ namespace GPS {
   }; // class Subframe
 
 
+  Subframe::ptr parse_subframe(uint8_t prn, const uint8_t *bytes, uint8_t len=30);
+
+
   //! Health of satellite signal components
   enum class SignalComponentHealth : uint8_t {
     All_ok = 0,

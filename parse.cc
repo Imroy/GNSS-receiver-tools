@@ -184,43 +184,36 @@ public:
   }
 
   void Subframe_data(SkyTraq::Interface* iface, const SkyTraqBin::Subframe_data &sfd) {
-    std::cout << "\tSubframe data, PRN " << (int)sfd.PRN() << ", subframe #" << (int)sfd.subframe_num();
-    if (sfd.subframe_num() == 1) {
-      GPS::Sat_clock_and_health sch(sfd.PRN(), sfd.bytes());
-      std::cout << ", week #" << sch.week_number() << ", URA " << (int)sch.URA()
-		<< ", health \"" << std::to_string(sch.health()) << "\", IODC " << sch.IODC()
-		<< ", T_GD " << sch.T_GD() << ", t_OC " << sch.t_OC()
-		<< ", a_f2 " << sch.a_f2() << ", a_f1 " << sch.a_f1() << ", a_f0 " << sch.a_f0()
+    std::cout << "\tSubframe data, PRN " << (int)sfd.PRN() << ", subframe #" << (int)sfd.subframe_num()
+	      << ", TOW-count " << GPS::Subframe::extract_tow_count(sfd.bytes(), 30);
+    GPS::Subframe::ptr sf = GPS::parse_subframe(sfd.PRN(), sfd.bytes());
+    if (sf->isa<GPS::Sat_clock_and_health>()) {
+      auto sch = sf->cast_as<GPS::Sat_clock_and_health>();
+      std::cout << ", week #" << sch->week_number() << ", URA " << (int)sch->URA()
+		<< ", health \"" << std::to_string(sch->health()) << "\", IODC " << sch->IODC()
+		<< ", T_GD " << sch->T_GD() << ", t_OC " << sch->t_OC()
+		<< ", a_f2 " << sch->a_f2() << ", a_f1 " << sch->a_f1() << ", a_f0 " << sch->a_f0()
 		<< std::endl;
     }
-    if (sfd.subframe_num() == 2) {
-      GPS::Ephemeris1 eph(sfd.PRN(), sfd.bytes());
-      std::cout << ", IODE #" << (int)eph.IODE() << ", C_rs " << eph.C_rs()
-		<< ", delta_n " << eph.delta_n() << ", M_0 " << eph.M_0()
-		<< ", C_uc " << eph.C_uc() << ", e " << eph.e()
-		<< ", C_us " << eph.C_us() << ", sqrt_A " << eph.sqrt_A()
-		<< ", t_oe " << eph.t_oe()
+    if (sf->isa<GPS::Ephemeris1>()) {
+      auto eph = sf->cast_as<GPS::Ephemeris1>();
+      std::cout << ", IODE #" << (int)eph->IODE() << ", C_rs " << eph->C_rs()
+		<< ", delta_n " << eph->delta_n() << ", M_0 " << eph->M_0()
+		<< ", C_uc " << eph->C_uc() << ", e " << eph->e()
+		<< ", C_us " << eph->C_us() << ", sqrt_A " << eph->sqrt_A()
+		<< ", t_oe " << eph->t_oe()
 		<< std::endl;
     }
-    if (sfd.subframe_num() == 3) {
-      GPS::Ephemeris2 eph(sfd.PRN(), sfd.bytes());
-      std::cout << ", C_ic " << eph.C_ic() << ", OMEGA_0 " << eph.OMEGA_0()
-		<< ", C_is " << eph.C_is() << ", i_0 " << eph.i_0()
-		<< ", C_rc " << eph.C_rc() << ", omega " << eph.omega()
-		<< ", OMEGADOT " << eph.OMEGADOT() << ", IODE " << (int)eph.IODE()
-		<< ", IDOT " << eph.IDOT()
+    if (sf->isa<GPS::Ephemeris2>()) {
+      auto eph = sf->cast_as<GPS::Ephemeris2>();
+      std::cout << ", C_ic " << eph->C_ic() << ", OMEGA_0 " << eph->OMEGA_0()
+		<< ", C_is " << eph->C_is() << ", i_0 " << eph->i_0()
+		<< ", C_rc " << eph->C_rc() << ", omega " << eph->omega()
+		<< ", OMEGADOT " << eph->OMEGADOT() << ", IODE " << (int)eph->IODE()
+		<< ", IDOT " << eph->IDOT()
 		<< std::endl;
     }
-    if (sfd.subframe_num() > 3) {
-      uint8_t page_num = 1 + ((_time_in_week - 6000) / 30000) % 25;
-      std::cout << ", page " << (int)page_num << std::endl;
-
-      if ((sfd.subframe_num() == 4) && (page_num == 18)) {
-	GPS::Ionosphere_UTC iutc(sfd.PRN(), sfd.bytes());
-	_leap_seconds = ptime::seconds(iutc.delta_t_LSF());
-      }
-    } else
-      std::cout << std::endl;
+    std::cout << std::endl;
   }
 
 }; // class AppListener
