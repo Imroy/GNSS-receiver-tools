@@ -439,6 +439,107 @@ namespace GPS {
   }; // class Reserved_and_spare
 
 
+  //! Subframe 4, pages 2-5, 7-10
+  //! Subframe 5, pages 1-25
+  class Almanac : public Subframe_4_or_5 {
+  private:
+    uint16_t _e;
+    uint8_t _t_oa;
+    int16_t _sigma_i, _omegadot;
+    bool _nav_data_ok;
+    SignalComponentHealth _health;
+    int32_t _sqrt_a, _omega_0, _omega, _m_0;	// 24-bits each
+    int16_t _a_f0, _a_f1;			// 11-bits each
+
+  public:
+    Almanac(uint8_t prn, const uint8_t *bytes, uint8_t len=30) :
+      Subframe_4_or_5(prn, bytes, len),
+      _e(_bits<uint16_t>(bytes, 56)),
+      _t_oa(_bits<uint8_t>(bytes, 72)),
+      _sigma_i(_bits<int16_t>(bytes, 80)),
+      _omegadot(_bits<int16_t>(bytes, 96)),
+      _nav_data_ok(_bits<bool>(bytes, 113)),
+      _sqrt_a(_bits<int32_t>(bytes, 120, 24)),
+      _omega_0(_bits<int32_t>(bytes, 144, 24)),
+      _omega(_bits<int32_t>(bytes, 168, 24)),
+      _m_0(_bits<int32_t>(bytes, 192, 24)),
+      _a_f0(_bits<int16_t>(bytes, 216, 11)),
+      _a_f1(_bits<int16_t>(bytes, 227, 11))
+    {
+      uint8_t h = _bits<uint8_t>(bytes, 114, 5);
+      switch (h) {
+      case 0:
+      case 28:
+      case 29:
+      case 30:
+      case 31:
+	_health = (SignalComponentHealth)h;
+	break;
+
+      default:
+	_health = SignalComponentHealth::Problems;
+      }
+    }
+
+    //! Eccentricity, raw value
+    GETTER_RAW(uint16_t, e, _e);
+    //! Eccentricity, dimensionless
+    GETTER_MOD(double, e, _e * pow(2, -21));
+
+    //! Almanac reference time, raw value
+    GETTER_RAW(uint8_t, t_oa, _t_oa);
+    //! Almanac reference time, seconds
+    GETTER_MOD(double, t_oa, _t_oa * pow(2, 12));
+
+    //! Correction to inclination, raw value
+    GETTER_RAW(int16_t, sigma_i, _sigma_i);
+    //! Correction to inclination, semi-circles
+    GETTER_MOD(double, sigma_i, _sigma_i * pow(2, -19));
+
+    //! Rate of right ascension, raw value
+    GETTER_RAW(int16_t, OMEGADOT, _omegadot);
+    //! Rate of right ascension, semi-circles/s
+    GETTER_MOD(double, OMEGADOT, _omegadot * pow(2, -38));
+
+    //! MSB of the 6-bit health indicator
+    GETTER(bool, navigation_data_ok, _nav_data_ok);
+
+    //! The 5 LSB's of the 6-bit health indicator
+    GETTER(SignalComponentHealth, health, _health);
+
+    //! Square root of the semi-major axis, raw value
+    GETTER_RAW(int32_t, sqrt_A, _sqrt_a);
+    //! Square root of the semi-major axis, metres^(1/2)
+    GETTER_MOD(double, sqrt_A, _sqrt_a * pow(2, -11));
+
+    //! Longitude of ascending node of orbit plane at weekly epoch, raw value
+    GETTER_RAW(int32_t, OMEGA_0, _omega_0);
+    //! Longitude of ascending node of orbit plane at weekly epoch, semi-circles
+    GETTER_MOD(double, OMEGA_0, _omega_0 * pow(2, -23));
+
+    //! Argument of perigee, raw value
+    GETTER_RAW(int32_t, omega, _omega);
+    //! Argument of perigee, semi-circles
+    GETTER_MOD(double, omega, _omega * pow(2, -23));
+
+    //! Mean anomaly at reference time, raw value
+    GETTER_RAW(int32_t, M_0, _m_0);
+    //! Mean anomaly at reference time, semi-circles
+    GETTER_MOD(double, M_0, _m_0 * pow(2, -23));
+
+    //! Almanac time constant term, raw value
+    GETTER_RAW(int16_t, a_f0, _a_f0);
+    //! Almanac time constant term, seconds
+    GETTER_MOD(double, a_f0, _a_f0 * pow(2, -20));
+
+    //! Almanac time first-order term, raw value
+    GETTER_RAW(int16_t, a_f1, _a_f1);
+    //! Almanac time first-order term, seconds/s
+    GETTER_MOD(double, a_f1, _a_f1 * pow(2, -38));
+
+  }; // class Almanac
+
+
   //! Subframe 4, page 18
   class Ionosphere_UTC : public Subframe_4_or_5 {
   private:

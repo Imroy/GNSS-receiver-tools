@@ -39,6 +39,11 @@ namespace GPS {
 
     uint8_t page_num = Subframe_4_or_5::extract_page_number(bytes, len);
 
+    if (((subframe_num == 4) && (((page_num >= 2) && (page_num <= 5))
+				 || ((page_num >= 7) && (page_num <= 10))))
+	|| ((subframe_num == 5) && (page_num >= 1) && (page_num <= 24)))
+      return std::make_shared<Almanac>(prn, bytes, len);
+
     if (subframe_num == 4) {
       if (page_num == 18)
 	return std::make_shared<Ionosphere_UTC>(prn, bytes, len);

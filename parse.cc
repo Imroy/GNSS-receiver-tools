@@ -213,6 +213,19 @@ public:
 		<< ", IDOT " << eph->IDOT()
 		<< std::endl;
     }
+    if (sf->isa<GPS::Almanac>()) {
+      auto alm = sf->cast_as<GPS::Almanac>();
+      std::cout << ", e " << alm->e()
+		<< ", t_oa " << alm->t_oa()
+		<< ", sigma_i " << alm->sigma_i()
+		<< ", OMEGADOT " << alm->OMEGADOT()
+		<< ", sqrt(A) " << alm->sqrt_A()
+		<< ", OMEGA_0 " << alm->OMEGA_0()
+		<< ", omega " << alm->omega()
+		<< ", M_0 " << alm->M_0()
+		<< ", a_f0 " << alm->a_f0() << ", a_f1 " << alm->a_f1()
+		<< std::endl;
+    }
     std::cout << std::endl;
   }
 
