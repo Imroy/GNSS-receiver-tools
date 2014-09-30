@@ -192,8 +192,7 @@ public:
       std::cout << ", week #" << sch->week_number() << ", URA " << (int)sch->URA()
 		<< ", health \"" << std::to_string(sch->health()) << "\", IODC " << sch->IODC()
 		<< ", T_GD " << sch->T_GD() << ", t_OC " << sch->t_OC()
-		<< ", a_f2 " << sch->a_f2() << ", a_f1 " << sch->a_f1() << ", a_f0 " << sch->a_f0()
-		<< std::endl;
+		<< ", a_f2 " << sch->a_f2() << ", a_f1 " << sch->a_f1() << ", a_f0 " << sch->a_f0();
     }
     if (sf->isa<GPS::Ephemeris1>()) {
       auto eph = sf->cast_as<GPS::Ephemeris1>();
@@ -201,8 +200,7 @@ public:
 		<< ", delta_n " << eph->delta_n() << ", M_0 " << eph->M_0()
 		<< ", C_uc " << eph->C_uc() << ", e " << eph->e()
 		<< ", C_us " << eph->C_us() << ", sqrt_A " << eph->sqrt_A()
-		<< ", t_oe " << eph->t_oe()
-		<< std::endl;
+		<< ", t_oe " << eph->t_oe();
     }
     if (sf->isa<GPS::Ephemeris2>()) {
       auto eph = sf->cast_as<GPS::Ephemeris2>();
@@ -210,8 +208,7 @@ public:
 		<< ", C_is " << eph->C_is() << ", i_0 " << eph->i_0()
 		<< ", C_rc " << eph->C_rc() << ", omega " << eph->omega()
 		<< ", OMEGADOT " << eph->OMEGADOT() << ", IODE " << (int)eph->IODE()
-		<< ", IDOT " << eph->IDOT()
-		<< std::endl;
+		<< ", IDOT " << eph->IDOT();
     }
     if (sf->isa<GPS::Almanac>()) {
       auto alm = sf->cast_as<GPS::Almanac>();
@@ -223,8 +220,7 @@ public:
 		<< ", OMEGA_0 " << alm->OMEGA_0()
 		<< ", omega " << alm->omega()
 		<< ", M_0 " << alm->M_0()
-		<< ", a_f0 " << alm->a_f0() << ", a_f1 " << alm->a_f1()
-		<< std::endl;
+		<< ", a_f0 " << alm->a_f0() << ", a_f1 " << alm->a_f1();
     }
     if (sf->isa<GPS::Ionosphere_UTC>()) {
       auto ion = sf->cast_as<GPS::Ionosphere_UTC>();
@@ -236,8 +232,7 @@ public:
 		<< ", delta_t_LS " << ion->delta_t_LS()
 		<< ", t_ot " << ion->t_ot()
 		<< ", WN_t " << ion->WN_t() << ", WN_LSF " << ion->WN_LSF()
-		<< ", DN " << ion->DN() << ", delta_t_LSF " << ion->delta_t_LSF()
-		<< std::endl;
+		<< ", DN " << ion->DN() << ", delta_t_LSF " << ion->delta_t_LSF();
     }
     std::cout << std::endl;
   }
