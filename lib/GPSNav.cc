@@ -47,6 +47,9 @@ namespace GPS {
     if (subframe_num == 4) {
       if (page_num == 18)
 	return std::make_shared<Ionosphere_UTC>(prn, bytes, len);
+
+      if (page_num == 25)
+	return std::make_shared<Sat_config>(prn, bytes, len);
     }
 
     return std::make_shared<Reserved_and_spare>(prn, bytes, len);

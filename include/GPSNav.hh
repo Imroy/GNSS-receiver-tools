@@ -639,6 +639,71 @@ namespace GPS {
 
   }; // class Ionosphere_UTC
 
+
+  enum class SatelliteConfig : uint8_t {
+    Block_I = 0,
+      Block_II,
+  }; // class SatelliteConfig
+
+
+  //! Subframe 4, page 25
+  class Sat_config : public Subframe_4_or_5 {
+  private:
+    SatelliteConfig _configs[32];
+    bool _nav_data_okays[8];		// 25~32
+    SignalComponentHealth _healths[8];	// 25~32
+
+  public:
+    Sat_config(uint8_t prn, const uint8_t *bytes, uint8_t len=30) :
+      Subframe_4_or_5(prn, bytes, len)
+    {
+      for (uint8_t i = 0; i < 32; i++)
+	_configs[i] = SatelliteConfig(_bits<uint8_t>(bytes, 57 + (i * 4), 3));
+
+      for (uint8_t i = 0; i < 8; i++) {
+	_nav_data_okays[i] = _bits<bool>(bytes, 186 + (i * 6));
+
+	uint8_t h = _bits<uint8_t>(bytes, 187 + (i * 6), 5);
+	switch (h) {
+	case 0:
+	case 28:
+	case 29:
+	case 30:
+	case 31:
+	  _healths[i] = (SignalComponentHealth)h;
+	  break;
+
+	default:
+	  _healths[i] = SignalComponentHealth::Problems;
+	}
+      }
+
+    }
+
+    GETTER(SatelliteConfig*, configs, _configs);
+    const SatelliteConfig config(uint8_t i) const {
+      if ((i < 1) || (i > 32))
+	throw std::out_of_range("Can only access config 1~32");
+      return _configs[i - 1];
+    }
+
+    GETTER(bool*, navigation_data_okays, _nav_data_okays);
+    const bool navigation_data_ok(uint8_t i) const {
+      if ((i < 25) || (i > 32))
+	throw std::out_of_range("Can only access okays 25~32");
+      return _nav_data_okays[i - 25];
+    }
+
+    GETTER(SignalComponentHealth*, healths, _healths);
+    const SignalComponentHealth health(uint8_t i) const {
+      if ((i < 25) || (i > 32))
+	throw std::out_of_range("Can only access healths 25~32");
+      return _healths[i - 25];
+    }
+
+  }; // class Sat_config
+
+
 }; // namespace GPS
 
 #define ENUM_OSTREAM_OPERATOR(type) inline std::ostream& operator<< (std::ostream& out, type val) { out << std::to_string(val); return out;  }
