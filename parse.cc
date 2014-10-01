@@ -240,6 +240,25 @@ public:
 		<< ", WN_t " << ion->WN_t() << ", WN_LSF " << ion->WN_LSF()
 		<< ", DN " << ion->DN() << ", delta_t_LSF " << ion->delta_t_LSF();
     }
+
+    if (sf->isa<GPS::Sat_config>()) {
+      std::cout << std::endl;
+      auto cfg = sf->cast_as<GPS::Sat_config>();
+      for (uint8_t i = 25; i <= 32; i++) {
+	std::cout << "\t\tSV " << (int)i << " has " << (cfg->navigation_data_ok(i) ? "good" : "bad") << " nav data"
+		  << " and is \"" << cfg->health(i) << "\"" << std::endl;
+      }
+    }
+
+    if (sf->isa<GPS::Sat_health>()) {
+      auto h = sf->cast_as<GPS::Sat_health>();
+      std::cout << ", t_oa " << (int)h->t_oa() << ", WN_a " << (int)h->WN_a() << std::endl;
+      for (uint8_t i = 1; i <= 24; i++) {
+	std::cout << "\t\tSV " << (int)i << " has " << (h->navigation_data_ok(i) ? "good" : "bad") << " nav data"
+		  << " and is \"" << h->health(i) << "\"" << std::endl;
+      }
+    }
+
     std::cout << std::endl;
   }
 

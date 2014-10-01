@@ -732,6 +732,61 @@ namespace GPS {
   }; // class Sat_config
 
 
+  //! Subframe 5, page 25
+  class Sat_health : public Subframe_4_or_5 {
+  private:
+    uint8_t _t_oa, _wn_a;
+    bool _nav_data_okays[24];		// 1~24
+    SignalComponentHealth _healths[24];	// 1~24
+
+  public:
+    Sat_health(uint8_t prn, const uint8_t *bytes, uint8_t len=30) :
+      Subframe_4_or_5(prn, bytes, len),
+      _t_oa(_bits<uint8_t>(bytes, 56)),
+      _wn_a(_bits<uint8_t>(bytes, 64))
+    {
+      for (uint8_t i = 0; i < 24; i++) {
+	_nav_data_okays[i] = _bits<bool>(bytes, 72 + (i * 6));
+
+	uint8_t h = _bits<uint8_t>(bytes, 73 + (i * 6), 5);
+	switch (h) {
+	case 0:
+	case 28:
+	case 29:
+	case 30:
+	case 31:
+	  _healths[i] = (SignalComponentHealth)h;
+	  break;
+
+	default:
+	  _healths[i] = SignalComponentHealth::Problems;
+	}
+      }
+    }
+
+    //! Almanac reference time, seconds
+    GETTER(uint8_t, t_oa, _t_oa);
+
+    //! Week number
+    GETTER(uint8_t, WN_a, _wn_a);
+
+    GETTER(bool*, navigation_data_okays, _nav_data_okays);
+    const bool navigation_data_ok(uint8_t i) const {
+      if ((i < 1) || (i > 24))
+	throw std::out_of_range("Can only access okays 1~24");
+      return _nav_data_okays[i - 1];
+    }
+
+    GETTER(SignalComponentHealth*, healths, _healths);
+    const SignalComponentHealth health(uint8_t i) const {
+      if ((i < 1) || (i > 24))
+	throw std::out_of_range("Can only access healths 1~24");
+      return _healths[i - 1];
+    }
+
+  }; // class Sat_health
+
+
 }; // namespace GPS
 
 #define ENUM_OSTREAM_OPERATOR(type) inline std::ostream& operator<< (std::ostream& out, type val) { out << std::to_string(val); return out;  }

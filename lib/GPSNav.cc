@@ -55,6 +55,9 @@ namespace GPS {
 	return std::make_shared<Sat_config>(prn, bytes, len);
     }
 
+    if ((subframe_num == 5) && (page_num == 25))
+      return std::make_shared<Sat_health>(prn, bytes, len);
+
     return std::make_shared<Reserved_and_spare>(prn, bytes, len);
   }
 
