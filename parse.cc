@@ -235,10 +235,10 @@ public:
 		<< ", beta_0 " << ion->beta_0() << ", beta_1 " << ion->beta_1()
 		<< ", beta_2 " << ion->beta_2() << ", beta_3 " << ion->beta_3()
 		<< ", A_0 " << ion->A_0() << ", A_1 " << ion->A_1()
-		<< ", delta_t_LS " << ion->delta_t_LS()
+		<< ", delta_t_LS " << (int)ion->delta_t_LS()
 		<< ", t_ot " << ion->t_ot()
-		<< ", WN_t " << ion->WN_t() << ", WN_LSF " << ion->WN_LSF()
-		<< ", DN " << ion->DN() << ", delta_t_LSF " << ion->delta_t_LSF();
+		<< ", WN_t " << (int)ion->WN_t() << ", WN_LSF " << (int)ion->WN_LSF()
+		<< ", DN " << (int)ion->DN() << ", delta_t_LSF " << (int)ion->delta_t_LSF();
     }
 
     if (sf->isa<GPS::Sat_config>()) {
