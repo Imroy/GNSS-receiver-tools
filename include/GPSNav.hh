@@ -23,6 +23,7 @@
 #include <cstring>
 #include <stdexcept>
 #include <memory>
+#include <string>
 #include <typeinfo>
 #include <type_traits>
 #include <stdint.h>
@@ -538,6 +539,33 @@ namespace GPS {
     GETTER_MOD(double, a_f1, _a_f1 * pow(2, -38));
 
   }; // class Almanac
+
+
+  //! Subframe 4, page 17
+  class Special_message : public Subframe_4_or_5 {
+  private:
+    char _msg[22];
+
+  public:
+    Special_message(uint8_t prn, const uint8_t *bytes, uint8_t len=30) :
+      Subframe_4_or_5(prn, bytes, len)
+    {
+      for (uint8_t i = 0; i < 22; i++)
+	_msg[i] = bytes[i + (len - 23)];
+    }
+
+    std::string contents(void) const {
+      std::string m;
+      for (uint8_t i = 0; i < 22; i++)
+	if (_msg[i] == 0370)
+	  m += "°";
+	else
+	  m += _msg[i];
+
+      return m;
+    }
+
+  }; // class Special_message
 
 
   //! Subframe 4, page 18

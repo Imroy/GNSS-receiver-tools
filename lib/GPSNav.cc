@@ -45,6 +45,9 @@ namespace GPS {
       return std::make_shared<Almanac>(prn, bytes, len);
 
     if (subframe_num == 4) {
+      if (page_num == 17)
+	return std::make_shared<Special_message>(prn, bytes, len);
+
       if (page_num == 18)
 	return std::make_shared<Ionosphere_UTC>(prn, bytes, len);
 

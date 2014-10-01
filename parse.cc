@@ -222,6 +222,12 @@ public:
 		<< ", M_0 " << alm->M_0()
 		<< ", a_f0 " << alm->a_f0() << ", a_f1 " << alm->a_f1();
     }
+
+    if (sf->isa<GPS::Special_message>()) {
+      auto msg = sf->cast_as<GPS::Special_message>();
+      std::cout << ", message \"" << msg->contents() << "\"";
+    }
+
     if (sf->isa<GPS::Ionosphere_UTC>()) {
       auto ion = sf->cast_as<GPS::Ionosphere_UTC>();
       std::cout << ", alpha_0 " << ion->alpha_0() << ", alpha_1 " << ion->alpha_1()
