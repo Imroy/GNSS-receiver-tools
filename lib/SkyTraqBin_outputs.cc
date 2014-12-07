@@ -86,6 +86,16 @@ namespace SkyTraqBin {
   {}
 
 
+  Glonass_ephemeris_data::Glonass_ephemeris_data(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _slot_number(payload[1]),
+    _k_number(static_cast<int8_t>(payload[2]))
+  {
+    for (unsigned char i = 0; i < 4; i++)
+      memcpy(_string[i], payload + 3 + (i * 10), 10);
+  }
+
+
   NMEA_talker_ID::NMEA_talker_ID(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _talker_id((TalkerID)payload[1])

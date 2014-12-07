@@ -1137,6 +1137,32 @@ namespace SkyTraqBin {
   }; // class Config_1PPS_timing
 
 
+  //! GET GLONASS EPHEMERIS - Get GLONASS ephemeris used in the GNSS receiver
+  /*! Responds with Glonass_ephemeris_data message */
+  class Get_Glonass_ephemeris : public Input_message, public with_response {
+  private:
+    uint8_t _slot_number;
+
+    GETTER(Payload_length, body_length, 1);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    //! Constructor
+    /*!
+      \param slot SV slot number (0 means all SV's)
+     */
+    Get_Glonass_ephemeris(uint8_t slot) :
+      Input_message(0x5b),
+      _slot_number(slot)
+    {}
+
+    RESPONSE1(0x90);
+
+    GETTER_SETTER(uint8_t, slot_number, _slot_number);
+
+  }; // class Get_Glonass_ephemeris
+
+
 }; // namespace SkyTraqBin
 
 #endif // __SKYTRAQBIN_INPUTS_HH__

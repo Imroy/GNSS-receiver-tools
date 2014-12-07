@@ -244,6 +244,10 @@ namespace SkyTraqBin {
     append_be(buffer, static_cast<uint8_t>(_update_type));
   }
 
+  void Get_Glonass_ephemeris::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _slot_number);
+  }
+
 
   /**************************
    * Messages with a sub-ID *

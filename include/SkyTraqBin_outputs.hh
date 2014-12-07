@@ -196,6 +196,29 @@ namespace SkyTraqBin {
   }; // class Bin_measurement_data_output_status
 
 
+  //! GLONASS EPHEMERIS DATA - GLONASS ephemeris data of the GNSS receiver
+  /*! Answer to Get_Glonass_ephemeris */
+  class Glonass_ephemeris_data : public Output_message {
+  private:
+    uint8_t _slot_number;
+    int8_t _k_number;
+    uint8_t _string[4][10];
+
+  public:
+    Glonass_ephemeris_data(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(uint8_t, slot_number, _slot_number);
+    GETTER(int8_t, k_number, _k_number);
+
+    inline const uint8_t* sstring(unsigned char i) const {
+      if (i > 3)
+	throw std::out_of_range(std::to_string(i) + " > 3");
+      return _string[i];
+    }
+
+  }; // class Glonass_ephemeris_data
+
+
   //! GNSS NMEA TALKER ID - NMEA talker ID of GNSS receiver
   /*! Answer to Q_NMEA_talker_ID message */
   class NMEA_talker_ID : public Output_message {

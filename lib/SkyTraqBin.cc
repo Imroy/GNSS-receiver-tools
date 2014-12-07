@@ -111,6 +111,7 @@ namespace SkyTraqBin {
     OUTPUT1(0x86, Pos_update_rate),
     OUTPUT1(0x87, GPS_almanac_data),
     OUTPUT1(0x89, Bin_measurement_data_output_status),
+    OUTPUT1(0x90, Glonass_ephemeris_data),
     OUTPUT1(0x93, NMEA_talker_ID),
     OUTPUT1(0x94, Log_status_output),
     OUTPUT1(0xA8, Nav_data_msg),
