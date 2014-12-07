@@ -452,7 +452,8 @@ namespace SkyTraqBin {
 
 
   //! Configure Binary Measurement Output Rates
-  /*! Only valid on NavSpark-Raws */
+  /*! Only valid on NavSpark-Raws.
+    Very similar to Config_bin_measurement_data_output. */
   class Config_bin_measurement_output_rates : public Input_message {
   private:
     OutputRate _output_rate;
@@ -598,6 +599,71 @@ namespace SkyTraqBin {
     GETTER_SETTER(uint16_t, num_sectors, _num_sectors);
 
   }; // class Read_log
+
+
+  //! CONFIGURE BINARY MEASUREMENT DATA OUTPUT - Configure binary measurement data output
+  /*! Only valid on NavSpark-Raws.
+    Very similar to Config_bin_measurement_output_rates. */
+  class Config_bin_measurement_data_output : public Input_message {
+  private:
+    OutputRate _output_rate;
+    bool _meas_time, _raw_meas, _sv_ch_status, _rcv_state;
+    bool _sub_gps, _sub_glonass, _sub_galileo, _sub_beidou2;
+    UpdateType _update_type;
+
+    GETTER(Payload_length, body_length, 7);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    //! Constructor
+    /*!
+      \param o Output rate
+      \param mt Enable Meas_time reporting
+      \param rm Enable Raw_meas reporting
+      \param svch Enable SV_ch_status reporting
+      \param rcv Enable RCV_state reporting
+      \param s_gps Enable GPS subframe reporting
+      \param s_glo Enable GLONASS subframe reporting
+      \param s_gal Enable Galileo subframe reporting
+      \param s_bei Enable Beidou2 subframe reporting
+      \param ut Update type
+     */
+    Config_bin_measurement_data_output(OutputRate o, bool mt, bool rm, bool svch, bool rcv, bool s_gps, bool s_glo, bool s_gal, bool s_bei, UpdateType ut) :
+      Input_message(0x1e),
+      _output_rate(o),
+      _meas_time(mt), _raw_meas(rm), _sv_ch_status(svch), _rcv_state(rcv),
+      _sub_gps(s_gps), _sub_glonass(s_glo), _sub_galileo(s_gal), _sub_beidou2(s_bei),
+      _update_type(ut)
+    {}
+
+    GETTER_SETTER(OutputRate, output_rate, _output_rate);
+    GETTER(bool, meas_time, _meas_time);
+    SETTER_BOOL(meas_time, _meas_time);
+
+    GETTER(bool, raw_meas, _raw_meas);
+    SETTER_BOOL(raw_meas, _raw_meas);
+
+    GETTER(bool, SV_CH_status, _sv_ch_status);
+    SETTER_BOOL(SV_CH_status, _sv_ch_status);
+
+    GETTER(bool, RCV_state, _rcv_state);
+    SETTER_BOOL(RCV_state, _rcv_state);
+
+    GETTER(bool, subframe_GPS, _sub_gps);
+    SETTER_BOOL(subframe_GPS, _sub_gps);
+
+    GETTER(bool, subframe_GLONASS, _sub_glonass);
+    SETTER_BOOL(subframe_GLONASS, _sub_glonass);
+
+    GETTER(bool, subframe_Galileo, _sub_galileo);
+    SETTER_BOOL(subframe_Galileo, _sub_galileo);
+
+    GETTER(bool, subframe_Beidou2, _sub_beidou2);
+    SETTER_BOOL(subframe_Beidou2, _sub_beidou2);
+
+    GETTER_SETTER(UpdateType, update_type, _update_type);
+
+  }; // class Config_bin_measurement_data_output
 
 
   //! CONFIGURE DATUM - Configure datum used for GNSS position transformation
