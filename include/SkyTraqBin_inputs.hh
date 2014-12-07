@@ -1163,6 +1163,48 @@ namespace SkyTraqBin {
   }; // class Get_Glonass_ephemeris
 
 
+  //! SET GLONASS EPHEMERIS - Set GLONASS ephemeris to the GNSS receiver
+  class Set_Glonass_ephemeris : public Input_message {
+  private:
+    uint8_t _slot_number;
+    int8_t _k_number;
+    uint8_t _string1[10], _string2[10], _string3[10], _string4[10];
+
+    GETTER(Payload_length, body_length, 42);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    //! Constructor
+    /*!
+     */
+    Set_Glonass_ephemeris(uint8_t slot, int8_t k, uint8_t s1[10], uint8_t s2[10], uint8_t s3[10], uint8_t s4[10]) :
+      Input_message(0x5c),
+      _slot_number(slot), _k_number(k)
+    {
+      memcpy(&_string1, s1, 10);
+      memcpy(&_string2, s2, 10);
+      memcpy(&_string3, s3, 10);
+      memcpy(&_string4, s4, 10);
+    }
+
+    GETTER_SETTER(uint8_t, slot_number, _slot_number);
+    GETTER_SETTER(int8_t, k_number, _k_number);
+
+    GETTER(uint8_t*, string1, _string1);
+    inline void set_string1(uint8_t s1[10]) { memcpy(&_string1, s1, 10); }
+
+    GETTER(uint8_t*, string2, _string2);
+    inline void set_string2(uint8_t s2[10]) { memcpy(&_string2, s2, 10); }
+
+    GETTER(uint8_t*, string3, _string3);
+    inline void set_string3(uint8_t s3[10]) { memcpy(&_string3, s3, 10); }
+
+    GETTER(uint8_t*, string4, _string4);
+    inline void set_string4(uint8_t s4[10]) { memcpy(&_string4, s4, 10); }
+
+  }; // class Set_Glonass_ephemeris
+
+
 }; // namespace SkyTraqBin
 
 #endif // __SKYTRAQBIN_INPUTS_HH__

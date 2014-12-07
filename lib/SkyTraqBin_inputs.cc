@@ -248,6 +248,20 @@ namespace SkyTraqBin {
     append_be(buffer, _slot_number);
   }
 
+  void Set_Glonass_ephemeris::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _slot_number);
+    append_be(buffer, _k_number);
+    int i;
+    for (i = 0; i < 10; i++)
+      append_be(buffer, _string1[i]);
+    for (i = 0; i < 10; i++)
+      append_be(buffer, _string2[i]);
+    for (i = 0; i < 10; i++)
+      append_be(buffer, _string3[i]);
+    for (i = 0; i < 10; i++)
+      append_be(buffer, _string4[i]);
+  }
+
 
   /**************************
    * Messages with a sub-ID *
