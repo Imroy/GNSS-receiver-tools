@@ -514,31 +514,6 @@ namespace SkyTraqBin {
   }; // class Q_power_mode
 
 
-  //! LOG READ BATCH CONTROL - Enable data read from the log buffer
-  class Read_log : public Input_message {
-  private:
-    uint16_t _start_sector, _num_sectors;
-
-    GETTER(Payload_length, body_length, 24);
-    virtual void body_to_buf(unsigned char* buffer) const;
-
-  public:
-    //! Constructor
-    /*!
-      \param ss Start sector
-      \param num Number of sectors
-     */
-    Read_log(uint16_t ss, uint16_t num) :
-      Input_message(0x1d),
-      _start_sector(ss), _num_sectors(num)
-    {}
-
-    GETTER_SETTER(uint16_t, start_sector, _start_sector);
-    GETTER_SETTER(uint16_t, num_sectors, _num_sectors);
-
-  }; // class Read_log
-
-
   //! LOG STATUS CONTROL - Request Information of the Log Buffer Status
   class Q_log_status : public Input_message, public with_response {
   public:
@@ -598,6 +573,31 @@ namespace SkyTraqBin {
     {}
 
   }; // class Clear_log
+
+
+  //! LOG READ BATCH CONTROL - Enable data read from the log buffer
+  class Read_log : public Input_message {
+  private:
+    uint16_t _start_sector, _num_sectors;
+
+    GETTER(Payload_length, body_length, 24);
+    virtual void body_to_buf(unsigned char* buffer) const;
+
+  public:
+    //! Constructor
+    /*!
+      \param ss Start sector
+      \param num Number of sectors
+     */
+    Read_log(uint16_t ss, uint16_t num) :
+      Input_message(0x1d),
+      _start_sector(ss), _num_sectors(num)
+    {}
+
+    GETTER_SETTER(uint16_t, start_sector, _start_sector);
+    GETTER_SETTER(uint16_t, num_sectors, _num_sectors);
+
+  }; // class Read_log
 
 
   //! CONFIGURE DATUM - Configure datum used for GNSS position transformation

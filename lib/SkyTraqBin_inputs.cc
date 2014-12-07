@@ -103,24 +103,6 @@ namespace SkyTraqBin {
   }
 
 
-  void Read_log::body_to_buf(unsigned char* buffer) const {
-    append_be(buffer, _start_sector);
-    append_be(buffer, _num_sectors);
-  }
-
-
-  void Config_logging::body_to_buf(unsigned char* buffer) const {
-    append_be(buffer, _max_time);
-    append_be(buffer, _min_time);
-    append_be(buffer, _max_dist);
-    append_be(buffer, _min_dist);
-    append_be(buffer, _max_speed);
-    append_be(buffer, _min_speed);
-    append_be(buffer, static_cast<uint8_t>(_datalog));
-    append_be(buffer, static_cast<uint8_t>(0)); // reseverved byte
-  }
-
-
   void Config_sys_pos_rate::body_to_buf(unsigned char* buffer) const {
     append_be(buffer, _rate);
     append_be(buffer, static_cast<uint8_t>(_update_type));
@@ -146,6 +128,24 @@ namespace SkyTraqBin {
     append_be(buffer, _rcv_state);
     append_be(buffer, _subframe);
     append_be(buffer, static_cast<uint8_t>(_update_type));
+  }
+
+
+  void Config_logging::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _max_time);
+    append_be(buffer, _min_time);
+    append_be(buffer, _max_dist);
+    append_be(buffer, _min_dist);
+    append_be(buffer, _max_speed);
+    append_be(buffer, _min_speed);
+    append_be(buffer, static_cast<uint8_t>(_datalog));
+    append_be(buffer, static_cast<uint8_t>(0)); // reseverved byte
+  }
+
+
+  void Read_log::body_to_buf(unsigned char* buffer) const {
+    append_be(buffer, _start_sector);
+    append_be(buffer, _num_sectors);
   }
 
 
