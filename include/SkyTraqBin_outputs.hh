@@ -167,6 +167,35 @@ namespace SkyTraqBin {
   }; // class GPS_almanac_data
 
 
+  //! BINARY MEASUREMENT DATA OUTPUT STATUS - Status of Binary Measurement Data output
+  /*! Anser to Q_bin_messurement_data_output_stat message */
+  class Bin_measurement_data_output_status : public Output_message {
+  private:
+    OutputRate _output_rate;
+    bool _meas_time, _raw_meas, _sv_ch_status, _rcv_state;
+    bool _sub_gps, _sub_glonass, _sub_galileo, _sub_beidou2;
+
+  public:
+    Bin_measurement_data_output_status(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(OutputRate, output_rate, _output_rate);
+
+    GETTER(bool, meas_time, _meas_time);
+
+    GETTER(bool, raw_meas, _raw_meas);
+
+    GETTER(bool, SV_CH_status, _sv_ch_status);
+
+    GETTER(bool, RCV_state, _rcv_state);
+
+    GETTER(bool, subframe_GPS, _sub_gps);
+    GETTER(bool, subframe_GLONASS, _sub_glonass);
+    GETTER(bool, subframe_Galileo, _sub_galileo);
+    GETTER(bool, subframe_Beidou2, _sub_beidou2);
+
+  }; // class Bin_measurement_data_output_status
+
+
   //! GNSS NMEA TALKER ID - NMEA talker ID of GNSS receiver
   /*! Answer to Q_NMEA_talker_ID message */
   class NMEA_talker_ID : public Output_message {

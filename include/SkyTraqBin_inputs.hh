@@ -516,6 +516,7 @@ namespace SkyTraqBin {
 
 
   //! LOG STATUS CONTROL - Request Information of the Log Buffer Status
+  /*! Responds with Log_status_output message */
   class Q_log_status : public Input_message, public with_response {
   public:
     Q_log_status(void) :
@@ -664,6 +665,19 @@ namespace SkyTraqBin {
     GETTER_SETTER(UpdateType, update_type, _update_type);
 
   }; // class Config_bin_measurement_data_output
+
+
+  //! QUERY BINARY MEASUREMENT DATA OUTPUT STATUS - Query the status of binary measurement data output
+  /*! Responds with Bin_measurement_data_output_status */
+  class Q_bin_messurement_data_output_status : public Input_message, public with_response {
+  public:
+    Q_bin_messurement_data_output_status(void) :
+      Input_message(0x1f)
+    {}
+
+    RESPONSE1(0x89);
+
+  }; // class Q_bin_messurement_data_output_status
 
 
   //! CONFIGURE DATUM - Configure datum used for GNSS position transformation

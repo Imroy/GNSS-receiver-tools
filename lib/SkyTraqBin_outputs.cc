@@ -78,6 +78,14 @@ namespace SkyTraqBin {
   }
 
 
+  Bin_measurement_data_output_status::Bin_measurement_data_output_status(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _output_rate(static_cast<OutputRate>(payload[1])),
+    _meas_time(payload[2]), _raw_meas(payload[3]), _sv_ch_status(payload[4]), _rcv_state(payload[5]),
+    _sub_gps(payload[6] & 0x01), _sub_glonass(payload[6] & 0x02), _sub_galileo(payload[6] & 0x04), _sub_beidou2(payload[6] & 0x08)
+  {}
+
+
   NMEA_talker_ID::NMEA_talker_ID(unsigned char* payload, Payload_length payload_len) :
     Output_message(payload, payload_len),
     _talker_id((TalkerID)payload[1])
