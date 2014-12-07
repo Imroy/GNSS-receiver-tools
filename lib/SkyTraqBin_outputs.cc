@@ -284,6 +284,16 @@ namespace SkyTraqBin {
   }
 
 
+  Glonass_string_data::Glonass_string_data(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _svid(payload[1]),
+    _string(payload[2])
+  {
+    for (int i = 0; i < 9; i++)
+      _bytes[i] = extract_be<unsigned char>(payload, 3 + i);
+  }
+
+
   /**************************
    * Messages with a sub-ID *
    **************************/

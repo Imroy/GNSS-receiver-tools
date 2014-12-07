@@ -667,6 +667,29 @@ namespace SkyTraqBin {
   }; // class GPS_subframe_data
 
 
+  //! GLONASS STRING - Glonass String buffer data
+  class Glonass_string_data : public Output_message {
+  private:
+    uint8_t _svid, _string;
+    uint8_t _bytes[9];
+
+  public:
+    //! Constructor from a binary buffer
+    Glonass_string_data(unsigned char* payload, Payload_length payload_len);
+
+    GETTER(uint8_t, SV_id, _svid);
+    GETTER(uint8_t, string, _string);
+
+    GETTER(uint8_t*, bytes, _bytes);
+    inline const uint8_t byte(int i) const {
+      if ((i < 0) || (i >= 9))
+	throw std::out_of_range("Can only access byte 0~9");
+      return _bytes[i];
+    }
+
+  }; // class Glonass_string_data
+
+
 }; // namespace SkyTraqBin
 
 #endif // __SKYTRAQBIN_OUTPUTS_HH__
