@@ -616,14 +616,14 @@ namespace SkyTraqBin {
 
   //! SUBFRAME - Sub frame buffer data
   /*! Periodic message only on NavSpark-Raws */
-  class Subframe_data : public Output_message {
+  class GPS_subframe_data : public Output_message {
   private:
     uint8_t _prn, _subframe_num;
     uint8_t _bytes[30];
 
   public:
     //! Constructor from a binary buffer
-    Subframe_data(unsigned char* payload, Payload_length payload_len);
+    GPS_subframe_data(unsigned char* payload, Payload_length payload_len);
 
     GETTER(uint8_t, PRN, _prn);
     GETTER(uint8_t, subframe_num, _subframe_num);
@@ -664,7 +664,7 @@ namespace SkyTraqBin {
       return ret;
     }
 
-  }; // class Subframe_data
+  }; // class GPS_subframe_data
 
 
 }; // namespace SkyTraqBin

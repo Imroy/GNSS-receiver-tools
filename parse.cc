@@ -182,8 +182,8 @@ public:
     std::cout << "\tReceiver status" << std::endl;
   }
 
-  void Subframe_data(SkyTraq::Interface* iface, const SkyTraqBin::Subframe_data &sfd) {
-    std::cout << "\tSubframe data, PRN " << (int)sfd.PRN() << ", subframe #" << (int)sfd.subframe_num();
+  void GPS_subframe_data(SkyTraq::Interface* iface, const SkyTraqBin::GPS_subframe_data &sfd) {
+    std::cout << "\tGPS subframe data, PRN " << (int)sfd.PRN() << ", subframe #" << (int)sfd.subframe_num();
     if (sfd.subframe_num() > 3) {
       uint8_t page_num = 1 + ((_time_in_week - 6000) / 30000) % 25;
       std::cout << ", page " << (int)page_num << std::endl;

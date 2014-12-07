@@ -146,7 +146,7 @@ public:
 		  << "TDOP" << rcv.TDOP();
   }
 
-  void Subframe_data(SkyTraq::Interface* iface, const SkyTraqBin::Subframe_data &sfd) {
+  void GPS_subframe_data(SkyTraq::Interface* iface, const SkyTraqBin::GPS_subframe_data &sfd) {
     mongo::BSONObjBuilder doc;
     doc << "PRN" << sfd.PRN()
 	<< "subframe_num" << sfd.subframe_num();

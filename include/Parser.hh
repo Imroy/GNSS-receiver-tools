@@ -108,7 +108,7 @@ namespace SkyTraq {
     inline virtual void Raw_measurements(Interface* iface, const SkyTraqBin::Raw_measurements &rm) {}
     inline virtual void SV_channel_status(Interface* iface, const SkyTraqBin::SV_channel_status &sv_chan) {}
     inline virtual void Rcv_state(Interface* iface, const SkyTraqBin::Rcv_state &rcv_state) {}
-    inline virtual void Subframe_data(Interface* iface, const SkyTraqBin::Subframe_data &sfd) {}
+    inline virtual void GPS_subframe_data(Interface* iface, const SkyTraqBin::GPS_subframe_data &sfd) {}
 
     typedef std::shared_ptr<Listener> ptr;
   }; // class Listener
