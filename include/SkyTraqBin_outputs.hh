@@ -690,6 +690,33 @@ namespace SkyTraqBin {
   }; // class Glonass_string_data
 
 
+  //! BEIDOU2 D1/D2 SUBFRAME - BEIDOU2 D1/D2 Subframe buffer data
+  class Beidou2_subframe_data : public Output_message {
+  private:
+    uint8_t _d, _svid, _subframe_num;
+    uint32_t _words[10];
+
+  public:
+    //! Constructor from a binary buffer
+    Beidou2_subframe_data(unsigned char* payload, Payload_length payload_len);
+
+    /*!
+      \return 1 for D1 subframe, 2 for D2
+     */
+    GETTER(uint8_t, D_num, _d);
+    GETTER(uint8_t, SV_id, _svid);
+    GETTER(uint8_t, subframe_num, _subframe_num);
+
+    GETTER(uint32_t*, words, _words);
+    inline const uint32_t word(int i) const {
+      if ((i < 0) || (i >= 10))
+	throw std::out_of_range("Can only access word 0~9");
+      return _words[i];
+    }
+
+  }; // class Beidou2_subframe_data
+
+
 }; // namespace SkyTraqBin
 
 #endif // __SKYTRAQBIN_OUTPUTS_HH__

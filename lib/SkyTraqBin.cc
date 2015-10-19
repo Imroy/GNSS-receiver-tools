@@ -129,6 +129,8 @@ namespace SkyTraqBin {
     OUTPUT1(0xDF, Rcv_state),
     OUTPUT1(0xE0, GPS_subframe_data),
     OUTPUT1(0xE1, Glonass_string_data),
+    OUTPUT1(0xE2, Beidou2_subframe_data),
+    OUTPUT1(0xE3, Beidou2_subframe_data),
   };
 #undef OUTPUT1
 #undef OUTPUT2

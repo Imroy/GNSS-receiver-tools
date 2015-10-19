@@ -294,6 +294,55 @@ namespace SkyTraqBin {
   }
 
 
+  Beidou2_subframe_data::Beidou2_subframe_data(unsigned char* payload, Payload_length payload_len) :
+    Output_message(payload, payload_len),
+    _d(payload[0] - 0xE0),
+    _svid(payload[1]),
+    _subframe_num(payload[2])
+  {
+    // Word1: 3(0) ~ 6(1)
+    _words[0] = static_cast<uint32_t>(payload[3])
+      | (static_cast<uint32_t>(payload[4]) << 8)
+      | (static_cast<uint32_t>(payload[5]) << 16)
+      | ((static_cast<uint32_t>(payload[6]) & 0x03) << 24);
+
+    // Word2: 6(2) ~ 8(7)
+    _words[1] = (static_cast<uint32_t>(payload[6]) >> 2)
+      | (static_cast<uint32_t>(payload[7]) << 6)
+      | (static_cast<uint32_t>(payload[8]) << 14);
+
+    for (uint8_t i = 0; i < 8; i += 4) {
+      uint8_t b = 9 + ((i * 22) >> 3);
+
+      // Word3: 9(0) ~ 11(5)
+      // Word7: 20(0) ~ 22(5)
+      _words[i+2] = static_cast<uint32_t>(payload[b])
+	| (static_cast<uint32_t>(payload[b+1]) << 8)
+	| ((static_cast<uint32_t>(payload[b+2]) & 0x3f) << 16);
+
+      // Word4: 11(6) ~ 14(3)
+      // Word8: 22(6) ~ 25(3)
+      _words[i+3] = (static_cast<uint32_t>(payload[b+2]) >> 6)
+	| (static_cast<uint32_t>(payload[b+3]) << 2)
+	| (static_cast<uint32_t>(payload[b+4]) << 10)
+	| ((static_cast<uint32_t>(payload[b+5]) & 0x0f) << 18);
+
+      // Word5: 14(4) ~ 17(1)
+      // Word9: 25(4) ~ 28(1)
+      _words[i+4] = (static_cast<uint32_t>(payload[b+5]) >> 4)
+	| (static_cast<uint32_t>(payload[b+6]) << 4)
+	| (static_cast<uint32_t>(payload[b+7]) << 12)
+	| ((static_cast<uint32_t>(payload[b+8]) & 0x03) << 20);
+
+      // Word6: 17(2) ~ 19(7)
+      // Word10: 28(2) ~ 30(7)
+      _words[i+5] = (static_cast<uint32_t>(payload[b+8]) >> 2)
+	| (static_cast<uint32_t>(payload[b+9]) << 6)
+	| (static_cast<uint32_t>(payload[b+10]) << 14);
+    }
+  }
+
+
   /**************************
    * Messages with a sub-ID *
    **************************/
