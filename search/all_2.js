@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['bad',['Bad',['../namespace_g_p_s.html#ac43274beff460e39a89c7241886d08a5a7ff3e75ce6aca348bc513ed3d5882946',1,'GPS']]],
   ['balloon',['Balloon',['../namespace_sky_traq_bin.html#a14dad65c7948b35a97ef81891c8d0cf9a502dd302b6d8d3c24b20ee49e2d51bd1',1,'SkyTraqBin']]],
   ['baud115200',['Baud115200',['../namespace_sky_traq_bin.html#a563e3749a9599c896a4ddcb46b2b8a47a0c8765e6a63fd04590756e2d3150ce68',1,'SkyTraqBin']]],
   ['baud19200',['Baud19200',['../namespace_sky_traq_bin.html#a563e3749a9599c896a4ddcb46b2b8a47a7de3ea344161b0f8c2891f7ccea663b2',1,'SkyTraqBin']]],
@@ -17,20 +16,16 @@ var searchData=
   ['be_2ecc',['BE.cc',['../_b_e_8cc.html',1,'']]],
   ['be_2ehh',['BE.hh',['../_b_e_8hh.html',1,'']]],
   ['beidou',['Beidou',['../class_sky_traq_bin_1_1_config__constellation__type.html#afb6bb1c3b386ebeda3d8fbbca9a986d8',1,'SkyTraqBin::Config_constellation_type::Beidou()'],['../class_sky_traq_bin_1_1_g_n_s_s__constellation__type.html#a9fc3236447d4d225d24f7827394f34f4',1,'SkyTraqBin::GNSS_constellation_type::Beidou()']]],
-  ['beta_5f0',['beta_0',['../class_g_p_s_1_1_ionosphere___u_t_c.html#ab4dfaf3e6181af0e3078cb93ec1a4673',1,'GPS::Ionosphere_UTC']]],
-  ['beta_5f0_5fraw',['beta_0_raw',['../class_g_p_s_1_1_ionosphere___u_t_c.html#a9c4df181536e43162a24f37db4add71f',1,'GPS::Ionosphere_UTC']]],
-  ['beta_5f1',['beta_1',['../class_g_p_s_1_1_ionosphere___u_t_c.html#a2c96ac4cb4a48a4871da73abdf86cb16',1,'GPS::Ionosphere_UTC']]],
-  ['beta_5f1_5fraw',['beta_1_raw',['../class_g_p_s_1_1_ionosphere___u_t_c.html#ae404a5f099344302e72ece215ae7ed7c',1,'GPS::Ionosphere_UTC']]],
-  ['beta_5f2',['beta_2',['../class_g_p_s_1_1_ionosphere___u_t_c.html#a882497094b9ad7546068c5a758505a36',1,'GPS::Ionosphere_UTC']]],
-  ['beta_5f2_5fraw',['beta_2_raw',['../class_g_p_s_1_1_ionosphere___u_t_c.html#ab64d89bf05378482a5721cebdd7f3099',1,'GPS::Ionosphere_UTC']]],
-  ['beta_5f3',['beta_3',['../class_g_p_s_1_1_ionosphere___u_t_c.html#a54aba109124bffb59cc152e4d5bcd382',1,'GPS::Ionosphere_UTC']]],
-  ['beta_5f3_5fraw',['beta_3_raw',['../class_g_p_s_1_1_ionosphere___u_t_c.html#ae08dffd77666c9b4a12bc3084bb9da06',1,'GPS::Ionosphere_UTC']]],
+  ['beidou2_5fsubframe_5fdata',['Beidou2_subframe_data',['../class_sky_traq_bin_1_1_beidou2__subframe__data.html',1,'SkyTraqBin']]],
+  ['beidou2_5fsubframe_5fdata',['Beidou2_subframe_data',['../class_sky_traq_bin_1_1_beidou2__subframe__data.html#a1246f8c2ad4f4bdc0f55be4d9f5652ff',1,'SkyTraqBin::Beidou2_subframe_data']]],
+  ['bin_5fmeasurement_5fdata_5foutput_5fstatus',['Bin_measurement_data_output_status',['../class_sky_traq_bin_1_1_bin__measurement__data__output__status.html#acdde7ebbc0799d6f9220ad70fe7ad662',1,'SkyTraqBin::Bin_measurement_data_output_status']]],
+  ['bin_5fmeasurement_5fdata_5foutput_5fstatus',['Bin_measurement_data_output_status',['../class_sky_traq_bin_1_1_bin__measurement__data__output__status.html',1,'SkyTraqBin']]],
   ['binary',['Binary',['../namespace_sky_traq_bin.html#ad6dfb9b099caedb49ad438b8b3606fcca6ce976e8f061b2b5cfe4d0c50c3405dd',1,'SkyTraqBin']]],
   ['body_5flength',['body_length',['../class_sky_traq_bin_1_1_input__message.html#a835f9d226e1744856e9a10b64c5692b8',1,'SkyTraqBin::Input_message::body_length()'],['../class_sky_traq_bin_1_1_input__message__with__subid.html#a68e3d3b729fe8c5b209922edee80274c',1,'SkyTraqBin::Input_message_with_subid::body_length()']]],
   ['body_5fto_5fbuf',['body_to_buf',['../class_sky_traq_bin_1_1_input__message.html#abc4a3cd1b5b66d00cd7dbf5875670341',1,'SkyTraqBin::Input_message::body_to_buf()'],['../class_sky_traq_bin_1_1_input__message__with__subid.html#af1261e9abe2fb8980fae92e8a66afe03',1,'SkyTraqBin::Input_message_with_subid::body_to_buf()']]],
   ['bootstatus',['BootStatus',['../namespace_sky_traq_bin.html#a0b23d4330d1753ed20a4301e0b6b8da4',1,'SkyTraqBin']]],
   ['buffer_5fused',['buffer_used',['../class_sky_traq_bin_1_1_sw__img__download.html#aacfbb5d453ac1d4e805ec7832350f13a',1,'SkyTraqBin::Sw_img_download']]],
   ['bufferused',['BufferUsed',['../namespace_sky_traq_bin.html#a18e1454155c2ebf9c2783b66699a4883',1,'SkyTraqBin']]],
-  ['byte',['byte',['../class_sky_traq_bin_1_1_subframe__data.html#a06843fb1a45951b338b03026e7e9dc9b',1,'SkyTraqBin::Subframe_data']]],
-  ['bytes',['bytes',['../class_sky_traq_bin_1_1_subframe__data.html#a0ff32fe5a29c3ab91bae1ccc976b0025',1,'SkyTraqBin::Subframe_data']]]
+  ['byte',['byte',['../class_sky_traq_bin_1_1_g_p_s__subframe__data.html#a89fd4e6d86b813dc3dba5dc2296ac13b',1,'SkyTraqBin::GPS_subframe_data::byte()'],['../class_sky_traq_bin_1_1_glonass__string__data.html#aab9da9f5fd438b07e2e7a6dad2eedbe9',1,'SkyTraqBin::Glonass_string_data::byte()']]],
+  ['bytes',['bytes',['../class_sky_traq_bin_1_1_g_p_s__subframe__data.html#a665b594166a1df77a64efeae0ba56783',1,'SkyTraqBin::GPS_subframe_data::bytes()'],['../class_sky_traq_bin_1_1_glonass__string__data.html#a6d313535eebae0946982ebdea6b1c17e',1,'SkyTraqBin::Glonass_string_data::bytes()']]]
 ];

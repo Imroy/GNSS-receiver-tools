@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['with_5fresponse',['with_response',['../class_sky_traq_bin_1_1with__response.html',1,'SkyTraqBin']]],
-  ['with_5fsubid',['with_subid',['../class_sky_traq_bin_1_1with__subid.html',1,'SkyTraqBin']]]
+  ['vtg',['VTG',['../class_n_m_e_a0183_1_1_v_t_g.html',1,'NMEA0183']]]
 ];

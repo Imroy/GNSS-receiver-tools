@@ -30,6 +30,7 @@ var hierarchy =
           [ "SkyTraqBin::Clear_log", "class_sky_traq_bin_1_1_clear__log.html", null ],
           [ "SkyTraqBin::Config_1PPS_cable_delay", "class_sky_traq_bin_1_1_config__1_p_p_s__cable__delay.html", null ],
           [ "SkyTraqBin::Config_1PPS_timing", "class_sky_traq_bin_1_1_config__1_p_p_s__timing.html", null ],
+          [ "SkyTraqBin::Config_bin_measurement_data_output", "class_sky_traq_bin_1_1_config__bin__measurement__data__output.html", null ],
           [ "SkyTraqBin::Config_bin_measurement_output_rates", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html", null ],
           [ "SkyTraqBin::Config_datum", "class_sky_traq_bin_1_1_config__datum.html", null ],
           [ "SkyTraqBin::Config_DOP_mask", "class_sky_traq_bin_1_1_config___d_o_p__mask.html", null ],
@@ -45,6 +46,7 @@ var hierarchy =
           [ "SkyTraqBin::Config_sys_pos_rate", "class_sky_traq_bin_1_1_config__sys__pos__rate.html", null ],
           [ "SkyTraqBin::Config_sys_power_mode", "class_sky_traq_bin_1_1_config__sys__power__mode.html", null ],
           [ "SkyTraqBin::Get_almanac", "class_sky_traq_bin_1_1_get__almanac.html", null ],
+          [ "SkyTraqBin::Get_Glonass_ephemeris", "class_sky_traq_bin_1_1_get___glonass__ephemeris.html", null ],
           [ "SkyTraqBin::Get_GPS_ephemeris", "class_sky_traq_bin_1_1_get___g_p_s__ephemeris.html", null ],
           [ "SkyTraqBin::Input_message_with_subid", "class_sky_traq_bin_1_1_input__message__with__subid.html", [
             [ "SkyTraqBin::Config_1PPS_freq_output", "class_sky_traq_bin_1_1_config__1_p_p_s__freq__output.html", null ],
@@ -75,6 +77,7 @@ var hierarchy =
           ] ],
           [ "SkyTraqBin::Q_1PPS_cable_delay", "class_sky_traq_bin_1_1_q__1_p_p_s__cable__delay.html", null ],
           [ "SkyTraqBin::Q_1PPS_timing", "class_sky_traq_bin_1_1_q__1_p_p_s__timing.html", null ],
+          [ "SkyTraqBin::Q_bin_messurement_data_output_status", "class_sky_traq_bin_1_1_q__bin__messurement__data__output__status.html", null ],
           [ "SkyTraqBin::Q_datum", "class_sky_traq_bin_1_1_q__datum.html", null ],
           [ "SkyTraqBin::Q_DOP_mask", "class_sky_traq_bin_1_1_q___d_o_p__mask.html", null ],
           [ "SkyTraqBin::Q_elevation_CNR_mask", "class_sky_traq_bin_1_1_q__elevation___c_n_r__mask.html", null ],
@@ -88,11 +91,16 @@ var hierarchy =
           [ "SkyTraqBin::Read_log", "class_sky_traq_bin_1_1_read__log.html", null ],
           [ "SkyTraqBin::Restart_sys", "class_sky_traq_bin_1_1_restart__sys.html", null ],
           [ "SkyTraqBin::Set_factory_defaults", "class_sky_traq_bin_1_1_set__factory__defaults.html", null ],
+          [ "SkyTraqBin::Set_Glonass_ephemeris", "class_sky_traq_bin_1_1_set___glonass__ephemeris.html", null ],
           [ "SkyTraqBin::Set_GPS_ephemeris", "class_sky_traq_bin_1_1_set___g_p_s__ephemeris.html", null ],
           [ "SkyTraqBin::Sw_img_download", "class_sky_traq_bin_1_1_sw__img__download.html", null ]
         ] ],
         [ "SkyTraqBin::Output_message", "class_sky_traq_bin_1_1_output__message.html", [
           [ "SkyTraqBin::Ack", "class_sky_traq_bin_1_1_ack.html", null ],
+          [ "SkyTraqBin::Beidou2_subframe_data", "class_sky_traq_bin_1_1_beidou2__subframe__data.html", null ],
+          [ "SkyTraqBin::Bin_measurement_data_output_status", "class_sky_traq_bin_1_1_bin__measurement__data__output__status.html", null ],
+          [ "SkyTraqBin::Glonass_ephemeris_data", "class_sky_traq_bin_1_1_glonass__ephemeris__data.html", null ],
+          [ "SkyTraqBin::Glonass_string_data", "class_sky_traq_bin_1_1_glonass__string__data.html", null ],
           [ "SkyTraqBin::GNSS_1PPS_cable_delay", "class_sky_traq_bin_1_1_g_n_s_s__1_p_p_s__cable__delay.html", null ],
           [ "SkyTraqBin::GNSS_1PPS_timing", "class_sky_traq_bin_1_1_g_n_s_s__1_p_p_s__timing.html", null ],
           [ "SkyTraqBin::GNSS_datum", "class_sky_traq_bin_1_1_g_n_s_s__datum.html", null ],
@@ -102,6 +110,7 @@ var hierarchy =
           [ "SkyTraqBin::GNSS_power_mode_status", "class_sky_traq_bin_1_1_g_n_s_s__power__mode__status.html", null ],
           [ "SkyTraqBin::GPS_almanac_data", "class_sky_traq_bin_1_1_g_p_s__almanac__data.html", null ],
           [ "SkyTraqBin::GPS_ephemeris_data", "class_sky_traq_bin_1_1_g_p_s__ephemeris__data.html", null ],
+          [ "SkyTraqBin::GPS_subframe_data", "class_sky_traq_bin_1_1_g_p_s__subframe__data.html", null ],
           [ "SkyTraqBin::Log_status_output", "class_sky_traq_bin_1_1_log__status__output.html", null ],
           [ "SkyTraqBin::Measurement_time", "class_sky_traq_bin_1_1_measurement__time.html", null ],
           [ "SkyTraqBin::Nack", "class_sky_traq_bin_1_1_nack.html", null ],
@@ -126,7 +135,6 @@ var hierarchy =
           [ "SkyTraqBin::Pos_update_rate", "class_sky_traq_bin_1_1_pos__update__rate.html", null ],
           [ "SkyTraqBin::Raw_measurements", "class_sky_traq_bin_1_1_raw__measurements.html", null ],
           [ "SkyTraqBin::Rcv_state", "class_sky_traq_bin_1_1_rcv__state.html", null ],
-          [ "SkyTraqBin::Subframe_data", "class_sky_traq_bin_1_1_subframe__data.html", null ],
           [ "SkyTraqBin::SV_channel_status", "class_sky_traq_bin_1_1_s_v__channel__status.html", null ],
           [ "SkyTraqBin::Sw_CRC", "class_sky_traq_bin_1_1_sw___c_r_c.html", null ],
           [ "SkyTraqBin::Sw_ver", "class_sky_traq_bin_1_1_sw__ver.html", null ]
@@ -137,20 +145,16 @@ var hierarchy =
     [ "SkyTraq::Parser", "class_sky_traq_1_1_parser.html", null ],
     [ "SkyTraqBin::RawMeasurement", "struct_sky_traq_bin_1_1_raw_measurement.html", null ],
     [ "NMEA0183::SatelliteData", "struct_n_m_e_a0183_1_1_satellite_data.html", null ],
-    [ "GPS::Subframe", "class_g_p_s_1_1_subframe.html", [
-      [ "GPS::Sat_clock_and_health", "class_g_p_s_1_1_sat__clock__and__health.html", null ],
-      [ "GPS::Subframe_4_or_5", "class_g_p_s_1_1_subframe__4__or__5.html", [
-        [ "GPS::Ionosphere_UTC", "class_g_p_s_1_1_ionosphere___u_t_c.html", null ]
-      ] ]
-    ] ],
     [ "SkyTraqBin::SvStatus", "struct_sky_traq_bin_1_1_sv_status.html", null ],
     [ "SkyTraqBin::with_response", "class_sky_traq_bin_1_1with__response.html", [
       [ "SkyTraqBin::Get_almanac", "class_sky_traq_bin_1_1_get__almanac.html", null ],
+      [ "SkyTraqBin::Get_Glonass_ephemeris", "class_sky_traq_bin_1_1_get___glonass__ephemeris.html", null ],
       [ "SkyTraqBin::Get_GPS_ephemeris", "class_sky_traq_bin_1_1_get___g_p_s__ephemeris.html", null ],
       [ "SkyTraqBin::Q_1PPS_cable_delay", "class_sky_traq_bin_1_1_q__1_p_p_s__cable__delay.html", null ],
       [ "SkyTraqBin::Q_1PPS_freq_output", "class_sky_traq_bin_1_1_q__1_p_p_s__freq__output.html", null ],
       [ "SkyTraqBin::Q_1PPS_pulse_width", "class_sky_traq_bin_1_1_q__1_p_p_s__pulse__width.html", null ],
       [ "SkyTraqBin::Q_1PPS_timing", "class_sky_traq_bin_1_1_q__1_p_p_s__timing.html", null ],
+      [ "SkyTraqBin::Q_bin_messurement_data_output_status", "class_sky_traq_bin_1_1_q__bin__messurement__data__output__status.html", null ],
       [ "SkyTraqBin::Q_constellation_type", "class_sky_traq_bin_1_1_q__constellation__type.html", null ],
       [ "SkyTraqBin::Q_datum", "class_sky_traq_bin_1_1_q__datum.html", null ],
       [ "SkyTraqBin::Q_DOP_mask", "class_sky_traq_bin_1_1_q___d_o_p__mask.html", null ],

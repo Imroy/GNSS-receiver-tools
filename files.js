@@ -2,8 +2,6 @@ var files =
 [
     [ "BE.cc", "_b_e_8cc.html", "_b_e_8cc" ],
     [ "BE.hh", "_b_e_8hh.html", "_b_e_8hh" ],
-    [ "GPSNav.cc", "_g_p_s_nav_8cc.html", "_g_p_s_nav_8cc" ],
-    [ "GPSNav.hh", "_g_p_s_nav_8hh.html", "_g_p_s_nav_8hh" ],
     [ "LE.cc", "_l_e_8cc.html", "_l_e_8cc" ],
     [ "LE.hh", "_l_e_8hh.html", "_l_e_8hh" ],
     [ "NMEA-0183.cc", "_n_m_e_a-0183_8cc.html", "_n_m_e_a-0183_8cc" ],
@@ -37,10 +35,12 @@ var files =
       [ "Get_almanac", "class_sky_traq_bin_1_1_get__almanac.html", "class_sky_traq_bin_1_1_get__almanac" ],
       [ "Config_bin_measurement_output_rates", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html", "class_sky_traq_bin_1_1_config__bin__measurement__output__rates" ],
       [ "Q_power_mode", "class_sky_traq_bin_1_1_q__power__mode.html", "class_sky_traq_bin_1_1_q__power__mode" ],
-      [ "Read_log", "class_sky_traq_bin_1_1_read__log.html", "class_sky_traq_bin_1_1_read__log" ],
       [ "Q_log_status", "class_sky_traq_bin_1_1_q__log__status.html", "class_sky_traq_bin_1_1_q__log__status" ],
       [ "Config_logging", "class_sky_traq_bin_1_1_config__logging.html", "class_sky_traq_bin_1_1_config__logging" ],
       [ "Clear_log", "class_sky_traq_bin_1_1_clear__log.html", "class_sky_traq_bin_1_1_clear__log" ],
+      [ "Read_log", "class_sky_traq_bin_1_1_read__log.html", "class_sky_traq_bin_1_1_read__log" ],
+      [ "Config_bin_measurement_data_output", "class_sky_traq_bin_1_1_config__bin__measurement__data__output.html", "class_sky_traq_bin_1_1_config__bin__measurement__data__output" ],
+      [ "Q_bin_messurement_data_output_status", "class_sky_traq_bin_1_1_q__bin__messurement__data__output__status.html", "class_sky_traq_bin_1_1_q__bin__messurement__data__output__status" ],
       [ "Config_datum", "class_sky_traq_bin_1_1_config__datum.html", "class_sky_traq_bin_1_1_config__datum" ],
       [ "Config_DOP_mask", "class_sky_traq_bin_1_1_config___d_o_p__mask.html", "class_sky_traq_bin_1_1_config___d_o_p__mask" ],
       [ "Config_elevation_CNR_mask", "class_sky_traq_bin_1_1_config__elevation___c_n_r__mask.html", "class_sky_traq_bin_1_1_config__elevation___c_n_r__mask" ],
@@ -57,7 +57,9 @@ var files =
       [ "Q_1PPS_cable_delay", "class_sky_traq_bin_1_1_q__1_p_p_s__cable__delay.html", "class_sky_traq_bin_1_1_q__1_p_p_s__cable__delay" ],
       [ "Config_NMEA_talker_ID", "class_sky_traq_bin_1_1_config___n_m_e_a__talker___i_d.html", "class_sky_traq_bin_1_1_config___n_m_e_a__talker___i_d" ],
       [ "Q_NMEA_talker_ID", "class_sky_traq_bin_1_1_q___n_m_e_a__talker___i_d.html", "class_sky_traq_bin_1_1_q___n_m_e_a__talker___i_d" ],
-      [ "Config_1PPS_timing", "class_sky_traq_bin_1_1_config__1_p_p_s__timing.html", "class_sky_traq_bin_1_1_config__1_p_p_s__timing" ]
+      [ "Config_1PPS_timing", "class_sky_traq_bin_1_1_config__1_p_p_s__timing.html", "class_sky_traq_bin_1_1_config__1_p_p_s__timing" ],
+      [ "Get_Glonass_ephemeris", "class_sky_traq_bin_1_1_get___glonass__ephemeris.html", "class_sky_traq_bin_1_1_get___glonass__ephemeris" ],
+      [ "Set_Glonass_ephemeris", "class_sky_traq_bin_1_1_set___glonass__ephemeris.html", "class_sky_traq_bin_1_1_set___glonass__ephemeris" ]
     ] ],
     [ "SkyTraqBin_inputs_with_subid.hh", "_sky_traq_bin__inputs__with__subid_8hh.html", [
       [ "Input_message_with_subid", "class_sky_traq_bin_1_1_input__message__with__subid.html", "class_sky_traq_bin_1_1_input__message__with__subid" ],
@@ -96,6 +98,8 @@ var files =
       [ "Nack", "class_sky_traq_bin_1_1_nack.html", "class_sky_traq_bin_1_1_nack" ],
       [ "Pos_update_rate", "class_sky_traq_bin_1_1_pos__update__rate.html", "class_sky_traq_bin_1_1_pos__update__rate" ],
       [ "GPS_almanac_data", "class_sky_traq_bin_1_1_g_p_s__almanac__data.html", "class_sky_traq_bin_1_1_g_p_s__almanac__data" ],
+      [ "Bin_measurement_data_output_status", "class_sky_traq_bin_1_1_bin__measurement__data__output__status.html", "class_sky_traq_bin_1_1_bin__measurement__data__output__status" ],
+      [ "Glonass_ephemeris_data", "class_sky_traq_bin_1_1_glonass__ephemeris__data.html", "class_sky_traq_bin_1_1_glonass__ephemeris__data" ],
       [ "NMEA_talker_ID", "class_sky_traq_bin_1_1_n_m_e_a__talker___i_d.html", "class_sky_traq_bin_1_1_n_m_e_a__talker___i_d" ],
       [ "Log_status_output", "class_sky_traq_bin_1_1_log__status__output.html", "class_sky_traq_bin_1_1_log__status__output" ],
       [ "Nav_data_msg", "class_sky_traq_bin_1_1_nav__data__msg.html", "class_sky_traq_bin_1_1_nav__data__msg" ],
@@ -113,7 +117,9 @@ var files =
       [ "SvStatus", "struct_sky_traq_bin_1_1_sv_status.html", "struct_sky_traq_bin_1_1_sv_status" ],
       [ "SV_channel_status", "class_sky_traq_bin_1_1_s_v__channel__status.html", "class_sky_traq_bin_1_1_s_v__channel__status" ],
       [ "Rcv_state", "class_sky_traq_bin_1_1_rcv__state.html", "class_sky_traq_bin_1_1_rcv__state" ],
-      [ "Subframe_data", "class_sky_traq_bin_1_1_subframe__data.html", "class_sky_traq_bin_1_1_subframe__data" ]
+      [ "GPS_subframe_data", "class_sky_traq_bin_1_1_g_p_s__subframe__data.html", "class_sky_traq_bin_1_1_g_p_s__subframe__data" ],
+      [ "Glonass_string_data", "class_sky_traq_bin_1_1_glonass__string__data.html", "class_sky_traq_bin_1_1_glonass__string__data" ],
+      [ "Beidou2_subframe_data", "class_sky_traq_bin_1_1_beidou2__subframe__data.html", "class_sky_traq_bin_1_1_beidou2__subframe__data" ]
     ] ],
     [ "SkyTraqBin_outputs_with_subid.hh", "_sky_traq_bin__outputs__with__subid_8hh.html", [
       [ "Output_message_with_subid", "class_sky_traq_bin_1_1_output__message__with__subid.html", "class_sky_traq_bin_1_1_output__message__with__subid" ],

@@ -11,7 +11,7 @@ var searchData=
   ['output_5fmessage_5ffactory',['output_message_factory',['../namespace_sky_traq_bin.html#a75c3034000b470a95b3c8364dfb2939f',1,'SkyTraqBin']]],
   ['output_5fmessage_5fwith_5fsubid',['Output_message_with_subid',['../class_sky_traq_bin_1_1_output__message__with__subid.html',1,'SkyTraqBin']]],
   ['output_5fmessage_5fwith_5fsubid',['Output_message_with_subid',['../class_sky_traq_bin_1_1_output__message__with__subid.html#a3741cad17412dd443d1fc3b41e98d751',1,'SkyTraqBin::Output_message_with_subid']]],
-  ['output_5frate',['output_rate',['../class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a03ba0dedc6f74d9587eb5462ced8cc62',1,'SkyTraqBin::Config_bin_measurement_output_rates']]],
+  ['output_5frate',['output_rate',['../class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a03ba0dedc6f74d9587eb5462ced8cc62',1,'SkyTraqBin::Config_bin_measurement_output_rates::output_rate()'],['../class_sky_traq_bin_1_1_config__bin__measurement__data__output.html#a4d21a89774ae13653cbf1d36542fe2ce',1,'SkyTraqBin::Config_bin_measurement_data_output::output_rate()'],['../class_sky_traq_bin_1_1_bin__measurement__data__output__status.html#a35af7c00b3bd850dce1188a044ed8f92',1,'SkyTraqBin::Bin_measurement_data_output_status::output_rate()']]],
   ['outputrate',['OutputRate',['../namespace_sky_traq_bin.html#a8370fa195e137caf912062c96d64ae69',1,'SkyTraqBin']]],
   ['outputrate_5fhz',['OutputRate_Hz',['../namespace_sky_traq_bin.html#a23c0fd6dbaf052a3a879c5a5f58bcb1b',1,'SkyTraqBin']]]
 ];

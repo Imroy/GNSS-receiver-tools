@@ -1,19 +1,9 @@
 var searchData=
 [
-  ['sat_5fclock_5fand_5fhealth',['Sat_clock_and_health',['../class_g_p_s_1_1_sat__clock__and__health.html',1,'GPS']]],
-  ['satellitedata',['SatelliteData',['../struct_n_m_e_a0183_1_1_satellite_data.html',1,'NMEA0183']]],
-  ['sensor_5fdata',['Sensor_data',['../class_sky_traq_bin_1_1_sensor__data.html',1,'SkyTraqBin']]],
-  ['sentence',['Sentence',['../class_n_m_e_a0183_1_1_sentence.html',1,'NMEA0183']]],
-  ['set_5ffactory_5fdefaults',['Set_factory_defaults',['../class_sky_traq_bin_1_1_set__factory__defaults.html',1,'SkyTraqBin']]],
-  ['set_5fgps_5fephemeris',['Set_GPS_ephemeris',['../class_sky_traq_bin_1_1_set___g_p_s__ephemeris.html',1,'SkyTraqBin']]],
-  ['sti_5fpps',['STI_PPS',['../class_n_m_e_a0183_1_1_s_t_i___p_p_s.html',1,'NMEA0183']]],
-  ['sti_5fsensors',['STI_sensors',['../class_n_m_e_a0183_1_1_s_t_i__sensors.html',1,'NMEA0183']]],
-  ['subframe',['Subframe',['../class_g_p_s_1_1_subframe.html',1,'GPS']]],
-  ['subframe_5f4_5for_5f5',['Subframe_4_or_5',['../class_g_p_s_1_1_subframe__4__or__5.html',1,'GPS']]],
-  ['subframe_5fdata',['Subframe_data',['../class_sky_traq_bin_1_1_subframe__data.html',1,'SkyTraqBin']]],
-  ['sv_5fchannel_5fstatus',['SV_channel_status',['../class_sky_traq_bin_1_1_s_v__channel__status.html',1,'SkyTraqBin']]],
-  ['svstatus',['SvStatus',['../struct_sky_traq_bin_1_1_sv_status.html',1,'SkyTraqBin']]],
-  ['sw_5fcrc',['Sw_CRC',['../class_sky_traq_bin_1_1_sw___c_r_c.html',1,'SkyTraqBin']]],
-  ['sw_5fimg_5fdownload',['Sw_img_download',['../class_sky_traq_bin_1_1_sw__img__download.html',1,'SkyTraqBin']]],
-  ['sw_5fver',['Sw_ver',['../class_sky_traq_bin_1_1_sw__ver.html',1,'SkyTraqBin']]]
+  ['raw_5fmeasurements',['Raw_measurements',['../class_sky_traq_bin_1_1_raw__measurements.html',1,'SkyTraqBin']]],
+  ['rawmeasurement',['RawMeasurement',['../struct_sky_traq_bin_1_1_raw_measurement.html',1,'SkyTraqBin']]],
+  ['rcv_5fstate',['Rcv_state',['../class_sky_traq_bin_1_1_rcv__state.html',1,'SkyTraqBin']]],
+  ['read_5flog',['Read_log',['../class_sky_traq_bin_1_1_read__log.html',1,'SkyTraqBin']]],
+  ['restart_5fsys',['Restart_sys',['../class_sky_traq_bin_1_1_restart__sys.html',1,'SkyTraqBin']]],
+  ['rmc',['RMC',['../class_n_m_e_a0183_1_1_r_m_c.html',1,'NMEA0183']]]
 ];

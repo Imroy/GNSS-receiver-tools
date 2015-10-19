@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['bad',['Bad',['../namespace_g_p_s.html#ac43274beff460e39a89c7241886d08a5a7ff3e75ce6aca348bc513ed3d5882946',1,'GPS']]],
   ['balloon',['Balloon',['../namespace_sky_traq_bin.html#a14dad65c7948b35a97ef81891c8d0cf9a502dd302b6d8d3c24b20ee49e2d51bd1',1,'SkyTraqBin']]],
   ['baud115200',['Baud115200',['../namespace_sky_traq_bin.html#a563e3749a9599c896a4ddcb46b2b8a47a0c8765e6a63fd04590756e2d3150ce68',1,'SkyTraqBin']]],
   ['baud19200',['Baud19200',['../namespace_sky_traq_bin.html#a563e3749a9599c896a4ddcb46b2b8a47a7de3ea344161b0f8c2891f7ccea663b2',1,'SkyTraqBin']]],
