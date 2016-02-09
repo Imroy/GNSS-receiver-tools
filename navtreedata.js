@@ -11,8 +11,8 @@ var NAVTREE =
         [ "Enumerations", "namespacemembers_enum.html", null ]
       ] ]
     ] ],
-    [ "Classes", null, [
-      [ "Class List", "annotated.html", "annotated" ],
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
@@ -36,11 +36,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_b_e_8cc.html",
-"_sky_traq_bin_8hh.html#a8af094d940385d5311489726f2e094edabcfaccebf745acfd5e75351095a5394a",
-"class_sky_traq_bin_1_1_config__1_p_p_s__timing.html#a9eed7842fb179ccca0440c84585adff6",
-"class_sky_traq_bin_1_1_config__logging.html#a10c86ad243fe7b999acb229d9f92cb39",
-"class_sky_traq_bin_1_1_insufficient_data.html#a770e0bd00808183cab2b480bc7510825",
-"class_sky_traq_bin_1_1_restart__sys.html#a621f30a6525664a0ebf80a7ea0168f7c"
+"_sky_traq_bin_8hh.html#a8af094d940385d5311489726f2e094ed",
+"class_sky_traq_bin_1_1_config__1_p_p_s__timing.html#a78dd62c2c8fd1b0bf83f0c3c2dcac6a1",
+"class_sky_traq_bin_1_1_config__leap__seconds.html#ab4769c2dd09adaba77584565468d15b0",
+"class_sky_traq_bin_1_1_input__message__with__subid.html#aaf0bc3c1c1a60940cb94e28a94909828",
+"class_sky_traq_bin_1_1_restart__sys.html#a302a295dfab9f6b20586b3cbfe4f38af"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

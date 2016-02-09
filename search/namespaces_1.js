@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['skytraq',['SkyTraq',['../namespace_sky_traq.html',1,'']]],
-  ['skytraqbin',['SkyTraqBin',['../namespace_sky_traq_bin.html',1,'']]]
+  ['nmea0183',['NMEA0183',['../namespace_n_m_e_a0183.html',1,'']]]
 ];

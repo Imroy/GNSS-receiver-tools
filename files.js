@@ -2,17 +2,21 @@ var files =
 [
     [ "BE.cc", "_b_e_8cc.html", "_b_e_8cc" ],
     [ "BE.hh", "_b_e_8hh.html", "_b_e_8hh" ],
+    [ "GNSS.hh", "_g_n_s_s_8hh.html", [
+      [ "Message", "class_g_n_s_s_1_1_message.html", "class_g_n_s_s_1_1_message" ]
+    ] ],
     [ "LE.cc", "_l_e_8cc.html", "_l_e_8cc" ],
     [ "LE.hh", "_l_e_8hh.html", "_l_e_8hh" ],
     [ "NMEA-0183.cc", "_n_m_e_a-0183_8cc.html", "_n_m_e_a-0183_8cc" ],
     [ "NMEA-0183.hh", "_n_m_e_a-0183_8hh.html", "_n_m_e_a-0183_8hh" ],
     [ "Parser.cc", "_parser_8cc.html", "_parser_8cc" ],
     [ "Parser.hh", "_parser_8hh.html", [
-      [ "EndOfFile", "class_sky_traq_1_1_end_of_file.html", "class_sky_traq_1_1_end_of_file" ],
-      [ "NotSendable", "class_sky_traq_1_1_not_sendable.html", "class_sky_traq_1_1_not_sendable" ],
-      [ "Parser", "class_sky_traq_1_1_parser.html", "class_sky_traq_1_1_parser" ],
-      [ "Listener", "class_sky_traq_1_1_listener.html", "class_sky_traq_1_1_listener" ],
-      [ "Interface", "class_sky_traq_1_1_interface.html", "class_sky_traq_1_1_interface" ]
+      [ "EndOfFile", "class_g_n_s_s_1_1_end_of_file.html", "class_g_n_s_s_1_1_end_of_file" ],
+      [ "NotSendable", "class_g_n_s_s_1_1_not_sendable.html", "class_g_n_s_s_1_1_not_sendable" ],
+      [ "Parser", "class_g_n_s_s_1_1_parser.html", "class_g_n_s_s_1_1_parser" ],
+      [ "Listener", "class_g_n_s_s_1_1_listener.html", "class_g_n_s_s_1_1_listener" ],
+      [ "Listener_SkyTraq", "class_g_n_s_s_1_1_listener___sky_traq.html", "class_g_n_s_s_1_1_listener___sky_traq" ],
+      [ "Interface", "class_g_n_s_s_1_1_interface.html", "class_g_n_s_s_1_1_interface" ]
     ] ],
     [ "SkyTraq.cc", "_sky_traq_8cc.html", "_sky_traq_8cc" ],
     [ "SkyTraq.hh", "_sky_traq_8hh.html", "_sky_traq_8hh" ],

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['cast_5fas',['cast_as',['../class_sky_traq_1_1_message.html#aaa4acc8f8b5432f6799816790cbeacd2',1,'SkyTraq::Message']]],
+  ['cast_5fas',['cast_as',['../class_g_n_s_s_1_1_message.html#ab0e6380af3da3117ff7a68d975ba82ec',1,'GNSS::Message']]],
   ['checksum',['checksum',['../class_n_m_e_a0183_1_1_sentence.html#a6b391001ad162961347047cc4c414e68',1,'NMEA0183::Sentence::checksum()'],['../namespace_sky_traq_bin.html#ae04a68a1573c8ae3222b1e63fdf13834',1,'SkyTraqBin::checksum()']]],
   ['checksummismatch',['ChecksumMismatch',['../class_n_m_e_a0183_1_1_checksum_mismatch.html#a3c6ecd68774db2aa5bc7cf1ae6f70c84',1,'NMEA0183::ChecksumMismatch::ChecksumMismatch()'],['../class_sky_traq_bin_1_1_checksum_mismatch.html#abf9c68b2f37b061dd4811ce8f5c3789b',1,'SkyTraqBin::ChecksumMismatch::ChecksumMismatch()']]],
   ['clear_5flog',['Clear_log',['../class_sky_traq_bin_1_1_clear__log.html#a2461e66a0de049337855997c86bcba23',1,'SkyTraqBin::Clear_log']]],

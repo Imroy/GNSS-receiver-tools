@@ -1,19 +1,21 @@
 var hierarchy =
 [
     [ "std::exception", null, [
+      [ "GNSS::EndOfFile", "class_g_n_s_s_1_1_end_of_file.html", null ],
+      [ "GNSS::NotSendable", "class_g_n_s_s_1_1_not_sendable.html", null ],
       [ "NMEA0183::ChecksumMismatch", "class_n_m_e_a0183_1_1_checksum_mismatch.html", null ],
       [ "NMEA0183::InvalidSentence", "class_n_m_e_a0183_1_1_invalid_sentence.html", null ],
       [ "NMEA0183::UnknownSentenceType", "class_n_m_e_a0183_1_1_unknown_sentence_type.html", null ],
-      [ "SkyTraq::EndOfFile", "class_sky_traq_1_1_end_of_file.html", null ],
-      [ "SkyTraq::NotSendable", "class_sky_traq_1_1_not_sendable.html", null ],
       [ "SkyTraqBin::ChecksumMismatch", "class_sky_traq_bin_1_1_checksum_mismatch.html", null ],
       [ "SkyTraqBin::InsufficientData", "class_sky_traq_bin_1_1_insufficient_data.html", null ],
       [ "SkyTraqBin::InvalidMessage", "class_sky_traq_bin_1_1_invalid_message.html", null ],
       [ "SkyTraqBin::UnknownMessageID", "class_sky_traq_bin_1_1_unknown_message_i_d.html", null ]
     ] ],
-    [ "SkyTraq::Interface", "class_sky_traq_1_1_interface.html", null ],
-    [ "SkyTraq::Listener", "class_sky_traq_1_1_listener.html", null ],
-    [ "SkyTraq::Message", "class_sky_traq_1_1_message.html", [
+    [ "GNSS::Interface", "class_g_n_s_s_1_1_interface.html", null ],
+    [ "GNSS::Listener", "class_g_n_s_s_1_1_listener.html", [
+      [ "GNSS::Listener_SkyTraq", "class_g_n_s_s_1_1_listener___sky_traq.html", null ]
+    ] ],
+    [ "GNSS::Message", "class_g_n_s_s_1_1_message.html", [
       [ "NMEA0183::Sentence", "class_n_m_e_a0183_1_1_sentence.html", [
         [ "NMEA0183::GGA", "class_n_m_e_a0183_1_1_g_g_a.html", null ],
         [ "NMEA0183::GLL", "class_n_m_e_a0183_1_1_g_l_l.html", null ],
@@ -142,7 +144,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "SkyTraqBin::PackedVersion", "struct_sky_traq_bin_1_1_packed_version.html", null ],
-    [ "SkyTraq::Parser", "class_sky_traq_1_1_parser.html", null ],
+    [ "GNSS::Parser", "class_g_n_s_s_1_1_parser.html", null ],
     [ "SkyTraqBin::RawMeasurement", "struct_sky_traq_bin_1_1_raw_measurement.html", null ],
     [ "NMEA0183::SatelliteData", "struct_n_m_e_a0183_1_1_satellite_data.html", null ],
     [ "SkyTraqBin::SvStatus", "struct_sky_traq_bin_1_1_sv_status.html", null ],

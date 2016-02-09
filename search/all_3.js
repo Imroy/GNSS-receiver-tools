@@ -2,7 +2,7 @@ var searchData=
 [
   ['car',['Car',['../namespace_sky_traq_bin.html#a14dad65c7948b35a97ef81891c8d0cf9ae9989db5dabeea617f40c8dbfd07f5fb',1,'SkyTraqBin']]],
   ['carrier_5fphase',['carrier_phase',['../struct_sky_traq_bin_1_1_raw_measurement.html#af3567913629bbd26d5572e3317dcaac9',1,'SkyTraqBin::RawMeasurement']]],
-  ['cast_5fas',['cast_as',['../class_sky_traq_1_1_message.html#aaa4acc8f8b5432f6799816790cbeacd2',1,'SkyTraq::Message']]],
+  ['cast_5fas',['cast_as',['../class_g_n_s_s_1_1_message.html#ab0e6380af3da3117ff7a68d975ba82ec',1,'GNSS::Message']]],
   ['chan_5ffor_5fdifferential',['chan_for_differential',['../struct_sky_traq_bin_1_1_sv_status.html#a63b5df454372dd97c5d30372f45598fb',1,'SkyTraqBin::SvStatus']]],
   ['chan_5ffor_5fnormal',['chan_for_normal',['../struct_sky_traq_bin_1_1_sv_status.html#ae20dff55ee3708e1e96006a04e52e26c',1,'SkyTraqBin::SvStatus']]],
   ['chan_5fhas_5fbit_5fsync',['chan_has_bit_sync',['../struct_sky_traq_bin_1_1_sv_status.html#afa66ac674069b4a6b18a5bef64a7f6de',1,'SkyTraqBin::SvStatus']]],

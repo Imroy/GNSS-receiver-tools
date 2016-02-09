@@ -1,6 +1,5 @@
 var _sky_traq_8hh =
 [
-    [ "Message", "class_sky_traq_1_1_message.html", "class_sky_traq_1_1_message" ],
     [ "TimingMode", "_sky_traq_8hh.html#ac59310efd3da82ccf4d288b52bf29f43", [
       [ "PVT", "_sky_traq_8hh.html#ac59310efd3da82ccf4d288b52bf29f43ad171f1ba90a837de143fd7b283873632", null ],
       [ "Survey", "_sky_traq_8hh.html#ac59310efd3da82ccf4d288b52bf29f43a9fd9f9ccd630cd4b6894051c35710572", null ],
