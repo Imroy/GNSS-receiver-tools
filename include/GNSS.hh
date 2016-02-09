@@ -48,4 +48,31 @@ namespace GNSS {
   }; // class Message
 
 
+  //! Exception signifying that the parser buffer isn't big enough for the message
+  //! Completely harmless - read some more data into the buffer and try again
+  class InsufficientData : public std::exception {
+  private:
+
+  public:
+    InsufficientData() {}
+
+    const char* what() const throw() {
+      return "Insufficient data";
+    }
+  }; // class InsufficientData
+
+
+  //! Exception signifying that the start and/or end sequence bytes of a message are wrong
+  class InvalidMessage : public std::exception {
+  private:
+
+  public:
+    InvalidMessage() {}
+
+    const char* what() const throw() {
+      return "Invalid message";
+    }
+  }; // class InvalidMessage
+
+
 }; // namespace GNSS

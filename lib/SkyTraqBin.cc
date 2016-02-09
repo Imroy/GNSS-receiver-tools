@@ -140,13 +140,13 @@ namespace SkyTraqBin {
     Payload_length payload_len = extract_be<uint16_t>(buffer, 2);
     std::size_t end = StartSeq_len + PayloadLength_len + payload_len + Checksum_len + EndSeq_len;
     if (len < end)
-      throw InsufficientData();
+      throw GNSS::InsufficientData();
 
     if ((buffer[0] != 0xa0)
 	|| (buffer[1] != 0xa1)
 	|| (buffer[end - 2] != 0x0d)
 	|| (buffer[end - 1] != 0x0a))
-      throw InvalidMessage();
+      throw GNSS::InvalidMessage();
 
     unsigned char *payload = buffer + StartSeq_len + PayloadLength_len;
     uint16_t id = payload[0];

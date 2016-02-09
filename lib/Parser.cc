@@ -70,8 +70,8 @@ namespace GNSS {
 
 	// Catch the harmless exceptions
       } catch (const NMEA0183::InvalidSentence &e) {
-      } catch (const SkyTraqBin::InvalidMessage &e) {
-      } catch (const SkyTraqBin::InsufficientData &e) {
+      } catch (const GNSS::InvalidMessage &e) {
+      } catch (const GNSS::InsufficientData &e) {
 
       } catch (const std::exception) {
 	exp = std::current_exception();
