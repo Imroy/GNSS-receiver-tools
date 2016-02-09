@@ -24,6 +24,7 @@
 #include <sstream>
 #include <vector>
 #include <math.h>
+#include "GNSS.hh"
 #include "SkyTraq.hh"
 
 /*
@@ -112,7 +113,7 @@ namespace SkyTraqBin {
 
 
   //! Base class for a binary message
-  class Message : public SkyTraq::Message {
+  class Message : public GNSS::Message {
   protected:
     uint8_t _msg_id;
 

@@ -20,7 +20,7 @@
 #include <sys/stat.h>
 #include "Parser.hh"
 
-namespace SkyTraq {
+namespace GNSS {
 
   Parser::Parser() :
     _parse_buffer(nullptr),
@@ -144,89 +144,101 @@ namespace SkyTraq {
 	else FIRE_IF(NMEA0183::GSV, GSV)
 	else FIRE_IF(NMEA0183::RMC, RMC)
 	else FIRE_IF(NMEA0183::VTG, VTG)
-	else FIRE_IF(NMEA0183::ZDA, ZDA)
-	else FIRE_IF(NMEA0183::STI_PPS, STI_PPS)
-	else FIRE_IF(NMEA0183::STI_sensors, STI_sensors);
+	else FIRE_IF(NMEA0183::ZDA, ZDA);
 
       } catch (std::bad_cast) {
       }
 
-      try {
-	auto m = msg->cast_as<SkyTraqBin::Output_message>();	// Will throw a std::bad_cast exception if not possible
+      if (typeid(_listener) == typeid(Listener_SkyTraq)) {
+	Listener_SkyTraq *l_s = dynamic_cast<Listener_SkyTraq*>(_listener.get());
+#undef FIRE_IF
+#define FIRE_IF(class, method) if (msg->isa<class>()) \
+	l_s->method(this, *(msg->cast_as<class>()));
 
-	if (msg->isa<SkyTraqBin::Ack>()) {
-	  auto ack = msg->cast_as<SkyTraqBin::Ack>();
-	  uint16_t id = ack->ack_id();
-	  if (ack->has_subid())
-	    id = (id << 8) | ack->ack_subid();
-
-	  bool response_type = false;
-	  uint16_t rid;
-	  try {
-	    auto *wr = msg->cast_as<SkyTraqBin::with_response>();
-	    rid = wr->response_id();
-	    if (wr->has_response_subid())
-	      rid = (rid << 8) | wr->response_subid();
-	    response_type = true;
-	  } catch (std::bad_cast) {
-	  }
-
-	  if (_response_handlers.count(id) > 0) {
-	    // Call the response handler with a null message
-	    _response_handlers[id](true, nullptr);
-
-	    // If there is a response message type, move the handler to its id
-	    if (response_type)
-	      _response_handlers[rid] = _response_handlers[id];
-
-	    _response_handlers.erase(id);
-	  }
-
-	  // If there is no additional "response" message incoming, it's okay to send another message
-	  if (!response_type)
-	    _send_from_queue();
-
-	} else if (msg->isa<SkyTraqBin::Nack>()) {
-	  // There's no additional "response" message, send another message
-	  _send_from_queue();
-
-	  auto nack = msg->cast_as<SkyTraqBin::Nack>();
-	  uint16_t id = nack->nack_id();
-	  if (nack->has_subid())
-	    id = (id << 8) | nack->nack_subid();
-
-	  if (_response_handlers.count(id) > 0) {
-	    // Call the response handler with a null message
-	    _response_handlers[id](false, nullptr);
-	    _response_handlers.erase(id);
-	  }
-
-	} else FIRE_IF(SkyTraqBin::Nav_data_msg, Navigation_data)
-	else FIRE_IF(SkyTraqBin::Sensor_data, Sensor_data)
-	else FIRE_IF(SkyTraqBin::Measurement_time, Measurement_time)
-	else FIRE_IF(SkyTraqBin::Raw_measurements, Raw_measurements)
-	else FIRE_IF(SkyTraqBin::SV_channel_status, SV_channel_status)
-	else FIRE_IF(SkyTraqBin::Rcv_state, Rcv_state)
-	else FIRE_IF(SkyTraqBin::GPS_subframe_data, GPS_subframe_data)
-	else {
-	  // Assume this is a "response" ouput message, send another message from the queue
-	  _send_from_queue();
-
-	  uint16_t id = m->message_id();
-	  try {
-	    auto m_with_subid = m->cast_as<SkyTraqBin::with_subid>();
-	    id = (id << 8) | m_with_subid->message_subid();
-	  } catch (std::bad_cast) {
-	  }
-
-	  if (_response_handlers.count(id) > 0) {
-	    // Call the response handler with the message
-	    _response_handlers[id](true, m);
-	    _response_handlers.erase(id);
-	  }
+	try {
+	  msg->cast_as<NMEA0183::Sentence>();	// Will throw std::bad_cast if not possible
+	  FIRE_IF(NMEA0183::STI_PPS, STI_PPS)
+	  else FIRE_IF(NMEA0183::STI_sensors, STI_sensors);
+	} catch (std::bad_cast) {
 	}
 
-      } catch (std::bad_cast) {
+	try {
+	  auto m = msg->cast_as<SkyTraqBin::Output_message>();	// Will throw a std::bad_cast exception if not possible
+
+	  if (msg->isa<SkyTraqBin::Ack>()) {
+	    auto ack = msg->cast_as<SkyTraqBin::Ack>();
+	    uint16_t id = ack->ack_id();
+	    if (ack->has_subid())
+	      id = (id << 8) | ack->ack_subid();
+
+	    bool response_type = false;
+	    uint16_t rid;
+	    try {
+	      auto *wr = msg->cast_as<SkyTraqBin::with_response>();
+	      rid = wr->response_id();
+	      if (wr->has_response_subid())
+		rid = (rid << 8) | wr->response_subid();
+	      response_type = true;
+	    } catch (std::bad_cast) {
+	    }
+
+	    if (_response_handlers.count(id) > 0) {
+	      // Call the response handler with a null message
+	      _response_handlers[id](true, nullptr);
+
+	      // If there is a response message type, move the handler to its id
+	      if (response_type)
+		_response_handlers[rid] = _response_handlers[id];
+
+	      _response_handlers.erase(id);
+	    }
+
+	    // If there is no additional "response" message incoming, it's okay to send another message
+	    if (!response_type)
+	      _send_from_queue();
+
+	  } else if (msg->isa<SkyTraqBin::Nack>()) {
+	    // There's no additional "response" message, send another message
+	    _send_from_queue();
+
+	    auto nack = msg->cast_as<SkyTraqBin::Nack>();
+	    uint16_t id = nack->nack_id();
+	    if (nack->has_subid())
+	      id = (id << 8) | nack->nack_subid();
+
+	    if (_response_handlers.count(id) > 0) {
+	      // Call the response handler with a null message
+	      _response_handlers[id](false, nullptr);
+	      _response_handlers.erase(id);
+	    }
+
+	  } else FIRE_IF(SkyTraqBin::Nav_data_msg, Navigation_data)
+	  else FIRE_IF(SkyTraqBin::Sensor_data, Sensor_data)
+	  else FIRE_IF(SkyTraqBin::Measurement_time, Measurement_time)
+	  else FIRE_IF(SkyTraqBin::Raw_measurements, Raw_measurements)
+	  else FIRE_IF(SkyTraqBin::SV_channel_status, SV_channel_status)
+	  else FIRE_IF(SkyTraqBin::Rcv_state, Rcv_state)
+	  else FIRE_IF(SkyTraqBin::GPS_subframe_data, GPS_subframe_data)
+	  else {
+	    // Assume this is a "response" ouput message, send another message from the queue
+	    _send_from_queue();
+
+	    uint16_t id = m->message_id();
+	    try {
+	      auto m_with_subid = m->cast_as<SkyTraqBin::with_subid>();
+	      id = (id << 8) | m_with_subid->message_subid();
+	    } catch (std::bad_cast) {
+	    }
+
+	    if (_response_handlers.count(id) > 0) {
+	      // Call the response handler with the message
+	      _response_handlers[id](true, m);
+	      _response_handlers.erase(id);
+	    }
+	  }
+
+	} catch (std::bad_cast) {
+	}
       }
 
 #undef FIRE_IF
@@ -263,4 +275,4 @@ namespace SkyTraq {
   }
 
 
-}; // namespace SkyTraq
+}; // namespace GNSS

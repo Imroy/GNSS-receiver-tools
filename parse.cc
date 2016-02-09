@@ -31,13 +31,13 @@ namespace ptime = boost::posix_time;
 
 ptime::ptime GPS_epoch(greg::date(1980, greg::Jan, 6), ptime::seconds(0));
 
-class AppListener : public SkyTraq::Listener {
+class AppListener : public GNSS::Listener_SkyTraq {
 private:
   uint32_t _time_in_week;
   ptime::time_duration _leap_seconds = ptime::seconds(16);
 
 public:
-  void GGA(SkyTraq::Interface* iface, const NMEA0183::GGA &gga) {
+  void GGA(GNSS::Interface* iface, const NMEA0183::GGA &gga) {
     std::cout << "\tTime " << gga.UTC_time()
 	      << ", longitude " << gga.longitude() << "°, lattitude " << gga.lattitude() << "°"
 	      << ", \"" << gga.fix_quality() << "\""
@@ -47,14 +47,14 @@ public:
 	      << std::endl;
   }
 
-  void GLL(SkyTraq::Interface* iface, const NMEA0183::GLL &gll) {
+  void GLL(GNSS::Interface* iface, const NMEA0183::GLL &gll) {
     std::cout << "\tLongitude " << gll.longitude() << "°, lattitude " << gll.lattitude() << "°"
 	      << ", time " << gll.UTC_time()
 	      << ", " << gll.receiver_mode()
 	      << std::endl;
   }
 
-  void GSA(SkyTraq::Interface* iface, const NMEA0183::GSA &gsa) {
+  void GSA(GNSS::Interface* iface, const NMEA0183::GSA &gsa) {
     std::cout << "\t" << gsa.mode()
 	      << ", fix: " << gsa.fix_type()
 	      << ", PDOP " << gsa.PDOP() << ", HDOP " << gsa.HDOP() << ", VDOP " << gsa.VDOP()
@@ -65,7 +65,7 @@ public:
     std::cout << std::endl;
   }
 
-  void GSV(SkyTraq::Interface* iface, const NMEA0183::GSV &gsv) {
+  void GSV(GNSS::Interface* iface, const NMEA0183::GSV &gsv) {
     std::cout << "\t" << gsv.message_seq() << "/" << gsv.num_messages() << " messages"
 	      << ", " << gsv.satellites_in_view() << " satellites in view"
 	      << std::endl;
@@ -79,7 +79,7 @@ public:
     std::cout << std::endl;
   }
 
-  void RMC(SkyTraq::Interface* iface, const NMEA0183::RMC &rmc) {
+  void RMC(GNSS::Interface* iface, const NMEA0183::RMC &rmc) {
     std::cout << "\tTime " << rmc.UTC_datetime()
 	      << ", " << (rmc.status() ? "data valid" : "warning")
 	      << ", longitude " << rmc.longitude() << "°, lattitude " << rmc.lattitude() << "°"
@@ -88,39 +88,39 @@ public:
 	      << std::endl;
   }
 
-  void VTG(SkyTraq::Interface* iface, const NMEA0183::VTG &vtg) {
+  void VTG(GNSS::Interface* iface, const NMEA0183::VTG &vtg) {
     std::cout << "\tCourse " << vtg.true_course() << "°"
 	      << ", speed " << vtg.speed() << " km/h"
 	      << ", " << vtg.receiver_mode()
 	      << std::endl;
   }
 
-  void ZDA(SkyTraq::Interface* iface, const NMEA0183::ZDA &zda) {
+  void ZDA(GNSS::Interface* iface, const NMEA0183::ZDA &zda) {
     std::cout << "\tTime " << zda.UTC_datetime()
 	      << ", TZ " << zda.TZ_hours() << ":" << zda.TZ_minutes()
 	      << std::endl;
   }
 
-  void STI_PPS(SkyTraq::Interface* iface, const NMEA0183::STI_PPS &sti_pps) {
+  void STI_PPS(GNSS::Interface* iface, const NMEA0183::STI_PPS &sti_pps) {
     std::cout << "\tSTI PPS, PPS mode \"" << sti_pps.timing_mode() << "\""
 	      << std::endl;
   }
 
-  void Ack(SkyTraq::Interface* iface, const SkyTraqBin::Ack &ack) {
+  void Ack(GNSS::Interface* iface, const SkyTraqBin::Ack &ack) {
     std::cout << "\tAcknowledge message id 0x" << std::hex << (int)ack.ack_id();
     if (ack.has_subid())
       std::cout << ", sub id 0x" << (int)ack.ack_subid();
     std::cout << std::dec << std::endl;
   }
 
-  void Nack(SkyTraq::Interface* iface, const SkyTraqBin::Nack &nack) {
+  void Nack(GNSS::Interface* iface, const SkyTraqBin::Nack &nack) {
     std::cout << "\tNegative acknowledge message id 0x" << std::hex << (int)nack.nack_id();
     if (nack.has_subid())
       std::cout << ", sub id 0x" << (int)nack.nack_subid();
     std::cout << std::dec << std::endl;
   }
 
-  void Navigation_data(SkyTraq::Interface* iface, const SkyTraqBin::Nav_data_msg &nav) {
+  void Navigation_data(GNSS::Interface* iface, const SkyTraqBin::Nav_data_msg &nav) {
     std::cout << "\tNavigation: " << std::to_string(nav.fix_type())
 	      << ", " << (int)nav.num_sv() << " satellites"
 	      << ", time = " << nav.week_number() << " weeks + " << nav.time_of_week() << " seconds"
@@ -130,7 +130,7 @@ public:
 	      << std::endl;
   }
 
-  void Sensor_data(SkyTraq::Interface* iface, const SkyTraqBin::Sensor_data &sd) {
+  void Sensor_data(GNSS::Interface* iface, const SkyTraqBin::Sensor_data &sd) {
     std::cout << "\tSensors: acceleration (" << sd.Gx() << ", " << sd.Gy() << ", " << sd.Gz() << ") g"
 	      << ", magnetic flux (" << sd.Mx() << ", " << sd.My() << ", " << sd.My() << ") T"
 	      << ", atmospheric pressure " << sd.pressure() << " Pa"
@@ -138,7 +138,7 @@ public:
 	      << std::endl;
   }
 
-  void Measurement_time(SkyTraq::Interface* iface, const SkyTraqBin::Measurement_time &mt) {
+  void Measurement_time(GNSS::Interface* iface, const SkyTraqBin::Measurement_time &mt) {
     _time_in_week = mt.time_in_week();
 
     ptime::ptime utc_time = GPS_epoch + greg::days(mt.week_number() * 7) + ptime::milliseconds(mt.time_in_week()) - _leap_seconds;
@@ -150,7 +150,7 @@ public:
 	      << ", measurement period " << mt.period() << " ms" << std::endl;
   }
 
-  void Raw_measurements(SkyTraq::Interface* iface, const SkyTraqBin::Raw_measurements &rm) {
+  void Raw_measurements(GNSS::Interface* iface, const SkyTraqBin::Raw_measurements &rm) {
     std::cout << "\tRaw measurements, issue of data: " << (int)rm.issue_of_data() << ", " << (int)rm.num_measurements() << " raw measurements." << std::endl;
     for (auto m : rm.measurements()) {
       std::cout << "\t\tPRN " << (int)m.PRN
@@ -165,7 +165,7 @@ public:
     }
   }
 
-  void SV_channel_status(SkyTraq::Interface* iface, const SkyTraqBin::SV_channel_status &sv_chan) {
+  void SV_channel_status(GNSS::Interface* iface, const SkyTraqBin::SV_channel_status &sv_chan) {
     std::cout << "\tSV channel status, issue of data: " << (int)sv_chan.issue_of_data() << ", " << (int)sv_chan.num_svs() << " SV statuses." << std::endl;
     for (auto s : sv_chan.statuses())
       std::cout << "\t\tChannel " << (int)s.channel_id
@@ -178,11 +178,11 @@ public:
 		<< std::endl;
   }
 
-  void Rcv_state(SkyTraq::Interface* iface, const SkyTraqBin::Rcv_state &rcv_state) {
+  void Rcv_state(GNSS::Interface* iface, const SkyTraqBin::Rcv_state &rcv_state) {
     std::cout << "\tReceiver status" << std::endl;
   }
 
-  void GPS_subframe_data(SkyTraq::Interface* iface, const SkyTraqBin::GPS_subframe_data &sfd) {
+  void GPS_subframe_data(GNSS::Interface* iface, const SkyTraqBin::GPS_subframe_data &sfd) {
     std::cout << "\tGPS subframe data, PRN " << (int)sfd.PRN() << ", subframe #" << (int)sfd.subframe_num();
     if (sfd.subframe_num() > 3) {
       uint8_t page_num = 1 + ((_time_in_week - 6000) / 30000) % 25;
@@ -242,7 +242,7 @@ int main(int argc, char* argv[]) {
   }
 
   auto l = std::make_shared<AppListener>();
-  SkyTraq::Interface iface(file, l);
+  GNSS::Interface iface(file, l);
 
   try {
     if (change_mt) {
@@ -259,14 +259,14 @@ int main(int argc, char* argv[]) {
 		   std::cout << (ack ? "A" : "Not a") << "cknowledged output rate change." << std::endl;
 		 });
     }
-  } catch (SkyTraq::NotSendable &e) {
+  } catch (GNSS::NotSendable &e) {
     std::cerr << "Interface is not sendable." << std::endl;
   }
 
   while (1) {
     try {
       iface.read();
-    } catch (SkyTraq::EndOfFile &e) {
+    } catch (GNSS::EndOfFile &e) {
       break;
     } catch (std::invalid_argument &e) {
       std::cerr << e.what() << std::endl;

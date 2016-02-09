@@ -26,7 +26,7 @@
 #include "NMEA-0183.hh"
 #include "SkyTraqBin.hh"
 
-namespace SkyTraq {
+namespace GNSS {
 
   class EndOfFile : public std::exception {
   private:
@@ -95,6 +95,12 @@ namespace SkyTraq {
     inline virtual void VTG(Interface* iface, const NMEA0183::VTG &vtg) {}
     inline virtual void ZDA(Interface* iface, const NMEA0183::ZDA &zda) {}
 
+    typedef std::shared_ptr<Listener> ptr;
+  }; // class Listener
+
+  //! Base class that receives parsed messages, including SkyTraq-specific NMEA and binary messages
+  class Listener_SkyTraq : public Listener {
+  public:
     // handler methods for proprietary SkyTraq sentences
     inline virtual void STI_PPS(Interface* iface, const NMEA0183::STI_PPS &sti_pps) {}
     inline virtual void STI_sensors(Interface* iface, const NMEA0183::STI_sensors &sti_sensors) {}
@@ -110,8 +116,7 @@ namespace SkyTraq {
     inline virtual void Rcv_state(Interface* iface, const SkyTraqBin::Rcv_state &rcv_state) {}
     inline virtual void GPS_subframe_data(Interface* iface, const SkyTraqBin::GPS_subframe_data &sfd) {}
 
-    typedef std::shared_ptr<Listener> ptr;
-  }; // class Listener
+  }; // class Listener_SkyTraq
 
 
   //! Class for an object that reads from a stream and calls methods in a Listener object
@@ -135,7 +140,7 @@ namespace SkyTraq {
     std::FILE *_file;
     bool _is_chrdev;
     Listener::ptr _listener;
-    SkyTraq::Parser _parser;
+    GNSS::Parser _parser;
     std::queue<std::pair<unsigned char*, SkyTraqBin::Payload_length> > _output_queue;
     bool _response_pending;
     std::map<uint16_t, ResponseHandler> _response_handlers;

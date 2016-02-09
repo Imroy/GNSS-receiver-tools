@@ -1,5 +1,5 @@
 /*
-        Copyright 2014 Ian Tester
+        Copyright 2016 Ian Tester
 
         This file is part of NavSpark tools.
 
@@ -16,37 +16,36 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef __SKYTRAQ_HH__
-#define __SKYTRAQ_HH__
+#pragma once
 
 #include <iostream>
 #include <memory>
 #include <typeinfo>
 #include <vector>
 
-/*
-  Sources:
-  https://store-lgdi92x.mybigcommerce.com/content/AN0028_1.4.31.pdf	(Binary messages of Skytraq Venus 8)
-  https://store-lgdi92x.mybigcommerce.com/content/Venus838LPx-T_DS_v2.pdf (Venus838LPx-T datasheet)
- */
+namespace GNSS {
 
-namespace SkyTraq {
+  //! Abstract base class for both NMEA-0183 and binary messages
+  class Message {
+  public:
+    //! Virtual destructor to force polymorphism
+    inline virtual ~Message() {}
 
-  enum class TimingMode : uint8_t {
-    PVT = 0,
-      Survey,
-      Static,
-  }; // class TimingMode
+    //! Check the type of an object
+    template <typename T>
+    inline bool isa(void) const { return typeid(*this) == typeid(T); }
 
-  std::ostream& operator<< (std::ostream& out, TimingMode tm);
+    //! Recast this object to another type
+    template <typename T>
+    inline T* cast_as(void) {
+      T *a = dynamic_cast<T*>(this);
+      if (a == nullptr)
+	throw std::bad_cast();
+      return a;
+    }
+
+    typedef std::shared_ptr<Message> ptr;
+  }; // class Message
 
 
-}; // namespace SkyTraq
-
-namespace std {
-
-  std::string to_string(SkyTraq::TimingMode tm);
-
-}; // namespace std
-
-#endif // __SKYTRAQ_HH__
+}; // namespace GNSS

@@ -30,7 +30,7 @@ namespace ptime = boost::posix_time;
 ptime::ptime GPS_epoch(greg::date(1980, greg::Jan, 6), ptime::seconds(0));
 ptime::ptime time_epoch(greg::date(1970, greg::Jan, 1), ptime::seconds(0));
 
-class MongoListener : public SkyTraq::Listener {
+class MongoListener : public GNSS::Listener_SkyTraq {
 private:
   mongo::ScopedDbConnection *_sdc;
   std::string _dbname;
@@ -67,7 +67,7 @@ public:
     _sdc->conn().ensureIndex(db + ".subframes", BSON("PRN" << "1" << "subframe_num" << 1 << "page_num" << 1));
   }
 
-  void Measurement_time(SkyTraq::Interface* iface, const SkyTraqBin::Measurement_time &mt) {
+  void Measurement_time(GNSS::Interface* iface, const SkyTraqBin::Measurement_time &mt) {
     _time_in_week = mt.time_in_week();
 
     _check_issue(mt.issue_of_data());
@@ -80,7 +80,7 @@ public:
 		  << "period" << mt.period();
   }
 
-  void Raw_measurements(SkyTraq::Interface* iface, const SkyTraqBin::Raw_measurements &rm) {
+  void Raw_measurements(GNSS::Interface* iface, const SkyTraqBin::Raw_measurements &rm) {
     _check_issue(rm.issue_of_data());
 
     mongo::BSONArrayBuilder meas;
@@ -101,7 +101,7 @@ public:
     _current_doc->append("measurements", meas.arr());
   }
 
-  void SV_channel_status(SkyTraq::Interface* iface, const SkyTraqBin::SV_channel_status &sv_chan) {
+  void SV_channel_status(GNSS::Interface* iface, const SkyTraqBin::SV_channel_status &sv_chan) {
     _check_issue(sv_chan.issue_of_data());
 
     mongo::BSONArrayBuilder statuses;
@@ -127,7 +127,7 @@ public:
     _current_doc->append("statuses", statuses.arr());
   }
 
-  void Rcv_state(SkyTraq::Interface* iface, const SkyTraqBin::Rcv_state &rcv) {
+  void Rcv_state(GNSS::Interface* iface, const SkyTraqBin::Rcv_state &rcv) {
     _check_issue(rcv.issue_of_data());
 
     *_current_doc << "navigation_state" << std::to_string(rcv.navigation_state())
@@ -146,7 +146,7 @@ public:
 		  << "TDOP" << rcv.TDOP();
   }
 
-  void GPS_subframe_data(SkyTraq::Interface* iface, const SkyTraqBin::GPS_subframe_data &sfd) {
+  void GPS_subframe_data(GNSS::Interface* iface, const SkyTraqBin::GPS_subframe_data &sfd) {
     mongo::BSONObjBuilder doc;
     doc << "PRN" << sfd.PRN()
 	<< "subframe_num" << sfd.subframe_num();
@@ -230,12 +230,12 @@ int main(int argc, char* argv[]) {
   }
 
   auto l = std::make_shared<MongoListener>(sdc, dbname);
-  SkyTraq::Interface iface(file, l);
+  GNSS::Interface iface(file, l);
 
   while (1) {
     try {
       iface.read();
-    } catch (SkyTraq::EndOfFile &e) {
+    } catch (GNSS::EndOfFile &e) {
       break;
     } catch (std::invalid_argument &e) {
       std::cerr << e.what() << std::endl;

@@ -25,6 +25,7 @@
 #include <vector>
 #include <memory>
 #include "boost/date_time/posix_time/posix_time.hpp"
+#include "GNSS.hh"
 #include "SkyTraq.hh"
 
 namespace greg = boost::gregorian;
@@ -90,7 +91,7 @@ namespace NMEA0183 {
 #define GETTER(type, name, field) inline const type name(void) const { return field; }
 
   //! Base class for holding NMEA-0183 sentence data
-  class Sentence : public SkyTraq::Message {
+  class Sentence : public GNSS::Message {
   private:
     const char _talker_id[2], _type[3];
     const unsigned char _checksum;
