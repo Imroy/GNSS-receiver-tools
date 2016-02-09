@@ -117,7 +117,6 @@ namespace SkyTraqBin {
   protected:
     uint8_t _msg_id;
 
-  public:
     //! Constructor
     /*!
       \param id ID for this message
@@ -126,6 +125,7 @@ namespace SkyTraqBin {
       _msg_id(id)
     {}
 
+  public:
     //! Getter method for the message ID
     inline const uint8_t message_id(void) const { return _msg_id; }
 
