@@ -16,8 +16,7 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef __SKYTRAQ_HH__
-#define __SKYTRAQ_HH__
+#pragma once
 
 #include <iostream>
 #include <memory>
@@ -48,5 +47,3 @@ namespace std {
   std::string to_string(SkyTraq::TimingMode tm);
 
 }; // namespace std
-
-#endif // __SKYTRAQ_HH__

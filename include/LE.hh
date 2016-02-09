@@ -16,8 +16,7 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef __LE_HH__
-#define __LE_HH__
+#pragma once
 
 //! Extract a value from a buffer, in little-endian byte order
 /*!
@@ -26,5 +25,3 @@
  */
 template <typename T>
 T extract_le(unsigned char* buffer, unsigned int offset);
-
-#endif // __LE_HH__

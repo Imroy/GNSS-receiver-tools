@@ -16,8 +16,7 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef __PARSER_HH__
-#define __PARSER_HH__
+#pragma once
 
 #include <functional>
 #include <cstdio>
@@ -174,6 +173,3 @@ namespace GNSS {
 
 
 }; // namespace SkyTraq
-
-
-#endif //__PARSER_HH__

@@ -16,8 +16,7 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef __SKYTRAQBIN_INPUTS_HH__
-#define __SKYTRAQBIN_INPUTS_HH__
+#pragma once
 
 #include "boost/date_time/posix_time/posix_time_types.hpp"
 #include <string.h>
@@ -1206,5 +1205,3 @@ namespace SkyTraqBin {
 
 
 }; // namespace SkyTraqBin
-
-#endif // __SKYTRAQBIN_INPUTS_HH__

@@ -16,8 +16,7 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef __BE_HH__
-#define __BE_HH__
+#pragma once
 
 //! Append a value to a buffer, in big-endian byte order
 /*!
@@ -38,4 +37,3 @@ T extract_be(unsigned char* buffer, unsigned int offset);
 //! Extract a 24-bit value from a buffer, in big-endian byte order
 unsigned int extract_be24(unsigned char* buffer, unsigned int offset);
 
-#endif // __BE_HH__

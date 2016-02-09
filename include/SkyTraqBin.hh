@@ -16,8 +16,7 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef __SKYTRAQBIN_HH__
-#define __SKYTRAQBIN_HH__
+#pragma once
 
 #include <cstdio>
 #include <memory>
@@ -501,5 +500,3 @@ namespace std {
 #undef RESPONSE1
 #undef RESPONSE2
 #endif
-
-#endif // __SKYTRAQBIN_HH__

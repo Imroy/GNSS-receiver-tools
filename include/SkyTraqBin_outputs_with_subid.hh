@@ -16,8 +16,7 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef __SKYTRAQBIN_OUTPUTS_WITH_SUBID_HH__
-#define __SKYTRAQBIN_OUTPUTS_WITH_SUBID_HH__
+#pragma once
 
 #include "SkyTraqBin.hh"
 
@@ -317,5 +316,3 @@ namespace SkyTraqBin {
 
 
 }; // namespace SkyTraqBin
-
-#endif // __SKYTRAQBIN_OUTPUTS_WITH_SUBID_HH__

@@ -16,8 +16,7 @@
         You should have received a copy of the GNU General Public License
         along with NavSpark tools.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef __NMEA_0183_HH__
-#define __NMEA_0183_HH__
+#pragma once
 
 #include <string>
 #include <iostream>
@@ -369,5 +368,3 @@ namespace std {
 #ifndef DOXYGEN_SKIP_FOR_USERS
 #undef ENUM_OSTREAM_OPERATOR
 #endif
-
-#endif // __NMEA_0183_HH__
