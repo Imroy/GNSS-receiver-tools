@@ -249,7 +249,7 @@ namespace GNSS {
     if (!is_sendable())
       throw NotSendable();
 
-    SkyTraqBin::Payload_length len = msg->message_length();
+    std::size_t len = msg->message_length();
 
     unsigned char *buffer = (unsigned char*)malloc(len);
     msg->to_buf(buffer);

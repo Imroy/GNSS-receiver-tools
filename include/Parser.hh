@@ -140,7 +140,7 @@ namespace GNSS {
     bool _is_chrdev;
     Listener::ptr _listener;
     GNSS::Parser _parser;
-    std::queue<std::pair<unsigned char*, SkyTraqBin::Payload_length> > _output_queue;
+    std::queue<std::pair<unsigned char*, std::size_t> > _output_queue;
     bool _response_pending;
     std::map<uint16_t, ResponseHandler> _response_handlers;
 
