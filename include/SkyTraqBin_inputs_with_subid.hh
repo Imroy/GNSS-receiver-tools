@@ -52,13 +52,13 @@ namespace SkyTraqBin {
     //! Write body fields into a pre-allocated buffer
     virtual void body_to_buf(unsigned char* buffer) const {}
 
-  public:
-    //! Constructor
+    //! Constructor from a message ID and sub-ID
     Input_message_with_subid(uint8_t id, uint8_t subid) :
       Input_message(id),
       with_subid(subid)
     {}
 
+  public:
     //! The total length of the message
     inline const Payload_length message_length(void) const { return StartSeq_len + PayloadLength_len + MsgID_len + MsgSubID_len + body_length() + Checksum_len + EndSeq_len; }
 

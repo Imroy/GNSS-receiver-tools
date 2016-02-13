@@ -135,12 +135,12 @@ namespace SkyTraqBin {
     //! Write body fields into a pre-allocated buffer
     virtual inline void body_to_buf(unsigned char* buffer) const { }
 
-  public:
     //! Constructor from a message ID
     Input_message(uint8_t id) :
       Message(id)
     {}
 
+  public:
     //! The total length of the message
     inline const Payload_length message_length(void) const { return StartSeq_len + PayloadLength_len + MsgID_len + body_length() + Checksum_len + EndSeq_len; }
 
