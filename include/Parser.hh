@@ -24,6 +24,7 @@
 #include <queue>
 #include "NMEA-0183.hh"
 #include "SkyTraqBin.hh"
+#include "UBX.hh"
 
 namespace GNSS {
 
@@ -97,6 +98,7 @@ namespace GNSS {
     typedef std::shared_ptr<Listener> ptr;
   }; // class Listener
 
+
   //! Base class that receives parsed messages, including SkyTraq-specific NMEA and binary messages
   class Listener_SkyTraq : public Listener {
   public:
@@ -118,6 +120,12 @@ namespace GNSS {
   }; // class Listener_SkyTraq
 
 
+  //! Base class that receives parsed messages, including Ublox-specific NMEA and binary messages
+  class Listener_Ublox : public Listener {
+  public:
+  }; // class Listener_Ublox
+
+
   //! Class for an object that reads from a stream and calls methods in a Listener object
   class Interface {
   public:
@@ -135,6 +143,8 @@ namespace GNSS {
      */
     typedef std::function<void(bool ack, SkyTraqBin::Output_message* msg)> ResponseHandler_Skytraq;
 
+    typedef std::function<void(bool ack, UBX::Output_message* msg)> ResponseHandler_Ublox;
+
   private:
     std::FILE *_file;
     bool _is_chrdev;
@@ -143,6 +153,7 @@ namespace GNSS {
     std::queue<std::pair<unsigned char*, std::size_t> > _output_queue;
     bool _response_pending;
     std::map<uint16_t, ResponseHandler_Skytraq> _response_handlers_skytraq;
+    std::map<uint16_t, ResponseHandler_Ublox> _response_handlers_ublox;
 
     void _send_from_queue(void);
 
@@ -168,6 +179,12 @@ namespace GNSS {
 
     //! Send a message to the Skytraq device, call lambda when response is received
     void send(SkyTraqBin::Input_message::ptr msg, ResponseHandler_Skytraq rh);
+
+    //! Send a message to the Ublox device
+    void send(UBX::Input_message::ptr msg);
+
+    //! Send a message to the Ublox device, call lambda when response is received
+    void send(UBX::Input_message::ptr msg, ResponseHandler_Ublox rh);
 
   }; // class Interface
 

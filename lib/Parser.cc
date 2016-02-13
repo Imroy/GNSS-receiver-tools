@@ -67,6 +67,8 @@ namespace GNSS {
 	  messages.push_back(NMEA0183::parse_sentence(std::string((const char*)_parse_buffer, end - 2)));
 	else if ((_parse_buffer[0] == 0xa0) && (_parse_buffer[1] == 0xa1))
 	  messages.push_back(SkyTraqBin::parse_message(_parse_buffer, end));
+	else if ((_parse_buffer[0] == 0xb5) && (_parse_buffer[1] = 0x62))
+	  messages.push_back(UBX::parse_message(_parse_buffer, end));
 
 	// Catch the harmless exceptions
       } catch (const NMEA0183::InvalidSentence &e) {
@@ -272,6 +274,30 @@ namespace GNSS {
     } catch (std::bad_cast) {
     }
     _response_handlers_skytraq[id] = rh;
+  }
+
+  void Interface::send(UBX::Input_message::ptr msg) {
+    if (!is_sendable())
+      throw NotSendable();
+
+    std::size_t len = msg->message_length();
+
+    unsigned char *buffer = (unsigned char*)malloc(len);
+    msg->to_buf(buffer);
+
+    if (!_response_pending) {
+      fwrite(buffer, 1, len, _file);
+      fflush(_file);
+      free(buffer);
+      _response_pending = true;
+    } else
+      _output_queue.push(std::make_pair(buffer, len));
+  }
+
+  void Interface::send(UBX::Input_message::ptr msg, ResponseHandler_Ublox rh) {
+    send(msg);
+    uint16_t clsid = ((uint16_t)msg->cls() << 8) | msg->id();
+    _response_handlers_ublox[clsid] = rh;
   }
 
 
