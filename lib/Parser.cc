@@ -182,15 +182,15 @@ namespace GNSS {
 	    } catch (std::bad_cast) {
 	    }
 
-	    if (_response_handlers.count(id) > 0) {
+	    if (_response_handlers_skytraq.count(id) > 0) {
 	      // Call the response handler with a null message
-	      _response_handlers[id](true, nullptr);
+	      _response_handlers_skytraq[id](true, nullptr);
 
 	      // If there is a response message type, move the handler to its id
 	      if (response_type)
-		_response_handlers[rid] = _response_handlers[id];
+		_response_handlers_skytraq[rid] = _response_handlers_skytraq[id];
 
-	      _response_handlers.erase(id);
+	      _response_handlers_skytraq.erase(id);
 	    }
 
 	    // If there is no additional "response" message incoming, it's okay to send another message
@@ -206,10 +206,10 @@ namespace GNSS {
 	    if (nack->has_subid())
 	      id = (id << 8) | nack->nack_subid();
 
-	    if (_response_handlers.count(id) > 0) {
+	    if (_response_handlers_skytraq.count(id) > 0) {
 	      // Call the response handler with a null message
-	      _response_handlers[id](false, nullptr);
-	      _response_handlers.erase(id);
+	      _response_handlers_skytraq[id](false, nullptr);
+	      _response_handlers_skytraq.erase(id);
 	    }
 
 	  } else FIRE_IF(SkyTraqBin::Nav_data_msg, Navigation_data)
@@ -230,10 +230,10 @@ namespace GNSS {
 	    } catch (std::bad_cast) {
 	    }
 
-	    if (_response_handlers.count(id) > 0) {
+	    if (_response_handlers_skytraq.count(id) > 0) {
 	      // Call the response handler with the message
-	      _response_handlers[id](true, m);
-	      _response_handlers.erase(id);
+	      _response_handlers_skytraq[id](true, m);
+	      _response_handlers_skytraq.erase(id);
 	    }
 	  }
 
@@ -263,7 +263,7 @@ namespace GNSS {
       _output_queue.push(std::make_pair(buffer, len));
   }
 
-  void Interface::send(SkyTraqBin::Input_message::ptr msg, ResponseHandler rh) {
+  void Interface::send(SkyTraqBin::Input_message::ptr msg, ResponseHandler_Skytraq rh) {
     send(msg);
     uint16_t id = msg->message_id();
     try {
@@ -271,7 +271,7 @@ namespace GNSS {
       id = (id << 8) | msg_with_subid->message_subid();
     } catch (std::bad_cast) {
     }
-    _response_handlers[id] = rh;
+    _response_handlers_skytraq[id] = rh;
   }
 
 

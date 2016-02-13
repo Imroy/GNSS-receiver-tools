@@ -133,7 +133,7 @@ namespace GNSS {
 
       The third variant only happens with response-type messages.
      */
-    typedef std::function<void(bool ack, SkyTraqBin::Output_message* msg)> ResponseHandler;
+    typedef std::function<void(bool ack, SkyTraqBin::Output_message* msg)> ResponseHandler_Skytraq;
 
   private:
     std::FILE *_file;
@@ -142,7 +142,7 @@ namespace GNSS {
     GNSS::Parser _parser;
     std::queue<std::pair<unsigned char*, std::size_t> > _output_queue;
     bool _response_pending;
-    std::map<uint16_t, ResponseHandler> _response_handlers;
+    std::map<uint16_t, ResponseHandler_Skytraq> _response_handlers_skytraq;
 
     void _send_from_queue(void);
 
@@ -163,11 +163,11 @@ namespace GNSS {
      */
     bool is_sendable(void) const { return _is_chrdev; }
 
-    //! Send a message to the device
+    //! Send a message to the Skytraq device
     void send(SkyTraqBin::Input_message::ptr msg);
 
-    //! Send a message to the device, call lambda when response is received
-    void send(SkyTraqBin::Input_message::ptr msg, ResponseHandler rh);
+    //! Send a message to the Skytraq device, call lambda when response is received
+    void send(SkyTraqBin::Input_message::ptr msg, ResponseHandler_Skytraq rh);
 
   }; // class Interface
 
