@@ -64,8 +64,6 @@ var namespace_sky_traq_bin =
     [ "GPS_subframe_data", "class_sky_traq_bin_1_1_g_p_s__subframe__data.html", "class_sky_traq_bin_1_1_g_p_s__subframe__data" ],
     [ "Input_message", "class_sky_traq_bin_1_1_input__message.html", "class_sky_traq_bin_1_1_input__message" ],
     [ "Input_message_with_subid", "class_sky_traq_bin_1_1_input__message__with__subid.html", "class_sky_traq_bin_1_1_input__message__with__subid" ],
-    [ "InsufficientData", "class_sky_traq_bin_1_1_insufficient_data.html", "class_sky_traq_bin_1_1_insufficient_data" ],
-    [ "InvalidMessage", "class_sky_traq_bin_1_1_invalid_message.html", "class_sky_traq_bin_1_1_invalid_message" ],
     [ "Log_status_output", "class_sky_traq_bin_1_1_log__status__output.html", "class_sky_traq_bin_1_1_log__status__output" ],
     [ "Measurement_time", "class_sky_traq_bin_1_1_measurement__time.html", "class_sky_traq_bin_1_1_measurement__time" ],
     [ "Message", "class_sky_traq_bin_1_1_message.html", "class_sky_traq_bin_1_1_message" ],

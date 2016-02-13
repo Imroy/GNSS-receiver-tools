@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['checksummismatch',['ChecksumMismatch',['../class_n_m_e_a0183_1_1_checksum_mismatch.html',1,'NMEA0183']]],
+  ['checksum_5ft',['checksum_t',['../struct_u_b_x_1_1checksum__t.html',1,'UBX']]],
+  ['checksummismatch',['ChecksumMismatch',['../class_u_b_x_1_1_checksum_mismatch.html',1,'UBX']]],
   ['checksummismatch',['ChecksumMismatch',['../class_sky_traq_bin_1_1_checksum_mismatch.html',1,'SkyTraqBin']]],
+  ['checksummismatch',['ChecksumMismatch',['../class_n_m_e_a0183_1_1_checksum_mismatch.html',1,'NMEA0183']]],
   ['clear_5flog',['Clear_log',['../class_sky_traq_bin_1_1_clear__log.html',1,'SkyTraqBin']]],
   ['config_5f1pps_5fcable_5fdelay',['Config_1PPS_cable_delay',['../class_sky_traq_bin_1_1_config__1_p_p_s__cable__delay.html',1,'SkyTraqBin']]],
   ['config_5f1pps_5ffreq_5foutput',['Config_1PPS_freq_output',['../class_sky_traq_bin_1_1_config__1_p_p_s__freq__output.html',1,'SkyTraqBin']]],

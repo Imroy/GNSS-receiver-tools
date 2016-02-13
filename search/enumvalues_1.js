@@ -10,5 +10,14 @@ var searchData=
   ['baud57600',['Baud57600',['../namespace_sky_traq_bin.html#a563e3749a9599c896a4ddcb46b2b8a47a5df0ba18de3712cd4d8689f5d3f8e1fa',1,'SkyTraqBin']]],
   ['baud921600',['Baud921600',['../namespace_sky_traq_bin.html#a563e3749a9599c896a4ddcb46b2b8a47a813ced08ac90c0ccdc6ac619cd327479',1,'SkyTraqBin']]],
   ['baud9600',['Baud9600',['../namespace_sky_traq_bin.html#a563e3749a9599c896a4ddcb46b2b8a47a8e072f20a097851ad5fbbf16e3026efe',1,'SkyTraqBin']]],
-  ['binary',['Binary',['../namespace_sky_traq_bin.html#ad6dfb9b099caedb49ad438b8b3606fcca6ce976e8f061b2b5cfe4d0c50c3405dd',1,'SkyTraqBin']]]
+  ['beidou',['BeiDou',['../namespace_u_b_x.html#a7681883beadf5a754d66eb9afe563ec1a532e1e7daeef2562426638f7092cf9a6',1,'UBX']]],
+  ['binary',['Binary',['../namespace_sky_traq_bin.html#ad6dfb9b099caedb49ad438b8b3606fcca6ce976e8f061b2b5cfe4d0c50c3405dd',1,'SkyTraqBin']]],
+  ['bits_5f0_5f5',['Bits_0_5',['../namespace_u_b_x_1_1_cfg.html#a600180667e1ed7355a008e6276db66bcac6665ef32195e7cb1470425bb2a3cb1f',1,'UBX::Cfg']]],
+  ['bits_5f1',['Bits_1',['../namespace_u_b_x_1_1_cfg.html#a600180667e1ed7355a008e6276db66bca06658291886e6b1cd0c5aac8dcd61235',1,'UBX::Cfg']]],
+  ['bits_5f1_5f5',['Bits_1_5',['../namespace_u_b_x_1_1_cfg.html#a600180667e1ed7355a008e6276db66bcaa9541cbb4b742b045e989fae578548e1',1,'UBX::Cfg']]],
+  ['bits_5f2',['Bits_2',['../namespace_u_b_x_1_1_cfg.html#a600180667e1ed7355a008e6276db66bca48e5e9fa22723cadb3c09d09917d5ee3',1,'UBX::Cfg']]],
+  ['bits_5f5',['Bits_5',['../namespace_u_b_x_1_1_cfg.html#aa9a28b16d34f6d5f8064a89320f17459aa74e6a87b98dc872dbefb5288d8d5e7e',1,'UBX::Cfg']]],
+  ['bits_5f6',['Bits_6',['../namespace_u_b_x_1_1_cfg.html#aa9a28b16d34f6d5f8064a89320f17459a863f4093e5acf3df80ace9e73fa932ad',1,'UBX::Cfg']]],
+  ['bits_5f7',['Bits_7',['../namespace_u_b_x_1_1_cfg.html#aa9a28b16d34f6d5f8064a89320f17459a9dd6dbebbbaed8e0c755cf9e4d0eefa6',1,'UBX::Cfg']]],
+  ['bits_5f8',['Bits_8',['../namespace_u_b_x_1_1_cfg.html#aa9a28b16d34f6d5f8064a89320f17459a8fd0be36e80dc0e579793d57047c3f6a',1,'UBX::Cfg']]]
 ];

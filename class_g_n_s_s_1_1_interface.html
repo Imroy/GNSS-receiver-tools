@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>NavSpark tools: GNSS::Interface Class Reference</title>
+<title>GNSS receiver tools: GNSS::Interface Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,10 +31,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">NavSpark tools
+   <div id="projectname">GNSS receiver tools
    &#160;<span id="projectnumber">1</span>
    </div>
-   <div id="projectbrief">Tools for use with NavSpark GNSS receivers</div>
+   <div id="projectbrief">Tools for use with GNSS receivers</div>
   </td>
  </tr>
  </tbody>
@@ -123,9 +123,11 @@ $(document).ready(function(){initNavTree('class_g_n_s_s_1_1_interface.html','');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a89d41625db0e392ee5282596a66fa0ea"><td class="memItemLeft" align="right" valign="top">typedef std::function&lt; void(bool ack, <a class="el" href="class_sky_traq_bin_1_1_output__message.html">SkyTraqBin::Output_message</a> *msg)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_n_s_s_1_1_interface.html#a89d41625db0e392ee5282596a66fa0ea">ResponseHandler</a></td></tr>
-<tr class="memdesc:a89d41625db0e392ee5282596a66fa0ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for a function called when a query/get input message gets a response.  <a href="#a89d41625db0e392ee5282596a66fa0ea">More...</a><br /></td></tr>
-<tr class="separator:a89d41625db0e392ee5282596a66fa0ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc5ca7d95ad52ac93117620efc89fda9"><td class="memItemLeft" align="right" valign="top">typedef std::function&lt; void(bool ack, <a class="el" href="class_sky_traq_bin_1_1_output__message.html">SkyTraqBin::Output_message</a> *msg)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_n_s_s_1_1_interface.html#abc5ca7d95ad52ac93117620efc89fda9">ResponseHandler_Skytraq</a></td></tr>
+<tr class="memdesc:abc5ca7d95ad52ac93117620efc89fda9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for a function called when a query/get input message gets a response.  <a href="#abc5ca7d95ad52ac93117620efc89fda9">More...</a><br /></td></tr>
+<tr class="separator:abc5ca7d95ad52ac93117620efc89fda9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1f6d0db1c5675deed520c2caa060690"><td class="memItemLeft" align="right" valign="top">typedef std::function&lt; void(bool ack, <a class="el" href="class_u_b_x_1_1_output__message.html">UBX::Output_message</a> *msg)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_n_s_s_1_1_interface.html#ad1f6d0db1c5675deed520c2caa060690">ResponseHandler_Ublox</a></td></tr>
+<tr class="separator:ad1f6d0db1c5675deed520c2caa060690"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -138,23 +140,29 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af0c8d6689bdfd11c7168dd5f20bfe0fb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_n_s_s_1_1_interface.html#af0c8d6689bdfd11c7168dd5f20bfe0fb">is_sendable</a> (void) const </td></tr>
 <tr class="separator:af0c8d6689bdfd11c7168dd5f20bfe0fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44941f65b13ae857eda70e60b7769c98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_n_s_s_1_1_interface.html#a44941f65b13ae857eda70e60b7769c98">send</a> (<a class="el" href="class_sky_traq_bin_1_1_input__message.html#afeb88b272ee5131e2a42078b4bc0214e">SkyTraqBin::Input_message::ptr</a> msg)</td></tr>
-<tr class="memdesc:a44941f65b13ae857eda70e60b7769c98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message to the device.  <a href="#a44941f65b13ae857eda70e60b7769c98">More...</a><br /></td></tr>
+<tr class="memdesc:a44941f65b13ae857eda70e60b7769c98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message to the Skytraq device.  <a href="#a44941f65b13ae857eda70e60b7769c98">More...</a><br /></td></tr>
 <tr class="separator:a44941f65b13ae857eda70e60b7769c98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6cade0a16da5bf51a2e287c1e93adee7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_n_s_s_1_1_interface.html#a6cade0a16da5bf51a2e287c1e93adee7">send</a> (<a class="el" href="class_sky_traq_bin_1_1_input__message.html#afeb88b272ee5131e2a42078b4bc0214e">SkyTraqBin::Input_message::ptr</a> msg, <a class="el" href="class_g_n_s_s_1_1_interface.html#a89d41625db0e392ee5282596a66fa0ea">ResponseHandler</a> rh)</td></tr>
-<tr class="memdesc:a6cade0a16da5bf51a2e287c1e93adee7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message to the device, call lambda when response is received.  <a href="#a6cade0a16da5bf51a2e287c1e93adee7">More...</a><br /></td></tr>
-<tr class="separator:a6cade0a16da5bf51a2e287c1e93adee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee8d9714b58e2d51e8931f7e82225816"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_n_s_s_1_1_interface.html#aee8d9714b58e2d51e8931f7e82225816">send</a> (<a class="el" href="class_sky_traq_bin_1_1_input__message.html#afeb88b272ee5131e2a42078b4bc0214e">SkyTraqBin::Input_message::ptr</a> msg, <a class="el" href="class_g_n_s_s_1_1_interface.html#abc5ca7d95ad52ac93117620efc89fda9">ResponseHandler_Skytraq</a> rh)</td></tr>
+<tr class="memdesc:aee8d9714b58e2d51e8931f7e82225816"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message to the Skytraq device, call lambda when response is received.  <a href="#aee8d9714b58e2d51e8931f7e82225816">More...</a><br /></td></tr>
+<tr class="separator:aee8d9714b58e2d51e8931f7e82225816"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a988eba4f5a611c426c7d89ae54460c08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_n_s_s_1_1_interface.html#a988eba4f5a611c426c7d89ae54460c08">send</a> (<a class="el" href="class_u_b_x_1_1_input__message.html#a2d83d9694e85658042bb7a1f56b8f230">UBX::Input_message::ptr</a> msg)</td></tr>
+<tr class="memdesc:a988eba4f5a611c426c7d89ae54460c08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message to the Ublox device.  <a href="#a988eba4f5a611c426c7d89ae54460c08">More...</a><br /></td></tr>
+<tr class="separator:a988eba4f5a611c426c7d89ae54460c08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a478f42be38c2fc35478aa26ad9af1404"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_n_s_s_1_1_interface.html#a478f42be38c2fc35478aa26ad9af1404">send</a> (<a class="el" href="class_u_b_x_1_1_input__message.html#a2d83d9694e85658042bb7a1f56b8f230">UBX::Input_message::ptr</a> msg, <a class="el" href="class_g_n_s_s_1_1_interface.html#ad1f6d0db1c5675deed520c2caa060690">ResponseHandler_Ublox</a> rh)</td></tr>
+<tr class="memdesc:a478f42be38c2fc35478aa26ad9af1404"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message to the Ublox device, call lambda when response is received.  <a href="#a478f42be38c2fc35478aa26ad9af1404">More...</a><br /></td></tr>
+<tr class="separator:a478f42be38c2fc35478aa26ad9af1404"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for an object that reads from a stream and calls methods in a <a class="el" href="class_g_n_s_s_1_1_listener.html" title="Base class that receives parsed messages. ">Listener</a> object. </p>
 
-<p>Definition at line <a class="el" href="_parser_8hh_source.html#l00122">122</a> of file <a class="el" href="_parser_8hh_source.html">Parser.hh</a>.</p>
+<p>Definition at line <a class="el" href="_parser_8hh_source.html#l00130">130</a> of file <a class="el" href="_parser_8hh_source.html">Parser.hh</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a89d41625db0e392ee5282596a66fa0ea"></a>
+<a class="anchor" id="abc5ca7d95ad52ac93117620efc89fda9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::function&lt;void(bool ack, <a class="el" href="class_sky_traq_bin_1_1_output__message.html">SkyTraqBin::Output_message</a>* msg)&gt; <a class="el" href="class_g_n_s_s_1_1_interface.html#a89d41625db0e392ee5282596a66fa0ea">GNSS::Interface::ResponseHandler</a></td>
+          <td class="memname">typedef std::function&lt;void(bool ack, <a class="el" href="class_sky_traq_bin_1_1_output__message.html">SkyTraqBin::Output_message</a>* msg)&gt; <a class="el" href="class_g_n_s_s_1_1_interface.html#abc5ca7d95ad52ac93117620efc89fda9">GNSS::Interface::ResponseHandler_Skytraq</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -174,7 +182,21 @@ Public Member Functions</h2></td></tr>
 </ol>
 <p>The third variant only happens with response-type messages. </p>
 
-<p>Definition at line <a class="el" href="_parser_8hh_source.html#l00136">136</a> of file <a class="el" href="_parser_8hh_source.html">Parser.hh</a>.</p>
+<p>Definition at line <a class="el" href="_parser_8hh_source.html#l00144">144</a> of file <a class="el" href="_parser_8hh_source.html">Parser.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad1f6d0db1c5675deed520c2caa060690"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::function&lt;void(bool ack, <a class="el" href="class_u_b_x_1_1_output__message.html">UBX::Output_message</a>* msg)&gt; <a class="el" href="class_g_n_s_s_1_1_interface.html#ad1f6d0db1c5675deed520c2caa060690">GNSS::Interface::ResponseHandler_Ublox</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_parser_8hh_source.html#l00146">146</a> of file <a class="el" href="_parser_8hh_source.html">Parser.hh</a>.</p>
 
 </div>
 </div>
@@ -212,7 +234,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_parser_8cc_source.html#l00094">94</a> of file <a class="el" href="_parser_8cc_source.html">Parser.cc</a>.</p>
+<p>Definition at line <a class="el" href="_parser_8cc_source.html#l00096">96</a> of file <a class="el" href="_parser_8cc_source.html">Parser.cc</a>.</p>
 
 </div>
 </div>
@@ -240,7 +262,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Only currently sendable if the file is a character device. </p>
 
-<p>Definition at line <a class="el" href="_parser_8hh_source.html#l00164">164</a> of file <a class="el" href="_parser_8hh_source.html">Parser.hh</a>.</p>
+<p>Definition at line <a class="el" href="_parser_8hh_source.html#l00175">175</a> of file <a class="el" href="_parser_8hh_source.html">Parser.hh</a>.</p>
 
 </div>
 </div>
@@ -260,7 +282,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Read a small amount of data from the file, parse it, send messages to the listener object. </p>
 
-<p>Definition at line <a class="el" href="_parser_8cc_source.html#l00116">116</a> of file <a class="el" href="_parser_8cc_source.html">Parser.cc</a>.</p>
+<p>Definition at line <a class="el" href="_parser_8cc_source.html#l00118">118</a> of file <a class="el" href="_parser_8cc_source.html">Parser.cc</a>.</p>
 
 </div>
 </div>
@@ -278,13 +300,13 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Send a message to the device. </p>
+<p>Send a message to the Skytraq device. </p>
 
-<p>Definition at line <a class="el" href="_parser_8cc_source.html#l00248">248</a> of file <a class="el" href="_parser_8cc_source.html">Parser.cc</a>.</p>
+<p>Definition at line <a class="el" href="_parser_8cc_source.html#l00250">250</a> of file <a class="el" href="_parser_8cc_source.html">Parser.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a6cade0a16da5bf51a2e287c1e93adee7"></a>
+<a class="anchor" id="aee8d9714b58e2d51e8931f7e82225816"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -297,7 +319,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_g_n_s_s_1_1_interface.html#a89d41625db0e392ee5282596a66fa0ea">ResponseHandler</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_g_n_s_s_1_1_interface.html#abc5ca7d95ad52ac93117620efc89fda9">ResponseHandler_Skytraq</a>&#160;</td>
           <td class="paramname"><em>rh</em>&#160;</td>
         </tr>
         <tr>
@@ -308,9 +330,57 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Send a message to the device, call lambda when response is received. </p>
+<p>Send a message to the Skytraq device, call lambda when response is received. </p>
 
-<p>Definition at line <a class="el" href="_parser_8cc_source.html#l00266">266</a> of file <a class="el" href="_parser_8cc_source.html">Parser.cc</a>.</p>
+<p>Definition at line <a class="el" href="_parser_8cc_source.html#l00268">268</a> of file <a class="el" href="_parser_8cc_source.html">Parser.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a988eba4f5a611c426c7d89ae54460c08"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GNSS::Interface::send </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_u_b_x_1_1_input__message.html#a2d83d9694e85658042bb7a1f56b8f230">UBX::Input_message::ptr</a>&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send a message to the Ublox device. </p>
+
+</div>
+</div>
+<a class="anchor" id="a478f42be38c2fc35478aa26ad9af1404"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GNSS::Interface::send </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_u_b_x_1_1_input__message.html#a2d83d9694e85658042bb7a1f56b8f230">UBX::Input_message::ptr</a>&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_g_n_s_s_1_1_interface.html#ad1f6d0db1c5675deed520c2caa060690">ResponseHandler_Ublox</a>&#160;</td>
+          <td class="paramname"><em>rh</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send a message to the Ublox device, call lambda when response is received. </p>
+
+<p>Definition at line <a class="el" href="_parser_8cc_source.html#l00297">297</a> of file <a class="el" href="_parser_8cc_source.html">Parser.cc</a>.</p>
 
 </div>
 </div>
@@ -324,7 +394,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_g_n_s_s.html">GNSS</a></li><li class="navelem"><a class="el" href="class_g_n_s_s_1_1_interface.html">Interface</a></li>
-    <li class="footer">Generated on Tue Feb 9 2016 20:45:24 for NavSpark tools by
+    <li class="footer">Generated on Sun Feb 14 2016 03:36:08 for GNSS receiver tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

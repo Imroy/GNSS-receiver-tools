@@ -1,6 +1,12 @@
 var searchData=
 [
-  ['temporary',['Temporary',['../namespace_sky_traq_bin.html#af89d769ff084045d495d6690463f40ffa10d85d7664a911bcaec89732098c269a',1,'SkyTraqBin']]],
-  ['threedimensional',['ThreeDimensional',['../namespace_n_m_e_a0183.html#ab433b019f1fdc66200387d281c3010cdae53e6a468bc80e076b0d8c3f17f7251e',1,'NMEA0183::ThreeDimensional()'],['../namespace_sky_traq_bin.html#a2503838326eb69a8104c6bad34d8e957ae53e6a468bc80e076b0d8c3f17f7251e',1,'SkyTraqBin::ThreeDimensional()'],['../namespace_sky_traq_bin.html#a2c063605fbe81d1403247e5d2598958fae53e6a468bc80e076b0d8c3f17f7251e',1,'SkyTraqBin::ThreeDimensional()']]],
-  ['twodimensional',['TwoDimensional',['../namespace_n_m_e_a0183.html#ab433b019f1fdc66200387d281c3010cda5c439358dbee64daba17b27a722983ff',1,'NMEA0183::TwoDimensional()'],['../namespace_sky_traq_bin.html#a2503838326eb69a8104c6bad34d8e957a5c439358dbee64daba17b27a722983ff',1,'SkyTraqBin::TwoDimensional()'],['../namespace_sky_traq_bin.html#a2c063605fbe81d1403247e5d2598958fa5c439358dbee64daba17b27a722983ff',1,'SkyTraqBin::TwoDimensional()']]]
+  ['rate10hz',['Rate10Hz',['../namespace_sky_traq_bin.html#a8370fa195e137caf912062c96d64ae69a61e1e2629b5fcb21aa5c1124a184a636',1,'SkyTraqBin']]],
+  ['rate1hz',['Rate1Hz',['../namespace_sky_traq_bin.html#a8370fa195e137caf912062c96d64ae69a48dc0daeea1f646407ad2807af05e9a7',1,'SkyTraqBin']]],
+  ['rate20hz',['Rate20Hz',['../namespace_sky_traq_bin.html#a8370fa195e137caf912062c96d64ae69aacd23c99eee89928fcdb473117bec4c5',1,'SkyTraqBin']]],
+  ['rate2hz',['Rate2Hz',['../namespace_sky_traq_bin.html#a8370fa195e137caf912062c96d64ae69aff516eef1a39fdda938b9c2c7d9f8a6b',1,'SkyTraqBin']]],
+  ['rate4hz',['Rate4Hz',['../namespace_sky_traq_bin.html#a8370fa195e137caf912062c96d64ae69a2f0cb860975b44874f0a13370a473d94',1,'SkyTraqBin']]],
+  ['rate5hz',['Rate5Hz',['../namespace_sky_traq_bin.html#a8370fa195e137caf912062c96d64ae69aebda9247a0ed4bd59d6b75d5ce899b97',1,'SkyTraqBin']]],
+  ['reserved',['Reserved',['../namespace_u_b_x_1_1_cfg.html#a384740b4d3cc6a892d5e80986e97dd17a942d4e37dd5607ab68e54755540d4a47',1,'UBX::Cfg']]],
+  ['rtkmode',['RTKmode',['../namespace_n_m_e_a0183.html#ae7b81b2e62b4cbcc6561a054217b46aea3694c12a0681ee774565e93ece82dacc',1,'NMEA0183']]],
+  ['rxm',['RXM',['../namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfaed2f9471b22e4b445fe99d72c2d57c5c',1,'UBX']]]
 ];

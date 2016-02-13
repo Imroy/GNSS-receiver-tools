@@ -3,7 +3,9 @@ var files =
     [ "BE.cc", "_b_e_8cc.html", "_b_e_8cc" ],
     [ "BE.hh", "_b_e_8hh.html", "_b_e_8hh" ],
     [ "GNSS.hh", "_g_n_s_s_8hh.html", [
-      [ "Message", "class_g_n_s_s_1_1_message.html", "class_g_n_s_s_1_1_message" ]
+      [ "Message", "class_g_n_s_s_1_1_message.html", "class_g_n_s_s_1_1_message" ],
+      [ "InsufficientData", "class_g_n_s_s_1_1_insufficient_data.html", "class_g_n_s_s_1_1_insufficient_data" ],
+      [ "InvalidMessage", "class_g_n_s_s_1_1_invalid_message.html", "class_g_n_s_s_1_1_invalid_message" ]
     ] ],
     [ "LE.cc", "_l_e_8cc.html", "_l_e_8cc" ],
     [ "LE.hh", "_l_e_8hh.html", "_l_e_8hh" ],
@@ -16,6 +18,7 @@ var files =
       [ "Parser", "class_g_n_s_s_1_1_parser.html", "class_g_n_s_s_1_1_parser" ],
       [ "Listener", "class_g_n_s_s_1_1_listener.html", "class_g_n_s_s_1_1_listener" ],
       [ "Listener_SkyTraq", "class_g_n_s_s_1_1_listener___sky_traq.html", "class_g_n_s_s_1_1_listener___sky_traq" ],
+      [ "Listener_Ublox", "class_g_n_s_s_1_1_listener___ublox.html", null ],
       [ "Interface", "class_g_n_s_s_1_1_interface.html", "class_g_n_s_s_1_1_interface" ]
     ] ],
     [ "SkyTraq.cc", "_sky_traq_8cc.html", "_sky_traq_8cc" ],
@@ -141,5 +144,14 @@ var files =
       [ "GNSS_1PPS_pulse_width", "class_sky_traq_bin_1_1_g_n_s_s__1_p_p_s__pulse__width.html", "class_sky_traq_bin_1_1_g_n_s_s__1_p_p_s__pulse__width" ],
       [ "GNSS_1PPS_freq_output", "class_sky_traq_bin_1_1_g_n_s_s__1_p_p_s__freq__output.html", "class_sky_traq_bin_1_1_g_n_s_s__1_p_p_s__freq__output" ],
       [ "Sensor_data", "class_sky_traq_bin_1_1_sensor__data.html", "class_sky_traq_bin_1_1_sensor__data" ]
-    ] ]
+    ] ],
+    [ "UBX.cc", "_u_b_x_8cc.html", "_u_b_x_8cc" ],
+    [ "UBX.hh", "_u_b_x_8hh.html", "_u_b_x_8hh" ],
+    [ "UBX_ack.cc", "_u_b_x__ack_8cc.html", null ],
+    [ "UBX_ack.hh", "_u_b_x__ack_8hh.html", [
+      [ "Nak", "class_u_b_x_1_1_ack_1_1_nak.html", "class_u_b_x_1_1_ack_1_1_nak" ],
+      [ "Ack", "class_u_b_x_1_1_ack_1_1_ack.html", "class_u_b_x_1_1_ack_1_1_ack" ]
+    ] ],
+    [ "UBX_cfg.cc", "_u_b_x__cfg_8cc.html", null ],
+    [ "UBX_cfg.hh", "_u_b_x__cfg_8hh.html", "_u_b_x__cfg_8hh" ]
 ];

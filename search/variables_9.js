@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['payloadlength_5flen',['PayloadLength_len',['../namespace_sky_traq_bin.html#a79ffd3db555c591a789e36bef96756cd',1,'SkyTraqBin']]],
-  ['prn',['PRN',['../struct_sky_traq_bin_1_1_raw_measurement.html#a15fd5bc0532ba364ea571804315f3587',1,'SkyTraqBin::RawMeasurement::PRN()'],['../struct_sky_traq_bin_1_1_sv_status.html#af9d201b421aa274fce7941d750ae0e9e',1,'SkyTraqBin::SvStatus::PRN()']]],
-  ['pseudo_5frange',['pseudo_range',['../struct_sky_traq_bin_1_1_raw_measurement.html#a9edb6d693161801674f8e9a2bb217ad3',1,'SkyTraqBin::RawMeasurement']]]
+  ['msgid_5flen',['MsgID_len',['../namespace_sky_traq_bin.html#ab8fe0a1d36834d6e2c32139872bef903',1,'SkyTraqBin']]],
+  ['msgsubid_5flen',['MsgSubID_len',['../namespace_sky_traq_bin.html#a80ce12e2020149f4d08e73e704edf089',1,'SkyTraqBin']]]
 ];

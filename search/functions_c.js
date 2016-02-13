@@ -3,6 +3,7 @@ var searchData=
   ['nack',['Nack',['../class_sky_traq_bin_1_1_nack.html#a78cc8e451993a42861aeb1b417673fe5',1,'SkyTraqBin::Nack']]],
   ['nack_5fid',['nack_id',['../class_sky_traq_bin_1_1_nack.html#ab50b881e242dfe71113ca31e5bed6538',1,'SkyTraqBin::Nack']]],
   ['nack_5fsubid',['nack_subid',['../class_sky_traq_bin_1_1_nack.html#ae85219d9a9463194715db45938c70d86',1,'SkyTraqBin::Nack']]],
+  ['nak',['Nak',['../class_u_b_x_1_1_ack_1_1_nak.html#a2e3a7bfa703d8324a43c2f9db6f233e3',1,'UBX::Ack::Nak']]],
   ['nav_5fdata_5fmsg',['Nav_data_msg',['../class_sky_traq_bin_1_1_nav__data__msg.html#a2917801890155d29de98e964f1e3b3d3',1,'SkyTraqBin::Nav_data_msg']]],
   ['navigation_5fdata',['Navigation_data',['../class_g_n_s_s_1_1_listener___sky_traq.html#aeaea4546960e82c0595c9ee8ac92b9cd',1,'GNSS::Listener_SkyTraq']]],
   ['navigation_5fmode',['navigation_mode',['../class_sky_traq_bin_1_1_config___g_n_s_s__nav__mode.html#ac9b2a4c072db6a109d21ddb1fcea9490',1,'SkyTraqBin::Config_GNSS_nav_mode::navigation_mode()'],['../class_sky_traq_bin_1_1_g_n_s_s__nav__mode.html#a549809aace27cf69d4ab06e676a3b339',1,'SkyTraqBin::GNSS_nav_mode::navigation_mode()']]],

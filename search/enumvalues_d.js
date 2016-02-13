@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['rate10hz',['Rate10Hz',['../namespace_sky_traq_bin.html#a8370fa195e137caf912062c96d64ae69a61e1e2629b5fcb21aa5c1124a184a636',1,'SkyTraqBin']]],
-  ['rate1hz',['Rate1Hz',['../namespace_sky_traq_bin.html#a8370fa195e137caf912062c96d64ae69a48dc0daeea1f646407ad2807af05e9a7',1,'SkyTraqBin']]],
-  ['rate20hz',['Rate20Hz',['../namespace_sky_traq_bin.html#a8370fa195e137caf912062c96d64ae69aacd23c99eee89928fcdb473117bec4c5',1,'SkyTraqBin']]],
-  ['rate2hz',['Rate2Hz',['../namespace_sky_traq_bin.html#a8370fa195e137caf912062c96d64ae69aff516eef1a39fdda938b9c2c7d9f8a6b',1,'SkyTraqBin']]],
-  ['rate4hz',['Rate4Hz',['../namespace_sky_traq_bin.html#a8370fa195e137caf912062c96d64ae69a2f0cb860975b44874f0a13370a473d94',1,'SkyTraqBin']]],
-  ['rate5hz',['Rate5Hz',['../namespace_sky_traq_bin.html#a8370fa195e137caf912062c96d64ae69aebda9247a0ed4bd59d6b75d5ce899b97',1,'SkyTraqBin']]],
-  ['rtkmode',['RTKmode',['../namespace_n_m_e_a0183.html#ae7b81b2e62b4cbcc6561a054217b46aea3694c12a0681ee774565e93ece82dacc',1,'NMEA0183']]]
+  ['parallel_5feon',['Parallel_EON',['../namespace_sky_traq_bin.html#a1cfdc722f0bd3c7656e046ee57c4f994a10ed9acd41a6181b2f99d5ee7ac1c198',1,'SkyTraqBin']]],
+  ['parallel_5fnumonyx',['Parallel_Numonyx',['../namespace_sky_traq_bin.html#a1cfdc722f0bd3c7656e046ee57c4f994a1cd60e68312d9c1c327e8a6ffa8e9ca2',1,'SkyTraqBin']]],
+  ['pdop_5fonly',['PDOP_only',['../namespace_sky_traq_bin.html#a62ea0f1258e151d9e6fc275c6b46e912ab45ea17462d758d42957326e5196c84c',1,'SkyTraqBin']]],
+  ['pedestrian',['Pedestrian',['../namespace_sky_traq_bin.html#a14dad65c7948b35a97ef81891c8d0cf9aa203594253cd7d9cd04be0a67ddee739',1,'SkyTraqBin']]],
+  ['powersave',['PowerSave',['../namespace_sky_traq_bin.html#a62e734d5cea0050e10a558693b6ddde0a8697163f8ea747248247f2646bbb991c',1,'SkyTraqBin']]],
+  ['ppsmode',['PPSmode',['../namespace_n_m_e_a0183.html#ae7b81b2e62b4cbcc6561a054217b46aea157f8da1fa96e0399786eaa146eedbfb',1,'NMEA0183']]],
+  ['predicted',['Predicted',['../namespace_sky_traq_bin.html#a2c063605fbe81d1403247e5d2598958fa015e111693f10da4f3fc32814a41e7ad',1,'SkyTraqBin']]],
+  ['pvt',['PVT',['../namespace_sky_traq.html#ac59310efd3da82ccf4d288b52bf29f43ad171f1ba90a837de143fd7b283873632',1,'SkyTraq']]]
 ];

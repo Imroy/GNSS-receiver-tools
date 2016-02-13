@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['has_5fcarrier_5fphase',['has_carrier_phase',['../struct_sky_traq_bin_1_1_raw_measurement.html#aaf7d694afe9ddad439b0135fd9db8597',1,'SkyTraqBin::RawMeasurement']]],
-  ['has_5fdoppler_5ffreq',['has_doppler_freq',['../struct_sky_traq_bin_1_1_raw_measurement.html#a316df0b947920f3ee4a39e6afcf6be44',1,'SkyTraqBin::RawMeasurement']]],
-  ['has_5fpseudo_5frange',['has_pseudo_range',['../struct_sky_traq_bin_1_1_raw_measurement.html#ab8cd4453e4297a05826465e53d8e14a6',1,'SkyTraqBin::RawMeasurement']]]
+  ['elevation',['elevation',['../struct_n_m_e_a0183_1_1_satellite_data.html#a4dea93e690df2b0cb755a33e07e32d3c',1,'NMEA0183::SatelliteData::elevation()'],['../struct_sky_traq_bin_1_1_sv_status.html#ab5051e9da2f57878302b4cf8928941d7',1,'SkyTraqBin::SvStatus::elevation()']]],
+  ['endseq_5flen',['EndSeq_len',['../namespace_sky_traq_bin.html#a3c12dc5a633b8f839dac347480410787',1,'SkyTraqBin']]]
 ];

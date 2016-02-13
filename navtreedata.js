@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "NavSpark tools", "index.html", [
+  [ "GNSS receiver tools", "index.html", [
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -36,11 +36,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_b_e_8cc.html",
-"_sky_traq_bin_8hh.html#a8af094d940385d5311489726f2e094ed",
-"class_sky_traq_bin_1_1_config__1_p_p_s__timing.html#a78dd62c2c8fd1b0bf83f0c3c2dcac6a1",
-"class_sky_traq_bin_1_1_config__leap__seconds.html#ab4769c2dd09adaba77584565468d15b0",
-"class_sky_traq_bin_1_1_input__message__with__subid.html#aaf0bc3c1c1a60940cb94e28a94909828",
-"class_sky_traq_bin_1_1_restart__sys.html#a302a295dfab9f6b20586b3cbfe4f38af"
+"_sky_traq_bin_8hh.html#a8370fa195e137caf912062c96d64ae69aebda9247a0ed4bd59d6b75d5ce899b97",
+"class_n_m_e_a0183_1_1_r_m_c.html#a766d115e7a0bded39a42e6f431ab056e",
+"class_sky_traq_bin_1_1_config__bin__measurement__output__rates.html#a4310d31a9467bed4c5df986db9d836e5",
+"class_sky_traq_bin_1_1_g_n_s_s__extended___n_m_e_a__msg__interval.html#a9aa494c0666f4bbf304b130c891a8ed4",
+"class_sky_traq_bin_1_1_q__constellation__type.html#a5064b006a15e75271a1838807716ae36",
+"class_u_b_x_1_1_unknown_message_i_d.html#af39993ed41856cc364d3d99ceb769734"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

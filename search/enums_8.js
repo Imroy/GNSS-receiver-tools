@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['parametersearchenginemode',['ParameterSearchEngineMode',['../namespace_sky_traq_bin.html#a878ed75184af426203de94a1629ab7b3',1,'SkyTraqBin']]],
-  ['powermode',['PowerMode',['../namespace_sky_traq_bin.html#a62e734d5cea0050e10a558693b6ddde0',1,'SkyTraqBin']]]
+  ['navigationmode',['NavigationMode',['../namespace_sky_traq_bin.html#a14dad65c7948b35a97ef81891c8d0cf9',1,'SkyTraqBin']]],
+  ['navigationstate',['NavigationState',['../namespace_sky_traq_bin.html#a2c063605fbe81d1403247e5d2598958f',1,'SkyTraqBin']]]
 ];

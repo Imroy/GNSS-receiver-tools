@@ -1,19 +1,23 @@
 var hierarchy =
 [
+    [ "UBX::checksum_t", "struct_u_b_x_1_1checksum__t.html", null ],
     [ "std::exception", null, [
       [ "GNSS::EndOfFile", "class_g_n_s_s_1_1_end_of_file.html", null ],
+      [ "GNSS::InsufficientData", "class_g_n_s_s_1_1_insufficient_data.html", null ],
+      [ "GNSS::InvalidMessage", "class_g_n_s_s_1_1_invalid_message.html", null ],
       [ "GNSS::NotSendable", "class_g_n_s_s_1_1_not_sendable.html", null ],
       [ "NMEA0183::ChecksumMismatch", "class_n_m_e_a0183_1_1_checksum_mismatch.html", null ],
       [ "NMEA0183::InvalidSentence", "class_n_m_e_a0183_1_1_invalid_sentence.html", null ],
       [ "NMEA0183::UnknownSentenceType", "class_n_m_e_a0183_1_1_unknown_sentence_type.html", null ],
       [ "SkyTraqBin::ChecksumMismatch", "class_sky_traq_bin_1_1_checksum_mismatch.html", null ],
-      [ "SkyTraqBin::InsufficientData", "class_sky_traq_bin_1_1_insufficient_data.html", null ],
-      [ "SkyTraqBin::InvalidMessage", "class_sky_traq_bin_1_1_invalid_message.html", null ],
-      [ "SkyTraqBin::UnknownMessageID", "class_sky_traq_bin_1_1_unknown_message_i_d.html", null ]
+      [ "SkyTraqBin::UnknownMessageID", "class_sky_traq_bin_1_1_unknown_message_i_d.html", null ],
+      [ "UBX::ChecksumMismatch", "class_u_b_x_1_1_checksum_mismatch.html", null ],
+      [ "UBX::UnknownMessageID", "class_u_b_x_1_1_unknown_message_i_d.html", null ]
     ] ],
     [ "GNSS::Interface", "class_g_n_s_s_1_1_interface.html", null ],
     [ "GNSS::Listener", "class_g_n_s_s_1_1_listener.html", [
-      [ "GNSS::Listener_SkyTraq", "class_g_n_s_s_1_1_listener___sky_traq.html", null ]
+      [ "GNSS::Listener_SkyTraq", "class_g_n_s_s_1_1_listener___sky_traq.html", null ],
+      [ "GNSS::Listener_Ublox", "class_g_n_s_s_1_1_listener___ublox.html", null ]
     ] ],
     [ "GNSS::Message", "class_g_n_s_s_1_1_message.html", [
       [ "NMEA0183::Sentence", "class_n_m_e_a0183_1_1_sentence.html", [
@@ -140,6 +144,18 @@ var hierarchy =
           [ "SkyTraqBin::SV_channel_status", "class_sky_traq_bin_1_1_s_v__channel__status.html", null ],
           [ "SkyTraqBin::Sw_CRC", "class_sky_traq_bin_1_1_sw___c_r_c.html", null ],
           [ "SkyTraqBin::Sw_ver", "class_sky_traq_bin_1_1_sw__ver.html", null ]
+        ] ]
+      ] ],
+      [ "UBX::Message", "class_u_b_x_1_1_message.html", [
+        [ "UBX::Input_message", "class_u_b_x_1_1_input__message.html", [
+          [ "UBX::Cfg::Msg", "class_u_b_x_1_1_cfg_1_1_msg.html", null ],
+          [ "UBX::Cfg::Prt", "class_u_b_x_1_1_cfg_1_1_prt.html", null ],
+          [ "UBX::Cfg::Q_msg", "class_u_b_x_1_1_cfg_1_1_q__msg.html", null ],
+          [ "UBX::Cfg::Q_prt", "class_u_b_x_1_1_cfg_1_1_q__prt.html", null ]
+        ] ],
+        [ "UBX::Output_message", "class_u_b_x_1_1_output__message.html", [
+          [ "UBX::Ack::Ack", "class_u_b_x_1_1_ack_1_1_ack.html", null ],
+          [ "UBX::Ack::Nak", "class_u_b_x_1_1_ack_1_1_nak.html", null ]
         ] ]
       ] ]
     ] ],

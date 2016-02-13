@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['startmode',['StartMode',['../namespace_sky_traq_bin.html#ac535d279d1f914530bf7c378769674f5',1,'SkyTraqBin']]],
-  ['swtype',['SwType',['../namespace_sky_traq_bin.html#aa8edfb32e5bffe0381ca9591a3abfd69',1,'SkyTraqBin']]]
+  ['parametersearchenginemode',['ParameterSearchEngineMode',['../namespace_sky_traq_bin.html#a878ed75184af426203de94a1629ab7b3',1,'SkyTraqBin']]],
+  ['portid',['PortID',['../namespace_u_b_x.html#aa73a5edee0441ba1ca65f8c31a965c8e',1,'UBX']]],
+  ['powermode',['PowerMode',['../namespace_sky_traq_bin.html#a62e734d5cea0050e10a558693b6ddde0',1,'SkyTraqBin']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['output_5fmessage_5ffactory',['output_message_factory',['../namespace_sky_traq_bin.html#a75c3034000b470a95b3c8364dfb2939f',1,'SkyTraqBin']]]
+  ['length',['Length',['../namespace_u_b_x.html#a625af5fcd5a391babedf8ef81cd64ce3',1,'UBX']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['talkerid',['TalkerID',['../namespace_sky_traq_bin.html#a54588077eccf2a252c2fa7d25ce0f018',1,'SkyTraqBin']]],
-  ['timingmode',['TimingMode',['../namespace_sky_traq.html#ac59310efd3da82ccf4d288b52bf29f43',1,'SkyTraq']]]
+  ['receivermode',['ReceiverMode',['../namespace_n_m_e_a0183.html#a927c0bad84f71ff8e857aa93c167d8b6',1,'NMEA0183']]]
 ];

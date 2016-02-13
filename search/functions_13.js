@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['unknownmessageid',['UnknownMessageID',['../class_sky_traq_bin_1_1_unknown_message_i_d.html#af97fb95412b5c2943cbd87f67c578b25',1,'SkyTraqBin::UnknownMessageID']]],
+  ['unknownmessageid',['UnknownMessageID',['../class_sky_traq_bin_1_1_unknown_message_i_d.html#af97fb95412b5c2943cbd87f67c578b25',1,'SkyTraqBin::UnknownMessageID::UnknownMessageID()'],['../class_u_b_x_1_1_unknown_message_i_d.html#ae98ebbc4467f6c086bcc453134692b02',1,'UBX::UnknownMessageID::UnknownMessageID()']]],
   ['unknownsentencetype',['UnknownSentenceType',['../class_n_m_e_a0183_1_1_unknown_sentence_type.html#a83f22d3e3139ac7cb28cc1e7957506cf',1,'NMEA0183::UnknownSentenceType']]],
   ['unpinning_5fcount',['unpinning_count',['../class_sky_traq_bin_1_1_config__pos__pinning__params.html#a4575ae73b17e7be992bddd028239e6cc',1,'SkyTraqBin::Config_pos_pinning_params::unpinning_count()'],['../class_sky_traq_bin_1_1_g_n_s_s__pos__pinning__status.html#a8b7f9991428ee1e796cc3a6f98179676',1,'SkyTraqBin::GNSS_pos_pinning_status::unpinning_count()']]],
   ['unpinning_5fdistance',['unpinning_distance',['../class_sky_traq_bin_1_1_config__pos__pinning__params.html#a4bd43140d34b1cb45d0e92aabf17430b',1,'SkyTraqBin::Config_pos_pinning_params::unpinning_distance()'],['../class_sky_traq_bin_1_1_g_n_s_s__pos__pinning__status.html#a4ace78edfcd7531533a3e084c629d6ff',1,'SkyTraqBin::GNSS_pos_pinning_status::unpinning_distance()']]],

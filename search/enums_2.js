@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['elevationcnrmode',['ElevationCNRmode',['../namespace_sky_traq_bin.html#a17b111ca999208844d1d987ccb0215e6',1,'SkyTraqBin']]],
-  ['enableorauto',['EnableOrAuto',['../namespace_sky_traq_bin.html#a8af094d940385d5311489726f2e094ed',1,'SkyTraqBin']]]
+  ['defaultorenable',['DefaultOrEnable',['../namespace_sky_traq_bin.html#a4b979b3f9e4917895ab009502303f919',1,'SkyTraqBin']]],
+  ['dopmode',['DOPmode',['../namespace_sky_traq_bin.html#a62ea0f1258e151d9e6fc275c6b46e912',1,'SkyTraqBin']]]
 ];

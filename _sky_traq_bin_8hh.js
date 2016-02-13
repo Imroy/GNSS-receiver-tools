@@ -1,7 +1,5 @@
 var _sky_traq_bin_8hh =
 [
-    [ "InsufficientData", "class_sky_traq_bin_1_1_insufficient_data.html", "class_sky_traq_bin_1_1_insufficient_data" ],
-    [ "InvalidMessage", "class_sky_traq_bin_1_1_invalid_message.html", "class_sky_traq_bin_1_1_invalid_message" ],
     [ "ChecksumMismatch", "class_sky_traq_bin_1_1_checksum_mismatch.html", "class_sky_traq_bin_1_1_checksum_mismatch" ],
     [ "UnknownMessageID", "class_sky_traq_bin_1_1_unknown_message_i_d.html", "class_sky_traq_bin_1_1_unknown_message_i_d" ],
     [ "Message", "class_sky_traq_bin_1_1_message.html", "class_sky_traq_bin_1_1_message" ],

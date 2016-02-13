@@ -1,11 +1,12 @@
 var searchData=
 [
   ['cast_5fas',['cast_as',['../class_g_n_s_s_1_1_message.html#ab0e6380af3da3117ff7a68d975ba82ec',1,'GNSS::Message']]],
-  ['checksum',['checksum',['../class_n_m_e_a0183_1_1_sentence.html#a6b391001ad162961347047cc4c414e68',1,'NMEA0183::Sentence::checksum()'],['../namespace_sky_traq_bin.html#ae04a68a1573c8ae3222b1e63fdf13834',1,'SkyTraqBin::checksum()']]],
-  ['checksummismatch',['ChecksumMismatch',['../class_n_m_e_a0183_1_1_checksum_mismatch.html#a3c6ecd68774db2aa5bc7cf1ae6f70c84',1,'NMEA0183::ChecksumMismatch::ChecksumMismatch()'],['../class_sky_traq_bin_1_1_checksum_mismatch.html#abf9c68b2f37b061dd4811ce8f5c3789b',1,'SkyTraqBin::ChecksumMismatch::ChecksumMismatch()']]],
+  ['checksum',['checksum',['../class_n_m_e_a0183_1_1_sentence.html#a6b391001ad162961347047cc4c414e68',1,'NMEA0183::Sentence::checksum()'],['../namespace_sky_traq_bin.html#ae04a68a1573c8ae3222b1e63fdf13834',1,'SkyTraqBin::checksum()'],['../namespace_u_b_x.html#a3b290463a91e686517df4adde58e4371',1,'UBX::checksum()']]],
+  ['checksummismatch',['ChecksumMismatch',['../class_n_m_e_a0183_1_1_checksum_mismatch.html#a3c6ecd68774db2aa5bc7cf1ae6f70c84',1,'NMEA0183::ChecksumMismatch::ChecksumMismatch()'],['../class_sky_traq_bin_1_1_checksum_mismatch.html#abf9c68b2f37b061dd4811ce8f5c3789b',1,'SkyTraqBin::ChecksumMismatch::ChecksumMismatch()'],['../class_u_b_x_1_1_checksum_mismatch.html#a93d7724a096201f9653cb42de5dbbd90',1,'UBX::ChecksumMismatch::ChecksumMismatch()']]],
   ['clear_5flog',['Clear_log',['../class_sky_traq_bin_1_1_clear__log.html#a2461e66a0de049337855997c86bcba23',1,'SkyTraqBin::Clear_log']]],
   ['clock_5fbias',['clock_bias',['../class_sky_traq_bin_1_1_rcv__state.html#a4d56701db7f058eeaad79f9e65f21839',1,'SkyTraqBin::Rcv_state']]],
   ['clock_5fdrift',['clock_drift',['../class_sky_traq_bin_1_1_rcv__state.html#a1681a4f4e9ddf1a403e991ab23a05a08',1,'SkyTraqBin::Rcv_state']]],
+  ['cls',['cls',['../class_u_b_x_1_1_message.html#a2718b57f9511adf72115fa2ba6153653',1,'UBX::Message']]],
   ['cnr_5fmask',['CNR_mask',['../class_sky_traq_bin_1_1_config__elevation___c_n_r__mask.html#acc40108703db16b0bee51332eeb2b8bf',1,'SkyTraqBin::Config_elevation_CNR_mask::CNR_mask()'],['../class_sky_traq_bin_1_1_g_n_s_s__elevation___c_n_r__mask.html#ac8d37563680f7097a69189b71e2dd84f',1,'SkyTraqBin::GNSS_elevation_CNR_mask::CNR_mask()']]],
   ['com_5fport',['com_port',['../class_sky_traq_bin_1_1_config__serial__port.html#a60c8809a6d2a6b586ad32bf1bd7cf2ff',1,'SkyTraqBin::Config_serial_port']]],
   ['config_5f1pps_5fcable_5fdelay',['Config_1PPS_cable_delay',['../class_sky_traq_bin_1_1_config__1_p_p_s__cable__delay.html#ae6a2488341473ca7d207ed2d3d84be91',1,'SkyTraqBin::Config_1PPS_cable_delay::Config_1PPS_cable_delay(int32_t d, UpdateType ut)'],['../class_sky_traq_bin_1_1_config__1_p_p_s__cable__delay.html#a717c3456ccde8d7cac1ef492f5f4ec96',1,'SkyTraqBin::Config_1PPS_cable_delay::Config_1PPS_cable_delay(double d, UpdateType ut)']]],

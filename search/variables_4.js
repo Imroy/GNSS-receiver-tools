@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['elevation',['elevation',['../struct_n_m_e_a0183_1_1_satellite_data.html#a4dea93e690df2b0cb755a33e07e32d3c',1,'NMEA0183::SatelliteData::elevation()'],['../struct_sky_traq_bin_1_1_sv_status.html#ab5051e9da2f57878302b4cf8928941d7',1,'SkyTraqBin::SvStatus::elevation()']]],
-  ['endseq_5flen',['EndSeq_len',['../namespace_sky_traq_bin.html#a3c12dc5a633b8f839dac347480410787',1,'SkyTraqBin']]]
+  ['doppler_5ffreq',['doppler_freq',['../struct_sky_traq_bin_1_1_raw_measurement.html#a43cea4b0a3ef30b918f853abae4d41b7',1,'SkyTraqBin::RawMeasurement']]]
 ];

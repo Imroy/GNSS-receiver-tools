@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['messagetype',['MessageType',['../namespace_sky_traq_bin.html#ad6dfb9b099caedb49ad438b8b3606fcc',1,'SkyTraqBin']]]
+  ['gnss_5fid',['GNSS_ID',['../namespace_u_b_x.html#a7681883beadf5a754d66eb9afe563ec1',1,'UBX']]]
 ];

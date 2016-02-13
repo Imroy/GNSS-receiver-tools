@@ -9,6 +9,7 @@ var searchData=
   ['hdop_5fonly',['HDOP_only',['../namespace_sky_traq_bin.html#a62ea0f1258e151d9e6fc275c6b46e912a4d0828de102fe72bd7f0ba50898ad152',1,'SkyTraqBin']]],
   ['hdop_5fraw',['HDOP_raw',['../class_sky_traq_bin_1_1_config___d_o_p__mask.html#a6fdbc0d14c557f28e232273663e4464f',1,'SkyTraqBin::Config_DOP_mask::HDOP_raw()'],['../class_sky_traq_bin_1_1_nav__data__msg.html#aa510ea6a0ba0725cd910a10887c0895c',1,'SkyTraqBin::Nav_data_msg::HDOP_raw()'],['../class_sky_traq_bin_1_1_g_n_s_s___d_o_p__mask.html#a6f0e3dde36d5a5d08890f5c665585d97',1,'SkyTraqBin::GNSS_DOP_mask::HDOP_raw()']]],
   ['hhmmss_5fto_5fduration',['hhmmss_to_duration',['../namespace_n_m_e_a0183.html#aaf156d73a7c76de1c18aa22043dd3483',1,'NMEA0183']]],
+  ['hi_5factive',['Hi_active',['../namespace_u_b_x_1_1_cfg.html#a93b749c8ccd97d20c977ef7e3b4a84eaada085683b6e211d22c26db5c7079870e',1,'UBX::Cfg']]],
   ['high',['High',['../namespace_sky_traq_bin.html#a878ed75184af426203de94a1629ab7b3a655d20c1ca69519ca647684edbb2db35',1,'SkyTraqBin']]],
   ['hotstart',['HotStart',['../namespace_sky_traq_bin.html#ac535d279d1f914530bf7c378769674f5a40852235ee6419900182a7cff31a2788',1,'SkyTraqBin']]],
   ['hz_5fto_5foutputrate',['Hz_to_OutputRate',['../namespace_sky_traq_bin.html#aafcd2a471992ace57aef6d239c9fc25b',1,'SkyTraqBin']]]
