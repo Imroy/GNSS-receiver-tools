@@ -18,6 +18,99 @@
 */
 #include "LE.hh"
 
+// Write a boolean as a single byte
+template <>
+void append_le<bool>(unsigned char* &buffer, bool val) {
+  buffer[0] = (unsigned char)val;
+  buffer++;
+}
+
+template <>
+void append_le<signed char>(unsigned char* &buffer, signed char val) {
+  buffer[0] = val;
+  buffer++;
+}
+
+template <>
+void append_le<unsigned char>(unsigned char* &buffer, unsigned char val) {
+  buffer[0] = val;
+  buffer++;
+}
+
+template <>
+void append_le<short int>(unsigned char* &buffer, short int val) {
+  buffer[0] = val & 0xff;
+  buffer[1] = val >> 8;
+  buffer += 2;
+}
+
+template <>
+void append_le<unsigned short int>(unsigned char* &buffer, unsigned short int val) {
+  buffer[0] = val & 0xff;
+  buffer[1] = val >> 8;
+  buffer += 2;
+}
+
+template <>
+void append_le<int>(unsigned char* &buffer, int val) {
+  buffer[0] = val & 0xff;
+  buffer[1] = (val >> 8) & 0xff;
+  buffer[2] = (val >> 16) & 0xff;
+  buffer[3] = val >> 24;
+  buffer += 4;
+}
+
+template <>
+void append_le<unsigned int>(unsigned char* &buffer, unsigned int val) {
+  buffer[0] = val & 0xff;
+  buffer[1] = (val >> 8) & 0xff;
+  buffer[2] = (val >> 16) & 0xff;
+  buffer[3] = val >> 24;
+  buffer += 4;
+}
+
+template <>
+void append_le<float>(unsigned char* &buffer, float val) {
+  unsigned char *mem = (unsigned char*)&val;
+#if __BYTE_ORDER == __LITTLE_ENDIAN
+  buffer[0] = mem[0];
+  buffer[1] = mem[1];
+  buffer[2] = mem[2];
+  buffer[3] = mem[3];
+#elif __BYTE_ORDER == __BIG_ENDIAN
+  buffer[0] = mem[3];
+  buffer[1] = mem[2];
+  buffer[2] = mem[1];
+  buffer[3] = mem[0];
+#endif
+  buffer += 4;
+}
+
+template <>
+void append_le<double>(unsigned char* &buffer, double val) {
+  unsigned char *mem = (unsigned char*)&val;
+#if __BYTE_ORDER == __LITTLE_ENDIAN
+  buffer[0] = mem[0];
+  buffer[1] = mem[1];
+  buffer[2] = mem[2];
+  buffer[3] = mem[3];
+  buffer[4] = mem[4];
+  buffer[5] = mem[5];
+  buffer[6] = mem[6];
+  buffer[7] = mem[7];
+#elif __BYTE_ORDER == __BIG_ENDIAN
+  buffer[0] = mem[7];
+  buffer[1] = mem[6];
+  buffer[2] = mem[5];
+  buffer[3] = mem[4];
+  buffer[4] = mem[3];
+  buffer[5] = mem[2];
+  buffer[6] = mem[1];
+  buffer[7] = mem[0];
+#endif
+  buffer += 8;
+}
+
 template <>
 char extract_le<char>(unsigned char* buffer, unsigned int offset) {
   return (char)buffer[offset];

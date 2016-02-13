@@ -18,6 +18,14 @@
 */
 #pragma once
 
+//! Append a value to a buffer, in little-endian byte order
+/*!
+  \param buffer Pointer to a buffer where the next bytes are to added. **NOTE** This value is incremented by append_le.
+  \param val The value
+ */
+template <typename T>
+void append_le(unsigned char* &buffer, T val);
+
 //! Extract a value from a buffer, in little-endian byte order
 /*!
   \param buffer Pointer to the start of the buffer
