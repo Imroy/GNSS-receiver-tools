@@ -4,6 +4,6 @@
 *.s
 .depend
 .depend.bak
-parse
-record
+parse-skytraq
+record-skytraq
 docs/

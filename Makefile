@@ -22,10 +22,10 @@ clean:
 install: $(PROGRAMS)
 	install -t $(BINDIR) $(PROGRAMS)
 
-parse: parse.o $(LIB_OBJS)
+parse-skytraq: parse-skytraq.o $(LIB_OBJS)
 	$(CXX) $(LDFLAGS) $^ $(LIBS) -o $@
 
-record: record.o $(LIB_OBJS)
+record-skytraq: record-skytraq.o $(LIB_OBJS)
 	$(CXX) $(LDFLAHS) $^ $(LIBS) -lmongoclient -lboost_thread -lboost_filesystem -lboost_system -lpthread -lssl -lcrypto -o $@
 
 $(LIB_OBJS): %.o: %.cc
