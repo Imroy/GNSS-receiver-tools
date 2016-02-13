@@ -1,15 +1,16 @@
-NavSparkTools is planned to be a set of tools for working with
-[http://www.navspark.com.tw/ NavSpark] GPS receivers. Actually, it will
-probably work with almost any SkyTraq Venus 6 or 8 based GPS receiver.
+GNSS-receiver-tools is planned to be a set of tools for working with
+GPS/GLONASS/Beidou/Galileo receivers. At the moment it works with
+[http://www.navspark.com.tw/ NavSpark]s and likely any SkyTraq Venus 6 or 8
+based receiver.
 
 So far it mostly consists of lots of C++ classes representing the Venus 6/8
 binary message protocol, as well as sending/receiving these messages.
 
-A single <tt>parse</tt> program is all that exists so far. It displays data
+A single <tt>parse-skytraq</tt> program is all that exists so far. It displays data
 about some of the messages sent from the receiver. It also allows you to set
 the update rate (1, 2, 4, 5, or 10 Hz) with '<tt>-r</tt>', and select between
 text ('<tt>-t</tt>') or binary ('<tt>-b</tt>') output.
 
 == Class documentation ==
 
-The Doxygen-generated class documentation is available at [http://imroy.github.io/NavSparkTools imroy.github.io/NavSparkTools]
+The Doxygen-generated class documentation is available at [http://imroy.github.io/GNSS-receiver-tools imroy.github.io/GNSS-receiver-tools]
