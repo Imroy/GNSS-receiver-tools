@@ -124,16 +124,24 @@ $(document).ready(function(){initNavTree('class_u_b_x_1_1_cfg_1_1_prt.html','');
  <div class="center">
   <img src="class_u_b_x_1_1_cfg_1_1_prt.png" usemap="#UBX::Cfg::Prt_map" alt=""/>
   <map id="UBX::Cfg::Prt_map" name="UBX::Cfg::Prt_map">
-<area href="class_u_b_x_1_1_input__message.html" title="Base class for messages that go to the GPS receiver. " alt="UBX::Input_message" shape="rect" coords="0,112,126,136"/>
-<area href="class_u_b_x_1_1_message.html" title="Base class for a binary message. " alt="UBX::Message" shape="rect" coords="0,56,126,80"/>
-<area href="class_g_n_s_s_1_1_message.html" title="Abstract base class for both NMEA-0183 and binary messages. " alt="GNSS::Message" shape="rect" coords="0,0,126,24"/>
+<area href="class_u_b_x_1_1_input___output__message.html" title="Base class for messages than be both sent and received. " alt="UBX::Input_Output_message" shape="rect" coords="90,168,260,192"/>
+<area href="class_u_b_x_1_1_input__message.html" title="Base class for messages that go to the GPS receiver. " alt="UBX::Input_message" shape="rect" coords="0,112,170,136"/>
+<area href="class_u_b_x_1_1_output__message.html" title="Base class for messages that come from the GPS receiver. " alt="UBX::Output_message" shape="rect" coords="180,112,350,136"/>
+<area href="class_u_b_x_1_1_message.html" title="Base class for a binary message. " alt="UBX::Message" shape="rect" coords="0,56,170,80"/>
+<area href="class_u_b_x_1_1_message.html" title="Base class for a binary message. " alt="UBX::Message" shape="rect" coords="180,56,350,80"/>
+<area href="class_g_n_s_s_1_1_message.html" title="Abstract base class for both NMEA-0183 and binary messages. " alt="GNSS::Message" shape="rect" coords="0,0,170,24"/>
+<area href="class_g_n_s_s_1_1_message.html" title="Abstract base class for both NMEA-0183 and binary messages. " alt="GNSS::Message" shape="rect" coords="180,0,350,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a423491b5523d61c95f67b0ebac4e3ca8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_cfg_1_1_prt.html#a423491b5523d61c95f67b0ebac4e3ca8">Prt</a> (<a class="el" href="namespace_u_b_x.html#aa73a5edee0441ba1ca65f8c31a965c8e">PortID</a> p)</td></tr>
+<tr class="memdesc:a423491b5523d61c95f67b0ebac4e3ca8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for making a new input message.  <a href="#a423491b5523d61c95f67b0ebac4e3ca8">More...</a><br /></td></tr>
 <tr class="separator:a423491b5523d61c95f67b0ebac4e3ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abeed19aeb7a0f1aafdc6db08be78f99b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_cfg_1_1_prt.html#abeed19aeb7a0f1aafdc6db08be78f99b">Prt</a> (unsigned char *payload, <a class="el" href="namespace_u_b_x.html#a625af5fcd5a391babedf8ef81cd64ce3">Length</a> len)</td></tr>
+<tr class="memdesc:abeed19aeb7a0f1aafdc6db08be78f99b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor from a binary buffer.  <a href="#abeed19aeb7a0f1aafdc6db08be78f99b">More...</a><br /></td></tr>
+<tr class="separator:abeed19aeb7a0f1aafdc6db08be78f99b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3cd977dd76fa9bb025f9fb29677fa854"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespace_u_b_x_1_1_cfg.html#aa9a28b16d34f6d5f8064a89320f17459">Mode_Charlen</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_cfg_1_1_prt.html#a3cd977dd76fa9bb025f9fb29677fa854">mode_charlen</a> (void) const </td></tr>
 <tr class="separator:a3cd977dd76fa9bb025f9fb29677fa854"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c89eaaee8dffff28877382678dbcfa9"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespace_u_b_x_1_1_cfg.html#a384740b4d3cc6a892d5e80986e97dd17">Mode_Parity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_cfg_1_1_prt.html#a3c89eaaee8dffff28877382678dbcfa9">mode_parity</a> (void) const </td></tr>
@@ -201,6 +209,13 @@ Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_types_class_g_n_s_s_1_1_message"><td colspan="2" onclick="javascript:toggleInherit('pub_types_class_g_n_s_s_1_1_message')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="class_g_n_s_s_1_1_message.html">GNSS::Message</a></td></tr>
 <tr class="memitem:a15704fae4e3804d8039bbcdbd8392a93 inherit pub_types_class_g_n_s_s_1_1_message"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="class_g_n_s_s_1_1_message.html">Message</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_n_s_s_1_1_message.html#a15704fae4e3804d8039bbcdbd8392a93">ptr</a></td></tr>
 <tr class="separator:a15704fae4e3804d8039bbcdbd8392a93 inherit pub_types_class_g_n_s_s_1_1_message"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_types_class_u_b_x_1_1_output__message"><td colspan="2" onclick="javascript:toggleInherit('pub_types_class_u_b_x_1_1_output__message')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="class_u_b_x_1_1_output__message.html">UBX::Output_message</a></td></tr>
+<tr class="memitem:ad1b5e521c1a7321d77cf188da18f58f5 inherit pub_types_class_u_b_x_1_1_output__message"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="class_u_b_x_1_1_output__message.html">Output_message</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_output__message.html#ad1b5e521c1a7321d77cf188da18f58f5">ptr</a></td></tr>
+<tr class="separator:ad1b5e521c1a7321d77cf188da18f58f5 inherit pub_types_class_u_b_x_1_1_output__message"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_u_b_x_1_1_input___output__message"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_u_b_x_1_1_input___output__message')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_u_b_x_1_1_input___output__message.html">UBX::Input_Output_message</a></td></tr>
+<tr class="memitem:a4a66b279b86ba5f8a34956cbb6430aa2 inherit pro_methods_class_u_b_x_1_1_input___output__message"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_input___output__message.html#a4a66b279b86ba5f8a34956cbb6430aa2">Input_Output_message</a> (<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcf">Class_ID</a> <a class="el" href="class_u_b_x_1_1_message.html#a2718b57f9511adf72115fa2ba6153653">cls</a>, uint8_t <a class="el" href="class_u_b_x_1_1_message.html#a28f6ee8a076be2b046312f68f9fe4050">id</a>)</td></tr>
+<tr class="memdesc:a4a66b279b86ba5f8a34956cbb6430aa2 inherit pro_methods_class_u_b_x_1_1_input___output__message"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor from a message class and ID.  <a href="#a4a66b279b86ba5f8a34956cbb6430aa2">More...</a><br /></td></tr>
+<tr class="separator:a4a66b279b86ba5f8a34956cbb6430aa2 inherit pro_methods_class_u_b_x_1_1_input___output__message"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_class_u_b_x_1_1_input__message"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_u_b_x_1_1_input__message')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_u_b_x_1_1_input__message.html">UBX::Input_message</a></td></tr>
 <tr class="memitem:a6087bf955fe43f6e288a06c54b701481 inherit pro_methods_class_u_b_x_1_1_input__message"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="namespace_u_b_x.html#a625af5fcd5a391babedf8ef81cd64ce3">Length</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_input__message.html#a6087bf955fe43f6e288a06c54b701481">payload_length</a> (void) const </td></tr>
 <tr class="memdesc:a6087bf955fe43f6e288a06c54b701481 inherit pro_methods_class_u_b_x_1_1_input__message"><td class="mdescLeft">&#160;</td><td class="mdescRight">The length of the payload (not including message class/ID)  <a href="#a6087bf955fe43f6e288a06c54b701481">More...</a><br /></td></tr>
@@ -212,6 +227,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:ad06cfc58f7a986f3ab1424a24b1110c4 inherit pro_methods_class_u_b_x_1_1_message"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_message.html#ad06cfc58f7a986f3ab1424a24b1110c4">Message</a> (<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcf">Class_ID</a> <a class="el" href="class_u_b_x_1_1_message.html#a2718b57f9511adf72115fa2ba6153653">cls</a>, uint8_t <a class="el" href="class_u_b_x_1_1_message.html#a28f6ee8a076be2b046312f68f9fe4050">id</a>)</td></tr>
 <tr class="memdesc:ad06cfc58f7a986f3ab1424a24b1110c4 inherit pro_methods_class_u_b_x_1_1_message"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ad06cfc58f7a986f3ab1424a24b1110c4">More...</a><br /></td></tr>
 <tr class="separator:ad06cfc58f7a986f3ab1424a24b1110c4 inherit pro_methods_class_u_b_x_1_1_message"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_u_b_x_1_1_output__message"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_u_b_x_1_1_output__message')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_u_b_x_1_1_output__message.html">UBX::Output_message</a></td></tr>
+<tr class="memitem:a84021c2e28e52a8827f7afa07b999a33 inherit pro_methods_class_u_b_x_1_1_output__message"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_output__message.html#a84021c2e28e52a8827f7afa07b999a33">Output_message</a> (<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcf">Class_ID</a> <a class="el" href="class_u_b_x_1_1_message.html#a2718b57f9511adf72115fa2ba6153653">cls</a>, uint8_t <a class="el" href="class_u_b_x_1_1_message.html#a28f6ee8a076be2b046312f68f9fe4050">id</a>)</td></tr>
+<tr class="memdesc:a84021c2e28e52a8827f7afa07b999a33 inherit pro_methods_class_u_b_x_1_1_output__message"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor from a message class and ID.  <a href="#a84021c2e28e52a8827f7afa07b999a33">More...</a><br /></td></tr>
+<tr class="separator:a84021c2e28e52a8827f7afa07b999a33 inherit pro_methods_class_u_b_x_1_1_output__message"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_u_b_x_1_1_message"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_u_b_x_1_1_message')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_u_b_x_1_1_message.html">UBX::Message</a></td></tr>
 <tr class="memitem:aead12b86105de3ce01025ebb80ee4d3c inherit pro_attribs_class_u_b_x_1_1_message"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcf">Class_ID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_message.html#aead12b86105de3ce01025ebb80ee4d3c">_cls</a></td></tr>
 <tr class="separator:aead12b86105de3ce01025ebb80ee4d3c inherit pro_attribs_class_u_b_x_1_1_message"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -220,7 +239,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00090">90</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00113">113</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a423491b5523d61c95f67b0ebac4e3ca8"></a>
 <div class="memitem">
@@ -244,7 +263,39 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00108">108</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Constructor for making a new input message. </p>
+
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00132">132</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abeed19aeb7a0f1aafdc6db08be78f99b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBX::Cfg::Prt::Prt </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>payload</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_u_b_x.html#a625af5fcd5a391babedf8ef81cd64ce3">Length</a>&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor from a binary buffer. </p>
+
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8cc_source.html#l00036">36</a> of file <a class="el" href="_u_b_x__cfg_8cc_source.html">UBX_cfg.cc</a>.</p>
 
 </div>
 </div>
@@ -271,7 +322,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00129">129</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00156">156</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
 
 </div>
 </div>
@@ -297,7 +348,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00131">131</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00158">158</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
 
 </div>
 </div>
@@ -323,7 +374,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00132">132</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00159">159</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
 
 </div>
 </div>
@@ -349,7 +400,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00130">130</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00157">157</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
 
 </div>
 </div>
@@ -375,7 +426,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00119">119</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00146">146</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
 
 </div>
 </div>
@@ -401,7 +452,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00120">120</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00147">147</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
 
 </div>
 </div>
@@ -427,7 +478,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00121">121</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00148">148</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
 
 </div>
 </div>
@@ -453,7 +504,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00134">134</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00161">161</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
 
 </div>
 </div>
@@ -479,7 +530,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00133">133</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00160">160</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
 
 </div>
 </div>
@@ -505,7 +556,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00129">129</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00156">156</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
 
 </div>
 </div>
@@ -531,7 +582,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00131">131</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00158">158</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
 
 </div>
 </div>
@@ -557,7 +608,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00132">132</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00159">159</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
 
 </div>
 </div>
@@ -583,7 +634,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00130">130</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00157">157</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
 
 </div>
 </div>
@@ -609,7 +660,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00134">134</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00161">161</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
 
 </div>
 </div>
@@ -635,7 +686,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00133">133</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00160">160</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
 
 </div>
 </div>
@@ -677,7 +728,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00123">123</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x__cfg_8hh_source.html#l00150">150</a> of file <a class="el" href="_u_b_x__cfg_8hh_source.html">UBX_cfg.hh</a>.</p>
 
 </div>
 </div>
@@ -691,7 +742,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_u_b_x.html">UBX</a></li><li class="navelem"><a class="el" href="namespace_u_b_x_1_1_cfg.html">Cfg</a></li><li class="navelem"><a class="el" href="class_u_b_x_1_1_cfg_1_1_prt.html">Prt</a></li>
-    <li class="footer">Generated on Sun Feb 14 2016 03:36:51 for GNSS receiver tools by
+    <li class="footer">Generated on Thu Feb 18 2016 04:41:12 for GNSS receiver tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

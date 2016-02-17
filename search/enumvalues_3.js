@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['dat',['Dat',['../namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07a54a04262d0699dc6e86ded7a2b24ca52',1,'UBX::Cfg']]],
   ['ddc',['DDC',['../namespace_u_b_x.html#aa73a5edee0441ba1ca65f8c31a965c8ea34ccd3ae5d03f22bd20e6792834a2702',1,'UBX']]],
   ['deadreckoningmode',['DeadReckoningMode',['../namespace_n_m_e_a0183.html#ae7b81b2e62b4cbcc6561a054217b46aeafe945d60087f38c20724bb73e43f953f',1,'NMEA0183']]],
   ['default',['Default',['../namespace_sky_traq_bin.html#a4b979b3f9e4917895ab009502303f919a7a1920d61156abc05a60135aefe8bc67',1,'SkyTraqBin::Default()'],['../namespace_sky_traq_bin.html#a878ed75184af426203de94a1629ab7b3a7a1920d61156abc05a60135aefe8bc67',1,'SkyTraqBin::Default()']]],

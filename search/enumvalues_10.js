@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['sbas',['SBAS',['../namespace_u_b_x.html#a7681883beadf5a754d66eb9afe563ec1a34dd33959e729910d676a3108e81ac7f',1,'UBX']]],
+  ['sbas',['SBAS',['../namespace_u_b_x.html#a7681883beadf5a754d66eb9afe563ec1a34dd33959e729910d676a3108e81ac7f',1,'UBX::SBAS()'],['../namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07a34dd33959e729910d676a3108e81ac7f',1,'UBX::Cfg::SBAS()']]],
+  ['sbas_5fl1ca',['SBAS_L1CA',['../namespace_u_b_x_1_1_cfg.html#a789bf41255d68ed96e8502e3b4adb308a84fc64c5884df5b626cf9889cd0c71b4',1,'UBX::Cfg']]],
   ['simulated',['Simulated',['../namespace_n_m_e_a0183.html#a927c0bad84f71ff8e857aa93c167d8b6a82abd462f92fed638828a450a2ba1f2a',1,'NMEA0183']]],
   ['simulationmode',['SimulationMode',['../namespace_n_m_e_a0183.html#ae7b81b2e62b4cbcc6561a054217b46aea3f1dd6a979372c3c631f3aaa558dda9d',1,'NMEA0183']]],
   ['size16k',['Size16K',['../namespace_sky_traq_bin.html#a18e1454155c2ebf9c2783b66699a4883ad5e58e28cc8e4c18254430aa64051fa1',1,'SkyTraqBin']]],

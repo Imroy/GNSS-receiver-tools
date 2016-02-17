@@ -14,6 +14,7 @@ var searchData=
   ['baud_5frate',['baud_rate',['../class_sky_traq_bin_1_1_config__serial__port.html#a1d551f342238cd994b0446a53299e42e',1,'SkyTraqBin::Config_serial_port::baud_rate()'],['../class_sky_traq_bin_1_1_sw__img__download.html#aea9331761c5afbc7d0eff0d77a503af5',1,'SkyTraqBin::Sw_img_download::baud_rate()']]],
   ['baudrate',['baudrate',['../class_u_b_x_1_1_cfg_1_1_prt.html#a7e31df53360976fca28de6c57e2f63aa',1,'UBX::Cfg::Prt::baudrate()'],['../namespace_sky_traq_bin.html#a563e3749a9599c896a4ddcb46b2b8a47',1,'SkyTraqBin::BaudRate()']]],
   ['baudrate_5frate',['BaudRate_rate',['../namespace_sky_traq_bin.html#ac4c413ae7ddea98f97dc35ed70c2c155',1,'SkyTraqBin']]],
+  ['bds_5fb1i',['BDS_B1I',['../namespace_u_b_x_1_1_cfg.html#a789bf41255d68ed96e8502e3b4adb308ae3ff0fdcd65945a310af25ac87d9143f',1,'UBX::Cfg']]],
   ['be_2ecc',['BE.cc',['../_b_e_8cc.html',1,'']]],
   ['be_2ehh',['BE.hh',['../_b_e_8hh.html',1,'']]],
   ['beidou',['Beidou',['../class_sky_traq_bin_1_1_config__constellation__type.html#afb6bb1c3b386ebeda3d8fbbca9a986d8',1,'SkyTraqBin::Config_constellation_type::Beidou()'],['../class_sky_traq_bin_1_1_g_n_s_s__constellation__type.html#a9fc3236447d4d225d24f7827394f34f4',1,'SkyTraqBin::GNSS_constellation_type::Beidou()'],['../namespace_u_b_x.html#a7681883beadf5a754d66eb9afe563ec1a532e1e7daeef2562426638f7092cf9a6',1,'UBX::BeiDou()']]],

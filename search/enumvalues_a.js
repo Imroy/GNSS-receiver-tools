@@ -5,5 +5,6 @@ var searchData=
   ['marine',['Marine',['../namespace_sky_traq_bin.html#a14dad65c7948b35a97ef81891c8d0cf9a801a61583a73f5c3e28d34771df22617',1,'SkyTraqBin']]],
   ['mga',['MGA',['../namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfae4e393f29af8aac8d614354c3d5f3f4b',1,'UBX']]],
   ['mid',['Mid',['../namespace_sky_traq_bin.html#a878ed75184af426203de94a1629ab7b3a55c6b09cbca39ef0cdb728eb112a5049',1,'SkyTraqBin']]],
-  ['mon',['MON',['../namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfab8a17e8439000d1794cd35a7793e0824',1,'UBX']]]
+  ['mon',['MON',['../namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfab8a17e8439000d1794cd35a7793e0824',1,'UBX']]],
+  ['msg',['Msg',['../namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07ae1ae09b94f8926587697d0f246bf1050',1,'UBX::Cfg']]]
 ];

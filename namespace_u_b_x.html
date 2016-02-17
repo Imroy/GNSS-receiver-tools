@@ -134,6 +134,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_input__message.html">Input_message</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for messages that go to the GPS receiver.  <a href="class_u_b_x_1_1_input__message.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_input___output__message.html">Input_Output_message</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for messages than be both sent and received.  <a href="class_u_b_x_1_1_input___output__message.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_message.html">Message</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for a binary message.  <a href="class_u_b_x_1_1_message.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,18 +170,17 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="separator:a7681883beadf5a754d66eb9afe563ec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae465ddaf6a89cf6d972466c00132adcf"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcf">Class_ID</a> : uint8_t { <br />
-&#160;&#160;<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfa6adf97f83acf6453d4a6a4b1070f3754">Class_ID::None</a> = 0, 
-<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfaa681762fc2fd8fa38ed9a79e359d1e19">Class_ID::NAV</a> = 1, 
+&#160;&#160;<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfaa681762fc2fd8fa38ed9a79e359d1e19">Class_ID::NAV</a> = 1, 
 <a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfaed2f9471b22e4b445fe99d72c2d57c5c">Class_ID::RXM</a> = 2, 
 <a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfa9517fd0bf8faa655990a4dffe358e13e">Class_ID::INF</a> = 4, 
+<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfa0fc437bc317835cad5faafc12a83fad5">Class_ID::ACK</a> = 5, 
 <br />
-&#160;&#160;<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfa0fc437bc317835cad5faafc12a83fad5">Class_ID::ACK</a> = 5, 
-<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfafdd77d900c9de5478ef8d20aff4680dc">Class_ID::CFG</a> = 6, 
+&#160;&#160;<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfafdd77d900c9de5478ef8d20aff4680dc">Class_ID::CFG</a> = 6, 
 <a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfa73b316aaf5f3c3a6be46e9beb87fbf03">Class_ID::UPD</a> = 9, 
 <a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfab8a17e8439000d1794cd35a7793e0824">Class_ID::MON</a> = 10, 
+<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfa5ef612cfef9d854de7c3f963fcc33c8b">Class_ID::AID</a> = 11, 
 <br />
-&#160;&#160;<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfa5ef612cfef9d854de7c3f963fcc33c8b">Class_ID::AID</a> = 11, 
-<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfadcdef55fae0dff158393fd0c5c455dd0">Class_ID::TIM</a> = 13, 
+&#160;&#160;<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfadcdef55fae0dff158393fd0c5c455dd0">Class_ID::TIM</a> = 13, 
 <a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfae4e393f29af8aac8d614354c3d5f3f4b">Class_ID::MGA</a> = 19, 
 <a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfa4b5ffcdaf38ce4d463171f5c977c5ab3">Class_ID::LOG</a> = 33
 <br />
@@ -231,7 +233,7 @@ Variables</h2></td></tr>
 
 <p>Type for the binary message length, limited to 64 KiB. </p>
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00049">49</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00048">48</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -268,9 +270,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="ae465ddaf6a89cf6d972466c00132adcfa6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="ae465ddaf6a89cf6d972466c00132adcfaa681762fc2fd8fa38ed9a79e359d1e19"></a>NAV&#160;</td><td class="fielddoc">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="ae465ddaf6a89cf6d972466c00132adcfaa681762fc2fd8fa38ed9a79e359d1e19"></a>NAV&#160;</td><td class="fielddoc">
 </td></tr>
 <tr><td class="fieldname"><a class="anchor" id="ae465ddaf6a89cf6d972466c00132adcfaed2f9471b22e4b445fe99d72c2d57c5c"></a>RXM&#160;</td><td class="fielddoc">
 </td></tr>
@@ -294,7 +294,7 @@ Variables</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00068">68</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00067">67</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -332,7 +332,7 @@ Variables</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00058">58</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00057">57</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -366,7 +366,7 @@ Variables</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00083">83</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00081">81</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -425,7 +425,7 @@ Variables</h2></td></tr>
 
 <p>Parser. </p>
 
-<p>Definition at line <a class="el" href="_u_b_x_8cc_source.html#l00082">82</a> of file <a class="el" href="_u_b_x_8cc_source.html">UBX.cc</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8cc_source.html#l00086">86</a> of file <a class="el" href="_u_b_x_8cc_source.html">UBX.cc</a>.</p>
 
 </div>
 </div>
@@ -440,7 +440,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00055">55</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00054">54</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -454,7 +454,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00054">54</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00053">53</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -468,7 +468,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00053">53</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00052">52</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -481,7 +481,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    std::make_pair&lt;uint16_t, output_message_factory&gt;((( 0x05 ) &lt;&lt; 8) | ( 0x00 ), [](uint8_t* payload, <a class="code" href="namespace_u_b_x.html#a625af5fcd5a391babedf8ef81cd64ce3">Length</a> len) { <span class="keywordflow">return</span> std::make_shared&lt; Ack::Nak &gt;(payload, len); }),</div><div class="line">    std::make_pair&lt;uint16_t, output_message_factory&gt;((( 0x05 ) &lt;&lt; 8) | ( 0x01 ), [](uint8_t* payload, <a class="code" href="namespace_u_b_x.html#a625af5fcd5a391babedf8ef81cd64ce3">Length</a> len) { <span class="keywordflow">return</span> std::make_shared&lt; Ack::Ack &gt;(payload, len); }),</div><div class="line">  }</div><div class="ttc" id="namespace_u_b_x_html_a625af5fcd5a391babedf8ef81cd64ce3"><div class="ttname"><a href="namespace_u_b_x.html#a625af5fcd5a391babedf8ef81cd64ce3">UBX::Length</a></div><div class="ttdeci">uint16_t Length</div><div class="ttdoc">Type for the binary message length, limited to 64 KiB. </div><div class="ttdef"><b>Definition:</b> <a href="_u_b_x_8hh_source.html#l00049">UBX.hh:49</a></div></div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    std::make_pair&lt;uint16_t, output_message_factory&gt;(((uint8_t) Class_ID::ACK  &lt;&lt; 8) | ( 0x00 ), [](uint8_t* payload, <a class="code" href="namespace_u_b_x.html#a625af5fcd5a391babedf8ef81cd64ce3">Length</a> len) { <span class="keywordflow">return</span> std::make_shared&lt; Ack::Nak &gt;(payload, len); }),</div><div class="line">    std::make_pair&lt;uint16_t, output_message_factory&gt;(((uint8_t) <a class="code" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcf">Class_ID</a>::ACK  &lt;&lt; 8) | ( 0x01 ), [](uint8_t* payload, <a class="code" href="namespace_u_b_x.html#a625af5fcd5a391babedf8ef81cd64ce3">Length</a> len) { <span class="keywordflow">return</span> std::make_shared&lt; Ack::Ack &gt;(payload, len); }),</div><div class="line"></div><div class="line">    std::make_pair&lt;uint16_t, output_message_factory&gt;(((uint8_t) <a class="code" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcf">Class_ID</a>::CFG  &lt;&lt; 8) | ( 0x00 ), [](uint8_t* payload, <a class="code" href="namespace_u_b_x.html#a625af5fcd5a391babedf8ef81cd64ce3">Length</a> len) { <span class="keywordflow">return</span> std::make_shared&lt; Cfg::Prt &gt;(payload, len); }),</div><div class="line">    std::make_pair&lt;uint16_t, output_message_factory&gt;(((uint8_t) <a class="code" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcf">Class_ID</a>::CFG  &lt;&lt; 8) | ( 0x01 ), [](uint8_t* payload, <a class="code" href="namespace_u_b_x.html#a625af5fcd5a391babedf8ef81cd64ce3">Length</a> len) { <span class="keywordflow">return</span> std::make_shared&lt; Cfg::Msg &gt;(payload, len); }),</div><div class="line">    std::make_pair&lt;uint16_t, output_message_factory&gt;(((uint8_t) <a class="code" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcf">Class_ID</a>::CFG  &lt;&lt; 8) | ( 0x3e ), [](uint8_t* payload, <a class="code" href="namespace_u_b_x.html#a625af5fcd5a391babedf8ef81cd64ce3">Length</a> len) { <span class="keywordflow">return</span> std::make_shared&lt; Cfg::GNSS &gt;(payload, len); }),</div><div class="line">  }</div><div class="ttc" id="namespace_u_b_x_html_a625af5fcd5a391babedf8ef81cd64ce3"><div class="ttname"><a href="namespace_u_b_x.html#a625af5fcd5a391babedf8ef81cd64ce3">UBX::Length</a></div><div class="ttdeci">uint16_t Length</div><div class="ttdoc">Type for the binary message length, limited to 64 KiB. </div><div class="ttdef"><b>Definition:</b> <a href="_u_b_x_8hh_source.html#l00048">UBX.hh:48</a></div></div>
+<div class="ttc" id="namespace_u_b_x_html_ae465ddaf6a89cf6d972466c00132adcf"><div class="ttname"><a href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcf">UBX::Class_ID</a></div><div class="ttdeci">Class_ID</div><div class="ttdef"><b>Definition:</b> <a href="_u_b_x_8hh_source.html#l00067">UBX.hh:67</a></div></div>
 </div><!-- fragment -->
 <p>Definition at line <a class="el" href="_u_b_x_8cc_source.html#l00075">75</a> of file <a class="el" href="_u_b_x_8cc_source.html">UBX.cc</a>.</p>
 
@@ -497,7 +498,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00051">51</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00050">50</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -511,7 +512,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00052">52</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00051">51</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -521,7 +522,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_u_b_x.html">UBX</a></li>
-    <li class="footer">Generated on Sun Feb 14 2016 03:36:49 for GNSS receiver tools by
+    <li class="footer">Generated on Thu Feb 18 2016 04:41:10 for GNSS receiver tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

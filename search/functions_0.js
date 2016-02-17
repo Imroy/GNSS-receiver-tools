@@ -4,6 +4,7 @@ var searchData=
   ['ack_5fid',['ack_id',['../class_sky_traq_bin_1_1_ack.html#af560d7a6f83fae1ad3a820aec53921b2',1,'SkyTraqBin::Ack']]],
   ['ack_5fsubid',['ack_subid',['../class_sky_traq_bin_1_1_ack.html#ae7cd79ad9496aa14838b096c767583c4',1,'SkyTraqBin::Ack']]],
   ['add_5fbytes',['add_bytes',['../class_g_n_s_s_1_1_parser.html#a45c70c3ddd4a71cf9cba67de2e50c50a',1,'GNSS::Parser']]],
+  ['add_5fconfig',['add_config',['../class_u_b_x_1_1_cfg_1_1_g_n_s_s.html#a8cd994f32b41cec32d6b8ec6d161e2e7',1,'UBX::Cfg::GNSS']]],
   ['all_5fsbas_5fenabled',['All_SBAS_enabled',['../class_sky_traq_bin_1_1_config___s_b_a_s.html#ae5e664dfa51f0fbf317d614b4298b484',1,'SkyTraqBin::Config_SBAS::All_SBAS_enabled()'],['../class_sky_traq_bin_1_1_g_n_s_s___s_b_a_s__status.html#a079b35710f2a2199b4f2cfbc600c4606',1,'SkyTraqBin::GNSS_SBAS_status::All_SBAS_enabled()']]],
   ['alt',['alt',['../class_sky_traq_bin_1_1_nav__data__msg.html#a84eea577756c4bea98e419d4d3f3078c',1,'SkyTraqBin::Nav_data_msg']]],
   ['alt_5fraw',['alt_raw',['../class_sky_traq_bin_1_1_nav__data__msg.html#a0cb515b56621f24e88ed4c38457d3264',1,'SkyTraqBin::Nav_data_msg']]],

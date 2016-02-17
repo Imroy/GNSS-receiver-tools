@@ -1,6 +1,7 @@
 var class_u_b_x_1_1_cfg_1_1_prt =
 [
     [ "Prt", "class_u_b_x_1_1_cfg_1_1_prt.html#a423491b5523d61c95f67b0ebac4e3ca8", null ],
+    [ "Prt", "class_u_b_x_1_1_cfg_1_1_prt.html#abeed19aeb7a0f1aafdc6db08be78f99b", null ],
     [ "baudrate", "class_u_b_x_1_1_cfg_1_1_prt.html#a7e31df53360976fca28de6c57e2f63aa", null ],
     [ "inproto_nmea", "class_u_b_x_1_1_cfg_1_1_prt.html#adf7fc16f5cee192359c3e23fa08d99ad", null ],
     [ "inproto_rtcm", "class_u_b_x_1_1_cfg_1_1_prt.html#a30278b6f97f15426d18870c3ad3d927a", null ],

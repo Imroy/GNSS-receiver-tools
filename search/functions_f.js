@@ -10,6 +10,7 @@ var searchData=
   ['q_5fdop_5fmask',['Q_DOP_mask',['../class_sky_traq_bin_1_1_q___d_o_p__mask.html#a31f917bf44cfbbc847d3d2a6f274ab0d',1,'SkyTraqBin::Q_DOP_mask']]],
   ['q_5felevation_5fcnr_5fmask',['Q_elevation_CNR_mask',['../class_sky_traq_bin_1_1_q__elevation___c_n_r__mask.html#a263e4e11a34dbb25ff40541b984efb3b',1,'SkyTraqBin::Q_elevation_CNR_mask']]],
   ['q_5fextended_5fnmea_5fmsg_5finterval',['Q_extended_NMEA_msg_interval',['../class_sky_traq_bin_1_1_q__extended___n_m_e_a__msg__interval.html#a0c4e7d6d8723de5eeee91ac6953312d1',1,'SkyTraqBin::Q_extended_NMEA_msg_interval']]],
+  ['q_5fgnss',['Q_GNSS',['../class_u_b_x_1_1_cfg_1_1_q___g_n_s_s.html#a24b86eb070392bb3fd550c3bd21662eb',1,'UBX::Cfg::Q_GNSS']]],
   ['q_5fgnss_5fboot_5fstatus',['Q_GNSS_boot_status',['../class_sky_traq_bin_1_1_q___g_n_s_s__boot__status.html#a3f3a7cec4b355c3e1092e64c16d450d2',1,'SkyTraqBin::Q_GNSS_boot_status']]],
   ['q_5fgnss_5fdatum_5findex',['Q_GNSS_datum_index',['../class_sky_traq_bin_1_1_q___g_n_s_s__datum__index.html#ae65f64a9e9f0246ba724918a6b568edc',1,'SkyTraqBin::Q_GNSS_datum_index']]],
   ['q_5fgnss_5fnav_5fmode',['Q_GNSS_nav_mode',['../class_sky_traq_bin_1_1_q___g_n_s_s__nav__mode.html#ab153b652930cdb3a1553bd50c088217b',1,'SkyTraqBin::Q_GNSS_nav_mode']]],

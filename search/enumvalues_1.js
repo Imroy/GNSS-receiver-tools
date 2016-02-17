@@ -10,6 +10,7 @@ var searchData=
   ['baud57600',['Baud57600',['../namespace_sky_traq_bin.html#a563e3749a9599c896a4ddcb46b2b8a47a5df0ba18de3712cd4d8689f5d3f8e1fa',1,'SkyTraqBin']]],
   ['baud921600',['Baud921600',['../namespace_sky_traq_bin.html#a563e3749a9599c896a4ddcb46b2b8a47a813ced08ac90c0ccdc6ac619cd327479',1,'SkyTraqBin']]],
   ['baud9600',['Baud9600',['../namespace_sky_traq_bin.html#a563e3749a9599c896a4ddcb46b2b8a47a8e072f20a097851ad5fbbf16e3026efe',1,'SkyTraqBin']]],
+  ['bds_5fb1i',['BDS_B1I',['../namespace_u_b_x_1_1_cfg.html#a789bf41255d68ed96e8502e3b4adb308ae3ff0fdcd65945a310af25ac87d9143f',1,'UBX::Cfg']]],
   ['beidou',['BeiDou',['../namespace_u_b_x.html#a7681883beadf5a754d66eb9afe563ec1a532e1e7daeef2562426638f7092cf9a6',1,'UBX']]],
   ['binary',['Binary',['../namespace_sky_traq_bin.html#ad6dfb9b099caedb49ad438b8b3606fcca6ce976e8f061b2b5cfe4d0c50c3405dd',1,'SkyTraqBin']]],
   ['bits_5f0_5f5',['Bits_0_5',['../namespace_u_b_x_1_1_cfg.html#a600180667e1ed7355a008e6276db66bcac6665ef32195e7cb1470425bb2a3cb1f',1,'UBX::Cfg']]],

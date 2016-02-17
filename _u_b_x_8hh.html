@@ -120,7 +120,6 @@ $(document).ready(function(){initNavTree('_u_b_x_8hh.html','');});
 <div class="textblock"><code>#include &lt;cstdio&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;math.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="_g_n_s_s_8hh_source.html">GNSS.hh</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_u_b_x__ack_8hh_source.html">UBX_ack.hh</a>&quot;</code><br />
@@ -145,6 +144,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_input__message.html">UBX::Input_message</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for messages that go to the GPS receiver.  <a href="class_u_b_x_1_1_input__message.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_input___output__message.html">UBX::Input_Output_message</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for messages than be both sent and received.  <a href="class_u_b_x_1_1_input___output__message.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -167,6 +169,8 @@ Macros</h2></td></tr>
 <tr class="separator:a09b6f6c4c3c19fb9c99edd609c8a5390"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbda95749f36f77933ae1ef03e3506cd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u_b_x_8hh.html#adbda95749f36f77933ae1ef03e3506cd">GETTER_SETTER_MOD</a>(type,  name,  field,  code_get,  code_set)</td></tr>
 <tr class="separator:adbda95749f36f77933ae1ef03e3506cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c347e3885411df6be7a3642720040f2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u_b_x_8hh.html#a4c347e3885411df6be7a3642720040f2">ENUM_OSTREAM_OPERATOR</a>(type)&#160;&#160;&#160;inline std::ostream&amp; operator&lt;&lt; (std::ostream&amp; out, type val) { out &lt;&lt; std::to_string(val); return out;  }</td></tr>
+<tr class="separator:a4c347e3885411df6be7a3642720040f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -189,18 +193,17 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="separator:a7681883beadf5a754d66eb9afe563ec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae465ddaf6a89cf6d972466c00132adcf"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcf">UBX::Class_ID</a> : uint8_t { <br />
-&#160;&#160;<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfa6adf97f83acf6453d4a6a4b1070f3754">UBX::Class_ID::None</a> = 0, 
-<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfaa681762fc2fd8fa38ed9a79e359d1e19">UBX::Class_ID::NAV</a> = 1, 
+&#160;&#160;<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfaa681762fc2fd8fa38ed9a79e359d1e19">UBX::Class_ID::NAV</a> = 1, 
 <a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfaed2f9471b22e4b445fe99d72c2d57c5c">UBX::Class_ID::RXM</a> = 2, 
 <a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfa9517fd0bf8faa655990a4dffe358e13e">UBX::Class_ID::INF</a> = 4, 
+<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfa0fc437bc317835cad5faafc12a83fad5">UBX::Class_ID::ACK</a> = 5, 
 <br />
-&#160;&#160;<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfa0fc437bc317835cad5faafc12a83fad5">UBX::Class_ID::ACK</a> = 5, 
-<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfafdd77d900c9de5478ef8d20aff4680dc">UBX::Class_ID::CFG</a> = 6, 
+&#160;&#160;<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfafdd77d900c9de5478ef8d20aff4680dc">UBX::Class_ID::CFG</a> = 6, 
 <a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfa73b316aaf5f3c3a6be46e9beb87fbf03">UBX::Class_ID::UPD</a> = 9, 
 <a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfab8a17e8439000d1794cd35a7793e0824">UBX::Class_ID::MON</a> = 10, 
+<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfa5ef612cfef9d854de7c3f963fcc33c8b">UBX::Class_ID::AID</a> = 11, 
 <br />
-&#160;&#160;<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfa5ef612cfef9d854de7c3f963fcc33c8b">UBX::Class_ID::AID</a> = 11, 
-<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfadcdef55fae0dff158393fd0c5c455dd0">UBX::Class_ID::TIM</a> = 13, 
+&#160;&#160;<a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfadcdef55fae0dff158393fd0c5c455dd0">UBX::Class_ID::TIM</a> = 13, 
 <a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfae4e393f29af8aac8d614354c3d5f3f4b">UBX::Class_ID::MGA</a> = 19, 
 <a class="el" href="namespace_u_b_x.html#ae465ddaf6a89cf6d972466c00132adcfa4b5ffcdaf38ce4d463171f5c977c5ab3">UBX::Class_ID::LOG</a> = 33
 <br />
@@ -222,6 +225,30 @@ Functions</h2></td></tr>
 <tr class="memitem:a7618664c60a3b9b61f83d0079edca0d4"><td class="memItemLeft" align="right" valign="top">Output_message::ptr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_u_b_x.html#a7618664c60a3b9b61f83d0079edca0d4">UBX::parse_message</a> (unsigned char *buffer, std::size_t len)</td></tr>
 <tr class="memdesc:a7618664c60a3b9b61f83d0079edca0d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parser.  <a href="namespace_u_b_x.html#a7618664c60a3b9b61f83d0079edca0d4">More...</a><br /></td></tr>
 <tr class="separator:a7618664c60a3b9b61f83d0079edca0d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a183954a23cb24e3ab86897335fbc863f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u_b_x_8hh.html#a183954a23cb24e3ab86897335fbc863f">std::to_string</a> (<a class="el" href="namespace_u_b_x.html#a7681883beadf5a754d66eb9afe563ec1">UBX::GNSS_ID</a> id)</td></tr>
+<tr class="separator:a183954a23cb24e3ab86897335fbc863f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e3bae5426f74d83f8b09d67093b95b3"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u_b_x_8hh.html#a4e3bae5426f74d83f8b09d67093b95b3">std::operator&lt;&lt;</a> (std::ostream &amp;out, <a class="el" href="namespace_u_b_x.html#a7681883beadf5a754d66eb9afe563ec1">UBX::GNSS_ID</a> val)</td></tr>
+<tr class="separator:a4e3bae5426f74d83f8b09d67093b95b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63bf484b49b1c81ba340fd01e4f56874"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u_b_x_8hh.html#a63bf484b49b1c81ba340fd01e4f56874">std::to_string</a> (<a class="el" href="namespace_u_b_x.html#aa73a5edee0441ba1ca65f8c31a965c8e">UBX::PortID</a> id)</td></tr>
+<tr class="separator:a63bf484b49b1c81ba340fd01e4f56874"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeca1554943fe6fd1eef1364b71064d18"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u_b_x_8hh.html#aeca1554943fe6fd1eef1364b71064d18">std::operator&lt;&lt;</a> (std::ostream &amp;out, <a class="el" href="namespace_u_b_x.html#aa73a5edee0441ba1ca65f8c31a965c8e">UBX::PortID</a> val)</td></tr>
+<tr class="separator:aeca1554943fe6fd1eef1364b71064d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58228b00f511519525b7caa6c9c58223"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u_b_x_8hh.html#a58228b00f511519525b7caa6c9c58223">std::to_string</a> (<a class="el" href="namespace_u_b_x_1_1_cfg.html#a93b749c8ccd97d20c977ef7e3b4a84ea">UBX::Cfg::txReady_polarity</a> pol)</td></tr>
+<tr class="separator:a58228b00f511519525b7caa6c9c58223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d2014ea103191cc3d6e5fcd7a913106"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u_b_x_8hh.html#a6d2014ea103191cc3d6e5fcd7a913106">std::operator&lt;&lt;</a> (std::ostream &amp;out, <a class="el" href="namespace_u_b_x_1_1_cfg.html#a93b749c8ccd97d20c977ef7e3b4a84ea">UBX::Cfg::txReady_polarity</a> val)</td></tr>
+<tr class="separator:a6d2014ea103191cc3d6e5fcd7a913106"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a6816c83aeb3bc3484a0ff9d6481edb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u_b_x_8hh.html#a5a6816c83aeb3bc3484a0ff9d6481edb">std::to_string</a> (<a class="el" href="namespace_u_b_x_1_1_cfg.html#aa9a28b16d34f6d5f8064a89320f17459">UBX::Cfg::Mode_Charlen</a> charlen)</td></tr>
+<tr class="separator:a5a6816c83aeb3bc3484a0ff9d6481edb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38be119f40bcff28366bc1224fd11b23"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u_b_x_8hh.html#a38be119f40bcff28366bc1224fd11b23">std::operator&lt;&lt;</a> (std::ostream &amp;out, <a class="el" href="namespace_u_b_x_1_1_cfg.html#aa9a28b16d34f6d5f8064a89320f17459">UBX::Cfg::Mode_Charlen</a> val)</td></tr>
+<tr class="separator:a38be119f40bcff28366bc1224fd11b23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38f5ad0f5fa334fa6056465d417e561c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u_b_x_8hh.html#a38f5ad0f5fa334fa6056465d417e561c">std::to_string</a> (<a class="el" href="namespace_u_b_x_1_1_cfg.html#a384740b4d3cc6a892d5e80986e97dd17">UBX::Cfg::Mode_Parity</a> par)</td></tr>
+<tr class="separator:a38f5ad0f5fa334fa6056465d417e561c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abef0035a0d8234b36b8da24710909f73"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u_b_x_8hh.html#abef0035a0d8234b36b8da24710909f73">std::operator&lt;&lt;</a> (std::ostream &amp;out, <a class="el" href="namespace_u_b_x_1_1_cfg.html#a384740b4d3cc6a892d5e80986e97dd17">UBX::Cfg::Mode_Parity</a> val)</td></tr>
+<tr class="separator:abef0035a0d8234b36b8da24710909f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aa459abd494c06e82cf8fbb3adae22f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u_b_x_8hh.html#a1aa459abd494c06e82cf8fbb3adae22f">std::to_string</a> (<a class="el" href="namespace_u_b_x_1_1_cfg.html#a600180667e1ed7355a008e6276db66bc">UBX::Cfg::Mode_Stopbits</a> bits)</td></tr>
+<tr class="separator:a1aa459abd494c06e82cf8fbb3adae22f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0b3b076e22411c9bd8c2a59d9d9f3ea"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u_b_x_8hh.html#ae0b3b076e22411c9bd8c2a59d9d9f3ea">std::operator&lt;&lt;</a> (std::ostream &amp;out, <a class="el" href="namespace_u_b_x_1_1_cfg.html#a600180667e1ed7355a008e6276db66bc">UBX::Cfg::Mode_Stopbits</a> val)</td></tr>
+<tr class="separator:ae0b3b076e22411c9bd8c2a59d9d9f3ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -237,6 +264,24 @@ Variables</h2></td></tr>
 <tr class="separator:ac4affcec67fd6cee3a3043147f0ec483"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a4c347e3885411df6be7a3642720040f2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENUM_OSTREAM_OPERATOR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type</td><td>)</td>
+          <td>&#160;&#160;&#160;inline std::ostream&amp; operator&lt;&lt; (std::ostream&amp; out, type val) { out &lt;&lt; std::to_string(val); return out;  }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00238">238</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a53cd5f752177296ab45f08b0c367bea9"></a>
 <div class="memitem">
 <div class="memproto">
@@ -267,7 +312,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00206">206</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00214">214</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -301,7 +346,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00219">219</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00227">227</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -335,7 +380,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00214">214</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00222">222</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -369,7 +414,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">inline</span> <span class="keyword">const</span> type name(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> field; } \</div><div class="line">inline <span class="keywordtype">void</span> set_##name(type val) { field = val; }</div></div><!-- fragment -->
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00208">208</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00216">216</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -415,7 +460,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">inline</span> <span class="keyword">const</span> type name(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> code_get; } \</div><div class="line">inline <span class="keywordtype">void</span> set_##name(type val) { field = code_set; }</div></div><!-- fragment -->
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00221">221</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00229">229</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -449,7 +494,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">inline</span> <span class="keyword">const</span> type name##_raw(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> field; } \</div><div class="line">inline <span class="keywordtype">void</span> set_##name##_raw(type val) { field = val; }</div></div><!-- fragment -->
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00216">216</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00224">224</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -477,7 +522,332 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">inline</span> <span class="keywordtype">void</span> set_##name(<span class="keywordtype">bool</span> val=<span class="keyword">true</span>) { field = val; } \</div><div class="line">inline <span class="keywordtype">void</span> unset_##name(<span class="keywordtype">void</span>) { field = <span class="keyword">false</span>; }</div></div><!-- fragment -->
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00211">211</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00219">219</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="file_a4e3bae5426f74d83f8b09d67093b95b3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; std::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_u_b_x.html#a7681883beadf5a754d66eb9afe563ec1">UBX::GNSS_ID</a>&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00242">242</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="file_aeca1554943fe6fd1eef1364b71064d18"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; std::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_u_b_x.html#aa73a5edee0441ba1ca65f8c31a965c8e">UBX::PortID</a>&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00245">245</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="file_a6d2014ea103191cc3d6e5fcd7a913106"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; std::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_u_b_x_1_1_cfg.html#a93b749c8ccd97d20c977ef7e3b4a84ea">UBX::Cfg::txReady_polarity</a>&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00248">248</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="file_a38be119f40bcff28366bc1224fd11b23"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; std::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_u_b_x_1_1_cfg.html#aa9a28b16d34f6d5f8064a89320f17459">UBX::Cfg::Mode_Charlen</a>&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00251">251</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="file_abef0035a0d8234b36b8da24710909f73"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; std::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_u_b_x_1_1_cfg.html#a384740b4d3cc6a892d5e80986e97dd17">UBX::Cfg::Mode_Parity</a>&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00254">254</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="file_ae0b3b076e22411c9bd8c2a59d9d9f3ea"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; std::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_u_b_x_1_1_cfg.html#a600180667e1ed7355a008e6276db66bc">UBX::Cfg::Mode_Stopbits</a>&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00257">257</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="file_a183954a23cb24e3ab86897335fbc863f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string std::to_string </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_u_b_x.html#a7681883beadf5a754d66eb9afe563ec1">UBX::GNSS_ID</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_u_b_x_8cc_source.html#l00117">117</a> of file <a class="el" href="_u_b_x_8cc_source.html">UBX.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="file_a63bf484b49b1c81ba340fd01e4f56874"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string std::to_string </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_u_b_x.html#aa73a5edee0441ba1ca65f8c31a965c8e">UBX::PortID</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_u_b_x_8cc_source.html#l00137">137</a> of file <a class="el" href="_u_b_x_8cc_source.html">UBX.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="file_a58228b00f511519525b7caa6c9c58223"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string std::to_string </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_u_b_x_1_1_cfg.html#a93b749c8ccd97d20c977ef7e3b4a84ea">UBX::Cfg::txReady_polarity</a>&#160;</td>
+          <td class="paramname"><em>pol</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_u_b_x_8cc_source.html#l00151">151</a> of file <a class="el" href="_u_b_x_8cc_source.html">UBX.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="file_a5a6816c83aeb3bc3484a0ff9d6481edb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string std::to_string </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_u_b_x_1_1_cfg.html#aa9a28b16d34f6d5f8064a89320f17459">UBX::Cfg::Mode_Charlen</a>&#160;</td>
+          <td class="paramname"><em>charlen</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_u_b_x_8cc_source.html#l00161">161</a> of file <a class="el" href="_u_b_x_8cc_source.html">UBX.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="file_a38f5ad0f5fa334fa6056465d417e561c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string std::to_string </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_u_b_x_1_1_cfg.html#a384740b4d3cc6a892d5e80986e97dd17">UBX::Cfg::Mode_Parity</a>&#160;</td>
+          <td class="paramname"><em>par</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_u_b_x_8cc_source.html#l00175">175</a> of file <a class="el" href="_u_b_x_8cc_source.html">UBX.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="file_a1aa459abd494c06e82cf8fbb3adae22f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string std::to_string </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_u_b_x_1_1_cfg.html#a600180667e1ed7355a008e6276db66bc">UBX::Cfg::Mode_Stopbits</a>&#160;</td>
+          <td class="paramname"><em>bits</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_u_b_x_8cc_source.html#l00189">189</a> of file <a class="el" href="_u_b_x_8cc_source.html">UBX.cc</a>.</p>
 
 </div>
 </div>
@@ -487,7 +857,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="_u_b_x_8hh.html">UBX.hh</a></li>
-    <li class="footer">Generated on Sun Feb 14 2016 03:36:08 for GNSS receiver tools by
+    <li class="footer">Generated on Thu Feb 18 2016 04:40:42 for GNSS receiver tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

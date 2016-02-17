@@ -115,6 +115,7 @@ $(document).ready(function(){initNavTree('_u_b_x__cfg_8hh.html','');});
 <div class="contents">
 <div class="textblock"><code>#include &quot;boost/date_time/posix_time/posix_time_types.hpp&quot;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;<a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>&quot;</code><br />
 </div>
 <p><a href="_u_b_x__cfg_8hh_source.html">Go to the source code of this file.</a></p>
@@ -129,6 +130,12 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_cfg_1_1_msg.html">UBX::Cfg::Msg</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_cfg_1_1_q___g_n_s_s.html">UBX::Cfg::Q_GNSS</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_u_b_x_1_1_cfg_1_1_g_n_s_s__config.html">UBX::Cfg::GNSS_config</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_b_x_1_1_cfg_1_1_g_n_s_s.html">UBX::Cfg::GNSS</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -139,6 +146,29 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:a4c5f1c27683509f33e681e1e53892a07"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07">UBX::Cfg::Message_ID</a> : uint8_t { <br />
+&#160;&#160;<a class="el" href="namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07ad6aa83b209a967f0c9325fbccf974104">UBX::Cfg::Message_ID::Prt</a> = 0, 
+<a class="el" href="namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07ae1ae09b94f8926587697d0f246bf1050">UBX::Cfg::Message_ID::Msg</a>, 
+<a class="el" href="namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07a043788ce11dbb8a9d278aa691562740c">UBX::Cfg::Message_ID::Inf</a>, 
+<a class="el" href="namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07a39a24c14909dbbf4b170b4e2f8162d6b">UBX::Cfg::Message_ID::Rst</a> = 4, 
+<br />
+&#160;&#160;<a class="el" href="namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07a54a04262d0699dc6e86ded7a2b24ca52">UBX::Cfg::Message_ID::Dat</a> = 6, 
+<a class="el" href="namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07adcb66ff6e4a2517ade22183779939c9d">UBX::Cfg::Message_ID::Rate</a> = 8, 
+<a class="el" href="namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07a52c481288546ff35821c43f66f517920">UBX::Cfg::Message_ID::Cfg</a>, 
+<a class="el" href="namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07aa134a2333e2576f00777d673f7b2cc23">UBX::Cfg::Message_ID::Rxm</a> = 0x11, 
+<br />
+&#160;&#160;<a class="el" href="namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07a938db156ad9b67fa1d4276ac67649940">UBX::Cfg::Message_ID::Ant</a> = 0x13, 
+<a class="el" href="namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07a34dd33959e729910d676a3108e81ac7f">UBX::Cfg::Message_ID::SBAS</a> = 0x16, 
+<a class="el" href="namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07a462b58b8c721708ca95d4ddf1b5bcfba">UBX::Cfg::Message_ID::NMEA</a>, 
+<a class="el" href="namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07a7aca5ec618f7317328dcd7014cf9bdcf">UBX::Cfg::Message_ID::USB</a> = 0x1b, 
+<br />
+&#160;&#160;<a class="el" href="namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07ac93ece95b43d1cc5cb72a5fbe6d005de">UBX::Cfg::Message_ID::Odo</a> = 0x1e, 
+<a class="el" href="namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07a623779bc8e555bb1d210bc33334179d3">UBX::Cfg::Message_ID::NavX5</a> = 0x23, 
+<a class="el" href="namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07a6273697a186f6ce1c289dba9c9cfdad4">UBX::Cfg::Message_ID::Nav5</a>, 
+<a class="el" href="namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07a991275eaf7ec211fb22f3ea362efc0da">UBX::Cfg::Message_ID::TP5</a> = 0x31
+<br />
+ }</td></tr>
+<tr class="separator:a4c5f1c27683509f33e681e1e53892a07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93b749c8ccd97d20c977ef7e3b4a84ea"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_u_b_x_1_1_cfg.html#a93b749c8ccd97d20c977ef7e3b4a84ea">UBX::Cfg::txReady_polarity</a> : bool { <a class="el" href="namespace_u_b_x_1_1_cfg.html#a93b749c8ccd97d20c977ef7e3b4a84eaada085683b6e211d22c26db5c7079870e">UBX::Cfg::txReady_polarity::Hi_active</a> = false, 
 <a class="el" href="namespace_u_b_x_1_1_cfg.html#a93b749c8ccd97d20c977ef7e3b4a84eaafb002e7f129b8b344e1a7b1b192b5d7e">UBX::Cfg::txReady_polarity::Lo_active</a> = true
  }</td></tr>
@@ -161,6 +191,17 @@ Enumerations</h2></td></tr>
 <a class="el" href="namespace_u_b_x_1_1_cfg.html#a600180667e1ed7355a008e6276db66bcac6665ef32195e7cb1470425bb2a3cb1f">UBX::Cfg::Mode_Stopbits::Bits_0_5</a>
  }</td></tr>
 <tr class="separator:a600180667e1ed7355a008e6276db66bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a789bf41255d68ed96e8502e3b4adb308"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_u_b_x_1_1_cfg.html#a789bf41255d68ed96e8502e3b4adb308">UBX::Cfg::sigCfgMask</a> : uint8_t { <br />
+&#160;&#160;<a class="el" href="namespace_u_b_x_1_1_cfg.html#a789bf41255d68ed96e8502e3b4adb308aae7fec9803d586a45c9c3ac836d0e36f">UBX::Cfg::sigCfgMask::GPS_L1CA</a> = 0x01, 
+<a class="el" href="namespace_u_b_x_1_1_cfg.html#a789bf41255d68ed96e8502e3b4adb308a84fc64c5884df5b626cf9889cd0c71b4">UBX::Cfg::sigCfgMask::SBAS_L1CA</a> = 0x01, 
+<a class="el" href="namespace_u_b_x_1_1_cfg.html#a789bf41255d68ed96e8502e3b4adb308ae3ff0fdcd65945a310af25ac87d9143f">UBX::Cfg::sigCfgMask::BDS_B1I</a> = 0x01, 
+<a class="el" href="namespace_u_b_x_1_1_cfg.html#a789bf41255d68ed96e8502e3b4adb308a1e76723677fc6c9cb70b514ea4cd2b1b">UBX::Cfg::sigCfgMask::QZSS_L1CA</a> = 0x01, 
+<br />
+&#160;&#160;<a class="el" href="namespace_u_b_x_1_1_cfg.html#a789bf41255d68ed96e8502e3b4adb308a5fe6e196004c70b66d9a05721d8b1301">UBX::Cfg::sigCfgMask::QZSS_L1SAIF</a> = 0x04, 
+<a class="el" href="namespace_u_b_x_1_1_cfg.html#a789bf41255d68ed96e8502e3b4adb308a4b7b5d992b450c0feffbbdc2cf5669d0">UBX::Cfg::sigCfgMask::GLONASS_L1OF</a> = 0x01
+<br />
+ }</td></tr>
+<tr class="separator:a789bf41255d68ed96e8502e3b4adb308"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -168,7 +209,7 @@ Enumerations</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="_u_b_x__cfg_8hh.html">UBX_cfg.hh</a></li>
-    <li class="footer">Generated on Sun Feb 14 2016 03:36:08 for GNSS receiver tools by
+    <li class="footer">Generated on Thu Feb 18 2016 04:40:42 for GNSS receiver tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

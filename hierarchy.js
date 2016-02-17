@@ -14,6 +14,7 @@ var hierarchy =
       [ "UBX::ChecksumMismatch", "class_u_b_x_1_1_checksum_mismatch.html", null ],
       [ "UBX::UnknownMessageID", "class_u_b_x_1_1_unknown_message_i_d.html", null ]
     ] ],
+    [ "UBX::Cfg::GNSS_config", "struct_u_b_x_1_1_cfg_1_1_g_n_s_s__config.html", null ],
     [ "GNSS::Interface", "class_g_n_s_s_1_1_interface.html", null ],
     [ "GNSS::Listener", "class_g_n_s_s_1_1_listener.html", [
       [ "GNSS::Listener_SkyTraq", "class_g_n_s_s_1_1_listener___sky_traq.html", null ],
@@ -148,14 +149,19 @@ var hierarchy =
       ] ],
       [ "UBX::Message", "class_u_b_x_1_1_message.html", [
         [ "UBX::Input_message", "class_u_b_x_1_1_input__message.html", [
-          [ "UBX::Cfg::Msg", "class_u_b_x_1_1_cfg_1_1_msg.html", null ],
-          [ "UBX::Cfg::Prt", "class_u_b_x_1_1_cfg_1_1_prt.html", null ],
+          [ "UBX::Cfg::Q_GNSS", "class_u_b_x_1_1_cfg_1_1_q___g_n_s_s.html", null ],
           [ "UBX::Cfg::Q_msg", "class_u_b_x_1_1_cfg_1_1_q__msg.html", null ],
-          [ "UBX::Cfg::Q_prt", "class_u_b_x_1_1_cfg_1_1_q__prt.html", null ]
+          [ "UBX::Cfg::Q_prt", "class_u_b_x_1_1_cfg_1_1_q__prt.html", null ],
+          [ "UBX::Input_Output_message", "class_u_b_x_1_1_input___output__message.html", [
+            [ "UBX::Cfg::GNSS", "class_u_b_x_1_1_cfg_1_1_g_n_s_s.html", null ],
+            [ "UBX::Cfg::Msg", "class_u_b_x_1_1_cfg_1_1_msg.html", null ],
+            [ "UBX::Cfg::Prt", "class_u_b_x_1_1_cfg_1_1_prt.html", null ]
+          ] ]
         ] ],
         [ "UBX::Output_message", "class_u_b_x_1_1_output__message.html", [
           [ "UBX::Ack::Ack", "class_u_b_x_1_1_ack_1_1_ack.html", null ],
-          [ "UBX::Ack::Nak", "class_u_b_x_1_1_ack_1_1_nak.html", null ]
+          [ "UBX::Ack::Nak", "class_u_b_x_1_1_ack_1_1_nak.html", null ],
+          [ "UBX::Input_Output_message", "class_u_b_x_1_1_input___output__message.html", null ]
         ] ]
       ] ]
     ] ],

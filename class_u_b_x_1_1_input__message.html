@@ -129,12 +129,15 @@ $(document).ready(function(){initNavTree('class_u_b_x_1_1_input__message.html','
  <div class="center">
   <img src="class_u_b_x_1_1_input__message.png" usemap="#UBX::Input_5Fmessage_map" alt=""/>
   <map id="UBX::Input_5Fmessage_map" name="UBX::Input_message_map">
-<area href="class_u_b_x_1_1_message.html" title="Base class for a binary message. " alt="UBX::Message" shape="rect" coords="204,56,330,80"/>
-<area href="class_g_n_s_s_1_1_message.html" title="Abstract base class for both NMEA-0183 and binary messages. " alt="GNSS::Message" shape="rect" coords="204,0,330,24"/>
-<area href="class_u_b_x_1_1_cfg_1_1_msg.html" alt="UBX::Cfg::Msg" shape="rect" coords="0,168,126,192"/>
-<area href="class_u_b_x_1_1_cfg_1_1_prt.html" alt="UBX::Cfg::Prt" shape="rect" coords="136,168,262,192"/>
-<area href="class_u_b_x_1_1_cfg_1_1_q__msg.html" alt="UBX::Cfg::Q_msg" shape="rect" coords="272,168,398,192"/>
-<area href="class_u_b_x_1_1_cfg_1_1_q__prt.html" alt="UBX::Cfg::Q_prt" shape="rect" coords="408,168,534,192"/>
+<area href="class_u_b_x_1_1_message.html" title="Base class for a binary message. " alt="UBX::Message" shape="rect" coords="270,56,440,80"/>
+<area href="class_g_n_s_s_1_1_message.html" title="Abstract base class for both NMEA-0183 and binary messages. " alt="GNSS::Message" shape="rect" coords="270,0,440,24"/>
+<area href="class_u_b_x_1_1_cfg_1_1_q___g_n_s_s.html" alt="UBX::Cfg::Q_GNSS" shape="rect" coords="0,168,170,192"/>
+<area href="class_u_b_x_1_1_cfg_1_1_q__msg.html" alt="UBX::Cfg::Q_msg" shape="rect" coords="180,168,350,192"/>
+<area href="class_u_b_x_1_1_cfg_1_1_q__prt.html" alt="UBX::Cfg::Q_prt" shape="rect" coords="360,168,530,192"/>
+<area href="class_u_b_x_1_1_input___output__message.html" title="Base class for messages than be both sent and received. " alt="UBX::Input_Output_message" shape="rect" coords="540,168,710,192"/>
+<area href="class_u_b_x_1_1_cfg_1_1_g_n_s_s.html" alt="UBX::Cfg::GNSS" shape="rect" coords="360,224,530,248"/>
+<area href="class_u_b_x_1_1_cfg_1_1_msg.html" alt="UBX::Cfg::Msg" shape="rect" coords="540,224,710,248"/>
+<area href="class_u_b_x_1_1_cfg_1_1_prt.html" alt="UBX::Cfg::Prt" shape="rect" coords="720,224,890,248"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -201,7 +204,7 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for messages that go to the GPS receiver. </p>
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00179">179</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00173">173</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a class="anchor" id="a2d83d9694e85658042bb7a1f56b8f230"></a>
 <div class="memitem">
@@ -213,7 +216,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00203">203</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00197">197</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -252,7 +255,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Constructor from a message class and ID. </p>
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00188">188</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00182">182</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -281,7 +284,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Write body fields into a pre-allocated buffer. </p>
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00185">185</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00179">179</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -309,7 +312,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The total length of the message. </p>
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00194">194</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00188">188</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -337,7 +340,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The length of the payload (not including message class/ID) </p>
 
-<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00182">182</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
+<p>Definition at line <a class="el" href="_u_b_x_8hh_source.html#l00176">176</a> of file <a class="el" href="_u_b_x_8hh_source.html">UBX.hh</a>.</p>
 
 </div>
 </div>
@@ -385,7 +388,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_u_b_x.html">UBX</a></li><li class="navelem"><a class="el" href="class_u_b_x_1_1_input__message.html">Input_message</a></li>
-    <li class="footer">Generated on Sun Feb 14 2016 03:36:50 for GNSS receiver tools by
+    <li class="footer">Generated on Thu Feb 18 2016 04:41:11 for GNSS receiver tools by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

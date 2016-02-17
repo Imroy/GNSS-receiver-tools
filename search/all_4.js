@@ -1,6 +1,7 @@
 var searchData=
 [
   ['d_5fnum',['D_num',['../class_sky_traq_bin_1_1_beidou2__subframe__data.html#a0b106b8d5ee99288e31fe637f3e040b8',1,'SkyTraqBin::Beidou2_subframe_data']]],
+  ['dat',['Dat',['../namespace_u_b_x_1_1_cfg.html#a4c5f1c27683509f33e681e1e53892a07a54a04262d0699dc6e86ded7a2b24ca52',1,'UBX::Cfg']]],
   ['data',['data',['../class_sky_traq_bin_1_1_g_p_s__subframe__data.html#aeebfb0cdf4679e40ac2b62eb968b3ac2',1,'SkyTraqBin::GPS_subframe_data']]],
   ['datalog',['datalog',['../class_sky_traq_bin_1_1_config__logging.html#a8180b198734bf9a0904f17998711023b',1,'SkyTraqBin::Config_logging::datalog()'],['../class_sky_traq_bin_1_1_log__status__output.html#a3ec6a02fd6a2fb534f75bc37f58ddd8d',1,'SkyTraqBin::Log_status_output::datalog()']]],
   ['datum_5findex',['datum_index',['../class_sky_traq_bin_1_1_config__datum.html#a6ed67e7bbc7be1e458fbbe8a9a635f4b',1,'SkyTraqBin::Config_datum::datum_index()'],['../class_sky_traq_bin_1_1_config___g_n_s_s__datum__index.html#a06823b55f25273c77388489cc505ffb8',1,'SkyTraqBin::Config_GNSS_datum_index::datum_index()'],['../class_sky_traq_bin_1_1_g_n_s_s__datum.html#a84679960f309d1fdf6ac7c7366d9a6ed',1,'SkyTraqBin::GNSS_datum::datum_index()'],['../class_sky_traq_bin_1_1_g_n_s_s__datum__index.html#a1981a19a66286caf7233387b8803a597',1,'SkyTraqBin::GNSS_datum_index::datum_index()']]],
